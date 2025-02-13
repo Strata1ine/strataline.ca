@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  --breakpoint-*: initial;
+  --color-accent: #FFE3E3;
+  --color-accent-dark: #D85B5B;
+  --color-black: #2B2B2B;
+  --color-white: #FFFAFA;
+  --font-serif: 'Cormorant Garamond';
+  --font-sans: 'DMSans';
+  /* phone */
+  --breakpoint-sm: 640px;
+  /* tablet */
+  --breakpoint-lg: 900px;
+  --breakpoint-xl: 1250px;
+  --outer-span-width: 1557px;
+  --span-width: 1383px;
+  --span-diff: calc((var(--outer-span-width) - var(--span-width)) / 2);
+  --inset: 2.375rem;
+  --sm-inset: calc(var(--inset) / 2);
+}
+
+:root {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/dm-sans/DMSans-VariableFont_opsz,wght.woff2');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/dm-sans/DMSans-Italic-VariableFont_opsz,wght.woff2');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-BoldItalic.woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-Medium.woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-MediumItalic.woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-SemiBold.woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2');
+  font-weight: 600;
+  font-style: italic;
+}

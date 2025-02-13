@@ -1,0 +1,49 @@
+---
+import Container from "./Container.astro";
+import VContainer from "./VContainer.astro";
+import ImageArray from "./ImageArray.astro";
+import Link from "./nav/Link.astro";
+import SlideBtn from "./nav/SlideBtn.astro";
+
+const { title, description } = Astro.props;
+---
+
+<VContainer>
+  <Container class="flex" variant="outer">
+    <div class="hidden sm:flex flex-1">
+      <div
+        class="mr-[var(--sm-inset)] xl:mr-[var(--inset)] flex flex-col gap-5 justify-center"
+      >
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+      </div>
+      <div class="relative">
+        <ImageArray>
+          <slot />
+        </ImageArray>
+      </div>
+    </div>
+
+    <div class="sm:flex-1 sm:ml-[var(--sm-inset)] xl:ml-[var(--inset)] m-auto">
+      <h1 class="font-serif font-bold text-5xl xl:text-6xl">
+        {title}
+      </h1>
+
+      <div class="sm:hidden mt-6">
+        <ImageArray>
+          <slot />
+        </ImageArray>
+      </div>
+
+      <p class="font-sans mt-4 text-lg xl:text-xl">
+        {description}
+      </p>
+
+      <div class="mt-6">
+        <Link href="">Let's Talk</Link>
+      </div>
+    </div>
+  </Container>
+</VContainer>

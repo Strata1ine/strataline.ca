@@ -1,0 +1,7 @@
+---
+const { class: customClass = "" } = Astro.props;
+---
+
+<div class={`h-screen h-svh flex ${customClass}`}>
+  <slot />
+</div>
