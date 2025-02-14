@@ -10,15 +10,16 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
-    "astro": "^5.2.6"
+    "astro": "^5.2.6",
+    "astro-purgecss": "^5.2.0",
+    "purgecss": "^7.0.2"
   },
   "devDependencies": {
-    "rehype-unwrap-images": "^1.0.0",
-    "tailwindcss": "^4.0.6",
     "@astrojs/mdx": "^4.0.8",
-    "@mdx-js/language-server": "^0.5.2",
     "prettier": "^3.5.0",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "rehype-unwrap-images": "^1.0.0",
+    "tailwindcss": "^4.0.6"
   }
 }

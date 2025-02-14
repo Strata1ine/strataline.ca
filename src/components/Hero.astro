@@ -1,47 +1,57 @@
 ---
-import Container from "./Container.astro";
-import VContainer from "./VContainer.astro";
-import ImageArray from "./ImageArray.astro";
+import Container from "./layout/Container.astro";
+import VContainer from "./layout/VContainer.astro";
+import SlideImages from "./SlideImages.astro";
 import Link from "./nav/Link.astro";
 import SlideBtn from "./nav/SlideBtn.astro";
 
 const { title, description } = Astro.props;
 ---
 
-<VContainer>
-  <Container class="flex" variant="outer">
-    <div class="hidden sm:flex flex-1">
-      <div
-        class="mr-[var(--sm-inset)] xl:mr-[var(--inset)] flex flex-col gap-5 justify-center"
-      >
-        <SlideBtn />
-        <SlideBtn />
-        <SlideBtn />
-        <SlideBtn />
-      </div>
-      <div class="relative">
-        <ImageArray>
-          <slot />
-        </ImageArray>
-      </div>
+<VContainer class="px-inset flex">
+  <Container
+    class="flex gap-6 xl:gap-10 2xl:gap-12 items-center max-h-350 min-h-200"
+  >
+    <div class="hidden sm:inline-flex flex-col gap-5">
+      <SlideBtn />
+      <SlideBtn />
+      <SlideBtn />
+      <SlideBtn />
     </div>
 
-    <div class="sm:flex-1 sm:ml-[var(--sm-inset)] xl:ml-[var(--inset)] m-auto">
-      <h1 class="font-serif font-bold text-5xl xl:text-6xl">
+    <SlideImages
+      class="hidden sm:inline-flex relative flex-1 contain-paint rounded-xl h-[60vw] max-h-150"
+    >
+      <slot />
+    </SlideImages>
+
+    <div class="flex-1">
+      <h2 class="font-serif font-bold text-4xl">
         {title}
-      </h1>
+      </h2>
 
       <div class="sm:hidden mt-6">
-        <ImageArray>
-          <slot />
-        </ImageArray>
+        <div class="flex">
+          <div class="mr-3 xl:mr-9 flex flex-col gap-5 justify-center">
+            <SlideBtn />
+            <SlideBtn />
+            <SlideBtn />
+            <SlideBtn />
+          </div>
+
+          <SlideImages
+            class="-mr-inset relative h-[35vh] max-h-80 flex-1 rounded-tl-xl rounded-bl-xl contain-paint"
+          >
+            <slot />
+          </SlideImages>
+        </div>
       </div>
 
-      <p class="font-sans mt-4 text-lg xl:text-xl">
+      <p class="font-sans mt-4 text-bg">
         {description}
       </p>
 
-      <div class="mt-6">
+      <div class="mt-8">
         <Link href="">Let's Talk</Link>
       </div>
     </div>

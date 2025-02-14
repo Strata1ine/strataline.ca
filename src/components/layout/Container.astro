@@ -1,0 +1,21 @@
+---
+import clsx from 'clsx';
+
+interface Props {
+  variant?: "outer" | "inner";
+  class?: string;
+  children?: any;
+}
+
+const vMap = {
+  outer: "max-w-outer-span",
+  inner: "max-w-inner-span",
+};
+
+const { variant = "outer", class: customClass = "" } = Astro.props as Props;
+const vc = vMap[variant];
+---
+
+<section class={clsx(`mx-auto w-full py-0 ${vc} ${customClass}`)}>
+  <slot />
+</section>

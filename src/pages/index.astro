@@ -1,10 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import Layout from "~/layouts/Layout.astro";
+import Header from "~/components/nav/Header.astro";
+import ZigZag from "~/components/ZigZag.astro";
 
-import { Content, frontmatter as meta } from "../content/index.mdx";
+import { Content, frontmatter as meta } from "~/content/index.mdx";
 ---
 
 <Layout>
+  <Header />
   <Content />
 </Layout>

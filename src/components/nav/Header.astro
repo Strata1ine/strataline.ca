@@ -1,0 +1,21 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<header class="px-inset py-inset absolute w-full">
+  <Container variant="inner" class="flex justify-between items-center">
+    <h1 class="text-accent-dark font-serif font-bold text-3xl">Strataline</h1>
+    <nav>
+      <ul class="hidden md:flex gap-10">
+        <li><a class="font-sans text-bg">Popular</a></li>
+        <li><a class="font-sans text-bg">Gallery</a></li>
+        <li><a class="font-sans text-bg">Services</a></li>
+        <li><a class="font-sans text-bg">Awards</a></li>
+        <li><a class="font-sans text-bg">Reviews</a></li>
+      </ul>
+      <div class="md:hidden">
+        <h2>Hello</h2>
+      </div>
+    </nav>
+  </Container>
+</header>

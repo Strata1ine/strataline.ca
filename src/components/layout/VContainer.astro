@@ -1,7 +1,8 @@
 ---
+import clsx from "clsx";
 const { class: customClass = "" } = Astro.props;
 ---
 
-<div class={`h-screen h-svh flex ${customClass}`}>
+<div class={clsx(`h-svh ${customClass}`)}>
   <slot />
 </div>

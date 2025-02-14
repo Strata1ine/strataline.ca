@@ -1,0 +1,17 @@
+---
+import clsx from "clsx";
+const { class: customClass } = Astro.props;
+---
+
+<div class={clsx(`${customClass}`)}>
+  <slot />
+</div>
+
+<style is:inline>
+  img {
+    position: absolute;
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
