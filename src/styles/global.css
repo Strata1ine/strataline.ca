@@ -47,7 +47,7 @@
   --text-2xl-line-height: 1.1;
   --text-3xl: clamp(2.5rem, 3vw, 3.5rem);
   --text-3xl-line-height: 1.1;
-  --text-4xl: clamp(3rem, 4vw, 4.5rem);
+  --text-4xl: clamp(2.5rem, 4vw, 4.2rem);
   --text-4xl--line-height: 1.1;
 
   /* used for padding on mobile items
