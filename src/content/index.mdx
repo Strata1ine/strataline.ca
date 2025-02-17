@@ -2,7 +2,8 @@
 ---
 
 import Hero from '~/components/Hero.astro'
-import Section from '~/components/Section.astro'
+import Container from '~/components/layout/Container.astro'
+import Write from '~/components/Write.astro'
 
 <Hero
   title="Renovations designed to transform your space"
@@ -14,8 +15,12 @@ import Section from '~/components/Section.astro'
   ![A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.](./photos/bathroom_1.jpg)
 </Hero>
 
-<Section
+<Container
   title="Popular Services"
 >
-</Section>
+  <Write>
+    ## hello my name is jeff
+    tomatoes potatoes
+  </Write>
+</Container>
 

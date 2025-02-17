@@ -1,8 +1,9 @@
 ---
 import clsx from "clsx";
-const { class: customClass = "" } = Astro.props;
+const { as = "div", class: customClass = "" } = Astro.props;
+const Tag = as;
 ---
 
-<div class={clsx(`h-svh ${customClass}`)}>
+<Tag as={as} class={clsx(`h-svh ${customClass}`)}>
   <slot />
-</div>
+</Tag>

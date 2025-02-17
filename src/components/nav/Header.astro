@@ -3,15 +3,15 @@ import Container from "../layout/Container.astro";
 ---
 
 <header class="px-inset py-inset absolute w-full">
-  <Container variant="inner" class="flex justify-between items-center">
+  <Container as="div" variant="inner" class="flex justify-between items-center">
     <h1 class="text-accent-dark font-serif font-bold text-3xl">Strataline</h1>
     <nav>
       <ul class="hidden md:flex gap-10">
-        <li><a class="font-sans text-bg">Popular</a></li>
-        <li><a class="font-sans text-bg">Gallery</a></li>
-        <li><a class="font-sans text-bg">Services</a></li>
-        <li><a class="font-sans text-bg">Awards</a></li>
-        <li><a class="font-sans text-bg">Reviews</a></li>
+        <li><a href="#wasd" class="font-sans text-bg">Popular</a></li>
+        <li><a href="#wasd" class="font-sans text-bg">Gallery</a></li>
+        <li><a href="#wasd" class="font-sans text-bg">Services</a></li>
+        <li><a href="#wasd" class="font-sans text-bg">Awards</a></li>
+        <li><a href="#wasd" class="font-sans text-bg">Reviews</a></li>
       </ul>
       <div class="md:hidden">
         <h2>Hello</h2>
@@ -19,3 +19,24 @@ import Container from "../layout/Container.astro";
     </nav>
   </Container>
 </header>
+
+<style lang="scss">
+  a {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5rem;
+      right: 10%;
+      left: 10%;
+      transform: scaleX(0);
+      height: 1px;
+      background: var(--color-black);
+      transition: transform 200ms ease-in-out;
+      opacity: 0.5;
+    }
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+</style>

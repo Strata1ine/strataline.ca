@@ -1,9 +1,11 @@
 ---
-import clsx from 'clsx';
+import clsx from "clsx";
 
 interface Props {
+  title?: string;
   variant?: "outer" | "inner";
   class?: string;
+  as?: any;
   children?: any;
 }
 
@@ -12,10 +14,24 @@ const vMap = {
   inner: "max-w-inner-span",
 };
 
-const { variant = "outer", class: customClass = "" } = Astro.props as Props;
+const {
+  as = "section",
+  title = "",
+  variant = "outer",
+  class: customClass = "",
+} = Astro.props as Props;
 const vc = vMap[variant];
+const Tag = as;
 ---
 
-<section class={clsx(`mx-auto w-full py-0 ${vc} ${customClass}`)}>
+<Tag as={as} class={clsx(`lg:mx-auto w-full py-0  ${vc} ${customClass}`)}>
+  {
+    title && title !== "" && (
+      <div class={clsx(`lg:mx-auto w-full max-w-inner-span`)}>
+        <h3 class="text-2xl font-bold font-serif">{title}</h3>
+      </div>
+    )
+  }
+
   <slot />
-</section>
+</Tag>

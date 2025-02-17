@@ -8,9 +8,10 @@ import SlideBtn from "./nav/SlideBtn.astro";
 const { title, description } = Astro.props;
 ---
 
-<VContainer class="px-inset flex">
+<VContainer as="main" class="px-inset flex">
   <Container
-    class="flex gap-6 xl:gap-10 2xl:gap-12 items-center max-h-350 min-h-200"
+    as="div"
+    class="flex gap-6 xl:gap-7 2xl:gap-9 items-center max-h-350 min-h-200"
   >
     <div class="hidden sm:inline-flex flex-col gap-5">
       <SlideBtn />
@@ -20,7 +21,7 @@ const { title, description } = Astro.props;
     </div>
 
     <SlideImages
-      class="hidden sm:inline-flex relative flex-1 contain-paint rounded-xl h-[60vw] max-h-150"
+      class="hidden sm:inline-flex relative flex-1 contain-paint rounded-xl h-[40vw] max-h-150"
     >
       <slot />
     </SlideImages>
@@ -32,7 +33,7 @@ const { title, description } = Astro.props;
 
       <div class="sm:hidden mt-6">
         <div class="flex">
-          <div class="mr-3 xl:mr-9 flex flex-col gap-5 justify-center">
+          <div class="mr-inset xl:mr-9 flex flex-col gap-5 justify-center">
             <SlideBtn />
             <SlideBtn />
             <SlideBtn />
