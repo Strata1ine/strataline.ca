@@ -1,17 +1,24 @@
 ---
 import clsx from "clsx";
+import { parseHTML } from "linkedom";
+
 const { class: customClass } = Astro.props;
+
+const html = await Astro.slots.render("default");
+const { document } = parseHTML(html);
+
+const images = document.querySelectorAll("img");
+
+images.forEach((img, index) => {
+  let classes = "absolute object-cover w-full h-full";
+  if (index !== 0) {
+    classes = `${classes} hidden`;
+  }
+
+  img.setAttribute("class", clsx(`${classes}`));
+});
 ---
 
 <div class={clsx(`${customClass}`)}>
-  <slot />
+  <Fragment set:html={document} />
 </div>
-
-<style is:inline>
-  img {
-    position: absolute;
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-</style>

@@ -2,14 +2,32 @@
 import Container from "../layout/Container.astro";
 ---
 
-<header class="py-inset absolute w-full">
-  <Container as="div" variant="inner" class="flex justify-between items-center">
+<header class="absolute w-full">
+  <Container
+    as="div"
+    variant="inner"
+    class="py-inset flex justify-between items-center"
+  >
     <h1 class="text-accent-dark font-serif font-bold text-3xl">Strataline</h1>
     <nav>
       <ul class="hidden md:flex gap-10">
         <li><a href="#wasd" class="font-sans text-bg">Popular</a></li>
         <li><a href="#wasd" class="font-sans text-bg">Gallery</a></li>
-        <li><a href="#wasd" class="font-sans text-bg">Services</a></li>
+        <li class="flex items-center">
+          <a href="#wasd" class="font-sans text-bg">Services </a>
+
+          <svg
+            class="ml-2"
+            width="18"
+            height="18"
+            viewBox="0 0 256 256"
+          >
+            <path
+              color="#000"
+              d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"
+            ></path>
+          </svg>
+        </li>
         <li><a href="#wasd" class="font-sans text-bg">Awards</a></li>
         <li><a href="#wasd" class="font-sans text-bg">Reviews</a></li>
       </ul>
@@ -26,7 +44,7 @@ import Container from "../layout/Container.astro";
     &::after {
       content: "";
       position: absolute;
-      bottom: -0.5rem;
+      bottom: -0.4rem;
       right: 10%;
       left: 10%;
       transform: scaleX(0);
