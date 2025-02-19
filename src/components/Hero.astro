@@ -10,24 +10,26 @@ const { title, description } = Astro.props;
 
 <VContainer
   as="main"
-  class="flex max-h-230 min-h-190 sm:max-h-240 sm:min-h-240"
+  class="flex max-h-230 min-h-220 sm:max-h-320 sm:min-h-230"
 >
   <Container
     as="div"
     class="mt-12 flex items-center gap-6 sm:mt-0 xl:gap-7 2xl:gap-9"
   >
-    <div class="hidden flex-col gap-5 sm:inline-flex">
-      <SlideBtn />
-      <SlideBtn />
-      <SlideBtn />
-      <SlideBtn />
-    </div>
+    <div class="hidden sm:flex sm:w-[calc(50%+4rem)]">
+      <div
+        class="mr-inset flex h-[40vw] max-h-150 flex-col justify-center gap-5"
+      >
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+      </div>
 
-    <SlideImages
-      class="relative hidden h-[40vw] max-h-150 flex-1 rounded-xl contain-paint sm:inline-flex"
-    >
-      <slot />
-    </SlideImages>
+      <SlideImages class="relative w-full rounded-xl contain-paint">
+        <slot />
+      </SlideImages>
+    </div>
 
     <div class="flex-1">
       <h2 class="font-serif text-4xl font-bold">

@@ -1,16 +1,54 @@
 ---
-import { Image } from "astro:assets";
-import image from "../content/photos/bathroom_1.jpg";
+import clsx from "clsx";
+import { parseHTML } from "linkedom";
+import Link from "./nav/Link.astro";
+
+const { title, description, variant = "left" } = Astro.props;
+
+const html = await Astro.slots.render("default");
+const { document } = parseHTML(html);
+
+const images = document.querySelectorAll("img");
+images.forEach((img, index) => {
+  let classes = "object-cover w-full h-full absolute";
+  if (index !== 0) {
+    classes = `${classes} hidden`;
+  } else {
+  }
+
+  img.setAttribute("class", clsx(`${classes}`));
+});
 ---
 
-<div class="flex">
-  <div class="flex-1">
-    <h3 class="font-serif text-3xl font-bold">Popcorn ceiling removal</h3>
-    <p>
-      Our process includes dust-free popcorn removal, skim coating and sanding
-      the surface smooth, application of primer and paint for a perfectly flat
-      finish.
+<div class="mb-20 items-center gap-6 last:mb-0 sm:flex 2xl:gap-9">
+  {
+    variant === "left" && (
+      <div class="relative hidden h-120 w-1/2 rounded-xl contain-paint sm:block">
+        <Fragment set:html={document} />
+      </div>
+    )
+  }
+
+  <div class="flex-1 sm:w-1/2">
+    <h4 class="font-serif text-2xl font-semibold">{title}</h4>
+    <div class="relative mt-4 mb-4 h-80 rounded-xl contain-paint sm:hidden">
+      <Fragment set:html={document} />
+    </div>
+
+    <p class="font-sans text-base">
+      {description}
     </p>
+
+    <div class="mt-8">
+      <Link href="#wasd">Explore More</Link>
+    </div>
   </div>
-  <Image src={image} class="flex-1" alt="tomatoes" />
+
+  {
+    variant === "right" && (
+      <div class="relative hidden h-120 w-1/2 rounded-xl contain-paint sm:block">
+        <Fragment set:html={document} />
+      </div>
+    )
+  }
 </div>

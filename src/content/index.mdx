@@ -1,23 +1,30 @@
----
----
-
 import Hero from '~/components/Hero.astro'
 import Container from '~/components/layout/Container.astro'
-import Markdown from '~/components/Markdown.astro'
 import Card from '~/components/Card.astro'
 
 <Hero
   title="Renovations designed to transform your space"
   description="We have been transforming spaces dust-free for decades."
 >
-  ![A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.](./photos/kitchen.jpg)
-  ![A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.](./photos/dining_room.jpg)
-  ![A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.](./photos/living_room.jpg)
-  ![A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.](./photos/bathroom_1.jpg)
+  ![A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.](./index/kitchen.jpg)
+  ![A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.](./index/dining_room.jpg)
+  ![A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.](./index/living_room.jpg)
+  ![A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.](./index/bathroom.jpg)
 </Hero>
 
 <Container
-  title="Popular Services"
+  title="Popular services"
 >
-  <Card></Card>
+  <Card
+    title="Popcorn ceiling removal"
+    variant="right"
+    description="Our process includes dust-free popcorn removal, skim coating and sanding the surface smooth, application of primer and paint for a perfectly flat finish.">
+    ![A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.](./services/popcorn-removal/cover.jpg)
+  </Card>
+
+  <Card
+    title="Stair refinishing"
+    description="We transform staircases into stunning focal points that elevate your home with meticulous craftsmanship and a passion for excellence.">
+    ![A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.](./services/stairs/cover.jpg)
+  </Card>
 </Container>
