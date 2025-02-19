@@ -3,6 +3,14 @@ import { Image } from "astro:assets";
 import image from "../content/photos/bathroom_1.jpg";
 ---
 
-<div>
-  <Image src={image} class="w-fit" alt="tomatoes" />
+<div class="flex">
+  <div class="flex-1">
+    <h3 class="font-serif text-3xl font-bold">Popcorn ceiling removal</h3>
+    <p>
+      Our process includes dust-free popcorn removal, skim coating and sanding
+      the surface smooth, application of primer and paint for a perfectly flat
+      finish.
+    </p>
+  </div>
+  <Image src={image} class="flex-1" alt="tomatoes" />
 </div>

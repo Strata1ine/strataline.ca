@@ -6,30 +6,25 @@ import Container from "../layout/Container.astro";
   <Container
     as="div"
     variant="inner"
-    class="py-inset flex justify-between items-center"
+    class="py-inset flex items-center justify-between"
   >
-    <h1 class="text-accent-dark font-serif font-bold text-3xl">Strataline</h1>
+    <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
-      <ul class="hidden md:flex gap-10">
-        <li><a href="#wasd" class="font-sans text-bg">Popular</a></li>
-        <li><a href="#wasd" class="font-sans text-bg">Gallery</a></li>
+      <ul class="hidden gap-10 md:flex">
+        <li><a href="#wasd" class="text-bg font-sans">Popular</a></li>
+        <li><a href="#wasd" class="text-bg font-sans">Gallery</a></li>
         <li class="flex items-center">
-          <a href="#wasd" class="font-sans text-bg">Services </a>
+          <a href="#wasd" class="text-bg font-sans">Services </a>
 
-          <svg
-            class="ml-2"
-            width="18"
-            height="18"
-            viewBox="0 0 256 256"
-          >
+          <svg class="ml-2" width="18" height="18" viewBox="0 0 256 256">
             <path
               color="#000"
               d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"
             ></path>
           </svg>
         </li>
-        <li><a href="#wasd" class="font-sans text-bg">Awards</a></li>
-        <li><a href="#wasd" class="font-sans text-bg">Reviews</a></li>
+        <li><a href="#wasd" class="text-bg font-sans">Awards</a></li>
+        <li><a href="#wasd" class="text-bg font-sans">Reviews</a></li>
       </ul>
       <div class="md:hidden">
         <h2>Hello</h2>

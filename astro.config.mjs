@@ -6,6 +6,8 @@ import rehypeUnwrapImages from 'rehype-unwrap-images';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import playformCompress from '@playform/compress';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -14,5 +16,5 @@ export default defineConfig({
 
   integrations: [mdx({
     rehypePlugins: [rehypeUnwrapImages]
-  })],
+  }), playformCompress()],
 });

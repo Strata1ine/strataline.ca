@@ -10,9 +10,11 @@ const { document } = parseHTML(html);
 const images = document.querySelectorAll("img");
 
 images.forEach((img, index) => {
-  let classes = "absolute object-cover w-full h-full";
+  let classes = "object-cover w-full h-full absolute";
   if (index !== 0) {
     classes = `${classes} hidden`;
+  } else {
+    img.setAttribute("loading", "eager");
   }
 
   img.setAttribute("class", clsx(`${classes}`));
