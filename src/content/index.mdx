@@ -1,6 +1,5 @@
 import Hero from '~/components/Hero.astro'
-import Container from '~/components/layout/Container.astro'
-import Card from '~/components/Card.astro'
+import Popular from '~/components/Popular.astro'
 
 <Hero
   title="Renovations designed to transform your space"
@@ -12,19 +11,8 @@ import Card from '~/components/Card.astro'
   ![A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.](./index/bathroom.jpg)
 </Hero>
 
-<Container
+<Popular
   title="Popular services"
->
-  <Card
-    title="Popcorn ceiling removal"
-    variant="right"
-    description="Our process includes dust-free popcorn removal, skim coating and sanding the surface smooth, application of primer and paint for a perfectly flat finish.">
-    ![A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.](./services/popcorn-removal/cover.jpg)
-  </Card>
-
-  <Card
-    title="Stair refinishing"
-    description="We transform staircases into stunning focal points that elevate your home with meticulous craftsmanship and a passion for excellence.">
-    ![A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.](./services/stairs/cover.jpg)
-  </Card>
-</Container>
+  popular={['popcorn-removal', 'stairs']}
+  jealousTitle="Our slightly less popular services"
+/>

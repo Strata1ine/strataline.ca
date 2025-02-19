@@ -25,11 +25,18 @@ const vc = vMap[variant];
 const Tag = as;
 ---
 
-<Tag as={as} class={clsx(`lg:mx-auto w-full px-inset ${vc} ${customClass}`)}>
+<Tag
+  as={as}
+  class={clsx(
+    `lg:mx-auto first:mt-0 mt-40 w-full px-inset ${vc} ${customClass}`,
+  )}
+>
   {
     title && title !== "" && (
       <div class={clsx(`max-w-inner-span mb-18 w-full lg:mx-auto`)}>
-        <h3 class="font-serif text-3xl font-bold">{title}</h3>
+        <h3 class="text-right text-balance font-serif text-3xl font-bold sm:ml-auto sm:w-1/2">
+          {title}
+        </h3>
       </div>
     )
   }

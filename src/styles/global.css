@@ -42,17 +42,17 @@
   --text-lg: clamp(1.5rem, 2vw, 1.9rem);
   --text-xl: clamp(1.8rem, 2vw, 2.3rem);
   --text-xl-line-height: 1.3;
-  --text-2xl: clamp(2rem, 3vw, 3rem);
+  --text-2xl: clamp(2.4rem, 3vw, 3rem);
   --text-2xl-line-height: 1.1;
-  --text-3xl: clamp(2.5rem, 3vw, 3.5rem);
+  --text-3xl: clamp(2.8rem, 3vw, 3.5rem);
   --text-3xl-line-height: 1.1;
-  --text-4xl: clamp(2.6rem, 4vw, 4rem);
+  --text-4xl: clamp(2.8rem, 4vw, 4rem);
   --text-4xl--line-height: 1.1;
 
   /* used for padding on mobile items
   important for elements that are 
   placed at the corner of phones */
-  --spacing-inset: 1.5rem;
+  --spacing-inset: 1rem;
   --spacing-outer-span: 1500px;
   --spacing-inner-span: 1350px;
 }
