@@ -1,11 +1,25 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
 import Layout from "~/layouts/Layout.astro";
 import Header from "~/components/nav/Header.astro";
+import Hero from "~/components/Hero.astro";
 
-import { Content, frontmatter as meta } from "~/content/index.mdx";
+const [index] = await getCollection("index");
+const { Content } = await index.render();
+
+// import { Content, frontmatter as meta } from "~/content/index.mdx";
 ---
 
 <Layout>
   <Header />
+  <Hero title={index.data?.title} description={index.data?.description}>
+    {
+      index.data.images.map((img, index) => (
+        <Image key={index} src={img.path} alt={img.alt} />
+      ))
+    }
+  </Hero>
   <Content />
 </Layout>

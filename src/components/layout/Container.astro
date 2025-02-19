@@ -23,18 +23,24 @@ const {
 
 const vc = vMap[variant];
 const Tag = as;
+
+// TODO: make title have a Varient type which can be reused to define Left or Right
 ---
 
 <Tag
   as={as}
   class={clsx(
-    `lg:mx-auto first:mt-0 mt-40 w-full px-inset ${vc} ${customClass}`,
+    `lg:mx-auto w-full px-inset`,
+    vc,
+    customClass,
+    // if its a section, then apply margin bottom by default
+    as === "section" && "mb-40",
   )}
 >
   {
     title && title !== "" && (
       <div class={clsx(`max-w-inner-span mb-18 w-full lg:mx-auto`)}>
-        <h3 class="text-right text-balance font-serif text-3xl font-bold sm:ml-auto sm:w-1/2">
+        <h3 class="ml-auto max-w-[20ch] text-right font-serif text-3xl font-bold text-balance">
           {title}
         </h3>
       </div>

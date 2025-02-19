@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
     as="div"
     class="mt-3 flex items-center gap-6 sm:mt-0 xl:gap-7 2xl:gap-9"
   >
-    <div class="hidden flex-col gap-5 sm:flex">
+    <div class="hidden flex-col gap-5 xl:flex">
       <SlideBtn />
       <SlideBtn />
       <SlideBtn />
@@ -24,32 +24,34 @@ const { title, description } = Astro.props;
     </div>
 
     <SlideImages
-      class="relative hidden h-[40vw] max-h-150 flex-1 contain-paint sm:flex"
+      class="relative hidden h-[60vh] max-h-175 min-h-100 w-[55%] rounded-md contain-paint sm:flex xl:w-1/2"
     >
       <slot />
     </SlideImages>
 
     <div class="flex-1">
-      <h2 class="font-serif text-4xl font-bold">
+      <h2 class="font-serif text-4xl font-bold text-balance">
         {title}
       </h2>
 
-      <div class="mt-6 sm:hidden">
+      <div class="mt-3 sm:hidden">
         <div class="flex">
-          <div class="mr-inset flex flex-col justify-center gap-5 xl:mr-9">
+          <SlideImages
+            class="-ml-inset relative h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
+          >
+            <slot />
+          </SlideImages>
+
+          <div class="ml-inset flex flex-col justify-center gap-5 xl:mr-9">
             <SlideBtn />
             <SlideBtn />
             <SlideBtn />
             <SlideBtn />
           </div>
-
-          <SlideImages class="-mr-inset relative h-70 flex-1 contain-paint">
-            <slot />
-          </SlideImages>
         </div>
       </div>
 
-      <p class="text-bg mt-4 font-sans">
+      <p class="text-bg mt-2 font-sans">
         {description}
       </p>
 

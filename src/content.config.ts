@@ -3,10 +3,15 @@ import { z } from 'zod';
 
 export const collections = {
   index: defineCollection({
-    schema: z.object({
+    schema: ({ image }) => z.object({
+      title: z.string(),
+      description: z.string(),
+      images: z.array(z.object({
+        path: image(),
+        alt: z.string(),
+      })),
     }),
-  })
-  ,
+  }),
   services: defineCollection({
     schema: ({ image }) => z.object({
       title: z.string(),

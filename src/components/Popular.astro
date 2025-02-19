@@ -8,7 +8,7 @@ const { title, popular, jealousTitle } = Astro.props;
 const serviceData = await getCollection("services");
 
 function next(i: number) {
-  return i % 2 === 0 ? "left" : "right";
+  return i % 2 === 1 ? "left" : "right";
 }
 
 const popularServices = serviceData.filter((service) =>
@@ -35,5 +35,5 @@ const services = serviceData.filter((service) =>
 </Container>
 
 <Container title={jealousTitle}>
-  {services.map((service: any, i) => <h1 />)}
+  <!-- {services.map((service: any, i) => <h1 />)} -->
 </Container>
