@@ -1,6 +1,5 @@
 ---
 import Container from "./layout/Container.astro";
-import VContainer from "./layout/VContainer.astro";
 import SlideImages from "./SlideImages.astro";
 import Link from "./nav/Link.astro";
 import SlideBtn from "./nav/SlideBtn.astro";
@@ -8,14 +7,14 @@ import SlideBtn from "./nav/SlideBtn.astro";
 const { title, description } = Astro.props;
 ---
 
-<VContainer
-  as="main"
-  class="flex max-h-230 min-h-210 sm:max-h-320 sm:min-h-210"
+<main
+  class="relative pt-23 pb-35 sm:flex sm:h-svh sm:max-h-350 sm:min-h-210 sm:py-0"
 >
-  <Container
-    as="div"
-    class="flex items-center gap-6 xl:gap-7 2xl:gap-9"
+  <div
+    class="bg-accent absolute z-[-1] hidden h-full w-[calc(var(--spacing-kms))] rounded-br-xl md:block"
   >
+  </div>
+  <Container as="div" class="flex items-center gap-6 xl:gap-7 2xl:gap-9">
     <div class="hidden flex-col gap-5 xl:flex">
       <SlideBtn />
       <SlideBtn />
@@ -23,11 +22,19 @@ const { title, description } = Astro.props;
       <SlideBtn />
     </div>
 
-    <SlideImages
-      class="relative hidden h-[60vh] max-h-175 min-h-130 w-[55%] rounded-md contain-paint sm:flex xl:w-1/2"
-    >
-      <slot />
-    </SlideImages>
+    <div class="relative hidden w-[55%] sm:block xl:w-1/2">
+      <SlideImages
+        class="h-[60vh] max-h-175 min-h-130 w-full rounded-md contain-paint"
+      >
+        <slot />
+      </SlideImages>
+      <div class="mt-inset flex justify-center gap-5 xl:hidden">
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+        <SlideBtn />
+      </div>
+    </div>
 
     <div class="flex-1">
       <h2 class="font-serif text-4xl font-bold text-balance">
@@ -60,4 +67,4 @@ const { title, description } = Astro.props;
       </div>
     </div>
   </Container>
-</VContainer>
+</main>

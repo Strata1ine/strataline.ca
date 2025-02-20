@@ -41,20 +41,40 @@ const otherServices = services.filter(
   <ContainerTitle class="px-inset" title={jealousTitle} variant={Pos.Left} />
   <div class="bg-accent">
     <Container
-      class="bg-accent grid place-items-center grid-cols-1 gap-7 py-20 sm:grid-cols-2 lg:grid-cols-3"
+      class="bg-accent grid grid-cols-1 place-items-center gap-9 py-20 sm:grid-cols-2 lg:grid-cols-3"
       variant={ContainerVariant.Inner}
       as="div"
     >
       {
         otherServices.map((service: any, _) => (
-          <div class="max-w-100">
+          <a
+            href="#wasd"
+            class="flex w-full max-w-100 sm:max-w-fit items-center gap-3 sm:flex-col sm:items-baseline"
+          >
             <Image
-              class="h-65 object-cover rounded-md"
+              class="h-35 w-1/2 rounded-md object-cover transition duration-300 hover:scale-[1.05] sm:h-70 sm:w-full"
+              width={808}
+              height={416}
               src={service.data.cover}
               alt={service.data.alt}
             />
-            <h4 class="font-serif text-xl mt-2">{service.data.title}</h4>
-          </div>
+            <h4 class="flex w-1/2 gap-2 sm:w-full flex-col justify-between font-serif text-xl sm:flex-row sm:items-center">
+              {service.data.title}
+              <svg
+                width="50"
+                height="22.5"
+                viewBox="0 0 192 82"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M144.032 3L186 42.1875M186 42.1875L144.032 79M186 42.1875H0.5"
+                  stroke="#2B2B2B"
+                  stroke-width="7"
+                />
+              </svg>
+            </h4>
+          </a>
         ))
       }
     </Container>
