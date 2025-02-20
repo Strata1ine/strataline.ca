@@ -1,11 +1,11 @@
 ---
-import Container from "../layout/Container.astro";
+import Container, { ContainerVariant } from "../layout/Container.astro";
 ---
 
 <header class="absolute w-full">
   <Container
     as="div"
-    variant="inner"
+    variant={ContainerVariant.Inner}
     class="py-inset flex items-center justify-between"
   >
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>

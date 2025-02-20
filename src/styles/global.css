@@ -9,6 +9,7 @@
   --text-*: initial;
   --radius-*: initial;
   --leading-*: initial;
+  --container-*: initial;
 
   --drop-*: initial;
   --shadow-*: initial;
@@ -18,7 +19,6 @@
   --ease-*: initial;
   --perspective-*: initial;
   --default-transition-*: initial;
-  --container-*: initial;
   --tracking-*: initial;
   --aspect-video-*: initial;
 

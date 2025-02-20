@@ -13,9 +13,11 @@ images:
 ---
 
 import Popular from '~/components/Popular.astro'
+import { Pos } from '~/types/variants.ts'
 
 <Popular
   title="Popular services"
+  startPos={Pos.Right}
   popular={['popcorn-removal', 'stairs']}
   jealousTitle="Our slightly less popular services"
 />

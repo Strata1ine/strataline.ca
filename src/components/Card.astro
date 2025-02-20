@@ -2,8 +2,9 @@
 import clsx from "clsx";
 import { parseHTML } from "linkedom";
 import Link from "./nav/Link.astro";
+import { Pos } from "~/types/variants.ts";
 
-const { title, description, variant = "left" } = Astro.props;
+const { title, description, variant } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -13,9 +14,9 @@ document.querySelectorAll("img").forEach((img, _) => {
 });
 ---
 
-<div class="mb-25 items-center gap-6 last:mb-0 sm:flex 2xl:gap-9">
+<div class="mb-40 items-center gap-6 last:mb-0 sm:flex 2xl:gap-9">
   {
-    variant === "left" && (
+    variant === Pos.Left && (
       <div class="relative hidden h-120 w-1/2 rounded-md contain-paint sm:block">
         <Fragment set:html={document} />
       </div>
@@ -26,16 +27,16 @@ document.querySelectorAll("img").forEach((img, _) => {
     <h4 class="mb-2 font-serif text-2xl font-semibold">{title}</h4>
 
     {
-      variant === "right" && (
-        <div class="-mr-inset relative mt-4 mb-4 ml-7 h-85 rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+      variant === Pos.Right && (
+        <div class="-mr-inset relative my-4 ml-7 h-85 rounded-tl-md rounded-bl-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
     }
 
     {
-      variant === "left" && (
-        <div class="-ml-inset relative mt-4 mr-7 mb-4 h-85 rounded-tr-md rounded-br-md contain-paint sm:hidden">
+      variant === Pos.Left && (
+        <div class="-ml-inset relative my-4 mr-7 h-85 rounded-tr-md rounded-br-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -51,7 +52,7 @@ document.querySelectorAll("img").forEach((img, _) => {
   </div>
 
   {
-    variant === "right" && (
+    variant === Pos.Right && (
       <div class="relative hidden h-120 w-1/2 rounded-md contain-paint sm:block">
         <Fragment set:html={document} />
       </div>

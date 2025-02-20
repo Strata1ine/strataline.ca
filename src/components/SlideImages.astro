@@ -17,10 +17,10 @@ images.forEach((img, index) => {
     img.setAttribute("loading", "eager");
   }
 
-  img.setAttribute("class", clsx(`${classes}`));
+  img.setAttribute("class", clsx(classes));
 });
 ---
 
-<div class={clsx(`${customClass}`)}>
+<div class={clsx(customClass)}>
   <Fragment set:html={document} />
 </div>
