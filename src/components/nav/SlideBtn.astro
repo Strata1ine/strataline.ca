@@ -1,9 +1,13 @@
 ---
-const { ...rest } = Astro.props;
+import clsx from "clsx";
+const { class: className, ...rest } = Astro.props;
 ---
 
 <button
-  class="h-8 w-8 cursor-pointer rounded-[50%] border-3 border-dotted border-black xl:h-10 xl:w-10"
+  class={clsx(
+    `h-8 w-8 cursor-pointer rounded-[50%] border-3 border-dotted border-black transition-[border] duration-700 xl:h-10 xl:w-10 [&.active]:border-5 [&.active]:border-solid`,
+    className,
+  )}
   {...rest}
 >
 </button>

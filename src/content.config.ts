@@ -6,7 +6,8 @@ export const collections = {
     schema: ({ image }) => z.object({
       title: z.string(),
       description: z.string(),
-      images: z.array(z.object({
+      slideshow_speed: z.number(),
+      slideshow_images: z.array(z.object({
         path: image(),
         alt: z.string(),
       })),
@@ -16,8 +17,10 @@ export const collections = {
   services: defineCollection({
     schema: ({ image }) => z.object({
       title: z.string(),
-      alt: z.string(),
-      cover: image(),
+      covers: z.array(z.object({
+        path: image(),
+        alt: z.string(),
+      })),
       description: z.string(),
     }),
   }),

@@ -1,10 +1,10 @@
 ---
 import Container from "./layout/Container.astro";
-import SlideImages from "./SlideImages.astro";
+import SlideImages from "./nav/SlideImages.astro";
 import Link from "./nav/Link.astro";
 import SlideBtnArray from "./nav/SlideBtnArray.astro";
 
-const { title, description } = Astro.props;
+const { title, description, speed: speedInt } = Astro.props;
 const desktopSlideShowId = crypto.randomUUID();
 const mobileSlideShowId = crypto.randomUUID();
 ---
@@ -14,6 +14,7 @@ const mobileSlideShowId = crypto.randomUUID();
     class="bg-accent absolute z-[-1] hidden h-full w-[calc(var(--spacing-kms))] rounded-br-xl md:block"
   >
   </div>
+
   <Container
     as="div"
     class="flex items-center gap-6 pt-15 sm:py-0 xl:gap-7 2xl:gap-9"
@@ -29,6 +30,7 @@ const mobileSlideShowId = crypto.randomUUID();
       <SlideImages
         id={desktopSlideShowId}
         class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
+        data-slideshow-speed=`${speedInt}`
       >
         <slot />
       </SlideImages>
@@ -50,6 +52,7 @@ const mobileSlideShowId = crypto.randomUUID();
           <SlideImages
             class="-ml-inset flex h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
             id={mobileSlideShowId}
+            data-slideshow-speed={speedInt}
           >
             <slot />
           </SlideImages>

@@ -10,15 +10,19 @@ const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
 
 document.querySelectorAll("img").forEach((img, _) => {
-  img.setAttribute("class", clsx(`object-cover w-full h-full absolute`));
+  img.setAttribute(
+    "class",
+    clsx(
+      `object-cover min-w-0 flex-1 h-full active:flex-5 hover:flex-5 transition-[flex-grow] duration-800`,
+    ),
+  );
 });
-
 ---
 
 <div class="mb-25 items-center gap-6 last:mb-0 sm:flex 2xl:gap-9">
   {
     variant === Pos.Left && (
-      <div class="relative hidden h-120 w-1/2 rounded-md contain-paint sm:block">
+      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
         <Fragment set:html={document} />
       </div>
     )
@@ -29,7 +33,7 @@ document.querySelectorAll("img").forEach((img, _) => {
 
     {
       variant === Pos.Right && (
-        <div class="-mr-inset relative my-4 ml-7 h-85 rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+        <div class="-mr-inset my-4 ml-7 flex h-85 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -37,7 +41,7 @@ document.querySelectorAll("img").forEach((img, _) => {
 
     {
       variant === Pos.Left && (
-        <div class="-ml-inset relative my-4 mr-7 h-85 rounded-tr-md rounded-br-md contain-paint sm:hidden">
+        <div class="-ml-inset my-4 mr-7 flex h-85 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -54,7 +58,7 @@ document.querySelectorAll("img").forEach((img, _) => {
 
   {
     variant === Pos.Right && (
-      <div class="relative hidden h-120 w-1/2 rounded-md contain-paint sm:block">
+      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
         <Fragment set:html={document} />
       </div>
     )

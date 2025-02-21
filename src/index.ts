@@ -1,10 +1,46 @@
-export function slideNext(id: string, slideIdx: number) {
+function slideNext(id: string, slideNum: number) {
   const slideshow = document.getElementById(id);
-  if (slideshow != null && slideshow instanceof HTMLElement && slideIdx >= 0 && slideIdx < slideshow.children.length) {
-    const newSlide = slideshow.children[slideIdx];
-    for (let i = 0; i < slideshow.children.length; i++) {
-      slideshow.children[i].classList.remove('active');
-    }
-    newSlide.classList.add("active");
+  updateSlideButtons(id, slideNum);
+  if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
+    const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
+    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
+
+    slideshow.children[previousIndex].classList.remove("active");
+    slideshow.children[slideNum].classList.add("active");
+    slideshow.setAttribute("data-slide-mutated", "");
+    slideshow.setAttribute("data-slide-idx", slideNum.toString());
   }
 }
+
+function updateSlideButtons(id: string, slideNum: number) {
+  document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
+    if (!(slideButton instanceof HTMLElement)) return;
+
+    const previousIndexAttr = slideButton.getAttribute("data-slide-idx");
+    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
+
+    slideButton.children[previousIndex].classList.remove("active");
+    slideButton.children[slideNum].classList.add("active");
+    slideButton.setAttribute("data-slide-idx", slideNum.toString());
+  });
+}
+
+window.slideNext = slideNext;
+window.addEventListener('load', function() {
+  const slideshows = document.querySelectorAll("[data-slideshow]");
+  for (let slideshow of slideshows) {
+    const speedAttr = slideshow.getAttribute("data-slideshow-speed");
+    const speed = (speedAttr == null) ? 1000 : parseInt(speedAttr, 10);
+
+    this.setInterval(() => {
+      if (!slideshow.hasAttribute("data-slide-mutated")) {
+        const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
+        const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
+        const nextIndex = (previousIndex + 1) % slideshow.children.length;
+        slideNext(slideshow.id.toString(), nextIndex);
+      } else {
+        slideshow.removeAttribute("data-slide-mutated");
+      }
+    }, speed);
+  }
+});

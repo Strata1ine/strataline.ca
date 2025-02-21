@@ -8,17 +8,16 @@ import Hero from "~/components/Hero.astro";
 
 const [index] = await getCollection("index");
 const { Content } = await index.render();
-
 ---
 
 <Layout>
   <Header />
-  <Hero title={index.data?.title} description={index.data?.description}>
-    {
-      index.data.images.map((img, _) => (
-        <Image src={img.path} alt={img.alt} />
-      ))
-    }
+  <Hero
+    title={index.data.title}
+    description={index.data.description}
+    speed={index.data.slideshow_speed}
+  >
+    {index.data.slideshow_images.map((img, _) => <Image src={img.path} alt={img.alt} />)}
   </Hero>
   <Content />
 </Layout>

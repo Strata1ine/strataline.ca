@@ -28,7 +28,9 @@ const services = serviceData.filter((service) =>
         description={service.data.description}
         variant={next(i)}
       >
-        <Image src={service.data.cover} alt={service.data.alt} />
+        {service.data.covers.map((img, _) => (
+          <Image src={img.path} alt={img.alt} />
+        ))}
       </Card>
     ))
   }
