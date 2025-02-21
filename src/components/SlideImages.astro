@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { parseHTML } from "linkedom";
 
-const { class: customClass } = Astro.props;
+const { class: customClass, id: customId } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -10,17 +10,19 @@ const { document } = parseHTML(html);
 const images = document.querySelectorAll("img");
 
 images.forEach((img, index) => {
-  let classes = "object-cover w-full h-full absolute";
+  let classes = "object-cover min-w-0 w-0 transition-all duration-500 [&.active]:w-full";
   if (index !== 0) {
-    classes = `${classes} hidden`;
+    img.setAttribute("fetchpriority", "low");
   } else {
-    img.setAttribute("loading", "eager");
+    img.setAttribute("fetchpriority", "high");
+    classes = `${classes} active`;
   }
 
+  img.setAttribute("loading", "eager");
   img.setAttribute("class", clsx(classes));
 });
 ---
 
-<div class={clsx(customClass)}>
+<div class={clsx(customClass)} id={customId}>
   <Fragment set:html={document} />
 </div>

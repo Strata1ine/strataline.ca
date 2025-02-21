@@ -10,14 +10,21 @@ images:
     alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
   - path: ./slideshow/bathroom.jpg
     alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
+highlight:
+  - stairs
+  - popcorn-removal
 ---
 
 import Popular from '~/components/Popular.astro'
-import { Pos } from '~/types/variants.ts'
+import LessPopular from '~/components/LessPopular.astro'
+import { Pos } from '~/variants.ts'
 
 <Popular
   title="Popular services"
-  startPos={Pos.Right}
-  popular={['popcorn-removal', 'stairs']}
-  jealousTitle="Our slightly less popular services"
+  titlePos={Pos.Right}
+/>
+
+<LessPopular
+  title="Our slightly less popular services"
+  titlePos={Pos.Left}
 />

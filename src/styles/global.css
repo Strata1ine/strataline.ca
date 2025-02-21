@@ -31,7 +31,7 @@
   --font-sans: 'DMSans';
   --font-mono: initial;
 
-  --breakpoint-sm: 750px;
+  --breakpoint-sm: 700px;
   --breakpoint-md: 800px;
   --breakpoint-lg: 900px;
   --breakpoint-xl: 1300px;
@@ -43,22 +43,22 @@
   --radius-lg: .5rem;
   --radius-xl: .75rem;
 
-  --text-base: clamp(1.3rem, 1.2vw, 1.45rem);
-  --text-bg: clamp(1.3rem, 1.2vw, 1.45rem);
-  --text-lg: clamp(1.5rem, 2vw, 1.9rem);
-  --text-xl: clamp(1.8rem, 2vw, 2.3rem);
+  --text-base: clamp(1.3rem, 2vw, 1.45rem);
+  --text-bg: clamp(1.3rem, 2vw, 1.45rem);
+  --text-lg: clamp(1.5rem, 4vw, 1.9rem);
+  --text-xl: clamp(1.8rem, 4vw, 2.3rem);
   --text-xl--line-height: 1.2;
-  --text-2xl: clamp(2.2rem, 3vw, 3rem);
+  --text-2xl: clamp(2.2rem, 4vw, 3rem);
   --text-2xl--line-height: 1.2;
-  --text-3xl: clamp(2.3rem, 3vw, 3.5rem);
+  --text-3xl: clamp(2.5rem, 6vw, 3.5rem);
   --text-3xl--line-height: 1.2;
   --text-4xl: clamp(2.5rem, 4vw, 3.8rem);
-  --text-4xl--line-height: 1.1;
+  --text-4xl--line-height: 1.05;
 
   /* used for padding on mobile items
   important for elements that are 
   placed at the corner of phones */
-  --spacing-inset: 1rem;
+  --spacing-inset: .8rem;
   --spacing-outer-span: 1450px;
   --spacing-inner-span: 1300px;
   --spacing-diff: calc((100vw - var(--spacing-outer-span))/ 2);

@@ -1,4 +1,9 @@
+---
+const { ...rest } = Astro.props;
+---
+
 <button
-  class="h-8 w-8 rounded-[50%] border-3 border-dotted border-black xl:h-10 xl:w-10"
+  class="h-8 w-8 cursor-pointer rounded-[50%] border-3 border-dotted border-black xl:h-10 xl:w-10"
+  {...rest}
 >
 </button>

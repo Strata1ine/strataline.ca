@@ -1,0 +1,29 @@
+---
+import { parseHTML } from "linkedom";
+import SlideBtn from "./SlideBtn.astro";
+
+const { class: customClass, idx: slideId, ...rest } = Astro.props;
+
+const html = await Astro.slots.render("default");
+const { document } = parseHTML(html);
+const imageCount = document.querySelectorAll("img").length;
+---
+
+<div class={customClass} {...rest}>
+  {
+    Array.from({ length: imageCount }).map((_, i) => (
+      <SlideBtn data-slide-id={slideId} data-idx={i} />
+    ))
+  }
+</div>
+
+<script>
+  import { slideNext } from "~/index";
+  document.querySelectorAll("[data-slide-id][data-idx]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-slide-id");
+      const idx = Number(btn.getAttribute("data-idx"));
+      slideNext(id, idx);
+    });
+  });
+</script>

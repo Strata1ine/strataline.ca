@@ -10,6 +10,7 @@ export const collections = {
         path: image(),
         alt: z.string(),
       })),
+      highlight: z.array(z.string()),
     }),
   }),
   services: defineCollection({
