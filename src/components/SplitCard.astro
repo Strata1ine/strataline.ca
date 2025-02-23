@@ -33,7 +33,7 @@ document.querySelectorAll("img").forEach((img, _) => {
 
     {
       variant === Pos.Right && (
-        <div class="-mr-inset my-4 ml-7 flex h-85 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -41,7 +41,7 @@ document.querySelectorAll("img").forEach((img, _) => {
 
     {
       variant === Pos.Left && (
-        <div class="-ml-inset my-4 mr-7 flex h-85 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
+        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )

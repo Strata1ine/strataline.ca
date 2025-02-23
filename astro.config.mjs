@@ -7,8 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 import playformCompress from '@playform/compress';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://strataline.ca',
   experimental: {
     svg: true,
   },
@@ -17,8 +20,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [
-    mdx({
-      rehypePlugins: [rehypeUnwrapImages]
-    }), playformCompress()],
+  integrations: [mdx({
+    rehypePlugins: [rehypeUnwrapImages]
+  }), playformCompress(), sitemap()],
 });

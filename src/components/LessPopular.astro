@@ -20,7 +20,7 @@ const services = serviceData.filter(
   <ContainerTitle class="px-inset" title={title} variant={titlePos} />
   <div class="bg-accent">
     <Container
-      class="bg-accent grid grid-cols-1 place-items-center gap-9 py-20 sm:grid-cols-2 lg:grid-cols-3"
+      class="bg-accent grid grid-cols-1 place-items-center gap-5 py-20 sm:grid-cols-2 sm:gap-9 lg:grid-cols-3"
       variant={ContainerVariant.Inner}
       as="div"
     >
@@ -31,7 +31,7 @@ const services = serviceData.filter(
             class="flex h-full w-full items-center gap-3 sm:flex-col sm:items-baseline"
           >
             <Image
-              class="w-1/2 rounded-md object-cover transition duration-300 hover:scale-[1.05] sm:h-70 sm:w-full"
+              class="min-h-30 w-1/2 rounded-md object-cover transition duration-300 hover:scale-[1.05] sm:h-65 sm:w-full"
               width={808}
               height={416}
               src={service.data.covers[0].path}
