@@ -63,7 +63,7 @@
   --spacing-outer-span: 1450px;
 
   --right-offset: calc((100vw - var(--spacing-outer-span))/ 2 + var(--spacing-outer-span) - var(--spacing-inner-span));
-  --right-span: calc(var(--spacing-outer-span) - ((var(--spacing-outer-span) - var(--spacing-inner-span)) / 2) - var(--spacing-inset));
+  --right-span: calc(var(--spacing-outer-span) - ((var(--spacing-outer-span) - var(--spacing-inner-span)) /2) - var(--spacing-inset) * 2);
 }
 
 :root {

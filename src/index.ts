@@ -31,6 +31,12 @@ window.addEventListener('load', function() {
     const speed = (speedAttr == null) ? 1000 : parseInt(speedAttr, 10);
 
     this.setInterval(() => {
+      const rect = slideshow.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        slideshow.setAttribute("data-slide-mutated", "");
+        return;
+      }
+
       if (!slideshow.hasAttribute("data-slide-mutated")) {
         const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
         const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);

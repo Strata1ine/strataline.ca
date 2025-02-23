@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { parseHTML } from "linkedom";
 
-const { id: customId, ...slot } = Astro.props;
+const { ...slot } = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("default"));
 
@@ -23,6 +23,6 @@ images.forEach((img, index) => {
 });
 ---
 
-<div data-slideshow id={customId} {...slot}>
+<div {...slot}>
   <Fragment set:html={document} />
 </div>

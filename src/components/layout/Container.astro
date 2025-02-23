@@ -16,6 +16,7 @@ const {
   as = "section",
   variant = ContainerVariant.Outer,
   class: customClass = "",
+  ...slot
 } = Astro.props;
 
 // for every section that is uneven swap Pos
@@ -30,6 +31,7 @@ const Tag = as;
     // if its a section, then apply margin bottom by default
     as === "section" && "my-40",
   )}
+  {...slot}
 >
   <slot />
 </Tag>

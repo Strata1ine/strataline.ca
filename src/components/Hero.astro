@@ -28,14 +28,13 @@ const length = document.querySelectorAll("img").length;
       idx={desktopSlideShowId}
       class="hidden flex-col gap-5 xl:flex"
       length={length}
-    >
-      <slot />
-    </SlideBtnArray>
+    />
 
     <div class="hidden w-[55%] sm:block xl:w-1/2">
       <SlideImages
         id={desktopSlideShowId}
         class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
+        data-slideshow
         data-slideshow-speed=`${speedInt}`
       >
         <slot />
@@ -44,9 +43,7 @@ const length = document.querySelectorAll("img").length;
         idx={desktopSlideShowId}
         length={length}
         class="mt-inset flex justify-center gap-5 xl:hidden"
-      >
-        <slot />
-      </SlideBtnArray>
+      />
     </div>
 
     <div class="flex-1">
@@ -59,6 +56,7 @@ const length = document.querySelectorAll("img").length;
           <SlideImages
             class="-ml-inset flex h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
             id={mobileSlideShowId}
+            data-slideshow
             data-slideshow-speed={speedInt}
           >
             <slot />
@@ -68,9 +66,7 @@ const length = document.querySelectorAll("img").length;
             class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
             idx={mobileSlideShowId}
             length={length}
-          >
-            <slot />
-          </SlideBtnArray>
+          />
         </div>
       </div>
 
