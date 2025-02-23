@@ -3,13 +3,15 @@ import clsx from "clsx";
 export enum ContainerVariant {
   Inner,
   Outer,
-  Screen,
+  Max,
+  Display,
 }
 
 export const containerMap = {
   [ContainerVariant.Inner]: "max-w-inner-span px-inset lg:mx-auto w-full",
   [ContainerVariant.Outer]: "max-w-outer-span px-inset lg:mx-auto w-full",
-  [ContainerVariant.Screen]: "max-w-full lg:mx-auto w-full",
+  [ContainerVariant.Max]: "max-w-full lg:mx-auto w-full",
+  [ContainerVariant.Display]: "max-w-[calc(var(--spacing-outer-span)+30rem)] lg:mx-auto w-full",
 };
 
 const {

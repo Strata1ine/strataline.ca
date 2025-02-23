@@ -1,2 +1,23 @@
 ---
+import Star from "../assets/star.svg";
+const {
+  text = [
+    "Made with love",
+    "No scrape of dust left",
+    "Absolutely revelatory",
+    "Expert opinions",
+  ],
+  ...slot
+} = Astro.props;
 ---
+
+<div class="py-inset border-accent overflow-hidden border-2" {...slot}>
+  <div data-carousel class="flex flex-nowrap gap-18 md:gap-25 items-center">
+    {
+      text.map((text: string) => (
+          <h5 class="font-serif text-3xl whitespace-nowrap">{text}</h5>
+          <Star class="flex-shrink-0 w-8 h-8" />
+      ))
+    }
+  </div>
+</div>

@@ -16,8 +16,10 @@ const services = serviceData.filter(
 );
 ---
 
-<Container variant={ContainerVariant.Screen}>
+<Container variant={ContainerVariant.Max}>
   <ContainerTitle class="px-inset" title={title} variant={titlePos} />
+
+  <slot name="top" />
   <div class="bg-accent">
     <Container
       class="bg-accent grid grid-cols-1 place-items-center gap-5 py-20 sm:grid-cols-2 sm:gap-9 lg:grid-cols-3"
@@ -46,4 +48,6 @@ const services = serviceData.filter(
       }
     </Container>
   </div>
+
+  <slot name="bottom" />
 </Container>

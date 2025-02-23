@@ -22,6 +22,7 @@ import { Image } from "astro:assets"
 import { Pos } from '~/variants.ts'
 
 import Popular from '~/components/Popular.astro'
+import InfoCarousel from '~/components/InfoCarousel.astro'
 import LessPopular from '~/components/LessPopular.astro'
 import SlideCard from '~/components/SlideCard.astro'
 import ImageCard from '~/components/ImageCard.astro'
@@ -39,7 +40,12 @@ import hgtv_preview from "./awards/hgtv_preview.png"
 <LessPopular
   title="Our slightly less popular services"
   titlePos={Pos.Left}
-/>
+>
+  <InfoCarousel
+    slot="bottom"
+    text={["Made with love", "No scrape of dust left", "Absolutely revelatory", "Expert opinions"]}
+  />
+</LessPopular>
 
 <SlideCard
   title="Our accomplishments"

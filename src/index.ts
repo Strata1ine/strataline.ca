@@ -47,4 +47,28 @@ window.addEventListener('load', function() {
       }
     }, speed);
   }
+
+  const carousels = document.querySelectorAll("[data-carousel]");
+
+  carousels.forEach(carousel => {
+    carousel.innerHTML += carousel.innerHTML;
+    carousel.innerHTML += carousel.innerHTML;
+
+    const speedAttr = carousel.getAttribute("data-carousel-speed");
+    const speed = (speedAttr == null) ? 1 : parseInt(speedAttr, 10);
+    let offset = 0;
+
+    function animate() {
+      offset += speed;
+      if (offset >= carousel.scrollWidth / 2) {
+        offset = 0;
+      }
+
+      carousel.style.transform = `translateX(-${offset}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+  });
 });
