@@ -1,46 +1,45 @@
 function slideNext(id: string, slideNum: number) {
   const slideshow = document.getElementById(id);
 
-  document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
-    if (!(slideButton instanceof HTMLElement)) return;
-
-    const previousIndexAttr = slideButton.getAttribute("data-slide-idx");
-    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
-
-    slideButton.children[previousIndex].classList.remove("active");
-    slideButton.children[slideNum].classList.add("active");
-    slideButton.setAttribute("data-slide-idx", slideNum.toString());
-  });
-
   if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
-    const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
-    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
+    const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+    const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
 
-    slideshow.children[previousIndex].classList.remove("active");
+    document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
+      if (!(slideButton instanceof HTMLElement)) return;
+
+      slideButton.children[prevIndex].classList.remove("active");
+      slideButton.children[slideNum].classList.add("active");
+      slideButton.setAttribute("data-slide-idx", slideNum.toString());
+    });
+
+    slideshow.children[prevIndex].classList.remove("active");
     slideshow.children[slideNum].classList.add("active");
     slideshow.setAttribute("data-slide-mutated", "");
     slideshow.setAttribute("data-slide-idx", slideNum.toString());
   }
 }
 
+function inScreen(e: Element) {
+  const rect = e.getBoundingClientRect();
+  return !(rect.bottom < 0 || rect.top > window.innerHeight);
+}
+
 window.slideNext = slideNext;
 window.addEventListener('load', function() {
-  const slideshows = document.querySelectorAll("[data-slideshow]");
-  for (let slideshow of slideshows) {
-    const speedAttr = slideshow.getAttribute("data-slideshow-speed");
-    const speed = (speedAttr == null) ? 1000 : parseInt(speedAttr, 10);
+  for (let slideshow of document.querySelectorAll("[data-slideshow]")) {
+    const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "3000", 10);
+    const speed = isNaN(speedAttr) ? 1000 : speedAttr;
 
     this.setInterval(() => {
-      const rect = slideshow.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) {
-        slideshow.setAttribute("data-slide-mutated", "");
+      if (!inScreen(slideshow)) {
         return;
       }
 
       if (!slideshow.hasAttribute("data-slide-mutated")) {
-        const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
-        const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
-        const nextIndex = (previousIndex + 1) % slideshow.children.length;
+        const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+        const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
+        const nextIndex = (prevIndex + 1) % slideshow.children.length;
         slideNext(slideshow.id.toString(), nextIndex);
       } else {
         slideshow.removeAttribute("data-slide-mutated");
@@ -48,27 +47,27 @@ window.addEventListener('load', function() {
     }, speed);
   }
 
-  const carousels = document.querySelectorAll("[data-carousel]");
+  document.querySelectorAll("[data-carousel]").forEach(carousel => {
+    // lol
+    carousel.innerHTML += carousel.innerHTML += carousel.innerHTML;
 
-  carousels.forEach(carousel => {
-    carousel.innerHTML += carousel.innerHTML;
-    carousel.innerHTML += carousel.innerHTML;
-
-    const speedAttr = carousel.getAttribute("data-carousel-speed");
-    const speed = (speedAttr == null) ? 1 : parseInt(speedAttr, 10);
+    const speedAttr = parseFloat(carousel.getAttribute("data-carousel-speed") ?? "1.0");
+    const speed = isNaN(speedAttr) ? 1.0 : speedAttr;
     let offset = 0;
 
     function animate() {
-      offset += speed;
-      if (offset >= carousel.scrollWidth / 2) {
-        offset = 0;
+      if (inScreen(carousel)) {
+        offset += speed;
+        if (offset >= carousel.scrollWidth / 2) {
+          offset = 0;
+        }
+
+        carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
       }
 
-      carousel.style.transform = `translateX(-${offset}px)`;
       requestAnimationFrame(animate);
     }
 
     animate();
-
   });
 });

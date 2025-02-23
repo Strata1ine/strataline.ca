@@ -1,0 +1,9 @@
+---
+import { Pos } from "~/variants";
+import Container, { ContainerVariant } from "./layout/Container.astro";
+
+const { title, titlePos = Pos.Left } = Astro.props;
+---
+
+<Container variant={ContainerVariant.Display} title={title} titlePos={titlePos}>
+</Container>

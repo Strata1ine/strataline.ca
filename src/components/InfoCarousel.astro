@@ -7,12 +7,13 @@ const {
     "Absolutely revelatory",
     "Expert opinions",
   ],
+  speed,
   ...slot
 } = Astro.props;
 ---
 
-<div class="py-inset border-accent overflow-hidden border-2" {...slot}>
-  <div data-carousel class="flex flex-nowrap gap-18 md:gap-25 items-center">
+<div class="py-inset border-accent overflow-hidden border-y-2" {...slot}>
+  <div data-carousel data-carousel-speed={speed} class="flex flex-nowrap gap-12 sm:gap-15 md:gap-25 items-center">
     {
       text.map((text: string) => (
           <h5 class="font-serif text-3xl whitespace-nowrap">{text}</h5>

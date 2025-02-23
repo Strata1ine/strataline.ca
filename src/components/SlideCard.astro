@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import { appendAttrElements, appendAttrElementsIf } from "~/util/processHTML";
 import { parseHTML } from "linkedom";
 
 import { Pos } from "~/variants";
@@ -14,18 +15,18 @@ const { document } = parseHTML(await Astro.slots.render("default"));
 const cards = document.querySelectorAll("[data-slideshow-card]");
 const length = cards.length;
 
-cards.forEach((card, index) => {
-  let classes =
-    "opacity-0 inset-0 pointer-events-none absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex md:h-80 [&.active]:pointer-events-auto";
-  if (index == 0) {
-    classes = `${classes} active`;
-    card.setAttribute("fetchpriority", "high");
-  } else {
-    card.setAttribute("fetchpriority", "low");
-  }
+appendAttrElements(
+  cards,
+  "class",
+  "opacity-0 inset-0 pointer-events-none absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex md:h-80 [&.active]:pointer-events-auto",
+);
 
-  card.setAttribute("class", clsx(card.getAttribute("class"), classes));
-});
+appendAttrElementsIf(
+  cards,
+  "class",
+  "active",
+  (_: Element, i: number) => i == 0,
+);
 ---
 
 <Container>

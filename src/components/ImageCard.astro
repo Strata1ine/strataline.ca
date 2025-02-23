@@ -1,28 +1,34 @@
 ---
+import { parseHTML } from "linkedom";
+import { appendAttrElements } from "~/util/processHTML";
 import Link from "./nav/Link.astro";
-import { Image } from "astro:assets";
 
-const { title, description, src, alt } = Astro.props;
+const { title, description } = Astro.props;
+const { document } = parseHTML(await Astro.slots.render("default"));
+
+appendAttrElements(
+  document.querySelectorAll("img"),
+  "class",
+  "min-w-0 object-cover",
+);
 ---
 
 <div
   data-slideshow-card
   class="min-h-160 gap-6 p-5 sm:min-h-110 sm:p-0 xl:gap-7 2xl:gap-9"
 >
-  <div class="hidden w-1/2 sm:block">
-    <Image class="h-full w-full min-w-0 object-cover" src={src} alt={alt} />
+  <div class="hidden w-1/2 sm:flex">
+    <slot />
   </div>
 
   <div class="flex flex-1 flex-col justify-center">
-    <h4 class="mb-2 font-serif text-2xl font-semibold text-balance">{title}</h4>
+    <h4 class="mb-2 font-serif text-2xl font-semibold text-balance">
+      {title}
+    </h4>
 
-    <Image
-      width="680"
-      height="440"
-      class="mt-1 mb-3 max-h-90 min-w-0 object-cover sm:hidden"
-      src={src}
-      alt={alt}
-    />
+    <div class="mt-1 mb-3 flex max-h-90 sm:hidden">
+      <slot />
+    </div>
 
     <p class="font-sans text-base">{description}</p>
 
@@ -32,5 +38,3 @@ const { title, description, src, alt } = Astro.props;
   </div>
   <div class="hidden sm:block"></div>
 </div>
-
-<slot />

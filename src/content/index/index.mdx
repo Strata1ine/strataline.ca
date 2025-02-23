@@ -1,24 +1,10 @@
 ---
-title: "Renovations designed to transform your space"
-description: "We have been transforming spaces dust-free for decades."
-# the speed of the slideshow in ms
-slideshow_speed: 4000
-slideshow_images:
-  - path: ./slideshow/kitchen.jpg
-    alt: "A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."
-  - path: ./slideshow/dining_room.jpg
-    alt: "A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."
-  - path: ./slideshow/living_room.jpg
-    alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
-  - path: ./slideshow/bathroom.jpg
-    alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
 highlight:
   - stairs
   - popcorn-removal
 ---
 
 import Link from '~/components/nav/Link.astro'
-import { Image } from "astro:assets"
 import { Pos } from '~/variants.ts'
 
 import Popular from '~/components/Popular.astro'
@@ -26,11 +12,18 @@ import InfoCarousel from '~/components/InfoCarousel.astro'
 import LessPopular from '~/components/LessPopular.astro'
 import SlideCard from '~/components/SlideCard.astro'
 import ImageCard from '~/components/ImageCard.astro'
+import Hero from '~/components/Hero.astro'
 
-import star from "./awards/star.jpg"
-import citytv from "./awards/citytv.jpg"
-import houseandhome from "./awards/houseandhome.webp"
-import hgtv_preview from "./awards/hgtv_preview.png"
+<Hero
+  title="Renovations designed to transform your space"
+  description="We have been transforming spaces dust-free for decades."
+  speed="4000"
+>
+  !["A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."](./slideshow/kitchen.jpg)
+  !["A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."](./slideshow/dining_room.jpg)
+  !["A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."](./slideshow/living_room.jpg)
+  !["A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."](./slideshow/bathroom.jpg)
+</Hero>
 
 <Popular
   title="Popular services"
@@ -43,6 +36,7 @@ import hgtv_preview from "./awards/hgtv_preview.png"
 >
   <InfoCarousel
     slot="bottom"
+    speed="0.8"
     text={["Made with love", "No scrape of dust left", "Absolutely revelatory", "Expert opinions"]}
   />
 </LessPopular>
@@ -54,26 +48,29 @@ import hgtv_preview from "./awards/hgtv_preview.png"
 >
   <ImageCard
     title="Featured on CityTV"
-    src={citytv}
-    alt="tomatoes"
     description="Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings."
-  />
+  >
+    !["A renovated tomato"](./awards/citytv.jpg)
+  </ImageCard>
+
   <ImageCard
     title="Featured in The Star"
-    src={star}
-    alt="tomatoes"
     description="The Star's sensational report on our Dust-Free approach to renovation."
-  />
+  >
+    !["A renovated tomato"](./awards/star.jpg)
+  </ImageCard>
+
   <ImageCard
     title="Featured in House & Home"
-    src={houseandhome}
-    alt="tomatoes"
     description="House & Home seeks our expertise on chevron hardwood floor installation."
-  />
+  >
+    !["A renovated tomato"](./awards/houseandhome.webp)
+  </ImageCard>
+
   <ImageCard
     title="Featured on HGTV's Love It or List"
-    src={hgtv_preview}
-    alt="tomatoes"
     description="Mother-in-Law’s 1980s House Needs an Overhaul | Love It or List It | HGTV."
-  />
+  >
+    !["A renovated tomato"](./awards/hgtv_preview.png)
+  </ImageCard>
 </SlideCard>
