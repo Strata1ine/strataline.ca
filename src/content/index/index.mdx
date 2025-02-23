@@ -17,9 +17,19 @@ highlight:
   - popcorn-removal
 ---
 
+import Link from '~/components/nav/Link.astro'
+import { Image } from "astro:assets"
+import { Pos } from '~/variants.ts'
+
 import Popular from '~/components/Popular.astro'
 import LessPopular from '~/components/LessPopular.astro'
-import { Pos } from '~/variants.ts'
+import SlideCard from '~/components/SlideCard.astro'
+import ImageCard from '~/components/ImageCard.astro'
+
+import star from "./awards/star.jpg"
+import citytv from "./awards/citytv.jpg"
+import houseandhome from "./awards/houseandhome.webp"
+import hgtv_preview from "./awards/hgtv_preview.png"
 
 <Popular
   title="Popular services"
@@ -30,3 +40,33 @@ import { Pos } from '~/variants.ts'
   title="Our slightly less popular services"
   titlePos={Pos.Left}
 />
+
+<SlideCard
+  title="Our accomplishments"
+  titlePos={Pos.Right}
+>
+  <ImageCard
+    title="Featured on CityTV"
+    src={citytv}
+    alt="tomatoes"
+    description="Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings."
+  />
+  <ImageCard
+    title="Featured in The Star"
+    src={star}
+    alt="tomatoes"
+    description="The Star's sensational report on our Dust-Free approach to renovation."
+  />
+  <ImageCard
+    title="Featured in House & Home"
+    src={houseandhome}
+    alt="tomatoes"
+    description="House & Home seeks our expertise on chevron hardwood floor installation."
+  />
+  <ImageCard
+    title="Featured on HGTV's Love It or List"
+    src={hgtv_preview}
+    alt="tomatoes"
+    description="Mother-in-Law’s 1980s House Needs an Overhaul | Love It or List It | HGTV."
+  />
+</SlideCard>

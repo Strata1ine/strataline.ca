@@ -1,18 +1,6 @@
 function slideNext(id: string, slideNum: number) {
   const slideshow = document.getElementById(id);
-  updateSlideButtons(id, slideNum);
-  if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
-    const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
-    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
 
-    slideshow.children[previousIndex].classList.remove("active");
-    slideshow.children[slideNum].classList.add("active");
-    slideshow.setAttribute("data-slide-mutated", "");
-    slideshow.setAttribute("data-slide-idx", slideNum.toString());
-  }
-}
-
-function updateSlideButtons(id: string, slideNum: number) {
   document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
     if (!(slideButton instanceof HTMLElement)) return;
 
@@ -23,6 +11,16 @@ function updateSlideButtons(id: string, slideNum: number) {
     slideButton.children[slideNum].classList.add("active");
     slideButton.setAttribute("data-slide-idx", slideNum.toString());
   });
+
+  if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
+    const previousIndexAttr = slideshow.getAttribute("data-slide-idx");
+    const previousIndex = (previousIndexAttr == null) ? 0 : parseInt(previousIndexAttr, 10);
+
+    slideshow.children[previousIndex].classList.remove("active");
+    slideshow.children[slideNum].classList.add("active");
+    slideshow.setAttribute("data-slide-mutated", "");
+    slideshow.setAttribute("data-slide-idx", slideNum.toString());
+  }
 }
 
 window.slideNext = slideNext;

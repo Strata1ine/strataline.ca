@@ -1,0 +1,28 @@
+---
+import Link from "./nav/Link.astro";
+import { Image } from "astro:assets";
+
+const { title, description, src, alt } = Astro.props;
+---
+
+<div
+  data-slideshow-card
+  class="min-h-160 gap-6 p-5 sm:min-h-110 sm:p-0 xl:gap-7 2xl:gap-9"
+>
+  <div class="hidden w-1/2 sm:block">
+    <Image class="h-full w-full min-w-0 object-cover" src={src} alt={alt} />
+  </div>
+
+  <div class="flex flex-1 flex-col justify-center">
+    <h4 class="mb-2 font-serif text-2xl font-semibold text-balance">{title}</h4>
+
+    <Image class="sm:hidden max-h-90 mt-1 mb-3 min-w-0 object-cover" src={src} alt={alt} />
+
+    <p class="font-sans text-base">{description}</p>
+
+    <div class="mt-8">
+      <Link href="#wasd">Watch The Video</Link>
+    </div>
+  </div>
+  <div></div>
+</div>

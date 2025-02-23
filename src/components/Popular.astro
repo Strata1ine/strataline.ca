@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Card from "./Card.astro";
+import SplitCard from "./SplitCard.astro";
 import Container from "./layout/Container.astro";
 import ContainerTitle from "./layout/ContainerTitle.astro";
 import { Pos } from "~/variants.ts";
@@ -23,7 +23,7 @@ const services = serviceData.filter((service) =>
   <ContainerTitle title={title} variant={titlePos} />
   {
     services.map((service: any, i) => (
-      <Card
+      <SplitCard
         title={service.data.title}
         description={service.data.description}
         variant={next(i)}
@@ -31,7 +31,7 @@ const services = serviceData.filter((service) =>
         {service.data.covers.map((img, _) => (
           <Image src={img.path} alt={img.alt} />
         ))}
-      </Card>
+      </SplitCard>
     ))
   }
 </Container>

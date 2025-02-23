@@ -45,7 +45,7 @@
 
   --text-base: clamp(1.3rem, 2vw, 1.45rem);
   --text-bg: clamp(1.3rem, 2vw, 1.45rem);
-  --text-lg: clamp(1.5rem, 4vw, 1.9rem);
+  --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
   --text-xl: clamp(1.8rem, 4vw, 2.3rem);
   --text-xl--line-height: 1.2;
   --text-2xl: clamp(2.2rem, 4vw, 3rem);
@@ -58,12 +58,12 @@
   /* used for padding on mobile items
   important for elements that are 
   placed at the corner of phones */
-  --spacing-inset: .8rem;
-  --spacing-outer-span: 1450px;
+  --spacing-inset: 1rem;
   --spacing-inner-span: 1300px;
-  --spacing-diff: calc((100vw - var(--spacing-outer-span))/ 2);
-  --spacing-gap: calc((var(--spacing-outer-span) - var(--spacing-inner-span)));
-  --spacing-kms: calc(var(--spacing-diff) + var(--spacing-gap));
+  --spacing-outer-span: 1450px;
+
+  --right-offset: calc((100vw - var(--spacing-outer-span))/ 2 + var(--spacing-outer-span) - var(--spacing-inner-span));
+  --right-span: calc(var(--spacing-outer-span) - ((var(--spacing-outer-span) - var(--spacing-inner-span)) / 2) - var(--spacing-inset));
 }
 
 :root {

@@ -1,4 +1,6 @@
 ---
+import { parseHTML } from "linkedom";
+
 import Container from "./layout/Container.astro";
 import SlideImages from "./nav/SlideImages.astro";
 import Link from "./nav/Link.astro";
@@ -7,11 +9,14 @@ import SlideBtnArray from "./nav/SlideBtnArray.astro";
 const { title, description, speed: speedInt } = Astro.props;
 const desktopSlideShowId = crypto.randomUUID();
 const mobileSlideShowId = crypto.randomUUID();
+
+const { document } = parseHTML(await Astro.slots.render("default"));
+const length = document.querySelectorAll("img").length;
 ---
 
 <main class="relative flex h-svh max-h-220 min-h-180 sm:max-h-350 sm:min-h-210">
   <div
-    class="bg-accent absolute z-[-1] hidden h-full w-[calc(var(--spacing-kms))] rounded-br-xl md:block"
+    class="bg-accent absolute z-[-1] hidden h-full w-[var(--right-offset)] rounded-br-xl md:block"
   >
   </div>
 
@@ -22,6 +27,7 @@ const mobileSlideShowId = crypto.randomUUID();
     <SlideBtnArray
       idx={desktopSlideShowId}
       class="hidden flex-col gap-5 xl:flex"
+      length={length}
     >
       <slot />
     </SlideBtnArray>
@@ -36,6 +42,7 @@ const mobileSlideShowId = crypto.randomUUID();
       </SlideImages>
       <SlideBtnArray
         idx={desktopSlideShowId}
+        length={length}
         class="mt-inset flex justify-center gap-5 xl:hidden"
       >
         <slot />
@@ -60,6 +67,7 @@ const mobileSlideShowId = crypto.randomUUID();
           <SlideBtnArray
             class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
             idx={mobileSlideShowId}
+            length={length}
           >
             <slot />
           </SlideBtnArray>

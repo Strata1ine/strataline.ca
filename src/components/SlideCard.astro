@@ -1,0 +1,46 @@
+---
+import clsx from "clsx";
+import { parseHTML } from "linkedom";
+
+import { Pos } from "~/variants";
+import Container from "./layout/Container.astro";
+import ContainerTitle from "./layout/ContainerTitle.astro";
+import SlideBtnArray from "./nav/SlideBtnArray.astro";
+
+const slideCardId = crypto.randomUUID();
+const { title, titlePos = Pos.Left } = Astro.props;
+
+const { document } = parseHTML(await Astro.slots.render("default"));
+const cards = document.querySelectorAll("[data-slideshow-card]");
+const length = cards.length;
+
+cards.forEach((card, index) => {
+  let classes = "hidden [&.active]:flex md:h-80";
+  if (index == 0) {
+    classes = `${classes} active`;
+  }
+
+  card.setAttribute("class", clsx(card.getAttribute("class"), classes));
+});
+---
+
+<Container data-slideshow>
+  <ContainerTitle title={title} variant={titlePos} />
+  <div class={clsx(`rounded-md`, length > 1 && "flex flex-col xl:flex-row")}>
+    <div
+      id={slideCardId}
+      class="bg-accent w-full max-w-[var(--right-span)] rounded-md"
+    >
+      <Fragment set:html={document} />
+    </div>
+    {
+      length > 1 && (
+        <SlideBtnArray
+          length={length}
+          idx={slideCardId}
+          class="pt-inset xl:pl-inset flex flex-1 flex-row items-center justify-center gap-5 xl:flex-col xl:pt-0"
+        />
+      )
+    }
+  </div>
+</Container>

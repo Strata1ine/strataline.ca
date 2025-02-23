@@ -1,17 +1,12 @@
 ---
-import { parseHTML } from "linkedom";
 import SlideBtn from "./SlideBtn.astro";
 
-const { class: customClass, idx: slideId, ...rest } = Astro.props;
-
-const html = await Astro.slots.render("default");
-const { document } = parseHTML(html);
-const imageCount = document.querySelectorAll("img").length;
+const { class: customClass, idx: slideId, length , ...rest } = Astro.props;
 ---
 
 <div class={customClass} {...rest} data-slide-nav={slideId}>
   {
-    Array.from({ length: imageCount }).map((_, i) => (
+    Array.from({ length }).map((_, i) => (
       <SlideBtn
         class={i === 0 ? "active" : ""}
         onclick={`slideNext('${slideId}', ${i})`}
