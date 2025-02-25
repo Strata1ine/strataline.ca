@@ -17,7 +17,18 @@ const { document } = parseHTML(await Astro.slots.render("default"));
     data-review
   >
     <Fragment set:html={document} />
-    <div class="w-[100vw] shrink-0"></div>
+    <div class="w-[100vw] shrink-0">
+    </div>
+  </div>
+
+  <div
+    class="bg-tone m-12 mx-auto flex h-3 w-1/2 rounded-md contain-paint xl:w-[30vw]"
+  >
+    <div
+      data-review-bar
+      class="bg-accent h-full rounded-md transition-all duration-500"
+    >
+    </div>
   </div>
 
   <!-- <Container variant={ContainerVariant.Inner} as="div"> -->

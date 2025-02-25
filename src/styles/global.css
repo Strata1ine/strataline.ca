@@ -26,6 +26,7 @@
   --color-accent-dark: #D85B5B;
   --color-black: #2B2B2B;
   --color-white: #FFFAFA;
+  --color-tone: #F5F5F5;
 
   --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
   --font-sans: 'DMSans', 'Arial', 'Helvetica', sans-serif;
@@ -54,7 +55,7 @@
   --text-3xl: clamp(2.5rem, 6vw, 3.5rem);
   --text-3xl--line-height: 1.2;
   --text-4xl: clamp(2.5rem, 4vw, 3.8rem);
-  --text-4xl--line-height: 1.05;
+  --text-4xl--line-height: 1.2;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;

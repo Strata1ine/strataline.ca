@@ -1,5 +1,7 @@
 ---
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import ArrowDown from "~/assets/arrow_down.svg";
+const mobileMenu = crypto.randomUUID();
 ---
 
 <header class="absolute z-48 w-full">
@@ -8,36 +10,80 @@ import Container, { ContainerVariant } from "~/components/div/Container.astro";
     variant={ContainerVariant.Inner}
     class="py-inset flex items-center justify-between rounded-md"
   >
-    <h1
-      class="text-accent-dark font-serif text-3xl font-bold transition-all duration-300"
-    >
-      Strataline
-    </h1>
+    <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
       <ul class="hidden gap-10 xl:flex">
         <li><a href="#wasd" class="text-bg font-sans">Popular</a></li>
         <li><a href="#wasd" class="text-bg font-sans">Gallery</a></li>
         <li class="flex items-center">
           <a href="#wasd" class="text-bg font-sans">Services </a>
-
-          <svg class="ml-2" width="18" height="18" viewBox="0 0 256 256">
-            <path
-              color="#000"
-              d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"
-            ></path>
-          </svg>
+          <ArrowDown class="ml-2" />
         </li>
         <li><a href="#wasd" class="text-bg font-sans">Accomplishments</a></li>
         <li><a href="#wasd" class="text-bg font-sans">Reviews</a></li>
       </ul>
       <div class="xl:hidden">
-        <h2>Hello</h2>
+        <button
+          onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+          class="burger h-9 w-9 cursor-pointer"></button>
       </div>
     </nav>
   </Container>
 </header>
 
+<div
+  class="pointer-events-none absolute inset-0 z-10 flex -translate-y-[100%] overflow-scroll bg-white transition-transform duration-400 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-y-0"
+  id={mobileMenu}
+>
+  <ul class="m-auto py-20 flex flex-col gap-4">
+    <li><a href="#wasd" class="font-sans text-xl">Popular</a></li>
+    <li><a href="#wasd" class="font-sans text-xl">Gallery</a></li>
+    <li class="flex items-center">
+      <a href="#wasd" class="font-sans text-xl">Services </a>
+      <ArrowDown class="ml-2 h-5 w-5" />
+    </li>
+    <li><a href="#wasd" class="font-sans text-xl">Accomplishments</a></li>
+    <li><a href="#wasd" class="font-sans text-xl">Reviews</a></li>
+  </ul>
+</div>
+
 <style lang="scss">
+  .burger {
+    position: relative;
+    display: flex;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      background: var(--color-black);
+      width: 100%;
+      height: 2px;
+      transform-origin: center;
+      transition: transform 250ms;
+    }
+
+    &::before {
+      transform: translateY(-7px);
+    }
+
+    &::after {
+      transform: translateY(7px);
+    }
+
+    &.active {
+      &::after {
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
   a {
     position: relative;
     &::after {

@@ -2,7 +2,12 @@ import smoothscroll from 'smoothscroll-polyfill';
 window.__forceSmoothScrollPolyfill__ = true;
 smoothscroll.polyfill();
 
-function slideNext(id: string, slideNum: number) {
+function inScreen(e: Element) {
+  const rect = e.getBoundingClientRect();
+  return !(rect.bottom < 0 || rect.top > window.innerHeight);
+}
+
+window.slideNext = function(id: string, slideNum: number) {
   const slideshow = document.getElementById(id);
 
   if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
@@ -24,12 +29,20 @@ function slideNext(id: string, slideNum: number) {
   }
 }
 
-function inScreen(e: Element) {
-  const rect = e.getBoundingClientRect();
-  return !(rect.bottom < 0 || rect.top > window.innerHeight);
+window.toggleMenu = function(e, id: string, fullscreen: boolean) {
+  e.classList.toggle("active");
+  const menu = document.getElementById(id);
+
+  if (fullscreen) {
+    document.body.classList.toggle("overflow-hidden");
+    document.documentElement.scrollTo(0, 0);
+  }
+
+  if (menu != null && menu instanceof HTMLElement) {
+    menu.classList.toggle("active");
+  }
 }
 
-window.slideNext = slideNext;
 window.addEventListener('load', function() {
   document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
     const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "3000", 10);
@@ -75,11 +88,17 @@ window.addEventListener('load', function() {
     animate();
   });
 
-
-  document.querySelectorAll("[data-review]").forEach(slider => {
+  const bars = document.querySelectorAll('[data-review-bar]');
+  document.querySelectorAll("[data-review]").forEach((slider, i: number) => {
     const cards = slider.querySelectorAll('[data-review-card]');
+    const bar = bars[i];
+
     const threshold = 25;
+    const length = cards.length;
+    if (bar == null) return;
     if (cards.length === 0) return;
+
+    bar.setAttribute("style", `width: ${100 / length}%`);
 
     let isDown = false;
     let startX = 0;
@@ -103,6 +122,7 @@ window.addEventListener('load', function() {
       }
 
       slider.scrollTo({ left: width * idx, behavior: 'smooth' });
+      bar.setAttribute("style", `margin-left: ${(idx) * (100 / length)}%; width: ${100 / length}%`);
     };
 
     slider.addEventListener('mousedown', ((e: MouseEvent): void => {
