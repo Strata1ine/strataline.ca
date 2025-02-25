@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
+import AutoImport from 'astro-auto-import';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -20,7 +21,20 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [mdx({
-    rehypePlugins: [rehypeUnwrapImages]
-  }), playformCompress(), sitemap()],
+  integrations: [
+    AutoImport({
+      imports: [
+        {
+          './src/components/sections/': 'Section',
+          './src/components/cards/': 'Card',
+          './src/components/variants.ts': 'Variant',
+        },
+      ],
+    }),
+    mdx({
+      rehypePlugins: [rehypeUnwrapImages]
+    }),
+    playformCompress(),
+    sitemap(),
+  ],
 });

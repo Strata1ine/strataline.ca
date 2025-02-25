@@ -1,20 +1,10 @@
 ---
-highlight:
+popular:
   - stairs
   - popcorn-removal
 ---
 
-import Link from '~/components/nav/Link.astro'
-import { Pos } from '~/variants.ts'
-
-import Popular from '~/components/Popular.astro'
-import InfoCarousel from '~/components/InfoCarousel.astro'
-import LessPopular from '~/components/LessPopular.astro'
-import SlideCard from '~/components/SlideCard.astro'
-import ImageCard from '~/components/ImageCard.astro'
-import Hero from '~/components/Hero.astro'
-
-<Hero
+<Section.Hero
   title="Renovations designed to transform your space"
   description="We have been transforming spaces dust-free for decades."
   speed="4000"
@@ -23,54 +13,80 @@ import Hero from '~/components/Hero.astro'
   !["A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."](./slideshow/dining_room.jpg)
   !["A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."](./slideshow/living_room.jpg)
   !["A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."](./slideshow/bathroom.jpg)
-</Hero>
+</Section.Hero>
 
-<Popular
+<Section.Popular
   title="Popular services"
-  titlePos={Pos.Right}
+  titlePos={Variant.Pos.Right}
 />
 
-<LessPopular
+<Section.LessPopular
   title="Our slightly less popular services"
-  titlePos={Pos.Left}
+  titlePos={Variant.Pos.Left}
 >
-  <InfoCarousel
+  <Section.TextCarousel
     slot="bottom"
-    speed="0.8"
+    speed="0.45"
     text={["Made with love", "No scrape of dust left", "Absolutely revelatory", "Expert opinions"]}
   />
-</LessPopular>
+</Section.LessPopular>
 
-<SlideCard
+<Section.Slide
   title="Our accomplishments"
-  titlePos={Pos.Right}
+  titlePos={Variant.Pos.Right}
   speed="3000"
 >
-  <ImageCard
+  <Card.Slide
     title="Featured on CityTV"
     description="Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings."
   >
     !["A renovated tomato"](./awards/citytv.jpg)
-  </ImageCard>
+  </Card.Slide>
 
-  <ImageCard
+  <Card.Slide
     title="Featured in The Star"
     description="The Star's sensational report on our Dust-Free approach to renovation."
   >
     !["A renovated tomato"](./awards/star.jpg)
-  </ImageCard>
+  </Card.Slide>
 
-  <ImageCard
+  <Card.Slide
     title="Featured in House & Home"
     description="House & Home seeks our expertise on chevron hardwood floor installation."
   >
     !["A renovated tomato"](./awards/houseandhome.webp)
-  </ImageCard>
+  </Card.Slide>
 
-  <ImageCard
+  <Card.Slide
     title="Featured on HGTV's Love It or List"
     description="Mother-in-Law’s 1980s House Needs an Overhaul | Love It or List It | HGTV."
   >
     !["A renovated tomato"](./awards/hgtv_preview.png)
-  </ImageCard>
-</SlideCard>
+  </Card.Slide>
+</Section.Slide>
+
+<Section.Review
+  title="What our customers have to say"
+  titlePos={Variant.Pos.Left}
+>
+  <Card.Review
+    title="Maggie and Scott"
+    location="Mississauga"
+    description="My husband and I are unbelievably happy with the work that Max and his team did on our ceilings in the house. The professionalism of this team is incredible."
+  />
+  <Card.Review
+    title="Jefferson Grove"
+    location="Burlington"
+    description="The whole process from beginning to end was an absolute pleasure. Max is a great communicator and was always quick to reply to texts or emails. We highly recommend Strataline!"
+  />
+  <Card.Review
+    title="Olivia"
+    location="Toronto"
+    description="Extremely clean and tidy! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!"
+  />
+  <Card.Review
+    title="Lyn Litvack"
+    location="Markham"
+    description="Max is the ultimate professional, immaculate, contentious and polite. He is punctual and follows up on things quickly. The work to our stairs is transforming and with his guidance we are thrilled with the finished product."
+  />
+</Section.Review>

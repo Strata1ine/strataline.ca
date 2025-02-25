@@ -1,13 +1,13 @@
 ---
 import clsx from "clsx";
-import { Pos } from "~/variants.ts";
+import { Pos } from "~/components/variants.ts";
 
 const { title, class: customClass = "", variant = Pos.Left } = Astro.props;
 ---
 
 {
   title && variant == Pos.Right && (
-  <div class={clsx(`max-w-inner-span mb-18 w-full lg:mx-auto`, customClass)}>
+    <div class={clsx(`max-w-inner mb-18 w-full lg:mx-auto`, customClass)}>
       <h3 class="ml-auto max-w-[20ch] text-right font-serif text-3xl font-bold text-balance">
         {title}
       </h3>
@@ -17,7 +17,7 @@ const { title, class: customClass = "", variant = Pos.Left } = Astro.props;
 
 {
   title && variant == Pos.Left && (
-  <div class={clsx(`max-w-inner-span mb-18 w-full lg:mx-auto`, customClass)}>
+    <div class={clsx(`max-w-inner mb-18 w-full lg:mx-auto`, customClass)}>
       <h3 class="mr-auto max-w-[20ch] font-serif text-3xl font-bold text-balance">
         {title}
       </h3>

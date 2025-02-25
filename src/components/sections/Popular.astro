@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import SplitCard from "./SplitCard.astro";
-import Container from "./layout/Container.astro";
-import ContainerTitle from "./layout/ContainerTitle.astro";
-import { Pos } from "~/variants.ts";
+import SplitCard from "~/components/cards/Split.astro";
+import Container from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+import { Pos } from "~/components/variants.ts";
 
 const { title, titlePos = Pos.Left } = Astro.props;
 const [index] = await getCollection("index");
@@ -15,7 +15,7 @@ function next(i: number) {
 }
 
 const services = serviceData.filter((service) =>
-  index.data.highlight.some((pattern) => service.slug.includes(pattern)),
+  index.data.popular.some((pattern) => service.slug.includes(pattern)),
 );
 ---
 

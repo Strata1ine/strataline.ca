@@ -43,38 +43,48 @@
   --radius-lg: .5rem;
   --radius-xl: .75rem;
 
-  --text-base: clamp(1.3rem, 2vw, 1.45rem);
+  --text-sm: clamp(1.1rem, 2.1vw, 1.2rem);
+  --text-base: clamp(1.3rem, 2.1vw, 1.45rem);
   --text-bg: clamp(1.3rem, 2vw, 1.45rem);
   --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
   --text-xl: clamp(1.8rem, 4vw, 2.3rem);
   --text-xl--line-height: 1.2;
   --text-2xl: clamp(2.2rem, 4vw, 3rem);
-  --text-2xl--line-height: 1.2;
+  --text-2xl--line-height: 1.05;
   --text-3xl: clamp(2.5rem, 6vw, 3.5rem);
   --text-3xl--line-height: 1.2;
   --text-4xl: clamp(2.5rem, 4vw, 3.8rem);
   --text-4xl--line-height: 1.05;
 
-  /* used for padding on mobile items
-  important for elements that are 
-  placed at the corner of phones */
-  --spacing-inset: 1rem;
-  --spacing-inner-span: 1300px;
-  --spacing-outer-span: 1450px;
-
-  --right-offset: calc((100vw - var(--spacing-outer-span))/ 2 + var(--spacing-outer-span) - var(--spacing-inner-span));
-  --right-span: calc(var(--spacing-outer-span) - ((var(--spacing-outer-span) - var(--spacing-inner-span)) /2) - var(--spacing-inset) * 2);
+  --spacing-inset: 0.9rem;
+  --spacing-inner: 1300px;
+  --spacing-outer: 1450px;
+  --spacing-inner-diff: max(calc((100vw - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2), 0px);
+  --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
+  --right-span: calc(var(--spacing-outer) - ((var(--spacing-outer) - var(--spacing-inner))) + var(--spacing-inset) * 2);
 }
 
 :root {
   background: var(--color-white);
   color: var(--color-black);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .contain-paint {
   contain: paint;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 @font-face {
   font-family: 'DMSans';

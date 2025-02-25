@@ -3,10 +3,10 @@ import clsx from "clsx";
 import { appendAttrElements, appendAttrElementsIf } from "~/util/processHTML";
 import { parseHTML } from "linkedom";
 
-import { Pos } from "~/variants";
-import Container from "./layout/Container.astro";
-import ContainerTitle from "./layout/ContainerTitle.astro";
-import SlideBtnArray from "./nav/SlideBtnArray.astro";
+import { Pos } from "~/components/variants";
+import Container from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
 
 const slideCardId = crypto.randomUUID();
 const { title, titlePos = Pos.Left, speed } = Astro.props;
@@ -33,12 +33,12 @@ appendAttrElementsIf(
   <ContainerTitle title={title} variant={titlePos} />
   <div
     class={clsx(
-      `rounded-md overflow-clip max-w-[var(--right-span)] ml-auto`,
+      `rounded-md overflow-clip max-w-(--right-span) ml-auto`,
       length > 1 && "flex flex-col xl:flex-row",
     )}
   >
     <div
-      class="bg-accent w-full rounded-md"
+      class="bg-accent relative w-full rounded-md"
       id={slideCardId}
       data-slideshow
       data-slideshow-speed={speed}

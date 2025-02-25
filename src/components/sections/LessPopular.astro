@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Arrow from "~/assets/arrow.svg";
-import Container, { ContainerVariant } from "./layout/Container.astro";
-import ContainerTitle from "./layout/ContainerTitle.astro";
-import { Pos } from "~/variants.ts";
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+import { Pos } from "~/components/variants.ts";
 
 const { title, titlePos = Pos.Left } = Astro.props;
 const [index] = await getCollection("index");
@@ -12,7 +12,7 @@ const serviceData = await getCollection("services");
 
 const services = serviceData.filter(
   (service) =>
-    !index.data.highlight.some((pattern) => service.slug.includes(pattern)),
+    !index.data.popular.some((pattern) => service.slug.includes(pattern)),
 );
 ---
 
@@ -27,7 +27,7 @@ const services = serviceData.filter(
       as="div"
     >
       {
-        services.map((service: any, _) => (
+        services.map((service: any, i) => (
           <a
             href="#wasd"
             class="flex h-full w-full items-center gap-3 sm:flex-col sm:items-baseline"
@@ -36,6 +36,7 @@ const services = serviceData.filter(
               class="min-h-30 w-1/2 rounded-md object-cover transition duration-300 hover:scale-[1.05] sm:h-65 sm:w-full"
               width={808}
               height={416}
+              fetchpriority={i == 0 ? "high" : "low"}
               src={service.data.covers[0].path}
               alt={service.data.covers[0].alt}
             />

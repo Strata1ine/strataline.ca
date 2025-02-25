@@ -1,0 +1,28 @@
+---
+import { parseHTML } from "linkedom";
+import { Pos } from "~/components/variants";
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+
+const { title, titlePos = Pos.Left } = Astro.props;
+const { document } = parseHTML(await Astro.slots.render("default"));
+
+//TODO: add share your experiance
+---
+
+<Container variant={ContainerVariant.Display}>
+  <ContainerTitle class="px-inset" title={title} variant={titlePos} />
+  <div
+    class="scrollbar-hide flex cursor-grab touch-pan-y overflow-x-scroll overflow-y-visible"
+    data-review
+  >
+    <Fragment set:html={document} />
+    <div class="w-[100vw] shrink-0"></div>
+  </div>
+
+  <!-- <Container variant={ContainerVariant.Inner} as="div"> -->
+  <!--   <div class="mt-8 flex flex-row-reverse items-center gap-12"> -->
+  <!--     <Arrow class="w-20 h-15" /> -->
+  <!--   </div> -->
+  <!-- </Container> -->
+</Container>

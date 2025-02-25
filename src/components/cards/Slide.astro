@@ -1,16 +1,15 @@
 ---
 import { parseHTML } from "linkedom";
-import { appendAttrElements } from "~/util/processHTML";
-import Link from "./nav/Link.astro";
+import { appendAttrElements, minmaxBloat } from "~/util/processHTML";
+import Link from "~/components/nav/Link.astro";
 
 const { title, description } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 
-appendAttrElements(
-  document.querySelectorAll("img"),
-  "class",
-  "min-w-0 object-cover",
-);
+const images = document.querySelectorAll("img");
+
+minmaxBloat(images, 0);
+appendAttrElements(images, "class", "min-w-0 object-cover h-full");
 ---
 
 <div
@@ -18,7 +17,7 @@ appendAttrElements(
   class="min-h-160 gap-6 p-5 sm:min-h-110 sm:p-0 xl:gap-7 2xl:gap-9"
 >
   <div class="hidden w-1/2 sm:flex">
-    <slot />
+    <Fragment set:html={document} />
   </div>
 
   <div class="flex flex-1 flex-col justify-center">
@@ -27,7 +26,7 @@ appendAttrElements(
     </h4>
 
     <div class="mt-1 mb-3 flex max-h-90 sm:hidden">
-      <slot />
+      <Fragment set:html={document} />
     </div>
 
     <p class="font-sans text-base">{description}</p>

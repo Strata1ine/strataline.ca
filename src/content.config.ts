@@ -4,7 +4,7 @@ import { z } from 'zod';
 export const collections = {
   index: defineCollection({
     schema: ({ image }) => z.object({
-      highlight: z.array(z.string()),
+      popular: z.array(z.string()),
     }),
   }),
   services: defineCollection({
