@@ -14,9 +14,11 @@ const services = serviceData.filter(
   (service) =>
     !index.data.popular.some((pattern) => service.slug.includes(pattern)),
 );
+
+const { ...slot } = Astro.props;
 ---
 
-<Container variant={ContainerVariant.Max}>
+<Container variant={ContainerVariant.Max} {...slot}>
   <ContainerTitle class="px-inset" title={title} variant={titlePos} />
 
   <slot name="top" />

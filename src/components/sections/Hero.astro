@@ -11,7 +11,7 @@ import Container from "~/components/div/Container.astro";
 import Link from "~/components/nav/Link.astro";
 import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
 
-const { title, description, speed: speedInt } = Astro.props;
+const { title, description, speed: speedInt, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 
 const images = document.querySelectorAll("img");
@@ -37,7 +37,10 @@ appendAttrElementsIf(
 setAttrElements(images, "loading", "eager");
 ---
 
-<main class="relative flex h-svh max-h-220 min-h-180 sm:max-h-350 sm:min-h-210">
+<main
+  class="relative flex h-svh max-h-200 min-h-150 sm:max-h-350 sm:min-h-210"
+  {...slot}
+>
   <div
     class="bg-accent absolute z-[-1] hidden h-full w-(--right-hero-offset) rounded-br-xl md:block"
   >

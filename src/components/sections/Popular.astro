@@ -17,9 +17,11 @@ function next(i: number) {
 const services = serviceData.filter((service) =>
   index.data.popular.some((pattern) => service.slug.includes(pattern)),
 );
+
+const { ...slot } = Astro.props;
 ---
 
-<Container>
+<Container {...slot}>
   <ContainerTitle title={title} variant={titlePos} />
   {
     services.map((service: any, i) => (

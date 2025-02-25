@@ -34,12 +34,26 @@ window.toggleMenu = function(e, id: string, fullscreen: boolean) {
   const menu = document.getElementById(id);
 
   if (fullscreen) {
-    document.body.classList.toggle("overflow-hidden");
-    document.documentElement.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 
   if (menu != null && menu instanceof HTMLElement) {
     menu.classList.toggle("active");
+  }
+}
+
+window.sliderTo = function(id: string, idx: number) {
+  const slider = document.getElementById(id);
+  if (slider != null && slider instanceof HTMLElement) {
+    const scroller = slider.nextElementSibling?.children[0];
+    const cards = slider.querySelectorAll('[data-slider-card]');
+    const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
+    slider.scrollTo({ left: width * idx, behavior: 'smooth' });
+    if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
+      scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
+    }
   }
 }
 
@@ -88,17 +102,17 @@ window.addEventListener('load', function() {
     animate();
   });
 
-  const bars = document.querySelectorAll('[data-review-bar]');
-  document.querySelectorAll("[data-review]").forEach((slider, i: number) => {
-    const cards = slider.querySelectorAll('[data-review-card]');
-    const bar = bars[i];
+  document.querySelectorAll("[data-slider]").forEach((slider, _: number) => {
+    const cards = slider.querySelectorAll('[data-slider-card]');
+    const scroller = slider.nextElementSibling?.children[0];
 
     const threshold = 25;
     const length = cards.length;
-    if (bar == null) return;
     if (cards.length === 0) return;
 
-    bar.setAttribute("style", `width: ${100 / length}%`);
+    if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
+      scroller.setAttribute("style", `width: ${100 / length}%`);
+    }
 
     let isDown = false;
     let startX = 0;
@@ -122,7 +136,10 @@ window.addEventListener('load', function() {
       }
 
       slider.scrollTo({ left: width * idx, behavior: 'smooth' });
-      bar.setAttribute("style", `margin-left: ${(idx) * (100 / length)}%; width: ${100 / length}%`);
+
+      if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
+        scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / length}%`);
+      }
     };
 
     slider.addEventListener('mousedown', ((e: MouseEvent): void => {
@@ -146,13 +163,10 @@ window.addEventListener('load', function() {
       }
     }) as EventListener, { passive: true });
 
-    slider.addEventListener('touchmove', ((e: TouchEvent) => {
+    slider.addEventListener('touchend', ((e: TouchEvent) => {
       if (!isDown) return;
-      const diff = e.changedTouches[0].pageX - startX;
-      if (Math.abs(diff) > threshold) {
-        finalizeDrag(e.changedTouches[0].pageX);
-        isDown = false;
-      }
+      finalizeDrag(e.changedTouches[0].pageX);
+      isDown = false;
     }) as EventListener, { passive: true });
 
     slider.addEventListener('mouseup', ((e: MouseEvent): void => { finalizeDrag(e.pageX); isDown = false; }) as EventListener);

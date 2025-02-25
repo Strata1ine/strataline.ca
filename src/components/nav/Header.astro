@@ -13,14 +13,14 @@ const mobileMenu = crypto.randomUUID();
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
       <ul class="hidden gap-10 xl:flex">
-        <li><a href="#wasd" class="text-bg font-sans">Popular</a></li>
-        <li><a href="#wasd" class="text-bg font-sans">Gallery</a></li>
+        <li><a href="#popular" class="text-bg font-sans">Popular</a></li>
+        <li><a href="#gallery" class="text-bg font-sans">Gallery</a></li>
         <li class="flex items-center">
-          <a href="#wasd" class="text-bg font-sans">Services </a>
+          <a href="#services" class="text-bg font-sans">Services </a>
           <ArrowDown class="ml-2" />
         </li>
-        <li><a href="#wasd" class="text-bg font-sans">Accomplishments</a></li>
-        <li><a href="#wasd" class="text-bg font-sans">Reviews</a></li>
+        <li><a href="#accomplishments" class="text-bg font-sans">Accomplishments</a></li>
+        <li><a href="#reviews" class="text-bg font-sans">Reviews</a></li>
       </ul>
       <div class="xl:hidden">
         <button
@@ -32,18 +32,47 @@ const mobileMenu = crypto.randomUUID();
 </header>
 
 <div
-  class="pointer-events-none absolute inset-0 z-10 flex -translate-y-[100%] overflow-scroll bg-white transition-transform duration-400 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-y-0"
+  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-[100%] overflow-scroll bg-white transition-transform duration-500 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
-  <ul class="m-auto py-20 flex flex-col gap-4">
-    <li><a href="#wasd" class="font-sans text-xl">Popular</a></li>
-    <li><a href="#wasd" class="font-sans text-xl">Gallery</a></li>
+  <ul class="m-auto flex flex-col gap-4 py-20">
+    <li>
+      <a
+        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        href="#popular"
+        class="font-sans text-xl">Popular</a
+      >
+    </li>
+    <li>
+      <a
+        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        href="#gallery"
+        class="font-sans text-xl">Gallery</a
+      >
+    </li>
     <li class="flex items-center">
-      <a href="#wasd" class="font-sans text-xl">Services </a>
+      <a
+        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        href="#services"
+        class="font-sans text-xl"
+        >Services
+      </a>
       <ArrowDown class="ml-2 h-5 w-5" />
     </li>
-    <li><a href="#wasd" class="font-sans text-xl">Accomplishments</a></li>
-    <li><a href="#wasd" class="font-sans text-xl">Reviews</a></li>
+    <li>
+      <a
+        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        href="#accomplishments"
+        class="font-sans text-xl">Accomplishments</a
+      >
+    </li>
+    <li>
+      <a
+        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        href="#reviews"
+        class="font-sans text-xl">Reviews</a
+      >
+    </li>
   </ul>
 </div>
 

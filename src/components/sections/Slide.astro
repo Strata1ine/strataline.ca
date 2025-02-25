@@ -9,7 +9,7 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
 
 const slideCardId = crypto.randomUUID();
-const { title, titlePos = Pos.Left, speed } = Astro.props;
+const { title, titlePos = Pos.Left, speed, ...slot } = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("default"));
 const cards = document.querySelectorAll("[data-slideshow-card]");
@@ -29,7 +29,7 @@ appendAttrElementsIf(
 );
 ---
 
-<Container>
+<Container {...slot}>
   <ContainerTitle title={title} variant={titlePos} />
   <div
     class={clsx(
