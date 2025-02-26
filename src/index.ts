@@ -8,52 +8,63 @@ function inScreen(e: Element) {
 }
 
 window.slideNext = function(id: string, slideNum: number) {
-  const slideshow = document.getElementById(id);
+  const slideshow = document.getElementById(id) as HTMLElement;
+  const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+  const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
 
-  if (slideshow != null && slideshow instanceof HTMLElement && slideNum >= 0 && slideNum < slideshow.children.length) {
-    const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
-    const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
+  document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
+    slideButton.children[prevIndex].classList.remove("active");
+    slideButton.children[slideNum].classList.add("active");
+    slideButton.setAttribute("data-slide-idx", slideNum.toString());
+  });
 
-    document.querySelectorAll(`[data-slide-nav="${id}"]`).forEach((slideButton) => {
-      if (!(slideButton instanceof HTMLElement)) return;
+  slideshow.children[prevIndex].classList.remove("active");
+  slideshow.children[slideNum].classList.add("active");
+  slideshow.setAttribute("data-slide-mutated", "");
+  slideshow.setAttribute("data-slide-idx", slideNum.toString());
+}
 
-      slideButton.children[prevIndex].classList.remove("active");
-      slideButton.children[slideNum].classList.add("active");
-      slideButton.setAttribute("data-slide-idx", slideNum.toString());
-    });
-
-    slideshow.children[prevIndex].classList.remove("active");
-    slideshow.children[slideNum].classList.add("active");
-    slideshow.setAttribute("data-slide-mutated", "");
-    slideshow.setAttribute("data-slide-idx", slideNum.toString());
+let lastActiveMenu: HTMLElement | null;
+window.toggleDropdown = function(e: HTMLElement) {
+  const dropdown = e.nextElementSibling as HTMLElement;
+  dropdown.classList.toggle("active");
+  if (e.classList.toggle("active")) {
+    lastActiveMenu = e;
+  } else {
+    lastActiveMenu = null;
   }
 }
 
-window.toggleMenu = function(e, id: string, fullscreen: boolean) {
-  e.classList.toggle("active");
-  const menu = document.getElementById(id);
-
-  if (fullscreen) {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    window.scrollTo(0, 0);
+window.addEventListener("click", function(e) {
+  if (lastActiveMenu != null) {
+    const targetElement = e.target as HTMLElement;
+    const menu = lastActiveMenu.nextElementSibling as HTMLElement;
+    if (!lastActiveMenu.contains(targetElement) && !menu.contains(targetElement)) {
+      window.toggleDropdown(lastActiveMenu);
+      lastActiveMenu = null;
+    }
   }
+});
 
-  if (menu != null && menu instanceof HTMLElement) {
-    menu.classList.toggle("active");
-  }
+window.toggleMenu = function(id: string) {
+  const menu = document.getElementById(id) as HTMLElement;
+
+  menu.classList.toggle("active");
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.body.classList.toggle("overflow-hidden");
+
+  const fullscreenToggle = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
+  fullscreenToggle.classList.toggle("active");
 }
 
 window.sliderTo = function(id: string, idx: number) {
-  const slider = document.getElementById(id);
-  if (slider != null && slider instanceof HTMLElement) {
-    const scroller = slider.nextElementSibling?.children[0];
-    const cards = slider.querySelectorAll('[data-slider-card]');
-    const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
-    slider.scrollTo({ left: width * idx, behavior: 'smooth' });
-    if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
-      scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
-    }
+  const slider = document.getElementById(id) as HTMLElement;
+  const scroller = slider.nextElementSibling?.children[0];
+  const cards = slider.querySelectorAll('[data-slider-card]');
+  const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
+  slider.scrollTo({ left: width * idx, behavior: 'smooth' });
+  if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
+    scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
   }
 }
 
@@ -152,7 +163,7 @@ window.addEventListener('load', function() {
       isDown = true;
       startX = e.touches[0].pageX;
       scrollLeft = slider.scrollLeft;
-    }) as EventListener);
+    }) as EventListener, { passive: true });
 
     slider.addEventListener('mouseleave', () => { isDown = false; });
     slider.addEventListener('mousemove', ((e: MouseEvent): void => {
@@ -161,7 +172,7 @@ window.addEventListener('load', function() {
       if (Math.abs(diff) > threshold) {
         slider.scrollLeft = scrollLeft - diff;
       }
-    }) as EventListener, { passive: true });
+    }) as EventListener);
 
     slider.addEventListener('touchend', ((e: TouchEvent) => {
       if (!isDown) return;

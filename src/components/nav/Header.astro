@@ -1,7 +1,14 @@
 ---
+import { getCollection } from "astro:content";
+
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ArrowDown from "~/assets/arrow_down.svg";
+
 const mobileMenu = crypto.randomUUID();
+const servicesDesktopMenu = crypto.randomUUID();
+const servicesMobileMenu = crypto.randomUUID();
+
+const serviceData = await getCollection("services");
 ---
 
 <header class="absolute z-48 w-full">
@@ -15,16 +22,45 @@ const mobileMenu = crypto.randomUUID();
       <ul class="hidden gap-10 xl:flex">
         <li><a href="#popular" class="text-bg font-sans">Popular</a></li>
         <li><a href="#gallery" class="text-bg font-sans">Gallery</a></li>
-        <li class="flex items-center">
-          <a href="#services" class="text-bg font-sans">Services </a>
-          <ArrowDown class="ml-2" />
+        <li>
+          <button
+            class="flex cursor-pointer items-center"
+            onclick={`toggleDropdown(this)`}
+          >
+            <span class="text-bg font-sans">Services </span>
+            <ArrowDown class="ml-2" />
+          </button>
+
+          <div
+            id={servicesDesktopMenu}
+            class="px-inset max-w-inner pointer-events-none absolute top-[100%] left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 transition-all duration-200 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
+          >
+            <ul
+              class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-md"
+            >
+              {
+                serviceData.map((service: any, _) => (
+                  <li>
+                    <a href="#wasd" class="text-bg font-sans">
+                      {service.data.title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </li>
-        <li><a href="#accomplishments" class="text-bg font-sans">Accomplishments</a></li>
+        <li>
+          <a href="#accomplishments" class="text-bg font-sans"
+            >Accomplishments</a
+          >
+        </li>
         <li><a href="#reviews" class="text-bg font-sans">Reviews</a></li>
       </ul>
       <div class="xl:hidden">
         <button
-          onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+          data-idx={mobileMenu}
+          onclick={`toggleMenu('${mobileMenu}', true)`}
           class="burger h-9 w-9 cursor-pointer"></button>
       </div>
     </nav>
@@ -35,40 +71,56 @@ const mobileMenu = crypto.randomUUID();
   class="pointer-events-none absolute inset-0 z-10 flex -translate-x-[100%] overflow-scroll bg-white transition-transform duration-500 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
-  <ul class="m-auto flex flex-col gap-4 py-20">
+  <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">
     <li>
       <a
-        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}', true)`}
         href="#popular"
         class="font-sans text-xl">Popular</a
       >
     </li>
     <li>
       <a
-        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}', true)`}
         href="#gallery"
         class="font-sans text-xl">Gallery</a
       >
     </li>
-    <li class="flex items-center">
-      <a
-        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
-        href="#services"
-        class="font-sans text-xl"
-        >Services
-      </a>
-      <ArrowDown class="ml-2 h-5 w-5" />
+    <li>
+      <button
+        class="flex cursor-pointer items-center"
+        onclick={`toggleDropdown(this)`}
+      >
+        <span class="font-sans text-xl">Services </span>
+        <ArrowDown class="ml-2 h-5 w-5" />
+      </button>
+      <div
+        id={servicesMobileMenu}
+        class="hidden w-fit transition-transform duration-500 [&.active]:block"
+      >
+        <ul class="bg-tone my-5 flex flex-col gap-8 rounded-md p-5">
+          {
+            serviceData.map((service: any, _) => (
+              <li>
+                <a href="#wasd" class="font-sans text-xl">
+                  {service.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </li>
     <li>
       <a
-        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}', true)`}
         href="#accomplishments"
         class="font-sans text-xl">Accomplishments</a
       >
     </li>
     <li>
       <a
-        onclick={`toggleMenu(this, '${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}', true)`}
         href="#reviews"
         class="font-sans text-xl">Reviews</a
       >
