@@ -44,7 +44,6 @@
   --radius-lg: .5rem;
   --radius-xl: .75rem;
 
-  --text-sm: clamp(0.9rem, 2.1vw, 1.2rem);
   --text-base: clamp(1.1rem, 2.1vw, 1.45rem);
   --text-bg: clamp(1.1rem, 2vw, 1.45rem);
   --text-lg: clamp(1.3rem, 2.5vw, 1.9rem);

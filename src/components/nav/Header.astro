@@ -11,7 +11,7 @@ const servicesMobileMenu = crypto.randomUUID();
 const serviceData = await getCollection("services");
 ---
 
-<header class="absolute z-48 w-full">
+<header class="absolute z-48 w-full bg-white md:bg-transparent">
   <Container
     as="div"
     variant={ContainerVariant.Inner}
@@ -68,7 +68,7 @@ const serviceData = await getCollection("services");
 </header>
 
 <div
-  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-[100%] overflow-scroll bg-white transition-transform duration-500 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-[100%] overflow-scroll bg-white transition-transform duration-300 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">

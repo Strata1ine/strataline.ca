@@ -10,6 +10,8 @@ import playformCompress from '@playform/compress';
 
 import sitemap from '@astrojs/sitemap';
 
+import compressor from 'astro-compressor';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://strataline.ca',
@@ -21,20 +23,15 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [
-    AutoImport({
-      imports: [
-        {
-          './src/components/sections/': 'Section',
-          './src/components/cards/': 'Card',
-          './src/components/variants.ts': 'Variant',
-        },
-      ],
-    }),
-    mdx({
-      rehypePlugins: [rehypeUnwrapImages]
-    }),
-    playformCompress(),
-    sitemap(),
-  ],
+  integrations: [AutoImport({
+    imports: [
+      {
+        './src/components/sections/': 'Section',
+        './src/components/cards/': 'Card',
+        './src/components/variants.ts': 'Variant',
+      },
+    ],
+  }), mdx({
+    rehypePlugins: [rehypeUnwrapImages]
+  }), playformCompress(), sitemap(), compressor()],
 });

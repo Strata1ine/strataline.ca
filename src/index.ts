@@ -51,6 +51,9 @@ window.toggleMenu = function(id: string) {
 
   menu.classList.toggle("active");
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  if (document.scrollingElement != null) {
+    document.scrollingElement.scrollTop = 0;
+  }
   document.body.classList.toggle("overflow-hidden");
 
   const fullscreenToggle = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
@@ -59,13 +62,10 @@ window.toggleMenu = function(id: string) {
 
 window.sliderTo = function(id: string, idx: number) {
   const slider = document.getElementById(id) as HTMLElement;
-  const scroller = slider.nextElementSibling?.children[0];
   const cards = slider.querySelectorAll('[data-slider-card]');
   const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
   slider.scrollTo({ left: width * idx, behavior: 'smooth' });
-  if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
-    scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
-  }
+  (slider.nextElementSibling?.children[0]).setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
 }
 
 window.addEventListener('load', function() {
@@ -115,15 +115,13 @@ window.addEventListener('load', function() {
 
   document.querySelectorAll("[data-slider]").forEach((slider, _: number) => {
     const cards = slider.querySelectorAll('[data-slider-card]');
-    const scroller = slider.nextElementSibling?.children[0];
+    const scroller = slider.nextElementSibling?.children[0] as HTMLElement;
 
     const threshold = 25;
     const length = cards.length;
-    if (cards.length === 0) return;
+    if (length === 0) return;
 
-    if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
-      scroller.setAttribute("style", `width: ${100 / length}%`);
-    }
+    scroller.setAttribute("style", `width: ${100 / length}%`);
 
     let isDown = false;
     let startX = 0;
@@ -136,9 +134,11 @@ window.addEventListener('load', function() {
       const diff = pageX - startX;
       const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
       let steps = Math.round(Math.abs(diff) / width);
+
       if (steps === 0 && Math.abs(diff) > threshold) {
         steps = 1;
       }
+
 
       if (diff < 0) {
         idx = Math.min(idx + steps, cards.length - 1);
@@ -146,11 +146,9 @@ window.addEventListener('load', function() {
         idx = Math.max(idx - steps, 0);
       }
 
-      slider.scrollTo({ left: width * idx, behavior: 'smooth' });
 
-      if (scroller != null && scroller.hasAttribute("data-slider-scroller")) {
-        scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / length}%`);
-      }
+      slider.scrollTo({ left: width * idx, behavior: 'smooth' });
+      scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / length}%`);
     };
 
     slider.addEventListener('mousedown', ((e: MouseEvent): void => {

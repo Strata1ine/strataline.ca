@@ -1,5 +1,5 @@
 ---
-const { title, description, location } = Astro.props;
+const { title, description, location, stars = 5 } = Astro.props;
 import Star from "~/assets/star.svg";
 ---
 
@@ -16,12 +16,8 @@ import Star from "~/assets/star.svg";
     {title}
   </h4>
 
-  <div class="mb-5 flex gap-2">
-    <Star />
-    <Star />
-    <Star />
-    <Star />
-    <Star />
+  <div class="mb-3 flex gap-2">
+    {Array.from({ length: stars }, (_) => <Star />)}
   </div>
 
   <p class="font-sans text-base italic">{description}</p>

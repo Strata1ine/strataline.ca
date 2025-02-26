@@ -7,7 +7,7 @@ popular:
 <Section.Hero
   title="Renovations designed to transform your space"
   description="We have been transforming spaces dust-free for decades."
-  speed="3000"
+  speed={3000}
 >
   !["A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."](./slideshow/kitchen.jpg)
   !["A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."](./slideshow/dining_room.jpg)
@@ -28,7 +28,7 @@ popular:
 >
   <Section.TextCarousel
     slot="bottom"
-    speed="0.45"
+    speed={0.45}
     text={["Made with love", "No scrape of dust left", "Absolutely revelatory", "Expert opinions"]}
   />
 </Section.LessPopular>
@@ -36,7 +36,7 @@ popular:
 <Section.Slide
   title="Our accomplishments"
   titlePos={Variant.Pos.Right}
-  speed="3000"
+  speed={3000}
   id="accomplishments"
 >
   <Card.Slide
@@ -76,21 +76,25 @@ popular:
   <Card.Review
     title="Maggie and Scott"
     location="Mississauga"
+    stars={5}
     description="My husband and I are unbelievably happy with the work that Max and his team did on our ceilings in the house. The professionalism of this team is incredible."
   />
   <Card.Review
     title="Jefferson Grove"
     location="Burlington"
+    stars={5}
     description="The whole process from beginning to end was an absolute pleasure. Max is a great communicator and was always quick to reply to texts or emails. We highly recommend Strataline!"
   />
   <Card.Review
     title="Olivia"
     location="Toronto"
+    stars={5}
     description="Extremely clean and tidy! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!"
   />
   <Card.Review
     title="Lyn Litvack"
     location="Markham"
+    stars={5}
     description="Max is the ultimate professional, immaculate, contentious and polite. He is punctual and follows up on things quickly. The work to our stairs is transforming and with his guidance we are thrilled with the finished product."
   />
 </Section.Review>
