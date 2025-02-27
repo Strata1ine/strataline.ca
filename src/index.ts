@@ -50,10 +50,14 @@ window.toggleMenu = function(id: string) {
   const menu = document.getElementById(id) as HTMLElement;
 
   menu.classList.toggle("active");
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  if (document.scrollingElement != null) {
-    document.scrollingElement.scrollTop = 0;
-  }
+
+  // bad api
+  setTimeout(() => {
+    if (document.scrollingElement != null) {
+      document.scrollingElement.scrollTop = 0;
+    }
+  }, 0);
+
   document.body.classList.toggle("overflow-hidden");
 
   const fullscreenToggle = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
@@ -68,12 +72,12 @@ window.sliderTo = function(id: string, idx: number) {
   (slider.nextElementSibling?.children[0]).setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
 }
 
-window.addEventListener('load', function() {
+window.onload = () => {
   document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
     const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "3000", 10);
     const speed = isNaN(speedAttr) ? 1000 : speedAttr;
 
-    this.setInterval(() => {
+    setInterval(() => {
       if (!inScreen(slideshow)) {
         return;
       }
@@ -180,4 +184,4 @@ window.addEventListener('load', function() {
 
     slider.addEventListener('mouseup', ((e: MouseEvent): void => { finalizeDrag(e.pageX); isDown = false; }) as EventListener);
   });
-});
+}

@@ -11,7 +11,7 @@ const servicesMobileMenu = crypto.randomUUID();
 const serviceData = await getCollection("services");
 ---
 
-<header class="absolute z-48 w-full bg-white md:bg-transparent">
+<header class="absolute z-50 w-full bg-white md:bg-transparent">
   <Container
     as="div"
     variant={ContainerVariant.Inner}
@@ -28,7 +28,7 @@ const serviceData = await getCollection("services");
             onclick={`toggleDropdown(this)`}
           >
             <span class="text-bg font-sans">Services </span>
-            <ArrowDown class="ml-2" />
+            <ArrowDown class="ml-3 h-4 w-4" />
           </button>
 
           <div
@@ -92,7 +92,7 @@ const serviceData = await getCollection("services");
         onclick={`toggleDropdown(this)`}
       >
         <span class="font-sans text-xl">Services </span>
-        <ArrowDown class="ml-2 h-5 w-5" />
+        <ArrowDown class="ml-3 h-5 w-5" />
       </button>
       <div
         id={servicesMobileMenu}

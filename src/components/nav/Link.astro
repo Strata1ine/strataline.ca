@@ -1,14 +1,16 @@
 ---
 import clsx from "clsx";
-const { class: customClass, ...slot } = Astro.props;
+const { as = "a", class: customClass, ...slot } = Astro.props;
+const Tag = as;
 ---
 
-<a
+<Tag
   class={clsx(
-    `bg-white border-black rounded-lg border-[1.5px] font-serif font-bold table py-2 px-5 xl:py-[.6rem] xl:px-[1.4rem] text-lg`,
+    `bg-white table border-black rounded-lg border-[1.5px] font-serif font-bold py-2 px-5 xl:py-[.6rem] xl:px-[1.4rem] text-lg`,
+
     customClass,
   )}
   {...slot}
 >
   <slot />
-</a>
+</Tag>

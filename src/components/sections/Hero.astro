@@ -7,6 +7,7 @@ import {
   setAttrElements,
 } from "~/util/processHTML";
 
+import Mailbox from "~/assets/mailbox.svg";
 import Container from "~/components/div/Container.astro";
 import Link from "~/components/nav/Link.astro";
 import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
@@ -38,7 +39,7 @@ setAttrElements(images, "loading", "eager");
 ---
 
 <main
-  class="relative flex h-svh max-h-180 min-h-150 sm:max-h-350 sm:min-h-210"
+  class="relative flex h-svh max-h-180 min-h-150 overflow-x-clip sm:max-h-350 sm:min-h-210"
   {...slot}
 >
   <div
@@ -50,59 +51,138 @@ setAttrElements(images, "loading", "eager");
     as="div"
     class="flex items-center gap-6 pt-15 sm:py-0 xl:gap-7 2xl:gap-9"
   >
-    <SlideBtnArray
-      idx={desktopSlideShowId}
-      class="hidden flex-col gap-5 xl:flex"
-      length={length}
-    />
-
-    <div class="hidden w-[55%] sm:block xl:w-1/2">
-      <div
-        id={desktopSlideShowId}
-        class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
-        data-slideshow
-        data-slideshow-speed=`${speedInt}`
-      >
-        <Fragment set:html={document} />
-      </div>
+    <div class="hidden w-1/2 sm:flex">
       <SlideBtnArray
         idx={desktopSlideShowId}
+        class="mr-6 hidden flex-col justify-center gap-5 xl:mr-7 xl:flex 2xl:mr-9"
         length={length}
-        class="mt-inset flex justify-center gap-5 xl:hidden"
       />
+
+      <div>
+        <div
+          id={desktopSlideShowId}
+          class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
+          data-slideshow
+          data-slideshow-speed=`${speedInt}`
+        >
+          <Fragment set:html={document} />
+        </div>
+
+        <SlideBtnArray
+          idx={desktopSlideShowId}
+          length={length}
+          class="mt-inset flex justify-center gap-5 xl:hidden"
+        />
+      </div>
     </div>
 
-    <div class="flex-1">
+    <div class="relative flex-1">
       <h2 class="font-serif text-4xl font-bold text-balance">
         {title}
       </h2>
 
-      <div class="mt-4 sm:hidden">
-        <div class="flex">
-          <div
-            class="-ml-inset flex h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
-            id={mobileSlideShowId}
-            data-slideshow
-            data-slideshow-speed=`${speedInt}`
-          >
-            <Fragment set:html={document} />
-          </div>
-
-          <SlideBtnArray
-            class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
-            idx={mobileSlideShowId}
-            length={length}
-          />
+      <div class="mt-4 flex sm:hidden">
+        <div
+          class="-ml-inset flex h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
+          id={mobileSlideShowId}
+          data-slideshow
+          data-slideshow-speed=`${speedInt}`
+        >
+          <Fragment set:html={document} />
         </div>
+
+        <SlideBtnArray
+          class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
+          idx={mobileSlideShowId}
+          length={length}
+        />
       </div>
 
       <p class="text-bg mt-2 font-sans">
         {description}
       </p>
 
-      <div class="mt-8">
-        <Link href="#wasd">Let's Talk</Link>
+      <div class="mt-8 pb-17">
+        <div class="pointer-events-none absolute z-1 h-lvh w-full">
+          <button
+            class="pointer-events-auto absolute bottom-full flex h-13 w-33 translate-y-full cursor-pointer items-center justify-center rounded-lg border-[1.5px] border-black bg-white transition-all sm:h-15 sm:w-37 xl:h-17 xl:w-42"
+            id="letsTalk"
+          >
+            <Mailbox
+              class="absolute h-10 w-10 text-white opacity-0 transition-all sm:h-11 sm:w-11"
+            />
+            <span
+              class="font-serif text-lg font-semibold text-nowrap opacity-100 transition-all"
+              >Let's Talk</span
+            >
+          </button>
+        </div>
       </div>
     </div>
   </Container>
 </main>
+
+<script>
+  const letsTalk = document.getElementById("letsTalk") as HTMLElement;
+  let yOffset = letsTalk.getBoundingClientRect().top + window.scrollY;
+  const span = letsTalk.querySelector("span") as HTMLElement;
+  const svg = letsTalk.querySelector("svg") as HTMLElement;
+  let triggered = false;
+
+  function swapClazz(e: HTMLElement, classes: string) {
+    for (let clazz of classes.split(" ")) {
+      e.classList.toggle(clazz);
+    }
+  }
+
+  function toggle() {
+    swapClazz(
+      letsTalk,
+      "fixed translate-x-[calc(100vw-170%)] sm:translate-x-[calc(50vw-160%)] bottom-8 sm:bottom-13 sm:left-1/2",
+    );
+    swapClazz(letsTalk, "absolute bottom-full translate-y-full");
+
+    swapClazz(span, "absolute opacity-100 opacity-0");
+    swapClazz(svg, "absolute static opacity-0");
+
+    swapClazz(
+      letsTalk,
+      "h-13 w-33 sm:h-15 sm:w-37 xl:h-17 xl:w-42 rounded-lg bg-white border-solid",
+    );
+    swapClazz(
+      letsTalk,
+      "w-17 h-17 sm:w-20 sm:h-20 rounded-[50%] bg-accent-dark",
+    );
+  }
+
+  function test() {
+    if (window.scrollY < yOffset) {
+      if (!triggered) {
+        toggle();
+        triggered = true;
+      }
+    } else {
+      if (triggered) {
+        toggle();
+        triggered = false;
+      }
+    }
+  }
+
+  setTimeout(() => {
+    letsTalk?.classList.add("duration-1000");
+    span?.classList.add("duration-1000");
+    svg?.classList.add("duration-1000");
+  }, 2);
+
+  if (window.scrollY > yOffset) {
+    triggered = true;
+  } else {
+    toggle();
+  }
+
+  test();
+  window.addEventListener("scroll", () => {
+    test();
+  });
+</script>

@@ -45,8 +45,8 @@
   --radius-xl: .75rem;
 
   --text-base: clamp(1.1rem, 2.1vw, 1.45rem);
-  --text-bg: clamp(1.1rem, 2vw, 1.45rem);
-  --text-lg: clamp(1.3rem, 2.5vw, 1.9rem);
+  --text-bg: clamp(1.3rem, 2vw, 1.45rem);
+  --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
   --text-xl: clamp(1.6rem, 4vw, 2.3rem);
   --text-xl--line-height: 1.2;
   --text-2xl: clamp(2.0rem, 4vw, 3rem);

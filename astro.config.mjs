@@ -5,11 +5,8 @@ import rehypeUnwrapImages from 'rehype-unwrap-images';
 import AutoImport from 'astro-auto-import';
 
 import tailwindcss from '@tailwindcss/vite';
-
 import playformCompress from '@playform/compress';
-
 import sitemap from '@astrojs/sitemap';
-
 import compressor from 'astro-compressor';
 
 // https://astro.build/config
