@@ -46,33 +46,45 @@ window.addEventListener("click", function(e) {
   }
 });
 
-window.toggleMenu = function(id: string) {
-  const menu = document.getElementById(id) as HTMLElement;
-
-  menu.classList.toggle("active");
-
-  // bad api
-  setTimeout(() => {
-    if (document.scrollingElement != null) {
-      document.scrollingElement.scrollTop = 0;
-    }
-  }, 0);
-
+window.toggleMenu = function(id: string, dontScroll: boolean) {
+  (document.getElementById(id) as HTMLElement).classList.toggle("active");
   document.body.classList.toggle("overflow-hidden");
 
-  const fullscreenToggle = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
-  fullscreenToggle.classList.toggle("active");
+  // bad api
+  if (!dontScroll) {
+    setTimeout(() => {
+      if (document.scrollingElement != null) {
+        document.scrollingElement.scrollTop = 0;
+      }
+    }, 0);
+  }
+
+  // the menu's trigger button, optional
+  const e = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
+  if (e != null) {
+    e.classList.toggle("active");
+  }
 }
 
 window.sliderTo = function(id: string, idx: number) {
   const slider = document.getElementById(id) as HTMLElement;
   const cards = slider.querySelectorAll('[data-slider-card]');
-  const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
+  const style = window.getComputedStyle(cards[idx]);
+  const width = cards[idx].getBoundingClientRect().width + parseFloat(style.marginLeft) || 0;
   slider.scrollTo({ left: width * idx, behavior: 'smooth' });
   (slider.nextElementSibling?.children[0]).setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
 }
 
 window.onload = () => {
+  setTimeout(() => {
+    document.querySelectorAll("[data-safari-bad]").forEach(e => {
+      const classes = (e.getAttribute("data-safari-bad") || "").split(" ");
+      for (let clazz of classes) {
+        e.classList.add(clazz);
+      }
+    });
+  }, 20);
+
   document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
     const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "3000", 10);
     const speed = isNaN(speedAttr) ? 1000 : speedAttr;
@@ -136,13 +148,13 @@ window.onload = () => {
       if (!isDown) return;
 
       const diff = pageX - startX;
-      const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
+      const style = window.getComputedStyle(cards[idx]);
+      const width = cards[idx].getBoundingClientRect().width + parseFloat(style.marginLeft);
       let steps = Math.round(Math.abs(diff) / width);
 
       if (steps === 0 && Math.abs(diff) > threshold) {
         steps = 1;
       }
-
 
       if (diff < 0) {
         idx = Math.min(idx + steps, cards.length - 1);

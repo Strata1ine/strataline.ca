@@ -9,7 +9,6 @@ import {
 
 import Mailbox from "~/assets/mailbox.svg";
 import Container from "~/components/div/Container.astro";
-import Link from "~/components/nav/Link.astro";
 import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
 
 const { title, description, speed: speedInt, ...slot } = Astro.props;
@@ -25,7 +24,13 @@ minmaxBloat(images, 0);
 appendAttrElements(
   images,
   "class",
-  "object-cover min-w-0 w-0 h-full transition-[width] duration-700 [&.active]:w-full",
+  "object-cover min-w-0 w-0 h-full [&.active]:w-full",
+);
+
+appendAttrElements(
+  images,
+  "data-safari-bad",
+  "transition-[width] duration-700",
 );
 
 appendAttrElementsIf(
@@ -39,7 +44,7 @@ setAttrElements(images, "loading", "eager");
 ---
 
 <main
-  class="relative flex h-svh max-h-180 min-h-150 overflow-x-clip sm:max-h-350 sm:min-h-210"
+  class="relative flex h-svh max-h-180 min-h-160 overflow-x-clip sm:max-h-350 sm:min-h-210"
   {...slot}
 >
   <div
@@ -54,7 +59,7 @@ setAttrElements(images, "loading", "eager");
     <div class="hidden w-1/2 sm:flex">
       <SlideBtnArray
         idx={desktopSlideShowId}
-        class="mr-6 hidden flex-col justify-center gap-5 xl:mr-7 xl:flex 2xl:mr-9"
+        class="hidden flex-col justify-center gap-5 xl:mr-7 xl:flex 2xl:mr-9"
         length={length}
       />
 
@@ -98,21 +103,25 @@ setAttrElements(images, "loading", "eager");
         />
       </div>
 
-      <p class="text-bg mt-2 font-sans">
+      <p class="text-bg mt-2 font-sans xl:mt-4">
         {description}
       </p>
 
       <div class="mt-8 pb-17">
         <div class="pointer-events-none absolute z-1 h-lvh w-full">
           <button
-            class="pointer-events-auto absolute bottom-full flex h-13 w-33 translate-y-full cursor-pointer items-center justify-center rounded-lg border-[1.5px] border-black bg-white transition-all sm:h-15 sm:w-37 xl:h-17 xl:w-42"
+            data-safari-bad="transition-all duration-1000"
+            class="pointer-events-auto absolute bottom-full flex h-13 w-33 translate-y-full cursor-pointer items-center justify-center rounded-lg border-[1.4px] border-black bg-white sm:h-15 sm:w-37 xl:h-17 xl:w-42"
             id="letsTalk"
+            onclick={`toggleMenu("talkMenu", true)`}
           >
             <Mailbox
-              class="absolute h-10 w-10 text-white opacity-0 transition-all sm:h-11 sm:w-11"
+              data-safari-bad="transition-all duration-1000"
+              class="absolute h-10 w-10 text-white opacity-0 sm:h-11 sm:w-11"
             />
             <span
-              class="font-serif text-lg font-semibold text-nowrap opacity-100 transition-all"
+              data-safari-bad="transition-all duration-1000"
+              class="font-serif text-lg font-semibold text-nowrap opacity-100"
               >Let's Talk</span
             >
           </button>
@@ -124,9 +133,9 @@ setAttrElements(images, "loading", "eager");
 
 <script>
   const letsTalk = document.getElementById("letsTalk") as HTMLElement;
-  let yOffset = letsTalk.getBoundingClientRect().top + window.scrollY;
   const span = letsTalk.querySelector("span") as HTMLElement;
   const svg = letsTalk.querySelector("svg") as HTMLElement;
+  let yOffset = letsTalk.getBoundingClientRect().top + window.scrollY;
   let triggered = false;
 
   function swapClazz(e: HTMLElement, classes: string) {
@@ -138,16 +147,16 @@ setAttrElements(images, "loading", "eager");
   function toggle() {
     swapClazz(
       letsTalk,
-      "fixed translate-x-[calc(100vw-170%)] sm:translate-x-[calc(50vw-160%)] bottom-8 sm:bottom-13 sm:left-1/2",
+      "fixed translate-x-[calc(100vw-170%)] sm:translate-x-[calc(50vw-200%)] bottom-8 sm:bottom-13",
     );
     swapClazz(letsTalk, "absolute bottom-full translate-y-full");
 
-    swapClazz(span, "absolute opacity-100 opacity-0");
+    swapClazz(span, "absolute opacity-100 opacity-0 pointer-events-none");
     swapClazz(svg, "absolute static opacity-0");
 
     swapClazz(
       letsTalk,
-      "h-13 w-33 sm:h-15 sm:w-37 xl:h-17 xl:w-42 rounded-lg bg-white border-solid",
+      "h-13 w-33 sm:h-15 sm:w-37 xl:h-17 xl:w-42 rounded-lg bg-white border-black border-transparent",
     );
     swapClazz(
       letsTalk,
@@ -168,12 +177,6 @@ setAttrElements(images, "loading", "eager");
       }
     }
   }
-
-  setTimeout(() => {
-    letsTalk?.classList.add("duration-1000");
-    span?.classList.add("duration-1000");
-    svg?.classList.add("duration-1000");
-  }, 2);
 
   if (window.scrollY > yOffset) {
     triggered = true;

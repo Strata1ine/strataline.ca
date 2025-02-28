@@ -11,7 +11,7 @@ const servicesMobileMenu = crypto.randomUUID();
 const serviceData = await getCollection("services");
 ---
 
-<header class="absolute z-50 w-full bg-white md:bg-transparent">
+<header class="absolute z-50 w-full bg-white xl:bg-transparent">
   <Container
     as="div"
     variant={ContainerVariant.Inner}
@@ -33,7 +33,8 @@ const serviceData = await getCollection("services");
 
           <div
             id={servicesDesktopMenu}
-            class="px-inset max-w-inner pointer-events-none absolute top-[100%] left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 transition-all duration-200 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
+            data-safari-bad="transition-all duration-200"
+            class="px-inset max-w-inner pointer-events-none absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
           >
             <ul
               class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-md"
@@ -60,7 +61,7 @@ const serviceData = await getCollection("services");
       <div class="xl:hidden">
         <button
           data-idx={mobileMenu}
-          onclick={`toggleMenu('${mobileMenu}', true)`}
+          onclick={`toggleMenu('${mobileMenu}')`}
           class="burger h-9 w-9 cursor-pointer"></button>
       </div>
     </nav>
@@ -68,20 +69,21 @@ const serviceData = await getCollection("services");
 </header>
 
 <div
-  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-[100%] overflow-scroll bg-white transition-transform duration-300 xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  data-safari-bad="transition-transform duration-300"
+  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">
     <li>
       <a
-        onclick={`toggleMenu('${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}')`}
         href="#popular"
         class="font-sans text-xl">Popular</a
       >
     </li>
     <li>
       <a
-        onclick={`toggleMenu('${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}')`}
         href="#gallery"
         class="font-sans text-xl">Gallery</a
       >
@@ -113,14 +115,14 @@ const serviceData = await getCollection("services");
     </li>
     <li>
       <a
-        onclick={`toggleMenu('${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}')`}
         href="#accomplishments"
         class="font-sans text-xl">Accomplishments</a
       >
     </li>
     <li>
       <a
-        onclick={`toggleMenu('${mobileMenu}', true)`}
+        onclick={`toggleMenu('${mobileMenu}')`}
         href="#reviews"
         class="font-sans text-xl">Reviews</a
       >
@@ -139,11 +141,13 @@ const serviceData = await getCollection("services");
       position: absolute;
       top: 50%;
       left: 0;
+      right: 0;
       background: var(--color-black);
-      width: 100%;
       height: 2px;
       transform-origin: center;
-      transition: transform 250ms;
+      transition:
+        transform 250ms ease,
+        left 250ms ease;
     }
 
     &::before {
@@ -152,11 +156,13 @@ const serviceData = await getCollection("services");
 
     &::after {
       transform: translateY(7px);
+      left: 30%;
     }
 
     &.active {
       &::after {
         transform: rotate(45deg);
+        left: 0;
       }
 
       &::before {

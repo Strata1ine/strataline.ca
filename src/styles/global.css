@@ -22,6 +22,7 @@
   --tracking-*: initial;
   --aspect-video-*: initial;
 
+  --color-accent-light: #FFEEEE;
   --color-accent: #FFE3E3;
   --color-accent-dark: #D85B5B;
   --color-black: #2B2B2B;
@@ -51,10 +52,10 @@
   --text-xl--line-height: 1.2;
   --text-2xl: clamp(2.0rem, 4vw, 3rem);
   --text-2xl--line-height: 1.05;
-  --text-3xl: clamp(2.3rem, 6vw, 3.5rem);
+  --text-3xl: clamp(2.3rem, 4.5vw, 3.5rem);
   --text-3xl--line-height: 1.15;
-  --text-4xl: clamp(2.3rem, 4vw, 3.8rem);
-  --text-4xl--line-height: 1.1;
+  --text-4xl: clamp(2.3rem, 4.5vw, 4.4rem);
+  --text-4xl--line-height: 1.02;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;
@@ -69,7 +70,6 @@
 :root {
   background: var(--color-white);
   color: var(--color-black);
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;

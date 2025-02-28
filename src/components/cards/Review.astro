@@ -5,19 +5,24 @@ import Star from "~/assets/star.svg";
 
 <div
   data-slider-card
-  class="border-accent relative mt-6 w-full max-w-120 min-w-0 shrink-0 rounded-md border-[1.5px] p-9 select-none sm:ml-9 xl:translate-x-(--spacing-inner-diff)"
+  class="border-accent relative mt-5 w-fit max-w-120 min-w-0 shrink-0 rounded-md border-[1.4px] p-7 select-none sm:ml-10 sm:p-9 xl:translate-x-(--spacing-inner-diff)"
 >
   <div
     class="bg-accent absolute top-0 left-10 -translate-y-1/2 rounded-md px-4 py-2"
   >
     <span class="font-sans text-sm font-semibold">{location}</span>
   </div>
+
   <h4 class="mb-2 font-serif text-xl font-semibold">
     {title}
   </h4>
 
-  <div class="mb-3 flex gap-2">
-    {Array.from({ length: stars }, (_) => <Star />)}
+  <div class="mb-5 flex gap-2">
+    {
+      Array.from({ length: stars }, (_) => (
+        <Star class="h-5 w-5 sm:h-6 sm:w-6" />
+      ))
+    }
   </div>
 
   <p class="font-sans text-base italic">{description}</p>

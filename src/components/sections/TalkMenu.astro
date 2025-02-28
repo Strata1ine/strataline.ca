@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+const [index] = await getCollection("index");
+
+import Email from "~/assets/email.svg";
+import Phone from "~/assets/phone.svg";
+---
+
+<div
+  data-safari-bad="transition-transform duration-500"
+  id="talkMenu"
+  class="pointer-events-none fixed inset-0 z-50 flex translate-y-full items-center justify-center overflow-scroll bg-white opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-1000"
+>
+  <div class="px-inset max-w-250 grid w-full sm:grid-cols-2">
+    <div>
+      <h3 class="font-serif text-4xl font-bold">Let's Talk</h3>
+      <div class="bg-accent-light mt-5 rounded-md p-6">
+        <!-- <ul> -->
+        <!--   <li class="gap-inset flex flex-row items-center"> -->
+        <!--     <Phone class="w-9 sm:w-12" /> -->
+        <!--     <a -->
+        <!--       class="font-sans text-base" -->
+        <!--       href=`tel:${index.data.contact.phone}` -->
+        <!--       >{index.data.contact.phone}</a -->
+        <!--     > -->
+        <!--   </li> -->
+        <!--   <li class="gap-inset flex flex-row items-center"> -->
+        <!--     <Email class="w-9 sm:w-12" /> -->
+        <!--     <a -->
+        <!--       class="text-accent-dark font-sans text-base underline" -->
+        <!--       href=`mailto:${index.data.contact.email}` -->
+        <!--       >{index.data.contact.email}</a -->
+        <!--     > -->
+        <!--   </li> -->
+        <!-- </ul> -->
+
+        <p class="font-sans text-base">
+          {index.data.contact.messege}
+        </p>
+      </div>
+    </div>
+
+    <div></div>
+  </div>
+</div>

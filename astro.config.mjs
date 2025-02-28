@@ -25,6 +25,7 @@ export default defineConfig({
       {
         './src/components/sections/': 'Section',
         './src/components/cards/': 'Card',
+        './src/components/nav/': 'Nav',
         './src/components/variants.ts': 'Variant',
       },
     ],

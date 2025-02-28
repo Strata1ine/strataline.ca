@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const [index] = await getCollection("index");
+const {
+  imageClass,
+  ...slot
+} = Astro.props;
+---
+
+<ul {...slot}>
+  {
+    index.data.socials.map((social: any) => (
+      <li>
+        <a target="_blank" href={social.url}>
+          <Image class={imageClass} src={social.icon} alt={`${social.name} Icon`}></Image>
+        </a>
+      </li>
+    ))
+  }
+</ul>

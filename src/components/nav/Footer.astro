@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+
+import Socials from "~/components/nav/Socials.astro";
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+
+const [index] = await getCollection("index");
+---
+
+<Container
+  class="py-inset bg-white border-accent flex items-center justify-between border-t-[1.4px] relative z-47"
+  as="footer"
+  variant={ContainerVariant.Inner}
+>
+  <span class="text-bg font-sans"><b>&copy; {index.data.name}</b>. 2025</span>
+  <Socials imageClass="w-12 sm:w-14 xl:w-18" class="flex flex-row" />
+</Container>
