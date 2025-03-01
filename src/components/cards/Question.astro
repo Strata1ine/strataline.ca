@@ -1,0 +1,11 @@
+---
+const { title, description, i = 1 } = Astro.props;
+---
+
+<div>
+  <div class="flex items-baseline gap-4">
+    <h6 class="text-accent-dark font-serif text-5xl font-bold">o{i}</h6>
+    <h5 class="font-serif text-xl">{title}</h5>
+  </div>
+  <p class="font-sans text-base">{description}</p>
+</div>

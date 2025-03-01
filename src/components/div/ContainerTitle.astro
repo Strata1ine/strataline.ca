@@ -3,24 +3,20 @@ import clsx from "clsx";
 import { Pos } from "~/components/variants.ts";
 
 const { title, class: customClass = "", variant = Pos.Left } = Astro.props;
+
+export const titleMap = {
+  [Pos.Left]: "mr-auto",
+  [Pos.Right]: "ml-auto text-right",
+};
 ---
 
-{
-  title && variant == Pos.Right && (
-    <div class={clsx(`max-w-inner mb-15 w-full lg:mx-auto`, customClass)}>
-      <h3 class="ml-auto max-w-[20ch] text-right font-serif text-3xl font-bold text-balance">
-        {title}
-      </h3>
-    </div>
-  )
-}
-
-{
-  title && variant == Pos.Left && (
-    <div class={clsx(`max-w-inner mb-15 w-full lg:mx-auto`, customClass)}>
-      <h3 class="mr-auto max-w-[20ch] font-serif text-3xl font-bold text-balance">
-        {title}
-      </h3>
-    </div>
-  )
-}
+<div class={clsx(`max-w-inner mb-15 w-full lg:mx-auto`, customClass)}>
+  <h3
+    class={clsx(
+      `max-w-[20ch] font-serif text-3xl font-bold text-balance`,
+      titleMap[variant],
+    )}
+  >
+    {title}
+  </h3>
+</div>

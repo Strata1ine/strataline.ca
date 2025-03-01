@@ -11,7 +11,7 @@ const servicesMobileMenu = crypto.randomUUID();
 const serviceData = await getCollection("services");
 ---
 
-<header class="absolute z-50 w-full bg-white xl:bg-transparent">
+<header class="absolute z-50 w-full bg-white lg:bg-transparent">
   <Container
     as="div"
     variant={ContainerVariant.Inner}
@@ -19,7 +19,7 @@ const serviceData = await getCollection("services");
   >
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
-      <ul class="hidden gap-10 xl:flex">
+      <ul class="hidden gap-10 lg:flex">
         <li><a href="#popular" class="text-bg font-sans">Popular</a></li>
         <li><a href="#gallery" class="text-bg font-sans">Gallery</a></li>
         <li>
@@ -58,7 +58,7 @@ const serviceData = await getCollection("services");
         </li>
         <li><a href="#reviews" class="text-bg font-sans">Reviews</a></li>
       </ul>
-      <div class="xl:hidden">
+      <div class="lg:hidden">
         <button
           data-idx={mobileMenu}
           onclick={`toggleMenu('${mobileMenu}')`}

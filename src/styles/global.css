@@ -28,6 +28,7 @@
   --color-black: #2B2B2B;
   --color-white: #FFFAFA;
   --color-tone: #F5F5F5;
+  --color-dark: #191010;
 
   --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
   --font-sans: 'DMSans', 'Arial', 'Helvetica', sans-serif;
@@ -45,6 +46,7 @@
   --radius-lg: .5rem;
   --radius-xl: .75rem;
 
+  --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
   --text-base: clamp(1.1rem, 2.1vw, 1.45rem);
   --text-bg: clamp(1.3rem, 2vw, 1.45rem);
   --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
@@ -56,6 +58,8 @@
   --text-3xl--line-height: 1.15;
   --text-4xl: clamp(2.3rem, 4.5vw, 4.4rem);
   --text-4xl--line-height: 1.02;
+  --text-5xl: clamp(3rem, 4.5vw, 5rem);
+  --text-5xl--line-height: 1.05;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;
@@ -73,10 +77,6 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
-}
-
-.contain-paint {
-  contain: paint;
 }
 
 .scrollbar-hide {

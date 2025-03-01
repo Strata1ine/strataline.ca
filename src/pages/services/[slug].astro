@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 export async function getStaticPaths() {
   const serviceData = await getCollection("services");
   return serviceData.map((service: any) => ({
@@ -8,14 +9,74 @@ export async function getStaticPaths() {
 }
 
 import Layout from "~/layouts/Layout.astro";
+import Container from "~/components/div/Container.astro";
 
 const { slug } = Astro.params;
 const serviceData = await getCollection("services");
-const service = serviceData.find((s) => s.slug === slug);
+const service = serviceData.find((s) => s.slug === slug) as any;
 
 const { Content } = await service.render();
 ---
 
 <Layout>
+  <main
+    class="relative flex h-[80svh] max-h-180 min-h-160 overflow-x-clip sm:max-h-350 sm:min-h-180"
+  >
+    <div
+      class="bg-dark absolute z-[-1] h-full w-full rounded-br-xl sm:w-[60vw]"
+    >
+    </div>
+
+    <Container
+      as="div"
+      class="flex items-center gap-6 text-white sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
+    >
+      <div class="relative flex-1">
+        <h2 class="font-serif text-4xl font-bold text-balance">
+          {service.data.title}
+        </h2>
+
+        <div
+          class="-mr-inset my-4 ml-7 h-70 rounded-tl-md rounded-bl-md contain-paint sm:hidden"
+        >
+          {
+            service.data.covers.map((img: any, i: number) => (
+              <Image
+                class="h-full min-w-0 flex-1 object-cover"
+                src={img.src}
+                alt={img.alt}
+                loading="eager"
+                fetchpriority={i == 0 ? "high" : "low"}
+              />
+            ))
+          }
+        </div>
+
+        <p class="text-bg mt-2 font-sans xl:mt-4">
+          {service.data.description}
+        </p>
+      </div>
+
+      <div class="hidden flex-1 sm:flex">
+        <div
+          class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
+        >
+          {
+            service.data.covers.map((img: any, i: number) => (
+              <Image
+                class="h-full min-w-0 flex-1 object-cover hover:flex-5"
+                src={img.src}
+                alt={img.alt}
+                data-safari-bad="transition-[flex-grow] duration-800"
+                loading="eager"
+                fetchpriority={i == 0 ? "high" : "low"}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </main>
+
   <Content />
 </Layout>

@@ -15,7 +15,6 @@ const { title, description, speed: speedInt, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 
 const images = document.querySelectorAll("img");
-const length = images.length;
 
 const desktopSlideShowId = crypto.randomUUID();
 const mobileSlideShowId = crypto.randomUUID();
@@ -44,7 +43,7 @@ setAttrElements(images, "loading", "eager");
 ---
 
 <main
-  class="relative flex h-svh max-h-180 min-h-160 overflow-x-clip sm:max-h-350 sm:min-h-210"
+  class="relative flex h-svh max-h-200 min-h-160 overflow-x-clip sm:max-h-350 sm:min-h-210"
   {...slot}
 >
   <div
@@ -60,7 +59,7 @@ setAttrElements(images, "loading", "eager");
       <SlideBtnArray
         idx={desktopSlideShowId}
         class="hidden flex-col justify-center gap-5 xl:mr-7 xl:flex 2xl:mr-9"
-        length={length}
+        length={images.length}
       />
 
       <div>
@@ -75,7 +74,7 @@ setAttrElements(images, "loading", "eager");
 
         <SlideBtnArray
           idx={desktopSlideShowId}
-          length={length}
+          length={images.length}
           class="mt-inset flex justify-center gap-5 xl:hidden"
         />
       </div>
@@ -86,9 +85,9 @@ setAttrElements(images, "loading", "eager");
         {title}
       </h2>
 
-      <div class="mt-4 flex sm:hidden">
+      <div class="mt-4 flex h-70 sm:hidden">
         <div
-          class="-ml-inset flex h-70 flex-1 rounded-tr-md rounded-br-md contain-paint"
+          class="-ml-inset flex flex-1 rounded-tr-md rounded-br-md contain-paint"
           id={mobileSlideShowId}
           data-slideshow
           data-slideshow-speed=`${speedInt}`
@@ -99,7 +98,7 @@ setAttrElements(images, "loading", "eager");
         <SlideBtnArray
           class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
           idx={mobileSlideShowId}
-          length={length}
+          length={images.length}
         />
       </div>
 
