@@ -31,7 +31,7 @@ const { ...slot } = Astro.props;
       {
         services.map((service: any, i) => (
           <a
-            href="#wasd"
+            href=`services/${service.slug}`
             class="flex h-full w-full items-center gap-3 sm:flex-col sm:items-baseline"
           >
             <Image
@@ -39,7 +39,7 @@ const { ...slot } = Astro.props;
               width={808}
               height={416}
               fetchpriority={i == 0 ? "high" : "low"}
-              src={service.data.covers[0].path}
+              src={service.data.covers[0].src}
               alt={service.data.covers[0].alt}
             />
             <div class="flex w-1/2 flex-col justify-between gap-2 sm:w-full sm:flex-row sm:items-center">

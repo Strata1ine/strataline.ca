@@ -29,9 +29,10 @@ const { ...slot } = Astro.props;
         title={service.data.title}
         description={service.data.description}
         variant={next(i)}
+        slug={service.slug}
       >
-        {service.data.covers.map((img, _) => (
-          <Image src={img.path} alt={img.alt} />
+        {service.data.covers.map((img: any, _: number) => (
+          <Image src={img.src} alt={img.alt} />
         ))}
       </SplitCard>
     ))

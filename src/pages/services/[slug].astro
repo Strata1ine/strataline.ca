@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const serviceData = await getCollection("services");
+  return serviceData.map((service: any) => ({
+    params: { slug: service.slug },
+  }));
+}
+
+import Layout from "~/layouts/Layout.astro";
+
+const { slug } = Astro.params;
+const serviceData = await getCollection("services");
+const service = serviceData.find((s) => s.slug === slug);
+
+const { Content } = await service.render();
+---
+
+<Layout>
+  <Content />
+</Layout>

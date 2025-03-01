@@ -42,7 +42,7 @@ const serviceData = await getCollection("services");
               {
                 serviceData.map((service: any, _) => (
                   <li>
-                    <a href="#wasd" class="text-bg font-sans">
+                    <a href=`/services/${service.slug}` class="text-bg font-sans">
                       {service.data.title}
                     </a>
                   </li>

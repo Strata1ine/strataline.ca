@@ -4,7 +4,7 @@ import { appendAttrElements } from "~/util/processHTML";
 import Link from "~/components/nav/Link.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, description, variant } = Astro.props;
+const { title, description, variant, slug } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -55,7 +55,7 @@ appendAttrElements(
     </p>
 
     <div class="mt-8">
-      <Link href="#wasd">Explore More</Link>
+      <Link href=`/services/${slug}`>Explore More</Link>
     </div>
   </div>
 

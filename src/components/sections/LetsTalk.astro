@@ -1,9 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 const [index] = await getCollection("index");
-
-import Email from "~/assets/email.svg";
-import Phone from "~/assets/phone.svg";
 ---
 
 <div
@@ -35,7 +32,7 @@ import Phone from "~/assets/phone.svg";
         <!-- </ul> -->
 
         <p class="font-sans text-base">
-          {index.data.contact.messege}
+          {index.data.contact_messege}
         </p>
       </div>
     </div>
