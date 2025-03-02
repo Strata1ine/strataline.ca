@@ -2,13 +2,11 @@
 import { getCollection } from "astro:content";
 
 import Layout from "~/layouts/Layout.astro";
-import Header from "~/components/nav/Header.astro";
 
 const [index] = await getCollection("index");
 const { Content } = await index.render();
 ---
 
 <Layout>
-  <Header />
   <Content />
 </Layout>

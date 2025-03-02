@@ -11,6 +11,9 @@ import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
+  redirects: {
+    '/services': '/',
+  },
   site: 'https://strataline.ca',
   experimental: {
     svg: true,

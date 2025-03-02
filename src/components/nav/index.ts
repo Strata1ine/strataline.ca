@@ -1,3 +1,3 @@
-import Socials from './Socials.astro';
 import Link from './Link.astro';
-export { Socials, Link };
+import Header from './Header.astro';
+export { Link, Header };

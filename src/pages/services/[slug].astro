@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 export async function getStaticPaths() {
   const serviceData = await getCollection("services");
   return serviceData.map((service: any) => ({
@@ -8,7 +7,11 @@ export async function getStaticPaths() {
   }));
 }
 
+import { Image } from "astro:assets";
+
 import Layout from "~/layouts/Layout.astro";
+import Home from "~/assets/home.svg";
+import LetsTalkBtn from "~/components/nav/LetsTalkBtn.astro";
 import Container from "~/components/div/Container.astro";
 
 const { slug } = Astro.params;
@@ -20,18 +23,26 @@ const { Content } = await service.render();
 
 <Layout>
   <main
-    class="relative flex h-[80svh] max-h-180 min-h-160 overflow-x-clip sm:max-h-350 sm:min-h-180"
+    class="relative flex h-[80svh] max-h-180 min-h-190 overflow-x-clip sm:max-h-350 sm:min-h-180"
   >
-    <div
-      class="bg-dark absolute z-[-1] h-full w-full rounded-br-xl sm:w-[60vw]"
-    >
-    </div>
+    <div class="bg-dark absolute inset-0 z-[-1]"></div>
 
     <Container
       as="div"
       class="flex items-center gap-6 text-white sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
     >
       <div class="relative flex-1">
+        <button
+          class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
+          onclick="back()"
+        >
+          <Home class="w-8 sm:w-9 xl:w-12" />
+          <span
+            style="margin-bottom: 3px"
+            class="font-sans text-base leading-none font-bold">Go Back</span
+          >
+        </button>
+
         <h2 class="font-serif text-4xl font-bold text-balance">
           {service.data.title}
         </h2>
@@ -40,13 +51,12 @@ const { Content } = await service.render();
           class="-mr-inset my-4 ml-7 h-70 rounded-tl-md rounded-bl-md contain-paint sm:hidden"
         >
           {
-            service.data.covers.map((img: any, i: number) => (
+            service.data.covers.map((img: any, _: number) => (
               <Image
                 class="h-full min-w-0 flex-1 object-cover"
                 src={img.src}
                 alt={img.alt}
                 loading="eager"
-                fetchpriority={i == 0 ? "high" : "low"}
               />
             ))
           }
@@ -59,17 +69,16 @@ const { Content } = await service.render();
 
       <div class="hidden flex-1 sm:flex">
         <div
-          class="flex h-[60vh] max-h-175 min-h-130 w-full justify-evenly rounded-md contain-paint"
+          class="flex h-[60vh] max-h-175 min-h-130 justify-evenly rounded-md contain-paint"
         >
           {
-            service.data.covers.map((img: any, i: number) => (
+            service.data.covers.map((img: any, _: number) => (
               <Image
                 class="h-full min-w-0 flex-1 object-cover hover:flex-5"
                 src={img.src}
                 alt={img.alt}
                 data-safari-bad="transition-[flex-grow] duration-800"
                 loading="eager"
-                fetchpriority={i == 0 ? "high" : "low"}
               />
             ))
           }
@@ -78,5 +87,6 @@ const { Content } = await service.render();
     </Container>
   </main>
 
+  <LetsTalkBtn />
   <Content />
 </Layout>

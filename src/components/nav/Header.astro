@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 import { getCollection } from "astro:content";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
@@ -9,9 +10,26 @@ const servicesDesktopMenu = crypto.randomUUID();
 const servicesMobileMenu = crypto.randomUUID();
 
 const serviceData = await getCollection("services");
+
+interface NavItem {
+  id: string;
+  name: string;
+}
+
+interface Props {
+  items: NavItem[];
+  sticky: boolean;
+}
+
+const { items = [{}], sticky = false } = Astro.props as Props;
 ---
 
-<header class="absolute z-50 w-full bg-white lg:bg-transparent">
+<header
+  class={clsx(
+    `w-full top-0 z-45`,
+    sticky ? "sticky backdrop-blur-[20rem]" : "absolute bg-white lg:bg-transparent",
+  )}
+>
   <Container
     as="div"
     variant={ContainerVariant.Inner}
@@ -20,15 +38,25 @@ const serviceData = await getCollection("services");
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
       <ul class="hidden gap-10 lg:flex">
-        <li><a href="#popular" class="text-bg font-sans">Popular</a></li>
-        <li><a href="#gallery" class="text-bg font-sans">Gallery</a></li>
+        {
+          items.length !== 0
+            ? items.map((item) => (
+                <li>
+                  <a href={`#${item.id}`} class="text-bg font-sans">
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            : null
+        }
+
         <li>
           <button
             class="flex cursor-pointer items-center"
             onclick={`toggleDropdown(this)`}
           >
-            <span class="text-bg font-sans">Services </span>
-            <ArrowDown class="ml-3 h-4 w-4" />
+            <span class="text-bg font-sans">Services</span>
+            <ArrowDown class="ml-3 w-4" />
           </button>
 
           <div
@@ -42,7 +70,10 @@ const serviceData = await getCollection("services");
               {
                 serviceData.map((service: any, _) => (
                   <li>
-                    <a href=`/services/${service.slug}` class="text-bg font-sans">
+                    <a
+                      href={`/services/${service.slug}`}
+                      class="text-bg font-sans"
+                    >
                       {service.data.title}
                     </a>
                   </li>
@@ -51,17 +82,11 @@ const serviceData = await getCollection("services");
             </ul>
           </div>
         </li>
-        <li>
-          <a href="#accomplishments" class="text-bg font-sans"
-            >Accomplishments</a
-          >
-        </li>
-        <li><a href="#reviews" class="text-bg font-sans">Reviews</a></li>
       </ul>
       <div class="lg:hidden">
         <button
           data-idx={mobileMenu}
-          onclick={`toggleMenu('${mobileMenu}')`}
+          onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
           class="burger h-9 w-9 cursor-pointer"></button>
       </div>
     </nav>
@@ -70,32 +95,31 @@ const serviceData = await getCollection("services");
 
 <div
   data-safari-bad="transition-transform duration-300"
-  class="pointer-events-none absolute inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  class="pointer-events-none fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">
-    <li>
-      <a
-        onclick={`toggleMenu('${mobileMenu}')`}
-        href="#popular"
-        class="font-sans text-xl">Popular</a
-      >
-    </li>
-    <li>
-      <a
-        onclick={`toggleMenu('${mobileMenu}')`}
-        href="#gallery"
-        class="font-sans text-xl">Gallery</a
-      >
-    </li>
+    {
+      items.length !== 0
+        ? items.map((item) => (
+            <li>
+              <a href={`#${item.id}`} class="font-sans text-lg">
+                {item.name}
+              </a>
+            </li>
+          ))
+        : null
+    }
+
     <li>
       <button
         class="flex cursor-pointer items-center"
         onclick={`toggleDropdown(this)`}
       >
         <span class="font-sans text-xl">Services </span>
-        <ArrowDown class="ml-3 h-5 w-5" />
+        <ArrowDown class="ml-3 w-5" />
       </button>
+
       <div
         id={servicesMobileMenu}
         class="hidden w-fit transition-transform duration-500 [&.active]:block"
@@ -112,20 +136,6 @@ const serviceData = await getCollection("services");
           }
         </ul>
       </div>
-    </li>
-    <li>
-      <a
-        onclick={`toggleMenu('${mobileMenu}')`}
-        href="#accomplishments"
-        class="font-sans text-xl">Accomplishments</a
-      >
-    </li>
-    <li>
-      <a
-        onclick={`toggleMenu('${mobileMenu}')`}
-        href="#reviews"
-        class="font-sans text-xl">Reviews</a
-      >
     </li>
   </ul>
 </div>

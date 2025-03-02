@@ -2,9 +2,39 @@ import smoothscroll from 'smoothscroll-polyfill';
 window.__forceSmoothScrollPolyfill__ = true;
 smoothscroll.polyfill();
 
+declare global {
+  interface Window {
+    back: () => void;
+    slideNext: (id: string, slideNum: number) => void;
+    toggleDropdown: (e: HTMLElement) => void;
+    toggleMenu: (id: string, dontScroll: boolean) => void;
+    sliderTo: (id: string, idx: number) => void;
+  }
+}
+
 function inScreen(e: Element) {
   const rect = e.getBoundingClientRect();
   return !(rect.bottom < 0 || rect.top > window.innerHeight);
+}
+
+window.back = function back() {
+  if (history.length > 1 && document.referrer) {
+    try {
+      const referrerHost = new URL(document.referrer).hostname;
+      const currentHost = window.location.hostname;
+
+      if (referrerHost === currentHost) {
+        history.back();
+        return;
+      }
+    } catch (e) {
+      // Handle potential URL parsing errors
+      console.error("Error parsing referrer URL:", e);
+    }
+  }
+
+  // Default fallback
+  window.location.href = '/';
 }
 
 window.slideNext = function(id: string, slideNum: number) {
@@ -98,7 +128,7 @@ window.onload = () => {
         const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
         const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
         const nextIndex = (prevIndex + 1) % slideshow.children.length;
-        slideNext(slideshow.id.toString(), nextIndex);
+        window.slideNext(slideshow.id.toString(), nextIndex);
       } else {
         slideshow.removeAttribute("data-slide-mutated");
       }

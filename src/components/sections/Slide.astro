@@ -38,7 +38,7 @@ appendAttrElementsIf(
     )}
   >
     <div
-      class="bg-accent relative w-full rounded-md"
+      class="bg-accent max-w-inner relative w-full rounded-md"
       id={slideCardId}
       data-slideshow
       data-slideshow-speed={speed}
@@ -50,7 +50,7 @@ appendAttrElementsIf(
         <SlideBtnArray
           length={length}
           idx={slideCardId}
-          class="pt-inset xl:pl-inset flex flex-1 flex-row items-center justify-center gap-5 xl:flex-col xl:pt-0"
+          class="p-inset box-content flex flex-1 flex-row items-center justify-center gap-5 xl:flex-col"
         />
       )
     }

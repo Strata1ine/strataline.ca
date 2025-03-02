@@ -2,16 +2,18 @@
 import clsx from "clsx";
 export enum ContainerVariant {
   Inner,
+  InnerT,
   Outer,
   Max,
   Display,
 }
 
 export const containerMap = {
-  [ContainerVariant.Inner]: "max-w-inner px-inset lg:mx-auto w-full",
-  [ContainerVariant.Outer]: "max-w-outer px-inset lg:mx-auto w-full",
-  [ContainerVariant.Max]: "max-w-full lg:mx-auto w-full",
-  [ContainerVariant.Display]: "max-w-[calc(var(--spacing-outer-span)+30rem)] lg:mx-auto w-full",
+  [ContainerVariant.Inner]: "max-w-inner px-inset lg:mx-auto",
+  [ContainerVariant.Outer]: "max-w-outer px-inset lg:mx-auto",
+  [ContainerVariant.Max]: "max-w-full lg:mx-auto",
+  [ContainerVariant.Display]:
+    "max-w-[calc(var(--spacing-outer-span)+30rem)] lg:mx-auto",
 };
 
 const {

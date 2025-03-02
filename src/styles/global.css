@@ -53,22 +53,23 @@
   --text-xl: clamp(1.6rem, 4vw, 2.3rem);
   --text-xl--line-height: 1.2;
   --text-2xl: clamp(2.0rem, 4vw, 3rem);
-  --text-2xl--line-height: 1.05;
+  --text-2xl--line-height: 1.1;
   --text-3xl: clamp(2.3rem, 4.5vw, 3.5rem);
-  --text-3xl--line-height: 1.15;
+  --text-3xl--line-height: 1.1;
   --text-4xl: clamp(2.3rem, 4.5vw, 4.4rem);
-  --text-4xl--line-height: 1.02;
+  --text-4xl--line-height: 1.1;
   --text-5xl: clamp(3rem, 4.5vw, 5rem);
-  --text-5xl--line-height: 1.05;
+  --text-5xl--line-height: 1.2;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;
   --spacing-outer: 1450px;
-  --spacing-inner-diff: max(calc((100vw - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2), 0px);
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
+  /* --inner-diff: max(calc((100vw - var(--spacing-outer) - var(spacing-inner)) / 2 - var(--spacing-inset) * 2), 0px); */
+  --review-diff: max(calc((100vw - var(--spacing-outer)) / 2 + var(--spacing-inset) * 2), 0px);
   --right-span: clamp(0px,
-      calc((100vw - var(--spacing-inner)) / 2),
-      calc((var(--spacing-outer) - var(--spacing-inner)) / 2));
+      calc((100vw - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2),
+      calc((var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2));
 }
 
 :root {

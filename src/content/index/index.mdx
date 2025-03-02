@@ -207,6 +207,15 @@ socials:
     icon: ./icons/facebook.svg
 ---
 
+<Nav.Header
+  items={[
+    { id: "popular", name: "Popular" },
+    { id: "gallery", name: "Gallery" },
+    { id: "accomplishments", name: "Accomplishments" },
+    { id: "reviews", name: "Reviews" },
+  ]}
+/>
+
 <Section.Hero
   title="Renovations designed to transform your space"
   description={`
@@ -299,6 +308,7 @@ socials:
       of this team is incredible.
     `}
   />
+
   <Card.Review
     title="Jefferson Grove"
     location="Burlington"
@@ -309,6 +319,7 @@ socials:
       or emails. We highly recommend Strataline!
     `}
   />
+
   <Card.Review
     title="Olivia"
     location="Toronto"
@@ -319,6 +330,7 @@ socials:
       Best decision I ever made!
     `}
   />
+
   <Card.Review
     title="Lyn Litvack"
     location="Markham"

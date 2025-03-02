@@ -5,7 +5,7 @@ import Star from "~/assets/star.svg";
 
 <div
   data-slider-card
-  class="border-accent relative mt-5 w-fit max-w-120 min-w-0 shrink-0 rounded-md border-[1.4px] p-7 select-none sm:ml-10 sm:p-9 xl:translate-x-(--spacing-inner-diff)"
+  class="border-accent relative mt-5 w-fit max-w-120 min-w-0 shrink-0 rounded-md border-[1.4px] p-7 select-none sm:ml-10 sm:p-9 xl:translate-x-(--review-diff)"
 >
   <div
     class="bg-accent absolute top-0 left-10 -translate-y-1/2 rounded-md px-4 py-2"
@@ -18,11 +18,7 @@ import Star from "~/assets/star.svg";
   </h4>
 
   <div class="mb-5 flex gap-2">
-    {
-      Array.from({ length: stars }, (_) => (
-        <Star class="w-5 sm:w-6" />
-      ))
-    }
+    {Array.from({ length: stars }, (_) => <Star class="w-5 sm:w-6" />)}
   </div>
 
   <p class="font-sans text-base italic">{description}</p>
