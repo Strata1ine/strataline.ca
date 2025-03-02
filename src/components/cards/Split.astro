@@ -1,10 +1,10 @@
 ---
 import { parseHTML } from "linkedom";
 import { appendAttrElements } from "~/util/processHTML";
-import Link from "~/components/nav/Link.astro";
+import Button from "~/components/buttons/Button.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, description, variant, slug } = Astro.props;
+const { title, description, variant, slug, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -22,7 +22,11 @@ appendAttrElements(
 );
 ---
 
-<div class="mb-25 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9">
+<div
+  class="mb-25 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  id={slug}
+  {...slot}
+>
   {
     variant === Pos.Left && (
       <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
@@ -55,7 +59,7 @@ appendAttrElements(
     </p>
 
     <div class="mt-8">
-      <Link href=`/services/${slug}`>Explore More</Link>
+      <Button href=`/services/${slug}`>Explore More</Button>
     </div>
   </div>
 

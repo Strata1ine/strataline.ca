@@ -26,6 +26,7 @@ export default defineConfig({
   integrations: [AutoImport({
     imports: [
       {
+        './src/components/buttons/': 'Btn',
         './src/components/sections/': 'Section',
         './src/components/cards/': 'Card',
         './src/components/nav/': 'Nav',

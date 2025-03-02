@@ -1,0 +1,18 @@
+---
+import Dot from "./Dot.astro";
+
+const { class: customClass, idx: slideId, length, ...rest } = Astro.props;
+---
+
+{
+  length !== 1 ? (
+    <div class={customClass} {...rest} data-slide-nav={slideId}>
+      {Array.from({ length }).map((_, i) => (
+        <Dot
+          class={i === 0 ? "active" : ""}
+          onclick={`slideNext('${slideId}', ${i})`}
+        />
+      ))}
+    </div>
+  ) : null
+}

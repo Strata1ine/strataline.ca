@@ -26,14 +26,16 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
 <header
   class={clsx(
-    `w-full top-0 z-45`,
-    sticky ? "sticky backdrop-blur-[20rem]" : "absolute bg-white lg:bg-transparent",
+    `w-full top-0 z-45 py-3`,
+    sticky
+      ? "sticky backdrop-blur-[20rem]"
+      : "absolute bg-white lg:bg-transparent",
   )}
 >
   <Container
     as="div"
     variant={ContainerVariant.Inner}
-    class="py-inset flex items-center justify-between rounded-md"
+    class="flex items-center justify-between rounded-md"
   >
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>

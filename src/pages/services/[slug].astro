@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
 
 import Layout from "~/layouts/Layout.astro";
 import Home from "~/assets/home.svg";
-import LetsTalkBtn from "~/components/nav/LetsTalkBtn.astro";
+import LetsTalkBtn from "~/components/buttons/LetsTalk.astro";
 import Container from "~/components/div/Container.astro";
 
 const { slug } = Astro.params;
@@ -23,7 +23,7 @@ const { Content } = await service.render();
 
 <Layout>
   <main
-    class="relative flex h-[80svh] max-h-180 min-h-190 overflow-x-clip sm:max-h-350 sm:min-h-180"
+    class="relative flex h-100svh sm:h-[80svh] max-h-180 min-h-190 overflow-x-clip sm:max-h-350 sm:min-h-180"
   >
     <div class="bg-dark absolute inset-0 z-[-1]"></div>
 
@@ -34,12 +34,11 @@ const { Content } = await service.render();
       <div class="relative flex-1">
         <button
           class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
-          onclick="back()"
+          onclick=`window.location.href = '/#${slug}'`
         >
           <Home class="w-8 sm:w-9 xl:w-12" />
           <span
-            style="margin-bottom: 3px"
-            class="font-sans text-base leading-none font-bold">Go Back</span
+            class="font-sans mb-1 text-base leading-none font-bold">Go Back</span
           >
         </button>
 

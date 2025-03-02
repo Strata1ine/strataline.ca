@@ -24,7 +24,7 @@ const { title, description, variant = Pos.Left } = Astro.props;
     <p class="flex-1 font-sans text-sm">{description}</p>
   </div>
 
-  <div class="grid grid-cols-1 gap-inset sm:gap-8 sm:grid-cols-2">
+  <div class="gap-inset grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
     <slot />
   </div>
 </Container>

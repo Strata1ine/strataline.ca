@@ -4,10 +4,9 @@ smoothscroll.polyfill();
 
 declare global {
   interface Window {
-    back: () => void;
     slideNext: (id: string, slideNum: number) => void;
     toggleDropdown: (e: HTMLElement) => void;
-    toggleMenu: (id: string, dontScroll: boolean) => void;
+    toggleMenu: (id: string) => void;
     sliderTo: (id: string, idx: number) => void;
   }
 }
@@ -15,26 +14,6 @@ declare global {
 function inScreen(e: Element) {
   const rect = e.getBoundingClientRect();
   return !(rect.bottom < 0 || rect.top > window.innerHeight);
-}
-
-window.back = function back() {
-  if (history.length > 1 && document.referrer) {
-    try {
-      const referrerHost = new URL(document.referrer).hostname;
-      const currentHost = window.location.hostname;
-
-      if (referrerHost === currentHost) {
-        history.back();
-        return;
-      }
-    } catch (e) {
-      // Handle potential URL parsing errors
-      console.error("Error parsing referrer URL:", e);
-    }
-  }
-
-  // Default fallback
-  window.location.href = '/';
 }
 
 window.slideNext = function(id: string, slideNum: number) {
@@ -76,31 +55,23 @@ window.addEventListener("click", function(e) {
   }
 });
 
-window.toggleMenu = function(id: string, dontScroll: boolean) {
-  (document.getElementById(id) as HTMLElement).classList.toggle("active");
+window.toggleMenu = function(id: string) {
+  const menu = document.getElementById(id) as HTMLElement;
+  menu.classList.toggle("active");
   document.body.classList.toggle("overflow-hidden");
-
-  // bad api
-  if (!dontScroll) {
-    setTimeout(() => {
-      if (document.scrollingElement != null) {
-        document.scrollingElement.scrollTop = 0;
-      }
-    }, 0);
-  }
 
   // the menu's trigger button, optional
   const e = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
   if (e != null) {
     e.classList.toggle("active");
+    e.scrollIntoView(true);
   }
 }
 
 window.sliderTo = function(id: string, idx: number) {
   const slider = document.getElementById(id) as HTMLElement;
   const cards = slider.querySelectorAll('[data-slider-card]');
-  const style = window.getComputedStyle(cards[idx]);
-  const width = cards[idx].getBoundingClientRect().width + parseFloat(style.marginLeft) || 0;
+  const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
   slider.scrollTo({ left: width * idx, behavior: 'smooth' });
   (slider.nextElementSibling?.children[0]).setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
 }

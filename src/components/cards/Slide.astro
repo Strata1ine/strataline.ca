@@ -1,7 +1,7 @@
 ---
 import { parseHTML } from "linkedom";
 import { appendAttrElements, minmaxBloat } from "~/util/processHTML";
-import Link from "~/components/nav/Link.astro";
+import Button from "~/components/buttons/Button.astro";
 
 const { title, description } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
@@ -32,7 +32,7 @@ appendAttrElements(images, "class", "min-w-0 object-cover h-full");
     <p class="font-sans text-base">{description}</p>
 
     <div class="mt-8">
-      <Link href="#wasd">Watch The Video</Link>
+      <Button href="#wasd">Watch The Video</Button>
     </div>
   </div>
   <div class="hidden sm:block"></div>

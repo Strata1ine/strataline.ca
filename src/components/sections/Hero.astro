@@ -9,7 +9,7 @@ import {
 
 import Mailbox from "~/assets/mailbox.svg";
 import Container from "~/components/div/Container.astro";
-import SlideBtnArray from "~/components/nav/SlideBtnArray.astro";
+import DotArray from "~/components/buttons/DotArray.astro";
 
 const { title, description, speed: speedInt, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
@@ -56,7 +56,7 @@ setAttrElements(images, "loading", "eager");
     class="flex items-center gap-6 pt-15 sm:py-0 xl:gap-7 2xl:gap-9"
   >
     <div class="hidden w-1/2 sm:flex">
-      <SlideBtnArray
+      <DotArray
         idx={desktopSlideShowId}
         class="hidden flex-col justify-center gap-5 xl:mr-7 xl:flex 2xl:mr-9"
         length={images.length}
@@ -72,7 +72,7 @@ setAttrElements(images, "loading", "eager");
           <Fragment set:html={document} />
         </div>
 
-        <SlideBtnArray
+        <DotArray
           idx={desktopSlideShowId}
           length={images.length}
           class="mt-inset flex justify-center gap-5 xl:hidden"
@@ -95,7 +95,7 @@ setAttrElements(images, "loading", "eager");
           <Fragment set:html={document} />
         </div>
 
-        <SlideBtnArray
+        <DotArray
           class="ml-inset flex flex-col justify-center gap-5 xl:mr-9"
           idx={mobileSlideShowId}
           length={images.length}
