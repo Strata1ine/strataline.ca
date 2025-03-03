@@ -1,10 +1,11 @@
-import Hero from './Hero.astro';
-import Popular from './Popular.astro';
-import LessPopular from './LessPopular.astro';
-import Review from './Review.astro';
-import TextCarousel from './TextCarousel.astro';
-import Slide from './Slide.astro';
-import Question from './Question.astro';
-import Video from './Video.astro';
+import Hero from "./Hero.astro";
+import Popular from "./Popular.astro";
+import LessPopular from "./LessPopular.astro";
+import Review from "./Review.astro";
+import TextCarousel from "./TextCarousel.astro";
+import Slide from "./Slide.astro";
+import Question from "./Question.astro";
+import Video from "./Video.astro";
+import ZigZag from "./ZigZag.astro";
 
-export { Hero, Popular, LessPopular, Review, TextCarousel, Slide, Question, Video };
+export { Hero, Popular, LessPopular, Review, TextCarousel, Slide, Question, Video, ZigZag };

@@ -1,0 +1,69 @@
+---
+import clsx from "clsx";
+import { parseHTML } from "linkedom";
+import { appendAttrElements } from "~/util/processHTML";
+import { Pos } from "~/components/variants.ts";
+
+const { title, description, variant, ...slot } = Astro.props;
+
+const html = await Astro.slots.render("default");
+const { document } = parseHTML(html);
+const imgs = document.querySelectorAll("img");
+
+appendAttrElements(
+  imgs,
+  "class",
+  `object-cover min-w-0 flex-1 h-full hover:flex-5`,
+);
+
+appendAttrElements(
+  imgs,
+  "data-safari-bad",
+  `transition-[flex-grow] duration-800`,
+);
+---
+
+<div
+  class="mb-30 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  {...slot}
+>
+  {
+    variant === Pos.Left && (
+      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
+        <Fragment set:html={document} />
+      </div>
+    )
+  }
+
+  <div class="flex-1">
+    <h4 class="mb-3 font-serif text-2xl font-semibold">{title}</h4>
+
+    {
+      variant === Pos.Right && (
+        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+          <Fragment set:html={document} />
+        </div>
+      )
+    }
+
+    {
+      variant === Pos.Left && (
+        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
+          <Fragment set:html={document} />
+        </div>
+      )
+    }
+
+    <p class="font-sans text-base">
+      {description}
+    </p>
+  </div>
+
+  {
+    variant === Pos.Right && (
+      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
+        <Fragment set:html={document} />
+      </div>
+    )
+  }
+</div>

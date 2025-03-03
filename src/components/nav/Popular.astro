@@ -4,7 +4,7 @@ import { appendAttrElements } from "~/util/processHTML";
 import Button from "~/components/buttons/Button.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, description, variant, slug, ...slot } = Astro.props;
+const { data, variant, slug, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -23,7 +23,7 @@ appendAttrElements(
 ---
 
 <div
-  class="mb-25 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-23 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
   id={slug}
   {...slot}
 >
@@ -36,7 +36,7 @@ appendAttrElements(
   }
 
   <div class="flex-1">
-    <h4 class="mb-2 font-serif text-2xl font-semibold">{title}</h4>
+    <h4 class="mb-2 font-serif text-2xl font-semibold">{data.title}</h4>
 
     {
       variant === Pos.Right && (
@@ -55,7 +55,7 @@ appendAttrElements(
     }
 
     <p class="font-sans text-base">
-      {description}
+      {data.description}
     </p>
 
     <div class="mt-8">

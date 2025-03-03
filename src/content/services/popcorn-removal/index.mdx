@@ -1,5 +1,5 @@
 ---
-title: "Popcorn Removal"
+title: "Popcorn removal"
 description: "Our process includes dust-free popcorn removal, skim coating and sanding the surface smooth, application of primer and paint for a perfectly flat finish."
 covers:
   - src: ./cover.jpg
@@ -8,9 +8,11 @@ header:
   - id: "why"
     name: "Why"
   - id: "video"
-    name: "Mention"
+    name: "CityTV Mention"
   - id: "process"
     name: "Process"
+  - id: "faq"
+    name: "FAQ"
   - id: "gallery"
     name: "Gallery"
 ---
@@ -19,50 +21,78 @@ header:
   title="Why remove popcorn ceilings?"
   id="why"
   description={`
-    Popcorn ceilings, also known as acoustic ceilings, were popular in the mid-20th century for their ability to hide imperfections and reduce noise. However, they have fallen out of favor due to their dated appearance and difficulty cleaning.
+Popcorn ceilings, also known as acoustic ceilings, were popular in the mid-20th century for their ability to hide imperfections and reduce noise. However, they have fallen out of favor due to their dated appearance and difficulty cleaning.
   `}
 >
-  <Card.Question
-    title="Aesthetic upgrade"
-    i={1}
-    description={`
-      Modern homes favor smooth ceilings, which can enhance the overall look of
-      your space.
-    `}
-  />
-  <Card.Question
-    title="Increased home value"
-    i={2}
-    description={`
-      Updating your ceiling can improve your home’s marketability.
-    `}
-  />
-  <Card.Question
-    title="Easier maintenance"
-    i={3}
-    description={`
-      Smooth ceilings are much easier to clean and maintain than textured ones.
-    `}
-  />
-  <Card.Question
-    title="Potential asbestos issues"
-    i={4}
-    description={`
-      If your popcorn ceiling was installed before the 1980s, it may contain asbestos, requiring professional removal for safety.
-    `}
-  />
+
+<Card.Question
+  title="Aesthetic upgrade"
+  i={1}
+  description={`
+Modern homes favor smooth ceilings, which can enhance the overall look of your space.
+  `}
+/>
+
+<Card.Question
+  title="Increased home value"
+  i={2}
+  description={`
+Updating your ceiling can improve your home’s marketability.
+  `}
+/>
+
+<Card.Question
+  title="Easier maintenance"
+  i={3}
+  description={`
+Smooth ceilings are much easier to clean and maintain than textured ones.
+  `}
+/>
+
+<Card.Question
+  title="Potential asbestos issues"
+  i={4}
+  description={`
+If your popcorn ceiling was installed before the 1980s, it may contain asbestos, requiring professional removal for safety.
+  `}
+/>
+
 </Section.Question>
 
-import citytv from '../../index/awards/citytv.jpg';
+<Section.ZigZag
+  title="Our process"
+  titlePos={Variant.Pos.Right}
+  id="process"
+>
 
-<Section.Video
-  title="Mentioned on CityTV"
-  id="video"
+<Card.ZigZag
+  title="Inspection & preparation"
   variant={Variant.Pos.Right}
-  path="/videos/cityline.mp4"
-  format="video/mp4"
-  poster={citytv}
-/>
+  description={`
+We begin with a detailed inspection to determine if your ceiling contains asbestos. Then, our team will cover your floors and furniture to protect your belongings.
+  `}>
+  ![""](./process/before.jpg)
+</Card.ZigZag>
+
+<Card.ZigZag
+  title="Removal & finishing touches"
+  variant={Variant.Pos.Left}
+  description={`
+We carefully scrape away the popcorn texture, ensuring minimal mess. After removal, we can repair and finish the ceiling to your desired smooth texture.
+  `}>
+  !["t"](./process/cleanup.jpg)
+</Card.ZigZag>
+
+<Card.ZigZag
+  title="Cleanup"
+  variant={Variant.Pos.Right}
+  description={`
+We’ll leave your space spotless and ready for your next design project!
+  `}>
+  !["t"](./process/after.jpg)
+</Card.ZigZag>
+
+</Section.ZigZag>
 
 
 <Section.TextCarousel

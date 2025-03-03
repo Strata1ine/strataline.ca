@@ -28,18 +28,18 @@ const { Content } = await service.render();
 
 <Layout>
   <main
-    class="h-100svh relative flex max-h-180 min-h-190 overflow-x-clip sm:h-[80svh] sm:max-h-350 sm:min-h-180"
+    class="h-100svh relative overflow-x-clip py-15 sm:flex sm:h-200"
   >
     <div class="bg-dark absolute inset-0 z-[-1]"></div>
 
     <Container
       as="div"
-      class="flex items-center gap-6 text-white sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
+      class="flex gap-6 text-white sm:flex-row sm:items-center sm:py-0 xl:gap-7 2xl:gap-9"
     >
       <div class="relative flex-1">
         <button
           class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
-          onclick=`window.location.href = '/#${slug}'`
+          onclick={`window.location.href = '/#${slug}'`}
         >
           <Home class="w-8 sm:w-9 xl:w-12" />
           <span class="mb-1 font-sans text-base leading-none font-bold"
@@ -98,7 +98,7 @@ const { Content } = await service.render();
   <Content />
 
   <ServiceGallery
-    title="Service Gallery"
+    title="Service gallery"
     titlePos={Pos.Left}
     id="gallery"
     class="!mb-0"

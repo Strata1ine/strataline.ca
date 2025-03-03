@@ -26,8 +26,7 @@ const { ...slot } = Astro.props;
   {
     services.map((service: any, i) => (
       <Popular
-        title={service.data.title}
-        description={service.data.description}
+        data={service.data}
         variant={next(i)}
         slug={service.slug}
       >
