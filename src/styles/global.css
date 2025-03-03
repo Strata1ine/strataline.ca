@@ -48,7 +48,7 @@
 
   --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
   --text-sm--line-height: 1.7;
-  --text-base: clamp(1.1rem, 2.1vw, 1.45rem);
+  --text-base: clamp(1.2rem, 2.1vw, 1.45rem);
   --text-base--line-height: 1.7;
   --text-bg: clamp(1.3rem, 2vw, 1.45rem);
   --text-bg--line-height: 1.7;
@@ -88,6 +88,7 @@
 @layer base {
   button {
     text-align: left;
+    user-select: text;
   }
 }
 
