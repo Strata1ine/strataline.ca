@@ -11,10 +11,15 @@ import { Image } from "astro:assets";
 
 import Layout from "~/layouts/Layout.astro";
 import Home from "~/assets/home.svg";
-import LetsTalkBtn from "~/components/buttons/LetsTalk.astro";
+import LetsTalk from "~/components/buttons/LetsTalk.astro";
 import Container from "~/components/div/Container.astro";
+import Header from "~/components/nav/Header.astro";
+import ServiceGallery from "~/components/nav/ServiceGallery.astro";
+import Service from "~/components/nav/Service.astro";
+import { Pos } from "~/components/variants";
 
 const { slug } = Astro.params;
+
 const serviceData = await getCollection("services");
 const service = serviceData.find((s) => s.slug === slug) as any;
 
@@ -23,7 +28,7 @@ const { Content } = await service.render();
 
 <Layout>
   <main
-    class="relative flex h-100svh sm:h-[80svh] max-h-180 min-h-190 overflow-x-clip sm:max-h-350 sm:min-h-180"
+    class="h-100svh relative flex max-h-180 min-h-190 overflow-x-clip sm:h-[80svh] sm:max-h-350 sm:min-h-180"
   >
     <div class="bg-dark absolute inset-0 z-[-1]"></div>
 
@@ -37,8 +42,8 @@ const { Content } = await service.render();
           onclick=`window.location.href = '/#${slug}'`
         >
           <Home class="w-8 sm:w-9 xl:w-12" />
-          <span
-            class="font-sans mb-1 text-base leading-none font-bold">Go Back</span
+          <span class="mb-1 font-sans text-base leading-none font-bold"
+            >Go Back</span
           >
         </button>
 
@@ -86,6 +91,24 @@ const { Content } = await service.render();
     </Container>
   </main>
 
-  <LetsTalkBtn />
+  <LetsTalk />
+
+  {service.data.header && <Header sticky={true} items={service.data.header} />}
+
   <Content />
+
+  <ServiceGallery
+    title="Service Gallery"
+    titlePos={Pos.Left}
+    id="gallery"
+    class="!mb-0"
+  >
+    {
+      serviceData
+        .filter((service) => service.slug !== slug)
+        .map((service: any, _) => (
+          <Service data={service.data} slug={service.slug} />
+        ))
+    }
+  </ServiceGallery>
 </Layout>

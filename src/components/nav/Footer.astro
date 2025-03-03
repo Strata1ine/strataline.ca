@@ -8,12 +8,12 @@ const [index] = await getCollection("index");
 ---
 
 <Container
-  class="py-inset border-accent gap-inset relative z-47 flex flex-col items-center justify-between border-t-[1.4px] bg-white md:flex-row"
+  class="py-inset border-accent gap-inset flex flex-col items-center justify-between border-t-[1.4px] bg-white md:flex-row"
   as="footer"
   variant={ContainerVariant.Inner}
 >
   <span class="text-bg font-sans"
-    ><b>&copy; {index.data.title}</b>. {index.data.year}</span
+    ><b>&copy; {index.data.title}</b>. 2025</span
   >
-  <Socials imageClass="w-12 sm:w-14 xl:w-18" class="flex flex-row" />
+  <Socials imageClass="w-15 sm:w-16 xl:w-18" class="flex flex-row" />
 </Container>

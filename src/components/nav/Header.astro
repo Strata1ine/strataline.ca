@@ -26,32 +26,25 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
 <header
   class={clsx(
-    `w-full top-0 z-45 py-3`,
+    `w-full top-0 z-4`,
     sticky
-      ? "sticky backdrop-blur-[20rem]"
-      : "absolute bg-white lg:bg-transparent",
+      ? "sticky backdrop-blur-[20rem] py-2"
+      : "absolute bg-white lg:bg-transparent py-2",
   )}
 >
+  {
+    sticky && (
+      <div class="absolute inset-0 z-[-1] bg-white opacity-50 mix-blend-screen"></div>
+    )
+  }
   <Container
     as="div"
     variant={ContainerVariant.Inner}
-    class="flex items-center justify-between rounded-md"
+    class="z-3 flex items-center justify-between rounded-md"
   >
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
       <ul class="hidden gap-10 lg:flex">
-        {
-          items.length !== 0
-            ? items.map((item) => (
-                <li>
-                  <a href={`#${item.id}`} class="text-bg font-sans">
-                    {item.name}
-                  </a>
-                </li>
-              ))
-            : null
-        }
-
         <li>
           <button
             class="flex cursor-pointer items-center"
@@ -84,6 +77,18 @@ const { items = [{}], sticky = false } = Astro.props as Props;
             </ul>
           </div>
         </li>
+
+        {
+          items.length !== 0
+            ? items.map((item) => (
+                <li>
+                  <a href={`#${item.id}`} class="text-bg font-sans">
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            : null
+        }
       </ul>
       <div class="lg:hidden">
         <button
@@ -97,7 +102,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
 <div
   data-safari-bad="transition-transform duration-300"
-  class="pointer-events-none fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  class="pointer-events-none fixed inset-0 z-3 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">
@@ -130,7 +135,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
           {
             serviceData.map((service: any, _) => (
               <li>
-                <a href="#wasd" class="font-sans text-xl">
+                <a href={`/services/${service.slug}`} class="font-sans text-xl">
                   {service.data.title}
                 </a>
               </li>

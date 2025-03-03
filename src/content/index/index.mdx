@@ -5,10 +5,7 @@ title: Strataline
 # SEO description of the website
 # this will appear in the description of the site on google
 # keep less then 120 words
-seo_description: "Experts at dust-free, quality and easy renovation."
-
-# year referenced in the footer
-year: "2025"
+description: "Experts at dust-free, quality and easy renovation."
 
 # Schema.org LocalBusiness structured data
 # This information helps search engines understand your business
@@ -31,16 +28,23 @@ local_business:
   # logo: ./images/logo.png
 
   # A short marketing slogan or tagline
-  slogan: "Each project starts with a conversation."
+  slogan: "Each renovation starts with a tomato."
 
   # URL to a photo/image representing the business
   # image: ./images/business-photo.jpg
 
   # URLs to social media profiles or other web presences (helps establish entity connections)
+  # NOTE: The available icon names can be found at: https://icones.js.org/collection/ph
   sameAs:
-    - "https://www.tiktok.com/@stratalineinc"
-    - "https://www.instagram.com/strataline.ca"
-    - "https://www.facebook.com/stratalineinc"
+    - name: TikTok
+      url: "https://www.tiktok.com/@stratalineinc"
+      icon: "ph:tiktok-logo-fill"
+    - name: Instagram
+      url: "https://www.instagram.com/strataline.ca"
+      icon: "ph:instagram-logo-fill"
+    - name: Facebook
+      url: "https://www.facebook.com/stratalineinc"
+      icon: "ph:facebook-logo-fill" 
 
   # The official registered name of the business (if different from trading name)
   legalName: "Strataline Inc."
@@ -193,28 +197,16 @@ popular:
 # Contact
 contact_messege: "Each project starts with a conversation."
 
-# Social media profiles
-# NOTE: The available icon names can be found at: https://icones.js.org/collection/ph
-socials:
-  - name: TikTok
-    url: "https://www.tiktok.com/@stratalineinc"
-    icon: ./icons/tiktok.svg
-  - name: Instagram
-    url: "https://www.instagram.com/strataline.ca"
-    icon: ./icons/instagram.svg
-  - name: Facebook
-    url: "https://www.facebook.com/stratalineinc"
-    icon: ./icons/facebook.svg
+header:
+  - id: "popular"
+    name: "Popular"
+  - id: "gallery"
+    name: "Gallery"
+  - id: "accomplishments"
+    name: "Accomplishments"
+  - id: "reviews"
+    name: "Reviews"
 ---
-
-<Nav.Header
-  items={[
-    { id: "popular", name: "Popular" },
-    { id: "gallery", name: "Gallery" },
-    { id: "accomplishments", name: "Accomplishments" },
-    { id: "reviews", name: "Reviews" },
-  ]}
-/>
 
 <Section.Hero
   title="Renovations designed to transform your space"

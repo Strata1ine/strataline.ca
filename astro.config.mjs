@@ -29,7 +29,6 @@ export default defineConfig({
         './src/components/buttons/': 'Btn',
         './src/components/sections/': 'Section',
         './src/components/cards/': 'Card',
-        './src/components/nav/': 'Nav',
         './src/components/variants.ts': 'Variant',
       },
     ],

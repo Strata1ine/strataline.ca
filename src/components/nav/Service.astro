@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import Arrow from "~/assets/arrow.svg";
+
+const { data, slug, ...slot } = Astro.props;
+---
+
+<a
+  href={`/services/${slug}`}
+  id={slug}
+  class="flex w-full items-center gap-3 sm:max-w-1/2 sm:flex-[40%] sm:flex-col sm:items-baseline lg:max-w-1/3 lg:flex-[30%]"
+  {...slot}
+>
+  <Image
+    class="min-h-30 w-1/2 rounded-md object-cover transition duration-300 hover:scale-[1.05] sm:h-65 sm:w-full"
+    width={808}
+    height={416}
+    src={data.covers[0].src}
+    alt={data.covers[0].alt}
+  />
+  <div
+    class="flex w-1/2 flex-col justify-between gap-2 sm:w-full sm:flex-row sm:items-center"
+  >
+    <h4 class="font-serif text-xl">{data.title}</h4>
+    <Arrow class="w-13" />
+  </div>
+</a>

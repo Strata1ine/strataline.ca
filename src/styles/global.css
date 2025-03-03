@@ -68,8 +68,8 @@
   /* --inner-diff: max(calc((100vw - var(--spacing-outer) - var(spacing-inner)) / 2 - var(--spacing-inset) * 2), 0px); */
   --review-diff: max(calc((100vw - var(--spacing-outer)) / 2 + var(--spacing-inset) * 2), 0px);
   --right-span: clamp(0px,
-      calc((100vw - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2),
-      calc((var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset) * 2));
+      calc((100vw - var(--spacing-inner)) / 2),
+      calc((var(--spacing-outer) - var(--spacing-inner)) / 2));
 }
 
 :root {

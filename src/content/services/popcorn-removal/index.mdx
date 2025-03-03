@@ -1,22 +1,23 @@
 ---
-title: "Popcorn ceiling removal"
+title: "Popcorn Removal"
 description: "Our process includes dust-free popcorn removal, skim coating and sanding the surface smooth, application of primer and paint for a perfectly flat finish."
 covers:
   - src: ./cover.jpg
     alt: tomatoes
+header:
+  - id: "why"
+    name: "Why"
+  - id: "video"
+    name: "Mention"
+  - id: "process"
+    name: "Process"
+  - id: "gallery"
+    name: "Gallery"
 ---
-
-<Nav.Header
-  sticky={true}
-  items={[
-    { id: "why", name: "Why" },
-  ]}
-/>
 
 <Section.Question
   title="Why remove popcorn ceilings?"
   id="why"
-  variant={Variant.Pos.Left}
   description={`
     Popcorn ceilings, also known as acoustic ceilings, were popular in the mid-20th century for their ability to hide imperfections and reduce noise. However, they have fallen out of favor due to their dated appearance and difficulty cleaning.
   `}
@@ -52,19 +53,19 @@ covers:
   />
 </Section.Question>
 
+import citytv from '../../index/awards/citytv.jpg';
 
-<Section.Slide
-  title="Our accomplishments"
-  titlePos={Variant.Pos.Right}
-  speed={3000}
-  id="accomplishments"
->
-  <Card.Slide
-    title="Featured on CityTV"
-    description={`
-      Strataline is invited to CityLine and Scott McGillivray reveals
-      the best way to get rid of popcorn ceilings.
-    `}
-  >
-  </Card.Slide>
-</Section.Slide>
+<Section.Video
+  title="Mentioned on CityTV"
+  id="video"
+  variant={Variant.Pos.Right}
+  path="/videos/cityline.mp4"
+  format="video/mp4"
+  poster={citytv}
+/>
+
+
+<Section.TextCarousel
+  speed={0.45}
+  text={["Expert popcorn removal", "Kernels of design wisdom", "No scrape of popcorn left", "Ceiling texture worth savoring"]}
+/>

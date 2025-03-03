@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import SplitCard from "~/components/cards/Split.astro";
+import Popular from "~/components/nav/Popular.astro";
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
@@ -25,7 +25,7 @@ const { ...slot } = Astro.props;
   <ContainerTitle title={title} variant={titlePos} />
   {
     services.map((service: any, i) => (
-      <SplitCard
+      <Popular
         title={service.data.title}
         description={service.data.description}
         variant={next(i)}
@@ -34,7 +34,7 @@ const { ...slot } = Astro.props;
         {service.data.covers.map((img: any, _: number) => (
           <Image src={img.src} alt={img.alt} />
         ))}
-      </SplitCard>
+      </Popular>
     ))
   }
 </Container>

@@ -5,16 +5,11 @@ export const collections = {
   index: defineCollection({
     schema: ({ image }) => z.object({
       title: z.string(),
-      year: z.string(),
-      seo_description: z.string(),
+      description: z.string(),
       local_business: localBusiness(image),
       contact_messege: z.string(),
       popular: z.array(z.string()),
-      socials: z.array(z.object({
-        name: z.string(),
-        url: z.string(),
-        icon: image(),
-      })),
+      header: header(),
     }),
   }),
   services: defineCollection({
@@ -25,9 +20,17 @@ export const collections = {
         alt: z.string(),
       })),
       description: z.string(),
+      header: header().optional(),
     }),
   }),
 };
+
+const header = function() {
+  return z.array(z.object({
+    id: z.string(),
+    name: z.string(),
+  }))
+}
 
 const localBusiness = function(image: any) {
   return z.object({
@@ -39,7 +42,7 @@ const localBusiness = function(image: any) {
     slogan: z.string().optional(),
     // photo of location
     photo: image().optional(),
-    sameAs: z.array(z.string()).optional(),
+    sameAs: z.array(socialMedia).optional(),
 
     legalName: z.string().optional(),
     foundingDate: z.string().optional(),
@@ -90,6 +93,12 @@ const localBusiness = function(image: any) {
     brand: z.string().optional(),
   });
 };
+
+const socialMedia = z.object({
+  name: z.string(),
+  url: z.string(),
+  icon: z.string(),
+});
 
 const postalAddressSchema = z.object({
   streetAddress: z.string().optional(),

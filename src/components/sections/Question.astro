@@ -3,13 +3,13 @@ import clsx from "clsx";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, description, variant = Pos.Left } = Astro.props;
+const { title, description, variant = Pos.Left, ...slot } = Astro.props;
 ---
 
-<Container title={title} variant={ContainerVariant.Inner}>
+<Container title={title} variant={ContainerVariant.Inner} {...slot}>
   <div
     class={clsx(
-      "gap-inset sm:gap-8 mb-3 flex flex-col",
+      "gap-inset sm:gap-8 mb-5 sm:mb-12 flex flex-col",
       variant ? "sm:flex-row-reverse" : "sm:flex-row",
     )}
   >

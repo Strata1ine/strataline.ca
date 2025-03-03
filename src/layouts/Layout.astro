@@ -2,13 +2,13 @@
 import { getCollection } from "astro:content";
 
 import Footer from "~/components/nav/Footer.astro";
-import LetsTalk from "~/components/sections/LetsTalk.astro";
+import LetsTalk from "~/components/nav/LetsTalk.astro";
 
 import "~/styles/global.css";
 
 const [index] = await getCollection("index");
 
-const { title = index.data.title, description = index.data.seo_description } =
+const { title = index.data.title, description = index.data.description } =
   Astro.props;
 
 const business = index.data.local_business;
@@ -24,7 +24,11 @@ function generateLocalBusinessSchema(data: any) {
   if (data.description) schema.description = data.description;
   if (data.url) schema.url = data.url;
   if (data.image) schema.image = data.image;
-  if (data.sameAs) schema.sameAs = data.sameAs;
+  if (data.sameAs) {
+    schema.sameAs = Array.isArray(data.sameAs)
+      ? data.sameAs.map((item) => item.url)
+      : data.sameAs.url;
+  }
   if (data.legalName) schema.legalName = data.legalName;
   if (data.foundingDate) schema.foundingDate = data.foundingDate;
   if (data.foundingLocation) schema.foundingLocation = data.foundingLocation;

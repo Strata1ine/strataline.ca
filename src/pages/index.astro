@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Header from "~/components/nav/Header.astro";
 
 import Layout from "~/layouts/Layout.astro";
 
@@ -8,5 +9,6 @@ const { Content } = await index.render();
 ---
 
 <Layout>
+  {index.data.header && <Header items={index.data.header} />}
   <Content />
 </Layout>
