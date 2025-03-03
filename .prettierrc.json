@@ -2,5 +2,6 @@
   "plugins": [
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss"
-  ]
+  ],
+  "tailwindAttributes": ["data-safari-bad"]
 }

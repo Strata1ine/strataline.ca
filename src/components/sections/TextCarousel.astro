@@ -7,7 +7,7 @@ const {
     "Absolutely revelatory",
     "Expert opinions",
   ],
-  speed,
+  speed = 0.45,
   ...slot
 } = Astro.props;
 ---
@@ -20,7 +20,7 @@ const {
   >
     {
       text.map((text: string) => (
-        <h5 class="flex-shrink-0 font-serif text-4xl">{text}</h5>
+        <h4 class="flex-shrink-0 font-serif text-4xl">{text}</h4>
         <Star class="flex-shrink-0 w-8 h-8" />
       ))
     }

@@ -6,7 +6,9 @@ import { Pos } from "~/components/variants.ts";
 const { title, variant = Pos.Left, ...slot } = Astro.props;
 ---
 
-<Container variant={ContainerVariant.Inner} {...slot}>
+<Container variant={ContainerVariant.Outer} {...slot}>
   <ContainerTitle variant={variant} title={title} />
-  <slot />
+  <div class="flex flex-col lg:flex-row gap-8">
+    <slot />
+  </div>
 </Container>

@@ -9,7 +9,7 @@ const { title, description, variant = Pos.Left, ...slot } = Astro.props;
 <Container title={title} variant={ContainerVariant.Inner} {...slot}>
   <div
     class={clsx(
-      "gap-inset sm:gap-8 mb-5 sm:mb-12 flex flex-col",
+      "gap-inset sm:gap-8 mb-5 sm:mb-12 flex flex-col sm:items-center",
       variant ? "sm:flex-row-reverse" : "sm:flex-row",
     )}
   >

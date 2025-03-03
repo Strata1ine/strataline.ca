@@ -29,7 +29,7 @@ appendAttrElements(
 >
   {
     variant === Pos.Left && (
-      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
+      <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
         <Fragment set:html={document} />
       </div>
     )
@@ -40,7 +40,7 @@ appendAttrElements(
 
     {
       variant === Pos.Right && (
-        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-sm rounded-bl-sm contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -48,7 +48,7 @@ appendAttrElements(
 
     {
       variant === Pos.Left && (
-        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
+        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-sm rounded-br-sm contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -65,7 +65,7 @@ appendAttrElements(
 
   {
     variant === Pos.Right && (
-      <div class="hidden h-120 w-1/2 justify-center rounded-md contain-paint sm:flex">
+      <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
         <Fragment set:html={document} />
       </div>
     )

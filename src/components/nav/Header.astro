@@ -34,13 +34,13 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 >
   {
     sticky && (
-      <div class="absolute inset-0 z-[-1] bg-white opacity-80 mix-blend-screen" />
+      <div class="absolute inset-0 z-[-1] bg-white opacity-70 mix-blend-screen" />
     )
   }
   <Container
     as="div"
     variant={ContainerVariant.Inner}
-    class="flex items-center justify-between rounded-md"
+    class="flex items-center justify-between rounded-sm"
   >
     <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
@@ -71,7 +71,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
             class="px-inset max-w-inner pointer-events-none absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
           >
             <ul
-              class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-md"
+              class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-sm"
             >
               {
                 serviceData.map((service: any, _) => (
@@ -134,7 +134,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
         id={servicesMobileMenu}
         class="hidden w-fit transition-transform duration-500 [&.active]:block"
       >
-        <ul class="bg-tone my-5 flex flex-col gap-8 rounded-md p-5">
+        <ul class="bg-tone my-5 flex flex-col gap-8 rounded-sm p-5">
           {
             serviceData.map((service: any, _) => (
               <li>

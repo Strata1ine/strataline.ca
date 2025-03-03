@@ -1,0 +1,28 @@
+---
+import { parseHTML } from "linkedom";
+import { appendAttrElements } from "~/util/processHTML";
+const { title } = Astro.props;
+
+const html = await Astro.slots.render("default");
+const { document } = parseHTML(html);
+const imgs = document.querySelectorAll("img");
+
+appendAttrElements(
+  imgs,
+  "class",
+  `object-cover min-w-0 flex-1 h-full hover:flex-5`,
+);
+
+appendAttrElements(
+  imgs,
+  "data-safari-bad",
+  `transition-[flex-grow] duration-800`,
+);
+---
+
+<div class="flex flex-1 flex-col gap-4 sm:gap-6 items-center">
+  <div class="flex rounded-sm contain-paint h-70 md:h-95">
+    <Fragment set:html={document} />
+  </div>
+  <h4 class="text-2xl font-serif font-semibold">{title}</h4>
+</div>

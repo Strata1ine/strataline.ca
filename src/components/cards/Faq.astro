@@ -2,22 +2,24 @@
 const { title, description } = Astro.props;
 ---
 
-<button
-  class="border-accent cursor-pointer border-t-[1.5px] py-6 last:border-b-[1.5px]"
+<div
+  class="border-accent border-t-[1.5px] last:border-b-[1.5px] py-7"
   onclick="toggleFaq(this)"
 >
-  <div class="flex items-center justify-between gap-4 select-none">
-    <h4 class="font-serif font-semibold text-2xl">{title}</h4>
+  <button
+    class="flex w-full cursor-pointer items-center justify-between gap-4"
+  >
+    <h4 class="font-serif text-2xl font-semibold">{title}</h4>
     <div class="expand relative h-6 w-6 flex-shrink-0"></div>
-  </div>
+  </button>
 
   <p
-    class="text-sans pointer-events-none h-0 text-base opacity-0 [&.active]:pointer-events-auto [&.active]:mt-2 [&.active]:h-auto [&.active]:opacity-100"
+    class="pointer-events-none h-0 font-sans text-base select-none opacity-0 [&.active]:pointer-events-auto [&.active]:h-auto [&.active]:opacity-100 [&.active]:mt-2"
     data-safari-bad="transition-[opacity] duration-250"
   >
     {description}
   </p>
-</button>
+</div>
 
 <style lang="scss">
   .expand {

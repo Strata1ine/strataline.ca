@@ -13,13 +13,49 @@ header:
     name: "FAQ"
   - id: "gallery"
     name: "Gallery"
+
+# <Section.ZigZag
+#   title="Our process"
+#   variant={Variant.Pos.Right}
+#   id="process"
+# >
+#
+# <Card.ZigZag
+#   title="Inspection & preparation"
+#   variant={Variant.Pos.Right}
+#   description={`
+# We begin with a detailed inspection to determine if your ceiling contains asbestos. Then, our team will cover your floors and furniture to protect your belongings.
+#   `}>
+#   ![""](./process/before.jpg)
+# </Card.ZigZag>
+#
+# <Card.ZigZag
+#   title="Removal & finishing touches"
+#   variant={Variant.Pos.Left}
+#   description={`
+# We carefully scrape away the popcorn texture, ensuring minimal mess. After removal, we can repair and finish the ceiling to your desired smooth texture.
+#   `}>
+#   !["t"](./process/cleanup.jpg)
+# </Card.ZigZag>
+#
+# <Card.ZigZag
+#   title="Cleanup"
+#   variant={Variant.Pos.Right}
+#   description={`
+# We’ll leave your space spotless and ready for your next design project!
+#   `}>
+#   !["t"](./process/after.jpg)
+# </Card.ZigZag>
+#
+# </Section.ZigZag>
+
 ---
 
 <Section.Question
   title="Why remove popcorn ceilings?"
   id="why"
   description={`
-Popcorn ceilings, also known as acoustic ceilings, were popular in the mid-20th century for their ability to hide imperfections and reduce noise. However, they have fallen out of favor due to their dated appearance and difficulty cleaning.
+Popcorn ceilings, were popular in the mid-20th century for their ability to hide imperfections. However, they have fallen out of favor due to their dated appearance and difficulty cleaning.
   `}
 >
 
@@ -58,44 +94,32 @@ If your popcorn ceiling was installed before the 1980s, it likely has asbestos, 
 </Section.Question>
 
 <Section.TextCarousel
-  speed={0.45}
   text={["Expert popcorn removal", "Kernels of design wisdom", "No scrape of popcorn left", "Ceiling texture worth savoring"]}
 />
 
-<Section.ZigZag
+<Section.Panel
   title="Our process"
-  titlePos={Variant.Pos.Right}
-  id="process"
+  variant={Variant.Pos.Right}
 >
-
-<Card.ZigZag
-  title="Inspection & preparation"
-  variant={Variant.Pos.Right}
-  description={`
-We begin with a detailed inspection to determine if your ceiling contains asbestos. Then, our team will cover your floors and furniture to protect your belongings.
-  `}>
+<Card.Panel
+  title="Inspection"
+>
   ![""](./process/before.jpg)
-</Card.ZigZag>
+</Card.Panel>
 
-<Card.ZigZag
-  title="Removal & finishing touches"
-  variant={Variant.Pos.Left}
-  description={`
-We carefully scrape away the popcorn texture, ensuring minimal mess. After removal, we can repair and finish the ceiling to your desired smooth texture.
-  `}>
-  !["t"](./process/cleanup.jpg)
-</Card.ZigZag>
+<Card.Panel
+  title="Removal"
+>
+  ![""](./process/cleanup.jpg)
+</Card.Panel>
 
-<Card.ZigZag
+<Card.Panel
   title="Cleanup"
-  variant={Variant.Pos.Right}
-  description={`
-We’ll leave your space spotless and ready for your next design project!
-  `}>
-  !["t"](./process/after.jpg)
-</Card.ZigZag>
+>
+  ![""](./process/after.jpg)
+</Card.Panel>
 
-</Section.ZigZag>
+</Section.Panel>
 
 <Section.Faq
   title="Have any questions?"

@@ -40,11 +40,8 @@
   --breakpoint-xl: 1300px;
   --breakpoint-2xl: 1536px;
 
-  --radius-xs: .125rem;
-  --radius-sm: .25rem;
-  --radius-md: .375rem;
+  --radius-sm: 4px;
   --radius-lg: .5rem;
-  --radius-xl: .75rem;
 
   --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
   --text-sm--line-height: 1.7;
@@ -88,7 +85,6 @@
 @layer base {
   button {
     text-align: left;
-    user-select: text;
   }
 }
 

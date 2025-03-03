@@ -66,14 +66,14 @@ const { Content } = await service.render();
           }
         </div>
 
-        <p class="text-bg mt-2 font-sans xl:mt-4">
+        <p class="text-base mt-2 font-sans xl:mt-4">
           {service.data.description}
         </p>
       </div>
 
       <div class="hidden flex-1 sm:flex">
         <div
-          class="flex h-[60vh] max-h-175 min-h-130 justify-evenly rounded-md contain-paint"
+          class="flex h-[60vh] max-h-175 min-h-130 justify-evenly rounded-sm contain-paint"
         >
           {
             service.data.covers.map((img: any, _: number) => (
@@ -99,7 +99,7 @@ const { Content } = await service.render();
 
   <ServiceGallery
     title="We are capable of much more"
-    titlePos={Pos.Left}
+    titlePos={Pos.Right}
     id="gallery"
     class="!mb-0"
   >

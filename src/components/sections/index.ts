@@ -8,5 +8,6 @@ import Question from "./Question.astro";
 import FullVideo from "./FullVideo.astro";
 import ZigZag from "./ZigZag.astro";
 import Faq from "./Faq.astro";
+import Panel from "./Panel.astro";
 
-export { Hero, Popular, LessPopular, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq };
+export { Hero, Popular, LessPopular, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq, Panel };
