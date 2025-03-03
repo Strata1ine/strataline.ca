@@ -26,15 +26,15 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
 <header
   class={clsx(
-    `w-full top-0 z-3 py-4`,
+    `w-full z-3 top-0`,
     sticky
-      ? "sticky py-2 border-b-1 border-[rgba(0,0,0,0.1)] backdrop-blur-[1rem]"
-      : "absolute bg-white lg:bg-transparent",
+      ? "sticky backdrop-blur-[5rem] py-4 sm:py-4"
+      : "absolute bg-white lg:bg-transparent py-4 sm:py-6",
   )}
 >
- {
+  {
     sticky && (
-      <div class="absolute inset-0 z-[-1] bg-white opacity-70 mix-blend-screen"></div>
+      <div class="absolute inset-0 z-[-1] bg-white opacity-80 mix-blend-screen" />
     )
   }
   <Container
@@ -42,9 +42,9 @@ const { items = [{}], sticky = false } = Astro.props as Props;
     variant={ContainerVariant.Inner}
     class="flex items-center justify-between rounded-md"
   >
-    <h1 class="text-accent-dark font-serif text-2xl font-bold">Strataline</h1>
+    <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
     <nav>
-      <ul class="hidden gap-11 xl:flex">
+      <ul class="hidden gap-12 xl:flex">
         {
           items.length !== 0
             ? items.map((item) => (

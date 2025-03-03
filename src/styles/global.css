@@ -47,19 +47,24 @@
   --radius-xl: .75rem;
 
   --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
+  --text-sm--line-height: 1.7;
   --text-base: clamp(1.1rem, 2.1vw, 1.45rem);
+  --text-base--line-height: 1.7;
   --text-bg: clamp(1.3rem, 2vw, 1.45rem);
+  --text-bg--line-height: 1.7;
   --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
-  --text-xl: clamp(1.6rem, 4vw, 2.3rem);
+  --text-xl: clamp(1.6rem, 4vw, 2.1rem);
   --text-xl--line-height: 1.2;
-  --text-2xl: clamp(2.0rem, 4vw, 3.3rem);
+  --text-2xl: clamp(1.7rem, 4vw, 2.8rem);
   --text-2xl--line-height: 1.1;
-  --text-3xl: clamp(2.5rem, 4.5vw, 3.8rem);
+  --text-3xl: clamp(2.0rem, 4vw, 3.3rem);
   --text-3xl--line-height: 1.1;
-  --text-4xl: clamp(2.3rem, 4.5vw, 4.4rem);
+  --text-4xl: clamp(2.5rem, 4.5vw, 3.8rem);
   --text-4xl--line-height: 1.1;
-  --text-5xl: clamp(3rem, 4.5vw, 5rem);
-  --text-5xl--line-height: 1.2;
+  --text-5xl: clamp(2.3rem, 4.5vw, 4.4rem);
+  --text-5xl--line-height: 1.1;
+  --text-6xl: clamp(3rem, 4.5vw, 5rem);
+  --text-6xl--line-height: 1.2;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;
@@ -78,6 +83,12 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
+}
+
+@layer base {
+  button {
+    text-align: left;
+  }
 }
 
 .scrollbar-hide {

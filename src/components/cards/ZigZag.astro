@@ -1,5 +1,4 @@
 ---
-import clsx from "clsx";
 import { parseHTML } from "linkedom";
 import { appendAttrElements } from "~/util/processHTML";
 import { Pos } from "~/components/variants.ts";
@@ -24,7 +23,7 @@ appendAttrElements(
 ---
 
 <div
-  class="mb-30 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-25 sm:mb-33 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
   {...slot}
 >
   {
@@ -36,7 +35,7 @@ appendAttrElements(
   }
 
   <div class="flex-1">
-    <h4 class="mb-3 font-serif text-2xl font-semibold">{title}</h4>
+    <h4 class="mb-3 font-serif text-3xl font-semibold">{title}</h4>
 
     {
       variant === Pos.Right && (

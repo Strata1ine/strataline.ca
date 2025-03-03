@@ -1,0 +1,51 @@
+---
+import { Pos } from "~/components/variants.ts";
+const { title, description } = Astro.props;
+---
+
+<button
+  class="border-accent cursor-pointer border-t-[1.5px] py-6 last:border-b-[1.5px]"
+  onclick="toggleFaq(this)"
+>
+  <div class="flex items-center justify-between gap-4">
+    <h4 class="font-serif text-2xl">{title}</h4>
+    <div class="expand relative h-6 w-6 flex-shrink-0"></div>
+  </div>
+
+  <p class="text-sans pointer-events-none h-0 text-base opacity-0 [&.active]:pointer-events-auto [&.active]:h-auto [&.active]:opacity-100 [&.active]:mt-2" data-safari-bad="transition-all duration-250">
+    {description}
+  </p>
+</button>
+
+<style lang="scss">
+  .expand {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+      bottom: 0;
+      width: 2px;
+      background-color: var(--color-black);
+      transform-origin: center;
+      transition: transform 250ms;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(50% - 1px);
+      right: 0;
+      height: 2px;
+      background-color: var(--color-black);
+      transform-origin: center;
+    }
+
+    &.active {
+      &::before {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+</style>

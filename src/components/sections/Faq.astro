@@ -1,0 +1,14 @@
+---
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+import { Pos } from "~/components/variants.ts";
+
+const { title, titlePos = Pos.Left, ...slot } = Astro.props;
+---
+
+<Container variant={ContainerVariant.Inner} {...slot}>
+  <ContainerTitle title={title} />
+  <div class="flex flex-col">
+    <slot />
+  </div>
+</Container>

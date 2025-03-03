@@ -7,8 +7,6 @@ covers:
 header:
   - id: "why"
     name: "Why"
-  - id: "video"
-    name: "CityTV Mention"
   - id: "process"
     name: "Process"
   - id: "faq"
@@ -29,7 +27,7 @@ Popcorn ceilings, also known as acoustic ceilings, were popular in the mid-20th 
   title="Aesthetic upgrade"
   i={1}
   description={`
-Modern homes favor smooth ceilings, which can enhance the overall look of your space.
+Modern homes have smooth ceilings, because it makes your room feel more spacious and beautiful.
   `}
 />
 
@@ -37,7 +35,7 @@ Modern homes favor smooth ceilings, which can enhance the overall look of your s
   title="Increased home value"
   i={2}
   description={`
-Updating your ceiling can improve your home’s marketability.
+Updating your ceiling improves your home’s marketability. All imperfections removed.
   `}
 />
 
@@ -53,11 +51,16 @@ Smooth ceilings are much easier to clean and maintain than textured ones.
   title="Potential asbestos issues"
   i={4}
   description={`
-If your popcorn ceiling was installed before the 1980s, it may contain asbestos, requiring professional removal for safety.
+If your popcorn ceiling was installed before the 1980s, it likely has asbestos, requiring professional removal for safety.
   `}
 />
 
 </Section.Question>
+
+<Section.TextCarousel
+  speed={0.45}
+  text={["Expert popcorn removal", "Kernels of design wisdom", "No scrape of popcorn left", "Ceiling texture worth savoring"]}
+/>
 
 <Section.ZigZag
   title="Our process"
@@ -94,8 +97,30 @@ We’ll leave your space spotless and ready for your next design project!
 
 </Section.ZigZag>
 
+<Section.Faq
+  title="Have any questions?"
+  id="faq"
+>
 
-<Section.TextCarousel
-  speed={0.45}
-  text={["Expert popcorn removal", "Kernels of design wisdom", "No scrape of popcorn left", "Ceiling texture worth savoring"]}
+<Card.Faq
+  title="How much does popcorn ceiling removal cost?"
+  description={`
+The cost varies depending on the size of the area and the complexity of the removal. Contact us for a free estimate!
+  `}
 />
+
+<Card.Faq
+  title="How long does the process take?"
+  description={`
+Typically, the process can take anywhere from a few hours to a couple of days, depending on the size of the job.
+  `}
+/>
+
+<Card.Faq
+  title="Can I do it myself?"
+  description={`
+While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
+  `}
+/>
+
+</Section.Faq>

@@ -6,6 +6,7 @@ declare global {
   interface Window {
     slideNext: (id: string, slideNum: number) => void;
     toggleDropdown: (e: HTMLElement) => void;
+    toggleFaq: (e: HTMLElement) => void;
     toggleMenu: (id: string) => void;
     sliderTo: (id: string, idx: number) => void;
   }
@@ -65,6 +66,18 @@ window.toggleMenu = function(id: string) {
   if (e != null) {
     e.classList.toggle("active");
     e.scrollIntoView(true);
+  }
+}
+
+window.toggleFaq = function(e: HTMLElement) {
+  let p = e.querySelector("p");
+  let expand = e.querySelector(".expand");
+  if (p != null && p instanceof HTMLElement) {
+    p.classList.toggle("active");
+  }
+
+  if (expand != null && expand instanceof HTMLElement) {
+    expand.classList.toggle("active");
   }
 }
 
