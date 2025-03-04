@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { getCollection } from "astro:content";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
-import NavDown from "~/assets/nav_down.svg";
+import { Icon } from "astro-icon/components";
 
 const mobileMenu = crypto.randomUUID();
 const servicesDesktopMenu = crypto.randomUUID();
@@ -62,7 +62,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
             onclick={`toggleDropdown(this)`}
           >
             <span class="text-bg font-sans">Services</span>
-            <NavDown class="ml-3 w-4" />
+            <Icon name="ph:caret-down-fill" class="ml-2 w-4" />
           </button>
 
           <div
@@ -127,7 +127,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
         onclick={`toggleDropdown(this)`}
       >
         <span class="font-sans text-xl">Services </span>
-        <NavDown class="ml-3 w-5" />
+        <Icon name="ph:caret-down-fill" class="ml-2 w-5" />
       </button>
 
       <div

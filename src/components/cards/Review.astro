@@ -1,6 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { title, description, location, stars = 5 } = Astro.props;
-import Star from "~/assets/star.svg";
 ---
 
 <div
@@ -18,7 +19,11 @@ import Star from "~/assets/star.svg";
   </h4>
 
   <div class="mb-5 flex gap-2">
-    {Array.from({ length: stars }, (_) => <Star class="w-5 sm:w-6" />)}
+    {
+      Array.from({ length: stars }, (_) => (
+        <Icon name="ph:star-fill" class="text-gold w-5 sm:w-6 h-auto" />
+      ))
+    }
   </div>
 
   <p class="font-sans text-base italic">{description}</p>

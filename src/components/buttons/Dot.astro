@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-const { class: className, ...rest } = Astro.props;
+const { class: className, i, ...rest } = Astro.props;
 ---
 
 <button
@@ -8,6 +8,7 @@ const { class: className, ...rest } = Astro.props;
     `h-8 w-8 cursor-pointer rounded-[50%] border-[1.4px] border-black transition-[border] duration-250 xl:h-10 xl:w-10 [&.active]:border-5 border-solid`,
     className,
   )}
+  aria-label={i != null ? `Navigate to Slide ${i}` : ""}
   {...rest}
 >
 </button>

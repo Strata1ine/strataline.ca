@@ -95,7 +95,7 @@ const localBusiness = function(image: any) {
 };
 
 const socialMedia = z.object({
-  name: z.string(),
+  color: z.string(),
   url: z.string(),
   icon: z.string(),
 });

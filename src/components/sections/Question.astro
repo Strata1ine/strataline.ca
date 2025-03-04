@@ -13,14 +13,14 @@ const { title, description, variant = Pos.Left, ...slot } = Astro.props;
       variant ? "sm:flex-row-reverse" : "sm:flex-row",
     )}
   >
-    <h3
+    <h2
       class={clsx(
         `font-serif text-4xl font-bold text-balance flex-1`,
         variant ? "text-right" : "",
       )}
     >
       {title}
-    </h3>
+    </h2>
     <p class="flex-1 font-sans text-sm">{description}</p>
   </div>
 

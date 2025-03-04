@@ -9,6 +9,7 @@ const { class: customClass, idx: slideId, length, ...rest } = Astro.props;
     <div class={customClass} {...rest} data-slide-nav={slideId}>
       {Array.from({ length }).map((_, i) => (
         <Dot
+          i={i}
           class={i === 0 ? "active" : ""}
           onclick={`slideNext('${slideId}', ${i})`}
         />

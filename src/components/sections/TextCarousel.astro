@@ -1,5 +1,6 @@
 ---
-import Star from "~/assets/star.svg";
+import { Icon } from "astro-icon/components";
+
 const {
   text = [
     "Made with love",
@@ -20,8 +21,13 @@ const {
   >
     {
       text.map((text: string) => (
-        <h4 class="flex-shrink-0 font-serif text-4xl">{text}</h4>
-        <Star class="flex-shrink-0 w-8 h-8" />
+        <>
+          <h4 class="flex-shrink-0 font-serif text-4xl">{text}</h4>
+          <Icon
+            name="ph:star-four-fill"
+            class="text-gold h-auto w-8 flex-shrink-0"
+          />
+        </>
       ))
     }
   </div>

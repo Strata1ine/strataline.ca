@@ -9,29 +9,40 @@ import playformCompress from '@playform/compress';
 import sitemap from '@astrojs/sitemap';
 import compressor from 'astro-compressor';
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
   redirects: {
     '/services': '/',
   },
   site: 'https://strataline.ca',
-  experimental: {
-    svg: true,
-  },
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [AutoImport({
-    imports: [
-      {
-        './src/components/buttons/': 'Btn',
-        './src/components/sections/': 'Section',
-        './src/components/cards/': 'Card',
-        './src/components/variants.ts': 'Variant',
+  integrations: [
+    AutoImport({
+      imports: [
+        {
+          './src/components/buttons/': 'Btn',
+          './src/components/sections/': 'Section',
+          './src/components/cards/': 'Card',
+          './src/components/variants.ts': 'Variant',
+        },
+      ],
+    }),
+    mdx({
+      rehypePlugins: [rehypeUnwrapImages]
+    }),
+    playformCompress(),
+    sitemap(),
+    compressor(),
+    icon({
+      include: {
+        local: ["*"],
+        ph: ["*"],
       },
-    ],
-  }), mdx({
-    rehypePlugins: [rehypeUnwrapImages]
-  }), playformCompress(), sitemap(), compressor()],
+    }),
+  ],
 });

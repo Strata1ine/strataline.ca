@@ -36,6 +36,7 @@ const reviewSlider = crypto.randomUUID();
         <button
           class="z-1 flex-1 cursor-pointer"
           onclick={`sliderTo('${reviewSlider}', ${i})`}
+          aria-label={`Navigate to review ${i}`}
         />
       ))
     }

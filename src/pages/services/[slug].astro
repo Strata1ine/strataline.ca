@@ -8,10 +8,9 @@ export async function getStaticPaths() {
 }
 
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
-import ArrowDown from "~/assets/arrow_down.svg";
 import Layout from "~/layouts/Layout.astro";
-import Home from "~/assets/home.svg";
 import LetsTalk from "~/components/buttons/LetsTalk.astro";
 import Container from "~/components/div/Container.astro";
 import Header from "~/components/nav/Header.astro";
@@ -44,7 +43,7 @@ const { Content } = await service.render();
             class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
             onclick={`window.location.href = '/#${slug}'`}
           >
-            <Home class="w-8 sm:w-9 xl:w-12" />
+            <Icon name="ph:house-line-fill" class="h-auto w-8 sm:w-9 xl:w-12" />
             <span class="mb-1 font-sans text-base leading-none font-bold"
               >Go Back</span
             >
@@ -74,8 +73,9 @@ const { Content } = await service.render();
           </p>
         </div>
 
-        <ArrowDown
-          class="color-white ml-(--right-span) hidden w-8 sm:block xl:w-10"
+        <Icon
+          name="arrow-down"
+          class="color-white ml-(--right-span) hidden h-auto w-8 sm:block xl:w-10"
         />
       </div>
 

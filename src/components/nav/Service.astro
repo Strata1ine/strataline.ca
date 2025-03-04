@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Arrow from "~/assets/arrow.svg";
+import { Icon } from "astro-icon/components";
 
 const { data, slug, ...slot } = Astro.props;
 ---
@@ -22,6 +22,6 @@ const { data, slug, ...slot } = Astro.props;
     class="flex w-1/2 flex-col justify-between gap-2 sm:w-full sm:flex-row sm:items-center"
   >
     <h4 class="font-serif text-xl">{data.title}</h4>
-    <Arrow class="w-13" />
+    <Icon name="arrow" class="w-13" />
   </div>
 </a>
