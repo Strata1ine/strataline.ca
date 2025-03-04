@@ -21,6 +21,13 @@ export default defineConfig({
   },
 
   integrations: [
+    (await import("astro-compress")).default({
+      CSS: true,
+      HTML: true,
+      Image: false,
+      JavaScript: true,
+      SVG: true,
+    }),
     AutoImport({
       imports: [
         {
@@ -30,15 +37,11 @@ export default defineConfig({
           './src/components/variants.ts': 'Variant',
         },
       ],
-    }),
-    mdx({
+    }), mdx({
       rehypePlugins: [rehypeUnwrapImages]
-    }),
-    sitemap(),
-    compressor({
+    }), sitemap(), compressor({
       fileExtensions: [".css", ".js", ".html", ".xml", ".cjs", ".mjs", ".svg", ".txt", ".json"]
-    }),
-    icon({
+    }), icon({
       include: {
         local: ["*"],
         ph: ["*"],
