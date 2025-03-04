@@ -53,18 +53,34 @@ export function setAttrElementsIf(e: NodeListOf<Element>, a: string, customAttr:
 }
 
 // I am great at naming things
-export function minmaxBloat(images: NodeListOf<Element>, i: number) {
+export function minmaxBloat(images: NodeListOf<Element>, s: number) {
   setAttrElementsIf(
     images,
     "fetchpriority",
     "high",
-    (_: Element, i: number) => i == 0,
+    (_: Element, i: number) => i == s,
   );
 
   setAttrElementsIf(
     images,
     "fetchpriority",
     "low",
-    (_: Element, i: number) => i != 0,
+    (_: Element, i: number) => i != s,
   );
+}
+
+export function flexImages(images: NodeListOf<Element>) {
+  appendAttrElements(
+    images,
+    "class",
+    `object-cover h-full ${images.length > 1 ? 'min-w-0 hover:flex-5 flex-1' : ''}`,
+  );
+
+  if (images.length > 1) {
+    appendAttrElements(
+      images,
+      "data-safari-bad",
+      `transition-[flex-grow] duration-800`,
+    );
+  }
 }

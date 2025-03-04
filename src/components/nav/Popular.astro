@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { appendAttrElements } from "~/util/processHTML";
+import { flexImages } from "~/util/processHTML";
 import Button from "~/components/buttons/Button.astro";
 import { Pos } from "~/components/variants.ts";
 
@@ -9,17 +9,7 @@ const { data, variant, slug, ...slot } = Astro.props;
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
 
-appendAttrElements(
-  document.querySelectorAll("img"),
-  "class",
-  `object-cover min-w-0 flex-1 h-full hover:flex-5`,
-);
-
-appendAttrElements(
-  document.querySelectorAll("img"),
-  "data-safari-bad",
-  `transition-[flex-grow] duration-800`,
-);
+flexImages(document.querySelectorAll("img"));
 ---
 
 <div

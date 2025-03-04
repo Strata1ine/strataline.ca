@@ -63,7 +63,7 @@
   --text-6xl: clamp(3rem, 4.5vw, 5rem);
   --text-6xl--line-height: 1.2;
 
-  --spacing-inset: 0.9rem;
+  --spacing-inset: .9rem;
   --spacing-inner: 1300px;
   --spacing-outer: 1450px;
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));

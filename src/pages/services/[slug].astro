@@ -9,6 +9,7 @@ export async function getStaticPaths() {
 
 import { Image } from "astro:assets";
 
+import ArrowDown from "~/assets/arrow_down.svg";
 import Layout from "~/layouts/Layout.astro";
 import Home from "~/assets/home.svg";
 import LetsTalk from "~/components/buttons/LetsTalk.astro";
@@ -28,53 +29,58 @@ const { Content } = await service.render();
 
 <Layout>
   <main
-    class="h-100svh relative overflow-x-clip py-15 sm:flex sm:h-200"
+    class="h-100svh relative overflow-x-clip py-15 sm:flex sm:h-190 sm:py-25"
   >
     <div class="bg-dark absolute inset-0 z-[-1]"></div>
 
     <Container
       as="div"
-      class="flex gap-6 text-white sm:flex-row sm:items-center sm:py-0 xl:gap-7 2xl:gap-9"
+      class="flex gap-6 text-white sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
     >
-      <div class="relative flex-1">
-        <button
-          class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
-          onclick={`window.location.href = '/#${slug}'`}
-        >
-          <Home class="w-8 sm:w-9 xl:w-12" />
-          <span class="mb-1 font-sans text-base leading-none font-bold"
-            >Go Back</span
+      <div class="relative flex-1 flex-col justify-between sm:flex">
+        <div class="hidden h-14 sm:block"></div>
+        <div class="">
+          <button
+            class="text-accent-dark mb-3 flex cursor-pointer items-end gap-3"
+            onclick={`window.location.href = '/#${slug}'`}
           >
-        </button>
+            <Home class="w-8 sm:w-9 xl:w-12" />
+            <span class="mb-1 font-sans text-base leading-none font-bold"
+              >Go Back</span
+            >
+          </button>
 
-        <h2 class="font-serif text-5xl font-bold text-balance">
-          {service.data.title}
-        </h2>
+          <h2 class="font-serif text-5xl font-bold text-balance">
+            {service.data.title}
+          </h2>
 
-        <div
-          class="-mr-inset my-4 ml-7 h-70 rounded-tl-md rounded-bl-md contain-paint sm:hidden"
-        >
-          {
-            service.data.covers.map((img: any, _: number) => (
-              <Image
-                class="h-full min-w-0 flex-1 object-cover"
-                src={img.src}
-                alt={img.alt}
-                loading="eager"
-              />
-            ))
-          }
+          <div
+            class="-mr-inset my-4 ml-7 h-70 rounded-tl-md rounded-bl-md contain-paint sm:hidden"
+          >
+            {
+              service.data.covers.map((img: any, _: number) => (
+                <Image
+                  class="h-full min-w-0 flex-1 object-cover"
+                  src={img.src}
+                  alt={img.alt}
+                  loading="eager"
+                />
+              ))
+            }
+          </div>
+
+          <p class="mt-2 font-sans text-base">
+            {service.data.description}
+          </p>
         </div>
 
-        <p class="text-base mt-2 font-sans xl:mt-4">
-          {service.data.description}
-        </p>
+        <ArrowDown
+          class="color-white ml-(--right-span) hidden w-8 sm:block xl:w-10"
+        />
       </div>
 
       <div class="hidden flex-1 sm:flex">
-        <div
-          class="flex h-[60vh] max-h-175 min-h-130 justify-evenly rounded-sm contain-paint"
-        >
+        <div class="flex justify-evenly rounded-sm contain-paint">
           {
             service.data.covers.map((img: any, _: number) => (
               <Image

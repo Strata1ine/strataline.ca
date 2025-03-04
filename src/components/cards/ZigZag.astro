@@ -1,29 +1,18 @@
 ---
 import { parseHTML } from "linkedom";
-import { appendAttrElements } from "~/util/processHTML";
+import { flexImages } from "~/util/processHTML";
 import { Pos } from "~/components/variants.ts";
 
 const { title, description, variant, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
-const imgs = document.querySelectorAll("img");
 
-appendAttrElements(
-  imgs,
-  "class",
-  `object-cover min-w-0 flex-1 h-full hover:flex-5`,
-);
-
-appendAttrElements(
-  imgs,
-  "data-safari-bad",
-  `transition-[flex-grow] duration-800`,
-);
+flexImages(document.querySelectorAll("img"));
 ---
 
 <div
-  class="mb-25 sm:mb-33 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
   {...slot}
 >
   {
