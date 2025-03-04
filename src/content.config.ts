@@ -67,7 +67,7 @@ const localBusiness = function(image: any) {
     paymentAccepted: z.string().optional(),
     priceRange: z.string().optional(),
 
-    areaServed: z.union([z.string(), z.array(z.string())]).optional(),
+    areaServed: z.array(z.string()).optional(),
     geo: geoCoordinatesSchema.optional(),
     latitude: z.union([z.number(), z.string()]).optional(),
     longitude: z.union([z.number(), z.string()]).optional(),
@@ -94,10 +94,14 @@ const localBusiness = function(image: any) {
   });
 };
 
-const socialMedia = z.object({
-  color: z.string(),
-  url: z.string(),
+const icon = z.object({
   icon: z.string(),
+  color: z.string().optional(),
+});
+
+const socialMedia = z.object({
+  social: icon.optional(),
+  url: z.string(),
 });
 
 const postalAddressSchema = z.object({

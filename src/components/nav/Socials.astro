@@ -9,16 +9,24 @@ const { imageClass, ...slot } = Astro.props;
 
 <ul {...slot}>
   {
-    index.data.local_business.sameAs.map((social: any) => (
-      <li>
-        <a target="_blank" href={social.url}>
-          <Icon
-            style={`color: #${social.color}`}
-            name={`ph:${social.icon}`}
-            class={clsx(imageClass)}
-          />
-        </a>
-      </li>
-    ))
+    index.data.local_business.sameAs &&
+      index.data.local_business.sameAs.map(
+        (media: any) =>
+          media.social && (
+            <li>
+              <a
+                target="_blank"
+                href={media.url}
+                rel="noopener noreferrer nofollow"
+              >
+                <Icon
+                  style={`color: #${media.social.color}`}
+                  name={`${media.social.icon}`}
+                  class={clsx(imageClass)}
+                />
+              </a>
+            </li>
+          ),
+      )
   }
 </ul>

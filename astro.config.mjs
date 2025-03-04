@@ -5,7 +5,6 @@ import rehypeUnwrapImages from 'rehype-unwrap-images';
 import AutoImport from 'astro-auto-import';
 
 import tailwindcss from '@tailwindcss/vite';
-import playformCompress from '@playform/compress';
 import sitemap from '@astrojs/sitemap';
 import compressor from 'astro-compressor';
 
@@ -35,9 +34,10 @@ export default defineConfig({
     mdx({
       rehypePlugins: [rehypeUnwrapImages]
     }),
-    playformCompress(),
     sitemap(),
-    compressor(),
+    compressor({
+      fileExtensions: [".css", ".js", ".html", ".xml", ".cjs", ".mjs", ".svg", ".txt", ".json"]
+    }),
     icon({
       include: {
         local: ["*"],

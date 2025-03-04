@@ -24,11 +24,7 @@ function generateLocalBusinessSchema(data: any) {
   if (data.description) schema.description = data.description;
   if (data.url) schema.url = data.url;
   if (data.image) schema.image = data.image;
-  if (data.sameAs) {
-    schema.sameAs = Array.isArray(data.sameAs)
-      ? data.sameAs.map((item) => item.url)
-      : data.sameAs.url;
-  }
+  if (data.sameAs) schema.sameAs = data.sameAs;
   if (data.legalName) schema.legalName = data.legalName;
   if (data.foundingDate) schema.foundingDate = data.foundingDate;
   if (data.foundingLocation) schema.foundingLocation = data.foundingLocation;
