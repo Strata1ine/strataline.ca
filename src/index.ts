@@ -120,27 +120,62 @@ window.onload = () => {
   });
 
   document.querySelectorAll("[data-carousel]").forEach(carousel => {
-    // lol
-    carousel.innerHTML += carousel.innerHTML += carousel.innerHTML;
+    carousel.innerHTML += carousel.innerHTML;
 
     const speedAttr = parseFloat(carousel.getAttribute("data-carousel-speed") ?? "1.0");
-    const speed = isNaN(speedAttr) ? 1.0 : speedAttr;
-    let offset = 0;
+    const wantedSpeed = isNaN(speedAttr) ? 1.0 : speedAttr;
+    let currentSpeed = wantedSpeed;
+    let isDown = false;
+    let scrollLeft = 0;
+    let startX = 0;
 
-    function animate() {
-      if (inScreen(carousel)) {
-        offset += speed;
-        if (offset >= carousel.scrollWidth / 2) {
-          offset = 0;
-        }
+    if (carousel.hasAttribute("data-carousel-moveable")) {
+      carousel.addEventListener('mousedown', ((e: MouseEvent): void => {
+        isDown = true;
+        currentSpeed = 0;
+      }) as EventListener);
 
-        carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
-      }
+      carousel.addEventListener('touchstart', ((e: TouchEvent): void => {
+        isDown = true;
+        currentSpeed = 0;
+      }) as EventListener, { passive: true });
 
-      requestAnimationFrame(animate);
+      carousel.addEventListener('mouseleave', () => { isDown = false; });
+      carousel.addEventListener('mousemove', ((e: MouseEvent): void => {
+        if (!isDown) return;
+        carousel.scrollLeft = scrollLeft - (e.pageX - startX);
+      }) as EventListener);
+
+      carousel.addEventListener('touchend', ((e: TouchEvent) => {
+        if (!isDown) return;
+        isDown = false;
+        currentSpeed = wantedSpeed;
+      }) as EventListener, { passive: true });
+
+      carousel.addEventListener('mouseup', ((e: MouseEvent): void => {
+        isDown = false;
+        currentSpeed = wantedSpeed;
+      }) as EventListener);
     }
 
-    animate();
+    if (carousel.hasAttribute("data-carousel-speed")) {
+      let offset = 0;
+
+      function animate() {
+        if (inScreen(carousel)) {
+          offset += currentSpeed;
+          if (offset >= carousel.scrollWidth / 2) {
+            offset = 0;
+          }
+
+          carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
   });
 
   document.querySelectorAll("[data-slider]").forEach((slider, _: number) => {

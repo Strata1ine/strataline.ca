@@ -13,23 +13,23 @@ const serviceData = await getCollection("services");
   as="footer"
   variant={ContainerVariant.Inner}
 >
-  <div class="space-y-10 py-12">
+  <div class="space-y-12 py-12">
     {
       index.data.local_business.areaServed && (
         <>
           <h4 class="mb-4 font-serif text-xl font-semibold">
             Municipalities we serve
           </h4>
-          <ul class="columns-[10rem] gap-4 space-y-2 sm:gap-12">
+          <ul class="columns-[10rem] gap-2 sm:columns-[13rem]">
             {index.data.local_business.areaServed.map((area, _) => (
-              <li class="">
+              <li>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                     area,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  class="text-url font-sans text-base text-nowrap hover:underline"
+                  class="text-url font-sans text-base hover:underline"
                 >
                   {area}
                 </a>
@@ -41,26 +41,15 @@ const serviceData = await getCollection("services");
     }
 
     <div>
-      <h4 class="mb-4 font-serif text-xl font-semibold">Our Services</h4>
-      <ul class="columns-[10rem] gap-2 space-y-2 sm:gap-12">
-        {
-          serviceData.map((service: any, _) => (
-            <li>
-              <a
-                href={`/services/${service.slug}`}
-                class="text-url font-sans text-base text-nowrap hover:underline"
-              >
-                {service.data.title}
-              </a>
-            </li>
-          ))
-        }
+      <h4 class="mb-4 font-serif text-xl font-semibold">Other</h4>
+      <ul class="columns-[10rem] gap-2 sm:columns-[13rem]">
+        <a href=""></a>
       </ul>
     </div>
   </div>
 
   <div
-    class="border-accent py-inset flex flex-col items-center justify-between border-t-[1.4px] md:flex-row"
+    class="border-accent py-inset flex flex-col items-center justify-between gap-2 border-t-[1.4px] md:flex-row"
   >
     <span class="text-bg font-sans"><b>&copy; {index.data.title}</b>. 2025</span
     >

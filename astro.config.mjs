@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import AutoImport from 'astro-auto-import';
 
@@ -19,7 +20,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
+  image: {
+    experimentalLayout: 'responsive',
+  },
+  experimental: {
+    responsiveImages: true,
+  },
   integrations: [
     (await import("astro-compress")).default({
       CSS: true,
@@ -35,13 +41,16 @@ export default defineConfig({
           './src/components/sections/': 'Section',
           './src/components/cards/': 'Card',
           './src/components/variants.ts': 'Variant',
+          'astro:assets': ['Image']
         },
       ],
-    }), mdx({
+    }),
+    mdx({
       rehypePlugins: [rehypeUnwrapImages]
-    }), sitemap(), compressor({
-      fileExtensions: [".css", ".js", ".html", ".xml", ".cjs", ".mjs", ".svg", ".txt", ".json"]
-    }), icon({
+    }),
+    sitemap(),
+    compressor(),
+    icon({
       include: {
         local: ["*"],
         ph: ["*"],
