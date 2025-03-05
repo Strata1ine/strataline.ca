@@ -18,6 +18,7 @@ const { imageClass, ...slot } = Astro.props;
                 target="_blank"
                 href={media.url}
                 rel="noopener noreferrer nofollow"
+                aria-label={`${media.social.name} Link`}
               >
                 <Icon
                   style={`color: #${media.social.color}`}

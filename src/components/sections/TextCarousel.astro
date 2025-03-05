@@ -13,22 +13,24 @@ const {
 } = Astro.props;
 ---
 
-<div class="py-inset border-accent border-y-[1.4px] contain-paint" {...slot}>
-  <div
-    data-carousel
-    data-carousel-speed={speed}
-    class="flex h-18 touch-none items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
-  >
-    {
-      text.map((text: string) => (
-        <>
-          <h4 class="flex-shrink-0 font-serif text-4xl">{text}</h4>
-          <Icon
-            name="ph:star-four-fill"
-            class="text-gold h-auto w-8 flex-shrink-0"
-          />
-        </>
-      ))
-    }
+<div class="py-inset border-accent border-y-[1.4px]" {...slot}>
+  <div class="contain-paint" data-carousel-wrapper>
+    <div
+      data-carousel
+      data-carousel-speed={speed}
+      class="flex h-18 touch-pan-y items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
+    >
+      {
+        text.map((text: string) => (
+          <>
+            <h4 class="flex-shrink-0 font-serif text-4xl">{text}</h4>
+            <Icon
+              name="ph:star-four-fill"
+              class="text-gold h-auto w-8 flex-shrink-0"
+            />
+          </>
+        ))
+      }
+    </div>
   </div>
 </div>

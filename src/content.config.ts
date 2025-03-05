@@ -97,6 +97,7 @@ const localBusiness = function(image: any) {
 const icon = z.object({
   icon: z.string(),
   color: z.string().optional(),
+  name: z.string(),
 });
 
 const socialMedia = z.object({

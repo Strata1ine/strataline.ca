@@ -2,13 +2,17 @@ import smoothscroll from 'smoothscroll-polyfill';
 window.__forceSmoothScrollPolyfill__ = true;
 smoothscroll.polyfill();
 
+const isIOS =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.userAgent.includes("Mac") && navigator.maxTouchPoints > 1);
+
 declare global {
   interface Window {
     slideNext: (id: string, slideNum: number) => void;
     toggleDropdown: (e: HTMLElement) => void;
     toggleFaq: (e: HTMLElement) => void;
     toggleMenu: (id: string) => void;
-    sliderTo: (id: string, idx: number) => void;
+    sliderTo: (idx: number) => void;
   }
 }
 
@@ -81,14 +85,6 @@ window.toggleFaq = function(e: HTMLElement) {
   }
 }
 
-window.sliderTo = function(id: string, idx: number) {
-  const slider = document.getElementById(id) as HTMLElement;
-  const cards = slider.querySelectorAll('[data-slider-card]');
-  const width = cards[idx].getBoundingClientRect().width + parseFloat(window.getComputedStyle(cards[idx]).marginLeft) || 0;
-  slider.scrollTo({ left: width * idx, behavior: 'smooth' });
-  (slider.nextElementSibling?.children[0]).setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / cards.length}%`);
-}
-
 window.onload = () => {
   setTimeout(() => {
     document.querySelectorAll("[data-safari-bad]").forEach(e => {
@@ -119,7 +115,8 @@ window.onload = () => {
     }, speed);
   });
 
-  document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  document.querySelectorAll("[data-carousel-wrapper]").forEach((wrapper) => {
+    const carousel = wrapper.querySelector("[data-carousel]") as HTMLElement;
     carousel.innerHTML += carousel.innerHTML;
 
     const speedAttr = parseFloat(
@@ -133,138 +130,260 @@ window.onload = () => {
     let isDown = false;
     let startX = 0;
     let dragOffset = 0;
-    let offset = 0;
+    let rawOffset = 0;
     let lastXDiff = 0;
+
+    function updateTranslation() {
+      const halfWidth = carousel.scrollWidth / 2;
+      const visibleOffset = ((rawOffset % halfWidth) + halfWidth) % halfWidth;
+      carousel.setAttribute(
+        "style",
+        `transform: translateX(-${visibleOffset}px)`
+      );
+    }
 
     function animate() {
       if (!isDown && inScreen(carousel)) {
-        offset += autoDirection * currentSpeed;
-        if (offset >= carousel.scrollWidth / 2) {
-          offset -= carousel.scrollWidth / 2;
-        } else if (offset < 0) {
-          offset += carousel.scrollWidth / 2;
-        }
-        carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
+        rawOffset += autoDirection * currentSpeed;
+        updateTranslation();
       }
 
       requestAnimationFrame(animate);
     }
+
     animate();
 
-    carousel.addEventListener("pointerdown", ((e: PointerEvent): void => {
-      isDown = true;
-      currentSpeed = 0;
-      startX = e.pageX;
-      dragOffset = offset;
-      carousel.setPointerCapture(e.pointerId);
-      e.preventDefault();
-    }) as EventListener);
+    wrapper.addEventListener(
+      "pointerdown",
+      ((e: PointerEvent): void => {
+        isDown = true;
+        currentSpeed = 0;
+        startX = e.pageX;
+        dragOffset = rawOffset;
+        wrapper.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      }) as EventListener
+    );
 
-    carousel.addEventListener("pointermove", ((e: PointerEvent): void => {
-      if (!isDown) return;
-      const xDiff = e.pageX - startX;
-      lastXDiff = xDiff;
-      offset = dragOffset - xDiff;
-      carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
-    }) as EventListener);
+    wrapper.addEventListener(
+      "pointermove",
+      ((e: PointerEvent): void => {
+        if (!isDown) return;
+        const xDiff = e.pageX - startX;
+        lastXDiff = xDiff;
+        rawOffset = dragOffset - xDiff;
+        updateTranslation();
+      }) as EventListener
+    );
 
-    carousel.addEventListener("pointerup", ((e: PointerEvent): void => {
-      isDown = false;
-      currentSpeed = wantedSpeed;
-      carousel.releasePointerCapture(e.pointerId);
+    wrapper.addEventListener(
+      "pointerup",
+      ((e: PointerEvent): void => {
+        isDown = false;
+        currentSpeed = wantedSpeed;
+        wrapper.releasePointerCapture(e.pointerId);
+        autoDirection = lastXDiff > 0 ? -1 : 1;
+      }) as EventListener
+    );
 
-      if (lastXDiff > 0) {
-        autoDirection = -1;
-      } else if (lastXDiff < 0) {
-        autoDirection = 1;
-      }
-    }) as EventListener);
-
-    carousel.addEventListener("pointercancel", ((e: PointerEvent): void => {
-      isDown = false;
-      currentSpeed = wantedSpeed;
-      carousel.releasePointerCapture(e.pointerId);
-    }) as EventListener);
+    wrapper.addEventListener(
+      "pointercancel",
+      ((e: PointerEvent): void => {
+        isDown = false;
+        currentSpeed = wantedSpeed;
+        wrapper.releasePointerCapture(e.pointerId);
+      }) as EventListener
+    );
   });
 
-  document.querySelectorAll("[data-slider]").forEach((slider, _: number) => {
-    const cards = slider.querySelectorAll('[data-slider-card]');
-    const scroller = slider.nextElementSibling?.children[0] as HTMLElement;
+  const slider = document.getElementById("review-slider");
+  if (slider != null && slider instanceof HTMLElement) {
+    const scrollbar = document.getElementById("review-scroller") as HTMLElement;
+    const cards = slider.querySelectorAll("[data-slider-card]");
+    const ml = parseFloat(window.getComputedStyle(cards[0]).marginLeft) || 0;
+    const isSliderOutside = window.matchMedia(`(max-width: ${((cards[0].getBoundingClientRect().width + ml) * cards.length) / 2 + 15}px)`);
+    scrollbar.setAttribute("style", `width: ${100 / sliderLength(cards.length)}%`);
+
+    isSliderOutside.addEventListener("change", function() {
+      handleChange();
+    });
+
+    function handleChange() {
+      if (!isSliderOutside.matches && cards.length <= 2) {
+        scrollbar.parentElement?.classList.add("hidden");
+      } else {
+        scrollbar.parentElement?.classList.remove("hidden");
+      }
+    }
 
     const threshold = 25;
-    const length = cards.length;
-    if (length === 0) return;
+    if (cards.length === 0) return;
 
-    scroller.setAttribute("style", `width: ${100 / length}%`);
+    function sliderLength(n: number): number {
+      return n - (isSliderOutside.matches ? 0 : 1);
+    }
+
+    window.sliderTo = function(idx: number) {
+      const cards = slider.querySelectorAll('[data-slider-card]');
+      const width = cards[idx].getBoundingClientRect().width + ml;
+      slider.scrollTo({ left: width * idx, behavior: 'smooth' });
+      scrollbar.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / sliderLength(cards.length)}%`);
+    }
+
+    handleChange();
 
     let isDown = false;
     let startX = 0;
+    let startY = 0;
     let scrollLeft = 0;
     let idx = 0;
 
-    const finalizeDrag = (pageX: number) => {
+    const finalizeDrag = (pageX: number, pageY: number): void => {
       if (!isDown) return;
 
-      const diff = pageX - startX;
+      const diffX = pageX - startX;
+      const diffY = pageY - startY;
       const style = window.getComputedStyle(cards[idx]);
-      const width = cards[idx].getBoundingClientRect().width + parseFloat(style.marginLeft);
-      let steps = Math.round(Math.abs(diff) / width);
+      const width =
+        cards[idx].getBoundingClientRect().width +
+        parseFloat(style.marginLeft);
 
-      if (steps === 0 && Math.abs(diff) > threshold) {
+      if (Math.abs(diffX) < Math.abs(diffY)) {
+        slider.scrollTo({ left: width * idx, behavior: "smooth" });
+        return;
+      }
+
+      let steps = Math.round(Math.abs(diffX) / width);
+      if (steps === 0 && Math.abs(diffX) > threshold) {
         steps = 1;
       }
 
-      if (diff < 0) {
-        idx = Math.min(idx + steps, cards.length - 1);
-      } else if (diff > 0) {
+      if (diffX < 0) {
+        idx = Math.min(idx + steps, sliderLength(cards.length) - 1);
+      } else if (diffX > 0) {
         idx = Math.max(idx - steps, 0);
       }
 
-
-      slider.scrollTo({ left: width * idx, behavior: 'smooth' });
-      scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / length}%`);
+      slider.scrollTo({ left: width * idx, behavior: "smooth" });
+      scrollbar.setAttribute(
+        "style",
+        `transform: translateX(${idx * 100}%); width: ${100 / sliderLength(cards.length)}%`
+      );
     };
 
-    slider.addEventListener(
-      "touchmove",
-      ((e: TouchEvent): void => {
-        if (!isDown) return;
-        e.preventDefault();
-        const diff = e.touches[0].pageX - startX;
-        if (Math.abs(diff) > threshold) {
+    if (isIOS) {
+      // Use touch events on iOS.
+      slider.addEventListener(
+        "touchstart",
+        ((e: TouchEvent): void => {
+          isDown = true;
+          startX = e.touches[0].pageX;
+          startY = e.touches[0].pageY;
+          scrollLeft = slider.scrollLeft;
+        }) as EventListener,
+        { passive: true }
+      );
+
+      slider.addEventListener(
+        "touchmove",
+        ((e: TouchEvent): void => {
+          if (!isDown) return;
+          // Prevent default if horizontal movement dominates,
+          // to avoid iOS interfering with the drag gesture.
+          if (
+            Math.abs(e.touches[0].pageX - startX) >
+            Math.abs(e.touches[0].pageY - startY)
+          ) {
+            e.preventDefault();
+          }
+          const diff = e.touches[0].pageX - startX;
           slider.scrollLeft = scrollLeft - diff;
-        }
-      }) as EventListener,
-      { passive: false }
-    );
+        }) as EventListener,
+        { passive: false }
+      );
 
-    slider.addEventListener('mousedown', ((e: MouseEvent): void => {
-      isDown = true;
-      startX = e.pageX;
-      scrollLeft = slider.scrollLeft;
-    }) as EventListener);
+      slider.addEventListener(
+        "touchend",
+        ((e: TouchEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(
+            e.changedTouches[0].pageX,
+            e.changedTouches[0].pageY
+          );
+          isDown = false;
+        }) as EventListener,
+        { passive: true }
+      );
 
-    slider.addEventListener('touchstart', ((e: TouchEvent): void => {
-      isDown = true;
-      startX = e.touches[0].pageX;
-      scrollLeft = slider.scrollLeft;
-    }) as EventListener, { passive: true });
+      slider.addEventListener(
+        "touchcancel",
+        ((e: TouchEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(
+            e.changedTouches[0].pageX,
+            e.changedTouches[0].pageY
+          );
+          isDown = false;
+        }) as EventListener,
+        { passive: true }
+      );
+    } else {
+      // Use pointer events on non-iOS.
+      slider.addEventListener(
+        "pointerdown",
+        ((e: PointerEvent): void => {
+          isDown = true;
+          startX = e.pageX;
+          startY = e.pageY;
+          scrollLeft = slider.scrollLeft;
+          slider.setPointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true }
+      );
 
-    slider.addEventListener('mouseleave', () => { isDown = false; });
-    slider.addEventListener('mousemove', ((e: MouseEvent): void => {
-      if (!isDown) return;
-      const diff = e.pageX - startX;
-      if (Math.abs(diff) > threshold) {
-        slider.scrollLeft = scrollLeft - diff;
-      }
-    }) as EventListener);
+      slider.addEventListener(
+        "pointermove",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          // Prevent default if horizontal movement dominates.
+          if (Math.abs(e.pageX - startX) > Math.abs(e.pageY - startY)) {
+            e.preventDefault();
+          }
+          const diff = e.pageX - startX;
+          slider.scrollLeft = scrollLeft - diff;
+        }) as EventListener,
+        { passive: false }
+      );
 
-    slider.addEventListener('touchend', ((e: TouchEvent) => {
-      if (!isDown) return;
-      finalizeDrag(e.changedTouches[0].pageX);
-      isDown = false;
-    }) as EventListener, { passive: true });
+      slider.addEventListener(
+        "pointerup",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(e.pageX, e.pageY);
+          isDown = false;
+          slider.releasePointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true }
+      );
 
-    slider.addEventListener('mouseup', ((e: MouseEvent): void => { finalizeDrag(e.pageX); isDown = false; }) as EventListener);
-  });
+      slider.addEventListener(
+        "pointercancel",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(e.pageX, e.pageY);
+          isDown = false;
+          slider.releasePointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true }
+      );
+
+      slider.addEventListener(
+        "pointerleave",
+        (() => {
+          isDown = false;
+        }) as EventListener,
+        { passive: true }
+      );
+    }
+  }
 }

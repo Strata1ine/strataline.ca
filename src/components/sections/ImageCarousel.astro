@@ -13,23 +13,23 @@ const { document } = parseHTML(html);
 
 const images = document.querySelectorAll("img");
 
-setAttrElements(images, "class", `max-w-[70vw] !w-120 rounded-sm object-cover`);
-
+setAttrElements(
+  images,
+  "class",
+  `max-w-[150vw] sm:!max-w-[35vw] !max-h-[60vh] rounded-sm object-cover`,
+);
 setAttrElements(images, "draggable", `false`);
 ---
 
-<Container
-  class="overflow-clip contain-paint"
-  variant={ContainerVariant.Max}
-  {...slot}
->
+<Container variant={ContainerVariant.Max} {...slot}>
   <ContainerTitle variant={variant} title={title} />
-  <div
-    class="flex h-110 cursor-grab touch-none gap-6 will-change-transform select-none sm:h-120 xl:h-150"
-    data-carousel
-    data-carousel-moveable
-    data-carousel-speed={speed}
-  >
-    <Fragment set:html={document} />
+  <div class="cursor-grab contain-paint" data-carousel-wrapper>
+    <div
+      class="flex touch-pan-y gap-8 will-change-transform select-none sm:h-120 sm:gap-10 xl:h-150"
+      data-carousel
+      data-carousel-speed={speed}
+    >
+      <Fragment set:html={document} />
+    </div>
   </div>
 </Container>

@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 import { parseHTML } from "linkedom";
 import { Pos } from "~/components/variants";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
@@ -7,7 +8,6 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 const { title, titlePos = Pos.Left, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 const cards = document.querySelectorAll("[data-slider-card]");
-const reviewSlider = crypto.randomUUID();
 
 //TODO: add share your experiance
 ---
@@ -16,8 +16,7 @@ const reviewSlider = crypto.randomUUID();
   <ContainerTitle class="px-inset" title={title} variant={titlePos} />
   <div
     class="scrollbar-hide flex cursor-grab touch-pan-y overflow-x-scroll overflow-y-visible"
-    data-slider
-    id={reviewSlider}
+    id="review-slider"
   >
     <Fragment set:html={document} />
     <div class="w-lvw shrink-0"></div>
@@ -27,15 +26,18 @@ const reviewSlider = crypto.randomUUID();
     class="bg-tone relative mx-auto mt-12 flex h-3 w-full max-w-70 sm:max-w-100"
   >
     <div
-      data-slider-scroller
+      id="review-scroller"
       class="bg-accent absolute h-full rounded-sm transition-transform duration-500"
     >
     </div>
+
     {
       Array.from({ length: cards.length }, (_, i: number) => (
         <button
-          class="z-1 flex-1 cursor-pointer"
-          onclick={`sliderTo('${reviewSlider}', ${i})`}
+          class={clsx(
+            `z-1 flex-1 cursor-pointer ${i == cards.length - 1 ? "sm:hidden" : ""}`,
+          )}
+          onclick={`sliderTo(${i})`}
           aria-label={`Navigate to review ${i}`}
         />
       ))

@@ -2,14 +2,20 @@
 import clsx from "clsx";
 import { Pos } from "~/components/variants.ts";
 
-const { title, class: customClass = "", variant = Pos.Left } = Astro.props;
+const {
+  title,
+  class: customClass = "",
+  inline = false,
+  variant = Pos.Left,
+} = Astro.props;
 ---
 
 <div class={clsx(`max-w-inner mb-14 lg:mx-auto`, customClass)}>
   <h3
     class={clsx(
-      `max-w-[20ch] font-serif text-4xl font-bold text-balance`,
+      `font-serif text-4xl font-bold text-balance`,
       variant ? "ml-auto text-right" : "mr-auto",
+      inline ? "" : "max-w-[20ch]",
     )}
   >
     {title}
