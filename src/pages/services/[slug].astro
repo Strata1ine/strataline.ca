@@ -54,12 +54,12 @@ const { Content } = await service.render();
           </h2>
 
           <div
-            class="-mr-inset my-4 ml-7 h-70 rounded-tl-md rounded-bl-md contain-paint sm:hidden"
+            class="-mr-inset my-4 ml-7 h-70 rounded-tl-sm rounded-bl-sm contain-paint sm:hidden"
           >
             {
               service.data.covers.map((img: any, _: number) => (
                 <Image
-                  class="h-full min-w-0 flex-1 object-cover"
+                  class="!h-full min-w-0 flex-1 object-cover"
                   src={img.src}
                   alt={img.alt}
                   loading="eager"

@@ -6,28 +6,29 @@ import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, variant = Pos.Left, speed = 0.4, ...slot} = Astro.props;
+const { title, variant = Pos.Left, speed = 0.4, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
 
 const images = document.querySelectorAll("img");
 
-setAttrElements(
-  images,
-  "class",
-  `max-w-[70vw] !w-120 rounded-sm object-cover`,
-);
+setAttrElements(images, "class", `max-w-[70vw] !w-120 rounded-sm object-cover`);
 
+setAttrElements(images, "draggable", `false`);
 ---
 
-<Container class="contain-paint overflow-clip h-150 xl:h-200" variant={ContainerVariant.Max} {...slot}>
+<Container
+  class="overflow-clip contain-paint"
+  variant={ContainerVariant.Max}
+  {...slot}
+>
   <ContainerTitle variant={variant} title={title} />
   <div
-    class="flex cursor-grab gap-6 select-none"
+    class="flex h-110 cursor-grab touch-none gap-6 will-change-transform select-none sm:h-120 xl:h-150"
     data-carousel
-    data-carousel-speed={0.5}
     data-carousel-moveable
+    data-carousel-speed={speed}
   >
     <Fragment set:html={document} />
   </div>

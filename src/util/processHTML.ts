@@ -52,23 +52,6 @@ export function setAttrElementsIf(e: NodeListOf<Element>, a: string, customAttr:
   });
 }
 
-// I am great at naming things
-export function minmaxBloat(images: NodeListOf<Element>, s: number) {
-  setAttrElementsIf(
-    images,
-    "fetchpriority",
-    "high",
-    (_: Element, i: number) => i == s,
-  );
-
-  setAttrElementsIf(
-    images,
-    "fetchpriority",
-    "low",
-    (_: Element, i: number) => i != s,
-  );
-}
-
 export function flexImages(images: NodeListOf<Element>) {
   appendAttrElements(
     images,

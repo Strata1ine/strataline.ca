@@ -1,15 +1,16 @@
 ---
 import { parseHTML } from "linkedom";
-import { appendAttrElements, minmaxBloat } from "~/util/processHTML";
+import { setAttrElements } from "~/util/processHTML";
 import Button from "~/components/buttons/Button.astro";
 
 const { title, description } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 
-const images = document.querySelectorAll("img");
-
-minmaxBloat(images, 0);
-appendAttrElements(images, "class", "min-w-0 object-cover h-full");
+setAttrElements(
+  document.querySelectorAll("img"),
+  "class",
+  "min-w-0 object-cover h-full",
+);
 ---
 
 <div

@@ -119,63 +119,72 @@ window.onload = () => {
     }, speed);
   });
 
-  document.querySelectorAll("[data-carousel]").forEach(carousel => {
+  document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     carousel.innerHTML += carousel.innerHTML;
 
-    const speedAttr = parseFloat(carousel.getAttribute("data-carousel-speed") ?? "1.0");
+    const speedAttr = parseFloat(
+      carousel.getAttribute("data-carousel-speed") ?? "1.0"
+    );
+
     const wantedSpeed = isNaN(speedAttr) ? 1.0 : speedAttr;
+
+    let autoDirection = 1;
     let currentSpeed = wantedSpeed;
     let isDown = false;
-    let scrollLeft = 0;
     let startX = 0;
+    let dragOffset = 0;
+    let offset = 0;
+    let lastXDiff = 0;
 
-    if (carousel.hasAttribute("data-carousel-moveable")) {
-      carousel.addEventListener('mousedown', ((e: MouseEvent): void => {
-        isDown = true;
-        currentSpeed = 0;
-      }) as EventListener);
-
-      carousel.addEventListener('touchstart', ((e: TouchEvent): void => {
-        isDown = true;
-        currentSpeed = 0;
-      }) as EventListener, { passive: true });
-
-      carousel.addEventListener('mouseleave', () => { isDown = false; });
-      carousel.addEventListener('mousemove', ((e: MouseEvent): void => {
-        if (!isDown) return;
-        carousel.scrollLeft = scrollLeft - (e.pageX - startX);
-      }) as EventListener);
-
-      carousel.addEventListener('touchend', ((e: TouchEvent) => {
-        if (!isDown) return;
-        isDown = false;
-        currentSpeed = wantedSpeed;
-      }) as EventListener, { passive: true });
-
-      carousel.addEventListener('mouseup', ((e: MouseEvent): void => {
-        isDown = false;
-        currentSpeed = wantedSpeed;
-      }) as EventListener);
-    }
-
-    if (carousel.hasAttribute("data-carousel-speed")) {
-      let offset = 0;
-
-      function animate() {
-        if (inScreen(carousel)) {
-          offset += currentSpeed;
-          if (offset >= carousel.scrollWidth / 2) {
-            offset = 0;
-          }
-
-          carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
+    function animate() {
+      if (!isDown && inScreen(carousel)) {
+        offset += autoDirection * currentSpeed;
+        if (offset >= carousel.scrollWidth / 2) {
+          offset -= carousel.scrollWidth / 2;
+        } else if (offset < 0) {
+          offset += carousel.scrollWidth / 2;
         }
-
-        requestAnimationFrame(animate);
+        carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
       }
 
-      animate();
+      requestAnimationFrame(animate);
     }
+    animate();
+
+    carousel.addEventListener("pointerdown", ((e: PointerEvent): void => {
+      isDown = true;
+      currentSpeed = 0;
+      startX = e.pageX;
+      dragOffset = offset;
+      carousel.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    }) as EventListener);
+
+    carousel.addEventListener("pointermove", ((e: PointerEvent): void => {
+      if (!isDown) return;
+      const xDiff = e.pageX - startX;
+      lastXDiff = xDiff;
+      offset = dragOffset - xDiff;
+      carousel.setAttribute("style", `transform: translateX(-${offset}px)`);
+    }) as EventListener);
+
+    carousel.addEventListener("pointerup", ((e: PointerEvent): void => {
+      isDown = false;
+      currentSpeed = wantedSpeed;
+      carousel.releasePointerCapture(e.pointerId);
+
+      if (lastXDiff > 0) {
+        autoDirection = -1;
+      } else if (lastXDiff < 0) {
+        autoDirection = 1;
+      }
+    }) as EventListener);
+
+    carousel.addEventListener("pointercancel", ((e: PointerEvent): void => {
+      isDown = false;
+      currentSpeed = wantedSpeed;
+      carousel.releasePointerCapture(e.pointerId);
+    }) as EventListener);
   });
 
   document.querySelectorAll("[data-slider]").forEach((slider, _: number) => {
@@ -215,6 +224,19 @@ window.onload = () => {
       slider.scrollTo({ left: width * idx, behavior: 'smooth' });
       scroller.setAttribute("style", `transform: translateX(${idx * 100}%); width: ${100 / length}%`);
     };
+
+    slider.addEventListener(
+      "touchmove",
+      ((e: TouchEvent): void => {
+        if (!isDown) return;
+        e.preventDefault();
+        const diff = e.touches[0].pageX - startX;
+        if (Math.abs(diff) > threshold) {
+          slider.scrollLeft = scrollLeft - diff;
+        }
+      }) as EventListener,
+      { passive: false }
+    );
 
     slider.addEventListener('mousedown', ((e: MouseEvent): void => {
       isDown = true;

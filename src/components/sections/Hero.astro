@@ -1,10 +1,9 @@
 ---
 import { parseHTML } from "linkedom";
 import {
+  setAttrElements,
   appendAttrElements,
   appendAttrElementsIf,
-  minmaxBloat,
-  setAttrElements,
 } from "~/util/processHTML";
 
 
@@ -20,14 +19,13 @@ const images = document.querySelectorAll("img");
 const desktopSlideShowId = crypto.randomUUID();
 const mobileSlideShowId = crypto.randomUUID();
 
-minmaxBloat(images, 0);
-appendAttrElements(
+setAttrElements(
   images,
   "class",
   "object-cover min-w-0 !w-0 h-full [&.active]:!w-full",
 );
 
-appendAttrElements(
+setAttrElements(
   images,
   "data-safari-bad",
   "transition-[width] duration-700",
@@ -88,7 +86,7 @@ setAttrElements(images, "loading", "eager");
 
       <div class="mt-4 flex h-70 sm:hidden">
         <div
-          class="-ml-inset flex flex-1 rounded-tr-md rounded-br-md contain-paint"
+          class="-ml-inset flex flex-1 rounded-tr-sm rounded-br-sm contain-paint"
           id={mobileSlideShowId}
           data-slideshow
           data-slideshow-speed=`${speedInt}`
