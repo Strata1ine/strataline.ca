@@ -59,9 +59,10 @@ const { Content } = await service.render();
             {
               service.data.covers.map((img: any, _: number) => (
                 <Image
-                  class="!h-full min-w-0 flex-1 object-cover"
+                  class="h-full min-w-0 flex-1 object-cover"
                   src={img.src}
                   alt={img.alt}
+                  width={2560}
                   loading="eager"
                 />
               ))
@@ -75,7 +76,7 @@ const { Content } = await service.render();
 
         <Icon
           name="arrow-down"
-          class="color-white ml-(--right-span) hidden h-auto w-8 sm:block xl:w-10"
+          class="color-white hidden h-auto w-8 translate-x-(--right-span) sm:block xl:w-10"
         />
       </div>
 
@@ -87,7 +88,8 @@ const { Content } = await service.render();
                 class="h-full min-w-0 flex-1 object-cover hover:flex-5"
                 src={img.src}
                 alt={img.alt}
-                data-safari-bad="transition-[flex-grow] duration-800"
+                width={2560}
+                data-safari-bad="duration-800"
                 loading="eager"
               />
             ))
@@ -106,7 +108,6 @@ const { Content } = await service.render();
   <ServiceGallery
     title="We are capable of much more"
     titlePos={Pos.Right}
-    inline={true}
     id="gallery"
     class="!mb-0"
   >

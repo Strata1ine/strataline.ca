@@ -70,6 +70,7 @@
   --spacing-outer: 1450px;
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
   --review-diff: max(calc((100vw - var(--spacing-inner) - var(--spacing-inset) * 4) / 2), 0px);
+  --review-diff-o: max(calc((100vw - var(--spacing-outer) - var(--spacing-inset) * 4) / 2), 0px);
   --right-span: clamp(0px,
       calc((100vw - var(--spacing-inner)) / 2),
       calc((var(--spacing-outer) - var(--spacing-inner)) / 2));

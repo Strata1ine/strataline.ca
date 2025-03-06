@@ -13,7 +13,46 @@ declare global {
     toggleFaq: (e: HTMLElement) => void;
     toggleMenu: (id: string) => void;
     sliderTo: (idx: number) => void;
+    carouselNext: (id: string) => void;
+    carouselPrev: (id: string) => void;
   }
+}
+
+window.carouselNext = (id: string) => {
+  const e = document.getElementById(id) as HTMLElement;
+  handleCarousel(e, true);
+}
+
+window.carouselPrev = (id: string) => {
+  const e = document.getElementById(id) as HTMLElement;
+  handleCarousel(e, false);
+}
+
+function handleCarousel(e: HTMLElement, next: boolean) {
+  const idx = parseInt(e.getAttribute("data-idx") || "0") || 0;
+  const length = e.children.length - 1;
+  if (length <= 0) {
+    return;
+  }
+
+  let nextIdx: number;
+  if (next) {
+    nextIdx = (idx + 1) % length;
+  } else {
+    nextIdx = (idx - 1 + length) % length;
+  }
+
+  e.setAttribute("style", `transform: translateX(-${nextIdx * 110}%)`)
+  e.setAttribute("data-idx", nextIdx.toString());
+  e.children[nextIdx].children[0]?.setAttribute("loading", "eager");
+
+  if (next) {
+    nextIdx = (nextIdx + 1) % length;
+  } else {
+    nextIdx = (nextIdx - 1 + length) % length;
+  }
+
+  e.children[nextIdx].children[0]?.setAttribute("loading", "eager");
 }
 
 function inScreen(e: Element) {

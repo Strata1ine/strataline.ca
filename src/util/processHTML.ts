@@ -52,6 +52,19 @@ export function setAttrElementsIf(e: NodeListOf<Element>, a: string, customAttr:
   });
 }
 
+export function processElements(
+  elements: NodeListOf<Element>,
+  callback: (element: Element, index: number) => void
+): void {
+  if (!elements || elements.length === 0) return;
+
+  Array.from(elements).forEach((element, index) => {
+    if (element) {
+      callback(element, index);
+    }
+  });
+}
+
 export function flexImages(images: NodeListOf<Element>) {
   appendAttrElements(
     images,
@@ -63,7 +76,7 @@ export function flexImages(images: NodeListOf<Element>) {
     appendAttrElements(
       images,
       "data-safari-bad",
-      `transition-[flex-grow] duration-800`,
+      `duration-800`,
     );
   }
 }

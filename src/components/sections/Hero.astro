@@ -1,11 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import {
-  setAttrElements,
-  appendAttrElements,
-  appendAttrElementsIf,
-} from "~/util/processHTML";
-
+import { setAttrElements, appendAttrElementsIf } from "~/util/processHTML";
 
 import { Icon } from "astro-icon/components";
 import Container from "~/components/div/Container.astro";
@@ -25,11 +20,7 @@ setAttrElements(
   "object-cover min-w-0 !w-0 h-full [&.active]:!w-full",
 );
 
-setAttrElements(
-  images,
-  "data-safari-bad",
-  "transition-[width] duration-700",
-);
+setAttrElements(images, "data-safari-bad", "duration-700");
 
 appendAttrElementsIf(
   images,
@@ -108,19 +99,19 @@ setAttrElements(images, "loading", "eager");
       <div class="mt-8 pb-17">
         <div class="pointer-events-none absolute z-1 h-lvh w-full">
           <button
-            data-safari-bad="transition-all duration-1000"
+            data-safari-bad="duration-1000"
             class="pointer-events-auto absolute bottom-full flex h-13 w-33 translate-y-full cursor-pointer items-center justify-center rounded-lg border-[1.4px] border-black bg-white sm:h-14 sm:w-34 xl:h-17 xl:w-42"
             id="letsTalk"
-            aria-label="Lets Talk"
+            aria-label="Lets talk"
             onclick={`toggleMenu("talkMenu", true)`}
           >
             <Icon
               name="ph:mailbox-fill"
-              data-safari-bad="transition-all duration-1000"
+              data-safari-bad="duration-1000"
               class="absolute h-10 w-10 text-white opacity-0 sm:h-11 sm:w-11"
-            ></Icon>
+            />
             <span
-              data-safari-bad="transition-all duration-1000"
+              data-safari-bad="duration-1000"
               class="font-serif text-lg font-semibold text-nowrap opacity-100"
               >Let's Talk</span
             >

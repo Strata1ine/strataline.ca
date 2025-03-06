@@ -25,13 +25,9 @@ const { ...slot } = Astro.props;
   <ContainerTitle title={title} variant={titlePos} />
   {
     services.map((service: any, i) => (
-      <Popular
-        data={service.data}
-        variant={next(i)}
-        slug={service.slug}
-      >
+      <Popular data={service.data} variant={next(i)} slug={service.slug}>
         {service.data.covers.map((img: any, _: number) => (
-          <Image src={img.src} alt={img.alt} />
+          <Image width={2560} src={img.src} alt={img.alt} />
         ))}
       </Popular>
     ))

@@ -26,7 +26,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
 <header
   class={clsx(
-    `w-full z-3 top-0`,
+    `w-full z-40 top-0`,
     sticky
       ? "sticky backdrop-blur-[5rem] py-4 sm:py-4"
       : "absolute bg-white lg:bg-transparent py-4 sm:py-6",
@@ -60,6 +60,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
           <button
             class="flex cursor-pointer items-center"
             onclick={`toggleDropdown(this)`}
+            aria-label="Open services menu"
           >
             <span class="text-bg font-sans">Services</span>
             <Icon name="ph:caret-down-fill" class="ml-2 w-4" />
@@ -67,7 +68,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
           <div
             id={servicesDesktopMenu}
-            data-safari-bad="transition-all duration-200"
+            data-safari-bad="duration-200"
             class="px-inset max-w-inner pointer-events-none absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
           >
             <ul
@@ -91,6 +92,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
       </ul>
       <div class="xl:hidden">
         <button
+          aria-label="Open mobile menu button"
           data-idx={mobileMenu}
           onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
           class="burger h-9 w-9 cursor-pointer"></button>
@@ -100,11 +102,11 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 </header>
 
 <div
-  data-safari-bad="transition-transform duration-300"
-  class="pointer-events-none fixed inset-0 z-2 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  data-safari-bad="duration-300"
+  class="pointer-events-none fixed inset-0 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
-  <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-8">
+  <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">
     {
       items.length !== 0
         ? items.map((item) => (
@@ -125,6 +127,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
       <button
         class="flex cursor-pointer items-center"
         onclick={`toggleDropdown(this)`}
+        aria-label="Open services menu"
       >
         <span class="font-sans text-xl">Services </span>
         <Icon name="ph:caret-down-fill" class="ml-2 w-5" />
@@ -132,9 +135,9 @@ const { items = [{}], sticky = false } = Astro.props as Props;
 
       <div
         id={servicesMobileMenu}
-        class="hidden w-fit transition-transform duration-500 [&.active]:block"
+        class="hidden duration-500 [&.active]:block"
       >
-        <ul class="bg-tone my-5 flex flex-col gap-8 rounded-sm p-5">
+        <ul class="bg-tone my-5 mr-5 flex flex-col gap-8 rounded-sm p-5">
           {
             serviceData.map((service: any, _) => (
               <li>

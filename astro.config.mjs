@@ -22,6 +22,13 @@ export default defineConfig({
   },
   image: {
     experimentalLayout: 'responsive',
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        quality: 20,
+        format: 'webp'
+      },
+    },
   },
   experimental: {
     responsiveImages: true,

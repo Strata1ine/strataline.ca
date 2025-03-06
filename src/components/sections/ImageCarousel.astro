@@ -1,35 +1,90 @@
 ---
 import { parseHTML } from "linkedom";
-import { setAttrElements } from "~/util/processHTML";
+import { processElements } from "~/util/processHTML";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
+import { Icon } from "astro-icon/components";
 
 const { title, variant = Pos.Left, speed = 0.4, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
 
+const id = crypto.randomUUID();
+
 const images = document.querySelectorAll("img");
 
-setAttrElements(
-  images,
-  "class",
-  `max-w-[150vw] sm:!max-w-[35vw] !max-h-[60vh] rounded-sm object-cover`,
-);
-setAttrElements(images, "draggable", `false`);
+processElements(images, (img, i) => {
+  const width = parseInt(img.getAttribute("width") || "1000") || 1000;
+  const height = parseInt(img.getAttribute("height") || "1000") || 1000;
+
+  img.classList.add("!w-full sm:!w-auto", "md:max-w-280");
+  img.classList.add("object-cover", "rounded-sm");
+  img.setAttribute("fetchpriority", "high");
+
+  if (i !== 0) {
+    img.setAttribute("fetchpriority", "low");
+  }
+
+  if (i == 1) {
+    img.setAttribute("loading", "eager");
+  }
+});
+
+images.forEach((img) => {
+  const container = document.createElement("div");
+  container.classList.add(
+    "flex-shrink-0",
+    "flex",
+    "w-full",
+    "justify-center",
+    "h-full",
+  );
+  img.parentNode.insertBefore(container, img);
+  container.appendChild(img);
+});
 ---
 
-<Container variant={ContainerVariant.Max} {...slot}>
-  <ContainerTitle variant={variant} title={title} />
-  <div class="cursor-grab contain-paint" data-carousel-wrapper>
-    <div
-      class="flex touch-pan-y gap-8 will-change-transform select-none sm:h-120 sm:gap-10 xl:h-150"
-      data-carousel
-      data-carousel-speed={speed}
+<Container class="contain-paint" variant={ContainerVariant.Max} {...slot}>
+  <ContainerTitle class="px-inset" variant={variant} title={title} />
+  <Container
+    variant={ContainerVariant.Max}
+    class="bg-tone relative h-[65vh] max-h-250 items-center gap-10 lg:justify-between"
+    as="div"
+  >
+    <button
+      onclick={`carouselPrev("${id}")`}
+      class="absolute top-1/2 left-0 z-10 hidden cursor-pointer xl:block xl:translate-x-(--review-diff-o)"
     >
-      <Fragment set:html={document} />
+      <Icon name="arrow" class="h-auto w-25 rotate-180" />
+    </button>
+
+    <div class="h-full overflow-hidden">
+      <div
+        class="flex h-full items-center gap-[10%] duration-1000 will-change-transform"
+        id={id}
+      >
+        <Fragment set:html={document} />
+      </div>
     </div>
+
+    <button
+      class="absolute top-1/2 right-0 z-10 hidden cursor-pointer xl:block xl:-translate-x-(--review-diff-o)"
+      onclick={`carouselNext("${id}")`}
+    >
+      <Icon name="arrow" class="h-auto w-25" />
+    </button>
+  </Container>
+
+  <div class="px-inset mt-8 flex justify-between xl:hidden">
+    <button onclick=`carouselPrev("${id}")` class="cursor-pointer">
+      <Icon name="arrow" class="h-auto w-20 rotate-180" />
+    </button>
+
+    <button class="cursor-pointer" onclick=`carouselNext("${id}")`>
+      <Icon name="arrow" class="h-auto w-20" />
+    </button>
   </div>
 </Container>

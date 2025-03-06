@@ -35,7 +35,7 @@ const cards = document.querySelectorAll("[data-slider-card]");
       Array.from({ length: cards.length }, (_, i: number) => (
         <button
           class={clsx(
-            `z-1 flex-1 cursor-pointer ${i == cards.length - 1 ? "sm:hidden" : ""}`,
+            `z-10 flex-1 cursor-pointer ${i == cards.length - 1 ? "sm:hidden" : ""}`,
           )}
           onclick={`sliderTo(${i})`}
           aria-label={`Navigate to review ${i}`}
