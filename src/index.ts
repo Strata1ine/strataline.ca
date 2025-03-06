@@ -30,7 +30,7 @@ window.carouselPrev = (id: string) => {
 
 function handleCarousel(e: HTMLElement, next: boolean) {
   const idx = parseInt(e.getAttribute("data-idx") || "0") || 0;
-  const length = e.children.length - 1;
+  const length = e.children.length;
   if (length <= 0) {
     return;
   }
