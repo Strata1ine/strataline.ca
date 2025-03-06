@@ -3,7 +3,7 @@ import Popular from "./Popular.astro";
 import LessPopular from "./LessPopular.astro";
 import Review from "./Review.astro";
 import TextCarousel from "./TextCarousel.astro";
-import ImageCarousel from "./ImageCarousel.astro";
+import ImageSlideshow from "./ImageSlideshow.astro";
 import Slide from "./Slide.astro";
 import Question from "./Question.astro";
 import FullVideo from "./FullVideo.astro";
@@ -11,4 +11,4 @@ import ZigZag from "./ZigZag.astro";
 import Faq from "./Faq.astro";
 import Panel from "./Panel.astro";
 
-export { Hero, Popular, LessPopular, ImageCarousel, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq, Panel };
+export { Hero, Popular, LessPopular, ImageSlideshow, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq, Panel };

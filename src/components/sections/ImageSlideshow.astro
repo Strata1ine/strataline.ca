@@ -3,11 +3,12 @@ import { parseHTML } from "linkedom";
 import { processElements } from "~/util/processHTML";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import Dot, { DotVariant } from "~/components/buttons/Dot.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
 import { Icon } from "astro-icon/components";
 
-const { title, variant = Pos.Left, speed = 0.4, ...slot } = Astro.props;
+const { title, variant = Pos.Left, speed = 4000, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -55,7 +56,7 @@ images.forEach((img) => {
     as="div"
   >
     <button
-      onclick={`carouselPrev("${id}")`}
+      onclick={`imagePrev("${id}")`}
       class="absolute top-1/2 left-0 z-10 hidden cursor-pointer xl:block xl:translate-x-(--review-diff-o)"
     >
       <Icon name="arrow" class="h-auto w-25 rotate-180" />
@@ -65,6 +66,8 @@ images.forEach((img) => {
       <div
         class="flex h-full items-center gap-[10%] duration-1000 will-change-transform"
         id={id}
+        data-image-slideshow
+        data-slideshow-speed={`${speed}`}
       >
         <Fragment set:html={document} />
       </div>
@@ -72,18 +75,31 @@ images.forEach((img) => {
 
     <button
       class="absolute top-1/2 right-0 z-10 hidden cursor-pointer xl:block xl:-translate-x-(--review-diff-o)"
-      onclick={`carouselNext("${id}")`}
+      onclick={`imageNext("${id}")`}
     >
       <Icon name="arrow" class="h-auto w-25" />
     </button>
   </Container>
 
+  <div class="mt-inset flex justify-center gap-5" data-slide-nav={id}>
+    {
+      Array.from({ length: images.length }).map((_, i) => (
+        <Dot
+          i={i}
+          variant={DotVariant.Small}
+          class={i === 0 ? "active" : ""}
+          onclick={`imageTo('${id}', ${i})`}
+        />
+      ))
+    }
+  </div>
+
   <div class="px-inset mt-8 flex justify-between xl:hidden">
-    <button onclick=`carouselPrev("${id}")` class="cursor-pointer">
+    <button onclick=`imagePrev("${id}")` class="cursor-pointer">
       <Icon name="arrow" class="h-auto w-20 rotate-180" />
     </button>
 
-    <button class="cursor-pointer" onclick=`carouselNext("${id}")`>
+    <button class="cursor-pointer" onclick=`imageNext("${id}")`>
       <Icon name="arrow" class="h-auto w-20" />
     </button>
   </div>

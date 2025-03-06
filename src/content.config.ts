@@ -7,7 +7,6 @@ export const collections = {
       title: z.string(),
       description: z.string(),
       local_business: localBusiness(image),
-      contact_messege: z.string(),
       popular: z.array(z.string()),
       header: header(),
     }),

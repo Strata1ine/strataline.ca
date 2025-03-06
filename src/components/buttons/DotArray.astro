@@ -1,7 +1,13 @@
 ---
 import Dot from "./Dot.astro";
 
-const { class: customClass, idx: slideId, length, ...rest } = Astro.props;
+const {
+  class: customClass,
+  fn = "slideNext",
+  idx: slideId,
+  length,
+  ...rest
+} = Astro.props;
 ---
 
 {
@@ -11,7 +17,7 @@ const { class: customClass, idx: slideId, length, ...rest } = Astro.props;
         <Dot
           i={i}
           class={i === 0 ? "active" : ""}
-          onclick={`slideNext('${slideId}', ${i})`}
+          onclick={`${fn}('${slideId}', ${i})`}
         />
       ))}
     </div>

@@ -13,46 +13,65 @@ declare global {
     toggleFaq: (e: HTMLElement) => void;
     toggleMenu: (id: string) => void;
     sliderTo: (idx: number) => void;
-    carouselNext: (id: string) => void;
-    carouselPrev: (id: string) => void;
+    imageTo: (id: string, i: number, to: boolean) => void;
+    imageNext: (id: string) => void;
+    imagePrev: (id: string) => void;
   }
 }
 
-window.carouselNext = (id: string) => {
+window.imageTo = (id: string, i: number, to: boolean = true): void => {
   const e = document.getElementById(id) as HTMLElement;
-  handleCarousel(e, true);
-}
+  e.setAttribute("data-slide-mutated", "");
+  handleImage(e, i, to);
+};
 
-window.carouselPrev = (id: string) => {
-  const e = document.getElementById(id) as HTMLElement;
-  handleCarousel(e, false);
-}
+window.imageNext = (id: string): void => {
+  window.imageTo(id, 1, false);
+};
 
-function handleCarousel(e: HTMLElement, next: boolean) {
-  const idx = parseInt(e.getAttribute("data-idx") || "0") || 0;
+window.imagePrev = (id: string): void => {
+  window.imageTo(id, -1, false);
+};
+
+function handleImage(e: HTMLElement, idx: number, to: boolean): void {
+  const prevIdx =
+    parseInt(e.getAttribute("data-idx") || "0", 10) || 0;
+
+  // If not doing an absolute jump then add idx to the previous index.
+  if (!to) {
+    idx += prevIdx;
+  }
+
   const length = e.children.length;
   if (length <= 0) {
     return;
   }
 
-  let nextIdx: number;
-  if (next) {
-    nextIdx = (idx + 1) % length;
-  } else {
-    nextIdx = (idx - 1 + length) % length;
-  }
+  const nextIdx = ((idx % length) + length) % length;
 
-  e.setAttribute("style", `transform: translateX(-${nextIdx * 110}%)`)
+  e.setAttribute("style", `transform: translateX(-${nextIdx * 110}%)`);
   e.setAttribute("data-idx", nextIdx.toString());
-  e.children[nextIdx].children[0]?.setAttribute("loading", "eager");
+  (e.children[nextIdx].children[0] as HTMLElement)?.setAttribute(
+    "loading",
+    "eager"
+  );
 
-  if (next) {
-    nextIdx = (nextIdx + 1) % length;
-  } else {
-    nextIdx = (nextIdx - 1 + length) % length;
-  }
+  document
+    .querySelectorAll(`[data-slide-nav="${e.id}"]`)
+    .forEach((slideButton: Element) => {
+      (slideButton.children[prevIdx] as HTMLElement).classList.remove(
+        "active"
+      );
+      (slideButton.children[nextIdx] as HTMLElement).classList.add(
+        "active"
+      );
+      slideButton.setAttribute("data-slide-idx", nextIdx.toString());
+    });
 
-  e.children[nextIdx].children[0]?.setAttribute("loading", "eager");
+  (e.children[nextIdx].children[0] as HTMLElement)?.setAttribute(
+    "loading",
+    "eager"
+  );
 }
 
 function inScreen(e: Element) {
@@ -108,7 +127,13 @@ window.toggleMenu = function(id: string) {
   const e = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
   if (e != null) {
     e.classList.toggle("active");
+    document.documentElement.classList.remove("scroll-smooth");
     e.scrollIntoView(true);
+    setTimeout(() => {
+      window.scrollBy(0, -16);
+
+      document.documentElement.classList.add("scroll-smooth");
+    }, 0);
   }
 }
 
@@ -135,8 +160,8 @@ window.onload = () => {
   }, 20);
 
   document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
-    const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "3000", 10);
-    const speed = isNaN(speedAttr) ? 1000 : speedAttr;
+    const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "4000", 10);
+    const speed = isNaN(speedAttr) ? 4000 : speedAttr;
 
     setInterval(() => {
       if (!inScreen(slideshow)) {
@@ -148,6 +173,23 @@ window.onload = () => {
         const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
         const nextIndex = (prevIndex + 1) % slideshow.children.length;
         window.slideNext(slideshow.id.toString(), nextIndex);
+      } else {
+        slideshow.removeAttribute("data-slide-mutated");
+      }
+    }, speed);
+  });
+
+  document.querySelectorAll("[data-image-slideshow]").forEach((slideshow) => {
+    const speedAttr = parseInt(slideshow.getAttribute("data-slideshow-speed") ?? "4000", 10);
+    const speed = isNaN(speedAttr) ? 4000 : speedAttr;
+
+    setInterval(() => {
+      if (!inScreen(slideshow)) {
+        return;
+      }
+
+      if (!slideshow.hasAttribute("data-slide-mutated") && !slideshow.matches(":hover")) {
+        handleImage(slideshow as HTMLElement, true);
       } else {
         slideshow.removeAttribute("data-slide-mutated");
       }

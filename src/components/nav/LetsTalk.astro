@@ -6,7 +6,7 @@ const [index] = await getCollection("index");
 <div
   data-safari-bad="duration-500"
   id="talkMenu"
-  class="pointer-events-none fixed inset-0 z-50 flex translate-y-full items-center justify-center overflow-scroll bg-white opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-1000"
+  class="pointer-events-none fixed inset-0 z-50 flex translate-y-full items-center justify-center overflow-scroll bg-white [&.active]:pointer-events-auto [&.active]:translate-y-0"
 >
   <div class="px-inset grid w-full max-w-250 sm:grid-cols-2">
     <div>
@@ -31,9 +31,9 @@ const [index] = await getCollection("index");
         <!--   </li> -->
         <!-- </ul> -->
 
-        <p class="font-sans text-base">
-          {index.data.contact_messege}
-        </p>
+        <!-- <p class="font-sans text-base"> -->
+        <!--   {index.data.contact_messege} -->
+        <!-- </p> -->
       </div>
     </div>
 

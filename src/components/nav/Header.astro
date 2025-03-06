@@ -24,9 +24,58 @@ interface Props {
 const { items = [{}], sticky = false } = Astro.props as Props;
 ---
 
+<div
+  data-safari-bad="duration-300"
+  class="pointer-events-none fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  id={mobileMenu}
+>
+  <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">
+    {
+      items.length !== 0
+        ? items.map((item) => (
+            <li>
+              <a
+                href={`#${item.id}`}
+                onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
+                class="font-sans text-xl"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        : null
+    }
+
+    <li>
+      <button
+        class="flex cursor-pointer items-center"
+        onclick={`toggleDropdown(this)`}
+        aria-label="Open services menu"
+      >
+        <span class="font-sans text-xl">Services </span>
+        <Icon name="ph:caret-down-fill" class="ml-2 w-5" />
+      </button>
+
+      <div id={servicesMobileMenu} class="hidden duration-500 [&.active]:block">
+        <ul class="bg-tone my-5 mr-5 flex flex-col gap-8 rounded-sm p-5">
+          {
+            serviceData.map((service: any, _) => (
+              <li>
+                <a href={`/services/${service.slug}`} class="font-sans text-xl">
+                  {service.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+
 <header
   class={clsx(
-    `w-full z-40 top-0`,
+    `w-full z-10 top-0`,
     sticky
       ? "sticky backdrop-blur-[5rem] py-4 sm:py-4"
       : "absolute bg-white lg:bg-transparent py-4 sm:py-6",
@@ -100,58 +149,6 @@ const { items = [{}], sticky = false } = Astro.props as Props;
     </nav>
   </Container>
 </header>
-
-<div
-  data-safari-bad="duration-300"
-  class="pointer-events-none fixed inset-0 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
-  id={mobileMenu}
->
-  <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">
-    {
-      items.length !== 0
-        ? items.map((item) => (
-            <li>
-              <a
-                href={`#${item.id}`}
-                onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
-                class="font-sans text-xl"
-              >
-                {item.name}
-              </a>
-            </li>
-          ))
-        : null
-    }
-
-    <li>
-      <button
-        class="flex cursor-pointer items-center"
-        onclick={`toggleDropdown(this)`}
-        aria-label="Open services menu"
-      >
-        <span class="font-sans text-xl">Services </span>
-        <Icon name="ph:caret-down-fill" class="ml-2 w-5" />
-      </button>
-
-      <div
-        id={servicesMobileMenu}
-        class="hidden duration-500 [&.active]:block"
-      >
-        <ul class="bg-tone my-5 mr-5 flex flex-col gap-8 rounded-sm p-5">
-          {
-            serviceData.map((service: any, _) => (
-              <li>
-                <a href={`/services/${service.slug}`} class="font-sans text-xl">
-                  {service.data.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </li>
-  </ul>
-</div>
 
 <style lang="scss">
   .burger {
