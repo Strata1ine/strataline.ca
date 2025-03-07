@@ -8,6 +8,6 @@ const { Content } = await index.render();
 ---
 
 <Layout>
-  {index.data.header && <Header items={index.data.header} />}
+  {index.data.header && <Header items={index.data.header.ref} />}
   <Content />
 </Layout>

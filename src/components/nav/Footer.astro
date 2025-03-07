@@ -12,21 +12,22 @@ const [index] = await getCollection("index");
   as="footer"
   variant={ContainerVariant.Inner}
 >
-  <div class="space-y-8 py-20">
+  <div class="py-15">
     {
       index.data.local_business.areaServed && (
         <>
           <div>
-            <h4 class="mb-2 font-serif text-2xl font-semibold">
+            <h3 class="mb-2 font-serif text-2xl font-bold">
               Municipalities we serve
-            </h4>
+            </h3>
 
             <p class="font-sans text-base">
               We provide services to Downton condos. Especially popcorn removal
               and painting.
             </p>
           </div>
-          <ul class="columns-[10rem] gap-2 sm:columns-[13rem]">
+
+          <ul class="mt-8 columns-[10rem] gap-2 sm:columns-[13rem]">
             {index.data.local_business.areaServed.map((area, _) => (
               <li>
                 <a
@@ -48,10 +49,23 @@ const [index] = await getCollection("index");
   </div>
 
   <div
-    class="border-accent py-inset flex flex-col items-center justify-between gap-2 border-t-[1.4px] md:flex-row"
+    class="border-accent flex flex-col items-center justify-between gap-4 border-t-[1.4px] py-6 md:flex-row"
   >
-    <span class="text-bg font-sans"><b>&copy; {index.data.title}</b>. 2025</span
-    >
+    <div class="flex flex-col-reverse items-center gap-1 sm:flex-row sm:gap-6">
+      <span class="text-bg font-sans"
+        ><b>&copy; {index.data.title}</b>. 2025</span
+      >
+      <a class="text-url font-sans text-base hover:underline" href="./privacy">
+        Privacy Policy
+      </a>
+
+      <a
+        class="text-url font-sans text-base hover:underline"
+        href="./medallions"
+      >
+        Medallions
+      </a>
+    </div>
 
     <Socials class="flex flex-row" imageClass="w-16 xl:w-18 h-auto" />
   </div>

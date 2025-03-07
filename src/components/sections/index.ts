@@ -10,5 +10,6 @@ import FullVideo from "./FullVideo.astro";
 import ZigZag from "./ZigZag.astro";
 import Faq from "./Faq.astro";
 import Panel from "./Panel.astro";
+import Markdown from "./Markdown.astro";
 
-export { Hero, Popular, LessPopular, ImageSlideshow, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq, Panel };
+export { Hero, Popular, LessPopular, ImageSlideshow, Review, TextCarousel, Slide, Question, FullVideo, ZigZag, Faq, Panel, Markdown };

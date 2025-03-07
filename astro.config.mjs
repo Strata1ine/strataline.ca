@@ -44,6 +44,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         {
+          './src/components/em/': 'E',
           './src/components/buttons/': 'Btn',
           './src/components/sections/': 'Section',
           './src/components/cards/': 'Card',

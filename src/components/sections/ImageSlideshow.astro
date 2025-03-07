@@ -57,7 +57,7 @@ images.forEach((img) => {
   >
     <button
       onclick={`imagePrev("${id}")`}
-      class="absolute top-1/2 left-0 z-10 hidden cursor-pointer xl:block xl:translate-x-(--review-diff-o)"
+      class="pl-inset absolute top-1/2 left-0 z-10 hidden cursor-pointer xl:block xl:translate-x-(--review-diff-o)"
     >
       <Icon name="arrow" class="h-auto w-25 rotate-180" />
     </button>
@@ -74,7 +74,7 @@ images.forEach((img) => {
     </div>
 
     <button
-      class="absolute top-1/2 right-0 z-10 hidden cursor-pointer xl:block xl:-translate-x-(--review-diff-o)"
+      class="pr-inset absolute top-1/2 right-0 z-10 hidden cursor-pointer xl:block xl:-translate-x-(--review-diff-o)"
       onclick={`imageNext("${id}")`}
     >
       <Icon name="arrow" class="h-auto w-25" />

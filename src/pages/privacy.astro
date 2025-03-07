@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import LetsTalk from "~/components/buttons/LetsTalk.astro";
+import Container from "~/components/div/Container.astro";
+import { ContainerVariant } from "~/components/div/Container.astro";
+import Home from "~/components/em/Home.astro";
+import Header, { HeaderVariant } from "~/components/nav/Header.astro";
+import Layout from "~/layouts/Layout.astro";
+
+const [index] = await getCollection("privacy");
+const { Content } = await index.render();
+---
+
+<Layout>
+  <main class="h-100svh bg-dark flex h-80 items-center text-white">
+    <Container as="div" variant={ContainerVariant.Inner}>
+      <Home />
+      <h1 class="font-serif text-5xl font-bold">{index.data.title}</h1>
+      <p class="mt-2 font-sans text-base">{index.data.description}</p>
+    </Container>
+  </main>
+
+  {
+    index.data.header && (
+      <Header variant={HeaderVariant.Sticky} items={index.data.header.ref} />
+    )
+  }
+
+  <Content />
+  <LetsTalk />
+</Layout>

@@ -1,0 +1,10 @@
+---
+import { getCollection } from "astro:content";
+const [index] = await getCollection("index");
+---
+
+<a
+  class="text-sans text-url text-base"
+  href={`mailto:${index.data.local_business.email}`}
+  >{index.data.local_business.email}</a
+>

@@ -5,14 +5,17 @@ covers:
   - src: ./cover.jpg
     alt: tomatoes
 header:
-  - id: "why"
-    name: "Why"
-  - id: "process"
-    name: "Process"
-  - id: "faq"
-    name: "FAQ"
-  - id: "gallery"
-    name: "Gallery"
+  ref:
+    - id: "citytv"
+      name: "City TV"
+    - id: "why"
+      name: "Why"
+    - id: "process"
+      name: "Process"
+    - id: "faq"
+      name: "FAQ"
+    - id: "gallery"
+      name: "Gallery"
 
 # <Section.ZigZag
 #   title="Our process"
@@ -54,7 +57,7 @@ import citytv from '../../index/awards/citytv.jpg';
 
 <Section.FullVideo
   title="Mentioned on CityTV"
-  id="video"
+  id="citytv"
   variant={Variant.Pos.Right}
   path="/videos/cityline.mp4"
   format="video/mp4"

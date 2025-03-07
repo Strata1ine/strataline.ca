@@ -1,9 +1,12 @@
 ---
 import clsx from "clsx";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Icon } from "astro-icon/components";
+
+import logo from "./tmplogo.png";
 
 const mobileMenu = crypto.randomUUID();
 const servicesDesktopMenu = crypto.randomUUID();
@@ -21,7 +24,21 @@ interface Props {
   sticky: boolean;
 }
 
-const { items = [{}], sticky = false } = Astro.props as Props;
+export enum HeaderVariant {
+  Sticky,
+  Fixed,
+  Absolute,
+}
+
+export const headerMap = {
+  [HeaderVariant.Sticky]: "sticky backdrop-blur-[5rem] py-5",
+  [HeaderVariant.Absolute]: "absolute bg-white lg:bg-transparent py-4 sm:py-6",
+  [HeaderVariant.Fixed]: "fixed backdrop-blur-[5rem] py-5",
+};
+
+const { items = [{}], variant = HeaderVariant.Absolute } = Astro.props as Props;
+const isTop =
+  variant === HeaderVariant.Fixed || variant === HeaderVariant.Sticky;
 ---
 
 <div
@@ -36,7 +53,9 @@ const { items = [{}], sticky = false } = Astro.props as Props;
             <li>
               <a
                 href={`#${item.id}`}
-                onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
+                onclick={`toggleMenu('${mobileMenu}', '${
+                  variant === "absolute" || variant === "sticky" ? true : false
+                }')`}
                 class="font-sans text-xl"
               >
                 {item.name}
@@ -73,25 +92,25 @@ const { items = [{}], sticky = false } = Astro.props as Props;
   </ul>
 </div>
 
-<header
-  class={clsx(
-    `w-full z-10 top-0`,
-    sticky
-      ? "sticky backdrop-blur-[5rem] py-4 sm:py-4"
-      : "absolute bg-white lg:bg-transparent py-4 sm:py-6",
-  )}
->
+<header class={clsx(`w-full z-10 top-0`, headerMap[variant])}>
   {
-    sticky && (
+    isTop && (
       <div class="absolute inset-0 z-[-1] bg-white opacity-70 mix-blend-screen" />
     )
   }
+
   <Container
     as="div"
     variant={ContainerVariant.Inner}
     class="flex items-center justify-between rounded-sm"
   >
-    <h1 class="text-accent-dark font-serif text-3xl font-bold">Strataline</h1>
+    <Image
+      loading="eager"
+      class="!w-30 sm:!w-40"
+      width="218"
+      src={logo}
+      alt="Logo"
+    />
     <nav>
       <ul class="hidden gap-12 xl:flex">
         {
@@ -143,7 +162,7 @@ const { items = [{}], sticky = false } = Astro.props as Props;
         <button
           aria-label="Open mobile menu button"
           data-idx={mobileMenu}
-          onclick={`toggleMenu('${mobileMenu}', '${sticky}')`}
+          onclick={`toggleMenu('${mobileMenu}', '${isTop}')`}
           class="burger h-9 w-9 cursor-pointer"></button>
       </div>
     </nav>

@@ -11,6 +11,13 @@ export const collections = {
       header: header(),
     }),
   }),
+  privacy: defineCollection({
+    schema: ({ image }) => z.object({
+      title: z.string(),
+      description: z.string(),
+      header: header().optional(),
+    }),
+  }),
   services: defineCollection({
     schema: ({ image }) => z.object({
       title: z.string(),
@@ -25,10 +32,13 @@ export const collections = {
 };
 
 const header = function() {
-  return z.array(z.object({
-    id: z.string(),
-    name: z.string(),
-  }))
+  return z.object({
+    enable: z.boolean().optional(),
+    ref: z.array(z.object({
+      id: z.string(),
+      name: z.string(),
+    })).optional()
+  })
 }
 
 const localBusiness = function(image: any) {
