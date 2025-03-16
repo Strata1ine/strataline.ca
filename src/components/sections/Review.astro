@@ -7,16 +7,16 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
 const { title, titlePos = Pos.Left, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
-const cards = document.querySelectorAll("[data-slider-card]");
+const cards = document.querySelectorAll("[data-review-card]");
 
 //TODO: add share your experiance
 ---
 
-<Container variant={ContainerVariant.Display} {...slot}>
+<Container variant={ContainerVariant.Display} {...slot} data-review>
   <ContainerTitle class="px-inset" title={title} variant={titlePos} />
   <div
     class="scrollbar-hide flex cursor-grab touch-pan-y overflow-x-scroll overflow-y-visible"
-    id="review-slider"
+    data-review-items
   >
     <Fragment set:html={document} />
     <div class="w-lvw shrink-0"></div>
@@ -26,7 +26,7 @@ const cards = document.querySelectorAll("[data-slider-card]");
     class="bg-tone relative mx-auto mt-12 flex h-3 w-full max-w-70 sm:max-w-100"
   >
     <div
-      id="review-scroller"
+      data-review-scroller
       class="bg-accent absolute h-full rounded-sm transition-transform duration-500"
     >
     </div>
@@ -35,12 +35,227 @@ const cards = document.querySelectorAll("[data-slider-card]");
       Array.from({ length: cards.length }, (_, i: number) => (
         <button
           class={clsx(
-            `z-10 flex-1 cursor-pointer ${i == cards.length - 1 ? "sm:hidden" : ""}`,
+            `z-10 flex-1 cursor-pointer ${i == cards.length - 1 ? "xl:hidden" : ""}`,
           )}
-          onclick={`sliderTo(${i})`}
+          data-review-button
           aria-label={`Navigate to review ${i}`}
         />
       ))
     }
   </div>
 </Container>
+
+<script>
+  // @ts-check
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.userAgent.includes("Mac") && navigator.maxTouchPoints > 1);
+
+  document
+    .querySelectorAll("[data-review]")
+    .forEach((reviewWrapper: HTMLElement) => {
+      const scrollVisual = reviewWrapper.querySelector(
+        "[data-review-scroller]",
+      ) as HTMLElement;
+      const items = reviewWrapper.querySelector(
+        "[data-review-items]",
+      ) as HTMLElement;
+
+      const cards = items.querySelectorAll("[data-review-card]");
+      const dataReviewButtons = document.querySelectorAll(
+        "[data-review-button]",
+      );
+
+      const cmarginLeft =
+        parseFloat(window.getComputedStyle(cards[0]).marginLeft) || 0;
+      const isSliderMobile = window.matchMedia(
+        `(max-width: ${((cards[0].getBoundingClientRect().width + cmarginLeft) * cards.length) / 2 + 15}px)`,
+      );
+
+      scrollVisual.setAttribute(
+        "style",
+        `width: ${100 / sliderLength(cards.length)}%`,
+      );
+
+      function handleChange() {
+        if (!isSliderMobile.matches && cards.length <= 2) {
+          scrollVisual.parentElement?.classList.add("hidden");
+        } else {
+          scrollVisual.parentElement?.classList.remove("hidden");
+        }
+      }
+
+      handleChange();
+
+      for (let i = 0; i < dataReviewButtons.length; i++) {
+        let e = dataReviewButtons[i] as HTMLElement;
+        e.onclick = () => {
+          const width = cards[i].getBoundingClientRect().width + cmarginLeft;
+          items.scrollTo({ left: width * i, behavior: "smooth" });
+          scrollVisual.setAttribute(
+            "style",
+            `transform: translateX(${i * 100}%); width: ${100 / sliderLength(cards.length)}%`,
+          );
+        };
+      }
+
+      isSliderMobile.addEventListener("change", function () {
+        handleChange();
+      });
+
+      const threshold = 25;
+      if (cards.length === 0) return;
+
+      function sliderLength(n: number): number {
+        return n - (isSliderMobile.matches ? 0 : 1);
+      }
+
+      let isDown = false;
+      let startX = 0;
+      let startY = 0;
+      let scrollLeft = 0;
+      let idx = 0;
+
+      const finalizeDrag = (pageX: number, pageY: number): void => {
+        if (!isDown) return;
+
+        const diffX = pageX - startX;
+        const diffY = pageY - startY;
+        const style = window.getComputedStyle(cards[idx]);
+        const width =
+          cards[idx].getBoundingClientRect().width +
+          parseFloat(style.marginLeft);
+
+        if (Math.abs(diffX) < Math.abs(diffY)) {
+          items.scrollTo({ left: width * idx, behavior: "smooth" });
+          return;
+        }
+
+        let steps = Math.round(Math.abs(diffX) / width);
+        if (steps === 0 && Math.abs(diffX) > threshold) {
+          steps = 1;
+        }
+
+        if (diffX < 0) {
+          idx = Math.min(idx + steps, sliderLength(cards.length) - 1);
+        } else if (diffX > 0) {
+          idx = Math.max(idx - steps, 0);
+        }
+
+        items.scrollTo({ left: width * idx, behavior: "smooth" });
+        scrollVisual.setAttribute(
+          "style",
+          `transform: translateX(${idx * 100}%); width: ${100 / sliderLength(cards.length)}%`,
+        );
+      };
+
+      if (isIOS) {
+        // Use touch events on iOS.
+        items.addEventListener(
+          "touchstart",
+          ((e: TouchEvent): void => {
+            isDown = true;
+            startX = e.touches[0].pageX;
+            startY = e.touches[0].pageY;
+            scrollLeft = items.scrollLeft;
+          }) as EventListener,
+          { passive: true },
+        );
+
+        items.addEventListener(
+          "touchmove",
+          ((e: TouchEvent): void => {
+            if (!isDown) return;
+            // Prevent default if horizontal movement dominates,
+            // to avoid iOS interfering with the drag gesture.
+            if (
+              Math.abs(e.touches[0].pageX - startX) >
+              Math.abs(e.touches[0].pageY - startY)
+            ) {
+              e.preventDefault();
+            }
+            const diff = e.touches[0].pageX - startX;
+            items.scrollLeft = scrollLeft - diff;
+          }) as EventListener,
+          { passive: false },
+        );
+
+        items.addEventListener(
+          "touchend",
+          ((e: TouchEvent): void => {
+            if (!isDown) return;
+            finalizeDrag(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+            isDown = false;
+          }) as EventListener,
+          { passive: true },
+        );
+
+        items.addEventListener(
+          "touchcancel",
+          ((e: TouchEvent): void => {
+            if (!isDown) return;
+            finalizeDrag(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+            isDown = false;
+          }) as EventListener,
+          { passive: true },
+        );
+      } else {
+        // Use pointer events on non-iOS.
+        items.addEventListener(
+          "pointerdown",
+          ((e: PointerEvent): void => {
+            isDown = true;
+            startX = e.pageX;
+            startY = e.pageY;
+            scrollLeft = items.scrollLeft;
+            items.setPointerCapture(e.pointerId);
+          }) as EventListener,
+          { passive: true },
+        );
+
+        items.addEventListener(
+          "pointermove",
+          ((e: PointerEvent): void => {
+            if (!isDown) return;
+            // Prevent default if horizontal movement dominates.
+            if (Math.abs(e.pageX - startX) > Math.abs(e.pageY - startY)) {
+              e.preventDefault();
+            }
+            const diff = e.pageX - startX;
+            items.scrollLeft = scrollLeft - diff;
+          }) as EventListener,
+          { passive: false },
+        );
+
+        items.addEventListener(
+          "pointerup",
+          ((e: PointerEvent): void => {
+            if (!isDown) return;
+            finalizeDrag(e.pageX, e.pageY);
+            isDown = false;
+            items.releasePointerCapture(e.pointerId);
+          }) as EventListener,
+          { passive: true },
+        );
+
+        items.addEventListener(
+          "pointercancel",
+          ((e: PointerEvent): void => {
+            if (!isDown) return;
+            finalizeDrag(e.pageX, e.pageY);
+            isDown = false;
+            items.releasePointerCapture(e.pointerId);
+          }) as EventListener,
+          { passive: true },
+        );
+
+        items.addEventListener(
+          "pointerleave",
+          (() => {
+            isDown = false;
+          }) as EventListener,
+          { passive: true },
+        );
+      }
+    });
+</script>

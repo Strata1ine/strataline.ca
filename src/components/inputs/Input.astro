@@ -1,0 +1,25 @@
+---
+const { name, required, ...slot } = Astro.props;
+const s = `${crypto.randomUUID()}`;
+---
+
+<div class="border-accent relative rounded-sm border-[1.4px]">
+  <div
+    class="left-inset px-inset absolute flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white"
+  >
+    <label class="font-serif text-bg leading-none font-semibold" for={s}
+      >{name}</label
+    >
+    {required && <div class="text-accent-dark">*</div>}
+    <slot />
+  </div>
+
+  <input
+    id={s}
+    name={name}
+    required={required}
+    class="p-inset w-full font-sans text-sm"
+    type="text"
+    {...slot}
+  />
+</div>

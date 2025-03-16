@@ -4,7 +4,7 @@ import { setAttrElements, appendAttrElementsIf } from "~/util/processHTML";
 
 import { Icon } from "astro-icon/components";
 import Container from "~/components/div/Container.astro";
-import DotArray from "~/components/buttons/DotArray.astro";
+import DotArray from "~/components/inputs/DotArray.astro";
 
 const { title, description, speed: speedInt, ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
@@ -92,7 +92,7 @@ setAttrElements(images, "loading", "eager");
         />
       </div>
 
-      <p class="text-bg mt-2 font-sans xl:mt-4">
+      <p class="text-base mt-2 font-sans xl:mt-4">
         {description}
       </p>
 
@@ -157,16 +157,10 @@ setAttrElements(images, "loading", "eager");
   }
 
   function test() {
-    if (window.scrollY < yOffset) {
-      if (!triggered) {
-        toggle();
-        triggered = true;
-      }
-    } else {
-      if (triggered) {
-        toggle();
-        triggered = false;
-      }
+    const newState = window.scrollY < yOffset;
+    if (triggered !== newState) {
+      toggle();
+      triggered = newState;
     }
   }
 

@@ -25,20 +25,17 @@ interface Props {
 }
 
 export enum HeaderVariant {
-  Sticky,
   Fixed,
   Absolute,
 }
 
 export const headerMap = {
-  [HeaderVariant.Sticky]: "sticky backdrop-blur-[5rem] py-5",
   [HeaderVariant.Absolute]: "absolute bg-white lg:bg-transparent py-4 sm:py-6",
   [HeaderVariant.Fixed]: "fixed backdrop-blur-[5rem] py-5",
 };
 
 const { items = [{}], variant = HeaderVariant.Absolute } = Astro.props as Props;
-const isTop =
-  variant === HeaderVariant.Fixed || variant === HeaderVariant.Sticky;
+const isTop = variant === HeaderVariant.Fixed;
 ---
 
 <div
@@ -117,7 +114,7 @@ const isTop =
           items.length !== 0
             ? items.map((item) => (
                 <li>
-                  <a href={`#${item.id}`} class="text-bg font-sans">
+                  <a href={`#${item.id}`} class="text-base font-sans">
                     {item.name}
                   </a>
                 </li>
@@ -130,7 +127,7 @@ const isTop =
             onclick={`toggleDropdown(this)`}
             aria-label="Open services menu"
           >
-            <span class="text-bg font-sans">Services</span>
+            <span class="text-base font-sans">Services</span>
             <Icon name="ph:caret-down-fill" class="ml-2 w-4" />
           </button>
 
@@ -147,7 +144,7 @@ const isTop =
                   <li>
                     <a
                       href={`/services/${service.slug}`}
-                      class="text-bg font-sans"
+                      class="text-base font-sans"
                     >
                       {service.data.title}
                     </a>

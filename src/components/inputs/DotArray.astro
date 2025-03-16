@@ -3,7 +3,6 @@ import Dot from "./Dot.astro";
 
 const {
   class: customClass,
-  fn = "slideNext",
   idx: slideId,
   length,
   ...rest
@@ -12,12 +11,12 @@ const {
 
 {
   length !== 1 ? (
-    <div class={customClass} {...rest} data-slide-nav={slideId}>
+    <div class={customClass} {...rest} data-id={slideId}>
       {Array.from({ length }).map((_, i) => (
         <Dot
           i={i}
           class={i === 0 ? "active" : ""}
-          onclick={`${fn}('${slideId}', ${i})`}
+          onclick={`slideNext('${slideId}', ${i})`}
         />
       ))}
     </div>

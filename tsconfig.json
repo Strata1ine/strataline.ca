@@ -8,6 +8,8 @@
     "dist"
   ],
   "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "~/*": [

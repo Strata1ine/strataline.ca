@@ -8,8 +8,8 @@ export enum ContainerVariant {
 }
 
 export const containerMap = {
-  [ContainerVariant.Inner]: "max-w-inner px-inset lg:mx-auto w-full",
-  [ContainerVariant.Outer]: "max-w-outer px-inset lg:mx-auto w-full",
+  [ContainerVariant.Inner]: "max-w-inner px-inset lg:mx-auto",
+  [ContainerVariant.Outer]: "max-w-outer px-inset lg:mx-auto",
   [ContainerVariant.Max]: "max-w-full lg:mx-auto",
   [ContainerVariant.Display]:
     "max-w-[calc(var(--spacing-outer-span)+30rem)] lg:mx-auto",
@@ -31,7 +31,7 @@ const Tag = as;
     containerMap[variant],
     customClass,
     // if its a section, then apply margin bottom by default
-    as === "section" && "my-25 sm:my-44",
+    as === "section" && "my-22 sm:my-38",
   )}
   {...slot}
 >

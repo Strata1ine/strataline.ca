@@ -12,7 +12,7 @@ const [index] = await getCollection("index");
   as="footer"
   variant={ContainerVariant.Inner}
 >
-  <div class="py-15">
+  <div class="py-22">
     {
       index.data.local_business.areaServed && (
         <>
@@ -49,22 +49,25 @@ const [index] = await getCollection("index");
   </div>
 
   <div
-    class="border-accent flex flex-col items-center justify-between gap-4 border-t-[1.4px] py-6 md:flex-row"
+    class="border-accent flex flex-col-reverse items-center justify-between gap-4 border-t-[1.4px] py-6 md:flex-row"
   >
-    <div class="flex flex-col-reverse items-center gap-1 sm:flex-row sm:gap-6">
-      <span class="text-bg font-sans"
+    <div class="flex flex-col items-center sm:flex-row sm:gap-12">
+      <span class="font-sans text-base"
         ><b>&copy; {index.data.title}</b>. 2025</span
       >
-      <a class="text-url font-sans text-base hover:underline" href="./privacy">
-        Privacy Policy
-      </a>
 
-      <a
-        class="text-url font-sans text-base hover:underline"
-        href="./medallions"
-      >
-        Medallions
-      </a>
+      <div class="flex gap-6">
+        <a class="text-url font-sans text-base hover:underline" href="/privacy">
+          Privacy Policy
+        </a>
+
+        <a
+          class="text-url font-sans text-base hover:underline"
+          href="/medallions"
+        >
+          Medallions
+        </a>
+      </div>
     </div>
 
     <Socials class="flex flex-row" imageClass="w-16 xl:w-18 h-auto" />

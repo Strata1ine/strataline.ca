@@ -23,13 +23,11 @@
   --aspect-video-*: initial;
 
   --color-url: #5A7184;
-  --color-accent-light: #FFEEEE;
   --color-accent: #FFE3E3;
   --color-accent-dark: #D85B5B;
   --color-black: #2B2B2B;
   --color-white: #FFFAFA;
   --color-tone: #F5F5F5;
-  --color-dark: #191010;
   --color-gold: #FFD0B5;
 
   --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
@@ -49,7 +47,7 @@
   --text-sm--line-height: 1.7;
   --text-base: clamp(1.2rem, 2.1vw, 1.45rem);
   --text-base--line-height: 1.7;
-  --text-bg: clamp(1.3rem, 2vw, 1.45rem);
+  --text-bg: clamp(1.4rem, 2vw, 1.7rem);
   --text-bg--line-height: 1.7;
   --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
   --text-xl: clamp(1.6rem, 4vw, 2.1rem);
@@ -62,7 +60,7 @@
   --text-4xl--line-height: 1.1;
   --text-5xl: clamp(2.3rem, 4.5vw, 4.4rem);
   --text-5xl--line-height: 1.1;
-  --text-6xl: clamp(3rem, 4.5vw, 5rem);
+  --text-6xl: clamp(3.5rem, 4.5vw, 5rem);
   --text-6xl--line-height: 1.2;
 
   --spacing-inset: .9rem;

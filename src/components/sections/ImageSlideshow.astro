@@ -3,7 +3,7 @@ import { parseHTML } from "linkedom";
 import { processElements } from "~/util/processHTML";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
-import Dot, { DotVariant } from "~/components/buttons/Dot.astro";
+import Dot, { DotVariant } from "~/components/inputs/Dot.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
 import { Icon } from "astro-icon/components";
@@ -50,6 +50,7 @@ images.forEach((img) => {
 
 <Container class="contain-paint" variant={ContainerVariant.Max} {...slot}>
   <ContainerTitle class="px-inset" variant={variant} title={title} />
+
   <Container
     variant={ContainerVariant.Max}
     class="bg-tone relative h-[65vh] max-h-250 items-center gap-10 lg:justify-between"
@@ -81,7 +82,7 @@ images.forEach((img) => {
     </button>
   </Container>
 
-  <div class="mt-inset flex justify-center gap-5" data-slide-nav={id}>
+  <div class="mt-inset flex justify-center gap-5" data-id={id}>
     {
       Array.from({ length: images.length }).map((_, i) => (
         <Dot
@@ -93,14 +94,88 @@ images.forEach((img) => {
       ))
     }
   </div>
-
-  <div class="px-inset mt-8 flex justify-between xl:hidden">
-    <button onclick=`imagePrev("${id}")` class="cursor-pointer">
-      <Icon name="arrow" class="h-auto w-20 rotate-180" />
-    </button>
-
-    <button class="cursor-pointer" onclick=`imageNext("${id}")`>
-      <Icon name="arrow" class="h-auto w-20" />
-    </button>
-  </div>
 </Container>
+
+<script>
+  // @ts-check
+  declare global {
+    interface Window {
+      imageTo: (id: string, i: number, to: boolean) => void;
+      imageNext: (id: string) => void;
+      imagePrev: (id: string) => void;
+    }
+  }
+
+  window.imageTo = (id: string, i: number, to: boolean = true): void => {
+    const e = document.getElementById(id) as HTMLElement;
+    e.setAttribute("data-slide-mutated", "");
+    handleImage(e, i, to);
+  };
+
+  window.imageNext = (id: string): void => {
+    window.imageTo(id, 1, false);
+  };
+
+  window.imagePrev = (id: string): void => {
+    window.imageTo(id, -1, false);
+  };
+
+  function handleImage(e: HTMLElement, idx: number, to: boolean): void {
+    const prevIdx = parseInt(e.getAttribute("data-idx") || "0", 10) || 0;
+
+    // If not doing an absolute jump then add idx to the previous index.
+    if (!to) {
+      idx += prevIdx;
+    }
+
+    const length = e.children.length;
+    if (length <= 0) {
+      return;
+    }
+
+    const nextIdx = ((idx % length) + length) % length;
+
+    e.setAttribute("style", `transform: translateX(-${nextIdx * 110}%)`);
+    e.setAttribute("data-idx", nextIdx.toString());
+    (e.children[nextIdx].children[0] as HTMLElement)?.setAttribute(
+      "loading",
+      "eager",
+    );
+
+    document
+      .querySelectorAll(`[data-id="${e.id}"]`)
+      .forEach((slideButton: Element) => {
+        const next = slideButton.children[prevIdx] as HTMLElement;
+        const prev = slideButton.children[nextIdx] as HTMLElement;
+        next.classList.remove("active");
+        prev.classList.add("active");
+        slideButton.setAttribute("data-slide-idx", nextIdx.toString());
+      });
+  }
+
+  document
+    .querySelectorAll("[data-image-slideshow]")
+    .forEach((slideshow: HTMLElement): void => {
+      const speedAttr = parseInt(
+        slideshow.getAttribute("data-slideshow-speed") ?? "4000",
+        10,
+      );
+      const speed = isNaN(speedAttr) ? 4000 : speedAttr;
+
+      setInterval(() => {
+        const r = slideshow.getBoundingClientRect();
+        if (!(r.bottom < 0 || r.top > window.innerHeight)) {
+          return;
+        }
+
+        if (
+          !slideshow.hasAttribute("data-slide-mutated") &&
+          !slideshow.matches(":hover")
+        ) {
+          handleImage(slideshow, 1, true);
+        } else {
+          slideshow.removeAttribute("data-slide-mutated");
+        }
+      }, speed);
+    });
+</script>

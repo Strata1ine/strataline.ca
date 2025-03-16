@@ -3,23 +3,44 @@ const { title, description } = Astro.props;
 ---
 
 <button
-  class="border-accent border-t-[1.5px] last:border-b-[1.5px] py-7 cursor-pointer"
-  onclick="toggleFaq(this)"
+  class="border-accent cursor-pointer border-t-[1.5px] py-7 last:border-b-[1.5px]"
+  data-faq
 >
-  <div
-    class="flex w-full items-center justify-between gap-4"
-  >
+  <div class="flex w-full items-center justify-between gap-4">
     <h4 class="font-serif text-2xl font-semibold">{title}</h4>
     <div class="expand relative h-6 w-6 flex-shrink-0"></div>
   </div>
 
   <p
-    class="pointer-events-none h-0 font-sans text-base select-none opacity-0 [&.active]:pointer-events-auto [&.active]:h-auto [&.active]:opacity-100 [&.active]:mt-3"
+    class="pointer-events-none h-0 font-sans text-base opacity-0 select-none [&.active]:pointer-events-auto [&.active]:mt-3 [&.active]:h-auto [&.active]:opacity-100"
     data-safari-bad="duration-250"
   >
     {description}
   </p>
 </button>
+
+<script>
+  // @ts-check
+  declare global {
+    interface Window {
+      toggleFaq: (e: HTMLElement) => void;
+    }
+  }
+
+  document.querySelectorAll("[data-faq]").forEach((faq: HTMLElement) => {
+    const p = faq.querySelector("p");
+    const expand = faq.querySelector(".expand");
+    faq.onclick = () => {
+      if (p != null && p instanceof HTMLElement) {
+        p.classList.toggle("active");
+      }
+
+      if (expand != null && expand instanceof HTMLElement) {
+        expand.classList.toggle("active");
+      }
+    };
+  });
+</script>
 
 <style lang="scss">
   .expand {

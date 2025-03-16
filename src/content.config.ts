@@ -13,8 +13,6 @@ export const collections = {
   }),
   privacy: defineCollection({
     schema: ({ image }) => z.object({
-      title: z.string(),
-      description: z.string(),
       header: header().optional(),
     }),
   }),

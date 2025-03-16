@@ -12,8 +12,8 @@ import { Icon } from "astro-icon/components";
 import Home from "~/components/em/Home.astro";
 
 import Layout from "~/layouts/Layout.astro";
-import LetsTalk from "~/components/buttons/LetsTalk.astro";
-import Container from "~/components/div/Container.astro";
+import LetsTalk from "~/components/inputs/LetsTalk.astro";
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import Header, { HeaderVariant } from "~/components/nav/Header.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 import Service from "~/components/nav/Service.astro";
@@ -28,50 +28,40 @@ const { Content } = await service.render();
 ---
 
 <Layout>
-  <main
-    class="bg-dark h-100svh relative overflow-x-clip py-15 sm:flex sm:h-190 sm:py-25"
-  >
+  <main class="bg-accent relative overflow-x-clip py-15 sm:h-170">
     <Container
       as="div"
-      class="flex gap-6 text-white sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
+      class="flex h-full items-center gap-6 sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
     >
-      <div class="relative flex-1 flex-col justify-between sm:flex">
-        <div class="hidden h-14 sm:block"></div>
-        <div>
-          <Home slug={slug} />
+      <div class="flex-1">
+        <Home slug={slug} />
 
-          <h1 class="font-serif text-5xl font-bold text-balance">
-            {service.data.title}
-          </h1>
+        <h1 class="font-serif text-5xl font-bold text-balance">
+          {service.data.title}
+        </h1>
 
-          <div
-            class="-mr-inset my-4 ml-7 flex h-70 rounded-tl-sm rounded-bl-sm contain-paint sm:hidden"
-          >
-            {
-              service.data.covers.map((img: any, _: number) => (
-                <Image
-                  class="min-w-0 flex-1 object-cover"
-                  src={img.src}
-                  alt={img.alt}
-                  width={2560}
-                  loading="eager"
-                />
-              ))
-            }
-          </div>
-
-          <p class="mt-2 font-sans text-base">
-            {service.data.description}
-          </p>
+        <div
+          class="-mr-inset my-4 ml-7 flex h-65 rounded-tl-sm rounded-bl-sm contain-paint sm:hidden"
+        >
+          {
+            service.data.covers.map((img: any, _: number) => (
+              <Image
+                class="min-w-0 flex-1 object-cover"
+                src={img.src}
+                alt={img.alt}
+                width={2560}
+                loading="eager"
+              />
+            ))
+          }
         </div>
 
-        <Icon
-          name="arrow-down"
-          class="color-white hidden h-auto w-8 translate-x-(--right-span) sm:block xl:w-10"
-        />
+        <p class="mt-2 font-sans text-base">
+          {service.data.description}
+        </p>
       </div>
 
-      <div class="hidden flex-1 sm:flex">
+      <div class="hidden h-full flex-1 sm:flex">
         <div class="flex justify-evenly rounded-sm contain-paint">
           {
             service.data.covers.map((img: any, _: number) => (
@@ -89,12 +79,17 @@ const { Content } = await service.render();
       </div>
     </Container>
   </main>
+  <Container variant={ContainerVariant.Inner} as="div" class="relative">
+    <div class="absolute bottom-0 translate-y-1/2">
+      <Icon name="arrow-down" class="hidden h-auto w-8 sm:block xl:w-10" />
+    </div>
+  </Container>
 
-  {
-    service.data.header && (
-      <Header variant={HeaderVariant.Sticky} items={service.data.header.ref} />
-    )
-  }
+  <!-- { -->
+  <!--   service.data.header && ( -->
+  <!--     <Header variant={HeaderVariant.Sticky} items={service.data.header.ref} /> -->
+  <!--   ) -->
+  <!-- } -->
 
   <LetsTalk />
   <Content />
