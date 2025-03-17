@@ -1,27 +1,146 @@
 ---
 import { getCollection } from "astro:content";
+import Button from "~/components/inputs/Button.astro";
 import Input from "~/components/inputs/Input.astro";
+import { Icon } from "astro-icon/components";
 const [index] = await getCollection("index");
 ---
 
 <div
   data-safari-bad="duration-500"
   id="talkMenu"
-  class="pointer-events-none fixed inset-0 z-50 flex translate-y-full items-center justify-center overflow-scroll bg-white [&.active]:pointer-events-auto [&.active]:translate-y-0"
+  class="pointer-events-none fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[20rem] [&.active]:pointer-events-auto [&.active]:opacity-100"
+  data-talk-menu
+  onclick="if (event.target === event.currentTarget) { toggleMenu('talkMenu'); }"
 >
-  <div class="px-inset w-full max-w-100">
-    <h2 class="mb-12 font-serif text-5xl font-bold">Let's talk</h2>
+  <div
+    class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
+  >
+    <div class="mb-12 flex justify-between">
+      <h2 class="font-serif text-5xl font-bold">Let's talk</h2>
+      <button class="cursor-pointer" onclick="toggleMenu('talkMenu')">
+        <Icon name="ph:x-bold" class="h-auto w-7 sm:w-10" />
+      </button>
+    </div>
 
-    <form class="space-y-10" enctype="multipart/form-data" method="post">
-      <Input name="Email" required autocomplete="on" type="email" />
+    <form
+      class="space-y-8 sm:space-y-10"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <Input name="Email" required autocomplete="on" type="email" validate />
+
       <Input
         name="Phone number"
-        required
         minlength="10"
         inputmode="tel"
         autocomplete="on"
-        pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
+        validate
+        placeholder="(xxx) xxx-xxxx"
+        pattern="^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$"
       />
+
+      <Input
+        as="select"
+        class="absolute inset-0 cursor-pointer opacity-0"
+        name="Location"
+        data-location
+      >
+        <div class="py-inset gap-inset flex px-4">
+          <Icon name="ph:navigation-arrow-fill" class="h-auto w-7" />
+          <span class="font-sans text-base">Select a location</span>
+        </div>
+
+        <option slot="in" class="font-sans text-base">Select a location</option>
+        {
+          index.data.local_business.areaServed.map((area, _) => (
+            <option slot="in" class="font-sans text-base">
+              {area}
+            </option>
+          ))
+        }
+
+        <Icon
+          name="ph:caret-down-fill"
+          class="right-inset absolute top-1/2 -translate-y-1/2"
+        />
+      </Input>
+
+      <Input as="textarea" required class="min-h-40" name="Messege" />
+
+      <Input
+        accept="image/*"
+        name="Photos"
+        multiple
+        type="file"
+        class="absolute inset-0 cursor-pointer opacity-0"
+      >
+        <div class="py-inset gap-inset flex px-4">
+          <Icon name="ph:images-square-fill" class="h-auto w-7" />
+          <span class="font-sans text-base">No photos selected</span>
+        </div>
+      </Input>
+
+      <Button value="submit" class="w-full cursor-pointer text-center"
+        >Submit</Button
+      >
     </form>
   </div>
 </div>
+
+<script>
+  // @ts-check
+  document.querySelectorAll("[data-talk-menu]").forEach((form: HTMLElement) => {
+    form
+      .querySelectorAll(`[type="file"]`)
+      .forEach((photos: HTMLInputElement) => {
+        let textFile = photos.nextElementSibling?.querySelector("span");
+        if (textFile != null) {
+          photos.addEventListener("change", function () {
+            if (photos.files.length > 0) {
+              textFile.textContent = `${photos.files.length} photo(s) selected`;
+            } else {
+              textFile.textContent = "No file selected.";
+            }
+          });
+        }
+      });
+
+    form
+      .querySelectorAll(`[inputmode="tel"]`)
+      .forEach((tel: HTMLInputElement) => {
+        tel.addEventListener("input", function () {
+          let newValue = tel.value.replace(/\D/g, "");
+          let pos = tel.selectionStart || 0;
+
+          if (newValue.length == 4 || newValue.length == 7) {
+            pos += 3;
+          }
+
+          if (newValue.length > 3 && newValue.length <= 6) {
+            newValue = `(${newValue.slice(0, 3)}) ${newValue.slice(3)}`;
+          } else if (newValue.length > 6) {
+            newValue = `(${newValue.slice(0, 3)}) ${newValue.slice(3, 6)}-${newValue.slice(6, 10)}`;
+          }
+
+          tel.value = newValue;
+          tel.setSelectionRange(pos, pos);
+        });
+      });
+
+    form
+      .querySelectorAll(`[data-location]`)
+      .forEach((location: HTMLElement) => {
+        const select = document.querySelector("select");
+        select.addEventListener("change", function () {
+          const selectedLocation = select.options[location.selectedIndex].text;
+          const locationSpan =
+            location.nextElementSibling?.querySelector("span");
+
+          if (locationSpan != null && selectedLocation) {
+            locationSpan.textContent = selectedLocation;
+          }
+        });
+      });
+  });
+</script>

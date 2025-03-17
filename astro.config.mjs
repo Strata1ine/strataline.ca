@@ -19,6 +19,9 @@ export default defineConfig({
   site: 'https://strataline.ca',
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 0,
+    },
   },
   image: {
     experimentalLayout: 'responsive',
@@ -45,7 +48,7 @@ export default defineConfig({
       imports: [
         {
           './src/components/em/': 'E',
-          './src/components/inputs/': 'Btn',
+          './src/components/inputs/': 'Input',
           './src/components/sections/': 'Section',
           './src/components/cards/': 'Card',
           './src/components/variants.ts': 'Variant',

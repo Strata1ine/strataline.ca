@@ -18,9 +18,7 @@ const { data, slug, ...slot } = Astro.props;
     src={data.covers[0].src}
     alt={data.covers[0].alt}
   />
-  <div
-    class="flex w-1/2 flex-col  gap-2 sm:w-full sm:flex-row sm:items-center"
-  >
+  <div class="flex w-1/2 flex-col gap-2 sm:w-full sm:flex-row sm:items-center">
     <h4 class="font-serif text-xl">{data.title}</h4>
     <Icon name="arrow" class="w-13" />
   </div>

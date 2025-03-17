@@ -1,25 +1,73 @@
 ---
-const { name, required, ...slot } = Astro.props;
-const s = `${crypto.randomUUID()}`;
+import clsx from "clsx";
+import { Icon } from "astro-icon/components";
+
+const {
+  name,
+  class: customClass,
+  as = "input",
+  validate = false,
+  required,
+  ...slot
+} = Astro.props;
+
+const s = crypto.randomUUID();
+const Tag = as;
 ---
 
-<div class="border-accent relative rounded-sm border-[1.4px]">
+<div class="border-accent relative rounded-sm border-1">
   <div
-    class="left-inset px-inset absolute flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white"
+    class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white px-2"
   >
-    <label class="font-serif text-bg leading-none font-semibold" for={s}
+    <label class="text-bg font-serif leading-none font-semibold" for={s}
       >{name}</label
     >
-    {required && <div class="text-accent-dark">*</div>}
-    <slot />
+
+    {required && <div class="text-error leading-none">*</div>}
+
+    <slot name="label" />
   </div>
 
-  <input
-    id={s}
-    name={name}
-    required={required}
-    class="p-inset w-full font-sans text-sm"
-    type="text"
-    {...slot}
-  />
+  <div class="input-valid">
+    <Tag
+      id={s}
+      name={name}
+      required={required}
+      class={clsx(
+        `py-inset w-full font-sans text-sm`,
+        customClass,
+        validate ? "pl-4 pr-10" : "px-4",
+      )}
+      type="text"
+      {...slot}><slot name="in" /></Tag
+    >
+
+    <slot />
+
+    {
+      validate && (
+        <>
+          <Icon
+            name="ph:check-bold"
+            class="text-success absolute top-1/2 right-4 hidden -translate-y-1/2"
+          />
+
+          <Icon
+            name="ph:x-bold"
+            class="text-error absolute top-1/2 right-4 hidden -translate-y-1/2"
+          />
+        </>
+      )
+    }
+  </div>
 </div>
+
+<style>
+  .input-valid:has(> input:valid) .text-success {
+    display: block !important;
+  }
+
+  .input-valid:has(> input:invalid) .text-error {
+    display: block !important;
+  }
+</style>

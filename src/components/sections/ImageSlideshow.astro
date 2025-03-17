@@ -53,16 +53,9 @@ images.forEach((img) => {
 
   <Container
     variant={ContainerVariant.Max}
-    class="bg-tone relative h-[65vh] max-h-250 items-center gap-10 lg:justify-between"
+    class="relative h-[65vh] max-h-250 items-center gap-10 lg:justify-between"
     as="div"
   >
-    <button
-      onclick={`imagePrev("${id}")`}
-      class="pl-inset absolute top-1/2 left-0 z-10 hidden cursor-pointer xl:block xl:translate-x-(--review-diff-o)"
-    >
-      <Icon name="arrow" class="h-auto w-25 rotate-180" />
-    </button>
-
     <div class="h-full overflow-hidden">
       <div
         class="flex h-full items-center gap-[10%] duration-1000 will-change-transform"
@@ -73,13 +66,6 @@ images.forEach((img) => {
         <Fragment set:html={document} />
       </div>
     </div>
-
-    <button
-      class="pr-inset absolute top-1/2 right-0 z-10 hidden cursor-pointer xl:block xl:-translate-x-(--review-diff-o)"
-      onclick={`imageNext("${id}")`}
-    >
-      <Icon name="arrow" class="h-auto w-25" />
-    </button>
   </Container>
 
   <div class="mt-inset flex justify-center gap-5" data-id={id}>
