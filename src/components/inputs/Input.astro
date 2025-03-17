@@ -36,11 +36,12 @@ const Tag = as;
       class={clsx(
         `py-inset w-full font-sans text-sm`,
         customClass,
-        validate ? "pl-4 pr-10" : "px-4",
+        validate ? "pl-6 pr-10" : "px-4",
       )}
       type="text"
-      {...slot}><slot name="in" /></Tag
-    >
+      {...slot}
+      ><slot name="in" />
+    </Tag>
 
     <slot />
 
@@ -49,12 +50,12 @@ const Tag = as;
         <>
           <Icon
             name="ph:check-bold"
-            class="text-success absolute top-1/2 right-4 hidden -translate-y-1/2"
+            class="text-success absolute top-1/2 right-4 hidden h-auto w-6 -translate-y-1/2"
           />
 
           <Icon
             name="ph:x-bold"
-            class="text-error absolute top-1/2 right-4 hidden -translate-y-1/2"
+            class="text-error absolute top-1/2 right-4 hidden h-auto w-6 -translate-y-1/2"
           />
         </>
       )
@@ -62,12 +63,14 @@ const Tag = as;
   </div>
 </div>
 
-<style>
-  .input-valid:has(> input:valid) .text-success {
-    display: block !important;
-  }
+<style lang="scss">
+  .input-valid {
+    &:has(> input:valid) .text-success {
+      display: block !important;
+    }
 
-  .input-valid:has(> input:invalid) .text-error {
-    display: block !important;
+    &:has(> input:invalid) .text-error {
+      display: block !important;
+    }
   }
 </style>

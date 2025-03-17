@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import Button from "~/components/inputs/Button.astro";
+import Input from "~/components/inputs/Input.astro";
+import { Icon } from "astro-icon/components";
+import Menu from "~/components/nav/Menu.astro";
+import Socials from "~/components/nav/Socials.astro";
+const [index] = await getCollection("index");
+---
+
+<Menu title="Let's talk" id="talkMenu">
+  <Input name="Email" required autocomplete="on" type="email" validate />
+
+  <Input
+    name="Phone number"
+    minlength="10"
+    inputmode="tel"
+    autocomplete="on"
+    validate
+    placeholder="(xxx) xxx-xxxx"
+    pattern="^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$"
+  />
+
+  <Input
+    as="select"
+    class="absolute inset-0 cursor-pointer opacity-0"
+    name="Location"
+    data-location
+  >
+    <div class="py-inset gap-inset flex px-4">
+      <Icon name="ph:navigation-arrow-fill" class="h-auto w-7" />
+      <span class="font-sans text-base">Select a location</span>
+    </div>
+
+    <option slot="in" class="font-sans text-base">Select a location</option>
+    {
+      index.data.local_business.areaServed.map((area, _) => (
+        <option slot="in" class="font-sans text-base">
+          {area}
+        </option>
+      ))
+    }
+
+    <Icon
+      name="ph:caret-down-fill"
+      class="right-inset absolute top-1/2 -translate-y-1/2"
+    />
+  </Input>
+
+  <Input as="textarea" required class="min-h-40" name="Messege" />
+
+  <Input
+    accept="image/*"
+    name="Photos"
+    multiple
+    type="file"
+    class="absolute inset-0 cursor-pointer opacity-0"
+  >
+    <div class="py-inset gap-inset flex px-4">
+      <Icon name="ph:images-square-fill" class="h-auto w-7" />
+      <span class="font-sans text-base">No photos selected</span>
+    </div>
+  </Input>
+
+  <Button as="button" value="submit" class="w-full cursor-pointer text-center"
+    >Submit</Button
+  >
+</Menu>

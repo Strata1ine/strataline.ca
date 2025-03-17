@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const serviceData = await getCollection("services");
@@ -28,15 +29,19 @@ const { Content } = await service.render();
 ---
 
 <Layout>
-  <main class="bg-accent relative overflow-x-clip py-15 sm:h-170">
+  <main class="relative overflow-x-clip py-15 sm:h-170">
     <Container
       as="div"
       class="flex h-full items-center gap-6 sm:flex-row sm:py-0 xl:gap-7 2xl:gap-9"
     >
+      <div
+        class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] rounded-bl-sm sm:left-[65vw]"
+      >
+      </div>
       <div class="flex-1">
         <Home slug={slug} />
 
-        <h1 class="font-serif text-5xl font-bold text-balance">
+        <h1 class="mb-1 font-serif text-5xl font-bold text-balance">
           {service.data.title}
         </h1>
 
@@ -56,7 +61,7 @@ const { Content } = await service.render();
           }
         </div>
 
-        <p class="mt-2 font-sans text-base">
+        <p class="font-sans text-base">
           {service.data.description}
         </p>
       </div>
@@ -66,11 +71,18 @@ const { Content } = await service.render();
           {
             service.data.covers.map((img: any, _: number) => (
               <Image
-                class="min-w-0 flex-1 object-cover hover:flex-5"
+                class={clsx(
+                  `object-cover`,
+                  service.data.covers.length > 1
+                    ? `min-w-0 flex-1 hover:flex-5`
+                    : ``,
+                )}
                 src={img.src}
                 alt={img.alt}
                 width={2560}
-                data-safari-bad="duration-800"
+                {...(service.data.covers.length > 1 && {
+                  "data-safari-bad": "duration-800",
+                })}
                 loading="eager"
               />
             ))

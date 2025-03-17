@@ -1,0 +1,64 @@
+---
+import clsx from "clsx";
+import { Pos } from "~/components/variants";
+import { Icon } from "astro-icon/components";
+
+const {
+  title,
+  path,
+  variant = Pos.Left,
+  poster,
+  format,
+  class: customClass,
+  ...slot
+} = Astro.props;
+---
+
+<video
+  width="16rem"
+  height="9rem"
+  poster={poster ? poster.src : undefined}
+  class={clsx(
+    `rounded-sm w-full h-full object-cover cursor-pointer`,
+    customClass,
+  )}
+  controls
+  {...slot}
+>
+  <source src={path} type={format} />
+  Your browser does not support the video tag.
+</video>
+
+<script>
+  // @ts-check
+  const videos = document.querySelectorAll("video");
+
+  declare global {
+    interface Window {
+      activeVideo: HTMLVideoElement | null;
+    }
+  }
+
+  videos.forEach((video) => {
+    video.addEventListener("play", () => {
+      if (window.activeVideo && window.activeVideo !== video) {
+        window.activeVideo.pause();
+      }
+
+      window.activeVideo = video;
+    });
+  });
+
+  setInterval(() => {
+    if (
+      window.activeVideo &&
+      !window.activeVideo.checkVisibility({
+        opacityProperty: true,
+        visibilityProperty: true,
+      })
+    ) {
+      window.activeVideo.pause();
+      window.activeVideo = null;
+    }
+  }, 200);
+</script>

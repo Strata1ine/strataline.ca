@@ -55,7 +55,7 @@ local_business:
         name: Facebook
 
     - url: "https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html"
-    - url: "https://houseandhome.com/gallery/luxe-for-less-design/#image-9"
+    - url: "https://houseandhome.com/gallery/luxe-for-less-design/"
 
   # The official registered name of the business (if different from trading name)
   legalName: "Strataline Inc."
@@ -210,8 +210,8 @@ header:
   ref:
     - id: "popular"
       name: "Popular"
-    - id: "gallery"
-      name: "Gallery"
+    - id: "offer"
+      name: "Offers"
     - id: "accomplishments"
       name: "Accomplishments"
     - id: "reviews"
@@ -238,9 +238,9 @@ header:
 />
 
 <Section.LessPopular
-  title="Our slightly less popular services"
+  title="There's more to explore"
   titlePos={Variant.Pos.Left}
-  id="gallery"
+  id="offer"
 >
   <Section.TextCarousel
     slot="bottom"
@@ -251,9 +251,12 @@ header:
 <Section.Slide
   title="Our accomplishments"
   titlePos={Variant.Pos.Right}
-  speed={3000}
+  speed={6000}
   id="accomplishments"
 >
+
+import citytv from "./awards/citytv.jpg"
+
 <Card.Slide
   title="Featured on CityTV"
   description={`
@@ -261,7 +264,11 @@ header:
     the best way to get rid of popcorn ceilings.
   `}
 >
-  !["A renovated tomato"](./awards/citytv.jpg)
+  <E.Video
+    path="/videos/cityline.mp4"
+    poster={citytv}
+  >
+  </E.Video>
 </Card.Slide>
 
 <Card.Slide
@@ -272,6 +279,8 @@ header:
   `}
 >
   !["A renovated tomato"](./awards/star.jpg)
+
+  <Input.Button target="_blank" slot="button" href="https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html">Read the Article</Input.Button>
 </Card.Slide>
 
 <Card.Slide
@@ -281,6 +290,8 @@ header:
   `}
 >
   !["A renovated tomato"](./awards/houseandhome.webp)
+
+  <Input.Button target="_blank" slot="button" href="https://houseandhome.com/gallery/luxe-for-less-design/">Read the Article</Input.Button>
 </Card.Slide>
 
 <Card.Slide
@@ -290,7 +301,14 @@ header:
     Love It or List It | HGTV.
   `}
 >
-  !["A renovated tomato"](./awards/hgtv_preview.png)
+  <iframe
+    src="https://my.matterport.com/show/?m=S9RBB2SkPRT"
+    allowfullscreen
+    allow="xr-spatial-tracking"
+    class="w-full h-full"
+    loading="lazy"
+  ></iframe>
+  <Input.Button target="_blank" slot="button" href="https://www.youtube.com/watch?v=MqmEVTErkI0">Watch the Video</Input.Button>
 </Card.Slide>
 
 </Section.Slide>
@@ -300,49 +318,54 @@ header:
   titlePos={Variant.Pos.Left}
   id="reviews"
 >
+
 <Card.Review
   title="Maggie and Scott"
   location="Mississauga"
   stars={5}
-  description={`
-    My husband and I are unbelievably happy with the work that Max
-    and his team did on our ceilings in the house. The professionalism
-    of this team is incredible.
-  `}
-/>
+>
+
+_My husband and I are unbelievably happy with the work that Max
+and his team did on our ceilings in the house. The **professionalism**
+of this team is incredible._
+
+</Card.Review>
 
 <Card.Review
   title="Jefferson Grove"
   location="Burlington"
   stars={5}
-  description={`
-    The whole process from beginning to end was an absolute pleasure.
-    Max is a great communicator and was always quick to reply to texts
-    or emails. We highly recommend Strataline!
-  `}
-/>
+>
+
+_The whole process from beginning to end was an absolute pleasure.
+Max is a great **communicator** and was always quick to reply to texts
+or emails. We highly recommend Strataline!_
+
+</Card.Review>
 
 <Card.Review
   title="Olivia"
   location="Toronto"
   stars={5}
-  description={`
-    Extremely clean and tidy! Removed popcorn in my 700 soft condo in
-    four days and when they were done there was nothing to clean up.
-    Best decision I ever made!
-  `}
-/>
+>
+
+_Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in
+four days and when they were done there was nothing to clean up.
+Best decision I ever made!_
+
+</Card.Review>
 
 <Card.Review
   title="Lyn Litvack"
   location="Markham"
   stars={5}
-  description={`
-    Max is the ultimate professional, immaculate, contentious and
-    polite. He is punctual and follows up on things quickly. The work
-    to our stairs is transforming and with his guidance we are thrilled
-    with the finished product.
-  `}
-/>
+>
+
+_Max is the ultimate professional, immaculate, contentious and
+polite. He is **punctual** and follows up on things quickly. The work
+to our stairs is transforming and with his **guidance** we are thrilled
+with the finished product._
+
+</Card.Review>
 
 </Section.Review>

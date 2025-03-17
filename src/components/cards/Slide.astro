@@ -15,25 +15,25 @@ setAttrElements(
 
 <div
   data-slideshow-card
-  class="min-h-130 gap-6 rounded-sm p-5 contain-paint sm:min-h-110 sm:p-0 xl:gap-7 2xl:gap-9"
+  class="h-150 sm:h-110 gap-6 rounded-sm py-12 p-5 contain-paint sm:p-0 xl:gap-7 2xl:gap-9"
 >
   <div class="hidden w-1/2 sm:flex">
     <Fragment set:html={document} />
   </div>
 
   <div class="flex flex-1 flex-col justify-center">
-    <h4 class="mb-2 font-serif text-3xl font-semibold text-balance">
+    <h3 class="font-serif mb-1 text-3xl font-semibold text-balance">
       {title}
-    </h4>
+    </h3>
 
-    <div class="mt-1 mb-3 flex h-50 rounded-sm contain-paint sm:hidden">
+    <div class="my-2 mb-3 flex h-full max-h-65 rounded-sm contain-paint sm:hidden">
       <Fragment set:html={document} />
     </div>
 
     <p class="font-sans text-base">{description}</p>
 
-    <div class="mt-8">
-      <Button href="#wasd">Watch The Video</Button>
+    <div class="mt-8 sm:flex space-y-3 sm:space-y-0 gap-3">
+      <slot name="button" />
     </div>
   </div>
   <div class="hidden sm:block"></div>

@@ -42,7 +42,7 @@
   --breakpoint-xl: 1300px;
   --breakpoint-2xl: 1536px;
 
-  --radius-sm: 4px;
+  --radius-sm: 5px;
   --radius-lg: .5rem;
 
   --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
@@ -65,12 +65,11 @@
   --text-6xl: clamp(3.5rem, 4.5vw, 5rem);
   --text-6xl--line-height: 1.2;
 
-  --spacing-inset: .9rem;
+  --spacing-inset: 1rem;
   --spacing-inner: 1300px;
   --spacing-outer: 1450px;
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
-  --review-diff: max(calc((100vw - var(--spacing-inner) - var(--spacing-inset) * 4) / 2), 0px);
-  --review-diff-o: max(calc((100vw - var(--spacing-outer) - var(--spacing-inset) * 4) / 2), 0px);
+  --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
   --right-span: clamp(0px,
       calc((100vw - var(--spacing-inner)) / 2),
       calc((var(--spacing-outer) - var(--spacing-inner)) / 2));
@@ -82,6 +81,15 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* sleepy W3C */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-white) inset;
+  box-shadow: 0 0 0 1000px var(--color-white) inset;
+  -webkit-text-fill-color: var(--color-black);
 }
 
 @layer base {

@@ -18,7 +18,7 @@ const length = cards.length;
 appendAttrElements(
   cards,
   "class",
-  "opacity-0 inset-0 pointer-events-none absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex md:h-80 [&.active]:pointer-events-auto",
+  "opacity-0 inset-0 pointer-events-none absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex [&.active]:pointer-events-auto",
 );
 
 appendAttrElementsIf(
@@ -50,7 +50,7 @@ appendAttrElementsIf(
         <DotArray
           length={length}
           idx={slideCardId}
-          class="pt-inset xl:pl-inset box-content flex flex-1 flex-row items-center justify-center gap-5 xl:flex-col xl:pt-0"
+          class="pt-inset xl:px-inset box-content flex flex-1 flex-row items-center justify-center gap-5 xl:flex-col xl:pt-0"
         />
       )
     }

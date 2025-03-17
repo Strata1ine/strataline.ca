@@ -10,6 +10,9 @@ const Tag = as;
 
     customClass,
   )}
+  {...Tag == "a" && {
+    rel: "noopener noreferrer",
+  }}
   {...slot}
 >
   <slot />

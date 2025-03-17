@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 
 import Footer from "~/components/nav/Footer.astro";
-import LetsTalk from "~/components/nav/LetsTalk.astro";
+import TalkMenu from "~/components/nav/TalkMenu.astro";
 
 import "~/styles/global.css";
 
@@ -162,7 +162,7 @@ const localBusinessSchema = business
     }
   </head>
   <body>
-    <LetsTalk />
+    <TalkMenu />
     <slot />
     <Footer />
   </body>

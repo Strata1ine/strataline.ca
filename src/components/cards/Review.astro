@@ -1,12 +1,13 @@
 ---
+import Markdown from "~/components/em/Markdown.astro";
 import { Icon } from "astro-icon/components";
 
-const { title, description, location, stars = 5 } = Astro.props;
+const { title, location, stars = 5 } = Astro.props;
 ---
 
 <div
   data-review-card
-  class="border-accent relative mt-6 w-fit max-w-160 min-w-0 shrink-0 rounded-sm border-1 p-7 select-none sm:ml-10 sm:p-9 xl:translate-x-(--review-diff)"
+  class="border-accent relative mt-6 w-fit max-w-160 min-w-0 shrink-0 rounded-sm border-1 p-7 select-none sm:mr-10 sm:p-9 xl:translate-x-(--review-diff)"
 >
   <div
     class="bg-accent absolute top-0 left-10 -translate-y-1/2 rounded-sm px-4 py-2"
@@ -26,5 +27,5 @@ const { title, description, location, stars = 5 } = Astro.props;
     }
   </div>
 
-  <p class="font-sans text-base italic">{description}</p>
+  <Markdown><slot /></Markdown>
 </div>

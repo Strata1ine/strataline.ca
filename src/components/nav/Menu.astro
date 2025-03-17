@@ -1,25 +1,22 @@
 ---
-import { getCollection } from "astro:content";
-import Button from "~/components/inputs/Button.astro";
-import Input from "~/components/inputs/Input.astro";
 import { Icon } from "astro-icon/components";
-const [index] = await getCollection("index");
+const { title, id } = Astro.props;
 ---
 
 <div
   data-safari-bad="duration-500"
-  id="talkMenu"
+  id={id}
   class="pointer-events-none fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[20rem] [&.active]:pointer-events-auto [&.active]:opacity-100"
-  data-talk-menu
-  onclick="if (event.target === event.currentTarget) { toggleMenu('talkMenu'); }"
+  data-form-menu
+  onclick={`if (event.target === event.currentTarget) { toggleMenu('${id}') }`}
 >
   <div
     class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
   >
-    <div class="mb-12 flex justify-between">
-      <h2 class="font-serif text-5xl font-bold">Let's talk</h2>
-      <button class="cursor-pointer" onclick="toggleMenu('talkMenu')">
-        <Icon name="ph:x-bold" class="h-auto w-7 sm:w-10" />
+    <div class="mb-8 sm:mb-10 flex items-center justify-between">
+      <h2 class="font-serif text-5xl font-bold">{title}</h2>
+      <button class="cursor-pointer" onclick={`toggleMenu('${id}')`}>
+        <Icon name="ph:x-bold" class="h-auto w-9 rounded-[50%] lg:w-11" />
       </button>
     </div>
 
@@ -28,69 +25,14 @@ const [index] = await getCollection("index");
       enctype="multipart/form-data"
       method="post"
     >
-      <Input name="Email" required autocomplete="on" type="email" validate />
-
-      <Input
-        name="Phone number"
-        minlength="10"
-        inputmode="tel"
-        autocomplete="on"
-        validate
-        placeholder="(xxx) xxx-xxxx"
-        pattern="^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$"
-      />
-
-      <Input
-        as="select"
-        class="absolute inset-0 cursor-pointer opacity-0"
-        name="Location"
-        data-location
-      >
-        <div class="py-inset gap-inset flex px-4">
-          <Icon name="ph:navigation-arrow-fill" class="h-auto w-7" />
-          <span class="font-sans text-base">Select a location</span>
-        </div>
-
-        <option slot="in" class="font-sans text-base">Select a location</option>
-        {
-          index.data.local_business.areaServed.map((area, _) => (
-            <option slot="in" class="font-sans text-base">
-              {area}
-            </option>
-          ))
-        }
-
-        <Icon
-          name="ph:caret-down-fill"
-          class="right-inset absolute top-1/2 -translate-y-1/2"
-        />
-      </Input>
-
-      <Input as="textarea" required class="min-h-40" name="Messege" />
-
-      <Input
-        accept="image/*"
-        name="Photos"
-        multiple
-        type="file"
-        class="absolute inset-0 cursor-pointer opacity-0"
-      >
-        <div class="py-inset gap-inset flex px-4">
-          <Icon name="ph:images-square-fill" class="h-auto w-7" />
-          <span class="font-sans text-base">No photos selected</span>
-        </div>
-      </Input>
-
-      <Button value="submit" class="w-full cursor-pointer text-center"
-        >Submit</Button
-      >
+      <slot />
     </form>
   </div>
 </div>
 
 <script>
   // @ts-check
-  document.querySelectorAll("[data-talk-menu]").forEach((form: HTMLElement) => {
+  document.querySelectorAll("[data-form-menu]").forEach((form: HTMLElement) => {
     form
       .querySelectorAll(`[type="file"]`)
       .forEach((photos: HTMLInputElement) => {

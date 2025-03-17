@@ -20,7 +20,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     build: {
-      assetsInlineLimit: 0,
+      assetsInlineLimit: 3,
     },
   },
   image: {

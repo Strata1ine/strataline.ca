@@ -66,10 +66,10 @@ const cards = document.querySelectorAll("[data-review-card]");
         "[data-review-button]",
       );
 
-      const cmarginLeft =
-        parseFloat(window.getComputedStyle(cards[0]).marginLeft) || 0;
+      const cmarginRight =
+        parseFloat(window.getComputedStyle(cards[0]).marginRight) || 0;
       const isSliderMobile = window.matchMedia(
-        `(max-width: ${((cards[0].getBoundingClientRect().width + cmarginLeft) * cards.length) / 2 + 15}px)`,
+        `(max-width: ${((cards[0].getBoundingClientRect().width + cmarginRight) * cards.length) / 2 + 16}px)`,
       );
 
       scrollVisual.setAttribute(
@@ -90,7 +90,7 @@ const cards = document.querySelectorAll("[data-review-card]");
       for (let i = 0; i < dataReviewButtons.length; i++) {
         let e = dataReviewButtons[i] as HTMLElement;
         e.onclick = () => {
-          const width = cards[i].getBoundingClientRect().width + cmarginLeft;
+          const width = cards[i].getBoundingClientRect().width + cmarginRight;
           items.scrollTo({ left: width * i, behavior: "smooth" });
           scrollVisual.setAttribute(
             "style",
@@ -124,7 +124,7 @@ const cards = document.querySelectorAll("[data-review-card]");
         const style = window.getComputedStyle(cards[idx]);
         const width =
           cards[idx].getBoundingClientRect().width +
-          parseFloat(style.marginLeft);
+          parseFloat(style.marginRight);
 
         if (Math.abs(diffX) < Math.abs(diffY)) {
           items.scrollTo({ left: width * idx, behavior: "smooth" });

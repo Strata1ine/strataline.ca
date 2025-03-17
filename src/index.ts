@@ -7,6 +7,7 @@ declare global {
     slideNext: (id: string, slideNum: number) => void;
     toggleDropdown: (e: HTMLElement) => void;
     toggleMenu: (id: string) => void;
+    activeVideo: HTMLVideoElement | null;
   }
 }
 
@@ -88,18 +89,19 @@ window.onload = () => {
     const speed = isNaN(speedAttr) ? 4000 : speedAttr;
 
     setInterval(() => {
-      if (!inScreen(slideshow)) {
-        return;
+      if (inScreen(slideshow) && window.activeVideo == null &&
+        slideshow.querySelector(':hover') == null
+      ) {
+        if (!slideshow.hasAttribute("data-slide-mutated")) {
+          const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+          const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
+          const nextIndex = (prevIndex + 1) % slideshow.children.length;
+          window.slideNext(slideshow.id.toString(), nextIndex);
+        } else {
+          slideshow.removeAttribute("data-slide-mutated");
+        }
       }
 
-      if (!slideshow.hasAttribute("data-slide-mutated")) {
-        const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
-        const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
-        const nextIndex = (prevIndex + 1) % slideshow.children.length;
-        window.slideNext(slideshow.id.toString(), nextIndex);
-      } else {
-        slideshow.removeAttribute("data-slide-mutated");
-      }
     }, speed);
   });
 
