@@ -6,8 +6,6 @@ import { getCollection } from "astro:content";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Icon } from "astro-icon/components";
 
-import logo from "./tmplogo.png";
-
 const mobileMenu = crypto.randomUUID();
 const servicesDesktopMenu = crypto.randomUUID();
 const servicesMobileMenu = crypto.randomUUID();
@@ -101,20 +99,18 @@ const isTop = variant === HeaderVariant.Fixed;
     variant={ContainerVariant.Inner}
     class="flex items-center justify-between rounded-sm"
   >
-    <Image
-      loading="eager"
-      class="!w-30 sm:!w-40"
-      width="218"
-      src={logo}
-      alt="Logo"
+    <Icon
+      name="logo"
+      class="h-auto sm:pb-3 w-40 sm:w-50"
     />
+
     <nav>
       <ul class="hidden gap-12 xl:flex">
         {
           items.length !== 0
             ? items.map((item) => (
                 <li>
-                  <a href={`#${item.id}`} class="text-base font-sans">
+                  <a href={`#${item.id}`} class="font-sans text-base">
                     {item.name}
                   </a>
                 </li>
@@ -127,7 +123,7 @@ const isTop = variant === HeaderVariant.Fixed;
             onclick={`toggleDropdown(this)`}
             aria-label="Open services menu"
           >
-            <span class="text-base font-sans">Services</span>
+            <span class="font-sans text-base">Services</span>
             <Icon name="ph:caret-down-fill" class="ml-2 w-4" />
           </button>
 
@@ -144,7 +140,7 @@ const isTop = variant === HeaderVariant.Fixed;
                   <li>
                     <a
                       href={`/services/${service.slug}`}
-                      class="text-base font-sans"
+                      class="font-sans text-base"
                     >
                       {service.data.title}
                     </a>

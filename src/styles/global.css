@@ -25,10 +25,11 @@
   --color-error: var(--color-accent-dark);
   --color-success: green;
   --color-url: #5A7184;
-  --color-accent: #FFE3E3;
-  --color-accent-dark: #D85B5B;
+  /* --color-accent: #FFE3E3; */
+  --color-accent: #FEE2E6;
+  --color-accent-dark: #EF5277;
   --color-black: #2B2B2B;
-  --color-white: #FFFAFA;
+  --color-white: #FFFAFB;
   --color-tone: #F5F5F5;
   --color-gold: #FFD0B5;
 
