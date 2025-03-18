@@ -2,7 +2,12 @@
 import clsx from "clsx";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const serviceData = await getCollection("services");
+  const isProd = process.env.NODE_ENV === "production";
+  const serviceData = await getCollection(
+    "services",
+    (entry) => !isProd || !entry.data.draft,
+  );
+
   return serviceData.map((service: any) => ({
     params: { slug: service.slug },
   }));
@@ -36,19 +41,25 @@ function generateSchema(service: any) {
       name: index.data.business.name,
       url: Astro.url.origin,
     },
+    serviceType: "Renovation",
+    name: service.data.title,
+    description: service.data.description,
+    image: service.data.covers[0]?.src.src.split("?")[0] || null,
   };
 
   return schema;
 }
 ---
 
-<Layout>
-  (
+<Layout title={service.data.title}>
   <script
     slot="head"
     type="application/ld+json"
     set:html={JSON.stringify(generateSchema(service), null, 2)}
   />
+
+  <meta slot="head" name="description" content={service.data.seo_description} />
+
   <main class="relative overflow-x-clip py-15 sm:h-170">
     <Container
       as="div"
@@ -59,7 +70,7 @@ function generateSchema(service: any) {
       >
       </div>
       <div class="flex-1">
-        <Home slug={slug} />
+        <Home description="Go back" slug={slug} />
 
         <h1 class="mb-2 font-serif text-5xl font-bold text-balance">
           {service.data.title}

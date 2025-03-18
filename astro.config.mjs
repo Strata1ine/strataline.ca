@@ -19,9 +19,6 @@ export default defineConfig({
   site: 'https://strataline.ca',
   vite: {
     plugins: [tailwindcss()],
-    build: {
-      assetsInlineLimit: 3,
-    },
   },
   image: {
     experimentalLayout: 'responsive',
@@ -60,9 +57,8 @@ export default defineConfig({
       rehypePlugins: [rehypeUnwrapImages]
     }),
     sitemap({
-      filter: (page) => {
-        return !['/404', '/submissions'].includes(page);
-      },
+      filter: (page) =>
+        page !== 'https://strataline.ca/submissions/contact/'
     }),
     compressor(),
     icon({

@@ -1,15 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-
 import Footer from "~/components/nav/Footer.astro";
 import TalkMenu from "~/components/nav/TalkMenu.astro";
 
+const [index] = await getCollection("index");
 import "~/styles/global.css";
 
-const [index] = await getCollection("index");
-
-const { title = index.data.title, description = index.data.description } =
-  Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,11 +15,13 @@ const { title = index.data.title, description = index.data.description } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
     <script src="../index.ts"></script>
+    <title slot="head">
+      {title && `${title} | `}
+      {index.data.business.name}
+    </title>
     <slot name="head" />
   </head>
   <body>

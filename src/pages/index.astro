@@ -9,11 +9,17 @@ const { Content } = await index.render();
 
 const business = index.data.business;
 
+import logo from "~/icons/logo.svg";
+
 function generateSchema(data: any) {
   const schema = {
     "@context": "https://schema.org",
     "@type": data.schema_type,
+    url: Astro.url.origin,
+    logo: logo.src.split("?")[0],
   };
+
+  Object.assign(schema, data);
 
   schema.makesOffer = serviceData.map((service) => ({
     "@type": "Offer",
@@ -25,124 +31,15 @@ function generateSchema(data: any) {
     },
   }));
 
-  if (data.name) schema.name = data.name;
-  if (data.alternateName) schema.alternateName = data.alternateName;
-  if (data.description) schema.description = data.description;
-  if (data.url) schema.url = data.url;
-  if (data.image) schema.image = data.image;
-  if (data.sameAs) schema.sameAs = data.sameAs.map((item) => item.url);
-  if (data.legalName) schema.legalName = data.legalName;
-  if (data.foundingDate) schema.foundingDate = data.foundingDate;
-  if (data.foundingLocation) schema.foundingLocation = data.foundingLocation;
-  if (data.founder) schema.founder = data.founder;
-  if (data.address) {
-    if (typeof data.address === "string") {
-      schema.address = data.address;
-    } else {
-      schema.address = {
-        "@type": "PostalAddress",
-        ...data.address,
-      };
-    }
+  if (schema.sameAs) {
+    schema.sameAs = schema.sameAs.map((item) => item.url);
   }
-
-  if (data.email) schema.email = data.email;
-  if (data.telephone) schema.telephone = data.telephone;
-  if (data.faxNumber) schema.faxNumber = data.faxNumber;
-  if (data.taxID) schema.taxID = data.taxID;
-  if (data.vatID) schema.vatID = data.vatID;
-  if (data.globalLocationNumber)
-    schema.globalLocationNumber = data.globalLocationNumber;
-  if (data.isicV4) schema.isicV4 = data.isicV4;
-  if (data.duns) schema.duns = data.duns;
-  if (data.leiCode) schema.leiCode = data.leiCode;
-  if (data.naics) schema.naics = data.naics;
-  if (data.logo) schema.logo = data.logo;
-  if (data.slogan) schema.slogan = data.slogan;
-  if (data.numberOfEmployees) {
-    schema.numberOfEmployees = {
-      "@type": "QuantitativeValue",
-      value: data.numberOfEmployees,
-    };
-  }
-
-  if (data.contactPoint) {
-    if (Array.isArray(data.contactPoint)) {
-      schema.contactPoint = data.contactPoint.map((cp) => ({
-        "@type": "ContactPoint",
-        ...cp,
-      }));
-    } else {
-      schema.contactPoint = {
-        "@type": "ContactPoint",
-        ...data.contactPoint,
-      };
-    }
-  }
-
-  if (data.currenciesAccepted)
-    schema.currenciesAccepted = data.currenciesAccepted;
-  if (data.openingHours) schema.openingHours = data.openingHours;
-  if (data.paymentAccepted) schema.paymentAccepted = data.paymentAccepted;
-  if (data.priceRange) schema.priceRange = data.priceRange;
-
-  if (data.areaServed) schema.areaServed = data.areaServed;
-  if (data.geo) {
-    schema.geo = {
-      "@type": "GeoCoordinates",
-      ...data.geo,
-    };
-  } else if (data.latitude && data.longitude) {
-    schema.geo = {
-      "@type": "GeoCoordinates",
-      latitude: data.latitude,
-      longitude: data.longitude,
-    };
-  }
-
-  if (data.hasMap) schema.hasMap = data.hasMap;
-  if (data.openingHoursSpecification) {
-    if (Array.isArray(data.openingHoursSpecification)) {
-      schema.openingHoursSpecification = data.openingHoursSpecification.map(
-        (ohs) => ({
-          "@type": "OpeningHoursSpecification",
-          ...ohs,
-        }),
-      );
-    } else {
-      schema.openingHoursSpecification = {
-        "@type": "OpeningHoursSpecification",
-        ...data.openingHoursSpecification,
-      };
-    }
-  }
-
-  if (data.aggregateRating) {
-    schema.aggregateRating = {
-      "@type": "AggregateRating",
-      ...data.aggregateRating,
-    };
-  }
-
-  if (data.acceptedPaymentMethod)
-    schema.acceptedPaymentMethod = data.acceptedPaymentMethod;
-  if (data.award) schema.award = data.award;
-  if (data.department) schema.department = data.department;
-  if (data.hasDriveThroughService !== undefined)
-    schema.hasDriveThroughService = data.hasDriveThroughService;
-  if (data.keywords) schema.keywords = data.keywords;
-  if (data.maximumAttendeeCapacity)
-    schema.maximumAttendeeCapacity = data.maximumAttendeeCapacity;
-  if (data.publicAccess !== undefined) schema.publicAccess = data.publicAccess;
-  if (data.smokingAllowed !== undefined)
-    schema.smokingAllowed = data.smokingAllowed;
-  if (data.brand) schema.brand = data.brand;
 
   return schema;
 }
 ---
 
-<Layout>
+<Layout title={index.data.title} brand>
   {
     (
       <script
@@ -152,6 +49,9 @@ function generateSchema(data: any) {
       />
     )
   }
+
+  <meta slot="head" name="description" content={index.data.description} />
+
   {index.data.header && <Header items={index.data.header.ref} />}
   <Content />
 </Layout>

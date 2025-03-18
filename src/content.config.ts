@@ -4,16 +4,11 @@ import { z } from 'zod';
 export const collections = {
   index: defineCollection({
     schema: ({ image }) => z.object({
-      title: z.string(),
+      title: z.string().optional(),
       description: z.string(),
       business: business(image),
       popular: z.array(z.string()),
       header: header(),
-    }),
-  }),
-  privacy: defineCollection({
-    schema: ({ image }) => z.object({
-      header: header().optional(),
     }),
   }),
   services: defineCollection({
@@ -25,6 +20,7 @@ export const collections = {
       })),
       description: z.string(),
       header: header().optional(),
+      draft: z.boolean().optional(),
     }),
   }),
 };

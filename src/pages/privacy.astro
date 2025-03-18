@@ -1,17 +1,19 @@
 ---
-import { getCollection } from "astro:content";
 import LetsTalk from "~/components/inputs/LetsTalk.astro";
 import Header, { HeaderVariant } from "~/components/nav/Header.astro";
 import Layout from "~/layouts/Layout.astro";
 
-const [index] = await getCollection("privacy");
-const { Content } = await index.render();
+import * as data from "~/content/privacy.mdx";
+import { Content } from "~/content/privacy.mdx";
 ---
 
-<Layout>
+<Layout title={data.frontmatter.title}>
   {
-    index.data.header && (
-      <Header variant={HeaderVariant.Fixed} items={index.data.header.ref} />
+    data.frontmatter.header && (
+      <Header
+        variant={HeaderVariant.Fixed}
+        items={data.frontmatter.header.ref}
+      />
     )
   }
 
