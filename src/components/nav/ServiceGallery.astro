@@ -12,7 +12,7 @@ const { title, titlePos = Pos.Left, class: customClass, ...slot } = Astro.props;
   variant={ContainerVariant.Max}
   {...slot}
 >
-  <ContainerTitle class="px-inset" title={title} variant={titlePos} />
+  <ContainerTitle center class="px-inset" title={title} titlePos={titlePos} />
 
   <slot name="top" />
   <div class="bg-accent">

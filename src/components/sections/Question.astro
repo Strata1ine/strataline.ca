@@ -1,28 +1,15 @@
 ---
-import clsx from "clsx";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Pos } from "~/components/variants.ts";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
 const { title, description, variant = Pos.Left, ...slot } = Astro.props;
 ---
 
 <Container title={title} variant={ContainerVariant.Inner} {...slot}>
-  <div
-    class={clsx(
-      "gap-inset sm:gap-8 mb-5 sm:mb-12 flex flex-col sm:items-center",
-      variant ? "sm:flex-row-reverse" : "sm:flex-row",
-    )}
-  >
-    <h2
-      class={clsx(
-        `font-serif text-4xl font-bold text-balance flex-1`,
-        variant ? "text-right" : "",
-      )}
-    >
-      {title}
-    </h2>
-    <p class="flex-1 font-sans text-sm">{description}</p>
-  </div>
+  <ContainerTitle split even title={title} titlePos={variant}>
+    <p class="font-sans text-sm">{description}</p>
+  </ContainerTitle>
 
   <div class="gap-inset grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
     <slot />

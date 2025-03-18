@@ -1,6 +1,5 @@
 ---
 import clsx from "clsx";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
@@ -99,10 +98,7 @@ const isTop = variant === HeaderVariant.Fixed;
     variant={ContainerVariant.Inner}
     class="flex items-center justify-between rounded-sm"
   >
-    <Icon
-      name="logo"
-      class="h-auto sm:pb-3 w-40 sm:w-50"
-    />
+    <Icon name="logo" class="h-auto w-33 sm:-translate-y-[0.6rem] sm:w-44 xl:w-50" />
 
     <nav>
       <ul class="hidden gap-12 xl:flex">

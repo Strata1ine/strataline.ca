@@ -8,11 +8,11 @@ export enum ContainerVariant {
 }
 
 export const containerMap = {
-  [ContainerVariant.Inner]: "max-w-inner px-inset lg:mx-auto",
-  [ContainerVariant.Outer]: "max-w-outer px-inset lg:mx-auto",
-  [ContainerVariant.Max]: "max-w-full lg:mx-auto",
+  [ContainerVariant.Inner]: "xl:max-w-inner px-inset xl:mx-auto",
+  [ContainerVariant.Outer]: "2xl:max-w-outer px-inset 2xl:mx-auto",
+  [ContainerVariant.Max]: "max-w-full",
   [ContainerVariant.Display]:
-    "max-w-[calc(var(--spacing-outer-span)+30rem)] lg:mx-auto",
+    "max-w-[calc(var(--spacing-outer-span)+30rem)] xl:mx-auto",
 };
 
 const {

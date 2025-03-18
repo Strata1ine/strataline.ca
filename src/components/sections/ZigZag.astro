@@ -8,6 +8,6 @@ const { ...slot } = Astro.props;
 ---
 
 <Container {...slot}>
-  <ContainerTitle title={title} variant={variant} />
+  <ContainerTitle title={title} titlePos={variant} />
   <slot />
 </Container>

@@ -1,7 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
 import { setAttrElements } from "~/util/processHTML";
-import Button from "~/components/inputs/Button.astro";
 
 const { title, description } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
@@ -15,24 +14,26 @@ setAttrElements(
 
 <div
   data-slideshow-card
-  class="h-150 sm:h-110 gap-6 rounded-sm py-12 p-5 contain-paint sm:p-0 xl:gap-7 2xl:gap-9"
+  class="gap-6 rounded-sm p-5 py-12 contain-paint sm:h-110 sm:p-0 xl:gap-7 2xl:gap-9"
 >
   <div class="hidden w-1/2 sm:flex">
     <Fragment set:html={document} />
   </div>
 
   <div class="flex flex-1 flex-col justify-center">
-    <h3 class="font-serif mb-1 text-3xl font-semibold text-balance">
+    <h3 class="mb-1 font-serif text-3xl font-semibold text-balance">
       {title}
     </h3>
 
-    <div class="my-2 mb-3 flex h-full max-h-65 rounded-sm contain-paint sm:hidden">
+    <div
+      class="my-2 mb-3 flex h-[50vw] max-h-70 rounded-sm contain-paint sm:hidden"
+    >
       <Fragment set:html={document} />
     </div>
 
     <p class="font-sans text-base">{description}</p>
 
-    <div class="mt-8 sm:flex space-y-3 sm:space-y-0 gap-3">
+    <div class="mt-8 gap-3 space-y-3 sm:flex sm:space-y-0">
       <slot name="button" />
     </div>
   </div>

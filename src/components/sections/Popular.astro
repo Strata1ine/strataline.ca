@@ -22,7 +22,7 @@ const { ...slot } = Astro.props;
 ---
 
 <Container {...slot}>
-  <ContainerTitle title={title} variant={titlePos} />
+  <ContainerTitle title={title} center titlePos={titlePos} />
   {
     services.map((service: any, i) => (
       <Popular data={service.data} variant={next(i)} slug={service.slug}>

@@ -6,15 +6,15 @@ const { title, id } = Astro.props;
 <div
   data-safari-bad="duration-500"
   id={id}
-  class="pointer-events-none fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[20rem] [&.active]:pointer-events-auto [&.active]:opacity-100"
+  class="pointer-events-none fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[5rem] [&.active]:pointer-events-auto [&.active]:opacity-100"
   data-form-menu
   onclick={`if (event.target === event.currentTarget) { toggleMenu('${id}') }`}
 >
   <div
     class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
   >
-    <div class="mb-8 sm:mb-10 flex items-center justify-between">
-      <h2 class="font-serif text-5xl font-bold">{title}</h2>
+    <div class="mb-8 flex items-center justify-between sm:mb-10">
+      <h2 class="font-serif text-4xl font-bold">{title}</h2>
       <button class="cursor-pointer" onclick={`toggleMenu('${id}')`}>
         <Icon name="ph:x-bold" class="h-auto w-9 rounded-[50%] lg:w-11" />
       </button>
@@ -24,6 +24,7 @@ const { title, id } = Astro.props;
       class="space-y-8 sm:space-y-10"
       enctype="multipart/form-data"
       method="post"
+      netlify
     >
       <slot />
     </form>

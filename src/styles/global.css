@@ -41,7 +41,7 @@
   --breakpoint-md: 800px;
   --breakpoint-lg: 900px;
   --breakpoint-xl: 1300px;
-  --breakpoint-2xl: 1536px;
+  --breakpoint-2xl: 1450px;
 
   --radius-sm: 5px;
   --radius-lg: .5rem;
@@ -66,14 +66,12 @@
   --text-6xl: clamp(3.5rem, 4.5vw, 5rem);
   --text-6xl--line-height: 1.2;
 
-  --spacing-inset: 1rem;
+  --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;
   --spacing-outer: 1450px;
+  --spacing-middle: calc(var(--spacing-inner) + (var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset));
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
   --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
-  --right-span: clamp(0px,
-      calc((100vw - var(--spacing-inner)) / 2),
-      calc((var(--spacing-outer) - var(--spacing-inner)) / 2));
 }
 
 :root {

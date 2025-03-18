@@ -7,7 +7,7 @@ const { title, variant = Pos.Left, ...slot } = Astro.props;
 ---
 
 <Container variant={ContainerVariant.Inner} {...slot}>
-  <ContainerTitle variant={variant} title={title} />
+  <ContainerTitle titlePos={variant} title={title} />
   <div class="flex flex-col">
     <slot />
   </div>
