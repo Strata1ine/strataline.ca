@@ -9,8 +9,8 @@ const { imageClass, ...slot } = Astro.props;
 
 <ul {...slot}>
   {
-    index.data.local_business.sameAs &&
-      index.data.local_business.sameAs.map(
+    index.data.business.sameAs &&
+      index.data.business.sameAs.map(
         (media: any) =>
           media.social && (
             <li>

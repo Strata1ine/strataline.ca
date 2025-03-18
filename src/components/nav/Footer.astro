@@ -14,7 +14,7 @@ const [index] = await getCollection("index");
 >
   <div class="py-22">
     {
-      index.data.local_business.areaServed && (
+      index.data.business.areaServed && (
         <>
           <div>
             <h3 class="mb-1 font-serif text-2xl font-bold">
@@ -28,7 +28,7 @@ const [index] = await getCollection("index");
           </div>
 
           <ul class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-y-1 sm:grid-cols-[repeat(auto-fill,minmax(13.5rem,1fr))]">
-            {index.data.local_business.areaServed.map((area, _) => (
+            {index.data.business.areaServed.map((area, _) => (
               <li>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(area)}`}

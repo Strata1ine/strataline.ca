@@ -1,0 +1,18 @@
+---
+import { Button } from "~/components/inputs";
+const { title, description } = Astro.props;
+---
+
+<main class="flex min-h-[70svh] items-center justify-center">
+  <div class="px-inset py-20">
+    <div class="text-center">
+      <h1 class="mb-10 font-serif text-7xl font-bold xl:mb-20">{title}</h1>
+      <span class="font-sans text-base">{description}</span>
+
+      <div class="mt-8 flex justify-center gap-3">
+        <Button href="/">Take me home</Button>
+        <slot />
+      </div>
+    </div>
+  </div>
+</main>

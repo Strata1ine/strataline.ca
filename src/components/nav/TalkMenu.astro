@@ -34,7 +34,7 @@ const [index] = await getCollection("index");
 
     <option slot="in" class="font-sans text-base">Select a location</option>
     {
-      index.data.local_business.areaServed.map((area, _) => (
+      index.data.business.areaServed.map((area, _) => (
         <option slot="in" class="font-sans text-base">
           {area}
         </option>

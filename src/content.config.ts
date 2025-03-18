@@ -6,7 +6,7 @@ export const collections = {
     schema: ({ image }) => z.object({
       title: z.string(),
       description: z.string(),
-      local_business: localBusiness(image),
+      business: business(image),
       popular: z.array(z.string()),
       header: header(),
     }),
@@ -39,8 +39,9 @@ const header = function() {
   })
 }
 
-const localBusiness = function(image: any) {
+const business = function(image: any) {
   return z.object({
+    schema_type: z.string(),
     name: z.string(),
     alternateName: z.string().optional(),
     description: z.string().optional(),

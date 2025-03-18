@@ -64,7 +64,9 @@
   --text-5xl: clamp(2.3rem, 4.5vw, 4.4rem);
   --text-5xl--line-height: 1.1;
   --text-6xl: clamp(3.5rem, 4.5vw, 5rem);
-  --text-6xl--line-height: 1.2;
+  --text-6xl--line-height: 0.7;
+  --text-7xl: clamp(8rem, 15vw, 18rem);
+  --text-7xl--line-height: 0.8;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: 1300px;

@@ -21,13 +21,34 @@ import { Pos } from "~/components/variants";
 
 const { slug } = Astro.params;
 
+const [index] = await getCollection("index");
 const serviceData = await getCollection("services");
 const service = serviceData.find((s) => s.slug === slug) as any;
 
 const { Content } = await service.render();
+
+function generateSchema(service: any) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    provider: {
+      "@type": index.data.business.schema_type,
+      name: index.data.business.name,
+      url: Astro.url.origin,
+    },
+  };
+
+  return schema;
+}
 ---
 
 <Layout>
+  (
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(generateSchema(service), null, 2)}
+  />
   <main class="relative overflow-x-clip py-15 sm:h-170">
     <Container
       as="div"
@@ -105,9 +126,5 @@ const { Content } = await service.render();
   <LetsTalk />
   <Content />
 
-  <ServiceGallery
-    exclude={[slug]}
-    id="gallery"
-    class="!mb-0"
-  />
+  <ServiceGallery exclude={[slug]} id="gallery" class="!mb-0" />
 </Layout>

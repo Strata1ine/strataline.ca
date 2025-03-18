@@ -59,7 +59,11 @@ export default defineConfig({
     mdx({
       rehypePlugins: [rehypeUnwrapImages]
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        return !['/404', '/submissions'].includes(page);
+      },
+    }),
     compressor(),
     icon({
       include: {
