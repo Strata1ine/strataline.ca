@@ -27,7 +27,7 @@ export enum HeaderVariant {
 }
 
 export const headerMap = {
-  [HeaderVariant.Absolute]: "absolute bg-white lg:bg-transparent py-4 sm:py-6",
+  [HeaderVariant.Absolute]: "absolute py-4 sm:py-6",
   [HeaderVariant.Fixed]: "fixed backdrop-blur-[5rem] py-5",
 };
 
@@ -37,7 +37,7 @@ const isTop = variant === HeaderVariant.Fixed;
 
 <div
   data-safari-bad="duration-300"
-  class="pointer-events-none fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  class="pointer-events-none fixed inset-0 z-10 flex bg-white -translate-x-full overflow-scroll xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
   id={mobileMenu}
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">

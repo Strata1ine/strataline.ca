@@ -13,15 +13,18 @@ const cards = document.querySelectorAll("[data-review-card]");
 
 <Container variant={ContainerVariant.Display} {...slot} data-review>
   <ContainerTitle
-    center
     title={title}
     titlePos={titlePos}
     class="px-inset"
+    center
     split
     even
   >
-    <button class="ml-auto flow-root cursor-pointer">
-      <Icon name="ph:feather-fill" class="h-auto w-30" />
+    <button
+      class="ml-auto flow-root cursor-pointer"
+      aria-label="Write a review"
+    >
+      <Icon name="ph:feather-fill" class="h-auto hidden lg:block w-30" />
     </button>
   </ContainerTitle>
 

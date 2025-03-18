@@ -17,7 +17,6 @@ import LetsTalk from "~/components/inputs/LetsTalk.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import Header, { HeaderVariant } from "~/components/nav/Header.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
-import Service from "~/components/nav/Service.astro";
 import { Pos } from "~/components/variants";
 
 const { slug } = Astro.params;
@@ -41,7 +40,7 @@ const { Content } = await service.render();
       <div class="flex-1">
         <Home slug={slug} />
 
-        <h1 class="mb-1 font-serif text-5xl font-bold text-balance">
+        <h1 class="mb-2 font-serif text-5xl font-bold text-balance">
           {service.data.title}
         </h1>
 
@@ -107,17 +106,8 @@ const { Content } = await service.render();
   <Content />
 
   <ServiceGallery
-    title="We are capable of much more"
-    titlePos={Pos.Right}
+    exclude={[slug]}
     id="gallery"
     class="!mb-0"
-  >
-    {
-      serviceData
-        .filter((service) => service.slug !== slug)
-        .map((service: any, _) => (
-          <Service data={service.data} slug={service.slug} />
-        ))
-    }
-  </ServiceGallery>
+  />
 </Layout>

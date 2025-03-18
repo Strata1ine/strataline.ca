@@ -1,0 +1,26 @@
+---
+import Button from "~/components/inputs/Button.astro";
+import LetsTalk from "~/components/inputs/LetsTalk.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="flex h-[70svh] items-center justify-center">
+    <div class="px-inset">
+      <div class="bg-accent rounded-sm p-8 xl:p-12">
+        <h1 class="pointer-events-none font-serif text-6xl font-bold">
+          Error 404.
+        </h1>
+        <span class="font-sans text-base"
+          >Oops! The page you're looking for doesn't exist.</span
+        >
+
+        <div class="mt-8">
+          <Button href="/">Go Home</Button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <LetsTalk />
+</Layout>

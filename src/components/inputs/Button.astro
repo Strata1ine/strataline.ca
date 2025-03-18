@@ -1,13 +1,29 @@
 ---
 import clsx from "clsx";
-const { as = "a", class: customClass, ...slot } = Astro.props;
+
+export enum ButtonVariant {
+  Outline,
+  Fill,
+}
+
+export const buttonMap = {
+  [ButtonVariant.Outline]: "bg-white border-black border-1",
+  [ButtonVariant.Fill]: "bg-accent",
+};
+
+const {
+  as = "a",
+  class: customClass,
+  variant = ButtonVariant.Outline,
+  ...slot
+} = Astro.props;
 const Tag = as;
 ---
 
 <Tag
   class={clsx(
-    `bg-white table border-black rounded-lg border-1 font-serif font-bold py-2 px-5 xl:py-[.6rem] xl:px-[1.4rem] text-lg`,
-
+    `table rounded-lg font-serif font-bold py-2 px-5 xl:py-[.6rem] xl:px-[1.4rem] text-lg`,
+    buttonMap[variant],
     customClass,
   )}
   {...Tag == "a" && {

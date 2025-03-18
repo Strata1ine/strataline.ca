@@ -26,7 +26,7 @@ const {
           titlePos ? "sm:flex-row-reverse" : "sm:flex-row",
         )
       : "",
-    center ? "max-w-inner lg:mx-auto" : "",
+    center ? "max-w-inner xl:mx-auto" : "",
   )}
 >
   <h2
@@ -34,9 +34,9 @@ const {
       `font-serif text-4xl font-bold text-balance`,
       split
         ? even
-          ? "flex-1"
+          ? clsx("flex-1", titlePos ? "text-right" : "")
           : ""
-        : clsx(`max-w-[20ch]`, titlePos ? "ml-auto text-right" : "mr-auto"),
+        : clsx(`sm:max-w-[20ch]`, titlePos ? "ml-auto text-right" : "mr-auto"),
     )}
   >
     {title}

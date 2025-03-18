@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Button from "~/components/inputs/Button.astro";
+import Button, { ButtonVariant } from "~/components/inputs/Button.astro";
 import Input from "~/components/inputs/Input.astro";
 import { Icon } from "astro-icon/components";
 import Menu from "~/components/nav/Menu.astro";
@@ -8,11 +8,11 @@ import Socials from "~/components/nav/Socials.astro";
 const [index] = await getCollection("index");
 ---
 
-<Menu title="Let's Talk" id="talkMenu">
+<Menu title="Let's talk" id="talkMenu" name="contact">
   <Input name="Email" required autocomplete="on" type="email" validate />
 
   <Input
-    name="Phone Number"
+    name="Phone number"
     minlength="10"
     inputmode="tel"
     autocomplete="on"
@@ -58,11 +58,11 @@ const [index] = await getCollection("index");
   >
     <div class="py-inset gap-inset flex px-4">
       <Icon name="ph:images-square-fill" class="h-auto w-7" />
-      <span class="font-sans text-base">No photos selected</span>
+      <span class="font-sans text-base">None selected</span>
     </div>
   </Input>
 
-  <Button as="button" value="submit" class="w-full cursor-pointer text-center"
+  <Button variant={ButtonVariant.Fill} as="button" value="submit" class="w-full cursor-pointer text-center"
     >Submit</Button
   >
 </Menu>
