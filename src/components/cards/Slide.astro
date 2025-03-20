@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { setAttrElements } from "~/util/processHTML";
+import { setAttrElements } from "~/lib/processHTML";
 
 const { title, description } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));

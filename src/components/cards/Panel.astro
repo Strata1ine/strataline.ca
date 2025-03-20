@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { flexImages } from "~/util/processHTML";
+import { flexImages } from "~/lib/processHTML";
 const { title } = Astro.props;
 
 const html = await Astro.slots.render("default");

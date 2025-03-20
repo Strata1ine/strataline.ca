@@ -6,7 +6,7 @@ import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Icon } from "astro-icon/components";
 
-const { title, titlePos = Pos.Left, ...slot } = Astro.props;
+const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
 const { document } = parseHTML(await Astro.slots.render("default"));
 const cards = document.querySelectorAll("[data-review-card]");
 ---
@@ -24,7 +24,7 @@ const cards = document.querySelectorAll("[data-review-card]");
       class="ml-auto flow-root cursor-pointer"
       aria-label="Write a review"
     >
-      <Icon name="ph:feather-fill" class="h-auto hidden lg:block w-30" />
+      <Icon name="ph:feather-fill" class="hidden h-auto w-30 lg:block" />
     </button>
   </ContainerTitle>
 

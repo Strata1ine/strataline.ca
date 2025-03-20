@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { flexImages } from "~/util/processHTML";
+import { flexImages } from "~/lib/processHTML";
 import Button from "~/components/inputs/Button.astro";
 import { Pos } from "~/components/variants.ts";
 
@@ -13,7 +13,7 @@ flexImages(document.querySelectorAll("img"));
 ---
 
 <div
-  class="mb-25 sm:mb-33 items-center gap-6 last:mb-0 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
   id={slug}
   {...slot}
 >
@@ -49,7 +49,7 @@ flexImages(document.querySelectorAll("img"));
     </p>
 
     <div class="mt-8">
-      <Button href=`/services/${slug}`>Explore More</Button>
+      <Button href=`/services/${slug}` data-astro-prefetch>Explore More</Button>
     </div>
   </div>
 

@@ -1,6 +1,10 @@
 ---
 import { parseHTML } from "linkedom";
-import { setAttrElements, appendAttrElementsIf } from "~/util/processHTML";
+import {
+  setAttrElements,
+  deleteAttrElements,
+  appendAttrElementsIf,
+} from "~/lib/processHTML";
 
 import { Icon } from "astro-icon/components";
 import Container from "~/components/div/Container.astro";
@@ -17,7 +21,7 @@ const mobileSlideShowId = crypto.randomUUID();
 setAttrElements(
   images,
   "class",
-  "object-cover min-w-0 !w-0 h-full [&.active]:!w-full",
+  "object-cover min-w-0 w-0 h-full [&.active]:w-full",
 );
 
 setAttrElements(images, "data-safari-bad", "duration-700");
@@ -29,7 +33,15 @@ appendAttrElementsIf(
   (_: Element, i: number) => i == 0,
 );
 
-setAttrElements(images, "loading", "eager");
+appendAttrElementsIf(
+  images,
+  "loading",
+  "eager",
+  (_: Element, i: number) => i == 0,
+);
+
+// WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
+deleteAttrElements(images, ["style", "sizes", "data-astro-image"]);
 ---
 
 <main
@@ -37,7 +49,7 @@ setAttrElements(images, "loading", "eager");
   {...slot}
 >
   <div
-    class="bg-accent absolute z-[-1] hidden h-full w-1/4 xl:w-(--right-hero-offset) rounded-br-sm sm:block"
+    class="bg-accent absolute z-[-1] hidden h-full w-1/4 rounded-br-sm sm:block xl:w-(--right-hero-offset)"
   >
   </div>
 
@@ -126,7 +138,7 @@ setAttrElements(images, "loading", "eager");
 <script>
   const letsTalk = document.getElementById("letsTalk") as HTMLElement;
   const span = letsTalk.querySelector("span") as HTMLElement;
-  const svg = letsTalk.querySelector("svg") as HTMLElement;
+  const svg = letsTalk.querySelector("svg") as SVGGElement;
   let yOffset = letsTalk.getBoundingClientRect().top + window.scrollY;
   let triggered = false;
 

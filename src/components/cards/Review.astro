@@ -2,11 +2,44 @@
 import Markdown from "~/components/em/Markdown.astro";
 import { Icon } from "astro-icon/components";
 
-const { title, location, stars = 5 } = Astro.props;
+import { stripHtml } from "string-strip-html";
+const html = await Astro.slots.render("default");
+
+const { title, location, date, stars = 5 } = Astro.props;
+const id = `${crypto.randomUUID()}`;
+
+Astro.locals.reviewData.push({
+  "@type": "Review",
+  "@id": `${Astro.url.origin}${Astro.url.pathname}#${id}`,
+  itemReviewed: {
+    "@type": Astro.locals.index.schema_type,
+    "@id": `${Astro.url.origin}#company`,
+  },
+  author: {
+    "@type": "Person",
+    name: title,
+  },
+  reviewBody: stripHtml(html).result,
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: stars.toString(),
+    bestRating: "5",
+  },
+  datePublished: date,
+  locationCreated: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: location,
+      addressCountry: "CA",
+    },
+  },
+});
 ---
 
 <div
   data-review-card
+  id={id}
   class="border-accent relative mt-6 w-fit max-w-160 min-w-0 shrink-0 rounded-sm border-1 p-7 select-none sm:mr-10 sm:p-9 xl:translate-x-(--review-diff)"
 >
   <div

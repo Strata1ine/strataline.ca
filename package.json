@@ -18,7 +18,8 @@
     "astro-compress": "^2.3.6",
     "astro-compressor": "^1.0.0",
     "astro-icon": "^1.1.5",
-    "smoothscroll-polyfill": "^0.4.4"
+    "smoothscroll-polyfill": "^0.4.4",
+    "string-strip-html": "^13.4.12"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",

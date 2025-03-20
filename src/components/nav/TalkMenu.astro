@@ -1,11 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import Button, { ButtonVariant } from "~/components/inputs/Button.astro";
 import Input from "~/components/inputs/Input.astro";
 import { Icon } from "astro-icon/components";
 import Menu from "~/components/nav/Menu.astro";
-import Socials from "~/components/nav/Socials.astro";
-const [index] = await getCollection("index");
+
+const { index } = Astro.locals;
 ---
 
 <Menu title="Let's talk" id="talkMenu" name="contact">
@@ -34,7 +33,7 @@ const [index] = await getCollection("index");
 
     <option slot="in" class="font-sans text-base">Select a location</option>
     {
-      index.data.business.areaServed.map((area, _) => (
+      index.data.business.areaServed.map((area: any, _: number) => (
         <option slot="in" class="font-sans text-base">
           {area}
         </option>
@@ -62,7 +61,10 @@ const [index] = await getCollection("index");
     </div>
   </Input>
 
-  <Button variant={ButtonVariant.Fill} as="button" value="submit" class="w-full cursor-pointer text-center"
-    >Submit</Button
+  <Button
+    variant={ButtonVariant.Fill}
+    as="button"
+    value="submit"
+    class="w-full cursor-pointer text-center">Submit</Button
   >
 </Menu>

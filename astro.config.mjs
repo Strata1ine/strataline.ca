@@ -16,6 +16,7 @@ export default defineConfig({
   redirects: {
     '/services': '/',
   },
+  prefetch: true,
   site: 'https://strataline.ca',
   vite: {
     plugins: [tailwindcss()],

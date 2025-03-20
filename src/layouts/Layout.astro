@@ -1,12 +1,11 @@
 ---
-import { getCollection } from "astro:content";
 import Footer from "~/components/nav/Footer.astro";
 import TalkMenu from "~/components/nav/TalkMenu.astro";
 
-const [index] = await getCollection("index");
 import "~/styles/global.css";
 
-const { title } = Astro.props;
+const { title, schema } = Astro.props;
+const { faqData, index } = Astro.locals;
 ---
 
 <!doctype html>
@@ -18,11 +17,35 @@ const { title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={Astro.url.href} />
     <script src="../index.ts"></script>
+    <slot name="head" />
+
     <title slot="head">
       {title && `${title} | `}
       {index.data.business.name}
     </title>
-    <slot name="head" />
+
+    {
+      schema && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schema, null, 2)}
+        />
+      )
+    }
+
+    {
+      faqData.length > 0 && (
+        <script
+          slot="head"
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqData,
+          })}
+        />
+      )
+    }
   </head>
   <body>
     <TalkMenu />

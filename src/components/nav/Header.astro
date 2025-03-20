@@ -1,6 +1,5 @@
 ---
 import clsx from "clsx";
-import { getCollection } from "astro:content";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Icon } from "astro-icon/components";
@@ -8,8 +7,6 @@ import { Icon } from "astro-icon/components";
 const mobileMenu = crypto.randomUUID();
 const servicesDesktopMenu = crypto.randomUUID();
 const servicesMobileMenu = crypto.randomUUID();
-
-const serviceData = await getCollection("services");
 
 interface NavItem {
   id: string;
@@ -72,7 +69,7 @@ const isTop = variant === HeaderVariant.Fixed;
       <div id={servicesMobileMenu} class="hidden duration-500 [&.active]:block">
         <ul class="bg-tone my-5 mr-5 flex flex-col gap-8 rounded-sm p-5">
           {
-            serviceData.map((service: any, _) => (
+            Astro.locals.services.map((service: any, _) => (
               <li>
                 <a href={`/services/${service.slug}`} class="font-sans text-xl">
                   {service.data.title}
@@ -132,7 +129,7 @@ const isTop = variant === HeaderVariant.Fixed;
               class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-sm"
             >
               {
-                serviceData.map((service: any, _) => (
+                Astro.locals.services.map((service: any, _) => (
                   <li>
                     <a
                       href={`/services/${service.slug}`}

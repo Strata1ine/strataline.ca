@@ -1,15 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import { Pos } from "~/components/variants.ts";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 
-const { title, titlePos = Pos.Left, ...slot } = Astro.props;
-const [index] = await getCollection("index");
+const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
 ---
 
 <ServiceGallery
   title={title}
-  exclude={index.data.popular}
+  exclude={Astro.locals.index.data.popular}
   titlePos={titlePos}
   {...slot}
 >

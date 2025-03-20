@@ -1,10 +1,9 @@
 ---
 import clsx from "clsx";
 import { Icon } from "astro-icon/components";
-import { getCollection } from "astro:content";
 
-const [index] = await getCollection("index");
 const { imageClass, ...slot } = Astro.props;
+const { index } = Astro.locals;
 ---
 
 <ul {...slot}>

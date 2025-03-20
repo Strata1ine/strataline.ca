@@ -1,33 +1,37 @@
 ---
-import { getCollection } from "astro:content";
 import Header from "~/components/nav/Header.astro";
 import Layout from "~/layouts/Layout.astro";
 
-const [index] = await getCollection("index");
-const serviceData = await getCollection("services");
+const { index, services, reviewData } = Astro.locals;
 const { Content } = await index.render();
-
-const business = index.data.business;
 
 import logo from "~/icons/logo.svg";
 
-function generateSchema(data: any) {
+function generateSchema() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": data.schema_type,
+    "@type": index.data.schema_type,
+    "@id": `${Astro.url.origin}#company`,
     url: Astro.url.origin,
     logo: logo.src.split("?")[0],
+    ...(reviewData.length > 0 ? { review: reviewData } : {}),
   };
 
-  Object.assign(schema, data);
+  console.log(reviewData);
 
-  schema.makesOffer = serviceData.map((service) => ({
+  Object.assign(schema, index.data.business);
+
+  schema.makesOffer = services.map((service) => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
       name: service.data.title,
       description: service.data.description,
-      image: service.data.covers?.[0]?.src.src.split("?")[0] || null,
+      image: {
+        "@type": "ImageObject",
+        url: service.data.covers[0]?.src.src.split("?")[0] || null,
+        description: service.data.covers[0]?.alt || null,
+      },
     },
   }));
 
@@ -39,17 +43,7 @@ function generateSchema(data: any) {
 }
 ---
 
-<Layout title={index.data.title} brand>
-  {
-    (
-      <script
-        slot="head"
-        type="application/ld+json"
-        set:html={JSON.stringify(generateSchema(business), null, 2)}
-      />
-    )
-  }
-
+<Layout title={index.data.title} schema={generateSchema()}>
   <meta slot="head" name="description" content={index.data.description} />
 
   {index.data.header && <Header items={index.data.header.ref} />}

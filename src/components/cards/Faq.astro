@@ -1,6 +1,18 @@
 ---
 import Markdown from "~/components/em/Markdown.astro";
+import { stripHtml } from "string-strip-html";
 const { title } = Astro.props;
+
+const html = await Astro.slots.render("default");
+
+Astro.locals.faqData.push({
+  "@type": "Question",
+  name: title,
+  acceptedAnswer: {
+    "@type": "Answer",
+    text: stripHtml(html).result,
+  },
+});
 ---
 
 <button
@@ -17,21 +29,24 @@ const { title } = Astro.props;
     data-content
     data-safari-bad="duration-250"
   >
-    <Markdown><slot /> </Markdown>
+    <Markdown><slot /></Markdown>
   </div>
 
   <script>
     // @ts-check
+
     declare global {
       interface Window {
         toggleFaq: (e: HTMLElement) => void;
       }
     }
 
+    let prevFaq: HTMLElement | null = null;
+
     document.querySelectorAll("[data-faq]").forEach((faq: HTMLElement) => {
-      const div = faq.querySelector("[data-content]");
-      const expand = faq.querySelector(".expand");
-      faq.onclick = () => {
+      function t(faq: HTMLElement) {
+        const div = faq.querySelector("[data-content]");
+        const expand = faq.querySelector(".expand");
         if (div != null && div instanceof HTMLElement) {
           div.classList.toggle("active");
         }
@@ -39,6 +54,14 @@ const { title } = Astro.props;
         if (expand != null && expand instanceof HTMLElement) {
           expand.classList.toggle("active");
         }
+      }
+
+      faq.onclick = () => {
+        if (prevFaq != null && prevFaq != faq) {
+          t(prevFaq);
+        }
+        t(faq);
+        prevFaq = faq;
       };
     });
   </script>

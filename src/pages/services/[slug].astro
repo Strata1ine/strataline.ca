@@ -3,61 +3,70 @@ import clsx from "clsx";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const isProd = process.env.NODE_ENV === "production";
-  const serviceData = await getCollection(
+  const services = await getCollection(
     "services",
     (entry) => !isProd || !entry.data.draft,
   );
 
-  return serviceData.map((service: any) => ({
+  return services.map((service: any) => ({
     params: { slug: service.slug },
   }));
 }
 
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Home from "~/components/em/Home.astro";
 
 import Layout from "~/layouts/Layout.astro";
 import LetsTalk from "~/components/inputs/LetsTalk.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
-import Header, { HeaderVariant } from "~/components/nav/Header.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
-import { Pos } from "~/components/variants";
+
+// import Header, { HeaderVariant } from "~/components/nav/Header.astro";
+// import { Pos } from "~/components/variants";
 
 const { slug } = Astro.params;
-
-const [index] = await getCollection("index");
-const serviceData = await getCollection("services");
-const service = serviceData.find((s) => s.slug === slug) as any;
+Astro.locals.getNextPos();
+const { index, services, reviewData } = Astro.locals;
+const service = services.find((s) => s.slug === slug) as any;
 
 const { Content } = await service.render();
 
-function generateSchema(service: any) {
-  const schema = {
+function generateSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "Service",
     provider: {
-      "@type": index.data.business.schema_type,
+      "@type": index.data.schema_type,
+      "@id": `${Astro.url.origin}#company`,
       name: index.data.business.name,
-      url: Astro.url.origin,
+      url: `${Astro.url.origin}${Astro.url.pathname}`,
     },
     serviceType: "Renovation",
     name: service.data.title,
     description: service.data.description,
-    image: service.data.covers[0]?.src.src.split("?")[0] || null,
+    image: {
+      "@type": "ImageObject",
+      url: service.data.covers[0]?.src.src.split("?")[0] || null,
+      description: service.data.covers[0]?.alt || null,
+    },
+    ...(reviewData.length > 0 ? { review: reviewData } : {}),
   };
-
-  return schema;
 }
+
+// WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
+const images = await Promise.all(
+  services.map(async (service) => {
+    return await getImage({
+      src: service.data.covers[0].src,
+      format: "webp",
+      quality: 20,
+    });
+  }),
+);
 ---
 
-<Layout title={service.data.title}>
-  <script
-    slot="head"
-    type="application/ld+json"
-    set:html={JSON.stringify(generateSchema(service), null, 2)}
-  />
-
+<Layout title={service.data.title} schema={generateSchema()}>
   <meta slot="head" name="description" content={service.data.seo_description} />
 
   <main class="relative overflow-x-clip py-15 sm:h-170">
@@ -69,6 +78,7 @@ function generateSchema(service: any) {
         class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] rounded-bl-sm sm:left-[65vw]"
       >
       </div>
+
       <div class="flex-1">
         <Home description="Go back" slug={slug} />
 
@@ -80,12 +90,12 @@ function generateSchema(service: any) {
           class="-mr-inset my-4 ml-7 flex h-65 rounded-tl-sm rounded-bl-sm contain-paint sm:hidden"
         >
           {
-            service.data.covers.map((img: any, _: number) => (
-              <Image
+            service.data.covers.map((img: any, i: number) => (
+              <img
                 class="min-w-0 flex-1 object-cover"
-                src={img.src}
+                src={images[i].src}
+                srcset={images[i].srcSet.attribute}
                 alt={img.alt}
-                width={2560}
                 loading="eager"
               />
             ))
@@ -100,17 +110,17 @@ function generateSchema(service: any) {
       <div class="hidden h-full flex-1 sm:flex">
         <div class="flex justify-evenly rounded-sm contain-paint">
           {
-            service.data.covers.map((img: any, _: number) => (
-              <Image
+            service.data.covers.map((img: any, i: number) => (
+              <img
                 class={clsx(
                   `object-cover`,
                   service.data.covers.length > 1
                     ? `min-w-0 flex-1 hover:flex-5`
                     : ``,
                 )}
-                src={img.src}
+                src={images[i].src}
+                srcset={images[i].srcSet.attribute}
                 alt={img.alt}
-                width={2560}
                 {...(service.data.covers.length > 1 && {
                   "data-safari-bad": "duration-800",
                 })}
@@ -122,17 +132,12 @@ function generateSchema(service: any) {
       </div>
     </Container>
   </main>
+
   <Container variant={ContainerVariant.Inner} as="div" class="relative">
     <div class="absolute bottom-0 translate-y-1/2">
       <Icon name="arrow-down" class="hidden h-auto w-8 sm:block xl:w-10" />
     </div>
   </Container>
-
-  <!-- { -->
-  <!--   service.data.header && ( -->
-  <!--     <Header variant={HeaderVariant.Sticky} items={service.data.header.ref} /> -->
-  <!--   ) -->
-  <!-- } -->
 
   <LetsTalk />
   <Content />

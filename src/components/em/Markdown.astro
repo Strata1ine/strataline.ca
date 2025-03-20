@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { setAttrElements } from "~/util/processHTML";
+import { setAttrElements } from "~/lib/processHTML";
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -26,19 +26,37 @@ setAttrElements(
 setAttrElements(
   document.querySelectorAll("p"),
   "class",
-  "font-sans text-base",
+  "font-sans text-base my-3 first:mt-0 last:mb-0",
 );
 
 setAttrElements(
   document.querySelectorAll("ul"),
   "class",
-  "list-disc pl-5 my-2",
+  "list-disc pl-5 my-4",
+);
+
+setAttrElements(
+  document.querySelectorAll("ol"),
+  "class",
+  "list-decimal marker:font-bold marker:font-serif pl-5 my-4",
 );
 
 setAttrElements(
   document.querySelectorAll("li"),
   "class",
-  "font-sans text-base",
+  "font-sans text-base my-3 first:mt-0 last:mb-0",
+);
+
+setAttrElements(
+  document.querySelectorAll("hr"),
+  "class",
+  "my-5 border-accent",
+);
+
+setAttrElements(
+  document.querySelectorAll("strong"),
+  "class",
+  "font-semibold",
 );
 ---
 

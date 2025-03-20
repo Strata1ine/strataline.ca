@@ -13,6 +13,15 @@ export function appendAttrElements(e: NodeListOf<Element>, a: string, customAttr
   });
 }
 
+export function deleteAttrElements(e: NodeListOf<Element>, a: string[]) {
+  e.forEach((item, _) => {
+    a.forEach((s) => {
+      item.removeAttribute(s);
+    })
+  });
+}
+
+
 export function setAttrElements(e: NodeListOf<Element>, a: string, customAttr: string) {
   e.forEach((item, _) => {
     if (a == "class") {
@@ -71,6 +80,10 @@ export function flexImages(images: NodeListOf<Element>) {
     "class",
     `object-cover h-full ${images.length > 1 ? 'min-w-0 hover:flex-5 flex-1' : ''}`,
   );
+
+
+  // WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
+  deleteAttrElements(images, ["style", "sizes", "data-astro-image"]);
 
   if (images.length > 1) {
     appendAttrElements(

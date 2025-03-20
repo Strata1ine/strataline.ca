@@ -1,10 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-
 import Socials from "~/components/nav/Socials.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 
-const [index] = await getCollection("index");
+const { index } = Astro.locals;
 ---
 
 <Container
@@ -28,18 +26,20 @@ const [index] = await getCollection("index");
           </div>
 
           <ul class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-y-3 sm:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))]">
-            {index.data.business.areaServed.map((area, _) => (
-              <li>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(area)}`}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  class="text-url font-sans text-base hover:underline"
-                >
-                  {area}
-                </a>
-              </li>
-            ))}
+            {index.data.business.areaServed.map(
+              (area: any, _: number) => (
+                <li>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(area)}`}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    class="text-url font-sans text-base hover:underline"
+                  >
+                    {area}
+                  </a>
+                </li>
+              ),
+            )}
           </ul>
         </>
       )
@@ -51,7 +51,9 @@ const [index] = await getCollection("index");
   >
     <div class="flex flex-col items-center sm:flex-row sm:gap-12">
       <span class="font-sans text-base"
-        ><b>&copy; {index.data.business.name}</b>. 2025</span
+        ><strong class="font-semibold"
+          >&copy; {index.data.business.name}</strong
+        >. 2025</span
       >
 
       <div class="flex gap-6">

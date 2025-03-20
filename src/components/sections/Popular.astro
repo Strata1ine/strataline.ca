@@ -1,22 +1,25 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Popular from "~/components/nav/Popular.astro";
+import PopularC from "~/components/nav/Popular.astro";
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { title, titlePos = Pos.Left } = Astro.props;
-const [index] = await getCollection("index");
-const serviceData = await getCollection("services");
+const { index } = Astro.locals;
+const { title, titlePos = Astro.locals.getNextPos() } = Astro.props;
 
 function next(i: number) {
   return i % 2 === Number(titlePos) ? Pos.Left : Pos.Right;
 }
 
-const services = serviceData.filter((service) =>
-  index.data.popular.some((pattern) => service.slug.includes(pattern)),
-);
+const services = Astro.locals.services
+  .filter((service) =>
+    index.data.popular.some((pattern: any) => service.slug.includes(pattern)),
+  )
+  .sort(
+    (a, b) =>
+      index.data.popular.indexOf(a.slug) - index.data.popular.indexOf(b.slug),
+  );
 
 const { ...slot } = Astro.props;
 ---
@@ -24,12 +27,12 @@ const { ...slot } = Astro.props;
 <Container {...slot}>
   <ContainerTitle title={title} center titlePos={titlePos} />
   {
-    services.map((service: any, i) => (
-      <Popular data={service.data} variant={next(i)} slug={service.slug}>
+    services.map((service, i) => (
+      <PopularC data={service.data} variant={next(i)} slug={service.slug}>
         {service.data.covers.map((img: any, _: number) => (
-          <Image width={2560} src={img.src} alt={img.alt} />
+          <Image src={img.src} alt={img.alt} />
         ))}
-      </Popular>
+      </PopularC>
     ))
   }
 </Container>
