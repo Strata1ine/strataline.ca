@@ -56,9 +56,11 @@ window.toggleDropdown = function(e: HTMLElement) {
   if (e.classList.toggle("active")) {
     lastActiveMenu = e;
     dropdown.removeAttribute("inert");
+    dropdown.removeAttribute("aria-hidden");
   } else {
     lastActiveMenu = null;
     dropdown.setAttribute("inert", "");
+    dropdown.setAttribute("aria-hidden", "true");
   }
 }
 

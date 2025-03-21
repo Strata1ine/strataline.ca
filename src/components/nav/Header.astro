@@ -39,6 +39,7 @@ const { index } = Astro.locals;
   class="fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:translate-x-0"
   id={mobileMenu}
   inert
+  aria-hidden="true"
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">
     {
@@ -141,6 +142,7 @@ const { index } = Astro.locals;
             data-safari-bad="duration-200"
             class="px-inset max-w-inner absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:translate-y-0 [&.active]:opacity-100"
             inert
+            aria-hidden="true"
           >
             <ul
               class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-sm"

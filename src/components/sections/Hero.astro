@@ -2,7 +2,7 @@
 import { parseHTML } from "linkedom";
 import {
   setAttrElements,
-  deleteAttrElements,
+  setAttrElementsIf,
   appendAttrElementsIf,
 } from "~/lib/processHTML";
 
@@ -33,13 +33,35 @@ appendAttrElementsIf(
   (_: Element, i: number) => i == 0,
 );
 
-appendAttrElementsIf(
+
+setAttrElementsIf(
   images,
   "loading",
   "eager",
   (_: Element, i: number) => i == 0,
 );
 
+
+setAttrElementsIf(
+  images,
+  "fetchpriority",
+  "high",
+  (_: Element, i: number) => i == 0,
+);
+
+setAttrElementsIf(
+  images,
+  "fetchpriority",
+  "low",
+  (_: Element, i: number) => i != 0,
+);
+
+setAttrElementsIf(
+  images,
+  "loading",
+  "eager",
+  (_: Element, i: number) => i == 0,
+);
 ---
 
 <main

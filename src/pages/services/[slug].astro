@@ -22,9 +22,6 @@ import LetsTalk from "~/components/inputs/LetsTalk.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 
-// import Header, { HeaderVariant } from "~/components/nav/Header.astro";
-// import { Pos } from "~/components/variants";
-
 const { slug } = Astro.params;
 Astro.locals.getNextPos();
 const { index, services } = Astro.locals;
@@ -84,7 +81,12 @@ function schema() {
             service.data.covers.map((meta: any, _: number) => (
               <Image
                 src={meta.src}
-                class="min-w-0 flex-1 object-cover"
+                class={clsx(
+                  `object-cover h-full`,
+                  service.data.covers.length > 1
+                    ? `min-w-0 flex-1`
+                    : ``,
+                )}
                 alt={meta.alt}
                 loading="eager"
                 {...Astro.locals.globalDefaults.imageAttr}

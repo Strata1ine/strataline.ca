@@ -37,17 +37,12 @@ if (generateSchema == null) {
 
 function computeAggregateRating(reviewData: any) {
   const reviewCount = reviewData.length;
-
   let totalRating = 0;
-  let bestRating = 0;
-  let worstRating = 5;
 
   reviewData.forEach((review: any) => {
     const rating = parseFloat(review.reviewRating.ratingValue);
     if (!isNaN(rating)) {
       totalRating += rating;
-      bestRating = Math.max(bestRating, rating);
-      worstRating = Math.min(worstRating, rating);
     }
   });
 
@@ -55,11 +50,10 @@ function computeAggregateRating(reviewData: any) {
     "@type": "AggregateRating",
     ratingValue: (totalRating / reviewCount).toFixed(1),
     reviewCount: reviewCount.toString(),
-    bestRating: bestRating.toString(),
-    worstRating: worstRating.toString(),
+    bestRating: "5",
+    worstRating: "1",
   };
 }
-
 ---
 
 <!doctype html>

@@ -20,7 +20,6 @@ export const collections = {
         alt: z.string(),
       })),
       description: z.string(),
-      header: header().optional(),
       draft: z.boolean().optional(),
     }),
   }),

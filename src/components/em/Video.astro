@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import clsx from "clsx";
 import { Pos } from "~/components/variants";
 
@@ -11,12 +12,14 @@ const {
   class: customClass,
   ...slot
 } = Astro.props;
+
+const optimizedPoster = await getImage({ src: poster });
 ---
 
 <video
   width="16rem"
   height="9rem"
-  poster={poster ? poster.src : undefined}
+  poster={optimizedPoster ? optimizedPoster.src : undefined}
   loading="lazy"
   class={clsx(`w-full h-full object-cover cursor-pointer`, customClass)}
   controls
