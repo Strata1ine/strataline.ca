@@ -26,20 +26,11 @@ const { index } = Astro.locals;
           </div>
 
           <ul class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-y-3 sm:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))]">
-            {index.data.business.areaServed.map(
-              (area: any, _: number) => (
-                <li>
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(area)}`}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    class="text-url font-sans text-base hover:underline"
-                  >
-                    {area}
-                  </a>
-                </li>
-              ),
-            )}
+            {index.data.business.areaServed.map((area: any, _: number) => (
+              <li>
+                <span class="font-sans text-base">{area}</span>
+              </li>
+            ))}
           </ul>
         </>
       )
@@ -51,13 +42,16 @@ const { index } = Astro.locals;
   >
     <div class="flex flex-col items-center sm:flex-row sm:gap-12">
       <span class="font-sans text-base"
-        ><strong class="font-semibold"
-          >&copy; {index.data.business.name}</strong
+        ><strong class="font-semibold">&copy; {index.data.business.name}</strong
         >. 2025</span
       >
 
       <div class="flex gap-6">
-        <a class="text-url font-sans text-base hover:underline" href="/privacy">
+        <a
+          class="text-url font-sans text-base hover:underline"
+          href="/privacy"
+          data-astro-prefetch
+        >
           Privacy Policy
         </a>
 

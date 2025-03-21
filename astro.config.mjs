@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { config } from './src/config';
 import mdx from '@astrojs/mdx';
 
 import rehypeUnwrapImages from 'rehype-unwrap-images';
@@ -10,6 +11,22 @@ import sitemap from '@astrojs/sitemap';
 import compressor from 'astro-compressor';
 
 import icon from 'astro-icon';
+import react from '@astrojs/react';
+
+import { visit } from "unist-util-visit";
+
+function rehypeAddImageProps(props) {
+  return (tree) => {
+    visit(tree, "element", (node) => {
+      if (node.tagName === "img") {
+        node.properties = {
+          ...node.properties,
+          ...props,
+        };
+      }
+    });
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,17 +39,12 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
-    experimentalLayout: 'responsive',
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
         quality: 20,
-        format: 'webp'
       },
     },
-  },
-  experimental: {
-    responsiveImages: true,
   },
   integrations: [
     (await import("astro-compress")).default({
@@ -50,12 +62,12 @@ export default defineConfig({
           './src/components/sections/': 'Section',
           './src/components/cards/': 'Card',
           './src/components/variants.ts': 'Variant',
-          'astro:assets': ['Image']
         },
       ],
     }),
     mdx({
-      rehypePlugins: [rehypeUnwrapImages]
+      rehypePlugins: [rehypeUnwrapImages, [rehypeAddImageProps, config.globalDefaults.imageAttr]],
+      // optimizeImages: false
     }),
     sitemap({
       filter: (page) =>
@@ -68,5 +80,6 @@ export default defineConfig({
         ph: ["*"],
       },
     }),
+    react(),
   ],
 });

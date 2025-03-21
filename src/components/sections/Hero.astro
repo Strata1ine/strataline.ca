@@ -40,8 +40,6 @@ appendAttrElementsIf(
   (_: Element, i: number) => i == 0,
 );
 
-// WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
-deleteAttrElements(images, ["style", "sizes", "data-astro-image"]);
 ---
 
 <main
@@ -49,7 +47,7 @@ deleteAttrElements(images, ["style", "sizes", "data-astro-image"]);
   {...slot}
 >
   <div
-    class="bg-accent absolute z-[-1] hidden h-full w-1/4 rounded-br-sm sm:block xl:w-(--right-hero-offset)"
+    class="bg-accent absolute z-[-1] hidden h-full w-[25.7%] rounded-br-sm sm:block xl:w-(--right-hero-offset)"
   >
   </div>
 

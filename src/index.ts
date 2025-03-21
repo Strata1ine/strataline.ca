@@ -11,6 +11,20 @@ declare global {
   }
 }
 
+if (window.location.hash) {
+  const target = document.querySelector(window.location.hash);
+  if (target) target.scrollIntoView();
+  setTimeout(() => {
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }, 0);
+}
+
+window.addEventListener('hashchange', () => {
+  setTimeout(() => {
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }, 0);
+});
+
 function inScreen(e: Element) {
   const rect = e.getBoundingClientRect();
   return !(rect.bottom < 0 || rect.top > window.innerHeight);
@@ -28,7 +42,9 @@ window.slideNext = function(id: string, slideNum: number) {
   });
 
   slideshow.children[prevIndex].classList.remove("active");
+  slideshow.children[prevIndex].setAttribute("inert", "");
   slideshow.children[slideNum].classList.add("active");
+  slideshow.children[slideNum].removeAttribute("inert");
   slideshow.setAttribute("data-slide-mutated", "");
   slideshow.setAttribute("data-slide-idx", slideNum.toString());
 }
@@ -39,8 +55,10 @@ window.toggleDropdown = function(e: HTMLElement) {
   dropdown.classList.toggle("active");
   if (e.classList.toggle("active")) {
     lastActiveMenu = e;
+    dropdown.removeAttribute("inert");
   } else {
     lastActiveMenu = null;
+    dropdown.setAttribute("inert", "");
   }
 }
 
@@ -57,20 +75,19 @@ window.addEventListener("click", function(e) {
 
 window.toggleMenu = function(id: string) {
   const menu = document.getElementById(id) as HTMLElement;
+
+  if (menu.classList.contains("active")) {
+    menu.setAttribute("inert", "");
+  } else {
+    menu.removeAttribute("inert");
+  }
+
   menu.classList.toggle("active");
   document.body.classList.toggle("overflow-hidden");
 
-  // the menu's trigger button, optional
   const e = document.querySelector(`[data-idx="${id}"]`) as HTMLElement;
   if (e != null) {
     e.classList.toggle("active");
-    document.documentElement.classList.remove("scroll-smooth");
-    e.scrollIntoView(true);
-    setTimeout(() => {
-      window.scrollBy(0, -16);
-
-      document.documentElement.classList.add("scroll-smooth");
-    }, 0);
   }
 }
 

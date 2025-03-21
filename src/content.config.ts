@@ -24,12 +24,6 @@ export const collections = {
       draft: z.boolean().optional(),
     }),
   }),
-  privacy: defineCollection({
-    schema: ({ image }) => z.object({
-      title: z.string(),
-      header: header().optional(),
-    }),
-  }),
 };
 
 const header = function() {
@@ -44,10 +38,10 @@ const header = function() {
 
 const business = function(image: any) {
   return z.object({
-    name: z.string(),
-    logo: z.union([z.string(), image()]).optional(),
     // photo of location
     photo: image().optional(),
+    name: z.string(),
+    address: postalAddressSchema,
     sameAs: z.array(socialMedia).optional(),
     areaServed: z.array(z.string()).optional(),
   });
@@ -62,4 +56,12 @@ const icon = z.object({
 const socialMedia = z.object({
   social: icon.optional(),
   url: z.string(),
+});
+
+const postalAddressSchema = z.object({
+  streetAddress: z.string().optional(),
+  addressLocality: z.string().optional(),
+  addressRegion: z.string().optional(),
+  postalCode: z.string().optional(),
+  addressCountry: z.string().optional(),
 });

@@ -30,12 +30,15 @@ export const headerMap = {
 
 const { items = [{}], variant = HeaderVariant.Absolute } = Astro.props as Props;
 const isTop = variant === HeaderVariant.Fixed;
+
+const { index } = Astro.locals;
 ---
 
 <div
   data-safari-bad="duration-300"
-  class="pointer-events-none fixed inset-0 z-10 flex bg-white -translate-x-full overflow-scroll xl:hidden [&.active]:pointer-events-auto [&.active]:translate-x-0"
+  class="fixed inset-0 z-10 flex -translate-x-full overflow-scroll bg-white xl:hidden [&.active]:translate-x-0"
   id={mobileMenu}
+  inert
 >
   <ul class="m-auto flex w-full max-w-200 flex-col gap-6 py-30 pl-5">
     {
@@ -61,8 +64,10 @@ const isTop = variant === HeaderVariant.Fixed;
         class="flex cursor-pointer items-center"
         onclick={`toggleDropdown(this)`}
         aria-label="Open services menu"
+        aria-expanded="false"
+        aria-controls={servicesMobileMenu}
       >
-        <span class="font-sans text-xl">Services </span>
+        <span class="font-sans text-xl">Services</span>
         <Icon name="ph:caret-down-fill" class="ml-2 w-5" />
       </button>
 
@@ -95,7 +100,16 @@ const isTop = variant === HeaderVariant.Fixed;
     variant={ContainerVariant.Inner}
     class="flex items-center justify-between rounded-sm"
   >
-    <Icon name="logo" class="h-auto w-33 sm:-translate-y-[0.6rem] sm:w-44 xl:w-50" />
+    <a
+      href="/"
+      aria-label={`${index.data.business.name} Logo, back to homepage`}
+    >
+      <Icon
+        name="logo"
+        class="h-auto w-33 sm:w-44 sm:-translate-y-[0.6rem] xl:w-50"
+        aria-hidden="true"
+      />
+    </a>
 
     <nav>
       <ul class="hidden gap-12 xl:flex">
@@ -115,6 +129,8 @@ const isTop = variant === HeaderVariant.Fixed;
             class="flex cursor-pointer items-center"
             onclick={`toggleDropdown(this)`}
             aria-label="Open services menu"
+            aria-expanded="false"
+            aria-controls={servicesDesktopMenu}
           >
             <span class="font-sans text-base">Services</span>
             <Icon name="ph:caret-down-fill" class="ml-2 w-4" />
@@ -123,7 +139,8 @@ const isTop = variant === HeaderVariant.Fixed;
           <div
             id={servicesDesktopMenu}
             data-safari-bad="duration-200"
-            class="px-inset max-w-inner pointer-events-none absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:pointer-events-auto [&.active]:translate-y-0 [&.active]:opacity-100"
+            class="px-inset max-w-inner absolute top-full left-1/2 w-full -translate-x-1/2 -translate-y-10 opacity-0 [&.active]:translate-y-0 [&.active]:opacity-100"
+            inert
           >
             <ul
               class="bg-tone p-inset gap-inset flex flex-wrap justify-evenly rounded-sm"
@@ -146,7 +163,7 @@ const isTop = variant === HeaderVariant.Fixed;
       </ul>
       <div class="xl:hidden">
         <button
-          aria-label="Open mobile menu button"
+          aria-label="Open mobile menu"
           data-idx={mobileMenu}
           onclick={`toggleMenu('${mobileMenu}', '${isTop}')`}
           class="burger h-9 w-9 cursor-pointer"></button>

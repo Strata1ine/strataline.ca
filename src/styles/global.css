@@ -53,10 +53,11 @@
   --text-bg: clamp(1.4rem, 2vw, 1.6rem);
   --text-bg--line-height: 1.7;
   --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
+  --text-lg--line-height: 1.3;
   --text-xl: clamp(1.6rem, 3vw, 2.1rem);
-  --text-xl--line-height: 1.2;
+  --text-xl--line-height: 1.3;
   --text-2xl: clamp(1.7rem, 4vw, 2.8rem);
-  --text-2xl--line-height: 1.1;
+  --text-2xl--line-height: 1.3;
   --text-3xl: clamp(2.0rem, 4vw, 3.3rem);
   --text-3xl--line-height: 1.1;
   --text-4xl: clamp(2.5rem, 4.5vw, 3.8rem);

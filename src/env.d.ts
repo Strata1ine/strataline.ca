@@ -9,5 +9,6 @@ declare namespace App {
     reviewData: Array<any>;
     nextPos: Pos;
     getNextPos: () => Pos;
+    globalDefaults: any;
   }
 }

@@ -30,7 +30,11 @@ const { ...slot } = Astro.props;
     services.map((service, i) => (
       <PopularC data={service.data} variant={next(i)} slug={service.slug}>
         {service.data.covers.map((img: any, _: number) => (
-          <Image src={img.src} alt={img.alt} />
+          <Image
+            src={img.src}
+            alt={img.alt}
+            {...Astro.locals.globalDefaults.imageAttr}
+          />
         ))}
       </PopularC>
     ))

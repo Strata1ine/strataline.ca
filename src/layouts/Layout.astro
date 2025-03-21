@@ -2,10 +2,64 @@
 import Footer from "~/components/nav/Footer.astro";
 import TalkMenu from "~/components/nav/TalkMenu.astro";
 
+import { parseHTML } from "linkedom";
+
 import "~/styles/global.css";
 
-const { title, schema } = Astro.props;
-const { faqData, index } = Astro.locals;
+const { document } = parseHTML(await Astro.slots.render("default"));
+const { faqData, reviewData, index } = Astro.locals;
+let {
+  title,
+  generateSchema,
+  description = index.data.description,
+} = Astro.props;
+
+if (generateSchema == null) {
+  generateSchema = function () {
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: title,
+      url: `${Astro.url.origin}${Astro.url.pathname}`,
+      isPartOf: {
+        "@type": "WebSite",
+        url: Astro.url.origin,
+        publisher: {
+          "@type": index.data.schema_type,
+          "@id": `${Astro.url.origin}#company`,
+          name: index.data.business.name,
+          address: index.data.business.address,
+        },
+      },
+    };
+  };
+}
+
+function computeAggregateRating(reviewData: any) {
+  const reviewCount = reviewData.length;
+
+  let totalRating = 0;
+  let bestRating = 0;
+  let worstRating = 5;
+
+  reviewData.forEach((review: any) => {
+    const rating = parseFloat(review.reviewRating.ratingValue);
+    if (!isNaN(rating)) {
+      totalRating += rating;
+      bestRating = Math.max(bestRating, rating);
+      worstRating = Math.min(worstRating, rating);
+    }
+  });
+
+  return {
+    "@type": "AggregateRating",
+    ratingValue: (totalRating / reviewCount).toFixed(1),
+    reviewCount: reviewCount.toString(),
+    bestRating: bestRating.toString(),
+    worstRating: worstRating.toString(),
+  };
+}
+
 ---
 
 <!doctype html>
@@ -23,12 +77,21 @@ const { faqData, index } = Astro.locals;
       {title && `${title} | `}
       {index.data.business.name}
     </title>
+    <meta name="description" content={description} />
 
     {
-      schema && (
+      generateSchema && (
         <script
           type="application/ld+json"
-          set:html={JSON.stringify(schema, null, 2)}
+          set:html={(() => {
+            const schema = generateSchema();
+            if (reviewData.length > 0) {
+              schema.review = reviewData;
+              schema.aggregateRating = computeAggregateRating(reviewData);
+            }
+
+            return JSON.stringify(schema, null, 2);
+          })()}
         />
       )
     }
@@ -49,7 +112,7 @@ const { faqData, index } = Astro.locals;
   </head>
   <body>
     <TalkMenu />
-    <slot />
+    <Fragment set:html={document} />
     <Footer />
   </body>
 </html>

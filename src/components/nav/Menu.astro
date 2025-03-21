@@ -6,16 +6,22 @@ const { title, id, ...slot } = Astro.props;
 <div
   data-safari-bad="duration-500"
   id={id}
-  class="pointer-events-none fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[5rem] [&.active]:pointer-events-auto [&.active]:opacity-100"
+  class="fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[5rem] [&.active]:opacity-100"
   data-form-menu
   onclick={`if (event.target === event.currentTarget) { toggleMenu('${id}') }`}
+  aria-hidden="true"
+  inert
 >
   <div
     class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
   >
     <div class="mb-8 flex items-center justify-between sm:mb-10">
       <h2 class="font-serif text-4xl font-bold">{title}</h2>
-      <button class="cursor-pointer" onclick={`toggleMenu('${id}')`}>
+      <button
+        class="cursor-pointer"
+        onclick={`toggleMenu('${id}')`}
+        aria-label="Close menu"
+      >
         <Icon name="ph:x-bold" class="h-auto w-9 rounded-[50%] lg:w-11" />
       </button>
     </div>

@@ -7,7 +7,12 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import DotArray from "~/components/inputs/DotArray.astro";
 
 const slideCardId = crypto.randomUUID();
-const { title, titlePos = Astro.locals.getNextPos(), speed, ...slot } = Astro.props;
+const {
+  title,
+  titlePos = Astro.locals.getNextPos(),
+  speed,
+  ...slot
+} = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("default"));
 const cards = document.querySelectorAll("[data-slideshow-card]");
@@ -16,8 +21,10 @@ const length = cards.length;
 appendAttrElements(
   cards,
   "class",
-  "opacity-0 inset-0 pointer-events-none absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex [&.active]:pointer-events-auto",
+  "opacity-0 inset-0 absolute transition-opacity duration-1000 [&.active]:opacity-100 [&.active]:static flex",
 );
+
+appendAttrElementsIf(cards, "inert", "", (_: Element, i: number) => i != 0);
 
 appendAttrElementsIf(
   cards,
@@ -33,7 +40,7 @@ appendAttrElementsIf(
     <div class="2xl:max-w-middle flex flex-col 2xl:ml-auto 2xl:flex-row">
       <div class="xl:max-w-inner 2xl:pr-inset w-full xl:mx-auto 2xl:mx-0">
         <div
-          class="bg-accent relative"
+          class="bg-accent relative rounded-sm"
           id={slideCardId}
           data-slideshow
           data-slideshow-speed={speed}

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-// NOTE: helper utilities to process MDX easily
+// NOTE: common utilities to process MDX easily
 
 export function appendAttrElements(e: NodeListOf<Element>, a: string, customAttr: string) {
   e.forEach((item, _) => {
@@ -80,10 +80,6 @@ export function flexImages(images: NodeListOf<Element>) {
     "class",
     `object-cover h-full ${images.length > 1 ? 'min-w-0 hover:flex-5 flex-1' : ''}`,
   );
-
-
-  // WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
-  deleteAttrElements(images, ["style", "sizes", "data-astro-image"]);
 
   if (images.length > 1) {
     appendAttrElements(

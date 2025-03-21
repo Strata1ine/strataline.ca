@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   }));
 }
 
-import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Home from "~/components/em/Home.astro";
 
@@ -27,12 +27,12 @@ import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 
 const { slug } = Astro.params;
 Astro.locals.getNextPos();
-const { index, services, reviewData } = Astro.locals;
+const { index, services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
 
 const { Content } = await service.render();
 
-function generateSchema() {
+function schema() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -41,34 +41,25 @@ function generateSchema() {
       "@id": `${Astro.url.origin}#company`,
       name: index.data.business.name,
       url: `${Astro.url.origin}${Astro.url.pathname}`,
+      address: index.data.business.address,
     },
     serviceType: "Renovation",
     name: service.data.title,
     description: service.data.description,
     image: {
       "@type": "ImageObject",
-      url: service.data.covers[0]?.src.src.split("?")[0] || null,
+      url: `${Astro.url.origin}${service.data.covers[0]?.src.src.split("?")[0] || null}`,
       description: service.data.covers[0]?.alt || null,
     },
-    ...(reviewData.length > 0 ? { review: reviewData } : {}),
   };
 }
-
-// WARN: https://github.com/withastro/roadmap/pull/1051#issuecomment-2707323216
-const images = await Promise.all(
-  services.map(async (service) => {
-    return await getImage({
-      src: service.data.covers[0].src,
-      format: "webp",
-      quality: 20,
-    });
-  }),
-);
 ---
 
-<Layout title={service.data.title} schema={generateSchema()}>
-  <meta slot="head" name="description" content={service.data.seo_description} />
-
+<Layout
+  title={service.data.title}
+  description={service.data.seo_description}
+  generateSchema={schema}
+>
   <main class="relative overflow-x-clip py-15 sm:h-170">
     <Container
       as="div"
@@ -90,13 +81,13 @@ const images = await Promise.all(
           class="-mr-inset my-4 ml-7 flex h-65 rounded-tl-sm rounded-bl-sm contain-paint sm:hidden"
         >
           {
-            service.data.covers.map((img: any, i: number) => (
-              <img
+            service.data.covers.map((meta: any, _: number) => (
+              <Image
+                src={meta.src}
                 class="min-w-0 flex-1 object-cover"
-                src={images[i].src}
-                srcset={images[i].srcSet.attribute}
-                alt={img.alt}
+                alt={meta.alt}
                 loading="eager"
+                {...Astro.locals.globalDefaults.imageAttr}
               />
             ))
           }
@@ -110,21 +101,21 @@ const images = await Promise.all(
       <div class="hidden h-full flex-1 sm:flex">
         <div class="flex justify-evenly rounded-sm contain-paint">
           {
-            service.data.covers.map((img: any, i: number) => (
-              <img
+            service.data.covers.map((meta: any, _: number) => (
+              <Image
                 class={clsx(
                   `object-cover`,
                   service.data.covers.length > 1
                     ? `min-w-0 flex-1 hover:flex-5`
                     : ``,
                 )}
-                src={images[i].src}
-                srcset={images[i].srcSet.attribute}
-                alt={img.alt}
+                src={meta.src}
+                alt={meta.alt}
                 {...(service.data.covers.length > 1 && {
                   "data-safari-bad": "duration-800",
                 })}
                 loading="eager"
+                {...Astro.locals.globalDefaults.imageAttr}
               />
             ))
           }

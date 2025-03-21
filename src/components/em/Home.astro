@@ -10,18 +10,19 @@ const {
 } = Astro.props;
 ---
 
-<button
+<a
   class={clsx(
     `text-accent-dark flex cursor-pointer items-end gap-3`,
     customClass,
   )}
   {...slot}
-  onclick={slug
-    ? `window.location.href = '/#${slug}'`
-    : `window.location.href = '/'`}
+  data-astro-prefetch
+  href={slug
+    ? `/#${slug}`
+    : `/`}
 >
   <Icon name="ph:house-line-fill" class="h-auto w-8 sm:w-9 xl:w-12" />
   <span class="font-sans text-base leading-none font-bold xl:mb-1"
     >{description}</span
   >
-</button>
+</a>

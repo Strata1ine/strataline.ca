@@ -2,24 +2,21 @@
 import Header from "~/components/nav/Header.astro";
 import Layout from "~/layouts/Layout.astro";
 
-const { index, services, reviewData } = Astro.locals;
-const { Content } = await index.render();
+const { index, services } = Astro.locals;
 
+import * as index_raw_data from "~/content/index/index.mdx";
 import logo from "~/icons/logo.svg";
 
-function generateSchema() {
+function schema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": index.data.schema_type,
     "@id": `${Astro.url.origin}#company`,
     url: Astro.url.origin,
-    logo: logo.src.split("?")[0],
-    ...(reviewData.length > 0 ? { review: reviewData } : {}),
+    logo: `${Astro.url.origin}${logo.src.split("?")[0]}`,
   };
 
-  console.log(reviewData);
-
-  Object.assign(schema, index.data.business);
+  Object.assign(schema, index_raw_data.frontmatter.business);
 
   schema.makesOffer = services.map((service) => ({
     "@type": "Offer",
@@ -29,7 +26,7 @@ function generateSchema() {
       description: service.data.description,
       image: {
         "@type": "ImageObject",
-        url: service.data.covers[0]?.src.src.split("?")[0] || null,
+        url: `${Astro.url.origin}${service.data.covers[0]?.src.src.split("?")[0] || null}`,
         description: service.data.covers[0]?.alt || null,
       },
     },
@@ -41,11 +38,15 @@ function generateSchema() {
 
   return schema;
 }
+
+const { Content } = await index.render();
 ---
 
-<Layout title={index.data.title} schema={generateSchema()}>
-  <meta slot="head" name="description" content={index.data.description} />
-
+<Layout
+  title={index.data.title}
+  description={index.data.description}
+  generateSchema={schema}
+>
   {index.data.header && <Header items={index.data.header.ref} />}
   <Content />
 </Layout>

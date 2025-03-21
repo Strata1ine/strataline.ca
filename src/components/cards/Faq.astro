@@ -20,7 +20,7 @@ Astro.locals.faqData.push({
   data-faq
 >
   <div class="flex w-full items-center justify-between gap-4">
-    <h4 class="font-serif text-2xl font-semibold">{title}</h4>
+    <h3 class="font-serif text-2xl font-semibold">{title}</h3>
     <div class="expand relative h-6 w-6 flex-shrink-0"></div>
   </div>
 
@@ -57,11 +57,14 @@ Astro.locals.faqData.push({
       }
 
       faq.onclick = () => {
-        if (prevFaq != null && prevFaq != faq) {
-          t(prevFaq);
+        if (prevFaq === faq) {
+          t(faq);
+          prevFaq = null;
+        } else {
+          if (prevFaq) t(prevFaq);
+          t(faq);
+          prevFaq = faq;
         }
-        t(faq);
-        prevFaq = faq;
       };
     });
   </script>

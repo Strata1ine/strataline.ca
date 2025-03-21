@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { Pos } from '~/components/variants';
+import { config } from "~/config";
 
 export async function onRequest(context: { locals: App.Locals }, next: () => Promise<Response>): Promise<Response> {
   const [index] = await getCollection("index");
@@ -12,5 +13,7 @@ export async function onRequest(context: { locals: App.Locals }, next: () => Pro
     this.nextPos = this.nextPos === Pos.Left ? Pos.Right : Pos.Left;
     return this.nextPos;
   };
+
+  context.locals.globalDefaults = config.globalDefaults;
   return next();
 }
