@@ -4,5 +4,6 @@ import Question from "./Question.astro";
 import ZigZag from "./ZigZag.astro";
 import Faq from "./Faq.astro";
 import Panel from "./Panel.astro";
+import Price from "./Price.astro";
 
-export { Review, Slide, Question, ZigZag, Faq, Panel };
+export { Review, Slide, Question, ZigZag, Faq, Panel, Price };

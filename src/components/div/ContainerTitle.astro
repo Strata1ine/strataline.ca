@@ -1,6 +1,7 @@
 ---
 import clsx from "clsx";
 import { Pos } from "~/components/variants.ts";
+import Heading from "~/components/div/Heading.astro";
 
 const {
   title,
@@ -14,6 +15,8 @@ const {
   class: customClass = "",
   titlePos = Pos.Left,
 } = Astro.props;
+
+// yea this kinda sucks but its nice
 ---
 
 <div
@@ -29,18 +32,16 @@ const {
     center ? "max-w-inner xl:mx-auto" : "",
   )}
 >
-  <h2
+  <Heading
+    title={title}
     class={clsx(
-      `font-serif text-4xl font-bold text-balance`,
       split
         ? even
           ? clsx("flex-1", titlePos ? "text-right" : "")
           : ""
         : clsx(`sm:max-w-[20ch]`, titlePos ? "ml-auto text-right" : "mr-auto"),
     )}
-  >
-    {title}
-  </h2>
+  />
 
   {
     split && (

@@ -1,0 +1,37 @@
+---
+import clsx from "clsx";
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import { Pos } from "~/components/variants";
+import Heading from "~/components/div/Heading.astro";
+
+const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
+---
+
+<Container variant={ContainerVariant.Inner} {...slot}>
+  <div
+    class={clsx(
+      "flex gap-10 gap-y-18 sm:flex-row",
+      titlePos ? "flex-col-reverse" : "flex-col",
+    )}
+  >
+    {
+      titlePos == Pos.Left && (
+        <div class="flex-1">
+          <Heading class="sm:sticky sm:top-0" title={title} />
+        </div>
+      )
+    }
+
+    <div class="flex-3">
+      <slot />
+    </div>
+
+    {
+      titlePos == Pos.Right && (
+        <div class="flex-1">
+          <Heading class="sm:sticky sm:top-0 text-right" title={title} />
+        </div>
+      )
+    }
+  </div>
+</Container>

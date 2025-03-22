@@ -28,8 +28,8 @@ const Tag = as;
 
 <Tag
   class={clsx(
-    containerMap[variant],
     customClass,
+    containerMap[variant],
     // if its a section, then apply margin bottom by default
     as === "section" && "my-30 sm:my-42",
   )}

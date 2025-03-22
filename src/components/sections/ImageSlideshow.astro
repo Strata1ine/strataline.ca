@@ -6,9 +6,8 @@ import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import Dot, { DotVariant } from "~/components/inputs/Dot.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
-import { Icon } from "astro-icon/components";
 
-const { title, variant = Pos.Left, speed = 4000, ...slot } = Astro.props;
+const { title, titlePos = Pos.Left, speed = 4000, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -49,7 +48,7 @@ images.forEach((img) => {
 ---
 
 <Container class="contain-paint" variant={ContainerVariant.Max} {...slot}>
-  <ContainerTitle class="px-inset" variant={variant} title={title} />
+  <ContainerTitle class="px-inset" variant={titlePos} title={title} />
 
   <Container
     variant={ContainerVariant.Max}

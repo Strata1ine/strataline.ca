@@ -1,7 +1,7 @@
 ---
 import Markdown from "~/components/em/Markdown.astro";
 import { stripHtml } from "string-strip-html";
-const { title } = Astro.props;
+const { title, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 
@@ -15,9 +15,11 @@ Astro.locals.faqData.push({
 });
 ---
 
+<!-- class="border-accent cursor-pointer border-t-1 py-7 last:border-b-[1.5px]" -->
 <button
-  class="border-accent cursor-pointer border-t-1 py-7 last:border-b-[1.5px]"
+  class="border-accent cursor-pointer border-t-1 py-7 first:border-t-0"
   data-faq
+  {...slot}
 >
   <div class="flex w-full items-center justify-between gap-4">
     <h3 class="font-serif text-2xl font-semibold">{title}</h3>
@@ -25,80 +27,88 @@ Astro.locals.faqData.push({
   </div>
 
   <div
-    class="pointer-events-none h-0 font-sans text-base opacity-0 select-none [&.active]:pointer-events-auto [&.active]:mt-3 [&.active]:h-auto [&.active]:opacity-100"
+    class="pointer-events-none h-0 font-sans text-base opacity-0 select-none [&.active]:pointer-events-auto [&.active]:mt-2 [&.active]:h-auto [&.active]:opacity-100"
     data-content
     data-safari-bad="duration-250"
   >
     <Markdown><slot /></Markdown>
   </div>
-
-  <script>
-    // @ts-check
-
-    declare global {
-      interface Window {
-        toggleFaq: (e: HTMLElement) => void;
-      }
-    }
-
-    let prevFaq: HTMLElement | null = null;
-
-    document.querySelectorAll("[data-faq]").forEach((faq: HTMLElement) => {
-      function t(faq: HTMLElement) {
-        const div = faq.querySelector("[data-content]");
-        const expand = faq.querySelector(".expand");
-        if (div != null && div instanceof HTMLElement) {
-          div.classList.toggle("active");
-        }
-
-        if (expand != null && expand instanceof HTMLElement) {
-          expand.classList.toggle("active");
-        }
-      }
-
-      faq.onclick = () => {
-        if (prevFaq === faq) {
-          t(faq);
-          prevFaq = null;
-        } else {
-          if (prevFaq) t(prevFaq);
-          t(faq);
-          prevFaq = faq;
-        }
-      };
-    });
-  </script>
-
-  <style lang="scss">
-    .expand {
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: calc(50% - 1px);
-        bottom: 0;
-        width: 2px;
-        background-color: var(--color-black);
-        transform-origin: center;
-        transition: transform 250ms;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: calc(50% - 1px);
-        right: 0;
-        height: 2px;
-        background-color: var(--color-black);
-        transform-origin: center;
-      }
-
-      &.active {
-        &::before {
-          transform: rotateZ(90deg);
-        }
-      }
-    }
-  </style>
 </button>
+
+<script>
+  // @ts-check
+
+  declare global {
+    interface Window {
+      toggleFaq: (e: HTMLElement) => void;
+    }
+  }
+
+  let prevFaq: HTMLElement | null = null;
+
+  document.querySelectorAll("[data-faq]").forEach((faq: HTMLElement) => {
+    function t(faq: HTMLElement) {
+      const div = faq.querySelector("[data-content]");
+      const expand = faq.querySelector(".expand");
+      if (div != null && div instanceof HTMLElement) {
+        div.classList.toggle("active");
+        const rect = faq.getBoundingClientRect();
+        if (div.classList.contains("active") && rect.top < 0) {
+          faq.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center",
+          });
+        }
+      }
+
+      if (expand != null && expand instanceof HTMLElement) {
+        expand.classList.toggle("active");
+      }
+    }
+
+    faq.onclick = () => {
+      if (prevFaq === faq) {
+        t(faq);
+        prevFaq = null;
+      } else {
+        if (prevFaq) t(prevFaq);
+        t(faq);
+        prevFaq = faq;
+      }
+    };
+  });
+</script>
+
+<style lang="scss">
+  .expand {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+      bottom: 0;
+      width: 2px;
+      background-color: var(--color-black);
+      transform-origin: center;
+      transition: transform 250ms;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(50% - 1px);
+      right: 0;
+      height: 2px;
+      background-color: var(--color-black);
+      transform-origin: center;
+    }
+
+    &.active {
+      &::before {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+</style>

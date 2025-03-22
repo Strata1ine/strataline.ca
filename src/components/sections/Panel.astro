@@ -2,11 +2,11 @@
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-const { title, variant = Astro.locals.getNextPos(), ...slot } = Astro.props;
+const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
 ---
 
 <Container variant={ContainerVariant.Outer} {...slot}>
-  <ContainerTitle center titlePos={variant} title={title} />
+  <ContainerTitle center titlePos={titlePos} title={title} />
   <div class="flex flex-wrap justify-center gap-6 gap-y-12">
     <slot />
   </div>

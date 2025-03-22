@@ -10,6 +10,7 @@ import ZigZag from "./ZigZag.astro";
 import Faq from "./Faq.astro";
 import Panel from "./Panel.astro";
 import Messege from "./Messege.astro";
+import Split from "./Split.astro";
 import Markdown from "./Markdown.astro";
 
-export { Hero, Popular, LessPopular, ImageSlideshow, Review, TextCarousel, Slide, Question, ZigZag, Faq, Panel, Markdown, Messege };
+export { Hero, Popular, LessPopular, ImageSlideshow, Review, TextCarousel, Slide, Question, ZigZag, Faq, Panel, Markdown, Messege, Split };
