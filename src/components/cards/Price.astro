@@ -1,5 +1,5 @@
 ---
-import Markdown from "~/components/em/Markdown.astro";
+import Markdown from "~/components/e/Markdown.astro";
 import { Icon } from "astro-icon/components";
 const { title, materials = ["wasd"], min, max, ...slot } = Astro.props;
 ---
@@ -23,7 +23,7 @@ const { title, materials = ["wasd"], min, max, ...slot } = Astro.props;
     {
       materials.map((s: string) => (
         <>
-          <div class="mr-4 flex gap-3 align-top ">
+          <div class="flex gap-3 align-top ">
             <Icon
               name="ph:star-four-fill"
               class="text-gold h-auto w-4 sm:w-5"

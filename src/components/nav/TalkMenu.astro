@@ -42,7 +42,7 @@ const { index } = Astro.locals;
 
     <Icon
       name="ph:caret-down-fill"
-      class="right-inset absolute top-1/2 -translate-y-1/2"
+      class="right-inset pointer-events-none absolute top-1/2 w-8 -translate-y-1/2"
     />
   </Input>
 
@@ -65,6 +65,8 @@ const { index } = Astro.locals;
     variant={ButtonVariant.Fill}
     as="button"
     value="submit"
-    class="w-full cursor-pointer text-center">Submit</Button
+    class="w-full cursor-pointer text-center"
   >
+    Submit
+  </Button>
 </Menu>

@@ -233,8 +233,6 @@ header:
   id="accomplishments"
 >
 
-import citytv from "./awards/citytv.jpg"
-
 <Card.Slide
   title="Featured on CityTV"
   description={`
@@ -242,11 +240,14 @@ import citytv from "./awards/citytv.jpg"
     the best way to get rid of popcorn ceilings.
   `}
 >
-  <E.Video
-    path="/videos/cityline.mp4"
-    poster={citytv}
-  >
-  </E.Video>
+
+import citytv from "./awards/citytv.jpg"
+
+<E.Video
+  path="/videos/cityline.mp4"
+  poster={citytv}
+/>
+
 </Card.Slide>
 
 <Card.Slide
@@ -256,9 +257,11 @@ import citytv from "./awards/citytv.jpg"
     to renovation.
   `}
 >
-  ![A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander.](./awards/star.jpg)
 
-  <Input.Button target="_blank" slot="button" href="https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html">Read the Article</Input.Button>
+![A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander.](./awards/star.jpg)
+
+<Input.Button target="_blank" slot="button" href="https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html">Read the Article</Input.Button>
+
 </Card.Slide>
 
 <Card.Slide
@@ -267,9 +270,11 @@ import citytv from "./awards/citytv.jpg"
     House & Home seeks our expertise on chevron hardwood floor installation.
   `}
 >
-  ![A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.](./awards/houseandhome.webp)
 
-  <Input.Button target="_blank" slot="button" href="https://houseandhome.com/gallery/luxe-for-less-design/">Read the Article</Input.Button>
+![A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.](./awards/houseandhome.webp)
+
+<Input.Button target="_blank" slot="button" href="https://houseandhome.com/gallery/luxe-for-less-design/">Read the Article</Input.Button>
+
 </Card.Slide>
 
 <Card.Slide

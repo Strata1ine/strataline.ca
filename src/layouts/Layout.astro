@@ -3,6 +3,7 @@ import Footer from "~/components/nav/Footer.astro";
 import TalkMenu from "~/components/nav/TalkMenu.astro";
 
 import { parseHTML } from "linkedom";
+import { getImage } from "astro:assets";
 
 import "~/styles/global.css";
 
@@ -54,6 +55,16 @@ function computeAggregateRating(reviewData: any) {
     worstRating: "1",
   };
 }
+
+import favicon from "~/icons/favicon.svg";
+// const appleTouchIcon = await getImage({
+//   src: favicon,
+//   width: 180,
+//   height: 180,
+//   format: 'png'
+// })
+
+const faviconSvg = await getImage({ src: favicon, format: 'svg' })
 ---
 
 <!doctype html>
@@ -61,7 +72,7 @@ function computeAggregateRating(reviewData: any) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={Astro.url.href} />
     <script src="../index.ts"></script>

@@ -5,49 +5,28 @@ import Heading from "~/components/div/Heading.astro";
 
 const {
   title,
-  /// split title with other text
-  split = false,
-  /// automatically centers the title
-  /// used when the parent container isn't enough
-  center = false,
-  // split evenly
   even = false,
+  center = false,
   class: customClass = "",
   titlePos = Pos.Left,
 } = Astro.props;
-
-// yea this kinda sucks but its nice
 ---
 
 <div
   class={clsx(
     `mb-14`,
     customClass,
-    split
-      ? clsx(
-          `flex flex-col gap-inset sm:gap-8 sm:items-center`,
-          titlePos ? "sm:flex-row-reverse" : "sm:flex-row",
-        )
-      : "",
+    `flex flex-col gap-inset sm:gap-8 sm:items-center`,
+    titlePos ? "sm:flex-row-reverse" : "sm:flex-row",
     center ? "max-w-inner xl:mx-auto" : "",
   )}
 >
   <Heading
     title={title}
-    class={clsx(
-      split
-        ? even
-          ? clsx("flex-1", titlePos ? "text-right" : "")
-          : ""
-        : clsx(`sm:max-w-[20ch]`, titlePos ? "ml-auto text-right" : "mr-auto"),
-    )}
+    class={clsx(`sm:max-w-[20ch]`, titlePos ? "text-right" : "")}
   />
 
-  {
-    split && (
-      <div class={clsx(even ? "flex-1" : "")}>
-        <slot />
-      </div>
-    )
-  }
+  <div class={clsx(even ? "flex-1" : "")}>
+    <slot />
+  </div>
 </div>
