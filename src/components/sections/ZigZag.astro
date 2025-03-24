@@ -1,10 +1,8 @@
 ---
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
-import { Pos } from "~/components/variants.ts";
 
-const { title, titlePos = Pos.Left } = Astro.props;
-const { ...slot } = Astro.props;
+const { title, titlePos, ...slot } = Astro.props;
 ---
 
 <Container {...slot}>

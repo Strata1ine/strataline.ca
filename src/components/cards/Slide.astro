@@ -8,7 +8,7 @@ const { document } = parseHTML(await Astro.slots.render("default"));
 setAttrElements(
   document.querySelectorAll("img"),
   "class",
-  "min-w-0 object-cover h-full",
+  "min-w-0 object-cover h-full select-none"
 );
 ---
 

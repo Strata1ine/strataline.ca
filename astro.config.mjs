@@ -19,9 +19,10 @@ function rehypeAddImageProps(props) {
   return (tree) => {
     visit(tree, "element", (node) => {
       if (node.tagName === "img") {
+        const { className, ...otherProps } = props;
         node.properties = {
           ...node.properties,
-          ...props,
+          ...otherProps,
         };
       }
     });

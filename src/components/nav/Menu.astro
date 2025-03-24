@@ -16,13 +16,13 @@ const { title, id, ...slot } = Astro.props;
     class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
   >
     <div class="mb-8 flex items-center justify-between sm:mb-10">
-      <h2 class="font-serif text-4xl font-bold">{title}</h2>
+      <h2 class="font-serif text-3xl font-bold">{title}</h2>
       <button
-        class="cursor-pointer"
+        class="bg-tone cursor-pointer rounded-[50%] p-2"
         onclick={`toggleMenu('${id}')`}
         aria-label="Close menu"
       >
-        <Icon name="ph:x-bold" class="h-auto w-9 rounded-[50%] lg:w-11" />
+        <Icon name="ph:x-bold" class="h-auto w-7 rounded-[50%] lg:w-11" />
       </button>
     </div>
 

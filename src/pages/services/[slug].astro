@@ -1,6 +1,9 @@
 ---
 import clsx from "clsx";
 import { getCollection } from "astro:content";
+
+Astro.locals.getNextPos();
+
 export async function getStaticPaths() {
   const isProd = process.env.NODE_ENV === "production";
   const services = await getCollection(
@@ -23,7 +26,6 @@ import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 
 const { slug } = Astro.params;
-Astro.locals.getNextPos();
 const { index, services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
 
@@ -82,10 +84,8 @@ function schema() {
               <Image
                 src={meta.src}
                 class={clsx(
-                  `object-cover h-full`,
-                  service.data.covers.length > 1
-                    ? `min-w-0 flex-1`
-                    : ``,
+                  `h-full object-cover select-none`,
+                  service.data.covers.length > 1 ? `min-w-0 flex-1` : ``,
                 )}
                 alt={meta.alt}
                 loading="eager"
@@ -106,7 +106,7 @@ function schema() {
             service.data.covers.map((meta: any, _: number) => (
               <Image
                 class={clsx(
-                  `object-cover`,
+                  `object-cover select-none`,
                   service.data.covers.length > 1
                     ? `min-w-0 flex-1 hover:flex-5`
                     : ``,

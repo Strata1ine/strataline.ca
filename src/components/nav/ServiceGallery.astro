@@ -43,7 +43,7 @@ const services = Astro.locals.services.filter(
           >
             <Image
               src={service.data.covers[0].src}
-              class="min-h-30 h-[30vw] max-h-65 w-1/2 rounded-sm object-cover transition duration-300 hover:scale-[1.05] sm:w-full"
+              class="min-h-30 h-[30vw] max-h-65 w-1/2 rounded-sm object-cover transition duration-300 hover:scale-[1.05] sm:w-full select-none"
               alt={service.data.covers[0].alt}
               loading="lazy"
               {...Astro.locals.globalDefaults.imageAttr}

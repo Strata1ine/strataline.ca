@@ -2,7 +2,7 @@
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
+const { title, titlePos, ...slot } = Astro.props;
 ---
 
 <Container variant={ContainerVariant.Inner} {...slot}>

@@ -1,8 +1,8 @@
 ---
 import Markdown from "~/components/e/Markdown.astro";
 import { stripHtml } from "string-strip-html";
-const { title, ...slot } = Astro.props;
 
+const { title, ...slot } = Astro.props;
 const html = await Astro.slots.render("default");
 
 Astro.locals.faqData.push({
@@ -31,7 +31,9 @@ Astro.locals.faqData.push({
     data-content
     data-safari-bad="duration-250"
   >
-    <Markdown><slot /></Markdown>
+    <Markdown>
+      <slot />
+    </Markdown>
   </div>
 </button>
 

@@ -1,6 +1,5 @@
 ---
 import clsx from "clsx";
-import { Pos } from "~/components/variants.ts";
 import Heading from "~/components/div/Heading.astro";
 
 const {
@@ -8,7 +7,7 @@ const {
   even = false,
   center = false,
   class: customClass = "",
-  titlePos = Pos.Left,
+  titlePos = Astro.locals.getNextPos(),
 } = Astro.props;
 ---
 

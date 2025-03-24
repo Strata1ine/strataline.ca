@@ -47,17 +47,12 @@ setAttrElements(
   "font-sans text-base my-1 first:mt-0 last:mb-0",
 );
 
-setAttrElements(
-  document.querySelectorAll("hr"),
-  "class",
-  "my-5 border-accent",
-);
+setAttrElements(document.querySelectorAll("hr"), "class", "my-5 border-accent");
 
-setAttrElements(
-  document.querySelectorAll("strong"),
-  "class",
-  "font-medium",
-);
+setAttrElements(document.querySelectorAll("strong"), "class", "font-medium");
+
+document.querySelectorAll("p").forEach((e) => {
+});
 ---
 
 <Fragment set:html={document} />

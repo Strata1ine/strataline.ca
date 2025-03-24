@@ -1,0 +1,54 @@
+---
+import { parseHTML } from "linkedom";
+import { appendAttrElements } from "~/lib/processHTML";
+
+import { Icon } from "astro-icon/components";
+
+import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import ContainerTitle from "~/components/div/ContainerTitle.astro";
+
+let { title, titlePos, ...slot } = Astro.props;
+
+const { document } = parseHTML(await Astro.slots.render("default"));
+const images = document.querySelectorAll("img");
+appendAttrElements(
+  images,
+  "class",
+  "min-w-0 w-full xl:w-[30%] md:w-[45%] max-w-180 flex-shrink-0 object-cover h-[50vh] min-h-40 max-h-150 sm:rounded-sm select-none sm:mr-6",
+);
+---
+
+<Container class="contain-paint" variant={ContainerVariant.Max}>
+  <ContainerTitle class="px-inset" center title={title} titlePos={titlePos} />
+
+  <div
+    class="flex cursor-grab touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
+    image-carousel
+  >
+    <Fragment set:html={document} />
+  </div>
+
+  <Container
+    as="div"
+    variant={ContainerVariant.Inner}
+    class="mt-8 box-content flex justify-end gap-1"
+  >
+    <button class="relative cursor-pointer" aria-label="Carousel left">
+      <div class="absolute inset-4 rounded-full bg-black"></div>
+      <Icon
+        name="ph:caret-circle-left-fill"
+        class="text-tone relative h-auto w-15 sm:w-20"
+      />
+    </button>
+
+    <button class="relative cursor-pointer" aria-label="Carousel right">
+      <div class="absolute inset-4 rounded-full bg-black"></div>
+      <Icon
+        name="ph:caret-circle-right-fill"
+        class="text-tone relative h-auto w-15 sm:w-20"
+      />
+    </button>
+  </Container>
+</Container>
+
+<script></script>

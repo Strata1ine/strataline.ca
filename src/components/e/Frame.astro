@@ -1,0 +1,14 @@
+---
+const { title, src, ...slot } = Astro.props;
+---
+
+<iframe
+  title={title}
+  class="h-full w-full"
+  src={src}
+  allowfullscreen
+  loading="lazy"
+  {...slot}
+>
+  <slot/>
+</iframe>

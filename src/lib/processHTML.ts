@@ -78,7 +78,7 @@ export function flexImages(images: NodeListOf<Element>) {
   appendAttrElements(
     images,
     "class",
-    `object-cover h-full ${images.length > 1 ? 'min-w-0 hover:flex-5 flex-1' : ''}`,
+    `object-cover h-full select-none ${images.length > 1 ? 'min-w-0 hover:flex-5 flex-1' : ''}`,
   );
 
   if (images.length > 1) {
