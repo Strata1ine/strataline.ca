@@ -13,6 +13,8 @@
     "@astrojs/react": "^4.2.1",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
+    "@astrojs/svelte": "^7.0.7",
+    "@iconify/svelte": "^4.2.0",
     "@tailwindcss/vite": "^4.0.6",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
@@ -26,7 +28,8 @@
     "react-dom": "^19.0.0",
     "remove": "^0.1.5",
     "smoothscroll-polyfill": "^0.4.4",
-    "string-strip-html": "^13.4.12"
+    "string-strip-html": "^13.4.12",
+    "svelte": "^5.25.3"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",

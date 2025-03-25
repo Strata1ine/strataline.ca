@@ -1,6 +1,7 @@
 ---
 import Button, { ButtonVariant } from "~/components/inputs/Button.astro";
 import Input from "~/components/inputs/Input.astro";
+import Stars from "~/components/inputs/Stars.svelte";
 import { Icon } from "astro-icon/components";
 import Menu from "~/components/nav/Menu.astro";
 
@@ -8,7 +9,7 @@ const { index } = Astro.locals;
 ---
 
 <Menu title="Let's talk" id="talkMenu" name="contact">
-  <Input name="Email" required autocomplete="on" type="email" validate />
+  <Input name="E-mail" required autocomplete="on" type="email" validate />
 
   <Input
     name="Phone number"
@@ -60,6 +61,30 @@ const { index } = Astro.locals;
       <span class="font-sans text-base">None selected</span>
     </div>
   </Input>
+
+  <Button
+    variant={ButtonVariant.Fill}
+    as="button"
+    value="submit"
+    class="w-full cursor-pointer text-center"
+  >
+    Submit
+  </Button>
+</Menu>
+
+<Menu title="Write a review" id="reviewMenu" name="contact">
+  <p class="font-sans text-base italic">
+    *To write a review, you must be a client. We will verify your submission via
+    email.
+  </p>
+
+  <div class="my-4 flex gap-2">
+    <Stars client:load></Stars>
+  </div>
+
+  <Input name="Full name" required autocomplete="on" validate />
+  <Input name="E-mail" required autocomplete="on" type="email" validate />
+  <Input as="textarea" required class="min-h-40" name="Review" />
 
   <Button
     variant={ButtonVariant.Fill}

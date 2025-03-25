@@ -23,13 +23,14 @@ const id = crypto.randomUUID();
     <button
       class="ml-auto flow-root cursor-pointer"
       aria-label="Write a review"
+      onclick={`toggleMenu("reviewMenu")`}
     >
       <Icon name="ph:feather-fill" class="hidden h-auto w-23 lg:block" />
     </button>
   </ContainerTitle>
 
   <div
-    class="flex cursor-grab touch-pan-y will-change-transform"
+    class="flex transform-gpu cursor-grab touch-pan-y will-change-transform"
     data-review
     id={id}
   >

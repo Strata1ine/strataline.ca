@@ -1,13 +1,13 @@
 ---
 import { parseHTML } from "linkedom";
-import { appendAttrElements } from "~/lib/processHTML";
+import { appendAttrElements, setAttrElements } from "~/lib/processHTML";
 
 import { Icon } from "astro-icon/components";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-let { title, titlePos, speed, ...slot } = Astro.props;
+let { title, titlePos, speed, eager, ...slot } = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("default"));
 const images = document.querySelectorAll("img");
@@ -20,8 +20,12 @@ if (title != null && titlePos == null) {
 appendAttrElements(
   images,
   "class",
-  "min-w-0 w-full xl:w-[33%] md:w-[45%] max-w-180 flex-shrink-0 object-cover h-[50vh] min-h-40 max-h-150 rounded-sm sm:mx-3",
+  "min-w-0 w-full xl:w-[33%] md:w-[45%] max-w-180 flex-shrink-0 object-cover rounded-sm sm:mx-3",
 );
+
+if (eager) {
+  setAttrElements(images, "loading", "eager");
+}
 ---
 
 <Container class="contain-paint" variant={ContainerVariant.Max}>
@@ -29,7 +33,7 @@ appendAttrElements(
 
   <div class="cursor-grab select-none">
     <div
-      class="flex touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
+      class="flex h-[50vh] max-h-130 min-h-100 transform-gpu touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
       data-image-carousel
       data-speed={speed}
       id={id}
