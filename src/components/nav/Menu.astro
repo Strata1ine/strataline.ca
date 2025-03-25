@@ -9,7 +9,6 @@ const { title, id, ...slot } = Astro.props;
   class="fixed inset-0 z-50 flex overflow-scroll bg-white opacity-0 sm:bg-transparent sm:backdrop-blur-[5rem] [&.active]:opacity-100"
   data-form-menu
   onclick={`if (event.target === event.currentTarget) { toggleMenu('${id}') }`}
-  aria-hidden="true"
   inert
 >
   <div

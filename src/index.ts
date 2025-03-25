@@ -32,21 +32,21 @@ function inScreen(e: Element) {
 
 window.slideNext = function(id: string, slideNum: number) {
   const slideshow = document.getElementById(id) as HTMLElement;
-  const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+  const prevIndexAttr = parseInt(slideshow.getAttribute("data-idx") ?? "0", 10);
   const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
 
   document.querySelectorAll(`[data-id="${id}"]`).forEach((slideButton) => {
     slideButton.children[prevIndex].classList.remove("active");
     slideButton.children[slideNum].classList.add("active");
-    slideButton.setAttribute("data-slide-idx", slideNum.toString());
+    slideButton.setAttribute("data-idx", slideNum.toString());
   });
 
   slideshow.children[prevIndex].classList.remove("active");
   slideshow.children[prevIndex].setAttribute("inert", "");
   slideshow.children[slideNum].classList.add("active");
   slideshow.children[slideNum].removeAttribute("inert");
-  slideshow.setAttribute("data-slide-mutated", "");
-  slideshow.setAttribute("data-slide-idx", slideNum.toString());
+  slideshow.setAttribute("data-lock", "");
+  slideshow.setAttribute("data-idx", slideNum.toString());
 }
 
 let lastActiveMenu: HTMLElement | null;
@@ -111,13 +111,13 @@ window.onload = () => {
       if (inScreen(slideshow) && window.activeVideo == null &&
         slideshow.querySelector(':hover') == null
       ) {
-        if (!slideshow.hasAttribute("data-slide-mutated")) {
-          const prevIndexAttr = parseInt(slideshow.getAttribute("data-slide-idx") ?? "0", 10);
+        if (!slideshow.hasAttribute("data-lock")) {
+          const prevIndexAttr = parseInt(slideshow.getAttribute("data-idx") ?? "0", 10);
           const prevIndex = isNaN(prevIndexAttr) ? 0 : prevIndexAttr;
           const nextIndex = (prevIndex + 1) % slideshow.children.length;
           window.slideNext(slideshow.id.toString(), nextIndex);
         } else {
-          slideshow.removeAttribute("data-slide-mutated");
+          slideshow.removeAttribute("data-lock");
         }
       }
 

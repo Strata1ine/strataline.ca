@@ -2,8 +2,6 @@
 import clsx from "clsx";
 import { getCollection } from "astro:content";
 
-Astro.locals.getNextPos();
-
 export async function getStaticPaths() {
   const isProd = process.env.NODE_ENV === "production";
   const services = await getCollection(

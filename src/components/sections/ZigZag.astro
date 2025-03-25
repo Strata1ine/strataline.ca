@@ -2,7 +2,7 @@
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-const { title, titlePos, ...slot } = Astro.props;
+const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
 ---
 
 <Container {...slot}>

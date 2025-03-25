@@ -6,7 +6,7 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 import { Pos } from "~/components/variants.ts";
 
 const { index } = Astro.locals;
-const { title, titlePos } = Astro.props;
+const { title, titlePos = Astro.locals.getNextPos() } = Astro.props;
 
 function next(i: number) {
   return i % 2 === Number(titlePos) ? Pos.Left : Pos.Right;

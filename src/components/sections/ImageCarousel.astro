@@ -7,25 +7,36 @@ import { Icon } from "astro-icon/components";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-let { title, titlePos, ...slot } = Astro.props;
+let { title, titlePos, speed, ...slot } = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("default"));
 const images = document.querySelectorAll("img");
+const id = crypto.randomUUID();
+
+if (title != null && titlePos == null) {
+  titlePos = Astro.locals.getNextPos();
+}
+
 appendAttrElements(
   images,
   "class",
-  "min-w-0 w-full xl:w-[30%] md:w-[45%] max-w-180 flex-shrink-0 object-cover h-[50vh] min-h-40 max-h-150 sm:rounded-sm select-none sm:mr-6",
+  "min-w-0 w-full xl:w-[33%] md:w-[45%] max-w-180 flex-shrink-0 object-cover h-[50vh] min-h-40 max-h-150 rounded-sm sm:mx-3",
 );
 ---
 
 <Container class="contain-paint" variant={ContainerVariant.Max}>
   <ContainerTitle class="px-inset" center title={title} titlePos={titlePos} />
 
-  <div
-    class="flex cursor-grab touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
-    image-carousel
-  >
-    <Fragment set:html={document} />
+  <div class="cursor-grab select-none">
+    <div
+      class="flex touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
+      data-image-carousel
+      data-speed={speed}
+      id={id}
+      draggable="false"
+    >
+      <Fragment set:html={document} />
+    </div>
   </div>
 
   <Container
@@ -33,7 +44,12 @@ appendAttrElements(
     variant={ContainerVariant.Inner}
     class="mt-8 box-content flex justify-end gap-1"
   >
-    <button class="relative cursor-pointer" aria-label="Carousel left">
+    <button
+      class="relative cursor-pointer"
+      aria-label="Carousel left"
+      aria-controls={id}
+      data-prev
+    >
       <div class="absolute inset-4 rounded-full bg-black"></div>
       <Icon
         name="ph:caret-circle-left-fill"
@@ -41,7 +57,11 @@ appendAttrElements(
       />
     </button>
 
-    <button class="relative cursor-pointer" aria-label="Carousel right">
+    <button
+      class="relative cursor-pointer"
+      aria-label="Carousel right"
+      aria-controls={id}
+    >
       <div class="absolute inset-4 rounded-full bg-black"></div>
       <Icon
         name="ph:caret-circle-right-fill"
@@ -51,4 +71,156 @@ appendAttrElements(
   </Container>
 </Container>
 
-<script></script>
+<script>
+  // @ts-check
+  document
+    .querySelectorAll("[data-image-carousel]")
+    .forEach((wrapper: HTMLElement) => {
+      const innerHTML = wrapper.innerHTML;
+      const parent = wrapper.parentElement!;
+      const head = wrapper.querySelector("img:first-child")!.outerHTML;
+      const tail = wrapper.querySelector("img:last-child")!.outerHTML;
+      let idx = 0;
+
+      wrapper.innerHTML = tail + innerHTML + innerHTML + head;
+      const items = Array.from(wrapper.querySelectorAll("img"));
+      const itemCount = (items.length - 2) / 2;
+
+      const speedAttr = parseInt(wrapper.getAttribute("data-speed") ?? "3000");
+      const speed = isNaN(speedAttr) ? 3000 : speedAttr;
+
+      let itemWidth: number;
+      let containerWidth: number;
+      let centerOffset: number;
+
+      function resize() {
+        itemWidth =
+          items[idx].getBoundingClientRect().width +
+          parseFloat(getComputedStyle(items[idx]).marginRight) +
+          parseFloat(getComputedStyle(items[idx]).marginLeft);
+        containerWidth = wrapper.getBoundingClientRect().width;
+        centerOffset = (containerWidth - itemWidth) / 2;
+        wrapper.style.transition = "none";
+        transitionTo(idx, 0);
+      }
+
+      resize();
+
+      window.addEventListener("resize", resize);
+
+      function transitionTo(idx: number, offsetX = 0) {
+        wrapper.style.transform = `translateX(${-idx * itemWidth + centerOffset + offsetX}px)`;
+        wrapper.offsetHeight;
+      }
+
+      function moveToIdx(
+        newIdx: number,
+        speed: number,
+        type = "ease",
+        dragOffset = 0,
+      ) {
+        idx = newIdx;
+
+        const t = `transform ${speed}ms ${type}`;
+
+        if (idx >= itemCount) {
+          idx = idx - itemCount - 1;
+          wrapper.style.transition = "none";
+          transitionTo(idx, dragOffset);
+          setTimeout(() => {
+            idx += 1;
+            wrapper.offsetHeight;
+            wrapper.style.transition = t;
+            transitionTo(idx);
+          }, 0);
+        } else if (idx < 0) {
+          idx = idx + itemCount + 1;
+          wrapper.style.transition = "none";
+          transitionTo(idx, dragOffset);
+          setTimeout(() => {
+            idx = idx - 1;
+            wrapper.style.transition = t;
+            transitionTo(idx);
+          }, 0);
+        } else {
+          wrapper.style.transition = t;
+          transitionTo(idx);
+        }
+      }
+
+      document
+        .querySelectorAll(`[aria-controls="${wrapper.id}"]`)
+        .forEach((b: HTMLElement) => {
+          b.onclick = () =>
+            moveToIdx(idx + (b.hasAttribute("data-prev") ? -1 : 1), 500);
+        });
+
+      moveToIdx(0, 0);
+
+      let isDown = false;
+      let startX = 0;
+      let startY = 0;
+
+      const finalizeDrag = (pageX: number, pageY: number): void => {
+        const diffX = pageX - startX;
+        if (!isDown || Math.abs(diffX) < Math.abs(pageY - startY)) return;
+
+        const steps = Math.max(1, Math.round(Math.abs(diffX) / itemWidth));
+        idx += diffX < 0 ? steps : -steps;
+        moveToIdx(idx, 500, "ease", diffX);
+        isDown = false;
+      };
+
+      parent.addEventListener(
+        "pointerdown",
+        ((e: PointerEvent): void => {
+          isDown = true;
+          startX = e.pageX;
+          startY = e.pageY;
+          parent.setPointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true },
+      );
+
+      parent.addEventListener(
+        "pointermove",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          const diffX = e.pageX - startX;
+          wrapper.style.transition = "none";
+          wrapper.style.transform = `translateX(${-idx * itemWidth + centerOffset + diffX}px)`;
+        }) as EventListener,
+        { passive: true },
+      );
+
+      parent.addEventListener(
+        "pointerup",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(e.pageX, e.pageY);
+          isDown = false;
+          parent.releasePointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true },
+      );
+
+      parent.addEventListener(
+        "pointercancel",
+        ((e: PointerEvent): void => {
+          if (!isDown) return;
+          finalizeDrag(e.pageX, e.pageY);
+          isDown = false;
+          parent.releasePointerCapture(e.pointerId);
+        }) as EventListener,
+        { passive: true },
+      );
+
+      parent.addEventListener(
+        "pointerleave",
+        (() => {
+          isDown = false;
+        }) as EventListener,
+        { passive: true },
+      );
+    });
+</script>

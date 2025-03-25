@@ -1,31 +1,36 @@
 ---
 import clsx from "clsx";
 import Heading from "~/components/div/Heading.astro";
+import { Pos } from "~/components/variants";
 
 const {
   title,
   even = false,
   center = false,
+  titlePos = Pos.Left,
   class: customClass = "",
-  titlePos = Astro.locals.getNextPos(),
 } = Astro.props;
 ---
 
-<div
-  class={clsx(
-    `mb-14`,
-    customClass,
-    `flex flex-col gap-inset sm:gap-8 sm:items-center`,
-    titlePos ? "sm:flex-row-reverse" : "sm:flex-row",
-    center ? "max-w-inner xl:mx-auto" : "",
-  )}
->
-  <Heading
-    title={title}
-    class={clsx(`sm:max-w-[20ch]`, titlePos ? "text-right" : "")}
-  />
+{
+  title && (
+    <div
+      class={clsx(
+        `mb-14`,
+        customClass,
+        `gap-inset flex flex-col sm:items-center sm:gap-8`,
+        titlePos ? "sm:flex-row-reverse" : "sm:flex-row",
+        center ? "max-w-inner xl:mx-auto" : "",
+      )}
+    >
+      <Heading
+        title={title}
+        class={clsx(`sm:max-w-[20ch]`, titlePos ? "text-right" : "")}
+      />
 
-  <div class={clsx(even ? "flex-1" : "")}>
-    <slot />
-  </div>
-</div>
+      <div class={clsx(even ? "flex-1" : "")}>
+        <slot />
+      </div>
+    </div>
+  )
+}
