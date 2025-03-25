@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
 
 const {
   title = "There's more to explore",
-  titlePos,
+  titlePos = Astro.locals.getNextPos(),
   class: customClass,
   exclude = [],
   ...slot

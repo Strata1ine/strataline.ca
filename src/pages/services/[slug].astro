@@ -26,7 +26,6 @@ import ServiceGallery from "~/components/nav/ServiceGallery.astro";
 const { slug } = Astro.params;
 const { index, services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
-
 const { Content } = await service.render();
 
 function schema() {
@@ -130,8 +129,6 @@ function schema() {
     </div>
   </Container>
 
-  <LetsTalk />
   <Content />
-
-  <ServiceGallery exclude={[slug]} id="gallery" class="!mb-0" />
+  <ServiceGallery slot="post-mdx" exclude={[slug]} class="!mb-0" />
 </Layout>

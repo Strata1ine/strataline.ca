@@ -1,13 +1,19 @@
 ---
 import Footer from "~/components/nav/Footer.astro";
-import TalkMenu from "~/components/nav/TalkMenu.astro";
+import Menus from "~/components/nav/Menus.astro";
 
 import { parseHTML } from "linkedom";
 import { getImage } from "astro:assets";
 
 import "~/styles/global.css";
 
-const { document } = parseHTML(await Astro.slots.render("default"));
+const { document: mdx } = parseHTML(await Astro.slots.render("default"));
+
+const postMdxSlot = await Astro.slots.render("post-mdx");
+const { document: postMdx } = postMdxSlot
+  ? parseHTML(postMdxSlot)
+  : { document: null };
+
 const { faqData, reviewData, index } = Astro.locals;
 let {
   title,
@@ -64,7 +70,7 @@ import favicon from "~/icons/favicon.svg";
 //   format: 'png'
 // })
 
-const faviconSvg = await getImage({ src: favicon, format: 'svg' })
+const faviconSvg = await getImage({ src: favicon, format: "svg" });
 ---
 
 <!doctype html>
@@ -118,8 +124,9 @@ const faviconSvg = await getImage({ src: favicon, format: 'svg' })
     }
   </head>
   <body>
-    <TalkMenu />
-    <Fragment set:html={document} />
+    <Menus />
+    <Fragment set:html={mdx} />
+    <Fragment set:html={postMdx} />
     <Footer />
   </body>
 </html>

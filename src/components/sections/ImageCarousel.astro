@@ -177,7 +177,6 @@ appendAttrElements(
           isDown = true;
           startX = e.pageX;
           startY = e.pageY;
-          parent.setPointerCapture(e.pointerId);
         }) as EventListener,
         { passive: true },
       );
@@ -193,34 +192,13 @@ appendAttrElements(
         { passive: true },
       );
 
-      parent.addEventListener(
-        "pointerup",
-        ((e: PointerEvent): void => {
-          if (!isDown) return;
-          finalizeDrag(e.pageX, e.pageY);
-          isDown = false;
-          parent.releasePointerCapture(e.pointerId);
-        }) as EventListener,
-        { passive: true },
-      );
-
-      parent.addEventListener(
-        "pointercancel",
-        ((e: PointerEvent): void => {
-          if (!isDown) return;
-          finalizeDrag(e.pageX, e.pageY);
-          isDown = false;
-          parent.releasePointerCapture(e.pointerId);
-        }) as EventListener,
-        { passive: true },
-      );
-
-      parent.addEventListener(
-        "pointerleave",
-        (() => {
-          isDown = false;
-        }) as EventListener,
-        { passive: true },
+      ["pointerup", "pointercancel", "pointerleave"].forEach(
+        (event: string) =>
+          parent.addEventListener(
+            event,
+            (e: PointerEvent): void => finalizeDrag(e.pageX, e.pageY),
+            { passive: true },
+          ) as EventListener,
       );
     });
 </script>
