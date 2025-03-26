@@ -1,6 +1,6 @@
 ---
 import { parseHTML } from "linkedom";
-import { setAttrElements } from "~/lib/processHTML";
+import { appendAttrElements, setAttrElements } from "~/lib/processHTML";
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -26,7 +26,19 @@ setAttrElements(
 setAttrElements(
   document.querySelectorAll("p"),
   "class",
-  "font-sans text-base my-2 first:mt-0 last:mb-0",
+  "font-sans text-base my-2",
+);
+
+appendAttrElements(
+  document.querySelectorAll("p:first-child"),
+  "class",
+  "mt-0",
+);
+
+appendAttrElements(
+  document.querySelectorAll("p:last-child"),
+  "class",
+  "mb-0",
 );
 
 setAttrElements(
@@ -44,7 +56,19 @@ setAttrElements(
 setAttrElements(
   document.querySelectorAll("li"),
   "class",
-  "font-sans text-base my-1 first:mt-0 last:mb-0",
+  "font-sans text-base my-1",
+);
+
+appendAttrElements(
+  document.querySelectorAll("li:first-child"),
+  "class",
+  "mt-0",
+);
+
+appendAttrElements(
+  document.querySelectorAll("li:last-child"),
+  "class",
+  "mb-0",
 );
 
 setAttrElements(document.querySelectorAll("hr"), "class", "my-5 border-accent");

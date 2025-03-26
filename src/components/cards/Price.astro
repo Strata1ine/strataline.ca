@@ -17,19 +17,21 @@ const { title, materials = ["wasd"], min, max, ...slot } = Astro.props;
     </div>
   </div>
 
-  <Markdown><slot /></Markdown>
+  <div class="my-1">
+    <Markdown><slot /></Markdown>
+  </div>
 
   <div>
     {
       materials.map((s: string) => (
         <>
-          <div class="flex gap-3 align-top ">
+          <div class="flex gap-3 align-top">
             <Icon
               name="ph:star-four-fill"
               class="text-gold h-auto w-4 sm:w-5"
               aria-hidden="true"
             />
-            <span class="font-sans text-sm ">{s}</span>
+            <span class="font-sans text-sm">{s}</span>
           </div>
         </>
       ))

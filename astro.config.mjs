@@ -83,5 +83,6 @@ export default defineConfig({
       },
     }),
     react(),
-    svelte()],
+    svelte()
+  ],
 });

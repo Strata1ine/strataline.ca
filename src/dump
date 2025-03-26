@@ -18,3 +18,26 @@ An island or breakfast nook fosters connection and invites gatherings.
 
 </Card.ZigZag>
 
+
+<Section.Panel
+title="We know the details"
+>
+
+<Card.Panel
+  title="Modern appliances"
+>
+
+![A sleek Wolf gas cooktop with bold red knobs, set against a glossy tiled backsplash and paired with modern white cabinetry for a stylish, high-quality kitchen upgrade.](./details/appliances.jpg)
+
+</Card.Panel>
+
+
+<Card.Panel
+  title="Personal style"
+>
+
+![](./details/lighting.jpg)
+
+</Card.Panel>
+
+</Section.Panel>
