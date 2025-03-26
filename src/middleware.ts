@@ -14,6 +14,13 @@ export async function onRequest(context: { locals: App.Locals }, next: () => Pro
     return this.nextPos;
   };
 
+
+  context.locals.nextSwap = Pos.Left;
+  context.locals.getNextSwap = function(this: App.Locals): Pos {
+    this.nextSwap = this.nextSwap === Pos.Left ? Pos.Right : Pos.Left;
+    return this.nextSwap;
+  };
+
   context.locals.globalDefaults = config.globalDefaults;
   return next();
 }

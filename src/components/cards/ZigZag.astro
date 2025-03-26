@@ -2,33 +2,32 @@
 import { parseHTML } from "linkedom";
 import { flexImages } from "~/lib/processHTML";
 import { Pos } from "~/components/variants";
+import Markdown from "~/components/e/Markdown.astro";
 
-const { title, description, variant, ...slot } = Astro.props;
+const { title, variant = Astro.locals.getNextSwap(), ...slot } = Astro.props;
 
-const html = await Astro.slots.render("default");
-const { document } = parseHTML(html);
-
+const { document } = parseHTML(await Astro.slots.render("image"));
 flexImages(document.querySelectorAll("img"));
 ---
 
 <div
-  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-25 items-center gap-6 last:mb-0 sm:mb-28 sm:flex xl:gap-7 2xl:gap-9"
   {...slot}
 >
   {
     variant === Pos.Left && (
-      <div class="hidden h-120 w-1/2 justify-center contain-paint sm:flex">
+      <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
         <Fragment set:html={document} />
       </div>
     )
   }
 
   <div class="flex-1">
-    <h3 class="mb-2 font-serif text-3xl font-semibold">{title}</h3>
+    <h3 class="mb-1 font-serif text-3xl font-semibold">{title}</h3>
 
     {
       variant === Pos.Right && (
-        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-md rounded-bl-md contain-paint sm:hidden">
+        <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-sm rounded-bl-sm contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
@@ -36,15 +35,15 @@ flexImages(document.querySelectorAll("img"));
 
     {
       variant === Pos.Left && (
-        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-md rounded-br-md contain-paint sm:hidden">
+        <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-sm rounded-br-sm contain-paint sm:hidden">
           <Fragment set:html={document} />
         </div>
       )
     }
 
-    <p class="font-sans text-base">
-      {description}
-    </p>
+    <Markdown>
+      <slot />
+    </Markdown>
   </div>
 
   {

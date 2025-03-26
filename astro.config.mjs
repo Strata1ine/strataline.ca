@@ -48,33 +48,40 @@ export default defineConfig({
       },
     },
   },
-  integrations: [(await import("astro-compress")).default({
-    CSS: true,
-    HTML: true,
-    Image: false,
-    JavaScript: true,
-    SVG: true,
-  }), AutoImport({
-    imports: [
-      {
-        './src/components/div/': 'Div',
-        './src/components/e/': 'E',
-        './src/components/inputs/': 'Input',
-        './src/components/sections/': 'Section',
-        './src/components/cards/': 'Card',
-        './src/components/variants.ts': 'Variant',
+  integrations: [
+    (await import("astro-compress")).default({
+      CSS: true,
+      HTML: true,
+      Image: false,
+      JavaScript: true,
+      SVG: true,
+    }),
+    AutoImport({
+      imports: [
+        {
+          './src/components/div/': 'Div',
+          './src/components/e/': 'E',
+          './src/components/inputs/': 'Input',
+          './src/components/sections/': 'Section',
+          './src/components/cards/': 'Card',
+          './src/components/variants.ts': 'Variant',
+        },
+      ],
+    }),
+    mdx({
+      rehypePlugins: [rehypeUnwrapImages, [rehypeAddImageProps, { ...config.globalDefaults.imageAttr, slot: "image" }]],
+    }),
+    sitemap({
+      filter: (page) =>
+        page !== 'https://strataline.ca/submissions/contact/'
+    }),
+    compressor(),
+    icon({
+      include: {
+        local: ["*"],
+        ph: ["*"],
       },
-    ],
-  }), mdx({
-    rehypePlugins: [rehypeUnwrapImages, [rehypeAddImageProps, config.globalDefaults.imageAttr]],
-    // optimizeImages: false
-  }), sitemap({
-    filter: (page) =>
-      page !== 'https://strataline.ca/submissions/contact/'
-  }), compressor(), icon({
-    include: {
-      local: ["*"],
-      ph: ["*"],
-    },
-  }), react(), svelte()],
+    }),
+    react(),
+    svelte()],
 });

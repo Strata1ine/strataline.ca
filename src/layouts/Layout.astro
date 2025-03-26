@@ -8,11 +8,7 @@ import { getImage } from "astro:assets";
 import "~/styles/global.css";
 
 const { document: mdx } = parseHTML(await Astro.slots.render("default"));
-
-const postMdxSlot = await Astro.slots.render("post-mdx");
-const { document: postMdx } = postMdxSlot
-  ? parseHTML(postMdxSlot)
-  : { document: null };
+const { document: postMdx } = parseHTML(await Astro.slots.render("post-mdx"))
 
 const { faqData, reviewData, index } = Astro.locals;
 let {

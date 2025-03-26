@@ -11,7 +11,7 @@ import Container from "~/components/div/Container.astro";
 import DotArray from "~/components/inputs/DotArray.astro";
 
 const { title, description, speed: speedInt, ...slot } = Astro.props;
-const { document } = parseHTML(await Astro.slots.render("default"));
+const { document } = parseHTML(await Astro.slots.render("image"));
 
 const images = document.querySelectorAll("img");
 

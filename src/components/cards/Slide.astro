@@ -3,7 +3,7 @@ import { parseHTML } from "linkedom";
 import { setAttrElements } from "~/lib/processHTML";
 
 const { title, description } = Astro.props;
-const { document } = parseHTML(await Astro.slots.render("default"));
+const { document } = parseHTML(await Astro.slots.render("image"));
 
 setAttrElements(
   document.querySelectorAll("img"),
@@ -34,7 +34,7 @@ setAttrElements(
     <p class="font-sans text-base">{description}</p>
 
     <div class="mt-8 gap-3 space-y-3 sm:flex sm:space-y-0">
-      <slot name="button" />
+      <slot />
     </div>
   </div>
   <div class="hidden sm:block"></div>

@@ -72,26 +72,30 @@ const { index } = Astro.locals;
   </Button>
 </Menu>
 
-<Menu title="Write a review" id="reviewMenu" name="contact">
-  <p class="font-sans text-base italic">
-    *To write a review, you must be a client. We will verify your submission via
-    email.
-  </p>
+{
+  Astro.locals.reviewData.length > 0 && (
+    <Menu title="Write a review" id="reviewMenu" name="contact">
+      <p class="font-sans text-base italic">
+        *To write a review, you must be a client. We will verify your submission
+        via email.
+      </p>
 
-  <div class="my-4 flex gap-2">
-    <Stars client:load></Stars>
-  </div>
+      <div class="my-4 flex gap-2">
+        <Stars client:visible />
+      </div>
 
-  <Input name="Full name" required autocomplete="on" validate />
-  <Input name="E-mail" required autocomplete="on" type="email" validate />
-  <Input as="textarea" required class="min-h-40" name="Review" />
+      <Input name="Full name" required autocomplete="on" validate />
+      <Input name="E-mail" required autocomplete="on" type="email" validate />
+      <Input as="textarea" required class="min-h-40" name="Review" />
 
-  <Button
-    variant={ButtonVariant.Fill}
-    as="button"
-    value="submit"
-    class="w-full cursor-pointer text-center"
-  >
-    Submit
-  </Button>
-</Menu>
+      <Button
+        variant={ButtonVariant.Fill}
+        as="button"
+        value="submit"
+        class="w-full cursor-pointer text-center"
+      >
+        Submit
+      </Button>
+    </Menu>
+  )
+}

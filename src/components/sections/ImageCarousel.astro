@@ -9,7 +9,7 @@ import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
 let { title, titlePos, speed, eager, ...slot } = Astro.props;
 
-const { document } = parseHTML(await Astro.slots.render("default"));
+const { document } = parseHTML(await Astro.slots.render("image"));
 const images = document.querySelectorAll("img");
 const id = crypto.randomUUID();
 
@@ -33,7 +33,7 @@ if (eager) {
 
   <div class="cursor-grab select-none">
     <div
-      class="flex h-[50vh] max-h-130 min-h-100 transform-gpu touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
+      class="flex h-[60vh] max-h-140 min-h-100 transform-gpu touch-pan-y justify-center will-change-transform has-[>:last-child:nth-child(even)]:translate-x-1/2 md:has-[>:last-child:nth-child(even)]:translate-x-0"
       data-image-carousel
       data-speed={speed}
       id={id}
@@ -136,7 +136,7 @@ if (eager) {
             wrapper.offsetHeight;
             wrapper.style.transition = t;
             transitionTo(idx);
-          }, 0);
+          });
         } else if (idx < 0) {
           idx = idx + itemCount + 1;
           wrapper.style.transition = "none";
@@ -145,7 +145,7 @@ if (eager) {
             idx = idx - 1;
             wrapper.style.transition = t;
             transitionTo(idx);
-          }, 0);
+          });
         } else {
           wrapper.style.transition = t;
           transitionTo(idx);

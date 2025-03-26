@@ -19,7 +19,7 @@
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "add": "^2.0.6",
-    "astro": "^5.5.3",
+    "astro": "^5.5.4",
     "astro-auto-import": "^0.4.4",
     "astro-compress": "^2.3.6",
     "astro-compressor": "^1.0.0",

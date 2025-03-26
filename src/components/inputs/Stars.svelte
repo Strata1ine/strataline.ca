@@ -1,14 +1,16 @@
 <script>
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
-  export let rating = 4;
+
+  const baseId = crypto.randomUUID();
+
+  export let rating = 5;
   let isDragging = false;
   let container;
 
   onMount(() => {
     window.addEventListener("mouseup", () => (isDragging = false));
-    return () =>
-      window.removeEventListener("mouseup", () => (isDragging = false));
+    return window.addEventListener("mouseup", () => (isDragging = false));
   });
 
   function updateRating(event) {
@@ -27,12 +29,12 @@
   tabindex="0"
   aria-valuenow={rating}
   bind:this={container}
-  on:mousedown={(event) => {
+  on:pointerdown={(event) => {
     isDragging = true;
     updateRating(event);
   }}
-  on:mousemove={updateRating}
-  on:mouseenter={updateRating}
+  on:pointermove={updateRating}
+  on:pointerenter={updateRating}
   on:keydown={(e) => {
     if (e.code === "ArrowRight" || e.code === "ArrowUp")
       rating = Math.min(5, rating + 0.5);
@@ -44,7 +46,7 @@
     <div class="relative flex">
       <input
         type="radio"
-        id={`star-${i}`}
+        id={`${baseId}-star-${i}`}
         name="rating"
         value={i}
         class="absolute opacity-0"
@@ -52,7 +54,7 @@
         on:change={() => (rating = i)}
       />
       <span class="contain-paint w-1/2">
-        <label for={`star-${i}`} class="flex cursor-pointer">
+        <label for={`${baseId}-star-${i}`} aria-label={`Rate {i}`} class="flex cursor-pointer">
           <span class="sr-only">Rate {i}</span>
           <span class:text-tone={i >= rating} class:text-gold={i < rating}>
             <Icon icon="ph:star-fill" class="h-auto w-10 text-gray-300" />
@@ -61,7 +63,7 @@
       </span>
       <input
         type="radio"
-        id={`star-${i + 0.5}`}
+        id={`${baseId}-star-${i + 0.5}`}
         name="rating"
         value={i + 0.5}
         class="absolute opacity-0"
@@ -70,7 +72,10 @@
       />
       <span class="relative contain-paint w-1/2 flex-1 scale-x-[-1]">
         <span class="sr-only">Rate {i + 0.5}</span>
-        <label for={`star-${i + 0.5}`} class="cursor-pointer absolute">
+        <label
+          for={`${baseId}-star-${i + 0.5}`}
+          class="cursor-pointer absolute"
+        >
           <span
             class:text-tone={i + 0.5 >= rating}
             class:text-gold={i + 0.5 < rating}

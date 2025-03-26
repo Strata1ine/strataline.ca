@@ -3,14 +3,11 @@ import { Image } from "astro:assets";
 import PopularC from "~/components/nav/Popular.astro";
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
-import { Pos } from "~/components/variants.ts";
 
 const { index } = Astro.locals;
 const { title, titlePos = Astro.locals.getNextPos() } = Astro.props;
 
-function next(i: number) {
-  return i % 2 === Number(titlePos) ? Pos.Left : Pos.Right;
-}
+Astro.locals.nextSwap = titlePos;
 
 const services = Astro.locals.services
   .filter((service) =>
@@ -27,8 +24,8 @@ const { ...slot } = Astro.props;
 <Container {...slot}>
   <ContainerTitle title={title} center titlePos={titlePos} />
   {
-    services.map((service, i) => (
-      <PopularC data={service.data} variant={next(i)} slug={service.slug}>
+    services.map((service, _) => (
+      <PopularC data={service.data} slug={service.slug}>
         {service.data.covers.map((img: any, _: number) => (
           <Image
             src={img.src}

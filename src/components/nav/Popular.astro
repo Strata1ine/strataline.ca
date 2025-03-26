@@ -4,7 +4,7 @@ import { flexImages } from "~/lib/processHTML";
 import Button from "~/components/inputs/Button.astro";
 import { Pos } from "~/components/variants.ts";
 
-const { data, variant, slug, ...slot } = Astro.props;
+const { data, variant = Astro.locals.getNextSwap(), slug, ...slot } = Astro.props;
 
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
@@ -13,7 +13,7 @@ flexImages(document.querySelectorAll("img"));
 ---
 
 <div
-  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+  class="mb-25 items-center gap-6 last:mb-0 sm:mb-28 sm:flex xl:gap-7 2xl:gap-9"
   id={slug}
   {...slot}
 >

@@ -7,7 +7,7 @@ const { title, titlePos = Astro.locals.getNextPos(), ...slot } = Astro.props;
 
 <Container variant={ContainerVariant.Outer} {...slot}>
   <ContainerTitle center titlePos={titlePos} title={title} />
-  <div class="flex flex-wrap justify-center gap-6 gap-y-12">
+  <div class="flex flex-wrap justify-center gap-6 2xl:gap-7 gap-y-12">
     <slot />
   </div>
 </Container>
