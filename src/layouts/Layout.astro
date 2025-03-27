@@ -78,8 +78,6 @@ const faviconSvg = await getImage({ src: favicon, format: "svg" });
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={Astro.url.href} />
     <script src="../index.ts"></script>
-    <!-- PUBLISH: REMOVE BEFORE -->
-    <meta name="robots" content="noindex" />
     <slot name="head" />
 
     <title slot="head">
