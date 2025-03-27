@@ -10,8 +10,9 @@
   let container: HTMLElement;
 
   onMount(() => {
-    window.addEventListener("mouseup", () => (isDragging = false));
-    return window.addEventListener("mouseup", () => (isDragging = false));
+    window.addEventListener("pointerup", () => (isDragging = false));
+    return () =>
+      window.removeEventListener("pointerup", () => (isDragging = false));
   });
 
   function updateRating(event: PointerEvent) {

@@ -1,7 +1,7 @@
 ---
 import Markdown from "~/components/e/Markdown.astro";
 import { stripHtml } from "string-strip-html";
-import FaqItem from "~/components/interactable/FaqItem.svelte";
+import FaqInter from "~/components/interactable/Faq.svelte";
 
 const { title } = Astro.props;
 
@@ -18,9 +18,9 @@ Astro.locals.faqData.push({
 <div
   class="border-accent border-t-1 py-6 first:border-t-0 first:pt-0 last:pb-0"
 >
-  <FaqItem client:load title={title}>
+  <FaqInter client:load title={title}>
     <Markdown>
       <slot />
     </Markdown>
-  </FaqItem>
+  </FaqInter>
 </div>

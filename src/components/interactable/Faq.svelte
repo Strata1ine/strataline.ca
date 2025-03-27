@@ -17,9 +17,7 @@
     const baseSlide = slide(node, { duration, easing: sineOut });
     return {
       ...baseSlide,
-      css: (t: number) =>
-        `height: ${baseSlide.css(t)} ${sineOut(t) * 100}%; opacity: ${sineOut(t)}`,
-      tick: (t: number) => {
+      tick: (_: number) => {
         const r = button.getBoundingClientRect();
         if ($prev === button && r.top < 0) {
           window.scrollTo({ top: window.scrollY + r.top });
@@ -43,11 +41,7 @@
       <div transition:slideWithScroll={{ duration: 250 }} class="mt-2">
         <slot />
       </div>
-    {:else}
-      <div class="hidden">
-        <slot />
-      </div>
-    {/if}
+    {:else}{/if}
   </div>
 </button>
 
