@@ -103,7 +103,7 @@ function schema() {
             service.data.covers.map((meta: any, _: number) => (
               <Image
                 class={clsx(
-                  `object-cover select-none`,
+                  `h-full object-cover select-none`,
                   service.data.covers.length > 1
                     ? `min-w-0 flex-1 hover:flex-5`
                     : ``,

@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
 
-let { title, titlePos, speed, eager, ...slot } = Astro.props;
+let { title, titlePos, speed, eager } = Astro.props;
 
 const { document } = parseHTML(await Astro.slots.render("image"));
 const images = document.querySelectorAll("img");

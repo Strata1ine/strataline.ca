@@ -36,7 +36,7 @@ export default defineConfig({
     '/services': '/',
   },
   prefetch: true,
-  site: 'https://strataline.ca',
+  site: config.site,
   vite: {
     plugins: [tailwindcss()],
   },

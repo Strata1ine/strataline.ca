@@ -1,19 +1,20 @@
-<script>
+<script lang="ts">
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
 
   const baseId = crypto.randomUUID();
 
   export let rating = 5;
+
   let isDragging = false;
-  let container;
+  let container: HTMLElement;
 
   onMount(() => {
     window.addEventListener("mouseup", () => (isDragging = false));
     return window.addEventListener("mouseup", () => (isDragging = false));
   });
 
-  function updateRating(event) {
+  function updateRating(event: PointerEvent) {
     if (!isDragging) return;
     const rect = container.getBoundingClientRect();
     const x = Math.max(0, event.clientX - rect.left);
@@ -22,7 +23,7 @@
 </script>
 
 <div
-  class="flex relative"
+  class="relative flex"
   role="slider"
   aria-valuemin="0.5"
   aria-valuemax="5"
@@ -49,12 +50,16 @@
         id={`${baseId}-star-${i}`}
         name="rating"
         value={i}
-        class="absolute opacity-0"
-        checked={rating === i}
+        class="absolute opacity-0 select-none"
+        checked={rating === 4}
         on:change={() => (rating = i)}
       />
-      <span class="contain-paint w-1/2">
-        <label for={`${baseId}-star-${i}`} aria-label={`Rate {i}`} class="flex cursor-pointer">
+      <span class="w-1/2 contain-paint">
+        <label
+          for={`${baseId}-star-${i}`}
+          aria-label={`Rate {i}`}
+          class="flex cursor-pointer"
+        >
           <span class="sr-only">Rate {i}</span>
           <span class:text-tone={i >= rating} class:text-gold={i < rating}>
             <Icon icon="ph:star-fill" class="h-auto w-10 text-gray-300" />
@@ -70,11 +75,11 @@
         checked={rating === i + 0.5}
         on:change={() => (rating = i + 0.5)}
       />
-      <span class="relative contain-paint w-1/2 flex-1 scale-x-[-1]">
+      <span class="relative w-1/2 flex-1 scale-x-[-1] contain-paint">
         <span class="sr-only">Rate {i + 0.5}</span>
         <label
           for={`${baseId}-star-${i + 0.5}`}
-          class="cursor-pointer absolute"
+          class="absolute cursor-pointer"
         >
           <span
             class:text-tone={i + 0.5 >= rating}
