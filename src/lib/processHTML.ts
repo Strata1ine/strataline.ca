@@ -2,13 +2,23 @@ import clsx from "clsx";
 
 // NOTE: common utilities to process MDX easily
 
-export function appendAttrElements(e: NodeListOf<Element>, a: string, customAttr: string) {
-  e.forEach((item, _) => {
+export function appendAttrElements(e: NodeListOf<Element>, a: string, customAttr: string, swap: string | null = null) {
+  e.forEach(item => {
     const attr = item.getAttribute(a);
-    if (a == "class") {
-      item.setAttribute(a, clsx((attr != null) ? attr : '', customAttr));
+    if (a === "class") {
+      let classes = attr ? attr.split(' ') : [];
+      if (swap && classes.includes(swap)) {
+        classes = classes.filter(cls => cls !== swap);
+      }
+
+      item.setAttribute(a, clsx(classes, customAttr));
     } else {
-      item.setAttribute(a, (`${(attr != null) ? attr : ''} ${customAttr}`).trim());
+      let newValue = attr || '';
+      if (swap && newValue.includes(swap)) {
+        newValue = newValue.replace(swap, '').trim();
+      }
+
+      item.setAttribute(a, `${newValue} ${customAttr}`.trim());
     }
   });
 }

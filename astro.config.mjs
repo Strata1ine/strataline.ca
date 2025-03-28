@@ -73,7 +73,8 @@ export default defineConfig({
     }),
     sitemap({
       filter: (page) =>
-        page !== 'https://strataline.ca/submissions/contact/'
+        page !== `${config.site}/submissions/contact/` &&
+        page !== `${config.site}/submissions/review/`
     }),
     compressor(),
     icon({

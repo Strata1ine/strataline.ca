@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-const { title, id, ...slot } = Astro.props;
+const { title, id, action = "/submissions/contact", ...slot } = Astro.props;
 ---
 
 <div
@@ -28,7 +28,7 @@ const { title, id, ...slot } = Astro.props;
       class="flow-root"
       enctype="multipart/form-data"
       method="post"
-      action="/submissions/contact"
+      action={action}
       netlify
       {...slot}
     >

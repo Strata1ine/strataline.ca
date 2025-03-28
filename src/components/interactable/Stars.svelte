@@ -28,6 +28,7 @@
     min="0"
     max="5"
     step="0.5"
+    id={baseId}
     value={rating}
     aria-valuemin="0.5"
     aria-valuemax="5"
@@ -40,7 +41,7 @@
     }}
     on:pointermove={updateRating}
     on:pointerenter={updateRating}
-    class="absolute inset-0 z-10 cursor-pointer appearance-none [&::-webkit-slider-thumb]:invisible [&::-moz-range-thumb]:invisible [&::-ms-thumb]:invisible"
+    class="absolute inset-0 z-10 cursor-pointer appearance-none [&::-moz-range-thumb]:invisible [&::-ms-thumb]:invisible [&::-webkit-slider-thumb]:invisible"
   />
 
   <div class="flex">
@@ -48,7 +49,7 @@
       <div class="relative flex">
         <span class="w-1/2 contain-paint">
           <label
-            for={`${baseId}-star-${i}`}
+            for={baseId}
             aria-label={`Rate ${i}`}
             class="flex cursor-pointer"
           >
@@ -60,7 +61,7 @@
         </span>
         <span class="relative w-1/2 flex-1 scale-x-[-1] contain-paint">
           <label
-            for={`${baseId}-star-${i + 0.5}`}
+            for={baseId}
             aria-label={`Rate ${i + 0.5}`}
             class="absolute cursor-pointer"
           >
