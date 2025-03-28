@@ -6,6 +6,22 @@ const { index, services } = Astro.locals;
 
 import * as index_raw_data from "~/content/index/index.mdx";
 import logo from "~/icons/logo.svg";
+import { getImage } from "astro:assets";
+
+const serviceCovers = await Promise.all(
+  services.map(async (service) => {
+    if (service.data.covers[0]?.src) {
+      const image = await getImage({
+        src: service.data.covers[0].src,
+        width: 2160,
+        format: "webp",
+      });
+      return image.src;
+    }
+
+    return null;
+  }),
+);
 
 function schema() {
   const schema = {
@@ -18,7 +34,7 @@ function schema() {
 
   Object.assign(schema, index_raw_data.frontmatter.business);
 
-  schema.makesOffer = services.map((service) => ({
+  schema.makesOffer = services.map((service: any, i: number) => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
@@ -26,7 +42,7 @@ function schema() {
       description: service.data.description,
       image: {
         "@type": "ImageObject",
-        url: `${Astro.url.origin}${service.data.covers[0]?.src.src.split("?")[0] || null}`,
+        url: `${Astro.url.origin}${serviceCovers[i] || null}`,
         description: service.data.covers[0]?.alt || null,
       },
     },

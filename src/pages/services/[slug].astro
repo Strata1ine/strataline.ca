@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   }));
 }
 
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Home from "~/components/e/Home.astro";
 
@@ -27,6 +27,12 @@ const { slug } = Astro.params;
 const { index, services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
 const { Content } = await service.render();
+
+const image = await getImage({
+  src: service.data.covers[0].src,
+  width: 2160,
+  format: "webp",
+});
 
 function schema() {
   return {
@@ -44,7 +50,7 @@ function schema() {
     description: service.data.description,
     image: {
       "@type": "ImageObject",
-      url: `${Astro.url.origin}${service.data.covers[0]?.src.src.split("?")[0] || null}`,
+      url: `${Astro.url.origin}${image.src}`,
       description: service.data.covers[0]?.alt || null,
     },
   };

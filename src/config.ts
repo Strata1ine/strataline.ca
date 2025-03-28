@@ -8,4 +8,5 @@ export const config = {
     },
   },
   site: "https://strataline.ca",
+  name: "Strataline",
 };
