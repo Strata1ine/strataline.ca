@@ -3,7 +3,7 @@ import Markdown from "~/components/e/Markdown.astro";
 import { stripHtml } from "string-strip-html";
 import FaqInter from "~/components/interactable/Faq.svelte";
 
-const { title } = Astro.props;
+const { title, raw = false } = Astro.props;
 
 Astro.locals.faqData.push({
   "@type": "Question",
@@ -19,8 +19,14 @@ Astro.locals.faqData.push({
   class="border-accent border-t-1 py-6 first:border-t-0 first:pt-0 last:pb-0"
 >
   <FaqInter client:load title={title}>
-    <Markdown>
-      <slot />
-    </Markdown>
+    {raw && <slot />}
+
+    {
+      !raw && (
+        <Markdown>
+          <slot />
+        </Markdown>
+      )
+    }
   </FaqInter>
 </div>

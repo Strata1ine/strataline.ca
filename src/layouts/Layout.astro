@@ -63,8 +63,7 @@ import faviconPngSrc from "/public/favicon.png";
 
 const appleTouchIcon = await getImage({
   src: faviconPngSrc,
-  width: 180,
-  height: 180,
+  width: 512,
   format: "png",
 });
 
@@ -86,8 +85,7 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
     <link rel="manifest" href="/manifest.json" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
-    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
-    <meta name="theme-color" content="#FEE2E6" />
+    <link rel="apple-touch-icon" sizes="512x512" href={appleTouchIcon.src} />
     <script src="../index.ts"></script>
 
     <slot name="head" />

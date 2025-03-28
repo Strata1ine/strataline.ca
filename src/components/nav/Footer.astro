@@ -1,6 +1,7 @@
 ---
 import Socials from "~/components/nav/Socials.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
+import FooterMeta from "~/meta/footer.mdx";
 
 const { index } = Astro.locals;
 ---
@@ -10,31 +11,8 @@ const { index } = Astro.locals;
   as="footer"
   variant={ContainerVariant.Inner}
 >
-  <div class="py-22">
-    {
-      index.data.business.areaServed && (
-        <>
-          <div>
-            <h3 class="mb-1 font-serif text-2xl font-bold">
-              Municipalities we serve
-            </h3>
-
-            <p class="font-sans text-base">
-              We provide services to Toronto condos. Especially popcorn removal
-              and painting.
-            </p>
-          </div>
-
-          <ul class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-y-3 sm:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))]">
-            {index.data.business.areaServed.map((area: any, _: number) => (
-              <li>
-                <span class="font-sans text-base">{area}</span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )
-    }
+  <div class="py-10">
+    <FooterMeta />
   </div>
 
   <div
@@ -43,7 +21,7 @@ const { index } = Astro.locals;
     <div class="flex flex-col items-center sm:flex-row sm:gap-12">
       <span class="font-sans text-base"
         ><strong class="font-semibold">&copy; {index.data.business.name}</strong
-        >. 2025</span
+        >. {new Date().getFullYear()}</span
       >
 
       <div class="flex gap-6">

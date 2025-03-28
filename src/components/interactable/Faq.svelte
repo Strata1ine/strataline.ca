@@ -38,7 +38,7 @@
   </div>
   <div class="overflow-hidden" aria-hidden={!isActive}>
     {#if isActive}
-      <div transition:slideWithScroll={{ duration: 250 }} class="mt-2">
+      <div transition:slideWithScroll={{ duration: 350 }} class="mt-1">
         <slot />
       </div>
     {:else}{/if}
