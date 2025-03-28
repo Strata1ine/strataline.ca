@@ -34,6 +34,13 @@ function rehypeAddImageProps(props) {
 export default defineConfig({
   redirects: {
     '/services': '/',
+    '/stairs': '/services/stairs/',
+    '/kitchens': '/services/kitchens/',
+    '/kitchen': '/services/kitchens/',
+    '/bathrooms': '/services/bathrooms/',
+    '/bathroom-remodeling': '/services/bathrooms/',
+    '/popcorn-removal': '/services/popcorn-removal/',
+    '/home-renovation/ceiling/smooth-ceiling': '/services/popcorn-removal/',
   },
   prefetch: true,
   site: config.site,
