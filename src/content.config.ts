@@ -40,6 +40,8 @@ const business = function(image: any) {
     // photo of location
     photo: image().optional(),
     name: z.string(),
+    email: z.string(),
+    telephone: z.string(),
     address: postalAddressSchema,
     sameAs: z.array(socialMedia).optional(),
     areaServed: z.array(z.string()).optional(),
