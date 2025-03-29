@@ -4,6 +4,7 @@ import Menus from "~/components/nav/Menus.astro";
 
 import { parseHTML } from "linkedom";
 import { getImage } from "astro:assets";
+import { computeAggregateRating, getItemReviewed } from "~/lib/schema.astro";
 
 import "~/styles/global.css";
 
@@ -18,15 +19,15 @@ let {
 } = Astro.props;
 
 if (generateSchema == null) {
+  Astro.locals.schema = {
+    t: "WebPage",
+    id: crypto.randomUUID(),
+  };
   generateSchema = function () {
     return {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
       name: title,
-      url: `${Astro.url.origin}${Astro.url.pathname}`,
       isPartOf: {
         "@type": "WebSite",
-        url: Astro.url.origin,
         publisher: {
           "@type": index.data.schema_type,
           "@id": `${Astro.url.origin}#company`,
@@ -35,26 +36,6 @@ if (generateSchema == null) {
         },
       },
     };
-  };
-}
-
-function computeAggregateRating(reviewData: any) {
-  const reviewCount = reviewData.length;
-  let totalRating = 0;
-
-  reviewData.forEach((review: any) => {
-    const rating = parseFloat(review.reviewRating.ratingValue);
-    if (!isNaN(rating)) {
-      totalRating += rating;
-    }
-  });
-
-  return {
-    "@type": "AggregateRating",
-    ratingValue: (totalRating / reviewCount).toFixed(1),
-    reviewCount: reviewCount.toString(),
-    bestRating: "5",
-    worstRating: "0",
   };
 }
 
@@ -95,10 +76,20 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
         <script
           type="application/ld+json"
           set:html={(() => {
-            const schema = generateSchema();
+            const schema = {
+              "@context": "https://schema.org",
+              "@type": `${Astro.locals.schema.t}`,
+              "@id": `${Astro.url.origin}${Astro.url.pathname}#${Astro.locals.schema.id}`,
+              url: `${Astro.url.origin}${Astro.url.pathname}`,
+              ...generateSchema(),
+            };
+
             if (reviewData.length > 0) {
+              schema.aggregateRating = computeAggregateRating(
+                Astro,
+                reviewData,
+              );
               schema.review = reviewData;
-              schema.aggregateRating = computeAggregateRating(reviewData);
             }
 
             return JSON.stringify(schema, null, 2);

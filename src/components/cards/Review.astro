@@ -3,6 +3,7 @@ import Markdown from "~/components/e/Markdown.astro";
 import { Icon } from "astro-icon/components";
 
 import { stripHtml } from "string-strip-html";
+import { getItemReviewed } from "~/lib/schema.astro";
 const html = await Astro.slots.render("default");
 
 const { title, location, date, stars = 5 } = Astro.props;
@@ -11,10 +12,6 @@ const id = `${crypto.randomUUID()}`;
 Astro.locals.reviewData.push({
   "@type": "Review",
   "@id": `${Astro.url.origin}${Astro.url.pathname}#${id}`,
-  itemReviewed: {
-    "@type": Astro.locals.index.schema_type,
-    "@id": `${Astro.url.origin}#company`,
-  },
   author: {
     "@type": "Person",
     name: title,
@@ -34,6 +31,7 @@ Astro.locals.reviewData.push({
       addressCountry: "CA",
     },
   },
+  ...getItemReviewed(Astro),
 });
 ---
 

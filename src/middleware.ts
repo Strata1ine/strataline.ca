@@ -22,5 +22,10 @@ export async function onRequest(context: { locals: App.Locals }, next: () => Pro
   };
 
   context.locals.globalDefaults = config.globalDefaults;
+  context.locals.schema = {
+    t: context.locals.index.schema_type,
+    id: "company",
+  };
+
   return next();
 }

@@ -1,0 +1,34 @@
+---
+export function computeAggregateRating(astro: Astro, reviewData: any) {
+  const reviewCount = reviewData.length;
+  let totalRating = 0;
+
+  reviewData.forEach((review: any) => {
+    const rating = parseFloat(review.reviewRating.ratingValue);
+    if (!isNaN(rating)) {
+      totalRating += rating;
+    }
+  });
+
+  return {
+    "@type": "AggregateRating",
+    ratingValue: parseFloat((totalRating / reviewCount).toFixed(1)),
+    reviewCount: reviewCount,
+    bestRating: 5,
+    worstRating: 0,
+    ...getItemReviewed(astro),
+  };
+}
+
+export function getItemReviewed(astro: Astro) {
+  return {
+    // itemReviewed: {
+    //   "@id": `${astro.url.origin}${astro.url.pathname}#${astro.locals.schema.id}`,
+    // },
+    itemReviewed: {
+      "@type": `${astro.locals.index.data.schema_type}`,
+      "@id": `${astro.url.origin}#company`,
+    },
+  };
+}
+---

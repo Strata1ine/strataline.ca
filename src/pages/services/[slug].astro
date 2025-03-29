@@ -28,6 +28,11 @@ const { index, services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
 const { Content } = await service.render();
 
+Astro.locals.schema = {
+  t: "Service",
+  id: crypto.randomUUID(),
+};
+
 const image = await getImage({
   src: service.data.covers[0].src,
   width: 2160,
@@ -36,16 +41,14 @@ const image = await getImage({
 
 function schema() {
   return {
-    "@context": "https://schema.org",
-    "@type": "Service",
     provider: {
       "@type": index.data.schema_type,
       "@id": `${Astro.url.origin}#company`,
       name: index.data.business.name,
-      url: `${Astro.url.origin}${Astro.url.pathname}`,
+      url: `${Astro.url.origin}`,
       address: index.data.business.address,
     },
-    serviceType: "Renovation",
+    serviceType: "Home Renovation",
     name: service.data.title,
     description: service.data.description,
     image: {

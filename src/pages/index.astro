@@ -23,12 +23,13 @@ const serviceCovers = await Promise.all(
   }),
 );
 
+Astro.locals.schema = {
+  t: index.data.schema_type,
+  id: "company",
+};
+
 function schema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": index.data.schema_type,
-    "@id": `${Astro.url.origin}#company`,
-    url: Astro.url.origin,
+  let schema = {
     logo: `${Astro.url.origin}${logo.src.split("?")[0]}`,
   };
 
@@ -39,6 +40,7 @@ function schema() {
     itemOffered: {
       "@type": "Service",
       name: service.data.title,
+      serviceType: "Home Renovation",
       description: service.data.description,
       image: {
         "@type": "ImageObject",
