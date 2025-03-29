@@ -66,6 +66,12 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
         <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
       ))
     }
+
+    {
+      pngIcons.map((icon: any) => (
+        <link rel="icon" type="image/png" sizes={icon.sizes} href={icon.src} />
+      ))
+    }
     <script src="../index.ts"></script>
 
     <slot name="head" />

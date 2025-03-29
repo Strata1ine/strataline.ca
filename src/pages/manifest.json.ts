@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
 
 import favicon from "/public/favicon.png";
-const sizes = [32, 192, 512];
+const sizes = [32, 180, 512];
 
 import { config, getPropertyValue } from "~/config";
 
