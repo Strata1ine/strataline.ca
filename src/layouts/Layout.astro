@@ -41,7 +41,7 @@ if (generateSchema == null) {
   };
 }
 
-import faviconSvgSrc from "/public/favicon.svg";
+import faviconSvgSrc from "~/icons/favicon.svg";
 
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 ---
@@ -60,6 +60,7 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
     <link rel="canonical" href={Astro.url.href} />
     <link rel="manifest" href="/manifest.json" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
     {
       pngIcons.map((icon: any) => (

@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
 
-import favicon from "/public/favicon.png";
+import favicon from "~/icons/favicon.png";
 const sizes = [32, 180, 512];
 
 import { config, getPropertyValue } from "~/config";
@@ -29,8 +29,8 @@ export const GET: APIRoute = async () => {
     description: config.business.description,
     start_url: "/",
     display: "standalone",
-    theme_color: getPropertyValue("theme_color"),
-    background_color: getPropertyValue("background_color"),
+    // theme_color: getPropertyValue("theme_color"),
+    // background_color: getPropertyValue("background_color"),
     icons: pngIcons,
   };
 
