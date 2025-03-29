@@ -111,21 +111,21 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'DMSans';
-  src: url('/fonts/dm-sans/DMSans-VariableFont_opsz,wght.woff2');
+  src: url('/static/fonts/dm-sans/DMSans-VariableFont_opsz,wght.woff2');
   font-style: normal;
   font-display: fallback;
 }
 
 @font-face {
   font-family: 'DMSans';
-  src: url('/fonts/dm-sans/DMSans-Italic-VariableFont_opsz,wght.woff2');
+  src: url('/static/fonts/dm-sans/DMSans-Italic-VariableFont_opsz,wght.woff2');
   font-display: fallback;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-Bold.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-Bold.woff2');
   font-display: fallback;
   font-weight: 700;
   font-style: normal;
@@ -133,7 +133,7 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-BoldItalic.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-BoldItalic.woff2');
   font-weight: 700;
   font-display: fallback;
   font-style: italic;
@@ -141,7 +141,7 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-Medium.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-Medium.woff2');
   font-weight: 500;
   font-display: fallback;
   font-style: normal;
@@ -149,7 +149,7 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-MediumItalic.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-MediumItalic.woff2');
   font-weight: 500;
   font-display: fallback;
   font-style: italic;
@@ -157,7 +157,7 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-SemiBold.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-SemiBold.woff2');
   font-weight: 600;
   font-display: fallback;
   font-style: normal;
@@ -165,7 +165,7 @@ input:-webkit-autofill:focus {
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2');
+  src: url('/static/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2');
   font-weight: 600;
   font-display: fallback;
   font-style: italic;

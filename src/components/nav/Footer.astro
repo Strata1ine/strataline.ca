@@ -2,8 +2,7 @@
 import Socials from "~/components/nav/Socials.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import FooterMeta from "~/meta/footer.mdx";
-
-const { index } = Astro.locals;
+import { config } from "~/config";
 ---
 
 <Container
@@ -20,7 +19,7 @@ const { index } = Astro.locals;
   >
     <div class="flex flex-col items-center sm:flex-row sm:gap-12">
       <span class="font-sans text-base"
-        ><strong class="font-semibold">&copy; {index.data.business.name}</strong
+        ><strong class="font-semibold">&copy; {config.business.name}</strong
         >. {new Date().getFullYear()}</span
       >
 

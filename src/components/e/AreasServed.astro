@@ -1,12 +1,12 @@
 ---
-const { index } = Astro.locals;
+import { config } from "~/config";
 ---
 
 <ul
   class="mt-4 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))]"
 >
   {
-    index.data.business.areaServed.map((area: any, _: number) => (
+    config.business.areaServed.map((area: any, _: number) => (
       <li class="my-0.5">
         <span class="font-sans text-base">{area}</span>
       </li>

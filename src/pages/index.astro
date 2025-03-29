@@ -4,9 +4,9 @@ import Layout from "~/layouts/Layout.astro";
 
 const { index, services } = Astro.locals;
 
-import * as index_raw_data from "~/content/index/index.mdx";
 import logo from "~/icons/logo.svg";
 import { getImage } from "astro:assets";
+import { config } from "~/config";
 
 const serviceCovers = await Promise.all(
   services.map(async (service) => {
@@ -23,17 +23,16 @@ const serviceCovers = await Promise.all(
   }),
 );
 
-Astro.locals.schema = {
-  t: index.data.schema_type,
-  id: "company",
-};
-
 function schema() {
   let schema = {
     logo: `${Astro.url.origin}${logo.src.split("?")[0]}`,
   };
 
-  Object.assign(schema, index_raw_data.frontmatter.business);
+  Object.assign(schema, config.business);
+
+  if (schema.sameAs) {
+    schema.sameAs = schema.sameAs.map((item) => item.url);
+  }
 
   schema.makesOffer = services.map((service: any, i: number) => ({
     "@type": "Offer",
@@ -49,10 +48,6 @@ function schema() {
       },
     },
   }));
-
-  if (schema.sameAs) {
-    schema.sameAs = schema.sameAs.map((item) => item.url);
-  }
 
   return schema;
 }

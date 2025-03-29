@@ -1,5 +1,9 @@
+---
+import { config } from "~/config";
+---
+
 <a
   class="text-sans text-url text-base"
-  href={`mailto:${Astro.locals.index.data.business.email}`}
-  >{Astro.locals.index.data.business.email}</a
+  href={`mailto:${config.business.email}`}
+  >{config.business.email}</a
 >

@@ -1,4 +1,5 @@
 ---
+import { config } from "~/config";
 export function computeAggregateRating(astro: Astro, reviewData: any) {
   const reviewCount = reviewData.length;
   let totalRating = 0;
@@ -26,7 +27,7 @@ export function getItemReviewed(astro: Astro) {
     //   "@id": `${astro.url.origin}${astro.url.pathname}#${astro.locals.schema.id}`,
     // },
     itemReviewed: {
-      "@type": `${astro.locals.index.data.schema_type}`,
+      "@type": `${config.schema_type}`,
       "@id": `${astro.url.origin}#company`,
     },
   };

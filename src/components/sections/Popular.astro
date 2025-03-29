@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import PopularC from "~/components/nav/Popular.astro";
 import Container from "~/components/div/Container.astro";
 import ContainerTitle from "~/components/div/ContainerTitle.astro";
+import { config } from "~/config";
 
 const { index } = Astro.locals;
 const { title, titlePos = Astro.locals.getNextPos() } = Astro.props;
@@ -30,7 +31,7 @@ const { ...slot } = Astro.props;
           <Image
             src={img.src}
             alt={img.alt}
-            {...Astro.locals.globalDefaults.imageAttr}
+            {...config.globalDefaults.imageAttr}
           />
         ))}
       </PopularC>

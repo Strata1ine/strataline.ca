@@ -1,15 +1,15 @@
 ---
 import clsx from "clsx";
 import { Icon } from "astro-icon/components";
+import { config } from "~/config";
 
 const { imageClass, ...slot } = Astro.props;
-const { index } = Astro.locals;
 ---
 
 <ul {...slot}>
   {
-    index.data.business.sameAs &&
-      index.data.business.sameAs.map(
+    config.business.sameAs &&
+      config.business.sameAs.map(
         (media: any) =>
           media.social && (
             <li>

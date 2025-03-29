@@ -5,7 +5,7 @@ import Stars from "~/components/interactable/Stars.svelte";
 import { Icon } from "astro-icon/components";
 import Menu from "~/components/nav/Menu.astro";
 
-const { index } = Astro.locals;
+import { config } from "~/config";
 ---
 
 <Menu title="Let's talk" id="talkMenu" name="contact">
@@ -34,7 +34,7 @@ const { index } = Astro.locals;
 
     <option slot="in" class="font-sans text-base">Select a location</option>
     {
-      index.data.business.areaServed.map((area: any, _: number) => (
+      config.business.areaServed.map((area: any, _: number) => (
         <option slot="in" class="font-sans text-base">
           {area}
         </option>

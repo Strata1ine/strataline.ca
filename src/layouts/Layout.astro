@@ -3,8 +3,10 @@ import Footer from "~/components/nav/Footer.astro";
 import Menus from "~/components/nav/Menus.astro";
 
 import { parseHTML } from "linkedom";
+import { config } from "~/config";
 import { getImage } from "astro:assets";
-import { computeAggregateRating, getItemReviewed } from "~/lib/schema.astro";
+import { computeAggregateRating } from "~/lib/schema.astro";
+import { pngIcons } from "~/pages/manifest.json.ts";
 
 import "~/styles/global.css";
 
@@ -29,10 +31,10 @@ if (generateSchema == null) {
       isPartOf: {
         "@type": "WebSite",
         publisher: {
-          "@type": index.data.schema_type,
+          "@type": config.schema_type,
           "@id": `${Astro.url.origin}#company`,
-          name: index.data.business.name,
-          address: index.data.business.address,
+          name: config.business.name,
+          address: config.business.address,
         },
       },
     };
@@ -40,13 +42,6 @@ if (generateSchema == null) {
 }
 
 import faviconSvgSrc from "/public/favicon.svg";
-import faviconPngSrc from "/public/favicon.png";
-
-const appleTouchIcon = await getImage({
-  src: faviconPngSrc,
-  width: 512,
-  format: "png",
-});
 
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 ---
@@ -58,7 +53,7 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
     <meta name="viewport" content="width=device-width" />
     <title slot="head">
       {title && `${title} | `}
-      {index.data.business.name}
+      {config.business.name}
     </title>
 
     <meta name="description" content={description} />
@@ -66,7 +61,11 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
     <link rel="manifest" href="/manifest.json" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
-    <link rel="apple-touch-icon" sizes="512x512" href={appleTouchIcon.src} />
+    {
+      pngIcons.map((icon: any) => (
+        <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
+      ))
+    }
     <script src="../index.ts"></script>
 
     <slot name="head" />

@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import { Icon } from "astro-icon/components";
+import { config } from "~/config";
 
 const mobileMenu = crypto.randomUUID();
 const servicesDesktopMenu = crypto.randomUUID();
@@ -30,8 +31,6 @@ export const headerMap = {
 
 const { items = [{}], variant = HeaderVariant.Absolute } = Astro.props as Props;
 const isTop = variant === HeaderVariant.Fixed;
-
-const { index } = Astro.locals;
 ---
 
 <div
@@ -102,7 +101,7 @@ const { index } = Astro.locals;
   >
     <a
       href="/"
-      aria-label={`${index.data.business.name} logo, back to homepage`}
+      aria-label={`${config.business.name} logo, back to homepage`}
     >
       <Icon
         name="logo"

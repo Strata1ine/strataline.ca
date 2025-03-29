@@ -22,9 +22,10 @@ import Layout from "~/layouts/Layout.astro";
 import LetsTalk from "~/components/inputs/LetsTalk.astro";
 import Container, { ContainerVariant } from "~/components/div/Container.astro";
 import ServiceGallery from "~/components/nav/ServiceGallery.astro";
+import { config } from "~/config";
 
 const { slug } = Astro.params;
-const { index, services } = Astro.locals;
+const { services } = Astro.locals;
 const service = services.find((s) => s.slug === slug) as any;
 const { Content } = await service.render();
 
@@ -42,11 +43,11 @@ const image = await getImage({
 function schema() {
   return {
     provider: {
-      "@type": index.data.schema_type,
+      "@type": config.schema_type,
       "@id": `${Astro.url.origin}#company`,
-      name: index.data.business.name,
+      name: config.business.name,
       url: `${Astro.url.origin}`,
-      address: index.data.business.address,
+      address: config.business.address,
     },
     serviceType: "Home Renovation",
     name: service.data.title,
@@ -95,7 +96,7 @@ function schema() {
                 )}
                 alt={meta.alt}
                 loading="eager"
-                {...Astro.locals.globalDefaults.imageAttr}
+                {...config.globalDefaults.imageAttr}
               />
             ))
           }
@@ -123,7 +124,7 @@ function schema() {
                   "data-safari-bad": "duration-800",
                 })}
                 loading="eager"
-                {...Astro.locals.globalDefaults.imageAttr}
+                {...config.globalDefaults.imageAttr}
               />
             ))
           }
