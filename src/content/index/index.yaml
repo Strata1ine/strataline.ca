@@ -1,7 +1,7 @@
 title: ""
 description: ""
 components:
-  - type: Section.Hero
+  - type: Hero
     title: "Renovations designed to transform your space"
     description: |-
       We have been transforming spaces dust-free for decades.
@@ -16,7 +16,7 @@ components:
       - path: ./slideshow/bathroom.jpg
         alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
 
-  # - type: Section.Popular
+  # - type: Popular
   #   title: "Popular services"
   #   id: "popular"
   #

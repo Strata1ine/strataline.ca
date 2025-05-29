@@ -12,6 +12,7 @@ export default defineConfig({
   },
   experimental: {
     clientPrerender: true,
+    responsiveImages: true,
   },
   compressHTML: true,
   vite: { plugins: [tailwindcss()], },

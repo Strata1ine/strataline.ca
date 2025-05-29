@@ -1,14 +1,11 @@
 import { z } from "zod";
 import { type SchemaContext } from 'astro:content';
-import type { JSXElement } from "solid-js";
 export const componentsMeta: SchemaComponent[] = [];
-
-import("@/index");
 
 export type SchemaComponent = {
   id: string,
   init: (context: SchemaContext) => {},
-  render: (props: any) => JSXElement,
+  render: any,
 };
 
 export function register(
@@ -27,14 +24,3 @@ export function buildSchemaRegistery(context: SchemaContext) {
     ) as any
   ));
 }
-
-export function render(components: any[]): JSXElement[] {
-  return components.map((componentData) => {
-    const component = componentsMeta.find(
-      (meta: SchemaComponent) => meta.id === componentData.type
-    );
-
-    return component?.render(componentData);
-  });
-}
-
