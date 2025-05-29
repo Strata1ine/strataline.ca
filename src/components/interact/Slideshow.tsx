@@ -4,10 +4,7 @@ export type SlideshowMeta = {
   active: string,
   hidden: string,
   base: string,
-  images: {
-    alt: string,
-    path: ImageMetadata,
-  }[],
+  images: any[],
 }
 
 export default function Slideshow(props: { class: string; meta: SlideshowMeta }) {
@@ -21,10 +18,7 @@ export default function Slideshow(props: { class: string; meta: SlideshowMeta })
             class={
               `object-cover ${props.meta.base} ${activeIndex() === i() ? props.meta.active : props.meta.hidden
               }`}
-            alt={image.alt}
-            src={image.path.src}
-            width={image.path.width}
-            height={image.path.height}
+            {...image}
             data-index={i()}
           />
         )}
