@@ -1,15 +1,18 @@
 ---
 import { Slideshow } from "@/index";
+import { optimizeImages } from "@build/images";
 
 const {
   title,
   description,
-  images,
+  images: rawImages,
 }: {
   title: string;
   description: string;
   images: any[];
 } = Astro.props;
+
+let images = await optimizeImages(rawImages);
 ---
 
 <main
@@ -26,7 +29,7 @@ const {
     <div class="relative hidden flex-1 sm:flex">
       <Slideshow
         class="flex h-[65vh] max-h-175 min-h-130 justify-evenly rounded-sm contain-paint"
-        client:load
+        client:visible
         meta={{
           active: "w-full",
           hidden: "w-0",
