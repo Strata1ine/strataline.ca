@@ -7,13 +7,13 @@ components:
       We have been transforming spaces dust-free for decades.
     speed: 3000
     images:
-      - path: ./slideshow/kitchen.jpg
+      - meta: ./slideshow/kitchen.jpg
         alt: "A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."
-      - path: ./slideshow/dining_room.jpg
+      - meta: ./slideshow/dining_room.jpg
         alt: "A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."
-      - path: ./slideshow/living_room.jpg
+      - meta: ./slideshow/living_room.jpg
         alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
-      - path: ./slideshow/bathroom.jpg
+      - meta: ./slideshow/bathroom.jpg
         alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
 
   # - type: Popular

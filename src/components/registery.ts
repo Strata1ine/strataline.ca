@@ -10,7 +10,7 @@ register({
     description: z.string(),
     images: z.array(
       z.object({
-        path: context.image(),
+        meta: context.image(),
         alt: z.string(),
       })
     ),
