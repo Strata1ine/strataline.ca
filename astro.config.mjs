@@ -4,6 +4,10 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import solidJs from "@astrojs/solid-js";
 
+import compressor from "astro-compressor";
+
+import playformCompress from "@playform/compress";
+
 // https://astro.build/config
 export default defineConfig({
   prefetch: {
@@ -16,5 +20,5 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: { plugins: [tailwindcss()], },
-  integrations: [solidJs()],
+  integrations: [solidJs(), compressor(), playformCompress()],
 });
