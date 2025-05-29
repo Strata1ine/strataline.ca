@@ -1,0 +1,131 @@
+title: ""
+description: ""
+components:
+  - type: Section.Hero
+    title: "Renovations designed to transform your space"
+    description: |-
+      We have been transforming spaces dust-free for decades.
+    speed: 3000
+    images:
+      - path: ./slideshow/kitchen.jpg
+        alt: "A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."
+      - path: ./slideshow/dining_room.jpg
+        alt: "A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."
+      - path: ./slideshow/living_room.jpg
+        alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
+      - path: ./slideshow/bathroom.jpg
+        alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
+
+  # - type: Section.Popular
+  #   title: "Popular services"
+  #   id: "popular"
+  #
+  # - type: Section.LessPopular
+  #   id: "explore"
+  #   components:
+  #     - type: Section.TextCarousel
+  #       slot: "bottom"
+  #       text:
+  #         - "Made with care"
+  #         - "No mess"
+  #         - "No dust"
+  #         - "Absolute precision"
+  #         - "Expert execution"
+  #
+  # - type: Section.Slide
+  #   title: "Our accomplishments"
+  #   speed: 6000
+  #   id: "accomplishments"
+  #   components:
+  #     - type: Card.Slide
+  #       title: Featured on CityTV
+  #       description: |-
+  #         Strataline is invited to CityLine and Scott McGillivray reveals
+  #         the best way to get rid of popcorn ceilings.
+  #       images:
+  #         - path: "/static/videos/cityline.mp4"
+  #           alt: "Video poster for CityTV feature"
+  #           poster: "./awards/citytv.jpg"
+  #       actions:
+  #         - type: video
+  #           path: "/static/videos/cityline.mp4"
+  #           target: "image"
+  #
+  #     - type: Card.Slide
+  #       title: "Featured in The Star"
+  #       description: |-
+  #         The Star's sensational report on our Dust-Free approach
+  #         to renovation.
+  #       images:
+  #         - path: "./awards/star.jpg"
+  #           alt: "A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander."
+  #       components:
+  #         - type: Action.Link
+  #           target: "_blank"
+  #           href: "https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html"
+  #           text: "Read the Article"
+  #
+  #     - type: Card.Slide
+  #       title: "Featured in House & Home"
+  #       description: |-
+  #         House & Home seeks our expertise on chevron hardwood floor installation.
+  #       images:
+  #         - path: "./awards/houseandhome.webp"
+  #           alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
+  #       components:
+  #         - type: Action.Link
+  #           target: "_blank"
+  #           href: "https://houseandhome.com/gallery/luxe-for-less-design/"
+  #           text: "Read the Article"
+  #
+  #     - type: Card.Slide
+  #       title: "Featured on HGTV's Love It or List"
+  #       description: |-
+  #         Mother-in-Law’s 1980s House Needs an Overhaul |
+  #         Love It or List It | HGTV.
+  #       components:
+  #         - type: Action.Frame
+  #           title: "HGTV's virtual home tour"
+  #           slot: "image"
+  #           src: "https://my.matterport.com/show/?m=S9RBB2SkPRT"
+  #         - type: Action.Link
+  #           target: "_blank"
+  #           href: "https://www.youtube.com/watch?v=MqmEVTErkI0"
+  #           text: "Watch the Video"
+  #
+  # - type: Section.Review
+  #   title: "What our customers have to say"
+  #   id: "reviews"
+  #   meta:
+  #     - title: "Maggie and Scott"
+  #       location: "Mississauga"
+  #       stars: 5
+  #       content: |-
+  #         _My husband and I are unbelievably happy with the work that Max
+  #         and his team did on our ceilings in the house. The **professionalism**
+  #         of this team is incredible._
+  #
+  #     - title: "Jefferson Grove"
+  #       location: "Burlington"
+  #       stars: 5
+  #       content: |-
+  #         _The whole process from beginning to end was an absolute pleasure.
+  #         Max is a great **communicator** and was always quick to reply to texts
+  #         or emails. We highly recommend Strataline!_
+  #
+  #     - title: "Olivia"
+  #       location: "Toronto"
+  #       stars: 5
+  #       content: |-
+  #         _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in
+  #         four days and when they were done there was nothing to clean up.
+  #         Best decision I ever made!_
+  #
+  #     - title: "Lyn Litvack"
+  #       location: "Markham"
+  #       stars: 5
+  #       content: |-
+  #         _Max is the ultimate professional, immaculate, contentious and
+  #         polite. He is **punctual** and follows up on things quickly. The work
+  #         to our stairs is transforming and with his **guidance** we are thrilled
+  #         with the finished product._

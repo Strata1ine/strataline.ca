@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  /* RESET TAILWIND DEFAULTS */
+  --color-*: initial;
+  --default-font-*: initial;
+  --default-mono-*: initial;
+
+  --text-*: initial;
+  --radius-*: initial;
+  --leading-*: initial;
+  --container-*: initial;
+
+  --drop-*: initial;
+  --shadow-*: initial;
+  --inset-*: initial;
+  --animate-*: initial;
+  --blur-*: initial;
+  --ease-*: initial;
+  --perspective-*: initial;
+  --default-transition-*: initial;
+  --tracking-*: initial;
+  --aspect-video-*: initial;
+
+  --color-error: var(--color-accent-dark);
+  --color-success: #245E24;
+  --color-url: #5A7184;
+  --color-accent: #FEE2E6;
+  --color-accent-dark: #EF5277;
+  --color-black: #2B2B2B;
+  --color-white: #FFFAFB;
+  --color-tone: #F5F5F5;
+  --color-gold: #FFD0B5;
+
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'DMSans', 'Arial', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: initial;
+
+  --breakpoint-sm: 750px;
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 900px;
+  --breakpoint-xl: 1300px;
+  --breakpoint-2xl: 1450px;
+
+  --radius-sm: 5px;
+  --radius-lg: .5rem;
+
+  --text-sm: clamp(1.1rem, 2.1vw, 1.3rem);
+  --text-sm--line-height: 1.8;
+  --text-base: clamp(1.2rem, 2.1vw, 1.45rem);
+  --text-base--line-height: 1.8;
+  --text-bg: clamp(1.4rem, 2vw, 1.6rem);
+  --text-bg--line-height: 1.7;
+  --text-lg: clamp(1.5rem, 2.5vw, 1.9rem);
+  --text-lg--line-height: 1.3;
+  --text-xl: clamp(1.6rem, 3vw, 2.1rem);
+  --text-xl--line-height: 1.3;
+  --text-2xl: clamp(1.7rem, 3.3vw, 2.8rem);
+  --text-2xl--line-height: 1.3;
+  --text-3xl: clamp(2.0rem, 4.5vw, 3.3rem);
+  --text-3xl--line-height: 1.1;
+  --text-4xl: clamp(2.5rem, 4.5vw, 3.8rem);
+  --text-4xl--line-height: 1.1;
+  --text-5xl: clamp(2.3rem, 4.5vw, 4.4rem);
+  --text-5xl--line-height: 1.1;
+  --text-6xl: clamp(3.5rem, 4.5vw, 5rem);
+  --text-6xl--line-height: 0.7;
+  --text-7xl: clamp(8rem, 15vw, 14rem);
+  --text-7xl--line-height: 0.8;
+
+  --spacing-inset: 0.9rem;
+  --spacing-inner: 1300px;
+  --spacing-outer: 1450px;
+  --spacing-middle: calc(var(--spacing-inner) + (var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset));
+  --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
+  --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
+}

@@ -1,0 +1,12 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { Content } from "@build/Content";
+const { index } = Astro.locals;
+
+// console.dir(index.data.components, { depth: 20 });
+---
+
+<Layout>
+  <Content components={index.data.components} />
+    <div></div>
+</Layout>
