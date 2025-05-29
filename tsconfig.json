@@ -8,12 +8,24 @@
     "dist"
   ],
   "compilerOptions": {
-    "checkJs": true,
-    "allowJs": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "baseUrl": ".",
     "paths": {
       "~/*": [
         "src/*"
+      ],
+      "@/*": [
+        "src/components/*"
+      ],
+      "@sections/*": [
+        "src/components/sections/*"
+      ],
+      "@build/*": [
+        "src/build/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
       ]
     }
   }

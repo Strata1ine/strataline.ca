@@ -1,66 +1,12 @@
 ---
-import Header from "~/components/nav/Header.astro";
 import Layout from "~/layouts/Layout.astro";
+import { Content } from "@build/Content";
+const { index } = Astro.locals;
 
-const { index, services } = Astro.locals;
-
-import logo from "~/icons/logo.svg";
-import { getImage } from "astro:assets";
-import { config } from "~/config";
-
-const serviceCovers = await Promise.all(
-  services.map(async (service) => {
-    if (service.data.covers[0]?.src) {
-      const image = await getImage({
-        src: service.data.covers[0].src,
-        width: 2160,
-        format: "webp",
-      });
-      return image.src;
-    }
-
-    return null;
-  }),
-);
-
-function schema() {
-  let schema = {
-    logo: `${Astro.url.origin}${logo.src.split("?")[0]}`,
-  };
-
-  Object.assign(schema, config.business);
-
-  if (schema.sameAs) {
-    schema.sameAs = schema.sameAs.map((item) => item.url);
-  }
-
-  schema.makesOffer = services.map((service: any, i: number) => ({
-    "@type": "Offer",
-    itemOffered: {
-      "@type": "Service",
-      name: service.data.title,
-      serviceType: "Home Renovation",
-      description: service.data.description,
-      image: {
-        "@type": "ImageObject",
-        url: `${Astro.url.origin}${serviceCovers[i] || null}`,
-        description: service.data.covers[0]?.alt || null,
-      },
-    },
-  }));
-
-  return schema;
-}
-
-const { Content } = await index.render();
+// console.dir(index.data.components, { depth: 20 });
 ---
 
-<Layout
-  title={index.data.title}
-  description={index.data.description}
-  generateSchema={schema}
->
-  {index.data.header && <Header items={index.data.header.ref} />}
-
-  <Content />
+<Layout>
+  <Content components={index.data.components} />
+    <div></div>
 </Layout>

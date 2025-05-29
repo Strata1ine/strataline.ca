@@ -1,34 +1,16 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
+
+import "@/index";
+import { buildSchemaRegistery as c } from "@build/components";
 
 export const collections = {
   index: defineCollection({
-    schema: ({ image }) => z.object({
-      title: z.string().optional(),
-      description: z.string(),
-      popular: z.array(z.string()),
-      header: header(),
-    }),
-  }),
-  services: defineCollection({
-    schema: ({ image }) => z.object({
+    type: "data",
+    schema: (context: SchemaContext) => z.object({
       title: z.string(),
-      covers: z.array(z.object({
-        src: image(),
-        alt: z.string(),
-      })),
       description: z.string(),
-      draft: z.boolean().optional(),
+      components: c(context),
     }),
   }),
 };
-
-const header = function() {
-  return z.object({
-    enable: z.boolean().optional(),
-    ref: z.array(z.object({
-      id: z.string(),
-      name: z.string(),
-    })).optional()
-  })
-}
