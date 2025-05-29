@@ -1,2 +1,3 @@
-import Hero from "./sections/Hero";
-export { Hero };
+import Hero from "@sections/Hero.astro";
+import Slideshow from "@interact/Slideshow";
+export { Hero, Slideshow };

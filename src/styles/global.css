@@ -32,8 +32,8 @@
   --color-tone: #F5F5F5;
   --color-gold: #FFD0B5;
 
-  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
-  --font-sans: 'DMSans', 'Arial', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman';
+  --font-sans: 'DMSans', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
   --font-mono: initial;
 
   --breakpoint-sm: 750px;
@@ -74,4 +74,74 @@
   --spacing-middle: calc(var(--spacing-inner) + (var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset));
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
   --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
+}
+
+:root {
+  background: var(--color-white);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/static/fonts/dm-sans/DMSans-VariableFont_opsz,wght.woff2');
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/static/fonts/dm-sans/DMSans-Italic-VariableFont_opsz,wght.woff2');
+  font-display: fallback;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-Bold.woff2');
+  font-display: fallback;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-BoldItalic.woff2');
+  font-weight: 700;
+  font-display: fallback;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-Medium.woff2');
+  font-weight: 500;
+  font-display: fallback;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-MediumItalic.woff2');
+  font-weight: 500;
+  font-display: fallback;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-SemiBold.woff2');
+  font-weight: 600;
+  font-display: fallback;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/static/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2');
+  font-weight: 600;
+  font-display: fallback;
+  font-style: italic;
 }

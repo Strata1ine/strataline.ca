@@ -21,6 +21,9 @@
       "@sections/*": [
         "src/components/sections/*"
       ],
+      "@interact/*": [
+        "src/components/interact/*"
+      ],
       "@build/*": [
         "src/build/*"
       ],
