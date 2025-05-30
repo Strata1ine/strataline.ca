@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Slideshow, Slidenav } from "@/index";
+  import Slideshow from "@interact/Slideshow.svelte";
+  import Slidenav from "@interact/Slidenav.svelte";
   import Button from "@actions/Button.svelte";
 
   const {
