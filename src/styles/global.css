@@ -53,12 +53,12 @@
   --radius-sm: 5px;
   --radius-lg: .5rem;
 
-  --text-sm: 1.0rem;
-  --text-sm--line-height: 1.3;
+  --text-sm: 1.2rem;
+  --text-sm--line-height: 1.56;
   --text-base: 1.3rem;
-  --text-base--line-height: 1.6;
+  --text-base--line-height: 1.44;
   --text-bg: 1.45rem;
-  --text-bg--line-height: 1.5;
+  --text-bg--line-height: 1.29;
 
   --text-lg: 1.9rem;
   --text-lg--line-height: 1.0;
