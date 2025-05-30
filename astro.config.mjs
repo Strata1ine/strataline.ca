@@ -13,7 +13,6 @@ export default defineConfig({
   },
   experimental: {
     clientPrerender: true,
-    // responsiveImages: true,
   },
   compressHTML: true,
   vite: {
@@ -38,20 +37,24 @@ export default defineConfig({
       },
     },
   },
-  integrations: [svelte(), compressor(), (await import("@playform/compress")).default({
-    CSS: true,
-    HTML: {
-      "html-minifier-terser": {
-        removeEmptyAttributes: false,
-        removeComments: false,
-        removeAttributeQuotes: false,
-        collapseWhitespace: false,
-        conservativeCollapse: true,
-      }
-    },
-    Image: true,
-    JavaScript: true,
-    JSON: true,
-    SVG: true,
-  })],
+  integrations: [
+    svelte(),
+    compressor(),
+    (await import("@playform/compress")).default({
+      CSS: true,
+      HTML: {
+        "html-minifier-terser": {
+          removeEmptyAttributes: false,
+          removeComments: false,
+          removeAttributeQuotes: false,
+          collapseWhitespace: false,
+          conservativeCollapse: true,
+        }
+      },
+      Image: true,
+      JavaScript: true,
+      JSON: true,
+      SVG: true,
+    })
+  ],
 });

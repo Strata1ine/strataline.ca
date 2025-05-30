@@ -26,13 +26,13 @@ export const action = cva(
         fill: "bg-accent",
       },
       display: {
-        table: "table",
+        default: "",
         full: "w-full text-center",
       },
     },
     defaultVariants: {
       intent: "outline",
-      display: "table",
+      display: "default",
     },
   }
 );

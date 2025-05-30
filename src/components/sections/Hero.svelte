@@ -19,7 +19,7 @@
   let meta = {
     active: "w-full",
     hidden: "w-0",
-    base: "duration-700 select-none h-full",
+    base: "duration-700 transition-[width] select-none h-full",
     images,
   };
 </script>

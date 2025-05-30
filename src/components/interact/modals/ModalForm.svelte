@@ -14,7 +14,7 @@
     </h2>
     <button
       class="bg-tone cursor-pointer rounded-[50%] p-2"
-      aria-label={`Close ${title} dialog`}
+      aria-label={`Close dialog`}
       onclick={() => modals.close()}
     >
       <Icon icon="ph:x-bold" class="h-auto w-10 rounded-[50%] lg:w-11" />

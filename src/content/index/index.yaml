@@ -2,7 +2,8 @@ title: ""
 description: ""
 components:
   - type: Hero
-    title: "Renovations designed to transform your space"
+    title: |-
+      Renovations designed to transform your space
     description: |-
       We have been transforming spaces dust-free for decades.
     speed: 3000
@@ -15,7 +16,6 @@ components:
         alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
       - meta: ./slideshow/bathroom.jpg
         alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
-
   # - type: Popular
   #   title: "Popular services"
   #   id: "popular"

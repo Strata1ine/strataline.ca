@@ -15,10 +15,11 @@
   } = $props();
 </script>
 
-<div class={className}>
+<div class="relative {className}">
   {#each Array(length) as _, i}
     <button
       onclick={() => (idx = i)}
+      aria-label="View slide {i}"
       class={nav({ ...variant, state: idx === i })}
     ></button>
   {/each}
