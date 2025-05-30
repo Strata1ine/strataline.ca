@@ -2,12 +2,8 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from "@tailwindcss/vite";
-
-import compressor from "astro-compressor";
-
-import playformCompress from "@playform/compress";
-
 import svelte from "@astrojs/svelte";
+import compressor from "astro-compressor";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,5 +17,12 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: { plugins: [tailwindcss()], },
-  integrations: [compressor(), playformCompress(), svelte()],
+  integrations: [svelte(), compressor(), (await import("@playform/compress")).default({
+    CSS: true,
+    HTML: false,
+    Image: false,
+    JavaScript: true,
+    JSON: true,
+    SVG: true,
+  })],
 });
