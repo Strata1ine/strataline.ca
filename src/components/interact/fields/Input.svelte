@@ -60,7 +60,7 @@
   const uid = id();
 </script>
 
-<div class="relative mt-10 mb-8">
+<div class="relative my-10">
   <label
     class="absolute left-2 z-1 flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white px-3"
     for={uid}

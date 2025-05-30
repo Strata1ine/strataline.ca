@@ -85,6 +85,21 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* sleepy W3C */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-white) inset;
+  box-shadow: 0 0 0 1000px var(--color-white) inset;
+  -webkit-text-fill-color: var(--color-black);
+}
+
+@layer base {
+  button {
+    text-align: left;
+  }
+}
+
 @font-face {
   font-family: 'DMSans';
   src: url('/static/fonts/dm-sans/DMSans-VariableFont_opsz,wght.woff2');

@@ -14,4 +14,16 @@ export const collections = {
       components: c(context),
     }),
   }),
+  services: defineCollection({
+    type: "data",
+    schema: ({ image }) => z.object({
+      title: z.string(),
+      covers: z.array(z.object({
+        src: image(),
+        alt: z.string(),
+      })),
+      description: z.string(),
+      draft: z.boolean().optional(),
+    }),
+  }),
 };

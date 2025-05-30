@@ -1,0 +1,15 @@
+---
+const { index, services: serviceData } = Astro.locals;
+const { title, ...slot } = Astro.props;
+
+const services = serviceData
+  .filter((service) =>
+    index.data.popular.some((pattern: string) =>
+      service.slug.includes(pattern),
+    ),
+  )
+  .sort(
+    (a, b) =>
+      index.data.popular.indexOf(a.slug) - index.data.popular.indexOf(b.slug),
+  );
+---
