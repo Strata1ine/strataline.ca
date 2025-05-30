@@ -1,7 +1,7 @@
 import { register } from "@build/components";
 import type { SchemaContext } from "astro:content";
 import { z } from "zod";
-import * as Components from "./index";
+import * as Components from "@/index";
 
 register({
   id: "Hero",

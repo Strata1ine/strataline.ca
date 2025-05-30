@@ -1,6 +1,6 @@
 ---
-import { Slideshow } from "@/index";
 import { optimizeImages } from "@build/images";
+import HeroInternal from "./Hero.svelte";
 
 const {
   title,
@@ -24,31 +24,8 @@ let images = await optimizeImages(rawImages);
   </div>
 
   <div
-    class="2xl:max-w-outer px-inset flex w-full items-center gap-6 pt-15 sm:py-0 xl:gap-7 2xl:mx-auto 2xl:gap-9"
+    class="2xl:max-w-outer px-inset flex w-full items-center gap-8 xl:gap-11 2xl:mx-auto"
   >
-    <div class="relative hidden flex-1 sm:flex">
-      <Slideshow
-        class="flex h-[65vh] max-h-175 min-h-130 justify-evenly rounded-sm contain-paint"
-        client:visible
-        meta={{
-          active: "w-full",
-          hidden: "w-0",
-          base: "duration-300",
-          images,
-        }}
-      />
-    </div>
-
-    <div class="relative flex-1">
-      <h1 class="mb-2 font-serif text-5xl font-bold text-balance">
-        {title}
-      </h1>
-
-      <p class="font-sans text-base">
-        {description}
-      </p>
-
-      <div class="mt-8 pb-17"></div>
-    </div>
+    <HeroInternal client:idle {title} {description} {images} />
   </div>
 </main>

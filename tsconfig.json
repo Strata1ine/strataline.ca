@@ -22,6 +22,9 @@
       "@interact/*": [
         "src/components/interact/*"
       ],
+      "@actions/*": [
+        "src/components/interact/actions/*"
+      ],
       "@build/*": [
         "src/build/*"
       ],
