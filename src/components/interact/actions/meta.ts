@@ -18,7 +18,7 @@ export const nav = cva("cursor-pointer",
 )
 
 export const action = cva(
-  "rounded-lg px-5 py-2 xl:px-7 xl:py-4 font-serif text-bg xl:text-lg font-bold cursor-pointer",
+  "rounded-lg px-6 py-2 font-serif text-md xl:text-lg font-bold cursor-pointer",
   {
     variants: {
       intent: {
