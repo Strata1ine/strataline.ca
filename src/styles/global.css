@@ -53,25 +53,26 @@
   --radius-sm: 5px;
   --radius-lg: .5rem;
 
-  --text-sm: 1.2rem;
+  --text-sm: 1.1rem;
   --text-sm--line-height: 1.56;
-  --text-base: 1.3rem;
+  --text-base: 1.2rem;
   --text-base--line-height: 1.44;
-  --text-bg: 1.45rem;
-  --text-bg--line-height: 1.29;
-
+  --text-md: 1.45rem;
+  --text-md--line-height: 1.44;
+  --text-bg: 1.65rem;
+  --text-bg--line-height: 1.44;
   --text-lg: 1.9rem;
-  --text-lg--line-height: 1.0;
+  --text-lg--line-height: 1.44;
   --text-xl: 2.1rem;
-  --text-xl--line-height: 1.0;
+  --text-xl--line-height: 1.1;
   --text-2xl: 2.8rem;
-  --text-2xl--line-height: 1.0;
+  --text-2xl--line-height: 1.1;
   --text-3xl: 3.3rem;
   --text-3xl--line-height: 1.1;
   --text-4xl: 3.8rem;
   --text-4xl--line-height: 1.1;
   --text-5xl: 4.4rem;
-  --text-5xl--line-height: 1.05;
+  --text-5xl--line-height: 1.0;
   --text-6xl: 5rem;
   --text-6xl--line-height: 0.7;
 }

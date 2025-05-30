@@ -11,7 +11,7 @@
     idx: number;
     class?: string;
     length: number;
-    variant: VariantProps<typeof nav>;
+    variant?: VariantProps<typeof nav>;
   } = $props();
 </script>
 

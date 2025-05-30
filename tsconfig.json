@@ -25,6 +25,12 @@
       "@actions/*": [
         "src/components/interact/actions/*"
       ],
+      "@modals/*": [
+        "src/components/interact/modals/*"
+      ],
+      "@fields/*": [
+        "src/components/interact/fields/*"
+      ],
       "@build/*": [
         "src/build/*"
       ],
