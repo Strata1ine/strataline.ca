@@ -35,7 +35,7 @@ export function focusLock(node) {
 
       if (
         previousFocus &&
-        previousFocus.classList.contains("include-in-focuslock") &&
+        previousFocus.hasAttribute("include-in-focuslock") &&
         !focusable.includes(previousFocus)
       ) {
         focusable.unshift(previousFocus);

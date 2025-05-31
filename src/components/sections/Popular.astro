@@ -1,7 +1,7 @@
 ---
 import { container } from "@sections/meta.ts";
 import { optimizeImages, type OptimizedImage } from "@build/images";
-import { Pos, swapPos, imageCover } from "@sections/meta";
+import { Pos, swapPos, imageCover, heading, imageVariants } from "@sections/meta";
 import Link from "@actions/Link.svelte";
 
 const { index, services: serviceData } = Astro.locals;
@@ -24,69 +24,62 @@ for (let i = 0; i < services.length; i++) {
 }
 
 let next = swapPos(pos);
+
 ---
 
 <section class={container({spaced: true})} id={elementId}>
-  <div class="mb-14">
-    <h2 class="font-serif text-2xl md:text-3xl xl:text-4xl font-bold text-balance text-right">
-      {title}
-    </h2>
-  </div>
+  <h2 class={heading({spaced: true, align: "right"})}>
+    {title}
+  </h2>
 
   {
     services.map((service, i) => {
       const slug = service.id.split("/")[0];
       const render = () =>
-        images[i].map((image, _) => <img class={imageCover({ intent: images[i].length > 1 })} {...image} />);
+        images[i].map((image, _) => <img class={imageCover({ multiple: images[i].length > 1 })} {...image} />);
 
       next = swapPos(next);
 
       return (
         <div
-          class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
-          id={slug}
+         class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+         id={slug}
         >
-          {next === Pos.Left && (
-            <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
-              {render()}
-            </div>
-          )}
-
-          <div class="flex-1">
-            <h3 class="mb-2 font-serif text-xl md:text-2xl xl:text-3xl font-semibold">{service.data.title}</h3>
-
-            {
-              next === Pos.Right && (
-                <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-sm rounded-bl-sm contain-paint sm:hidden">
-                  {render()}
-                </div>
-              )
-            }
-
-            {
-              next === Pos.Left && (
-                <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-sm rounded-br-sm contain-paint sm:hidden">
-                  {render()}
-                </div>
-              )
-            }
-
-            <p class="font-sans text-base xl:text-md">
-              {service.data.description}
-            </p>
-
-            <div class="mt-8">
-              <Link href=`/services/${slug}` data-astro-prefetch=''>Explore More</Link>
-            </div>
-          </div>
-
-          {
-            next === Pos.Right && (
-              <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
-                {render()}
-              </div>
-            )
-          }
+         {next === Pos.Left && (
+           <div class={imageVariants({ position: "left", device: "desktop" })}>
+             {render()}
+           </div>
+         )}
+         <div class="flex-1">
+           <h3 class="mb-2 font-serif text-xl md:text-3xl xl:text-4xl font-semibold">{service.data.title}</h3>
+           {
+             next === Pos.Right && (
+               <div class={imageVariants({ position: "right", device: "mobile" })}>
+                 {render()}
+               </div>
+             )
+           }
+           {
+             next === Pos.Left && (
+               <div class={imageVariants({ position: "left", device: "mobile" })}>
+                 {render()}
+               </div>
+             )
+           }
+           <p class="font-sans text-base xl:text-md">
+             {service.data.description}
+           </p>
+           <div class="mt-8">
+             <Link href=`/services/${slug}` data-astro-prefetch=''>Explore More</Link>
+           </div>
+         </div>
+         {
+           next === Pos.Right && (
+             <div class={imageVariants({ position: "right", device: "desktop" })}>
+               {render()}
+             </div>
+           )
+         }
         </div>
       );
     })

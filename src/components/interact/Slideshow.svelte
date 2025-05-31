@@ -23,6 +23,7 @@
       class={`object-cover ${meta.base} ${idx === i ? meta.active : meta.hidden}`}
       {...image}
       data-index={i}
+      loading={i === idx ? "eager" : "lazy"}
       widths={[750, 1300, 2160]}
       sizes="60vw"
       width={2160}

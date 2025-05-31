@@ -17,7 +17,7 @@
     <Input name="E-mail" required autocomplete="on" type="email" validate />
     <PhoneNumber />
     <Select base="Select a location" values={config.areaServed} />
-    <TextArea required minlength="14" class="min-h-40" name="Message" />
+    <TextArea required minlength="14" class="min-h-30" name="Message" />
 
     <Photos />
 

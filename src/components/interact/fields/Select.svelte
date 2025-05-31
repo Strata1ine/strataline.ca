@@ -8,7 +8,6 @@
 
 <Input
   as="select"
-  variant={{ intent: "hidden" }}
   name="Location"
   oninput={(e) => {
     value = e.target.value;
