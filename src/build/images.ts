@@ -1,6 +1,17 @@
 import { getImage } from 'astro:assets';
 
-export async function optimizeImages(images: { meta: ImageMetadata; alt: string }[]) {
+export type OptimizedImage = {
+  src: string;
+  srcset: string;
+  width: string;
+  height: string;
+  sizes: string;
+  loading: string;
+  alt: string;
+  draggable: boolean;
+}
+
+export async function optimizeImages(images: { meta: ImageMetadata; alt: string }[]): Promise<OptimizedImage[]> {
   return await Promise.all(
     images.map(async (image) => {
       const opt = await getImage({
@@ -17,10 +28,13 @@ export async function optimizeImages(images: { meta: ImageMetadata; alt: string 
         height: opt.attributes.height,
         sizes: opt.attributes.sizes,
         loading: opt.attributes.loading,
-        decoding: opt.attributes.decoding,
         alt: image.alt,
         draggable: false,
       };
     })
   );
+}
+
+export function imageCover(count: number): string {
+  return `object-cover h-full select-none${count > 1 ? ' min-w-0 hover:flex-5 flex-1 duration-800' : ''}`;
 }

@@ -54,15 +54,15 @@
   --radius-lg: .5rem;
 
   --text-sm: 1.1rem;
-  --text-sm--line-height: 1.56;
+  --text-sm--line-height: 1.66;
   --text-base: 1.2rem;
-  --text-base--line-height: 1.44;
+  --text-base--line-height: 1.54;
   --text-md: 1.45rem;
-  --text-md--line-height: 1.44;
+  --text-md--line-height: 1.54;
   --text-bg: 1.65rem;
-  --text-bg--line-height: 1.44;
+  --text-bg--line-height: 1.54;
   --text-lg: 1.9rem;
-  --text-lg--line-height: 1.44;
+  --text-lg--line-height: 1.54;
   --text-xl: 2.1rem;
   --text-xl--line-height: 1.1;
   --text-2xl: 2.8rem;
@@ -97,6 +97,10 @@ input:-webkit-autofill:focus {
 @layer base {
   button {
     text-align: left;
+  }
+
+  a {
+    display: table;
   }
 }
 

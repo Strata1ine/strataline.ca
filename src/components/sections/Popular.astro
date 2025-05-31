@@ -1,15 +1,94 @@
 ---
+import { container } from "@sections/meta.ts";
+import { optimizeImages, type OptimizedImage } from "@build/images";
+import { Pos, swapPos, imageCover } from "@sections/meta";
+import Link from "@actions/Link.svelte";
+
 const { index, services: serviceData } = Astro.locals;
-const { title, ...slot } = Astro.props;
+const { title, pos = Astro.locals.getNextPos(), id: elementId } = Astro.props;
 
 const services = serviceData
   .filter((service) =>
     index.data.popular.some((pattern: string) =>
-      service.slug.includes(pattern),
+      service.id.split("/")[0].includes(pattern),
     ),
   )
   .sort(
     (a, b) =>
-      index.data.popular.indexOf(a.slug) - index.data.popular.indexOf(b.slug),
+      index.data.popular.indexOf(a.slug) + index.data.popular.indexOf(b.slug),
   );
+
+const images: OptimizedImage[][] = [];
+for (let i = 0; i < services.length; i++) {
+  images.push(await optimizeImages(services[i].data.covers));
+}
+
+let next = swapPos(pos);
 ---
+
+<section class={container({spaced: true})} id={elementId}>
+  <div class="mb-14">
+    <h2 class="font-serif text-2xl md:text-3xl xl:text-4xl font-bold text-balance text-right">
+      {title}
+    </h2>
+  </div>
+
+  {
+    services.map((service, i) => {
+      const slug = service.id.split("/")[0];
+      const render = () =>
+        images[i].map((image, _) => <img class={imageCover({ intent: images[i].length > 1 })} {...image} />);
+
+      next = swapPos(next);
+
+      return (
+        <div
+          class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+          id={slug}
+        >
+          {next === Pos.Left && (
+            <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
+              {render()}
+            </div>
+          )}
+
+          <div class="flex-1">
+            <h3 class="mb-2 font-serif text-xl md:text-2xl xl:text-3xl font-semibold">{service.data.title}</h3>
+
+            {
+              next === Pos.Right && (
+                <div class="-mr-inset my-4 ml-7 flex h-65 justify-center rounded-tl-sm rounded-bl-sm contain-paint sm:hidden">
+                  {render()}
+                </div>
+              )
+            }
+
+            {
+              next === Pos.Left && (
+                <div class="-ml-inset my-4 mr-7 flex h-65 justify-center rounded-tr-sm rounded-br-sm contain-paint sm:hidden">
+                  {render()}
+                </div>
+              )
+            }
+
+            <p class="font-sans text-base xl:text-md">
+              {service.data.description}
+            </p>
+
+            <div class="mt-8">
+              <Link href=`/services/${slug}` data-astro-prefetch=''>Explore More</Link>
+            </div>
+          </div>
+
+          {
+            next === Pos.Right && (
+              <div class="hidden h-120 w-1/2 justify-center rounded-sm contain-paint sm:flex">
+                {render()}
+              </div>
+            )
+          }
+        </div>
+      );
+    })
+  }
+</section>
