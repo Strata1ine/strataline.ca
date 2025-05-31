@@ -1,2 +1,3 @@
 import Hero from "@sections/Hero.astro";
-export { Hero };
+import Popular from "@sections/Popular.astro";
+export { Hero, Popular };

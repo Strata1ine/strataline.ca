@@ -4,5 +4,6 @@ seo_description: |-
 description: |-
   Once valued for hiding imperfections, popcorn ceilings are now considered outdated and hard to maintain.
 covers:
-  - src: ./cover.jpg
-    alt: "A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process."
+  - meta: ./cover.jpg
+    alt: |-
+      A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process.

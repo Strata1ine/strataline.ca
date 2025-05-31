@@ -1,6 +1,10 @@
 title: ""
 description: ""
+popular:
+  - popcorn-removal
+  - stairs
 components:
+
   - type: Hero
     title: |-
       Renovations designed to transform your space
@@ -9,16 +13,21 @@ components:
     speed: 3000
     images:
       - meta: ./slideshow/kitchen.jpg
-        alt: "A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings."
+        alt: |-
+          A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
       - meta: ./slideshow/dining_room.jpg
-        alt: "A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth."
+        alt: |-
+          A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
       - meta: ./slideshow/living_room.jpg
-        alt: "A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating."
+        alt: |-
+          A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
       - meta: ./slideshow/bathroom.jpg
-        alt: "A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor."
-  # - type: Popular
-  #   title: "Popular services"
-  #   id: "popular"
+        alt: |-
+          A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
+
+  - type: Popular
+    title: "Popular services"
+    id: "popular"
   #
   # - type: Section.LessPopular
   #   id: "explore"

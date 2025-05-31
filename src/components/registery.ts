@@ -17,3 +17,12 @@ register({
   }),
   render: Components.Hero,
 });
+
+register({
+  id: "Popular",
+  init: (_: SchemaContext) => ({
+    title: z.string(),
+    id: z.string(),
+  }),
+  render: Components.Popular,
+});

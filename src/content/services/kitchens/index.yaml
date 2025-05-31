@@ -4,5 +4,6 @@ description: |-
 seo_description: |-
   Modern kitchen renovations with custom cabinetry, quartz countertops, and energy-efficient appliances. Expert design for functionality and style, tailored to your budget.
 covers:
-  - src: ./cover.jpg
-    alt: "A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light."
+  - meta: ./cover.jpg
+    alt: |-
+      A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.

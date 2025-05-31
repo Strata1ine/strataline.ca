@@ -4,5 +4,6 @@ description: |-
 seo_description: |-
   Stylish bathroom remodels with bespoke vanities, premium stone tiles, and sleek fixtures. Expert craftsmanship for comfort and elegance, customized to your budget.
 covers:
-  - src: ./cover.jpg
-    alt: "A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space."
+  - meta: ./cover.jpg
+    alt: |-
+      A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.

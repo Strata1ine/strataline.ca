@@ -17,17 +17,6 @@ export default defineConfig({
   compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        external: ['sharp']
-      }
-    },
-    optimizeDeps: {
-      exclude: ['sharp']
-    },
-    ssr: {
-      external: ['sharp']
-    }
   },
   image: {
     service: {
