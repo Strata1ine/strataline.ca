@@ -1,0 +1,25 @@
+---
+import { container } from "@sections/meta.ts";
+import { optimizeImages, type OptimizedImage } from "@build/images";
+
+const { index, services: serviceData } = Astro.locals;
+const {
+  title,
+  pos = Astro.locals.getNextPos(),
+  exclude = [],
+  id: elementId,
+} = Astro.props;
+
+const services = serviceData.filter(
+  (service) =>
+    !exclude.some((pattern: string) => service.slug.includes(pattern)),
+);
+
+const images: OptimizedImage[][] = [];
+for (let i = 0; i < services.length; i++) {
+  images.push(await optimizeImages(services[i].data.covers));
+}
+---
+
+<section id={elementId} class={container({ spaced: true })}>
+</section>

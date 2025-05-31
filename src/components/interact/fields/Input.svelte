@@ -8,24 +8,15 @@
 
 <script>
   import { onMount } from "svelte";
-  import { cva } from "class-variance-authority";
   import Icon from "@iconify/svelte";
 
   let input = $state(null);
   let valid = $state(false);
-
-  export const style = cva("focus:outline-none", {
-    variants: {
-      intent: {
-        fill: "w-full font-sans text-sm sm:text-base",
-        hidden:
-          "absolute inset-0 cursor-pointer appearance-none text-transparent select-none",
-      },
-    },
-    defaultVariants: {
-      intent: "fill",
-    },
-  });
+  let style = `focus:outline-none ${
+    overlay
+      ? "absolute inset-0 cursor-pointer appearance-none text-transparent select-none"
+      : "w-full font-sans text-sm sm:text-base"
+  }`;
 
   let {
     name,
@@ -82,7 +73,7 @@
       <svelte:element
         this={as}
         id={uid}
-        class="{style(variant)} {customClass}"
+        class="{style} {customClass}"
         bind:this={input}
         oninput={inputOverride}
         {required}
@@ -94,7 +85,7 @@
       <svelte:element
         this={as}
         id={uid}
-        class="{style(variant)} {customClass}"
+        class="{style} {customClass}"
         bind:this={input}
         oninput={inputOverride}
         {required}

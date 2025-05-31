@@ -7,6 +7,6 @@ const { index } = Astro.locals;
 ---
 
 <Layout>
-  <TalkMenu client:only />
   <Content components={index.data.components} />
+  <TalkMenu client:only />
 </Layout>

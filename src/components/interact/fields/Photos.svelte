@@ -9,7 +9,6 @@
 <Input
   {name}
   accept="image/*"
-  variant={{ intent: "hidden" }}
   multiple
   type="file"
   onchange={(e) => {
