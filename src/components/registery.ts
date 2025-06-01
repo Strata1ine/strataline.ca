@@ -26,3 +26,11 @@ register({
   }),
   render: Components.Popular,
 });
+
+register({
+  id: "LessPopular",
+  init: (_: SchemaContext) => ({
+    id: z.string(),
+  }),
+  render: Components.LessPopular,
+});

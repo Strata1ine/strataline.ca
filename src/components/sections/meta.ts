@@ -3,19 +3,18 @@ import { cva } from "class-variance-authority";
 export const container = cva("", {
   variants: {
     intent: {
-      inner: "xl:max-w-inner px-inset xl:mx-auto",
-      outer: "2xl:max-w-outer px-inset 2xl:mx-auto",
+      inner: "xl:max-w-inner xl:mx-auto",
+      outer: "2xl:max-w-outer 2xl:mx-auto",
       fill: "max-w-full",
       display: "max-w-[calc(var(--spacing-outer-span)+30rem)] xl:mx-auto",
     },
     spaced: {
-      false: null,
-      true: "my-30",
+      false: "px-inset",
+      true: "my-35 px-inset",
     },
   },
   defaultVariants: {
     intent: "outer",
-    spaced: false,
   },
 });
 
@@ -37,7 +36,7 @@ export const heading = cva("", {
   defaultVariants: {
     intent: "primary",
     align: "left",
-    spaced: false,
+    spaced: true,
   },
 });
 
@@ -80,8 +79,8 @@ export const imageVariants = cva(
 )
 
 export enum Pos {
-  Left = 0,
-  Right = 1,
+  Left = "left",
+  Right = "right",
 }
 
 export function swapPos(pos: Pos): Pos {

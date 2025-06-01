@@ -1,25 +1,60 @@
 ---
-import { container } from "@sections/meta.ts";
-import { optimizeImages, type OptimizedImage } from "@build/images";
+import { container, heading } from "@sections/meta.ts";
+import clsx from "clsx";
 
-const { index, services: serviceData } = Astro.locals;
+import Icon from "@iconify/svelte";
+
+const { index, serviceCovers } = Astro.locals;
 const {
-  title,
+  title = "There's more to explore",
   pos = Astro.locals.getNextPos(),
-  exclude = [],
   id: elementId,
 } = Astro.props;
 
-const services = serviceData.filter(
+const services = Astro.locals.services.filter(
   (service) =>
-    !exclude.some((pattern: string) => service.slug.includes(pattern)),
+    !index.data.popular.some((pattern: string) =>
+      service.id.split("/")[0].includes(pattern),
+    ),
 );
-
-const images: OptimizedImage[][] = [];
-for (let i = 0; i < services.length; i++) {
-  images.push(await optimizeImages(services[i].data.covers));
-}
 ---
 
-<section id={elementId} class={container({ spaced: true })}>
+<section id={elementId} class={container({ spaced: true, intent: "fill" })}>
+  <h2 class={clsx(container({ intent: "inner" }), heading({ align: pos }))}>
+    {title}
+  </h2>
+
+  <div class="bg-accent">
+    <div
+      class={clsx(
+        container({ intent: "inner" }),
+        "flex flex-wrap justify-center gap-6 py-22 sm:gap-y-12 2xl:gap-7",
+      )}
+    >
+      {
+        services.map((service, _) => {
+          const slug = service.id.split("/")[0];
+          const covers = serviceCovers.get(service.id);
+          if (covers == null) return;
+
+          return (
+            <a
+              class="flex w-full items-center gap-3 sm:max-w-1/2 sm:flex-[40%] sm:flex-col sm:items-baseline lg:max-w-1/3 lg:flex-[30%]"
+              href={`/services/${slug}`}
+            >
+              <img
+                class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm object-cover transition duration-300 select-none hover:scale-[1.05] sm:w-full"
+                {...covers[0]}
+              />
+
+              <div>
+                <h3 class="font-serif text-xl">{service.data.title}</h3>
+                <Icon  />
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
 </section>
