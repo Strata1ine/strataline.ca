@@ -24,7 +24,9 @@ let images = await optimizeImages(rawImages);
   >
   </div>
 
-    <div class={`${container()} flex w-full items-center gap-6 xl:gap-8 py-15 2xl:gap-11`}>
+  <div
+    class={`${container({ spaced: false })} flex w-full items-center gap-6 xl:gap-8 py-15 2xl:gap-11`}
+  >
     <Island client:visible {title} {description} {images} />
   </div>
 </main>

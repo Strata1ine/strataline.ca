@@ -1,13 +1,20 @@
 ---
-import { container } from "@sections/meta.ts";
-import { optimizeImages, type OptimizedImage } from "@build/images";
-import { Pos, swapPos, imageCover, heading, imageVariants } from "@sections/meta";
-import Link from "@actions/Link.svelte";
+import {
+  Pos,
+  swapPos,
+  container,
+  imageCover,
+  heading,
+  imageVariants,
+} from "@sections/meta";
 
-const { index, services: serviceData } = Astro.locals;
+import Link from "@actions/Link.svelte";
+import clsx from "clsx";
+
+const { index, serviceCovers } = Astro.locals;
 const { title, pos = Astro.locals.getNextPos(), id: elementId } = Astro.props;
 
-const services = serviceData
+const services = Astro.locals.services
   .filter((service) =>
     index.data.popular.some((pattern: string) =>
       service.id.split("/")[0].includes(pattern),
@@ -18,68 +25,81 @@ const services = serviceData
       index.data.popular.indexOf(a.slug) + index.data.popular.indexOf(b.slug),
   );
 
-const images: OptimizedImage[][] = [];
-for (let i = 0; i < services.length; i++) {
-  images.push(await optimizeImages(services[i].data.covers));
-}
-
 let next = swapPos(pos);
-
 ---
 
-<section class={container({spaced: true})} id={elementId}>
-  <h2 class={heading({spaced: true, align: "right"})}>
+<section class={container({ spaced: true })} id={elementId}>
+  <h2 class={clsx(container({ intent: "inner" }), heading({ align: pos }))}>
     {title}
   </h2>
 
   {
-    services.map((service, i) => {
+    services.map((service, _) => {
       const slug = service.id.split("/")[0];
+      const covers = serviceCovers.get(service.id);
+      if (covers == null) return;
       const render = () =>
-        images[i].map((image, _) => <img class={imageCover({ multiple: images[i].length > 1 })} {...image} />);
+        covers.map((image, _) => (
+          <img
+            class={imageCover({
+              multiple: covers.length > 1,
+            })}
+            {...image}
+          />
+        ));
 
       next = swapPos(next);
 
       return (
         <div
-         class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
-         id={slug}
+          class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+          id={slug}
         >
-         {next === Pos.Left && (
-           <div class={imageVariants({ position: "left", device: "desktop" })}>
-             {render()}
-           </div>
-         )}
-         <div class="flex-1">
-           <h3 class="mb-2 font-serif text-xl md:text-3xl xl:text-4xl font-semibold">{service.data.title}</h3>
-           {
-             next === Pos.Right && (
-               <div class={imageVariants({ position: "right", device: "mobile" })}>
-                 {render()}
-               </div>
-             )
-           }
-           {
-             next === Pos.Left && (
-               <div class={imageVariants({ position: "left", device: "mobile" })}>
-                 {render()}
-               </div>
-             )
-           }
-           <p class="font-sans text-base xl:text-md">
-             {service.data.description}
-           </p>
-           <div class="mt-8">
-             <Link href=`/services/${slug}` data-astro-prefetch=''>Explore More</Link>
-           </div>
-         </div>
-         {
-           next === Pos.Right && (
-             <div class={imageVariants({ position: "right", device: "desktop" })}>
-               {render()}
-             </div>
-           )
-         }
+          {next === Pos.Left && (
+            <div class={imageVariants({ position: "left", device: "desktop" })}>
+              {render()}
+            </div>
+          )}
+
+          <div class="flex-1">
+            <h3 class="mb-2 font-serif text-xl font-semibold md:text-3xl xl:text-4xl">
+              {service.data.title}
+            </h3>
+
+            {next === Pos.Right && (
+              <div
+                class={imageVariants({ position: "right", device: "mobile" })}
+              >
+                {render()}
+              </div>
+            )}
+
+            {next === Pos.Left && (
+              <div
+                class={imageVariants({ position: "left", device: "mobile" })}
+              >
+                {render()}
+              </div>
+            )}
+
+            <p class="xl:text-md font-sans text-base">
+              {service.data.description}
+            </p>
+
+            <div class="mt-8">
+              <Link href={`/services/${slug}`} data-astro-prefetch="">
+                Explore More
+              </Link>
+            </div>
+          </div>
+
+          {next === Pos.Right && (
+            <div
+              class={imageVariants({ position: "right", device: "desktop" })}
+            >
+              {render()}
+            </div>
+          )}
         </div>
       );
     })

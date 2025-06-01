@@ -25,7 +25,7 @@
 </script>
 
 <div
-  class="hidden w-1/2 flex-col items-center gap-3 md:gap-6 sm:flex 2xl:flex-row-reverse"
+  class="hidden w-1/2 flex-col items-center gap-3 sm:flex md:gap-6 2xl:flex-row-reverse"
 >
   <Slideshow
     class="flex h-[80vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"
@@ -38,7 +38,7 @@
 
 <div class="relative flex-1">
   <h1
-    class="md:text-3xl font-serif text-2xl font-bold text-balance lg:text-4xl xl:text-5xl 2xl:text-6xl"
+    class="font-serif text-2xl font-bold text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl"
   >
     {title}
   </h1>
@@ -53,7 +53,7 @@
     <Slidenav class="flex flex-col gap-3" bind:idx {length} />
   </div>
 
-  <p class="xl:text-md my-3 font-sans text-base">
+  <p class="xl:text-md mt-3 font-sans text-base">
     {description}
   </p>
 

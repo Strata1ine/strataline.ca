@@ -28,19 +28,16 @@ components:
   - type: Popular
     title: "Popular services"
     id: "popular"
-  #
-  # - type: Section.LessPopular
-  #   id: "explore"
-  #   components:
-  #     - type: Section.TextCarousel
-  #       slot: "bottom"
-  #       text:
-  #         - "Made with care"
-  #         - "No mess"
-  #         - "No dust"
-  #         - "Absolute precision"
-  #         - "Expert execution"
-  #
+
+  - type: LessPopular
+    id: "explore"
+    slot: "bottom"
+    text:
+      - "Made with care"
+      - "No mess"
+      - "No dust"
+      - "Absolute precision"
+      - "Expert execution"
   # - type: Section.Slide
   #   title: "Our accomplishments"
   #   speed: 6000
