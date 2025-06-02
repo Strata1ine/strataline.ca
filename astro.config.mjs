@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import svelte from "@astrojs/svelte";
 import compressor from "astro-compressor";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,6 +30,7 @@ export default defineConfig({
   integrations: [
     svelte(),
     compressor(),
+    icon(),
     (await import("@playform/compress")).default({
       CSS: true,
       HTML: {

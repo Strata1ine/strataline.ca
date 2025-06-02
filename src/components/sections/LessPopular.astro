@@ -2,12 +2,15 @@
 import { container, heading } from "@sections/meta.ts";
 import clsx from "clsx";
 
-import Icon from "@iconify/svelte";
+import TextCarousel from "./TextCarousel.astro";
+import { Icon } from "astro-icon/components";
 
 const { index, serviceCovers } = Astro.locals;
 const {
   title = "There's more to explore",
   pos = Astro.locals.getNextPos(),
+  text,
+  speed,
   id: elementId,
 } = Astro.props;
 
@@ -19,7 +22,7 @@ const services = Astro.locals.services.filter(
 );
 ---
 
-<section id={elementId} class={container({ spaced: true, intent: "fill" })}>
+<section class={container({ intent: "div" })} id={elementId}>
   <h2 class={clsx(container({ intent: "inner" }), heading({ align: pos }))}>
     {title}
   </h2>
@@ -47,9 +50,11 @@ const services = Astro.locals.services.filter(
                 {...covers[0]}
               />
 
-              <div>
-                <h3 class="font-serif text-xl">{service.data.title}</h3>
-                <Icon  />
+              <div class="gam-2 flex flex-col sm:w-full sm:flex-row sm:items-center sm:gap-4">
+                <h3 class="text-md sm:text-bg font-serif md:text-xl">
+                  {service.data.title}
+                </h3>
+                <Icon name="arrow" />
               </div>
             </a>
           );
@@ -57,4 +62,6 @@ const services = Astro.locals.services.filter(
       }
     </div>
   </div>
+
+  <TextCarousel text={text} speed={speed} />
 </section>

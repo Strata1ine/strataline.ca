@@ -31,7 +31,6 @@ components:
 
   - type: LessPopular
     id: "explore"
-    slot: "bottom"
     text:
       - "Made with care"
       - "No mess"

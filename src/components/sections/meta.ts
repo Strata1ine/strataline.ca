@@ -3,18 +3,11 @@ import { cva } from "class-variance-authority";
 export const container = cva("", {
   variants: {
     intent: {
-      inner: "xl:max-w-inner xl:mx-auto",
-      outer: "2xl:max-w-outer 2xl:mx-auto",
-      fill: "max-w-full",
+      inner: "xl:max-w-inner xl:mx-auto px-inset",
+      outer: "2xl:max-w-outer 2xl:mx-auto px-inset",
       display: "max-w-[calc(var(--spacing-outer-span)+30rem)] xl:mx-auto",
+      div: "my-35",
     },
-    spaced: {
-      false: "px-inset",
-      true: "my-35 px-inset",
-    },
-  },
-  defaultVariants: {
-    intent: "outer",
   },
 });
 

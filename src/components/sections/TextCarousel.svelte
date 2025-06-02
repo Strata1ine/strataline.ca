@@ -1,0 +1,90 @@
+<script>
+  import Icon from "@iconify/svelte";
+  import { onMount } from "svelte";
+
+  let { text = [], speed = 0.45 } = $props();
+
+  let self;
+  let moveDirection = 1;
+  let currentSpeed = speed;
+  let isDragging = false;
+  let startX = 0;
+  let dragOffset = 0;
+  let rawOffset = 0;
+  let lastXDiff = 0;
+
+  const updateTranslation = () => {
+    const halfWidth = self.scrollWidth / 2;
+    self.style.transform = `translateX(-${((rawOffset % halfWidth) + halfWidth) % halfWidth}px)`;
+  };
+
+  const animate = () => {
+    if (
+      !isDragging &&
+      self.getBoundingClientRect().top <= window.innerHeight &&
+      self.getBoundingClientRect().bottom >= 0
+    ) {
+      rawOffset += moveDirection * currentSpeed;
+      updateTranslation();
+    }
+    requestAnimationFrame(animate);
+  };
+
+  const pointerMove = (e) => {
+    if (isDragging) {
+      lastXDiff = e.pageX - startX;
+      rawOffset = dragOffset - lastXDiff;
+      window.getSelection().removeAllRanges();
+      updateTranslation();
+      e.preventDefault();
+    }
+  };
+
+  const pointerUp = (_) => {
+    if (isDragging) {
+      isDragging = false;
+      currentSpeed = speed;
+      moveDirection = lastXDiff > 0 ? -1 : 1;
+    }
+  };
+
+  onMount(() => {
+    animate();
+
+    window.addEventListener("pointermove", pointerMove);
+    window.addEventListener("pointerup", pointerUp);
+
+    return () => {
+      window.removeEventListener("pointermove", pointerMove);
+      window.removeEventListener("pointerup", pointerUp);
+    };
+  });
+</script>
+
+<div class="border-accent border-y-1">
+  <div
+    class="py-inset contain-paint"
+    onpointerdown={(e) => {
+      if (e.button !== 0) return;
+      isDragging = true;
+      window.getSelection().removeAllRanges();
+      currentSpeed = 0;
+      startX = e.pageX;
+      dragOffset = rawOffset;
+    }}
+    onpointercancel={() => {
+      isDragging = false;
+      currentSpeed = speed;
+    }}
+  >
+    <div
+      bind:this={self}
+      class="flex h-18 transform-gpu touch-pan-y items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
+    >
+      {#each [...text, ...text] as item}
+        <h4 class="shrink-0 font-serif text-2xl sm:text-3xl xl:text-4xl">{item}</h4>
+        <Icon icon="ph:star-fill" class="text-gold h-auto w-8 shrink-0" />
+      {/each}
+    </div>
+  </div>
+</div>
