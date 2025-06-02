@@ -1,0 +1,7 @@
+---
+const { text, speed = 0.45 } = Astro.props;
+
+import Island from "./TextCarousel.svelte";
+---
+
+{text && <Island client:visible text={text} speed={speed} />}

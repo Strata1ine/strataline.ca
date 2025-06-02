@@ -3,6 +3,11 @@ import type { SchemaContext } from "astro:content";
 import { z } from "zod";
 import * as Components from "@/index";
 
+const textCarousel = {
+  speed: z.number().optional(),
+  text: z.array(z.string()).optional(),
+};
+
 register({
   id: "Hero",
   init: (context: SchemaContext) => ({
@@ -31,6 +36,14 @@ register({
   id: "LessPopular",
   init: (_: SchemaContext) => ({
     id: z.string(),
+    speed: z.number().optional(),
+    text: z.array(z.string()).optional(),
   }),
   render: Components.LessPopular,
+});
+
+register({
+  id: "TextCarousel",
+  init: (_: SchemaContext) => (textCarousel),
+  render: Components.TextCarousel,
 });

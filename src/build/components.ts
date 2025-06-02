@@ -5,6 +5,7 @@ export const componentsMeta: SchemaComponent[] = [];
 export type SchemaComponent = {
   id: string,
   init: (context: SchemaContext) => {},
+  client?: null | string,
   render: any,
 };
 
@@ -16,9 +17,10 @@ export function register(
 
 export function buildSchemaRegistery(context: SchemaContext) {
   return z.array(z.discriminatedUnion('type',
-    componentsMeta.map((item) =>
+    componentsMeta.map((item, i) =>
       z.object({
         type: z.literal(item.id),
+        idx: z.number().int().default(i),
         ...item.init(context)
       })
     ) as any
