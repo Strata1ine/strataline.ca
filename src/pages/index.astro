@@ -8,5 +8,5 @@ const { index } = Astro.locals;
 
 <Layout>
   <Content components={index.data.components} />
-  <TalkMenu client:only />
+  <TalkMenu client:idle />
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import "~/styles/global.css";
+import { Font } from "astro:assets";
 ---
 
 <html lang="en">
@@ -7,6 +8,8 @@ import "~/styles/global.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Font cssVariable="--font-cormorant" />
+    <Font cssVariable="--font-dm-sans" />
   </head>
   <body><slot /></body>
 </html>

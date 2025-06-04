@@ -8,6 +8,9 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    assets: '_strataline'
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
@@ -15,6 +18,32 @@ export default defineConfig({
   devToolbar: { enabled: false },
   experimental: {
     clientPrerender: true,
+    contentIntellisense: true,
+    preserveScriptOrder: true,
+    fonts: [
+      {
+        provider: "local",
+        name: "Cormorant Garamond",
+        cssVariable: "--font-cormorant",
+        variants: [
+          { weight: "700", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-Bold.woff2"] },
+          { weight: "700", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-BoldItalic.woff2"] },
+          { weight: "500", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-Medium.woff2"] },
+          { weight: "500", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-MediumItalic.woff2"] },
+          { weight: "600", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-SemiBold.woff2"] },
+          { weight: "600", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2"] }
+        ]
+      },
+      {
+        provider: "local",
+        name: "DM Sans",
+        cssVariable: "--font-dm-sans",
+        variants: [
+          { weight: "400", style: "normal", src: ["src/fonts/dm-sans/DMSans-Regular.woff2"] },
+          { weight: "400", style: "italic", src: ["src/fonts/dm-sans/DMSans-Italic.woff2"] }
+        ]
+      }
+    ],
   },
   compressHTML: true,
   vite: {
