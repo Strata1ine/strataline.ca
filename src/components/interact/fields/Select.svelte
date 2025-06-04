@@ -42,7 +42,7 @@
     {name}
     {required}
   >
-    <input type="hidden" {name} {required} bind:value />
+    <input tabindex="-1" type="hidden" {name} {required} bind:value />
 
     <button
       type="button"
@@ -55,11 +55,10 @@
         open = !open;
       }}
     >
-      <div class="flex-1 flex gap-inset items-center">
-        <Icon icon="ph:navigation-arrow-fill" class="h-auto w-8" />
-        <span class="font-sans text-sm sm:text-base">{values[selectedIdx]}</span
-        >
-      </div>
+      <Icon icon="ph:navigation-arrow-fill" class="h-auto w-8" />
+      <span class="mr-auto font-sans text-sm sm:text-base"
+        >{values[selectedIdx]}</span
+      >
 
       <Icon icon="ph:caret-down-fill" class="h-auto w-5" />
     </button>

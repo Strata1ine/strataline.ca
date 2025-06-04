@@ -48,7 +48,7 @@ export function clickOutside(node, callback) {
 
 export function focusLock(node) {
   let isActive = false;
-  let focusable = Array.from(node.querySelectorAll(interactable));
+  let focusable = Array.from(node.querySelectorAll(interactable)).filter(e => e.tabIndex != -1);
   let previousFocus;
   let focusedIdx = 0;
 
@@ -73,10 +73,6 @@ export function focusLock(node) {
         .forEach((e) => {
           e.setAttribute("inert", "");
         });
-
-      tick().then(() => {
-        if (focusable[focusedIdx]) focusable[focusedIdx].focus();
-      });
     } else {
       document
         .querySelectorAll(interactable)
