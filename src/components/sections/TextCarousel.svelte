@@ -79,11 +79,12 @@
   >
     <div
       bind:this={self}
-      class="flex h-18 transform-gpu touch-pan-y items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
+      class="flex h-18 items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
     >
       {#each [...text, ...text] as item}
-        <h4 class="shrink-0 font-serif text-2xl sm:text-3xl xl:text-4xl">{item}</h4>
-        <Icon icon="ph:star-fill" class="text-gold h-auto w-8 shrink-0" />
+        <h4 class="shrink-0 font-serif 
+        text-2xl sm:text-3xl xl:text-4xl">{item}</h4>
+        <Icon icon="ph:star-four-fill" class="text-gold h-auto w-7 sm:w-9 shrink-0" />
       {/each}
     </div>
   </div>

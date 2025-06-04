@@ -12,6 +12,7 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
+  devToolbar: { enabled: false },
   experimental: {
     clientPrerender: true,
   },
@@ -30,7 +31,23 @@ export default defineConfig({
   integrations: [
     svelte(),
     compressor(),
-    icon(),
+    icon({
+      svgoOptions: {
+        multipass: true,
+        plugins: [
+          {
+            name: "preset-default",
+            params: {
+              overrides: {
+                convertPathData: false,
+                mergePaths: false,
+                convertShapeToPath: false,
+              },
+            },
+          },
+        ],
+      },
+    }),
     (await import("@playform/compress")).default({
       CSS: true,
       HTML: {

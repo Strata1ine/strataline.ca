@@ -2,7 +2,6 @@ import { defineCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
 
 import { buildSchemaRegistery as c } from "@build/components";
-
 import "@/registery";
 
 export const collections = {

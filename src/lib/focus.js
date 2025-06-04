@@ -19,6 +19,33 @@ export const interactable = [
   "audio",
 ].join(", ");
 
+export function clickOutside(node, callback) {
+  function click(event) {
+    if (!node.contains(event.target)) {
+      callback();
+    }
+  }
+
+  function focusin(event) {
+    if (!node.contains(event.target)) {
+      callback();
+    }
+  }
+
+  document.addEventListener('click', click, true);
+  document.addEventListener('focusin', focusin);
+
+  return {
+    update(newCallback) {
+      callback = newCallback;
+    },
+    destroy() {
+      document.removeEventListener('click', click, true);
+      document.removeEventListener('focusin', focusin);
+    }
+  };
+}
+
 export function focusLock(node) {
   let isActive = false;
   let focusable = Array.from(node.querySelectorAll(interactable));

@@ -2,14 +2,19 @@
   import Icon from "@iconify/svelte";
   import { modals } from "~/lib/stores";
 
-  let { title, action = "/submissions/contact", children } = $props();
+  let {
+    title,
+    class: className,
+    action = "/submissions/contact",
+    children,
+  } = $props();
 </script>
 
 <div
   class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
 >
-  <div class="mb-4 flex items-center justify-between">
-    <h2 class="font-serif font-bold text-3xl md:text-4xl">
+  <div class="mb-4 flex items-center">
+    <h2 class="font-serif text-3xl font-bold md:text-4xl flex-1">
       {title}
     </h2>
     <button
@@ -21,7 +26,7 @@
     </button>
   </div>
 
-  <form enctype="multipart/form-data" method="post" {action} netlify>
+  <form class={className} enctype="multipart/form-data" method="post" {action} netlify>
     {@render children?.()}
   </form>
 </div>
