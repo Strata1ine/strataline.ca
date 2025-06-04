@@ -1,28 +1,102 @@
-<script>
+<script lang="ts">
   import Icon from "@iconify/svelte";
-  import Input from "./Input.svelte";
-  let { base, values } = $props();
+  import Field from "./Field.svelte";
+  import { clickOutside } from "@lib/focus";
+  import { field, input, expanded } from "./meta";
 
-  let value = $state(base);
+  let { values, name, required } = $props();
+  let selectedIdx: number = $state(0);
+  let hoverIdx: number = $state(0);
+  let value = $state(values[0]);
+  let open = $state(false);
+
+  let menu: HTMLElement;
+
+  const onkeydown = (event: KeyboardEvent) => {
+    if (!open) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      hoverIdx = (hoverIdx + 1) % values.length;
+      menu.children[hoverIdx]?.scrollIntoView({ block: "nearest" });
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      hoverIdx = hoverIdx === 0 ? values.length - 1 : hoverIdx - 1;
+      menu.children[hoverIdx]?.scrollIntoView({ block: "nearest" });
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      selectedIdx = hoverIdx;
+      value = values[selectedIdx];
+      open = false;
+    } else if (event.key == "Escape") {
+      open = false;
+    }
+  };
+
+  let uid = crypto.randomUUID();
 </script>
 
-<Input
-  as="select"
-  name="Location"
-  oninput={(e) => {
-    value = e.target.value;
-  }}
->
-  {#snippet overlay()}
-    <Icon icon="ph:navigation-arrow-fill" class="h-auto w-8" />
-    <span class="font-sans text-sm sm:text-base">{value}</span>
-  {/snippet}
+<div class="relative" use:clickOutside={() => (open = false)} {onkeydown}>
+  <Field
+    class={field({ intent: "pointer", expanded: open })}
+    {uid}
+    {name}
+    {required}
+  >
+    <input type="hidden" {name} {required} bind:value />
 
-  {#snippet icons()}
-    <Icon icon="ph:caret-down-fill" class="h-auto w-5" />
-  {/snippet}
+    <button
+      type="button"
+      class={input({ intent: "overlay" })}
+      aria-haspopup="listbox"
+      aria-expanded={open}
+      id={uid}
+      aria-controls={`${uid}-select`}
+      onclick={(_) => {
+        open = !open;
+      }}
+    >
+      <div class="flex-1 flex gap-inset items-center">
+        <Icon icon="ph:navigation-arrow-fill" class="h-auto w-8" />
+        <span class="font-sans text-sm sm:text-base">{values[selectedIdx]}</span
+        >
+      </div>
 
-  {#each [base, ...values] as value}
-    <option class="font-sans text-sm text-black sm:text-base">{value}</option>
-  {/each}
-</Input>
+      <Icon icon="ph:caret-down-fill" class="h-auto w-5" />
+    </button>
+
+    <div
+      class={expanded({ open })}
+      bind:this={menu}
+      role="listbox"
+      tabindex="-1"
+      id={`${uid}-select`}
+      aria-activedescendant={`${uid}-option-${hoverIdx}`}
+      inert={!open}
+    >
+      {#each values as option, i}
+        <div
+          id={`${uid}-option-${i}`}
+          role="option"
+          aria-selected={selectedIdx == i}
+          tabindex="-1"
+          class="block w-full cursor-pointer px-5 py-2 select-none {hoverIdx ==
+            i || selectedIdx == i
+            ? 'bg-tone'
+            : ''}"
+          onmousedown={(e) => {
+            if (e.button == 0) {
+              value = option;
+              open = false;
+              selectedIdx = i;
+            }
+          }}
+          onmouseenter={() => {
+            hoverIdx = i;
+          }}
+        >
+          {option}
+        </div>
+      {/each}
+    </div>
+  </Field>
+</div>

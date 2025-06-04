@@ -14,7 +14,7 @@ export const container = cva("", {
 export const heading = cva("", {
   variants: {
     intent: {
-      primary: "font-serif text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-balance",
+      primary: "font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-balance",
     },
     spaced: {
       false: null,

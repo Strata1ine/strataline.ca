@@ -7,7 +7,7 @@ export const nav = cva("cursor-pointer",
         outline: "w-8 h-8 xl:h-10 xl:w-10 rounded-[50%] border-solid border-black transition-[border] duration-250",
       },
       state: {
-        false: "border-1",
+        false: "border",
         true: "border-4",
       },
     },
@@ -22,7 +22,7 @@ export const action = cva(
   {
     variants: {
       intent: {
-        outline: "bg-white border-black border-1",
+        outline: "bg-white border-black border",
         fill: "bg-accent",
       },
       display: {

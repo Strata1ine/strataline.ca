@@ -37,7 +37,7 @@
   --font-mono: initial;
 
   --breakpoint-xs: 576px;
-  --breakpoint-sm: 640px;
+  --breakpoint-sm: 700px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1150px;
   --breakpoint-xl: 1300px;
@@ -81,6 +81,7 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 /* sleepy W3C */

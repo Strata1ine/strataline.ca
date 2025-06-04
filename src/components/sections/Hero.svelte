@@ -45,7 +45,7 @@
 
   <div class="my-5 flex items-center gap-3 sm:hidden">
     <Slideshow
-      class="-ml-inset flex h-60 flex-1 rounded-tr-sm rounded-br-sm contain-paint"
+      class="-ml-inset flex h-60 flex-1 justify-evenly rounded-tr-sm rounded-br-sm contain-paint"
       bind:idx
       {meta}
     />
