@@ -16,7 +16,7 @@ export async function optimizeImages(images: { meta: ImageMetadata; alt: string 
     images.map(async (image) => {
       const opt = await getImage({
         src: image.meta,
-        widths: [750, 1300, 2160],
+        widths: [500, 750, 1300, 2160],
         sizes: "60vw",
         width: 2160,
       });
@@ -27,7 +27,7 @@ export async function optimizeImages(images: { meta: ImageMetadata; alt: string 
         width: opt.attributes.width,
         height: opt.attributes.height,
         sizes: opt.attributes.sizes,
-        loading: opt.attributes.loading,
+        loading: (opt.attributes.loading) ? opt.attributes.loading : "lazy",
         alt: image.alt,
         draggable: false,
       };

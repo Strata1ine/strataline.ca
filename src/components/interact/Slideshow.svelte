@@ -21,7 +21,7 @@
   {#each meta.images as image, i}
     <img
       class={`object-cover ${meta.base} ${idx === i ? meta.active : meta.hidden}`}
-      loading={i === idx ? "eager" : "lazy"}
+      fetchpriority={i == idx ? "high" : "low"}
       {...image}
     />
   {/each}
