@@ -4,6 +4,7 @@
 
   let {
     title,
+    id,
     class: className,
     action = "/submissions/contact",
     children,
@@ -14,7 +15,7 @@
   class="px-inset relative m-auto w-full max-w-120 rounded-sm bg-white py-12 sm:px-10"
 >
   <div class="mb-4 flex items-center">
-    <h2 class="font-serif text-3xl font-bold md:text-4xl flex-1">
+    <h2 class="flex-1 font-serif text-3xl font-bold md:text-4xl" {id}>
       {title}
     </h2>
     <button
@@ -26,7 +27,13 @@
     </button>
   </div>
 
-  <form class={className} enctype="multipart/form-data" method="post" {action} netlify>
+  <form
+    class={className}
+    enctype="multipart/form-data"
+    method="post"
+    {action}
+    netlify
+  >
     {@render children?.()}
   </form>
 </div>
