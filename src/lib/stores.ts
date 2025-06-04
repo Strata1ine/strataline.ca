@@ -1,5 +1,12 @@
 import { writable, get } from 'svelte/store';
 
+let counter = 0;
+
+export const getId = (): string => {
+  counter += 1;
+  return `uid-${counter}`;
+};
+
 const modalState = {
   mobile: 0,
   talk: 1,

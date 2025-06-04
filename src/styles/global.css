@@ -102,3 +102,15 @@ input:-webkit-autofill:focus {
     display: table;
   }
 }
+
+@supports (-webkit-appearance: none) {
+  .w3c-focus:focus-within:has(:focus-visible) {
+    outline: -webkit-focus-ring-color auto;
+  }
+}
+
+@supports (-moz-appearance: none) {
+  .w3c-focus:focus-within:has(:focus-visible) {
+    outline: Highlight auto;
+  }
+}

@@ -15,7 +15,7 @@
     },
   });
 
-  const { varaint = {}, class: customClass = "", children } = $props();
+  const { varaint = {}, class: customClass = "", id, children } = $props();
 
   let active = $state(false);
   modals.idx.subscribe((v) => (active = v));
@@ -25,6 +25,7 @@
   use:focusLock={active}
   role="dialog"
   aria-modal="true"
+  aria-labelledby={id}
   class="{style(varaint)} {customClass} {active ? '' : 'opacity-0'}"
   aria-hidden={!active}
   inert={!active}

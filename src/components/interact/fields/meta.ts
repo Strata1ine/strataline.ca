@@ -3,12 +3,12 @@ import { cva } from "class-variance-authority";
 export const input = cva("gap-inset flex items-center flex-1 p-5", {
   variants: {
     intent: {
-      overlay: "pointer-events-none select-none",
+      overlay: "pointer-events-none",
     },
   },
 });
 
-export const field = cva("border-accent flex border select-none", {
+export const field = cva("border-accent w3c-focus flex border select-none", {
   variants: {
     intent: {
       text: "cursor-text",
@@ -29,7 +29,7 @@ export const field = cva("border-accent flex border select-none", {
 });
 
 export const expanded = cva(
-  "border-accent absolute top-[94%] right-0 left-0 max-h-70 overflow-y-scroll rounded-br-lg rounded-bl-lg border border-t-0 bg-white transition duration-400",
+  "border-accent absolute z-1 top-[94%] right-0 left-0 max-h-70 overflow-y-scroll rounded-br-lg rounded-bl-lg border border-t-0 bg-white transition duration-400",
   {
     variants: {
       open: {
