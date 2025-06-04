@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const input = cva("gap-inset flex flex-1 p-5", {
+export const input = cva("gap-inset flex items-center flex-1 p-5", {
   variants: {
     intent: {
       overlay: "pointer-events-none select-none",
