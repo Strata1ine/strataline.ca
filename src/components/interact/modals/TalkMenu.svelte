@@ -22,7 +22,7 @@
       name="Location"
       values={["Select a location", ...config.areaServed]}
     />
-    <TextArea required minlength="14" class="min-h-30" name="Message" />
+    <TextArea required minlength="14" name="Message" />
     <Photos />
     <Button value="submit" variant={{ intent: "fill", display: "full" }}>
       Submit
