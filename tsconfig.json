@@ -34,6 +34,9 @@
       "@build/*": [
         "src/build/*"
       ],
+      "@icons/*": [
+        "src/icons/*"
+      ],
       "@lib/*": [
         "src/lib/*"
       ]
