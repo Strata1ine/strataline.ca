@@ -2,18 +2,11 @@ import { cva } from "class-variance-authority";
 
 export const input = cva("gap-inset flex items-center flex-1 p-5", {
   variants: {
-    intent: {
-      overlay: "pointer-events-none",
-    },
   },
 });
 
 export const field = cva("border-accent w3c-focus flex border select-none", {
   variants: {
-    intent: {
-      text: "cursor-text",
-      pointer: "cursor-pointer",
-    },
     expanded: {
       true: "rounded-tl-lg rounded-tr-lg",
       false: "rounded-lg",

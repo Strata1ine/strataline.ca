@@ -10,7 +10,7 @@
 </script>
 
 <div class="relative">
-  <Field class={field({ intent: "text" })} {id} {name} {required}>
+  <Field class={field()} {id} {name} {required}>
     <div class={input()}>
       <input
         oninput={(e) => {

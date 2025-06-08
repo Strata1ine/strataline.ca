@@ -17,6 +17,7 @@ export default defineConfig({
   },
   devToolbar: { enabled: false },
   experimental: {
+    // csp: true,
     clientPrerender: true,
     contentIntellisense: true,
     preserveScriptOrder: true,
@@ -50,6 +51,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
+    experimentalDefaultStyles: false,
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {

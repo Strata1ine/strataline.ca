@@ -9,9 +9,9 @@
 </script>
 
 <div class="relative">
-  <Field class={field({ intent: "pointer" })} {id} {name}>
+  <Field class={field()} {id} {name}>
     <input
-      class="sr-only"
+      class="absolute opacity-0"
       accept="image/*"
       multiple
       type="file"
@@ -26,7 +26,7 @@
       }}
     />
 
-    <div class={input({ intent: "overlay" })}>
+    <div class={input()}>
       <Icon icon="ph:images-square-fill" class="h-auto w-8" />
       <span class="mr-auto font-sans text-sm sm:text-base">{value}</span>
       <Icon icon="ph:upload-simple-fill" class="h-auto w-6" />

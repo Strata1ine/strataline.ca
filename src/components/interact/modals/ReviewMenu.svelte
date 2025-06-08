@@ -9,7 +9,7 @@
 <!--   import { modals } from "~/lib/stores"; -->
 <!-- </script> -->
 <!---->
-<!-- <Modal varaint={{ intent: "blur" }} class="z-10" idx={modals.review}> -->
+<!-- <Modal variant={{ intent: "blur" }} class="z-10" idx={modals.review}> -->
 <!--   <Form title="Write a review"> -->
 <!--     <p class="font-sans text-base italic"> -->
 <!--       *To write a review, you must be a client. We will verify your submission -->
