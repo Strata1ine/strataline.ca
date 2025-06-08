@@ -14,7 +14,7 @@
   let id = getId();
 </script>
 
-<Modal {id} varaint={{ intent: "blur" }} class="z-50" idx={modals.talk}>
+<Modal {id} variant={{ intent: "blur" }} idx={modals.talk}>
   <Form {id} class="mt-8 space-y-10" title="Let's talk">
     <Input name="E-mail" required autocomplete="on" type="email" validate />
     <PhoneNumber validate></PhoneNumber>
