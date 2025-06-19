@@ -1,15 +1,16 @@
 <script lang="ts">
-  import Field from "./Field.svelte";
+  import Label from "./Label.svelte";
   import Valid from "./Valid.svelte";
   import { field, input } from "./meta";
-  import { getId } from "~/lib/stores";
+  import { getUid } from "~/lib/stores";
   let { name = "Phone number", validate = false, required } = $props();
-  let id = getId();
-  let valid = $state(false);
+  let uid = getUid();
+  let valid = $state(!required);
 </script>
 
 <div class="relative">
-  <Field class={field()} {id} {name} {required}>
+  <Label {uid} {name} {required}></Label>
+  <label class={field()}>
     <div class={input()}>
       <input
         oninput={(e) => {
@@ -32,7 +33,7 @@
         inputmode="tel"
         pattern={String.raw`^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$`}
         placeholder="(xxx) xxx-xxxx"
-        {id}
+        id={uid}
         {name}
         {required}
       />
@@ -41,5 +42,5 @@
         <Valid bind:valid />
       {/if}
     </div>
-  </Field>
+  </label>
 </div>

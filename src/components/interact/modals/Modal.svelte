@@ -20,9 +20,10 @@
       modals.close();
     }
   }}
-  class="{cover(variant)} {customClass} {active ? '' : 'opacity-0'}"
+  class="{cover(variant)} {customClass} {active
+    ? ''
+    : 'pointer-events-none opacity-0'}"
   aria-hidden={!active}
-  inert={!active}
 >
   {@render children?.()}
 </div>

@@ -1,17 +1,18 @@
 <script lang="ts">
-  import Field from "./Field.svelte";
+  import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getId } from "~/lib/stores";
+  import { getUid } from "~/lib/stores";
   import Resize from "@icons/Resize.svelte";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
   let textarea: HTMLTextAreaElement;
-  let id = getId();
+  let uid = getUid();
   let offset = 0;
 </script>
 
 <div class="relative">
-  <Field class={field()} {id} {name} {required}>
+  <Label {uid} {name} {required}></Label>
+  <label class={field()}>
     <div class={input()}>
       <textarea
         class="w-full resize-none text-sm focus:outline-none sm:text-base"
@@ -26,7 +27,7 @@
             );
           }
         }}
-        {id}
+        id={uid}
         {name}
         {required}
       ></textarea>
@@ -55,5 +56,5 @@
         <Resize class="p-inset ml-auto h-auto w-12" />
       </div>
     </div>
-  </Field>
+  </label>
 </div>
