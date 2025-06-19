@@ -6,6 +6,6 @@ const { components } = Astro.props;
 {
   components.map((props: any) => {
     const Component = Components[props.type];
-    return Component ? <Component {...props} /> : null;
+    return Component ? <Component meta={props} /> : null;
   })
 }

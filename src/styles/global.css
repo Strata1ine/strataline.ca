@@ -32,8 +32,8 @@
   --color-tone: #F5F5F5;
   --color-gold: #FFD0B5;
 
-  --font-serif: var(--font-cormorant), 'Times New Roman';
-  --font-sans: var(--font-dm-sans), 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-dm-sans);
   --font-mono: initial;
 
   --breakpoint-xs: 576px;

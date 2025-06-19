@@ -1,2 +1,61 @@
 ---
+import { container, heading } from "@sections/meta";
+import clsx from "clsx";
+import Island from "./Slideshow.svelte";
+
+import { ImageSource } from "@build/meta";
+import type { SchemaContext } from "astro:content";
+import { z } from "zod";
+
+interface Props {
+  pos: any;
+  meta: Meta;
+}
+
+const { pos = Astro.locals.getNextPos(), meta }: Props = Astro.props;
+
+export type Meta = {
+  title: string;
+  id: string;
+  cards: CardMeta[];
+};
+
+export const Meta = {
+  zod: (c: SchemaContext) => ({
+    title: z.string(),
+    id: z.string(),
+    cards: z.array(CardMeta.zod(c)),
+  }),
+};
+
+export type CardMeta = {
+  title: string;
+  desc: string;
+  image?: ImageSource;
+};
+
+export const CardMeta = {
+  zod: (c: SchemaContext) =>
+    z.object({
+      title: z.string(),
+      desc: z.string(),
+      image: ImageSource.zod(c).optional(),
+    }),
+};
 ---
+
+<section class={container({ intent: "div" })} id={meta.id}>
+  <h2
+    class={clsx(
+      container({ intent: "inner" }),
+      // container({ intent: "outer" }),
+      heading({ intent: "5xl", pos }),
+    )}
+  >
+    {meta.title}
+  </h2>
+
+  <div class={container({ intent: "outer" })}>
+    <Island meta={meta.cards} client:visible />
+  </div>
+</section>

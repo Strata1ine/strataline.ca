@@ -24,7 +24,12 @@ const services = Astro.locals.services.filter(
 ---
 
 <section class={container({ intent: "div" })} id={elementId}>
-  <h2 class={clsx(container({ intent: "inner" }), heading({ align: pos }))}>
+  <h2
+    class={clsx(
+      container({ intent: "inner" }),
+      heading({ intent: "5xl", pos }),
+    )}
+  >
     {title}
   </h2>
 
@@ -52,10 +57,7 @@ const services = Astro.locals.services.filter(
               />
 
               <div class="gam-2 flex flex-col sm:w-full sm:flex-row sm:items-center sm:gap-4">
-                <h3 class="text-md sm:text-bg font-serif md:text-xl">
-                  {service.data.title}
-                </h3>
-
+                <h3 class={heading({ intent: "xl" })}>{service.data.title}</h3>
                 <Icon name="arrow" is:inline />
               </div>
             </a>

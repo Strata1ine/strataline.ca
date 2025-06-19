@@ -1,6 +1,7 @@
 <script lang="ts">
   import { modals } from "@lib/stores";
-  import Slideshow from "@interact/Slideshow.svelte";
+  import { heading, desc } from "@sections/meta";
+  import Slideshow from "@interact/ImageSlideshow.svelte";
   import Slidenav from "@interact/Slidenav.svelte";
   import Button from "@actions/Button.svelte";
 
@@ -33,27 +34,25 @@
     {meta}
   />
 
-  <Slidenav class="flex flex-1 gap-5 2xl:flex-col" bind:idx {length} />
+  <Slidenav class="flex gap-4 2xl:flex-col" bind:idx {length} />
 </div>
 
 <div class="relative flex-1">
-  <h1
-    class="font-serif text-2xl font-bold text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl"
-  >
+  <h1 class={heading({ intent: "6xl" })}>
     {title}
   </h1>
 
-  <div class="my-5 flex items-center gap-3 sm:hidden">
+  <div class="my-5 flex items-center gap-4 sm:hidden">
     <Slideshow
       class="-ml-inset flex h-60 flex-1 justify-evenly rounded-tr-sm rounded-br-sm contain-paint"
       bind:idx
       {meta}
     />
 
-    <Slidenav class="flex flex-col gap-3" bind:idx {length} />
+    <Slidenav class="gap-inset flex flex-col" bind:idx {length} />
   </div>
 
-  <p class="xl:text-md mt-3 font-sans text-base">
+  <p class="{desc({ intent: 'base' })} mt-3">
     {description}
   </p>
 

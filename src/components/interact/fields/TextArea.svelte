@@ -2,7 +2,6 @@
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
   import { getUid } from "~/lib/stores";
-  import Resize from "@icons/Resize.svelte";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
   let textarea: HTMLTextAreaElement;
@@ -53,7 +52,20 @@
           e.currentTarget.releasePointerCapture(e.pointerId);
         }}
       >
-        <Resize class="p-inset ml-auto h-auto w-12" />
+        <svg
+          class="p-inset ml-auto h-auto w-12"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m21 15-6 6m6-13L8 21"
+          />
+        </svg>
       </div>
     </div>
   </label>
