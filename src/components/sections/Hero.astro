@@ -1,5 +1,5 @@
 ---
-import { optimizeImages } from "@build/images";
+import { optimizeImages, ImageSource } from "@build/images";
 import Island from "./Hero.svelte";
 import { container } from "@sections/meta.ts";
 
@@ -10,7 +10,7 @@ const {
 }: {
   title: string;
   description: string;
-  images: any[];
+  images: ImageSource[];
 } = Astro.props;
 
 let images = await optimizeImages(rawImages);

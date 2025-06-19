@@ -14,24 +14,32 @@ export const container = cva("", {
 export const heading = cva("", {
   variants: {
     intent: {
-      primary: "font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-balance",
+      "6xl": "font-serif text-2xl font-bold text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl",
+      "5xl": "font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-balance",
+      "4xl": "font-serif text-xl font-semibold md:text-3xl xl:text-4xl",
+      "xl": "text-md sm:text-bg font-serif md:text-xl",
     },
-    spaced: {
-      false: null,
-      true: "mb-14",
-    },
-    align: {
+    pos: {
       left: null,
-      // only intended for desktop devices
       right: "sm:text-right",
     },
   },
-  defaultVariants: {
-    intent: "primary",
-    align: "left",
-    spaced: true,
+  compoundVariants: [
+    {
+      pos: ["left", "right"],
+      className: "mb-14",
+    },
+  ],
+})
+
+
+export const desc = cva("", {
+  variants: {
+    intent: {
+      base: "xl:text-md font-sans text-base",
+    },
   },
-});
+})
 
 export const imageCover = cva("object-cover h-full select-none", {
   variants: {

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from "@tailwindcss/vite";
 import svelte from "@astrojs/svelte";
@@ -23,26 +23,20 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        provider: "local",
         name: "Cormorant Garamond",
         cssVariable: "--font-cormorant",
-        variants: [
-          { weight: "700", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-Bold.woff2"] },
-          { weight: "700", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-BoldItalic.woff2"] },
-          { weight: "500", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-Medium.woff2"] },
-          { weight: "500", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-MediumItalic.woff2"] },
-          { weight: "600", style: "normal", src: ["src/fonts/garamond/CormorantGaramond-SemiBold.woff2"] },
-          { weight: "600", style: "italic", src: ["src/fonts/garamond/CormorantGaramond-SemiBoldItalic.woff2"] }
-        ]
+        provider: fontProviders.fontsource(),
+        weights: [500, 600, 700],
+        styles: ["normal"],
+        subsets: ["latin"],
       },
       {
-        provider: "local",
         name: "DM Sans",
         cssVariable: "--font-dm-sans",
-        variants: [
-          { weight: "400", style: "normal", src: ["src/fonts/dm-sans/DMSans-Regular.woff2"] },
-          { weight: "400", style: "italic", src: ["src/fonts/dm-sans/DMSans-Italic.woff2"] }
-        ]
+        provider: fontProviders.fontsource(),
+        weights: [400],
+        styles: ["normal", "italic"],
+        subsets: ["latin"],
       }
     ],
   },
@@ -65,18 +59,6 @@ export default defineConfig({
     icon({
       svgoOptions: {
         multipass: true,
-        plugins: [
-          {
-            name: "preset-default",
-            params: {
-              overrides: {
-                convertPathData: false,
-                mergePaths: false,
-                convertShapeToPath: false,
-              },
-            },
-          },
-        ],
       },
     }),
     (await import("@playform/compress")).default({

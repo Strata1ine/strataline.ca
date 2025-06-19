@@ -5,6 +5,7 @@ import {
   container,
   imageCover,
   heading,
+  desc,
   imageVariants,
 } from "@sections/meta";
 
@@ -29,7 +30,12 @@ let next = swapPos(pos);
 ---
 
 <section class={container({ intent: "div" })} id={elementId}>
-  <h2 class={clsx(container({ intent: "inner" }), heading({ align: pos }))}>
+  <h2
+    class={clsx(
+      container({ intent: "inner" }),
+      heading({ intent: "5xl", pos }),
+    )}
+  >
     {title}
   </h2>
 
@@ -65,7 +71,7 @@ let next = swapPos(pos);
             )}
 
             <div class="flex-1">
-              <h3 class="mb-2 font-serif text-xl font-semibold md:text-3xl xl:text-4xl">
+              <h3 class={clsx("mb-2", heading({ intent: "4xl" }))}>
                 {service.data.title}
               </h3>
 
@@ -85,9 +91,7 @@ let next = swapPos(pos);
                 </div>
               )}
 
-              <p class="xl:text-md font-sans text-base">
-                {service.data.description}
-              </p>
+              <p class={desc({ intent: "base" })}>{service.data.description}</p>
 
               <div class="mt-8">
                 <Link href={`/services/${slug}`} data-astro-prefetch="">
