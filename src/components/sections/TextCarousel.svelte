@@ -34,7 +34,7 @@
     animate();
   });
 
-  const handlePointerEnd = (e) => {
+  const pointerend = (e) => {
     if (isDragging) {
       e.currentTarget.releasePointerCapture(e.pointerId);
       currentSpeed = speed;
@@ -66,8 +66,8 @@
         e.preventDefault();
       }
     }}
-    onpointerup={handlePointerEnd}
-    onpointercancel={handlePointerEnd}
+    onpointerup={pointerend}
+    onpointercancel={pointerend}
   >
     <div
       bind:this={self}
@@ -82,7 +82,7 @@
         </h4>
         <Icon
           icon="ph:star-four-fill"
-          class="text-gold h-auto w-7 shrink-0 sm:w-9"
+          class="text-gold size-7 shrink-0 sm:w-9"
         />
       {/each}
     </div>

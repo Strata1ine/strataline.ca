@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const cover = cva("fixed inset-0 overflow-y-scroll duration-250", {
+export const cover = cva("fixed inset-0 overflow-y-auto overflow-x-clip duration-250", {
   variants: {
     intent: {
       fill: "bg-white xl:hidden",
