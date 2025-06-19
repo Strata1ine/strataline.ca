@@ -1,11 +1,11 @@
 import { cva } from "class-variance-authority";
 
-export const input = cva("gap-inset flex items-center flex-1 p-5", {
+export const input = cva("gap-inset flex items-center p-5", {
   variants: {
   },
 });
 
-export const field = cva("border-accent w3c-focus flex border select-none", {
+export const field = cva("border-accent w3c-focus block border select-none", {
   variants: {
     expanded: {
       true: "rounded-tl-lg rounded-tr-lg",

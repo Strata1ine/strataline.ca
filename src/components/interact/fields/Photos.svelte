@@ -26,10 +26,12 @@
       }}
     />
 
-    <div class={input()}>
-      <Icon icon="ph:images-square-fill" class="h-auto w-8" />
-      <span class="mr-auto font-sans text-sm sm:text-base">{value}</span>
-      <Icon icon="ph:upload-simple-fill" class="h-auto w-6" />
+    <div class="{input()} cursor-pointer">
+      <Icon icon="ph:images-square-fill" class="size-8" />
+      <div class="flex-1">
+        <span class="font-sans text-sm sm:text-base">{value}</span>
+      </div>
+      <Icon icon="ph:upload-simple-fill" class="size-6" />
     </div>
   </Field>
 </div>

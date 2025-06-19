@@ -13,7 +13,7 @@
   </span>
 
   {#if required}
-    <Icon icon="ph:asterisk-bold" class="text-error w-3"></Icon>
+    <Icon icon="ph:asterisk-bold" class="text-error size-3"></Icon>
   {/if}
 </label>
 

@@ -1,23 +1,28 @@
-<script lang="ts">
+<script>
   import Icon from "@iconify/svelte";
   import Field from "./Field.svelte";
   import { field, input, expanded } from "./meta";
   import { getId } from "~/lib/stores";
+  import { preventDefault } from "svelte/legacy";
 
   let { values, name, required } = $props();
-  let selectedIdx: number = $state(0);
-  let hoverIdx: number = $state(0);
-  let value = $state(values[0]);
+  let selectedIdx = $state(0);
+  let hoverIdx = $state(0);
   let open = $state(false);
 
-  let menu: HTMLElement;
   let id = getId();
   let select = getId();
 </script>
 
 <div class="relative">
   <Field class={field({ expanded: open })} {id} {name} {required}>
-    <input tabindex="-1" type="hidden" {name} {required} bind:value />
+    <input
+      tabindex="-1"
+      type="hidden"
+      {name}
+      {required}
+      value={values[selectedIdx]}
+    />
 
     <button
       {id}
@@ -25,32 +30,56 @@
       aria-haspopup="listbox"
       aria-expanded={open}
       aria-controls={select}
-      class="{input()} cursor-pointer"
-      onclick={(_) => {
+      class="{input()} w-full cursor-pointer"
+      onmousedown={(e) => {
+        e.preventDefault();
+        e.currentTarget.nextElementSibling.focus();
+      }}
+      onclick={(e) => {
         open = !open;
       }}
-      onfocusout={(_) => {
-        open = false;
-      }}
-      onkeydown={(event: KeyboardEvent) => {
-        if (!open) return;
+    >
+      <Icon icon="ph:navigation-arrow-fill" class="size-8" />
+      <div class="flex-1">
+        <span class="font-sans text-sm sm:text-base">{values[selectedIdx]}</span
+        >
+      </div>
 
+      <Icon icon="ph:caret-down-bold" class="size-6" />
+    </button>
+
+    <div
+      class="{expanded({ open })} select-none"
+      role="listbox"
+      tabindex="-1"
+      id={select}
+      aria-activedescendant="{select}-{hoverIdx}"
+      aria-hidden={!open}
+      onfocusout={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          open = false;
+          e.currentTarget.previousElementSibling.focus();
+        }
+      }}
+      onkeydown={(event) => {
         switch (event.key) {
           case "ArrowDown":
             event.preventDefault();
             hoverIdx = (hoverIdx + 1) % values.length;
-            menu.children[hoverIdx]?.scrollIntoView({ block: "nearest" });
+            event.currentTarget.children[hoverIdx]?.scrollIntoView({
+              block: "nearest",
+            });
             break;
           case "ArrowUp":
             event.preventDefault();
             hoverIdx = hoverIdx === 0 ? values.length - 1 : hoverIdx - 1;
-            menu.children[hoverIdx]?.scrollIntoView({ block: "nearest" });
+            event.currentTarget.children[hoverIdx]?.scrollIntoView({
+              block: "nearest",
+            });
             break;
           case "Enter":
-            event.preventDefault();
             selectedIdx = hoverIdx;
-            value = values[selectedIdx];
-            open = false;
+            open = !open;
             break;
           case "Escape":
             event.stopPropagation();
@@ -59,12 +88,16 @@
           case "Home":
             event.preventDefault();
             hoverIdx = 0;
-            menu.children[0]?.scrollIntoView({ block: "nearest" });
+            event.currentTarget.children[0]?.scrollIntoView({
+              block: "nearest",
+            });
             break;
           case "End":
             event.preventDefault();
             hoverIdx = values.length - 1;
-            menu.children[hoverIdx]?.scrollIntoView({ block: "nearest" });
+            event.currentTarget.children[hoverIdx]?.scrollIntoView({
+              block: "nearest",
+            });
             break;
           default: {
             if (event.key.length === 0) return;
@@ -74,7 +107,9 @@
               const idx = (startIdx + i) % values.length;
               if (values[idx].toLowerCase().startsWith(char)) {
                 hoverIdx = idx;
-                menu.children[idx]?.scrollIntoView({ block: "nearest" });
+                event.currentTarget.children[idx]?.scrollIntoView({
+                  block: "nearest",
+                });
                 break;
               }
             }
@@ -82,45 +117,27 @@
         }
       }}
     >
-      <Icon icon="ph:navigation-arrow-fill" class="h-auto w-8" />
-      <span class="mr-auto font-sans text-sm sm:text-base"
-        >{values[selectedIdx]}</span
-      >
-
-      <Icon icon="ph:caret-down-bold" class="h-auto w-6" />
-    </button>
-
-    <div
-      class={expanded({ open })}
-      bind:this={menu}
-      role="listbox"
-      tabindex="-1"
-      id={select}
-      aria-activedescendant={`${select}-${hoverIdx}`}
-      inert={!open}
-    >
       {#each values as option, i}
-        <div
-          id={`${select}-${i}`}
+        <button
+          id="{select}-{i}"
           role="option"
           aria-selected={selectedIdx == i}
           tabindex="-1"
-          class="block w-full cursor-pointer px-5 py-2 select-none {hoverIdx ==
-            i || selectedIdx == i
+          class="block w-full cursor-pointer px-5 py-2 {hoverIdx == i ||
+          selectedIdx == i
             ? 'bg-tone'
             : ''}"
-          onmousedown={(e) => {
-            if (e.button == 0) {
-              value = option;
-              selectedIdx = i;
-            }
+          onclick={(e) => {
+            selectedIdx = i;
+            open = false;
+            e.preventDefault();
           }}
           onmouseenter={() => {
             hoverIdx = i;
           }}
         >
           {option}
-        </div>
+        </button>
       {/each}
     </div>
   </Field>
