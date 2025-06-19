@@ -1,41 +1,53 @@
 <script>
   import Icon from "@iconify/svelte";
-  import Field from "./Field.svelte";
+  import Label from "./Label.svelte";
   import { field, input, expanded } from "./meta";
-  import { getId } from "~/lib/stores";
-  import { preventDefault } from "svelte/legacy";
+  import { getUid } from "~/lib/stores";
 
   let { values, name, required } = $props();
   let selectedIdx = $state(0);
   let hoverIdx = $state(0);
   let open = $state(false);
 
-  let id = getId();
-  let select = getId();
+  let uid = getUid();
+  let selectUid = getUid();
+  let select;
 </script>
 
 <div class="relative">
-  <Field class={field({ expanded: open })} {id} {name} {required}>
+  <Label
+    id={uid}
+    onmousedown={(e) => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      select.focus();
+      open = !open;
+    }}
+    {name}
+    {required}
+  ></Label>
+
+  <label class={field({ expanded: open })}>
     <input
       tabindex="-1"
       type="hidden"
+      value={values[selectedIdx]}
       {name}
       {required}
-      value={values[selectedIdx]}
     />
 
     <button
-      {id}
       type="button"
       aria-haspopup="listbox"
+      aria-labelledby={uid}
       aria-expanded={open}
-      aria-controls={select}
+      aria-controls={selectUid}
       class="{input()} w-full cursor-pointer"
       onmousedown={(e) => {
         e.preventDefault();
-        e.currentTarget.nextElementSibling.focus();
       }}
-      onclick={(e) => {
+      onclick={() => {
+        select.focus();
         open = !open;
       }}
     >
@@ -51,14 +63,14 @@
     <div
       class="{expanded({ open })} select-none"
       role="listbox"
+      bind:this={select}
       tabindex="-1"
-      id={select}
-      aria-activedescendant="{select}-{hoverIdx}"
+      id={selectUid}
+      aria-activedescendant="{selectUid}-{hoverIdx}"
       aria-hidden={!open}
       onfocusout={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           open = false;
-          e.currentTarget.previousElementSibling.focus();
         }
       }}
       onkeydown={(event) => {
@@ -72,7 +84,7 @@
             break;
           case "ArrowUp":
             event.preventDefault();
-            hoverIdx = hoverIdx === 0 ? values.length - 1 : hoverIdx - 1;
+            hoverIdx = (hoverIdx - 1 + values.length) % values.length;
             event.currentTarget.children[hoverIdx]?.scrollIntoView({
               block: "nearest",
             });
@@ -102,9 +114,9 @@
           default: {
             if (event.key.length === 0) return;
             const char = event.key.toLowerCase();
-            const startIdx = (hoverIdx + 1) % values.length;
             for (let i = 0; i < values.length; i++) {
-              const idx = (startIdx + i) % values.length;
+              const idx =
+                (((hoverIdx + 1) % values.length) + i) % values.length;
               if (values[idx].toLowerCase().startsWith(char)) {
                 hoverIdx = idx;
                 event.currentTarget.children[idx]?.scrollIntoView({
@@ -119,13 +131,13 @@
     >
       {#each values as option, i}
         <button
-          id="{select}-{i}"
+          id="{selectUid}-{i}"
           role="option"
           aria-selected={selectedIdx == i}
           tabindex="-1"
-          class="block w-full cursor-pointer px-5 py-2 {hoverIdx == i ||
+          class="block w-full cursor-pointer px-5 py-2{hoverIdx == i ||
           selectedIdx == i
-            ? 'bg-tone'
+            ? ' bg-tone'
             : ''}"
           onclick={(e) => {
             selectedIdx = i;
@@ -135,10 +147,13 @@
           onmouseenter={() => {
             hoverIdx = i;
           }}
+          onmouseleave={() => {
+            hoverIdx = -1;
+          }}
         >
           {option}
         </button>
       {/each}
     </div>
-  </Field>
+  </label>
 </div>

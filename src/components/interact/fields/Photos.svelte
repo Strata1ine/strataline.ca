@@ -1,21 +1,22 @@
 <script>
   import Icon from "@iconify/svelte";
-  import Field from "./Field.svelte";
+  import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getId } from "~/lib/stores";
-  let { name = "Photos", base = "None selected" } = $props();
+  import { getUid } from "~/lib/stores";
+  let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
-  let id = getId();
+  let uid = getUid();
 </script>
 
 <div class="relative">
-  <Field class={field()} {id} {name}>
+  <Label {uid} {name} {required}></Label>
+  <label class={field()}>
     <input
       class="absolute opacity-0"
       accept="image/*"
       multiple
       type="file"
-      {id}
+      id={uid}
       {name}
       onchange={(e) => {
         if (e.target.files.length > 0) {
@@ -33,5 +34,5 @@
       </div>
       <Icon icon="ph:upload-simple-fill" class="size-6" />
     </div>
-  </Field>
+  </label>
 </div>

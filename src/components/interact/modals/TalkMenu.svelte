@@ -8,14 +8,14 @@
   import TextArea from "@fields/TextArea.svelte";
   import PhoneNumber from "@fields/PhoneNumber.svelte";
 
-  import { modals, getId } from "~/lib/stores";
+  import { modals, getUid } from "~/lib/stores";
   import config from "~/content/config.json";
 
-  let id = getId();
+  let uid = getUid();
 </script>
 
-<Modal {id} variant={{ intent: "blur" }} idx={modals.talk}>
-  <Form {id} class="mt-8 space-y-10" title="Let's talk">
+<Modal id={uid} variant={{ intent: "blur" }} idx={modals.talk}>
+  <Form id={uid} class="mt-8 space-y-10" title="Let's talk">
     <Input name="E-mail" required autocomplete="on" type="email" validate />
     <PhoneNumber validate></PhoneNumber>
     <Select
