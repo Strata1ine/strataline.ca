@@ -1,26 +1,29 @@
 <script lang="ts">
-  type ImageSlideshowMeta = {
+  export type AnimMeta = {
     active: string;
     hidden: string;
     base: string;
-    images: any[];
   };
 
   const {
     idx = $bindable(0),
     class: className,
-    meta,
+    animMeta,
+    images,
   }: {
     idx?: number;
     class: string;
-    meta: ImageSlideshowMeta;
+    animMeta: AnimMeta;
+    images: any[];
   } = $props();
 </script>
 
 <div class={className}>
-  {#each meta.images as image, i}
+  {#each images as image, i}
     <img
-      class="object-cover {meta.base} {idx === i ? meta.active : meta.hidden}"
+      class="object-cover {animMeta.base} {idx === i
+        ? animMeta.active
+        : animMeta.hidden}"
       fetchpriority={i == idx ? "high" : "low"}
       {...image}
     />

@@ -23,7 +23,8 @@ export function buildSchemaRegistery(c: SchemaContext) {
       componentsMeta.map((item, i) =>
         z.object({
           type: z.literal(item.id),
-          idx: z.number().int().default(i),
+          _componentIdx: z.number().int().default(i),
+          id: z.string().optional(),
           ...item.meta(c)
         })
       ) as any

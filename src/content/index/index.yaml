@@ -3,7 +3,6 @@ desc: ""
 popular:
   - popcorn-removal
   - stairs
-
 components:
   - type: Hero
     title: |-
@@ -26,19 +25,20 @@ components:
           A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
 
   - type: Popular
-    title: "Popular services"
+    title: Popular services
     id: popular
 
   - type: LessPopular
     id: explore
-    text:
-      - "Made with care"
-      - "No mess"
-      - "No dust"
-      - "Absolute precision"
-      - "Expert execution"
+    carousel:
+      text:
+        - Made with care
+        - No mess
+        - No dust
+        - Absolute precision
+        - Expert execution
 
-  - type: Slideshow
+  - type: Cardshow
     title: Our accomplishments
     id: accomplishments
     cards:
@@ -54,9 +54,9 @@ components:
         desc: |-
           The Star's sensational report on our Dust-Free approach
           to renovation.
-        images:
-          - meta: ./awards/star.jpg
-            alt: "A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander."
+        image:
+          meta: ./awards/star.jpg
+          alt: "A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander."
         components:
           - type: Action.Link
             target: "_blank"
@@ -66,9 +66,9 @@ components:
       - title: "Featured in House & Home"
         desc: |-
           House & Home seeks our expertise on chevron hardwood floor installation.
-        images:
-          - meta: ./awards/houseandhome.webp
-            alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
+        image:
+          meta: ./awards/houseandhome.webp
+          alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
         components:
           - type: Action.Link
             target: "_blank"
@@ -79,9 +79,9 @@ components:
         desc: |-
           Mother-in-Law’s 1980s House Needs an Overhaul |
           Love It or List It | HGTV.
-        images:
-          - meta: ./awards/houseandhome.webp
-            alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
+        image:
+          meta: ./awards/houseandhome.webp
+          alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
         components:
           - type: Action.Frame
             title: "HGTV's virtual home tour"

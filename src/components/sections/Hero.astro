@@ -1,23 +1,21 @@
 ---
-import { optimizeImages, ImageSource } from "@build/images";
-import Island from "./Hero.svelte";
+import { optimizeImages } from "@build/images";
 import { container } from "@sections/meta.ts";
+import Island from "./Hero.svelte";
+import { type Hero as Meta } from "@/meta";
+import type { ImageSource } from "@build/meta";
 
-const {
-  title,
-  description,
-  images: rawImages,
-}: {
-  title: string;
-  description: string;
-  images: ImageSource[];
-} = Astro.props;
+interface Props {
+  meta: Meta;
+}
 
-let images = await optimizeImages(rawImages);
+const { meta } = Astro.props;
+meta.images = await optimizeImages(meta.images as ImageSource[]);
 ---
 
 <main
   class="relative flex min-h-[clamp(10rem,100svh,50rem)] overflow-x-clip sm:min-h-[clamp(10rem,100svh,90rem)]"
+  id={meta.id}
 >
   <div
     class="bg-accent absolute z-[-1] hidden h-full w-[25.7%] rounded-br-sm sm:block xl:w-(--right-hero-offset)"
@@ -27,6 +25,6 @@ let images = await optimizeImages(rawImages);
   <div
     class={`${container({ intent: "outer" })} flex w-full items-center gap-6 xl:gap-8 py-15 2xl:gap-11`}
   >
-    <Island client:visible {title} {description} {images} />
+    <Island client:visible {meta} />
   </div>
 </main>

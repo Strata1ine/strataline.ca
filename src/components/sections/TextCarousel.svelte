@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
+  import { TextCarousel as Meta } from "@/meta";
+  let { meta }: { meta: Meta } = $props();
 
-  let { text = [], speed = 0.45 } = $props();
-
-  let self;
+  let self: HTMLElement;
   let moveDirection = 1;
-  let currentSpeed = speed;
+  let currentSpeed = meta.speed;
   let isDragging = false;
   let startX = 0;
   let dragOffset = 0;
@@ -34,10 +34,10 @@
     animate();
   });
 
-  const pointerend = (e) => {
+  const pointerend = (e: PointerEvent) => {
     if (isDragging) {
       e.currentTarget.releasePointerCapture(e.pointerId);
-      currentSpeed = speed;
+      currentSpeed = meta.speed;
       moveDirection = lastXDiff > 0 ? -1 : 1;
       isDragging = false;
       e.preventDefault();
@@ -73,7 +73,7 @@
       bind:this={self}
       class="flex h-18 items-center gap-12 will-change-transform select-none md:h-20 md:gap-20 lg:gap-25 xl:h-25"
     >
-      {#each [...text, ...text] as item}
+      {#each [...meta.text, ...meta.text] as item}
         <h4
           class="shrink-0 font-serif
         text-2xl sm:text-3xl xl:text-4xl"

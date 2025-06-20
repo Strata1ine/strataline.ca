@@ -12,3 +12,14 @@ export const ImageSource = {
     alt: z.string(),
   })
 }
+
+export type OptimizedImage = {
+  src: string;
+  srcset: string;
+  width: string;
+  height: string;
+  sizes: string;
+  loading: string;
+  alt: string;
+  draggable: boolean;
+}
