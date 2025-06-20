@@ -1,0 +1,42 @@
+---
+import { container, heading, Pos } from "@sections/meta";
+import { Cardshow as Meta } from "@/meta";
+import clsx from "clsx";
+import Island from "./Cardshow.svelte";
+
+import { optimizeImage } from "@build/images";
+import { type ImageSource } from "@build/meta";
+
+interface Props {
+  meta: Meta;
+  pos: Pos;
+}
+
+const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+
+for (const card of meta.cards) {
+  if (card.image) {
+    card.image = await optimizeImage(card.image as ImageSource);
+  }
+}
+---
+
+<section class={container({ intent: "div" })} id={meta.id}>
+  <h2
+    class={clsx(
+      container({ intent: "inner" }),
+      // container({ intent: "outer" }),
+      heading({ intent: "5xl", pos }),
+    )}
+  >
+    {meta.title}
+  </h2>
+
+  <div class={container({ intent: "outer" })}>
+    <div
+      class="2xl:max-w-middle gap-inset flex flex-col 2xl:ml-auto 2xl:flex-row 2xl:gap-0"
+    >
+      <Island meta={meta.cards} client:visible />
+    </div>
+  </div>
+</section>

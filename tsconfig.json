@@ -9,13 +9,12 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
     "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/components/*"
-      ],
       "@sections/*": [
         "src/components/sections/*"
       ],
@@ -39,6 +38,12 @@
       ],
       "@lib/*": [
         "src/lib/*"
+      ],
+      "@/*": [
+        "src/components/*"
+      ],
+      "~/*": [
+        "src/*"
       ]
     }
   }

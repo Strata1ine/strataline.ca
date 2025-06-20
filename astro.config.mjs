@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import svelte from "@astrojs/svelte";
 import compressor from "astro-compressor";
 import icon from "astro-icon";
+import { exec } from 'child_process';
 
 // https://astro.build/config
 export default defineConfig({
@@ -42,14 +43,30 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        // HACK: the red one invented cache
+        name: 'clear-content-cache',
+        handleHotUpdate({ file, server }) {
+          if (file.endsWith('src/components/meta.ts') || file.endsWith('src/content.config.ts')) {
+            exec('rm -rf .astro/', (error) => {
+              if (error) console.error('Error clearing content cache:', error);
+              else console.log('Cleared content content cache. Restarting server!');
+            });
+            server.restart();
+            return [];
+          }
+        },
+      },
+    ],
   },
   image: {
-    experimentalDefaultStyles: false,
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
         quality: 20,
+        experimentalDefaultStyles: false,
       },
     },
   },

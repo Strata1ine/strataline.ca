@@ -1,19 +1,20 @@
 ---
-import { container, heading } from "@sections/meta.ts";
+import { container, heading, Pos } from "@sections/meta.ts";
 import clsx from "clsx";
 
 import TextCarousel from "./TextCarousel.astro";
 import { Icon } from "astro-icon/components";
+import { type LessPopular as Meta } from "@/meta";
+
+interface Props {
+  meta: Meta;
+  pos: Pos;
+}
 
 const { index, serviceCovers } = Astro.locals;
-const {
-  title = "There's more to explore",
-  pos = Astro.locals.getNextPos(),
-  text,
-  speed,
-  id: elementId,
-  exclude = index.data.popular,
-} = Astro.props;
+const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+
+const exclude = index.data.popular;
 
 const services = Astro.locals.services.filter(
   (service) =>
@@ -21,16 +22,17 @@ const services = Astro.locals.services.filter(
       service.id.split("/")[0].includes(pattern),
     ),
 );
+
 ---
 
-<section class={container({ intent: "div" })} id={elementId}>
+<section class={container({ intent: "div" })} id={meta.id}>
   <h2
     class={clsx(
       container({ intent: "inner" }),
       heading({ intent: "5xl", pos }),
     )}
   >
-    {title}
+    {meta.title}
   </h2>
 
   <div class="bg-accent">
@@ -67,5 +69,5 @@ const services = Astro.locals.services.filter(
     </nav>
   </div>
 
-  <TextCarousel text={text} speed={speed} />
+  {meta.carousel && <TextCarousel meta={meta.carousel} />}
 </section>

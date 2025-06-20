@@ -12,8 +12,16 @@ import {
 import Link from "@actions/Link.svelte";
 import clsx from "clsx";
 
+import { Popular as Meta } from "@/meta";
+
 const { index, serviceCovers } = Astro.locals;
-const { title, pos = Astro.locals.getNextPos(), id: elementId } = Astro.props;
+
+interface Props {
+  meta: Meta;
+  pos: Pos;
+}
+
+const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
 
 const services = Astro.locals.services
   .filter((service) =>
@@ -29,14 +37,14 @@ const services = Astro.locals.services
 let next = swapPos(pos);
 ---
 
-<section class={container({ intent: "div" })} id={elementId}>
+<section class={container({ intent: "div" })} id={meta.id}>
   <h2
     class={clsx(
       container({ intent: "inner" }),
       heading({ intent: "5xl", pos }),
     )}
   >
-    {title}
+    {meta.title}
   </h2>
 
   <div class={container({ intent: "outer" })}>
@@ -91,7 +99,7 @@ let next = swapPos(pos);
                 </div>
               )}
 
-              <p class={desc({ intent: "base" })}>{service.data.description}</p>
+              <p class={desc({ intent: "base" })}>{service.data.desc}</p>
 
               <div class="mt-8">
                 <Link href={`/services/${slug}`} data-astro-prefetch="">

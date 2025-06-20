@@ -1,16 +1,5 @@
 import { getImage } from 'astro:assets';
-import type { ImageSource } from './meta';
-
-export type OptimizedImage = {
-  src: string;
-  srcset: string;
-  width: string;
-  height: string;
-  sizes: string;
-  loading: string;
-  alt: string;
-  draggable: boolean;
-}
+import type { ImageSource, OptimizedImage } from './meta';
 
 export async function optimizeImage(image: ImageSource): Promise<OptimizedImage> {
   const opt = await getImage({
