@@ -24,7 +24,7 @@
       >
         {#if card.image}
           <img
-            class="h-full max-h-[min(30svh,18rem)] flex-none rounded-sm object-cover sm:max-h-[min(50svh,25rem)] sm:w-1/2 sm:rounded-none"
+            class="max-h-[min(25vh,18rem)] flex-none rounded-sm object-cover sm:max-h-[min(40vh,40rem)] sm:min-h-full sm:w-1/2 sm:rounded-none"
             {...card.image}
           />
         {/if}
