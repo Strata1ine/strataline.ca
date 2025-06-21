@@ -22,7 +22,6 @@ const services = Astro.locals.services.filter(
       service.id.split("/")[0].includes(pattern),
     ),
 );
-
 ---
 
 <section class={container({ intent: "div" })} id={meta.id}>
@@ -58,7 +57,7 @@ const services = Astro.locals.services.filter(
                 {...covers[0]}
               />
 
-              <div class="gam-2 flex flex-col sm:w-full sm:flex-row sm:items-center sm:gap-4">
+              <div class="gap-1 flex flex-col sm:w-full sm:flex-row sm:items-center sm:gap-4">
                 <h3 class={heading({ intent: "xl" })}>{service.data.title}</h3>
                 <Icon name="arrow" is:inline />
               </div>

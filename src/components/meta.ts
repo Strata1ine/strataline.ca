@@ -11,7 +11,7 @@ export type TextCarousel = {
 
 export const TextCarousel = {
   zod: (_: SchemaContext) => z.object({
-    speed: z.number().optional().default(0.2),
+    speed: z.number().optional().default(1.0),
     text: z.array(z.string()),
   }),
 };
