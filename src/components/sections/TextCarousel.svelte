@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Icon from "@iconify/svelte";
+  import Star from "@icons/ph/star-four-fill.svelte";
   import { onMount } from "svelte";
   import { TextCarousel as Meta } from "@/meta";
   let { meta }: { meta: Meta } = $props();
 
   // the amount of times it repeats
-  let moduloEffect = 2;
+  let moduloEffect = 3;
 
   let textCarousel: HTMLElement;
   let visibilityBounds: HTMLElement;
@@ -41,7 +41,6 @@
 
   const tryCancel = () => {
     if (animationId == null) return;
-
     cancelAnimationFrame(animationId);
     animationId = null;
   };
@@ -92,16 +91,16 @@
 >
   <div
     bind:this={textCarousel}
-    class="flex h-18 items-center will-change-transform select-none md:h-20 xl:h-25"
+    class="flex items-center will-change-transform select-none h-20 md:h-25"
   >
     {#each Array(moduloEffect).fill(meta.text).flat() as item}
       <h4
-        class="mx-12 shrink-0 font-serif text-2xl sm:text-3xl md:mx-20 lg:mx-23"
+        class="mx-12 shrink-0 font-serif text-2xl md:text-3xl md:mx-20 lg:mx-23"
       >
         {item}
       </h4>
 
-      <Icon icon="ph:star-four-fill" class="text-gold size-7 shrink-0 sm:w-9" />
+      <Star class="text-gold size-7 shrink-0 sm:w-9" />
     {/each}
   </div>
 </div>

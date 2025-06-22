@@ -1,18 +1,18 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import Check from "@icons/ph/check-bold.svelte";
+  import X from "@icons/ph/x-bold.svelte";
+
   const { valid = $bindable() } = $props();
 </script>
 
 <div class="relative size-6">
-  <Icon
-    icon="ph:check-bold"
+  <Check
     class="text-success absolute size-full duration-250 {!valid
       ? '-translate-y-full opacity-0'
       : ''}"
   />
 
-  <Icon
-    icon="ph:x-bold"
+  <X
     class="text-error size-full duration-250 {valid
       ? '-translate-y-full opacity-0'
       : ''}"

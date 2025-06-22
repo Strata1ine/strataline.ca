@@ -1,5 +1,6 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import Caret from "@icons/ph/caret-down-bold.svelte";
+  import NavArrow from "@icons/ph/navigation-arrow-fill.svelte";
   import Label from "./Label.svelte";
   import { field, input, expanded } from "./meta";
   import { getUid } from "~/lib/stores";
@@ -51,13 +52,13 @@
         open = !open;
       }}
     >
-      <Icon icon="ph:navigation-arrow-fill" class="size-8" />
+      <NavArrow class="size-8" />
       <div class="flex-1">
         <span class="font-sans text-sm sm:text-base">{values[selectedIdx]}</span
         >
       </div>
 
-      <Icon icon="ph:caret-down-bold" class="size-6" />
+      <Caret class="size-6" />
     </button>
 
     <div

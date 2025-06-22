@@ -1,6 +1,5 @@
 <script>
-  import Icon from "@iconify/svelte";
-
+  import Asterick from "@icons/ph/asterisk-bold.svelte";
   let { name, required, id, uid, onmousedown } = $props();
 </script>
 
@@ -15,6 +14,6 @@
   </span>
 
   {#if required}
-    <Icon icon="ph:asterisk-bold" class="text-error size-3"></Icon>
+    <Asterick class="text-error size-3"></Asterick>
   {/if}
 </label>
