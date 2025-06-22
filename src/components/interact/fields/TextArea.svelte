@@ -53,7 +53,7 @@
         }}
       >
         <svg
-          class="p-inset ml-auto h-auto w-12"
+          class="p-inset size-12"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

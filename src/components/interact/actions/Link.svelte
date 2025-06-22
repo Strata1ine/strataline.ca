@@ -1,7 +1,5 @@
 <script>
-  import clsx from "clsx";
   import { action } from "./meta";
-
   let { variant = {}, children, ...slot } = $props();
 </script>
 

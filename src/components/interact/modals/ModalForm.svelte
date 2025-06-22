@@ -1,5 +1,5 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import X from "@icons/ph/x-bold.svelte";
   import { modals } from "~/lib/stores";
 
   let {
@@ -24,7 +24,7 @@
       aria-label={`Close dialog`}
       onclick={() => modals.close()}
     >
-      <Icon icon="ph:x-bold" class="size-10 rounded-[50%] lg:w-11" />
+      <X class="size-10 rounded-[50%] lg:w-11" />
     </button>
   </div>
 

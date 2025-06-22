@@ -1,5 +1,6 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import Upload from "@icons/ph/upload-simple-fill.svelte";
+  import ImagesSquare from "@icons/ph/images-square-fill.svelte";
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
   import { getUid } from "~/lib/stores";
@@ -28,11 +29,11 @@
     />
 
     <div class="{input()} cursor-pointer">
-      <Icon icon="ph:images-square-fill" class="size-8" />
+      <ImagesSquare class="size-8" />
       <div class="flex-1">
         <span class="font-sans text-sm sm:text-base">{value}</span>
       </div>
-      <Icon icon="ph:upload-simple-fill" class="size-6" />
+      <Upload class="size-6" />
     </div>
   </label>
 </div>
