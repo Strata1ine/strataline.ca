@@ -10,7 +10,7 @@
 </script>
 
 <div class="relative">
-  <Label {uid} {name} {required}></Label>
+  <Label for={uid} {name} {required}></Label>
   <label class={field()}>
     <input
       class="absolute opacity-0"

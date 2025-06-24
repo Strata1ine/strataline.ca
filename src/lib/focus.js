@@ -19,27 +19,31 @@ export const interactable = [
   "audio",
 ];
 
+export function clickOutside(node, callback) {
+  function c(event) {
+    if (!node.contains(event.target)) {
+      callback();
+    }
+  }
+
+  document.addEventListener('click', c, true);
+  document.addEventListener('focusin', c, true);
+
+  return {
+    update(newCallback) {
+      callback = newCallback;
+    },
+    destroy() {
+      document.removeEventListener('click', c, true);
+      document.removeEventListener('focusin', c, true);
+    }
+  };
+}
+
 export function focusLock(node) {
   let focusable = Array.from(node.querySelectorAll(interactable.filter(e => e.tabIndex !== -1)));
   let previousFocus;
   let focusedIdx = 0;
-
-  function handleKeyDown(e) {
-    if (e.key !== 'Tab') return;
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  }
-
-  node.addEventListener('keydown', handleKeyDown, true);
 
   return {
     update: (active) => {
@@ -63,6 +67,7 @@ export function focusLock(node) {
             e.setAttribute("inert", "");
           });
 
+
         tick().then(() => {
           focusable[1].focus();
         });
@@ -75,7 +80,6 @@ export function focusLock(node) {
       }
     },
     destroy() {
-      node.removeEventListener('keydown', handleKeyDown, true);
       update(false);
     },
   };

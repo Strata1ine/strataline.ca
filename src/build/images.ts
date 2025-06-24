@@ -16,6 +16,7 @@ export async function optimizeImage(image: ImageSource): Promise<OptimizedImage>
     sizes: opt.attributes.sizes,
     loading: opt.attributes.loading || "lazy",
     alt: image.alt,
+    decoding: opt.attributes.loading || "async",
     draggable: false,
   };
 }

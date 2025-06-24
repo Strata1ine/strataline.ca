@@ -40,13 +40,13 @@
   --breakpoint-sm: 700px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1150px;
-  --breakpoint-xl: 1300px;
-  --breakpoint-2xl: 1450px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1430px;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: var(--breakpoint-xl);
   --spacing-outer: var(--breakpoint-2xl);
-  --spacing-middle: calc(var(--spacing-inner) + (var(--spacing-outer) - var(--spacing-inner)) / 2 - var(--spacing-inset));
+  --spacing-middle: calc(var(--spacing-inner) + (var(--spacing-outer) - var(--spacing-inner)) / 2);
   --right-hero-offset: calc((100vw - var(--spacing-outer))/ 2 + var(--spacing-outer) - var(--spacing-inner));
   --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
 

@@ -10,7 +10,7 @@ import { exec } from 'child_process';
 // https://astro.build/config
 export default defineConfig({
   build: {
-    assets: '_strataline'
+    assets: '_'
   },
   prefetch: {
     prefetchAll: true,
@@ -43,6 +43,9 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: {
+    esbuild: {
+      drop: ["console", "debugger"],
+    },
     plugins: [
       tailwindcss(),
       {
@@ -71,13 +74,13 @@ export default defineConfig({
     },
   },
   integrations: [
-    svelte(),
-    compressor(),
-    icon({
-      svgoOptions: {
-        multipass: true,
-      },
+    svelte({
+      compilerOptions: {
+        dev: false,
+      }
     }),
+    compressor(),
+    icon(),
     (await import("@playform/compress")).default({
       CSS: true,
       HTML: {
