@@ -27,7 +27,7 @@
   />
 
   <Slidenav
-    class="flex gap-4 2xl:flex-col"
+    class="gap-inset flex 2xl:flex-col"
     bind:idx
     length={meta.images.length}
   />

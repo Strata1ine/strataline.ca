@@ -1,13 +1,17 @@
 <script>
   import Asterick from "@icons/ph/asterisk-bold.svelte";
-  let { name, required, id, uid, onmousedown } = $props();
+  let { name, required, for: f } = $props();
 </script>
 
 <label
   class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white px-3 select-none"
-  {id}
-  for={uid}
-  {onmousedown}
+  for={f}
+  onclick={(e) => {
+    if (e.currentTarget && e.currentTarget.control instanceof HTMLButtonElement) {
+      e.preventDefault();
+      e.currentTarget.control.click();
+    }
+  }}
 >
   <span class="text-md font-serif leading-none font-semibold">
     {name}

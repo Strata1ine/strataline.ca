@@ -1,5 +1,5 @@
 
 <script>
- const { ...slot } = $props();
+ const { class: className } = $props();
 </script>
-<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" {...slot}><path d="M142,48V208a6,6,0,0,1-12,0V58.6L99.09,77.14a6,6,0,0,1-6.18-10.29l40-24A6,6,0,0,1,142,48Z"/></svg>
+<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class={className}><path d="M142,48V208a6,6,0,0,1-12,0V58.6L99.09,77.14a6,6,0,0,1-6.18-10.29l40-24A6,6,0,0,1,142,48Z"/></svg>

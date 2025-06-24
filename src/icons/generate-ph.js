@@ -9,15 +9,15 @@ if (existsSync('ph')) {
 mkdirSync('ph', { recursive: true })
 
 icons.forEach(icon => {
-  console.log(icon);
   weights.forEach(async weight => {
-    let path = `./ph/${icon.name}-${weight}.svelte`;
+    const id = `${icon.name}-${weight}`;
+    const path = `./ph/${id}.svelte`;
     try {
-      const raw = await import(`@phosphor-icons/core/assets/${weight}/${icon.name}-${weight}.svg?raw`)
-      const data = raw.default.replace(/<svg([^>]*)>/s, '<svg $1 {...slot}>')
+      const raw = await import(`@phosphor-icons/core/assets/${weight}/${id}.svg?raw`)
+      const data = raw.default.replace(/<svg([^>]*)>/s, '<svg $1 class={className}>')
       writeFileSync(`${path}`, `
 <script>
- const { ...slot } = $props();
+ const { class: className } = $props();
 </script>
 ${data}
 `)

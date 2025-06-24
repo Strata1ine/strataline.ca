@@ -3,7 +3,7 @@
   import { focusLock } from "~/lib/focus.js";
   import { cover } from "./meta";
 
-  const { variant = {}, class: customClass = "", id, children } = $props();
+  const { variant = {}, class: customClass = "", uid, children } = $props();
 
   let active = $state(false);
   modals.idx.subscribe((v) => (active = v));
@@ -13,7 +13,7 @@
   use:focusLock={active}
   role="dialog"
   aria-modal="true"
-  aria-labelledby={id}
+  aria-labelledby={uid}
   tabindex="-1"
   onkeydown={(e) => {
     if (e.key === "Escape") {

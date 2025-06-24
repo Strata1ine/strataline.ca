@@ -49,7 +49,7 @@ const services = Astro.locals.services.filter(
 
           return (
             <a
-              class="flex w-full items-center gap-3 sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
+              class="flex w-full items-center gap-inset sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
               href={`/services/${slug}`}
             >
               <img
@@ -57,7 +57,7 @@ const services = Astro.locals.services.filter(
                 {...covers[0]}
               />
 
-              <div class="gap-1 flex flex-col sm:w-full sm:flex-row sm:items-center sm:gap-4">
+              <div class="flex flex-col gap-inset sm:w-full sm:flex-row sm:items-center">
                 <h3 class={heading({ intent: "xl" })}>{service.data.title}</h3>
                 <Icon name="arrow" is:inline />
               </div>

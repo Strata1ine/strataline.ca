@@ -3,9 +3,9 @@ import { cva } from "class-variance-authority";
 export const container = cva("", {
   variants: {
     intent: {
-      inner: "xl:max-w-inner xl:mx-auto px-inset",
-      outer: "2xl:max-w-outer 2xl:mx-auto px-inset",
-      display: "max-w-[calc(var(--spacing-outer-span)+30rem)] xl:mx-auto",
+      inner: "max-w-inner md:mx-auto px-inset box-content",
+      outer: "max-w-outer md:mx-auto px-inset box-content",
+      display: "max-w-[calc(var(--spacing-outer-span)+30rem)] md:mx-auto box-content",
       div: "my-35",
     },
   },
@@ -31,12 +31,13 @@ export const heading = cva("", {
     },
   ],
 })
-
+ 
 
 export const desc = cva("", {
   variants: {
     intent: {
-      base: "xl:text-md font-sans text-base",
+      base: "font-sans text-base xl:text-md",
+      small: "font-sans text-sm sm:text-base",
     },
   },
 })

@@ -21,12 +21,6 @@
   let isVisible = false;
   let animationId: number | null = null;
 
-  const dt = (currentTime: number) => {
-    let dt: number = (currentTime - lastFrame) / 16.67;
-    lastFrame = currentTime;
-    return dt;
-  };
-
   const updateTranslation = () => {
     const w = textCarousel.scrollWidth / moduloEffect;
     textCarousel.style.transform = `translateX(-${totalOffset - w * Math.floor(totalOffset / w)}px)`;
@@ -34,7 +28,10 @@
 
   const tryAnimate = (currentTime: number = 0) => {
     if (!isVisible) return;
-    totalOffset += moveDirection * meta.speed * dt(currentTime);
+    const dt: number = (currentTime - lastFrame) / 16.67;
+    lastFrame = currentTime;
+
+    totalOffset += moveDirection * meta.speed * dt;
     updateTranslation();
     animationId = requestAnimationFrame(tryAnimate);
   };
@@ -58,23 +55,26 @@
     return () => observer.disconnect();
   });
 
-  const pointerdown = (e: PointerEvent) => {
-    if (e.button !== 0) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    window.getSelection().removeAllRanges();
+  const onpointerdown = (e: PointerEvent) => {
+    if (e.button !== 0 || visibilityBounds.hasPointerCapture(e.pointerId))
+      return;
+    visibilityBounds.setPointerCapture(e.pointerId);
+    window.getSelection()?.removeAllRanges();
     dragStartX = e.pageX;
     dragOffset = totalOffset;
     tryCancel();
   };
 
-  const pointermove = (e: PointerEvent) => {
-    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+  const onpointermove = (e: PointerEvent) => {
+    if (!visibilityBounds.hasPointerCapture(e.pointerId)) return;
     totalOffset = dragOffset - (e.pageX - dragStartX);
     updateTranslation();
+    e.preventDefault();
   };
 
-  const pointerend = (e: PointerEvent) => {
-    e.currentTarget.releasePointerCapture(e.pointerId);
+  const onpointerup = (e: PointerEvent) => {
+    if (!visibilityBounds.hasPointerCapture(e.pointerId)) return;
+    visibilityBounds.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
     moveDirection = e.pageX - dragStartX > 0 ? -1 : 1;
     tryAnimate();
@@ -84,23 +84,24 @@
 <div
   class="border-accent py-inset border-y-1 contain-paint"
   bind:this={visibilityBounds}
-  onpointerdown={pointerdown}
-  onpointermove={pointermove}
-  onpointerup={pointerend}
-  onpointercancel={pointerend}
+  {onpointerdown}
+  {onpointermove}
+  {onpointerup}
+  onpointercancel={onpointerup}
+  role="marquee"
 >
   <div
     bind:this={textCarousel}
-    class="flex items-center will-change-transform select-none h-20 md:h-25"
+    class="flex h-20 touch-pan-x items-center will-change-transform select-none md:h-25"
   >
     {#each Array(moduloEffect).fill(meta.text).flat() as item}
       <h4
-        class="mx-12 shrink-0 font-serif text-2xl md:text-3xl md:mx-20 lg:mx-23"
+        class="mx-12 shrink-0 font-serif text-2xl md:mx-20 md:text-3xl lg:mx-23"
       >
         {item}
       </h4>
 
-      <Star class="text-gold size-7 shrink-0 sm:w-9" />
+      <Star class="text-gold size-7 shrink-0 sm:size-9" />
     {/each}
   </div>
 </div>
