@@ -1,7 +1,8 @@
 <script lang="ts">
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "~/lib/stores";
+  import { getUid } from "@lib/stores";
+  import { desc } from "@sections/meta";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
   let textarea: HTMLTextAreaElement;
@@ -14,7 +15,7 @@
   <label class={field()}>
     <div class={input()}>
       <textarea
-        class="w-full resize-none text-sm focus:outline-none sm:text-base"
+        class="{desc({ intent: 'sm' })} w-full resize-none focus:outline-none"
         style="height: {height}px"
         bind:this={textarea}
         onkeydown={(e) => {

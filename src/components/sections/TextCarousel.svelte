@@ -56,7 +56,11 @@
   });
 
   const onpointerdown = (e: PointerEvent) => {
-    if (e.button !== 0 || visibilityBounds.hasPointerCapture(e.pointerId))
+    if (
+      e.button !== 0 ||
+      !e.isPrimary ||
+      visibilityBounds.hasPointerCapture(e.pointerId)
+    )
       return;
     visibilityBounds.setPointerCapture(e.pointerId);
     window.getSelection()?.removeAllRanges();
@@ -82,7 +86,7 @@
 </script>
 
 <div
-  class="border-accent py-inset border-y-1 contain-paint"
+  class="border-accent py-inset touch-none border-y-1 contain-paint"
   bind:this={visibilityBounds}
   {onpointerdown}
   {onpointermove}
@@ -92,14 +96,14 @@
 >
   <div
     bind:this={textCarousel}
-    class="flex h-20 touch-pan-x items-center will-change-transform select-none md:h-25"
+    class="flex h-20 items-center will-change-transform select-none md:h-25"
   >
     {#each Array(moduloEffect).fill(meta.text).flat() as item}
-      <h4
+      <h3
         class="mx-12 shrink-0 font-serif text-2xl md:mx-20 md:text-3xl lg:mx-23"
       >
         {item}
-      </h4>
+      </h3>
 
       <Star class="text-gold size-7 shrink-0 sm:size-9" />
     {/each}

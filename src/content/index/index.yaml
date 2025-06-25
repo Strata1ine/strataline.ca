@@ -91,40 +91,40 @@ components:
             target: "_blank"
             href: "https://www.youtube.com/watch?v=MqmEVTErkI0"
             text: "Watch the Video"
-  #
-  # - type: Review
-  #   title: What our customers have to say
-  #   id: reviews
-  #   meta:
-  #     - title: "Maggie and Scott"
-  #       location: "Mississauga"
-  #       stars: 5
-  #       content: |-
-  #         _My husband and I are unbelievably happy with the work that Max
-  #         and his team did on our ceilings in the house. The **professionalism**
-  #         of this team is incredible._
-  #
-  #     - title: "Jefferson Grove"
-  #       location: "Burlington"
-  #       stars: 5
-  #       content: |-
-  #         _The whole process from beginning to end was an absolute pleasure.
-  #         Max is a great **communicator** and was always quick to reply to texts
-  #         or emails. We highly recommend Strataline!_
-  #
-  #     - title: "Olivia"
-  #       location: "Toronto"
-  #       stars: 5
-  #       content: |-
-  #         _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in
-  #         four days and when they were done there was nothing to clean up.
-  #         Best decision I ever made!_
-  #
-  #     - title: "Lyn Litvack"
-  #       location: "Markham"
-  #       stars: 5
-  #       content: |-
-  #         _Max is the ultimate professional, immaculate, contentious and
-  #         polite. He is **punctual** and follows up on things quickly. The work
-  #         to our stairs is transforming and with his **guidance** we are thrilled
-  #         with the finished product._
+
+  - type: Review
+    title: What our customers have to say
+    id: reviews
+    reviews:
+      - title: "Maggie and Scott"
+        location: "Mississauga"
+        stars: 5
+        markdown: |-
+          _My husband and I are unbelievably happy with the work that Max
+          and his team did on our ceilings in the house. The **professionalism**
+          of this team is incredible._
+
+      - title: "Jefferson Grove"
+        location: "Burlington"
+        stars: 5
+        markdown: |-
+          _The whole process from beginning to end was an absolute pleasure.
+          Max is a great **communicator** and was always quick to reply to texts
+          or emails. We highly recommend Strataline!_
+
+      - title: "Olivia"
+        location: "Toronto"
+        stars: 5
+        markdown: |-
+          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in
+          four days and when they were done there was nothing to clean up.
+          Best decision I ever made!_
+
+      - title: "Lyn Litvack"
+        location: "Markham"
+        stars: 5
+        markdown: |-
+          _Max is the ultimate professional, immaculate, contentious and
+          polite. He is **punctual** and follows up on things quickly. The work
+          to our stairs is transforming and with his **guidance** we are thrilled
+          with the finished product._

@@ -1,8 +1,9 @@
 <script lang="ts">
   import Label from "./Label.svelte";
   import Valid from "./Valid.svelte";
+  import { getUid } from "@lib/stores";
+  import { desc } from "@sections/meta";
   import { field, input } from "./meta";
-  import { getUid } from "~/lib/stores";
 
   const { values, name, required, validate = false, ...slot } = $props();
   let uid = getUid();
@@ -17,7 +18,7 @@
         oninput={(e) => {
           valid = e.currentTarget.validity.valid;
         }}
-        class="w-full text-sm focus:outline-none sm:text-base"
+        class="w-full {desc({ intent: 'sm' })} focus:outline-none"
         autocomplete="on"
         type="text"
         id={uid}

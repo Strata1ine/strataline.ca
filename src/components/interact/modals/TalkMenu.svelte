@@ -15,7 +15,7 @@
 </script>
 
 <Modal {uid} variant={{ intent: "blur" }} idx={modals.talk}>
-  <Form id={uid} class="mt-8 space-y-10" title="Let's talk">
+  <Form id={uid} class="mt-8 space-y-9" title="Let's talk">
     <Input name="E-mail" required autocomplete="on" type="email" validate />
     <PhoneNumber validate></PhoneNumber>
     <Select

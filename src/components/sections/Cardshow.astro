@@ -1,8 +1,8 @@
 ---
-import { container, heading, Pos } from "@sections/meta";
+import { container, Pos } from "@sections/meta";
 import { Cardshow as Meta } from "@/meta";
-import clsx from "clsx";
 import Island from "./Cardshow.svelte";
+import Title from "./Title.astro";
 
 import { optimizeImage } from "@build/images";
 import { type ImageSource } from "@build/meta";
@@ -22,19 +22,11 @@ for (const card of meta.cards) {
 ---
 
 <section class={container({ intent: "div" })} id={meta.id}>
-  <h2
-    class={clsx(
-      container({ intent: "inner" }),
-      // container({ intent: "outer" }),
-      heading({ intent: "5xl", pos }),
-    )}
-  >
-    {meta.title}
-  </h2>
+  <Title title={meta.title} {pos} />
 
   <div class={container({ intent: "outer" })}>
     <div
-      class="max-w-middle flex flex-col gap-3 md:gap-6 2xl:ml-auto 2xl:flex-row"
+      class="max-w-middle flex flex-col gap-4 md:gap-6 2xl:ml-auto 2xl:flex-row"
     >
       <Island meta={meta.cards} client:visible />
     </div>

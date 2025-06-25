@@ -3,7 +3,8 @@
   import ImagesSquare from "@icons/ph/images-square-fill.svelte";
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "~/lib/stores";
+  import { getUid } from "@lib/stores";
+  import { desc } from "@sections/meta";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
   let uid = getUid();
@@ -31,7 +32,7 @@
     <div class="{input()} cursor-pointer">
       <ImagesSquare class="size-8" />
       <div class="flex-1">
-        <span class="font-sans text-sm sm:text-base">{value}</span>
+        <span class={desc({ intent: "sm" })}>{value}</span>
       </div>
       <Upload class="size-6" />
     </div>

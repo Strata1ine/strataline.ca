@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const input = cva("gap-inset flex items-center p-5", {
+export const input = cva("gap-inset flex items-center p-5 overflow-hidden", {
   variants: {
   },
 });

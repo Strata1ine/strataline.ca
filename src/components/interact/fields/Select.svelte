@@ -91,7 +91,7 @@
 >
   <Label for={buttonUid} {name} {required}></Label>
 
-  <div class={field({ expanded: open })}>
+  <label class={field({ expanded: open })}>
     <input
       tabindex="-1"
       type="hidden"
@@ -122,13 +122,13 @@
         >
           <span
             class="{desc({
-              intent: 'small',
+              intent: 'sm',
             })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
             >{anim ? values[selectedIdx] : values[prevIdx]}</span
           >
           <span
             class="{desc({
-              intent: 'small',
+              intent: 'sm',
             })} absolute bottom-full left-0 transition-opacity duration-300{anim
               ? ' opacity-0'
               : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
@@ -183,5 +183,5 @@
         </button>
       {/each}
     </div>
-  </div>
+  </label>
 </div>

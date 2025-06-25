@@ -1,0 +1,23 @@
+---
+import { container, heading, Pos } from "@sections/meta";
+import clsx from "clsx";
+
+interface Props {
+  title: string;
+  pos: Pos;
+}
+
+let { title, pos } = Astro.props;
+---
+
+<div class={clsx(container({ intent: "inner" }), "mb-16")}>
+  <h2
+    class={clsx(
+      heading({ intent: "5xl" }),
+      "sm:max-w-[20ch]",
+      pos == "right" && "sm:ml-auto text-right",
+    )}
+  >
+    {title}
+  </h2>
+</div>

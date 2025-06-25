@@ -61,3 +61,10 @@ register({
   meta: Meta.Cardshow.zod,
   render: Components.Cardshow,
 });
+
+
+register({
+  id: "Review",
+  meta: Meta.Review.zod,
+  render: Components.Review,
+});
