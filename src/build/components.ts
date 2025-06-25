@@ -24,7 +24,6 @@ export function buildSchemaRegistery(c: SchemaContext) {
         z.object({
           type: z.literal(item.id),
           _componentIdx: z.number().int().default(i),
-          id: z.string().optional(),
           ...item.meta(c)
         })
       ) as any

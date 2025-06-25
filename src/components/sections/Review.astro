@@ -1,0 +1,22 @@
+---
+import { container, Pos } from "@sections/meta";
+import { type Review as Meta } from "@/meta";
+import Title from "./Title.astro";
+import Island from "./Review.svelte";
+
+interface Props {
+  meta: Meta;
+  pos: Pos;
+}
+
+const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+---
+
+<section class={container({ intent: "div" })} id={meta.id}>
+  <Title title={meta.title} {pos} />
+  <div class="contain-paint">
+    <div class={container({ intent: "inner" })}>
+      <Island client:visible meta={meta.reviews} />
+    </div>
+  </div>
+</section>

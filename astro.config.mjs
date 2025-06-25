@@ -74,11 +74,7 @@ export default defineConfig({
     },
   },
   integrations: [
-    svelte({
-      compilerOptions: {
-        dev: false,
-      }
-    }),
+    svelte(),
     compressor(),
     icon(),
     (await import("@playform/compress")).default({

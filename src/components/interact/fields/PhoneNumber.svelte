@@ -2,7 +2,8 @@
   import Label from "./Label.svelte";
   import Valid from "./Valid.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "~/lib/stores";
+  import { getUid } from "@lib/stores";
+  import { desc } from "@sections/meta";
   let { name = "Phone number", validate = false, required } = $props();
   let uid = getUid();
   let valid = $state(!required);
@@ -29,7 +30,7 @@
           t.setSelectionRange(pos, pos);
           valid = t.validity.valid;
         }}
-        class="w-full text-sm focus:outline-none sm:text-base"
+        class="w-full focus:outline-none {desc({ intent: 'sm' })}"
         inputmode="tel"
         pattern={String.raw`^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$`}
         placeholder="(xxx) xxx-xxxx"

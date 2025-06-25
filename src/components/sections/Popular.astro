@@ -9,10 +9,10 @@ import {
   imageVariants,
 } from "@sections/meta";
 
-import Link from "@actions/Link.svelte";
 import clsx from "clsx";
-
 import { Popular as Meta } from "@/meta";
+import Link from "@actions/Link.svelte";
+import Title from "./Title.astro";
 
 const { index, serviceCovers } = Astro.locals;
 
@@ -38,14 +38,7 @@ let next = swapPos(pos);
 ---
 
 <section class={container({ intent: "div" })} id={meta.id}>
-  <h2
-    class={clsx(
-      container({ intent: "inner" }),
-      heading({ intent: "5xl", pos }),
-    )}
-  >
-    {meta.title}
-  </h2>
+  <Title title={meta.title} {pos} />
 
   <div class={container({ intent: "outer" })}>
     {
