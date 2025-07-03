@@ -1,9 +1,9 @@
 <script>
-  import Upload from "@icons/ph/upload-simple-fill.svelte";
-  import ImagesSquare from "@icons/ph/images-square-fill.svelte";
+  import Upload from "~/icons/ph/upload-simple-fill.svelte";
+  import ImagesSquare from "~/icons/ph/images-square-fill.svelte";
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "@lib/stores";
+  import { getUid } from "~/lib/stores";
   import { desc } from "@sections/meta";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);

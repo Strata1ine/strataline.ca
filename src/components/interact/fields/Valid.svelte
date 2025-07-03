@@ -1,6 +1,6 @@
 <script>
-  import Check from "@icons/ph/check-bold.svelte";
-  import X from "@icons/ph/x-bold.svelte";
+  import Check from "~/icons/ph/check-bold.svelte";
+  import X from "~/icons/ph/x-bold.svelte";
 
   const { valid = $bindable() } = $props();
 </script>

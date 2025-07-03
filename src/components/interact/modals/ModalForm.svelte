@@ -1,5 +1,5 @@
 <script>
-  import X from "@icons/ph/x-bold.svelte";
+  import X from "~/icons/ph/x-bold.svelte";
   import { modals } from "~/lib/stores";
 
   let {

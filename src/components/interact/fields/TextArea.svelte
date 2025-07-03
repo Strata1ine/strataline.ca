@@ -1,7 +1,7 @@
 <script lang="ts">
   import Label from "./Label.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "@lib/stores";
+  import { getUid } from "~/lib/stores";
   import { desc } from "@sections/meta";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
@@ -33,7 +33,7 @@
       ></textarea>
 
       <div
-        class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
+        class="absolute right-0 bottom-0 cursor-ns-resize"
         onpointerdown={(e) => {
           offset =
             e.clientY -

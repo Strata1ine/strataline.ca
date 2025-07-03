@@ -1,6 +1,7 @@
 ---
 import { container, Pos } from "@sections/meta";
 import { type Review as Meta } from "@/meta";
+import { marked } from "marked";
 import Title from "./Title.astro";
 import Island from "./Review.svelte";
 
@@ -10,13 +11,17 @@ interface Props {
 }
 
 const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+const reviews = meta.reviews.map((review) => ({
+  ...review,
+  markdown: marked.parseInline(review.markdown),
+}));
 ---
 
 <section class={container({ intent: "div" })} id={meta.id}>
   <Title title={meta.title} {pos} />
   <div class="contain-paint">
-    <div class={container({ intent: "inner" })}>
-      <Island client:visible meta={meta.reviews} />
+    <div class=`${container({ intent: "inner" })} select-none`>
+      <Island client:visible meta={reviews} />
     </div>
   </div>
 </section>

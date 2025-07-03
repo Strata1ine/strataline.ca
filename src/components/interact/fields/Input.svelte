@@ -1,7 +1,7 @@
 <script lang="ts">
   import Label from "./Label.svelte";
   import Valid from "./Valid.svelte";
-  import { getUid } from "@lib/stores";
+  import { getUid } from "~/lib/stores";
   import { desc } from "@sections/meta";
   import { field, input } from "./meta";
 

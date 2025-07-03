@@ -1,10 +1,10 @@
 import { defineCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
 
-import { buildSchemaRegistery as c } from "@build/components";
-import { ImageSource } from '@build/meta';
+import { buildSchemaRegistery as c } from "~/build/components";
+import { ImageSource } from '~/build/meta';
+import { register } from "~/build/components";
 
-import { register } from "@build/components";
 import * as Meta from "@/meta";
 import * as Components from "@/index";
 

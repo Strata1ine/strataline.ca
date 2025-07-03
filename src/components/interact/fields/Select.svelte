@@ -1,11 +1,11 @@
 <script>
-  import Caret from "@icons/ph/caret-down-bold.svelte";
-  import NavArrow from "@icons/ph/navigation-arrow-fill.svelte";
+  import Caret from "~/icons/ph/caret-down-bold.svelte";
+  import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
   import Label from "./Label.svelte";
   import { desc } from "@sections/meta";
   import { field, input, expanded } from "./meta";
-  import { getUid } from "@lib/stores";
-  import { clickOutside } from "@lib/focus";
+  import { getUid } from "~/lib/stores";
+  import { clickOutside } from "~/lib/focus";
 
   let { values, name, required } = $props();
   let prevIdx = $state(0);

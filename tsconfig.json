@@ -30,14 +30,8 @@
       "@fields/*": [
         "src/components/interact/fields/*"
       ],
-      "@build/*": [
-        "src/build/*"
-      ],
-      "@icons/*": [
-        "src/icons/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
+      "@decor/*": [
+        "src/components/decor/*"
       ],
       "@/*": [
         "src/components/*"

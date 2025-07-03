@@ -81,7 +81,7 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 /* sleepy W3C */

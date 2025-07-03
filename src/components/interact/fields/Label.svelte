@@ -1,5 +1,5 @@
 <script>
-  import Asterick from "@icons/ph/asterisk-bold.svelte";
+  import Asterick from "~/icons/ph/asterisk-bold.svelte";
   import { desc } from "@sections/meta";
   let { name, required, for: f } = $props();
 </script>

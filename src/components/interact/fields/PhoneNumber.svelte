@@ -2,7 +2,7 @@
   import Label from "./Label.svelte";
   import Valid from "./Valid.svelte";
   import { field, input } from "./meta";
-  import { getUid } from "@lib/stores";
+  import { getUid } from "~/lib/stores";
   import { desc } from "@sections/meta";
   let { name = "Phone number", validate = false, required } = $props();
   let uid = getUid();

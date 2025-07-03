@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { optimizeImages } from '@build/images';
+import { optimizeImages } from '~/build/images';
 import { Pos, swapPos } from '@sections/meta';
 
 export async function onRequest(context: { locals: App.Locals }, next: () => Promise<Response>): Promise<Response> {
