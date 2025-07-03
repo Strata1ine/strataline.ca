@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { modals } from "@lib/stores";
+  import { modals } from "~/lib/stores";
   import { heading, desc } from "@sections/meta";
   import { Hero as Meta } from "@/meta";
   import Slideshow, { type AnimMeta } from "@interact/ImageSlideshow.svelte";

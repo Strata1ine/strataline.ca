@@ -1,9 +1,9 @@
 ---
-import { optimizeImages } from "@build/images";
+import { optimizeImages } from "~/build/images";
+import type { ImageSource } from "~/build/meta";
 import { container } from "@sections/meta.ts";
 import Island from "./Hero.svelte";
 import { type Hero as Meta } from "@/meta";
-import type { ImageSource } from "@build/meta";
 
 interface Props {
   meta: Meta;

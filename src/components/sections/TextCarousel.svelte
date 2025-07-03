@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Star from "@icons/ph/star-four-fill.svelte";
+  import Star from "~/icons/ph/star-four-fill.svelte";
   import { onMount } from "svelte";
   import { TextCarousel as Meta } from "@/meta";
   let { meta }: { meta: Meta } = $props();
@@ -8,15 +8,14 @@
   let moduloEffect = 3;
 
   let textCarousel: HTMLElement;
-  let visibilityBounds: HTMLElement;
+  let container: HTMLElement;
 
-  let moveDirection = -1;
-  let dragStartX = 0;
-  // modulated drag
-  let dragOffset = 0;
-  // the offset non modulated
-  let totalOffset = 0;
-  let lastFrame = 0;
+  let pageX = 0,
+    pageY = 0,
+    dragOffset = 0,
+    moveDirection = -1,
+    totalOffset = 0,
+    lastFrame = 0;
 
   let isVisible = false;
   let animationId: number | null = null;
@@ -28,10 +27,9 @@
 
   const tryAnimate = (currentTime: number = 0) => {
     if (!isVisible) return;
-    const dt: number = (currentTime - lastFrame) / 16.67;
+    totalOffset +=
+      (moveDirection * meta.speed * (currentTime - lastFrame)) / 16.67;
     lastFrame = currentTime;
-
-    totalOffset += moveDirection * meta.speed * dt;
     updateTranslation();
     animationId = requestAnimationFrame(tryAnimate);
   };
@@ -51,7 +49,7 @@
       }
     });
 
-    observer.observe(visibilityBounds);
+    observer.observe(container);
     return () => observer.disconnect();
   });
 
@@ -59,35 +57,38 @@
     if (
       e.button !== 0 ||
       !e.isPrimary ||
-      visibilityBounds.hasPointerCapture(e.pointerId)
+      e.detail > 1 ||
+      container.hasPointerCapture(e.pointerId)
     )
       return;
-    visibilityBounds.setPointerCapture(e.pointerId);
+    container.setPointerCapture(e.pointerId);
     window.getSelection()?.removeAllRanges();
-    dragStartX = e.pageX;
+    pageX = e.pageX;
+    pageY = e.pageX;
     dragOffset = totalOffset;
     tryCancel();
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!visibilityBounds.hasPointerCapture(e.pointerId)) return;
-    totalOffset = dragOffset - (e.pageX - dragStartX);
+    if (!container.hasPointerCapture(e.pointerId)) return;
+    // if (Math.abs(pageX - e.pageX) > Math.abs(pageY - e.pageY)) {
+    totalOffset = dragOffset - (e.pageX - pageX);
     updateTranslation();
-    e.preventDefault();
+    // }
   };
 
   const onpointerup = (e: PointerEvent) => {
-    if (!visibilityBounds.hasPointerCapture(e.pointerId)) return;
-    visibilityBounds.releasePointerCapture(e.pointerId);
+    if (!container.hasPointerCapture(e.pointerId)) return;
+    container.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
-    moveDirection = e.pageX - dragStartX > 0 ? -1 : 1;
+    moveDirection = e.pageX - pageX > 0 ? -1 : 1;
     tryAnimate();
   };
 </script>
 
 <div
-  class="border-accent py-inset touch-none border-y-1 contain-paint"
-  bind:this={visibilityBounds}
+  class="border-accent py-inset touch-pan-y border-y-1 contain-paint"
+  bind:this={container}
   {onpointerdown}
   {onpointermove}
   {onpointerup}

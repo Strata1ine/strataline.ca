@@ -1,5 +1,5 @@
 import type { SchemaContext } from "astro:content";
-import { ImageSource, type OptimizedImage } from "@build/meta";
+import { ImageSource, type OptimizedImage } from "~/build/meta";
 import { z } from "zod";
 
 // COMPONENT: @TextCarousel
