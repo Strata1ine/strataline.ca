@@ -7,14 +7,18 @@ import {
   heading,
   desc,
   imageVariants,
-} from "@sections/meta";
+} from "./meta";
+import { getIndex, getServices } from "~/content.config.ts";
+import { Image } from "astro:assets";
+import { optimizeOpts } from "~/build/images";
 
 import clsx from "clsx";
 import { Popular as Meta } from "@/meta";
 import Link from "@actions/Link.svelte";
 import Title from "./Title.astro";
 
-const { index, serviceCovers } = Astro.locals;
+let index = await getIndex();
+let services = await getServices();
 
 interface Props {
   meta: Meta;
@@ -23,7 +27,7 @@ interface Props {
 
 const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
 
-const services = Astro.locals.services
+const popularServices = services
   .filter((service) =>
     index.data.popular.some((pattern: string) =>
       service.id.split("/")[0].includes(pattern),
@@ -31,7 +35,7 @@ const services = Astro.locals.services
   )
   .sort(
     (a, b) =>
-      index.data.popular.indexOf(a.slug) + index.data.popular.indexOf(b.slug),
+      index.data.popular.indexOf(a.slug) - index.data.popular.indexOf(b.slug),
   );
 
 let next = swapPos(pos);
@@ -42,17 +46,17 @@ let next = swapPos(pos);
 
   <div class={container({ intent: "outer" })}>
     {
-      services.map((service, _) => {
+      popularServices.map((service, _) => {
         const slug = service.id.split("/")[0];
-        const covers = serviceCovers.get(service.id);
-        if (covers == null) return;
         const render = () =>
-          covers.map((image, _) => (
-            <img
+          service.data.covers.map((image, _) => (
+            <Image
               class={imageCover({
-                multiple: covers.length > 1,
+                multiple: service.data.covers.length > 1,
               })}
-              {...image}
+              src={image.meta}
+              alt={image.alt}
+              {...optimizeOpts}
             />
           ));
 

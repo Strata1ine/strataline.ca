@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Opinion as Meta } from "@/meta";
   import Stars from "@decor/Stars.svelte";
-  import { heading, desc } from "@sections/meta";
+  import { heading, desc } from "./meta";
   import { onMount } from "svelte";
 
   const {
@@ -11,7 +11,7 @@
   } = $props();
 
   let container: HTMLElement;
-  let idx = $state(0);
+  let idx = 0;
   let pageX = 0,
     pageY = 0,
     startPos = 0;
@@ -124,8 +124,11 @@
 
         <h3 class={heading({ intent: "2xl" })}>{review.title}</h3>
 
-        <div class="mt-2 mb-4 flex gap-1.5">
-          <Stars class="size-6 md:size-7" length={review.stars}></Stars>
+        <div
+          class="mt-3 mb-4 flex gap-1.5"
+          aria-label="{review.stars} out of 5 stars"
+        >
+          <Stars class="size-6" length={review.stars}></Stars>
         </div>
 
         <p class={desc({ intent: "base" })}>{@html review.markdown}</p>

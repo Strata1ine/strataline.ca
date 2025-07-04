@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { type SchemaContext } from 'astro:content';
-export const componentsMeta: SchemaComponent[] = [];
+let componentsMeta: SchemaComponent[] = [];
 
 export type SchemaComponent = {
   id: string,
@@ -12,6 +12,10 @@ export function register(
   ctx: SchemaComponent,
 ) {
   componentsMeta.push(ctx);
+}
+
+export const clearRegistry = () => {
+  componentsMeta = [];
 }
 
 export function buildSchemaRegistery(c: SchemaContext) {

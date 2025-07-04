@@ -16,7 +16,7 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
-  devToolbar: { enabled: false },
+  // devToolbar: { enabled: false },
   experimental: {
     // csp: true,
     clientPrerender: true,
@@ -43,25 +43,28 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: {
+    build: {
+      cssMinify: false
+    },
     esbuild: {
       drop: ["console", "debugger"],
     },
     plugins: [
       tailwindcss(),
-      {
-        // HACK: the red one invented cache
-        name: 'clear-content-cache',
-        handleHotUpdate({ file, server }) {
-          if (file.endsWith('src/components/meta.ts') || file.endsWith('src/content.config.ts')) {
-            exec('rm -rf .astro/', (error) => {
-              if (error) console.error('Error clearing content cache:', error);
-              else console.log('Cleared content content cache. Restarting server!');
-            });
-            server.restart();
-            return [];
-          }
-        },
-      },
+      // {
+      //   // HACK: the red one invented cache
+      //   name: 'clear-content-cache',
+      //   handleHotUpdate({ file, server }) {
+      //     if (file.endsWith('src/components/meta.ts') || file.endsWith('src/content.config.ts')) {
+      //       exec('rm -rf .astro/', (error) => {
+      //         if (error) console.error('Error clearing content cache:', error);
+      //         else console.log('Cleared content content cache. Restarting server!');
+      //       });
+      //       server.restart();
+      //       return [];
+      //     }
+      //   },
+      // },
     ],
   },
   image: {
@@ -69,7 +72,7 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp',
       config: {
         quality: 20,
-        experimentalDefaultStyles: false,
+        experimentalDefaultStyles: true,
       },
     },
   },

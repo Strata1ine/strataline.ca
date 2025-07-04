@@ -1,5 +1,7 @@
 ---
-import { container, heading, Pos } from "@sections/meta.ts";
+import { container, heading, Pos } from "./meta";
+import { Image } from "astro:assets";
+import { optimizeOpts } from "~/build/images";
 import clsx from "clsx";
 
 import { Icon } from "astro-icon/components";
@@ -7,17 +9,20 @@ import { type LessPopular as Meta } from "@/meta";
 import TextCarousel from "./TextCarousel.astro";
 import Title from "./Title.astro";
 
+import { getIndex, getServices } from "~/content.config.ts";
+let index = await getIndex();
+let services = await getServices();
+
 interface Props {
   meta: Meta;
   pos: Pos;
 }
 
-const { index, serviceCovers } = Astro.locals;
 const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
 
 const exclude = index.data.popular;
 
-const services = Astro.locals.services.filter(
+const lessPopularServices = services.filter(
   (service) =>
     !exclude.some((pattern: string) =>
       service.id.split("/")[0].includes(pattern),
@@ -36,19 +41,18 @@ const services = Astro.locals.services.filter(
       )}
     >
       {
-        services.map((service, _) => {
+        lessPopularServices.map((service, _) => {
           const slug = service.id.split("/")[0];
-          const covers = serviceCovers.get(service.id);
-          if (covers == null) return;
-
           return (
             <a
               class="gap-inset flex w-full items-center sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
               href={`/services/${slug}`}
             >
-              <img
+              <Image
                 class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm object-cover transition duration-300 select-none hover:scale-[1.05] sm:w-full"
-                {...covers[0]}
+                src={service.data.covers[0].meta}
+                alt={service.data.covers[0].alt}
+                {...optimizeOpts}
               />
 
               <div class="sm:gap-inset flex flex-col gap-1 sm:w-full sm:flex-row sm:items-center">

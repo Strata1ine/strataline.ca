@@ -1,6 +1,6 @@
 <script lang="ts">
   import { modals } from "~/lib/stores";
-  import { heading, desc } from "@sections/meta";
+  import { heading, desc } from "./meta";
   import { Hero as Meta } from "@/meta";
   import Slideshow, { type AnimMeta } from "@interact/ImageSlideshow.svelte";
   import Slidenav from "@interact/Slidenav.svelte";
@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class="hidden w-1/2 flex-col items-center gap-3 sm:flex md:gap-6 2xl:flex-row-reverse"
+  class="hidden w-1/2 flex-none flex-col items-center gap-3 sm:flex md:gap-6 2xl:flex-row-reverse"
 >
   <Slideshow
     class="flex h-[80vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"
@@ -33,7 +33,7 @@
   />
 </div>
 
-<div class="relative flex-1">
+<div class="relative">
   <h1 class={heading({ intent: "6xl" })}>
     {meta.title}
   </h1>
