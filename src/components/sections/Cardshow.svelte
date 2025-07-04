@@ -1,7 +1,7 @@
 <script lang="ts">
   import Slidenav from "@interact/Slidenav.svelte";
   import { Card as Meta } from "@/meta";
-  import { heading, desc } from "@sections/meta";
+  import { heading, desc } from "./meta";
 
   const {
     meta,

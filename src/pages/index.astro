@@ -1,12 +1,13 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import Content from "~/build/Content.astro";
-import TalkMenu from "@modals/TalkMenu.svelte";
+import Menus from "@modals/Menus.svelte";
+import { getIndex } from "~/content.config.ts";
 
-const { index } = Astro.locals;
+let index = await getIndex();
 ---
 
 <Layout>
   <Content components={index.data.components} />
-  <TalkMenu client:idle />
+  <Menus client:idle />
 </Layout>
