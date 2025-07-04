@@ -18,6 +18,7 @@
       accept="image/*"
       multiple
       type="file"
+      tabindex="0"
       id={uid}
       {name}
       onchange={(e) => {

@@ -10,13 +10,28 @@ export const interactable = [
   "summary",
   '[tabindex]:not([tabindex="-1"])',
   '[contenteditable="true"]',
+  "area[href]",
+  "iframe",
+  "object",
+  "embed",
+  "video[controls]",
+  "audio[controls]",
   '[role="button"]',
   '[role="link"]',
   '[role="checkbox"]',
   '[role="switch"]',
   '[role="textbox"]',
-  "video",
-  "audio",
+  '[role="tab"]',
+  '[role="menuitem"]',
+  '[role="option"]',
+  '[role="radio"]',
+  '[role="slider"]',
+  '[role="spinbutton"]',
+  '[role="combobox"]',
+  '[role="listbox"]',
+  '[role="tree"]',
+  '[role="grid"]',
+  '[role="treegrid"]'
 ];
 
 export function clickOutside(node, callback) {
@@ -41,12 +56,28 @@ export function clickOutside(node, callback) {
 }
 
 export function focusLock(node) {
-  let focusable = Array.from(node.querySelectorAll(interactable.filter(e => e.tabIndex !== -1)));
+  let focusable = Array.from(node.querySelectorAll(interactable)).filter(el => el.getAttribute('aria-disabled') !== 'true' && !el.hasAttribute('inert'));
   let previousFocus;
   let focusedIdx = 0;
 
+  function tabDown(e) {
+    if (e.key !== 'Tab' || focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    } else if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  }
+
   return {
     update: (active) => {
+      node.addEventListener('keydown', tabDown);
       document.body.classList.toggle("overflow-hidden", active);
 
       if (active) {
@@ -67,11 +98,12 @@ export function focusLock(node) {
             e.setAttribute("inert", "");
           });
 
-        if (!focusable[1]) return;
+        if (!focusable[0]) return;
         tick().then(() => {
-          focusable[1].focus();
+          focusable[0].focus();
         });
       } else {
+        node.removeEventListener('keydown', tabDown);
         document
           .querySelectorAll(interactable)
           .forEach((e) => e.removeAttribute("inert"));
@@ -81,6 +113,7 @@ export function focusLock(node) {
     },
     destroy() {
       update(false);
+      node.removeEventListener('keydown', tabDown);
     },
   };
 }

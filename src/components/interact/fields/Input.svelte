@@ -5,7 +5,7 @@
   import { desc } from "@sections/meta";
   import { field, input } from "./meta";
 
-  const { values, name, required, validate = false, ...slot } = $props();
+  const { name, required, validate = false, ...slot } = $props();
   let uid = getUid();
   let valid = $state(false);
 </script>
@@ -22,6 +22,7 @@
         autocomplete="on"
         type="text"
         id={uid}
+        tabindex="0"
         {required}
         {...slot}
       />

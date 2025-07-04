@@ -108,6 +108,7 @@
       aria-expanded={open}
       aria-controls={selectUid}
       class="{input()} w-full cursor-pointer"
+      tabindex="0"
       onclick={() => {
         open = !open;
       }}

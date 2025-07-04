@@ -11,8 +11,8 @@ export const cover = cva("fixed inset-0 overflow-y-auto overflow-x-clip duration
       false: "pointer-events-none opacity-0"
     },
     overlay: {
-      true: "z-4",
-      false: ""
+      true: "z-3",
+      false: "z-1",
     },
   },
   defaultVariants: {
