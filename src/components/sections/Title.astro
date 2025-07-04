@@ -14,8 +14,9 @@ let { title, pos } = Astro.props;
   <h2
     class={clsx(
       heading({ intent: "5xl" }),
-      "sm:max-w-[20ch]",
-      pos == "right" && "sm:ml-auto text-right",
+      pos == "right"
+        ? "sm:ml-auto sm:max-w-[20ch] w-fit"
+        : "sm:max-w-[20ch]",
     )}
   >
     {title}

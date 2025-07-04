@@ -1,7 +1,7 @@
 ---
 import { container, heading, Pos } from "./meta";
 import { Image } from "astro:assets";
-import { optimizeOpts } from "~/build/images";
+import { optimizeOpts } from "~/lib/build/images";
 import clsx from "clsx";
 
 import { Icon } from "astro-icon/components";
@@ -9,7 +9,7 @@ import { type LessPopular as Meta } from "@/meta";
 import TextCarousel from "./TextCarousel.astro";
 import Title from "./Title.astro";
 
-import { getIndex, getServices } from "~/content.config.ts";
+import { getIndex, getServices } from "~/content.config";
 let index = await getIndex();
 let services = await getServices();
 

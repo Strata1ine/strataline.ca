@@ -1,7 +1,7 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import Menus from "@modals/Menus.svelte";
-import { getServices } from "~/content.config.ts";
+import { getServices } from "~/content.config";
 
 export async function getStaticPaths() {
   return (await getServices()).map((service: any) => ({

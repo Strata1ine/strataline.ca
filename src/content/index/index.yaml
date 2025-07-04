@@ -1,9 +1,20 @@
-title: ""
-desc: ""
+title: "wasd"
+desc: "wasd"
 popular:
   - popcorn-removal
   - stairs
 components:
+  - type: Header
+    nav:
+      - id: "popular"
+        name: "Popular"
+      - id: "explore"
+        name: "Explore"
+      - id: "accomplishments"
+        name: "Accomplishments"
+      - id: "reviews"
+        name: "Reviews"
+
   - type: Hero
     title: |-
       Renovations designed to transform your space

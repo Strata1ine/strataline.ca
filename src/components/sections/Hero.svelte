@@ -20,7 +20,7 @@
   class="hidden w-1/2 flex-none flex-col items-center gap-3 sm:flex md:gap-6 2xl:flex-row-reverse"
 >
   <Slideshow
-    class="flex h-[80vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"
+    class="flex h-[70vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"
     images={meta.images}
     {animMeta}
     bind:idx

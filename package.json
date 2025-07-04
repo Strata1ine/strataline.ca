@@ -13,7 +13,7 @@
     "@astrojs/svelte": "^7.1.0",
     "@playform/compress": "^0.1.9",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.11.0",
+    "astro": "^5.11",
     "astro-compressor": "^1.0.0",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
@@ -28,6 +28,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.13",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "sass": "^1.89.2",
     "tailwindcss": "^4.1.11"
   }
 }
