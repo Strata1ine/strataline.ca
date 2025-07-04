@@ -1,5 +1,5 @@
 import { getImage } from 'astro:assets';
-import type { ImageSource, OptimizedImage } from './meta';
+import { ImageSource, type OptimizedImage } from "@/meta";
 
 export const optimizeOpts = {
   widths: [500, 750, 1300, 2160],
@@ -12,6 +12,7 @@ export async function optimizeImage(image: ImageSource): Promise<OptimizedImage>
     src: image.meta,
     ...optimizeOpts,
   });
+
   return {
     src: opt.src,
     srcset: opt.srcSet.attribute,

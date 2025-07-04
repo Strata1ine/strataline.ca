@@ -1,9 +1,9 @@
-import { defineCollection, getCollection, getEntry, type SchemaContext } from 'astro:content';
+import { defineCollection, getEntry, getCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
 
-import { buildSchemaRegistery as c } from "~/build/components";
-import { ImageSource } from '~/build/meta';
-import { register, clearRegistry } from "~/build/components";
+import { buildSchemaRegistery as c } from "~/lib/build/components";
+import { ImageSource } from '@/meta';
+import { register } from "~/lib/build/components";
 
 import * as Meta from "@/meta";
 import * as Components from "@/index";
@@ -30,7 +30,6 @@ export const collections = {
   }),
 };
 
-
 export const getIndex = async () => {
   const entry = await getEntry("index", "index");
   if (!entry) {
@@ -47,7 +46,12 @@ export const getServices = async () => {
   return services;
 };
 
-clearRegistry();
+register({
+  id: "Header",
+  meta: Meta.Header.zod,
+  render: Components.Header,
+});
+
 register({
   id: "Hero",
   meta: Meta.Hero.zod,

@@ -114,26 +114,24 @@
       {onkeydown}
     >
       <NavArrow class="size-8" />
-      <div class="relative flex-1">
-        <div
-          class="transition-transform duration-200 {anim
-            ? ''
-            : 'translate-y-full'}"
+      <div
+        class="flex-1 transition-transform duration-200 {anim
+          ? ''
+          : 'translate-y-full'}"
+      >
+        <span
+          class="{desc({
+            intent: 'sm',
+          })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
+          >{anim ? values[selectedIdx] : values[prevIdx]}</span
         >
-          <span
-            class="{desc({
-              intent: 'sm',
-            })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
-            >{anim ? values[selectedIdx] : values[prevIdx]}</span
-          >
-          <span
-            class="{desc({
-              intent: 'sm',
-            })} absolute bottom-full left-0 transition-opacity duration-300{anim
-              ? ' opacity-0'
-              : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
-          >
-        </div>
+        <span
+          class="{desc({
+            intent: 'sm',
+          })} absolute bottom-full left-0 transition-opacity duration-300{anim
+            ? ' opacity-0'
+            : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
+        >
       </div>
 
       <Caret

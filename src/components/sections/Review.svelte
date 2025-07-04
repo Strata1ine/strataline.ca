@@ -21,7 +21,7 @@
   let length = $state(0);
 
   onMount(() => {
-    let mediaQuery = window.matchMedia(`(max-width: 800px)`);
+    let mediaQuery = window.matchMedia(`(max-width: 700px)`);
 
     const resize = () => {
       isDesktop = mediaQuery.matches;
@@ -108,12 +108,12 @@
   onpointercancel={onpointerup}
 >
   <div
-    class="c flex sm:gap-5 md:gap-10"
+    class="c flex"
     bind:this={container}
     style="transform: translateX({pos}%); --length: {meta.length}%"
   >
     {#each meta as review}
-      <div class="border-accent relative flex-1 rounded-sm border p-7 md:p-10">
+      <div class="border-accent relative flex-1 rounded-sm border p-7 md:p-10 sm:mx-2 md:mx-5">
         <div
           class="bg-accent absolute top-0 -translate-y-1/2 rounded-sm px-4 py-2"
         >
@@ -124,10 +124,7 @@
 
         <h3 class={heading({ intent: "2xl" })}>{review.title}</h3>
 
-        <div
-          class="mt-3 mb-4 flex gap-1.5"
-          aria-label="{review.stars} out of 5 stars"
-        >
+        <div class="mt-3 mb-4 flex gap-1.5" aria-label="{review.stars} out of 5 stars">
           <Stars class="size-6" length={review.stars}></Stars>
         </div>
 
@@ -163,7 +160,7 @@
     width: calc(var(--length) * 100);
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 700px) {
     .c {
       width: calc(var(--length) * 50);
     }

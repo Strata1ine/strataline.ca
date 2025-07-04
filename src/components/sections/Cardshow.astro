@@ -1,11 +1,10 @@
 ---
 import { container, Pos } from "./meta";
-import { Cardshow as Meta } from "@/meta";
+import { Cardshow as Meta, type ImageSource } from "@/meta";
 import Island from "./Cardshow.svelte";
 import Title from "./Title.astro";
 
-import { optimizeImage } from "~/build/images";
-import { type ImageSource } from "~/build/meta";
+import { optimizeImage } from "~/lib/build/images";
 
 interface Props {
   meta: Meta;

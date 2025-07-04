@@ -1,9 +1,8 @@
 ---
-import { optimizeImages } from "~/build/images";
-import type { ImageSource } from "~/build/meta";
+import { optimizeImages } from "~/lib/build/images";
 import { container } from "./meta.ts";
 import Island from "./Hero.svelte";
-import { type Hero as Meta } from "@/meta";
+import { type Hero as Meta, type ImageSource } from "@/meta";
 
 interface Props {
   meta: Meta;
@@ -23,7 +22,7 @@ meta.images = await optimizeImages(meta.images as ImageSource[]);
   </div>
 
   <div
-    class={`${container({ intent: "outer" })} flex w-full items-center gap-6 xl:gap-8 py-15 2xl:gap-11`}
+    class={`${container({ intent: "outer" })} flex w-full items-center gap-6 xl:gap-8 py-17 sm:py-30 2xl:gap-11`}
   >
     <Island client:visible {meta} />
   </div>

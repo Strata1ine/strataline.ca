@@ -1,12 +1,12 @@
 <script>
   import { modals } from "~/lib/stores";
-  import { focusLock } from "~/lib/focus.js";
+  import { focusLock } from "~/lib/focus";
   import { cover } from "./meta";
 
-  const { variant = {}, class: customClass = "", uid, children } = $props();
+  const { variant = {}, uid, idx, children } = $props();
 
   let active = $state(false);
-  modals.idx.subscribe((v) => (active = v));
+  modals.idx.subscribe((v) => (active = idx == v));
 </script>
 
 <div
@@ -20,9 +20,7 @@
       modals.close();
     }
   }}
-  class="{cover(variant)} {customClass} {active
-    ? ''
-    : 'pointer-events-none opacity-0'}"
+  class={cover({ ...variant, active })}
   aria-hidden={!active}
 >
   {@render children?.()}

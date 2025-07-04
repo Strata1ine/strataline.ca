@@ -1,6 +1,6 @@
 <script>
   import Modal from "@modals/Modal.svelte";
-  import Form from "@modals/ModalForm.svelte";
+  import Form from "@modals/Form.svelte";
   import Button from "@actions/Button.svelte";
   import Input from "@fields/Input.svelte";
   import Select from "@fields/Select.svelte";
@@ -14,7 +14,7 @@
   let uid = getUid();
 </script>
 
-<Modal {uid} variant={{ intent: "blur" }} idx={modals.talk}>
+<Modal {uid} variant={{ intent: "blur", overlay: true }} idx={modals.talk}>
   <Form id={uid} class="mt-8 space-y-9" title="Let's talk">
     <Input name="E-mail" required autocomplete="on" type="email" validate />
     <PhoneNumber validate></PhoneNumber>

@@ -1,6 +1,52 @@
 import type { SchemaContext } from "astro:content";
-import { ImageSource, type OptimizedImage } from "~/build/meta";
 import { z } from "zod";
+
+export type ImageSource = {
+  meta: ImageMetadata;
+  alt: string;
+}
+
+export const ImageSource = {
+  zod: (c: SchemaContext) => z.object({
+    meta: c.image(),
+    alt: z.string(),
+  })
+}
+
+export type OptimizedImage = {
+  src: string;
+  srcset: string;
+  width: string;
+  height: string;
+  sizes: string;
+  loading: string;
+  alt: string;
+  draggable: boolean;
+}
+
+// COMPONENT: @Header
+
+export type Header = {
+  nav: NavItem[];
+};
+
+export const Header = {
+  zod: (c: SchemaContext) => ({
+    nav: z.array(NavItem.zod(c)),
+  }),
+};
+
+export type NavItem = {
+  id: string;
+  name: string;
+};
+
+export const NavItem = {
+  zod: (_: SchemaContext) => z.object({
+    id: z.string(),
+    name: z.string()
+  }),
+};
 
 // COMPONENT: @TextCarousel
 

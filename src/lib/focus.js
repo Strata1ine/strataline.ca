@@ -55,7 +55,7 @@ export function focusLock(node) {
 
         if (
           previousFocus &&
-          previousFocus.hasAttribute("include-in-focuslock") &&
+          previousFocus.hasAttribute("data-include-in-focuslock") &&
           !focusable.includes(previousFocus)
         ) {
           focusable.unshift(previousFocus);
@@ -67,7 +67,7 @@ export function focusLock(node) {
             e.setAttribute("inert", "");
           });
 
-
+        if (!focusable[1]) return;
         tick().then(() => {
           focusable[1].focus();
         });
