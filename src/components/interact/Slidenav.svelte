@@ -21,6 +21,7 @@
       onclick={() => (idx = i)}
       aria-label="View slide {i}"
       class={nav({ ...variant, state: idx === i })}
+      tabindex="0"
     ></button>
   {/each}
 </div>

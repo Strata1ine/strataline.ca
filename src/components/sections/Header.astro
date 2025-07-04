@@ -11,25 +11,11 @@ interface Props {
 const { meta } = Astro.props;
 ---
 
-<header class="absolute top-0 right-0 left-0 z-1 py-3">
+<header class="absolute top-0 right-0 left-0 py-3 z-1">
   <div class=`${container({ intent: "inner" })} flex items-center gap-3`>
-    <Icon name="logo" class="z-1 h-auto w-33 sm:w-40 xl:w-50" is:inline />
+    <Icon name="logo" class="h-auto w-33 sm:w-40 xl:w-50 z-1" is:inline />
     <div class="flex-1"></div>
 
-    <ul class="mt-2 gap-11 hidden md:flex">
-      {
-        meta.nav.length !== 0
-          ? meta.nav.map((item) => (
-              <li>
-                <a href={`#${item.id}`} class={`${desc({ intent: "sm" })}`}>
-                  {item.name}
-                </a>
-              </li>
-            ))
-          : null
-      }
-    </ul>
-
-    <Island class="md:hidden" client:load />
+    <Island class="md:hidden" {meta} client:load />
   </div>
 </header>

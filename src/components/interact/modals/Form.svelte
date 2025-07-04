@@ -23,6 +23,7 @@
       class="bg-tone cursor-pointer rounded-[50%] p-2"
       aria-label={`Close dialog`}
       onclick={() => modals.close()}
+      tabindex="0"
     >
       <X class="size-10 rounded-[50%] lg:w-11" />
     </button>

@@ -21,6 +21,7 @@
     }
   }}
   class={cover({ ...variant, active })}
+  inert={!active}
   aria-hidden={!active}
 >
   {@render children?.()}

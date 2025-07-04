@@ -148,6 +148,7 @@
     <button
       aria-label="View review {i}"
       class="flex-1 cursor-pointer rounded-sm"
+      tabindex="0"
       onclick={() => {
         setIdx(i);
       }}

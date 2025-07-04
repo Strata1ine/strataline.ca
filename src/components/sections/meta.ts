@@ -17,7 +17,7 @@ export const heading = cva("", {
       "6xl": "font-serif text-2xl font-bold text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl",
       "5xl": "font-serif text-2xl md:text-4xl xl:text-5xl font-bold text-balance",
       "4xl": "font-serif text-xl font-semibold md:text-3xl xl:text-4xl",
-      "2xl": "text-xl sm:text-bg font-semibold font-serif md:text-2xl",
+      "2xl": "text-xl font-semibold font-serif md:text-2xl",
       "xl": "text-md sm:text-bg font-serif md:text-xl",
     },
   },

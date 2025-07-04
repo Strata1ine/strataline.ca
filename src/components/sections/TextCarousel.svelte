@@ -22,7 +22,8 @@
 
   const updateTranslation = () => {
     const w = textCarousel.scrollWidth / moduloEffect;
-    textCarousel.style.transform = `translateX(-${totalOffset - w * Math.floor(totalOffset / w)}px)`;
+    totalOffset = totalOffset - w * Math.floor(totalOffset / w);
+    textCarousel.style.transform = `translateX(-${totalOffset}px)`;
   };
 
   const tryAnimate = (currentTime: number = 0) => {

@@ -16,7 +16,7 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
-  // devToolbar: { enabled: false },
+  devToolbar: { enabled: false },
   experimental: {
     // csp: true,
     clientPrerender: true,
