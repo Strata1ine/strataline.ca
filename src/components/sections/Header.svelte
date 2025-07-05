@@ -4,7 +4,6 @@
   import { Header as Meta } from "@/meta";
   import { modals, getUid } from "~/lib/stores";
   import { heading, desc } from "./meta";
-  import { tick } from "svelte";
   let active = $state(false);
   modals.idx.subscribe((v) => (active = v == modals.mobile));
   const uid = getUid();
