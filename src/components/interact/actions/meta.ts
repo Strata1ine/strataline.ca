@@ -4,7 +4,7 @@ export const nav = cva("cursor-pointer",
   {
     variants: {
       intent: {
-        outline: "size-8 xl:size-10 rounded-[50%] border-solid border-black transition-[border] duration-250",
+        outline: "size-8 xl:size-10 rounded-[50%] border-solid border-black transition-[border] duration-250 touch-manipulation",
       },
       state: {
         false: "border",
