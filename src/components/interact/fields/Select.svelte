@@ -95,7 +95,6 @@
     type="button"
     id={buttonUid}
     aria-haspopup="listbox"
-    aria-labelledby={buttonUid}
     aria-expanded={open}
     aria-controls={selectUid}
     class="{input()} w-full cursor-pointer"
