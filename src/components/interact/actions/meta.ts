@@ -27,7 +27,7 @@ export const action = cva(
       },
       display: {
         default: "",
-        full: "w-full text-center",
+        fill: "w-full text-center",
       },
     },
     defaultVariants: {

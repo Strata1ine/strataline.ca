@@ -31,7 +31,7 @@
     {action}
     netlify
   >
-    {@render children?.()}
     <input type="hidden" name="form-name" value={name} />
+    {@render children?.()}
   </form>
 </div>

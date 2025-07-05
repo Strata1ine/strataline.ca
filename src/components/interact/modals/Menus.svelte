@@ -15,7 +15,7 @@
 </script>
 
 <Modal {uid} variant={{ intent: "blur", overlay: true }} idx={modals.talk}>
-  <Form name="Contact" id={uid} class="mt-8 space-y-9" title="Let's talk">
+  <Form name="contact" title="Let's talk" id={uid} class="mt-8 space-y-9">
     <Input name="E-mail" required type="email" validate />
     <PhoneNumber validate required></PhoneNumber>
     <Select
@@ -24,7 +24,7 @@
     />
     <TextArea required minlength="14" name="Message" />
     <Photos />
-    <Button value="submit" variant={{ intent: "fill", display: "full" }}>
+    <Button value="submit" variant={{ intent: "fill", display: "fill" }}>
       Submit
     </Button>
   </Form>

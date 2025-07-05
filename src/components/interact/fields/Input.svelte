@@ -1,6 +1,6 @@
 <script lang="ts">
   import Field from "./Field.svelte";
-  import Valid from "./Valid.svelte";
+  import Valid from "@decor/Valid.svelte";
   import { getUid } from "~/lib/stores";
   import { input } from "./meta";
   import { desc } from "@sections/meta";
