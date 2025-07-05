@@ -14,7 +14,11 @@
 <ul class="mt-2 hidden gap-11 md:flex">
   {#each meta.nav as item}
     <li>
-      <a href={`#${item.id}`} class="{desc({ intent: 'sm' })} c" tabindex="0">
+      <a
+        href={`#${item.id}`}
+        class="{desc({ intent: 'sm' })} c relative"
+        tabindex="0"
+      >
         {item.name}
       </a>
     </li>
@@ -55,7 +59,6 @@
 
 <style>
   .c {
-    position: relative;
     &::after {
       content: "";
       position: absolute;
