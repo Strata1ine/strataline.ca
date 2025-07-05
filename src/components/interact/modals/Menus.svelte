@@ -17,7 +17,7 @@
 <Modal {uid} variant={{ intent: "blur", overlay: true }} idx={modals.talk}>
   <Form name="Contact" id={uid} class="mt-8 space-y-9" title="Let's talk">
     <Input name="E-mail" required type="email" validate />
-    <PhoneNumber validate></PhoneNumber>
+    <PhoneNumber validate required></PhoneNumber>
     <Select
       name="Location"
       values={["Select a location", ...config.areaServed]}

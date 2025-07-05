@@ -2,25 +2,41 @@
   import Field from "./Field.svelte";
   import Valid from "./Valid.svelte";
   import { getUid } from "~/lib/stores";
-  import { desc } from "@sections/meta";
   import { input } from "./meta";
+  import { desc } from "@sections/meta";
 
-  const { name, required, validate = false, type } = $props();
+  const {
+    name,
+    required,
+    validate = false,
+    type,
+    oninput,
+    valid: iValid,
+    pattern,
+    placeholder,
+    inputmode,
+  } = $props();
+
+  let valid = $state(iValid);
   let uid = getUid();
-  let valid = $state(false);
 </script>
 
 <Field {uid} {name} {required}>
   <div class={input()}>
     <input
       oninput={(e) => {
+        oninput(e);
         valid = e.currentTarget.validity.valid;
       }}
-      class="w-full {desc({ intent: 'sm' })} focus:outline-none"
+      class="{desc({ intent: 'sm' })} w-full focus:outline-none"
       id={uid}
       tabindex="0"
+      {name}
       {type}
       {required}
+      {pattern}
+      {placeholder}
+      {inputmode}
     />
 
     {#if validate}
