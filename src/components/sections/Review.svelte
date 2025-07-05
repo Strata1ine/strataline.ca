@@ -12,20 +12,18 @@
 
   let container: HTMLElement;
   let idx = 0;
-  let pageX = 0,
-    pageY = 0,
+  let clientX = 0,
+    clientY = 0,
     startPos = 0;
   let pos = $state(0);
   let lastFrame = 0;
-  let isDesktop: boolean = true;
   let length = $state(0);
 
   onMount(() => {
     let mediaQuery = window.matchMedia(`(max-width: 700px)`);
 
     const resize = () => {
-      isDesktop = mediaQuery.matches;
-      length = container.children.length - (isDesktop ? 0 : 1);
+      length = container.children.length - (mediaQuery.matches ? 0 : 1);
       setIdx(idx);
     };
 
@@ -33,8 +31,8 @@
     mediaQuery.addEventListener("change", resize);
   });
 
-  const setIdx = (idx: number) => {
-    idx = Math.max(0, Math.min(idx, length - 1));
+  const setIdx = (newIdx: number) => {
+    idx = Math.max(0, Math.min(newIdx, length - 1));
     targetPos = -(idx * (100 / container.children.length));
 
     if (animationId) cancelAnimationFrame(animationId);
@@ -45,27 +43,31 @@
   const onpointerdown = (e: PointerEvent) => {
     if (
       e.button !== 0 ||
-      e.detail > 1 ||
       !e.isPrimary ||
       container.hasPointerCapture(e.pointerId)
     )
       return;
     container.setPointerCapture(e.pointerId);
     window.getSelection()?.removeAllRanges();
-    pageX = e.pageX;
-    pageY = e.pageY;
-    startPos = pos;
 
     if (animationId) {
       cancelAnimationFrame(animationId);
       animationId = null;
     }
+
+    clientX = e.clientX;
+    clientY = e.clientY;
+    startPos = pos;
+    e.preventDefault();
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!container.hasPointerCapture(e.pointerId)) return;
-    if (Math.abs(pageX - e.pageX) > Math.abs(pageY - e.pageY)) {
-      pos = startPos + ((e.pageX - pageX) / container.offsetWidth) * 100;
+    if (
+      container.hasPointerCapture(e.pointerId) &&
+      Math.abs(clientX - e.clientX) > Math.abs(clientY - e.clientY)
+    ) {
+      pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
+      e.preventDefault();
     }
   };
 
@@ -73,12 +75,14 @@
     if (!container.hasPointerCapture(e.pointerId)) return;
     container.releasePointerCapture(e.pointerId);
 
-    const diffX = pageX - e.pageX;
-    const diffY = pageY - e.pageY;
+    const diffX = clientX - e.clientX;
+    const diffY = clientY - e.clientY;
 
-    const a = diffX / (container.offsetWidth / container.children.length);
-    if (Math.abs(diffX) > 3 && Math.abs(diffX) > Math.abs(diffY)) {
+    if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+      const a = diffX / (container.offsetWidth / meta.length);
       setIdx((idx += Math.abs(a) < 1 ? Math.sign(diffX) : Math.round(a)));
+    } else {
+      setIdx(idx);
     }
   };
 
@@ -91,10 +95,10 @@
 
     const diff = targetPos - pos;
     if (Math.abs(diff) < 0.01) {
-      pos = targetPos;
       animationId = null;
+      pos = targetPos;
     } else {
-      pos += diff * 0.007 * dt;
+      pos += diff * 0.007777 * dt;
       animationId = requestAnimationFrame(animate);
     }
   };
@@ -113,7 +117,9 @@
     style="transform: translateX({pos}%); --length: {meta.length}%"
   >
     {#each meta as review}
-      <div class="border-accent relative flex-1 rounded-sm border p-7 md:p-10 sm:mx-2 md:mx-5">
+      <div
+        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 md:mx-5 md:p-10"
+      >
         <div
           class="bg-accent absolute top-0 -translate-y-1/2 rounded-sm px-4 py-2"
         >
@@ -124,7 +130,10 @@
 
         <h3 class={heading({ intent: "2xl" })}>{review.title}</h3>
 
-        <div class="mt-3 mb-4 flex gap-1.5" aria-label="{review.stars} out of 5 stars">
+        <div
+          class="mt-3 mb-4 flex gap-1.5"
+          aria-label="{review.stars} out of 5 stars"
+        >
           <Stars class="size-6" length={review.stars}></Stars>
         </div>
 

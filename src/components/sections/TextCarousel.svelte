@@ -10,28 +10,30 @@
   let textCarousel: HTMLElement;
   let container: HTMLElement;
 
-  let pageX = 0,
-    pageY = 0,
+  let clientX = 0,
+    clientY = 0,
     dragOffset = 0,
-    moveDirection = -1,
     totalOffset = 0,
+    moveDirection = -1,
     lastFrame = 0;
 
+  let pos = $state(0);
   let isVisible = false;
   let animationId: number | null = null;
 
-  const updateTranslation = () => {
+  const updateTranslation = (offset: number) => {
     const w = textCarousel.scrollWidth / moduloEffect;
-    totalOffset = totalOffset - w * Math.floor(totalOffset / w);
-    textCarousel.style.transform = `translateX(-${totalOffset}px)`;
+    totalOffset = offset;
+    pos = ((totalOffset % w) + w) % w;
   };
 
   const tryAnimate = (currentTime: number = 0) => {
     if (!isVisible) return;
-    totalOffset +=
-      (moveDirection * meta.speed * (currentTime - lastFrame)) / 16.67;
+    updateTranslation(
+      totalOffset -
+        (moveDirection * meta.speed * (currentTime - lastFrame)) / 16.67,
+    );
     lastFrame = currentTime;
-    updateTranslation();
     animationId = requestAnimationFrame(tryAnimate);
   };
 
@@ -64,25 +66,22 @@
       return;
     container.setPointerCapture(e.pointerId);
     window.getSelection()?.removeAllRanges();
-    pageX = e.pageX;
-    pageY = e.pageX;
-    dragOffset = totalOffset;
+    clientX = e.clientX;
+    clientY = e.clientY;
+    dragOffset = pos;
     tryCancel();
   };
 
   const onpointermove = (e: PointerEvent) => {
     if (!container.hasPointerCapture(e.pointerId)) return;
-    // if (Math.abs(pageX - e.pageX) > Math.abs(pageY - e.pageY)) {
-    totalOffset = dragOffset - (e.pageX - pageX);
-    updateTranslation();
-    // }
+    updateTranslation(dragOffset - (e.clientX - clientX));
   };
 
   const onpointerup = (e: PointerEvent) => {
     if (!container.hasPointerCapture(e.pointerId)) return;
     container.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
-    moveDirection = e.pageX - pageX > 0 ? -1 : 1;
+    moveDirection = e.clientX - clientX > 0 ? 1 : -1;
     tryAnimate();
   };
 </script>
@@ -98,6 +97,7 @@
 >
   <div
     bind:this={textCarousel}
+    style="transform: translateX(-{pos}px)"
     class="flex h-20 items-center will-change-transform select-none md:h-25"
   >
     {#each Array(moduloEffect).fill(meta.text).flat() as item}

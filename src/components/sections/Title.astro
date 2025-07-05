@@ -12,11 +12,11 @@ let { title, pos } = Astro.props;
 
 <div class={clsx(container({ intent: "inner" }), "mb-16")}>
   <h2
+    style="white-space: pre-line"
     class={clsx(
       heading({ intent: "5xl" }),
-      pos == "right"
-        ? "sm:ml-auto sm:max-w-[20ch] w-fit"
-        : "sm:max-w-[20ch]",
+      "sm:max-w-[20ch]",
+      pos == "right" ? "sm:ml-auto  sm:text-right" : "",
     )}
   >
     {title}

@@ -25,7 +25,7 @@
   <div class={input()}>
     <input
       oninput={(e) => {
-        oninput(e);
+        if (oninput) oninput(e);
         valid = e.currentTarget.validity.valid;
       }}
       class="{desc({ intent: 'sm' })} w-full focus:outline-none"

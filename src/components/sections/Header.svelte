@@ -27,7 +27,7 @@
 
 <button
   aria-label="Open mobile menu"
-  class="relative z-1 size-9 cursor-pointer touch-pan-y {className}"
+  class="relative z-1 size-9 cursor-pointer touch-manipulation {className}"
   data-include-in-focuslock
   tabindex="0"
   onclick={() => {
@@ -48,7 +48,7 @@
             modals.close(modals.mobile);
           }}
           tabindex="0"
-          class="{heading({ intent: '2xl' })} leading-none"
+          class="{heading({ intent: '2xl' })} leading-none" 
         >
           {item.name}
         </a>
