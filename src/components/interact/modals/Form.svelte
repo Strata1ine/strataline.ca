@@ -2,13 +2,7 @@
   import X from "~/icons/ph/x-bold.svelte";
   import { modals } from "~/lib/stores";
 
-  let {
-    title,
-    id,
-    class: className,
-    action = "/submissions/contact",
-    children,
-  } = $props();
+  let { title, id, class: className, action = "/index", children, name } = $props();
 </script>
 
 <div
@@ -31,11 +25,13 @@
 
   <form
     class={className}
+    {name}
     enctype="multipart/form-data"
-    method="post"
+    method="POST"
     {action}
     netlify
   >
     {@render children?.()}
+    <input type="hidden" name="form-name" value={name} />
   </form>
 </div>
