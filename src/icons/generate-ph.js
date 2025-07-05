@@ -14,7 +14,7 @@ icons.forEach(icon => {
     const path = `./ph/${id}.svelte`;
     try {
       const raw = await import(`@phosphor-icons/core/assets/${weight}/${id}.svg?raw`)
-      const data = raw.default.replace(/<svg([^>]*)>/s, '<svg $1 class={className}>')
+      const data = raw.default.replace(/<svg([^>]*)xmlns="http:\/\/www.w3.org\/2000\/svg"([^>]*)>/s, '<svg $1 $2 class={className}>')
       writeFileSync(`${path}`, `
 <script>
  const { class: className } = $props();
