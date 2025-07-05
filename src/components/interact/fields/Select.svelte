@@ -1,11 +1,10 @@
 <script>
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
-  import Label from "./Label.svelte";
   import { desc } from "@sections/meta";
-  import { field, input, expanded } from "./meta";
+  import { input, expanded } from "./meta";
   import { getUid } from "~/lib/stores";
-  import { clickOutside } from "~/lib/focus";
+  import Field from "./Field.svelte";
 
   let { values, name, required } = $props();
   let prevIdx = $state(0);
@@ -83,104 +82,95 @@
   };
 </script>
 
-<div
-  class="relative"
-  use:clickOutside={() => {
-    open = false;
-  }}
->
-  <Label for={buttonUid} {name} {required}></Label>
+<Field uid={buttonUid} {name} {required} bind:open>
+  <input
+    tabindex="-1"
+    type="hidden"
+    value={values[selectedIdx]}
+    {name}
+    {required}
+  />
 
-  <label class={field({ expanded: open })}>
-    <input
-      tabindex="-1"
-      type="hidden"
-      value={values[selectedIdx]}
-      {name}
-      {required}
-    />
-
-    <button
-      type="button"
-      id={buttonUid}
-      aria-haspopup="listbox"
-      aria-labelledby={buttonUid}
-      aria-expanded={open}
-      aria-controls={selectUid}
-      class="{input()} w-full cursor-pointer"
-      tabindex="0"
-      onclick={() => {
-        open = !open;
-      }}
-      {onkeydown}
-    >
-      <NavArrow class="size-8" />
-      <div
-        class="flex-1 transition-transform duration-200 {anim
-          ? ''
-          : 'translate-y-full'}"
-      >
-        <span
-          class="{desc({
-            intent: 'sm',
-          })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
-          >{anim ? values[selectedIdx] : values[prevIdx]}</span
-        >
-        <span
-          class="{desc({
-            intent: 'sm',
-          })} absolute bottom-full left-0 transition-opacity duration-300{anim
-            ? ' opacity-0'
-            : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
-        >
-      </div>
-
-      <Caret
-        class="size-6 transition-transform duration-300 {open
-          ? '-rotate-180'
-          : ''}"
-      />
-    </button>
-
+  <button
+    type="button"
+    id={buttonUid}
+    aria-haspopup="listbox"
+    aria-labelledby={buttonUid}
+    aria-expanded={open}
+    aria-controls={selectUid}
+    class="{input()} w-full cursor-pointer"
+    tabindex="0"
+    onclick={() => {
+      open = !open;
+    }}
+    {onkeydown}
+  >
+    <NavArrow class="size-8" />
     <div
-      class="{expanded({ open })} select-none"
-      role="listbox"
-      bind:this={select}
-      id={selectUid}
-      aria-activedescendant="{selectUid}-{selectedIdx}"
-      tabindex="-1"
-      {onkeydown}
-      onmouseleave={() => {
-        hoverIdx = -1;
-      }}
+      class="flex-1 transition-transform duration-200 {anim
+        ? ''
+        : 'translate-y-full'}"
     >
-      {#each values as option, i}
-        <button
-          id="{selectUid}-{i}"
-          role="option"
-          type="button"
-          aria-selected={selectedIdx == i}
-          tabindex="-1"
-          class="block w-full cursor-pointer px-5 py-2{hoverIdx == i ||
-          selectedIdx == i
-            ? ' bg-tone'
-            : ''}"
-          onclick={(_) => {
-            if (selectedIdx != i) {
-              prevIdx = selectedIdx;
-              selectedIdx = i;
-              anim = !anim;
-            }
-
-            open = false;
-          }}
-          onmousemove={(e) => {
-            hoverIdx = i;
-          }}
-        >
-          {option}
-        </button>
-      {/each}
+      <span
+        class="{desc({
+          intent: 'sm',
+        })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
+        >{anim ? values[selectedIdx] : values[prevIdx]}</span
+      >
+      <span
+        class="{desc({
+          intent: 'sm',
+        })} absolute bottom-full left-0 transition-opacity duration-300{anim
+          ? ' opacity-0'
+          : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
+      >
     </div>
-  </label>
-</div>
+
+    <Caret
+      class="size-6 transition-transform duration-300 {open
+        ? '-rotate-180'
+        : ''}"
+    />
+  </button>
+
+  <div
+    class="{expanded({ open })} select-none"
+    role="listbox"
+    bind:this={select}
+    id={selectUid}
+    aria-activedescendant="{selectUid}-{selectedIdx}"
+    tabindex="-1"
+    {onkeydown}
+    onmouseleave={() => {
+      hoverIdx = -1;
+    }}
+  >
+    {#each values as option, i}
+      <button
+        id="{selectUid}-{i}"
+        role="option"
+        type="button"
+        aria-selected={selectedIdx == i}
+        tabindex="-1"
+        class="block w-full cursor-pointer px-5 py-2{hoverIdx == i ||
+        selectedIdx == i
+          ? ' bg-tone'
+          : ''}"
+        onclick={(_) => {
+          if (selectedIdx != i) {
+            prevIdx = selectedIdx;
+            selectedIdx = i;
+            anim = !anim;
+          }
+
+          open = false;
+        }}
+        onmousemove={(e) => {
+          hoverIdx = i;
+        }}
+      >
+        {option}
+      </button>
+    {/each}
+  </div>
+</Field>
