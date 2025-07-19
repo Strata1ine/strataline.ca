@@ -1,0 +1,25 @@
+---
+import { type SchemaRegistry, componentRegistry } from "~/build/components";
+
+type Props = {
+  components: SchemaRegistry;
+};
+
+const { components } = Astro.props;
+
+const builtComponents = await Promise.all(
+  components.map(async (props) => {
+    const load = componentRegistry[props.type]?.load;
+    if (!load) return null;
+
+    const c = await load();
+    return { Component: c.default, props };
+  }),
+);
+---
+
+{
+  builtComponents.map(({ Component, props }) =>
+    Component ? <Component {...props} /> : null,
+  )
+}

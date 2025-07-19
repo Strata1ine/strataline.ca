@@ -1,11 +1,7 @@
 ---
-interface Props {
-  meta: Meta;
-}
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"TextCarousel">;
 
-const { meta } = Astro.props;
-
-import { TextCarousel as Meta } from "@/meta";
 import Island from "./TextCarousel.svelte";
 ---
 

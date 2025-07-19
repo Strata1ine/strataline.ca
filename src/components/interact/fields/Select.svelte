@@ -3,7 +3,7 @@
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
   import { desc } from "@sections/meta";
   import { input, expanded } from "./meta";
-  import { getUid } from "~/lib/stores";
+  import { getUid } from "~/frontend/stores";
   import Field from "./Field.svelte";
 
   let { values, name, required } = $props();
@@ -13,7 +13,7 @@
   let open = $state(false);
   let anim = $state(false);
 
-  let buttonUid = getUid();
+  let uid = getUid();
   let selectUid = getUid();
   let select;
 
@@ -82,7 +82,7 @@
   };
 </script>
 
-<Field uid={buttonUid} {name} {required} bind:open>
+<Field {uid} {name} {required} bind:open>
   <input
     tabindex="-1"
     type="hidden"
@@ -93,7 +93,7 @@
 
   <button
     type="button"
-    id={buttonUid}
+    id={uid}
     aria-haspopup="listbox"
     aria-expanded={open}
     aria-controls={selectUid}
@@ -126,8 +126,8 @@
     </div>
 
     <Caret
-      class="size-6 transition-transform duration-300 {open
-        ? '-rotate-180'
+      class="size-6 transition-transform duration-300{open
+        ? ' -rotate-180'
         : ''}"
     />
   </button>
@@ -139,10 +139,10 @@
     id={selectUid}
     aria-activedescendant="{selectUid}-{selectedIdx}"
     tabindex="-1"
-    {onkeydown}
     onmouseleave={() => {
       hoverIdx = -1;
     }}
+    {onkeydown}
   >
     {#each values as option, i}
       <button
@@ -164,7 +164,7 @@
 
           open = false;
         }}
-        onmousemove={(e) => {
+        onmousemove={() => {
           hoverIdx = i;
         }}
       >

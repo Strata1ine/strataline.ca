@@ -1,8 +1,9 @@
 <script lang="ts">
   import Star from "~/icons/ph/star-four-fill.svelte";
   import { onMount } from "svelte";
-  import { TextCarousel as Meta } from "@/meta";
-  let { meta }: { meta: Meta } = $props();
+
+  import { type PropsOf } from "./registry";
+  let { meta }: { meta: PropsOf<"TextCarousel"> } = $props();
 
   // the amount of times it repeats
   let moduloEffect = 3;
@@ -14,7 +15,7 @@
     clientY = 0,
     dragOffset = 0,
     totalOffset = 0,
-    moveDirection = -1,
+    moveDirection = 1,
     lastFrame = 0;
 
   let pos = $state(0);

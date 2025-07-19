@@ -3,7 +3,7 @@
   import Upload from "~/icons/ph/upload-simple-fill.svelte";
   import ImagesSquare from "~/icons/ph/images-square-fill.svelte";
   import { input } from "./meta";
-  import { getUid } from "~/lib/stores";
+  import { getUid } from "~/frontend/stores";
   import { desc } from "@sections/meta";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
@@ -12,7 +12,7 @@
 
 <Field {uid} {name} {required}>
   <input
-    class="absolute opacity-0"
+    class="hidden"
     accept="image/*"
     multiple
     type="file"

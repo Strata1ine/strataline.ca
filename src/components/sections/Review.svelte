@@ -1,14 +1,10 @@
 <script lang="ts">
-  import { Opinion as Meta } from "@/meta";
-  import Stars from "@decor/Stars.svelte";
   import { heading, desc } from "./meta";
   import { onMount } from "svelte";
+  import Stars from "@decor/Stars.svelte";
+  import { type SubPropsOf } from "./registry";
 
-  const {
-    meta,
-  }: {
-    meta: Meta[];
-  } = $props();
+  const { meta }: { meta: SubPropsOf<"Review", "reviews"> } = $props();
 
   let container: HTMLElement;
   let idx = 0;
@@ -48,26 +44,23 @@
     )
       return;
     container.setPointerCapture(e.pointerId);
-    window.getSelection()?.removeAllRanges();
 
     if (animationId) {
       cancelAnimationFrame(animationId);
       animationId = null;
     }
 
+    window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
     clientY = e.clientY;
     startPos = pos;
-    e.preventDefault();
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (
-      container.hasPointerCapture(e.pointerId) &&
-      Math.abs(clientX - e.clientX) > Math.abs(clientY - e.clientY)
-    ) {
+    if (!container.hasPointerCapture(e.pointerId)) return;
+    e.preventDefault();
+    if (Math.abs(clientX - e.clientX) > Math.abs(clientY - e.clientY)) {
       pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
-      e.preventDefault();
     }
   };
 
@@ -105,7 +98,7 @@
 </script>
 
 <div
-  class="mt-7 cursor-grab touch-pan-y"
+  class="mt-7 cursor-grab touch-pan-y touch-pinch-zoom"
   {onpointerdown}
   {onpointermove}
   {onpointerup}
@@ -144,11 +137,11 @@
 </div>
 
 <div
-  class="bg-tone relative m-auto mt-12 flex h-3 max-w-100 rounded-sm contain-paint"
+  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint"
 >
   <button
     aria-label="Review scroller"
-    class="bg-accent absolute top-0 bottom-0 cursor-grab rounded-sm"
+    class="bg-accent absolute inset-0 cursor-grab rounded-sm"
     style="width: {100 / length}%; transform: translateX({-pos * meta.length}%)"
     tabindex="-1"
   ></button>

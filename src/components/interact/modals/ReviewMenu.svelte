@@ -6,7 +6,7 @@
 <!--   import Stars from "@fields/Stars.svelte"; -->
 <!--   import TextArea from "@fields/TextArea.svelte"; -->
 <!---->
-<!--   import { modals } from "~/lib/stores"; -->
+<!--   import { modals } from "~/frontend/stores"; -->
 <!-- </script> -->
 <!---->
 <!-- <Modal variant={{ intent: "blur" }} class="z-10" idx={modals.review}> -->

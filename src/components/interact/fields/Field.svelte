@@ -2,7 +2,7 @@
   import Asterick from "~/icons/ph/asterisk-bold.svelte";
   import { desc } from "@sections/meta";
   import { field } from "./meta";
-  import { clickOutside } from "~/lib/focus";
+  import { clickOutside } from "~/frontend/focus";
   let { name, uid, required, children, open = $bindable() } = $props();
 </script>
 

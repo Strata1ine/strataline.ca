@@ -1,19 +1,15 @@
 ---
-import { container, desc } from "./meta";
-import { Header as Meta } from "@/meta";
+import { container } from "./meta";
 import { Icon } from "astro-icon/components";
 import Island from "./Header.svelte";
 
-interface Props {
-  meta: Meta;
-}
-
-const { meta } = Astro.props;
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Header">;
 ---
 
-<header class="absolute top-0 right-0 left-0 py-3 z-1">
+<header class="absolute top-0 right-0 left-0 z-1 py-3">
   <div class=`${container({ intent: "inner" })} flex items-center gap-3`>
-    <Icon name="logo" class="h-auto w-33 sm:w-40 xl:w-50 z-1" is:inline />
+    <Icon name="logo" class="z-1 h-auto w-33 sm:w-40 xl:w-50" is:inline />
     <div class="flex-1"></div>
 
     <Island class="md:hidden" {meta} client:load />

@@ -1,24 +1,20 @@
 ---
-import { container, heading, Pos } from "./meta";
+import { container, heading } from "./meta";
 import { Image } from "astro:assets";
-import { optimizeOpts } from "~/lib/build/images";
+import { opts } from "~/build/images";
 import clsx from "clsx";
 
 import { Icon } from "astro-icon/components";
-import { type LessPopular as Meta } from "@/meta";
-import TextCarousel from "./TextCarousel.astro";
+import Island from "./TextCarousel.svelte";
 import Title from "./Title.astro";
 
 import { getIndex, getServices } from "~/content.config";
-let index = await getIndex();
-let services = await getServices();
+const index = await getIndex();
+const services = await getServices();
 
-interface Props {
-  meta: Meta;
-  pos: Pos;
-}
-
-const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"LessPopular">;
+const pos = Astro.locals.getNextPos();
 
 const exclude = index.data.popular;
 
@@ -53,7 +49,7 @@ const lessPopularServices = services.filter(
                 class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm object-cover transition duration-300 select-none hover:scale-[1.05] sm:w-full"
                 src={service.data.covers[0].meta}
                 alt={service.data.covers[0].alt}
-                {...optimizeOpts}
+                {...opts}
               />
 
               <div class="sm:gap-inset flex flex-col gap-1 sm:w-full sm:flex-row sm:items-center">
@@ -67,5 +63,5 @@ const lessPopularServices = services.filter(
     </nav>
   </div>
 
-  {meta.carousel && <TextCarousel meta={meta.carousel} />}
+  {meta.carousel && <Island client:visible meta={meta.carousel} />}
 </section>

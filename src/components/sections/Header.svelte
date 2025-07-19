@@ -1,21 +1,21 @@
 <script lang="ts">
   import Modal from "@modals/Modal.svelte";
   import Burger from "@decor/Burger.svelte";
-  import { Header as Meta } from "@/meta";
-  import { modals, getUid } from "~/lib/stores";
+  import { modals, getUid } from "~/frontend/stores";
   import { heading, desc } from "./meta";
   let active = $state(false);
   modals.idx.subscribe((v) => (active = v == modals.mobile));
   const uid = getUid();
 
-  const { meta, class: className }: { meta: Meta; class: string } = $props();
+  import { type PropsOf } from "./registry";
+  const { meta }: { meta: PropsOf<"Header"> } = $props();
 </script>
 
 <ul class="mt-2 hidden gap-11 md:flex">
   {#each meta.nav as item}
     <li>
       <a
-        href={`#${item.id}`}
+        href="#{item.id}"
         class="{desc({ intent: 'sm' })} c relative"
         tabindex="0"
       >
@@ -27,7 +27,7 @@
 
 <button
   aria-label="Open mobile menu"
-  class="relative z-1 size-9 cursor-pointer touch-manipulation {className}"
+  class="relative z-1 size-10 cursor-pointer touch-manipulation md:hidden"
   data-include-in-focuslock
   tabindex="0"
   onclick={() => {
@@ -45,10 +45,10 @@
         <a
           href={`#${item.id}`}
           onclick={(_) => {
-            modals.close(modals.mobile);
+            modals.close();
           }}
           tabindex="0"
-          class="{heading({ intent: '2xl' })} leading-none" 
+          class="{heading({ intent: '2xl' })} leading-none"
         >
           {item.name}
         </a>

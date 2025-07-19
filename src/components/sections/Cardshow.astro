@@ -1,22 +1,16 @@
 ---
-import { container, Pos } from "./meta";
-import { Cardshow as Meta, type ImageSource } from "@/meta";
+import { container } from "./meta";
 import Island from "./Cardshow.svelte";
 import Title from "./Title.astro";
 
-import { optimizeImage } from "~/lib/build/images";
+import { optimizeImage } from "~/build/images";
 
-interface Props {
-  meta: Meta;
-  pos: Pos;
-}
-
-const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Cardshow">;
+const pos = Astro.locals.getNextPos();
 
 for (const card of meta.cards) {
-  if (card.image) {
-    card.image = await optimizeImage(card.image as ImageSource);
-  }
+  card.image = await optimizeImage(card.image);
 }
 ---
 
