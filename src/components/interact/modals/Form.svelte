@@ -1,6 +1,6 @@
 <script>
   import X from "~/icons/ph/x-bold.svelte";
-  import { modals } from "~/lib/stores";
+  import { modals } from "~/frontend/stores";
 
   let { title, id, class: className, action = "/index", children, name } = $props();
 </script>

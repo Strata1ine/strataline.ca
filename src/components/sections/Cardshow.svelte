@@ -1,14 +1,9 @@
 <script lang="ts">
   import Slidenav from "@interact/Slidenav.svelte";
-  import { Card as Meta } from "@/meta";
   import { heading, desc } from "./meta";
 
-  const {
-    meta,
-  }: {
-    meta: Meta[];
-  } = $props();
-
+  import { type SubPropsOf } from "./registry";
+  const { meta }: { meta: SubPropsOf<"Cardshow", "cards"> } = $props();
   let idx = $state(0);
 </script>
 

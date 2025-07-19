@@ -1,16 +1,13 @@
 ---
-import { container, Pos } from "./meta";
-import { type Review as Meta } from "@/meta";
+import { container } from "./meta";
 import { marked } from "marked";
 import Title from "./Title.astro";
 import Island from "./Review.svelte";
 
-interface Props {
-  meta: Meta;
-  pos: Pos;
-}
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Review">;
 
-const { meta, pos = Astro.locals.getNextPos() } = Astro.props;
+const pos = Astro.locals.getNextPos();
 const reviews = meta.reviews.map((review) => ({
   ...review,
   markdown: marked.parseInline(review.markdown),

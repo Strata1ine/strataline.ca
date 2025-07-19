@@ -1,34 +1,36 @@
 import { defineCollection, getEntry, getCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
 
-import { buildSchemaRegistery as c } from "~/lib/build/components";
-import { ImageSource } from '@/meta';
-import { register } from "~/lib/build/components";
+import { parseRegistry } from "~/build/components";
+import { imageSource } from '~/build/images';
+import { glob } from 'astro/loaders';
 
-import * as Meta from "@/meta";
-import * as Components from "@/index";
+import { registry } from "@sections/registry";
+import { appendToRegistry } from "~/build/components";
+appendToRegistry(registry);
 
 export const collections = {
   index: defineCollection({
-    type: "data",
+    loader: glob({ pattern: '*.yaml', base: './content/index' }),
     schema: (context: SchemaContext) =>
       z.object({
         title: z.string(),
         desc: z.string(),
         popular: z.array(z.string()),
-        components: c(context),
+        components: parseRegistry(context),
       }),
   }),
   services: defineCollection({
-    type: "data",
+    loader: glob({ pattern: '**/*.yaml', base: './content/services' }),
     schema: (context: SchemaContext) => z.object({
       title: z.string(),
       desc: z.string(),
-      covers: z.array(ImageSource.zod(context)),
+      covers: z.array(imageSource(context)),
       draft: z.boolean().optional(),
     }),
   }),
 };
+
 
 export const getIndex = async () => {
   const entry = await getEntry("index", "index");
@@ -45,39 +47,3 @@ export const getServices = async () => {
   }
   return services;
 };
-
-register({
-  id: "Header",
-  meta: Meta.Header.zod,
-  render: Components.Header,
-});
-
-register({
-  id: "Hero",
-  meta: Meta.Hero.zod,
-  render: Components.Hero,
-});
-
-register({
-  id: "Popular",
-  meta: Meta.Popular.zod,
-  render: Components.Popular,
-});
-
-register({
-  id: "LessPopular",
-  meta: Meta.LessPopular.zod,
-  render: Components.LessPopular,
-});
-
-register({
-  id: "Cardshow",
-  meta: Meta.Cardshow.zod,
-  render: Components.Cardshow,
-});
-
-register({
-  id: "Review",
-  meta: Meta.Review.zod,
-  render: Components.Review,
-});

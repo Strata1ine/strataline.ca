@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { modals } from "~/lib/stores";
+  import { modals } from "~/frontend/stores";
   import { heading, desc } from "./meta";
-  import { Hero as Meta } from "@/meta";
   import Slideshow, { type AnimMeta } from "@interact/ImageSlideshow.svelte";
   import Slidenav from "@interact/Slidenav.svelte";
   import Button from "@actions/Button.svelte";
 
-  const { meta }: { meta: Meta } = $props();
+  import { type PropsOf } from "./registry";
+  let { meta }: { meta: PropsOf<"Hero"> } = $props();
 
   let idx = $state(0);
   let animMeta: AnimMeta = {
@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class="hidden w-1/2 flex-none flex-col items-center gap-3 sm:flex md:gap-6 2xl:flex-row-reverse"
+  class="hidden w-1/2 flex-none flex-col items-center gap-6 sm:flex 2xl:flex-row-reverse"
 >
   <Slideshow
     class="flex h-[70vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"

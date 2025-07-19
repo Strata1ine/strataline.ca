@@ -8,8 +8,8 @@
   import TextArea from "@fields/TextArea.svelte";
   import PhoneNumber from "@fields/PhoneNumber.svelte";
 
-  import { modals, getUid } from "~/lib/stores";
-  import config from "~/content/config.json";
+  import { modals, getUid } from "~/frontend/stores";
+  import config from "/content/business.json";
 
   let uid = getUid();
 </script>

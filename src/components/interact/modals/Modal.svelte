@@ -1,6 +1,6 @@
 <script>
-  import { modals } from "~/lib/stores";
-  import { focusLock } from "~/lib/focus";
+  import { modals } from "~/frontend/stores";
+  import { focusLock } from "~/frontend/focus";
   import { cover } from "./meta";
 
   const { variant = {}, uid, idx, children } = $props();
