@@ -1,5 +1,11 @@
-import type { SchemaContext } from 'astro:content';
 import { z } from 'zod';
+import { imageSource } from '~/build/images';
+import type { SchemaContext } from 'astro:content';
+
+const textCarousel = ({
+  speed: z.number().optional().default(1),
+  text: z.array(z.string()),
+});
 
 export const registry = {
   Header: {
@@ -10,12 +16,13 @@ export const registry = {
     load: () => import('./Header.astro'),
   },
 
+
   Hero: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),
       title: z.string(),
       desc: z.string(),
-      images: z.array(z.object({ meta: c.image(), alt: z.string() })),
+      images: z.array(imageSource(c)),
     }),
     load: () => import('./Hero.astro'),
   },
@@ -33,20 +40,14 @@ export const registry = {
       id: z.string().optional(),
       title: z.string().default("There's more to explore"),
       carousel: z
-        .object({
-          speed: z.number().optional().default(1),
-          text: z.array(z.string()),
-        })
+        .object(textCarousel)
         .optional(),
     }),
     load: () => import('./LessPopular.astro'),
   },
 
   TextCarousel: {
-    schema: (_: SchemaContext) => ({
-      speed: z.number().optional().default(1),
-      text: z.array(z.string()),
-    }),
+    schema: (_: SchemaContext) => textCarousel,
     load: () => import('./TextCarousel.astro'),
   },
 
@@ -58,7 +59,7 @@ export const registry = {
         z.object({
           title: z.string(),
           desc: z.string(),
-          image: z.object({ meta: c.image(), alt: z.string() }).optional(),
+          image: imageSource(c).optional(),
           id: z.string().optional(),
         })
       ),

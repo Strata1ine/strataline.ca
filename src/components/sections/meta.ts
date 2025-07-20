@@ -35,15 +35,14 @@ export const desc = cva("", {
 
 export const imageCover = cva("object-cover h-full select-none", {
   variants: {
-    multiple: {
-      true: "min-w-0 hover:flex-5 flex-1 duration-800",
-      false: "",
+    layout: {
+      divided: "min-w-0 hover:flex-5 flex-1 duration-800",
     },
   },
 });
 
 
-export const imageVariants = cva(
+export const imageWrapper = cva(
   "flex justify-center contain-paint",
   {
     variants: {

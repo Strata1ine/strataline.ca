@@ -2,30 +2,31 @@ import { defineCollection, getEntry, getCollection, type SchemaContext } from 'a
 import { z } from 'zod';
 
 import { parseRegistry } from "~/build/components";
-import { imageSource } from '~/build/images';
 import { glob } from 'astro/loaders';
 
 import { registry } from "@sections/registry";
-import { appendToRegistry } from "~/build/components";
-appendToRegistry(registry);
+import { updateComponentRegistry } from "~/build/components";
+import { imageSource } from './build/images';
+updateComponentRegistry(registry);
 
 export const collections = {
   index: defineCollection({
-    loader: glob({ pattern: '*.yaml', base: './content/index' }),
-    schema: (context: SchemaContext) =>
-      z.object({
+    loader: glob({ pattern: '*.yaml', base: './content' }),
+    schema: (c: SchemaContext) => {
+      return z.object({
         title: z.string(),
         desc: z.string(),
         popular: z.array(z.string()),
-        components: parseRegistry(context),
-      }),
+        components: parseRegistry(c),
+      });
+    },
   }),
   services: defineCollection({
     loader: glob({ pattern: '**/*.yaml', base: './content/services' }),
-    schema: (context: SchemaContext) => z.object({
+    schema: (c: SchemaContext) => z.object({
       title: z.string(),
       desc: z.string(),
-      covers: z.array(imageSource(context)),
+      covers: z.array(imageSource(c)),
       draft: z.boolean().optional(),
     }),
   }),

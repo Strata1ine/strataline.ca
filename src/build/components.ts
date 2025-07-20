@@ -38,7 +38,7 @@ export type ComponentRegistry = Record<
   }
 >;
 
-export function appendToRegistry(
+export function updateComponentRegistry(
   registry: ComponentRegistry,
 ): void {
   console.log("Component registry flushed");
