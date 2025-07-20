@@ -3,14 +3,13 @@ import { container } from "./meta";
 import Island from "./Cardshow.svelte";
 import Title from "./Title.astro";
 
-import { optimizeImage } from "~/build/images";
-
 import { type PropsOf } from "./registry";
+import { optimizeImage } from "~/build/images";
 const meta = Astro.props as PropsOf<"Cardshow">;
 const pos = Astro.locals.getNextPos();
 
-for (const card of meta.cards) {
-  card.image = await optimizeImage(card.image);
+for (let card of meta.cards) {
+  if (card.image) card.image.meta = await optimizeImage(card.image.meta);
 }
 ---
 

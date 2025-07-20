@@ -1,7 +1,6 @@
 ---
 import { container, heading } from "./meta";
 import { Image } from "astro:assets";
-import { opts } from "~/build/images";
 import clsx from "clsx";
 
 import { Icon } from "astro-icon/components";
@@ -49,7 +48,7 @@ const lessPopularServices = services.filter(
                 class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm object-cover transition duration-300 select-none hover:scale-[1.05] sm:w-full"
                 src={service.data.covers[0].meta}
                 alt={service.data.covers[0].alt}
-                {...opts}
+                draggable={false}
               />
 
               <div class="sm:gap-inset flex flex-col gap-1 sm:w-full sm:flex-row sm:items-center">

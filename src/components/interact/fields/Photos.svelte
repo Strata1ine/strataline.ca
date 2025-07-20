@@ -12,11 +12,11 @@
 
 <Field {uid} {name} {required}>
   <input
-    class="hidden"
+    class="sr-only"
+    tabindex="0"
     accept="image/*"
     multiple
     type="file"
-    tabindex="0"
     id={uid}
     {name}
     onchange={(e) => {

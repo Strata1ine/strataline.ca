@@ -19,7 +19,8 @@
       {#if card.image}
         <img
           class="max-h-[min(25vh,18rem)] flex-none rounded-sm object-cover select-none sm:max-h-[min(40vh,40rem)] sm:min-h-full sm:w-1/2 sm:rounded-none"
-          {...card.image}
+          {...card.image.meta}
+          alt={card.image.alt}
         />
       {/if}
 

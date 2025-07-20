@@ -1,13 +1,13 @@
 ---
 import { container } from "./meta";
-import { optimizeImages, type ImageSource } from "~/build/images";
-
 import Island from "./Hero.svelte";
 
 import type { PropsOf } from "./registry";
+import { optimizeImage } from "~/build/images";
 const meta = Astro.props as PropsOf<"Hero">;
-
-meta.images = await optimizeImages(meta.images as ImageSource[]);
+for (let image of meta.images) {
+  image.meta = await optimizeImage(image.meta);
+}
 ---
 
 <main

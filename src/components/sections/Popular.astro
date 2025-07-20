@@ -6,11 +6,10 @@ import {
   imageCover,
   heading,
   desc,
-  imageVariants,
+  imageWrapper,
 } from "./meta";
 import { getIndex, getServices } from "~/content.config";
 import { Image } from "astro:assets";
-import { opts } from "~/build/images";
 
 import clsx from "clsx";
 import Link from "@actions/Link.svelte";
@@ -48,11 +47,11 @@ let next = swapPos(pos);
           service.data.covers.map((image, _) => (
             <Image
               class={imageCover({
-                multiple: service.data.covers.length > 1,
+                layout: service.data.covers.length > 1 ? "divided" : null,
               })}
               src={image.meta}
               alt={image.alt}
-              {...opts}
+              draggable={false}
             />
           ));
 
@@ -65,7 +64,7 @@ let next = swapPos(pos);
           >
             {next === Pos.Left && (
               <div
-                class={imageVariants({ position: "left", device: "desktop" })}
+                class={imageWrapper({ position: "left", device: "desktop" })}
               >
                 {render()}
               </div>
@@ -78,7 +77,7 @@ let next = swapPos(pos);
 
               {next === Pos.Right && (
                 <div
-                  class={imageVariants({ position: "right", device: "mobile" })}
+                  class={imageWrapper({ position: "right", device: "mobile" })}
                 >
                   {render()}
                 </div>
@@ -86,7 +85,7 @@ let next = swapPos(pos);
 
               {next === Pos.Left && (
                 <div
-                  class={imageVariants({ position: "left", device: "mobile" })}
+                  class={imageWrapper({ position: "left", device: "mobile" })}
                 >
                   {render()}
                 </div>
@@ -103,7 +102,7 @@ let next = swapPos(pos);
 
             {next === Pos.Right && (
               <div
-                class={imageVariants({ position: "right", device: "desktop" })}
+                class={imageWrapper({ position: "right", device: "desktop" })}
               >
                 {render()}
               </div>
