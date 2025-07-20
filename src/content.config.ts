@@ -1,12 +1,11 @@
 import { defineCollection, getEntry, getCollection, type SchemaContext } from 'astro:content';
 import { z } from 'zod';
 
-import { parseRegistry } from "~/build/components";
 import { glob } from 'astro/loaders';
 
 import { registry } from "@sections/registry";
-import { updateComponentRegistry } from "~/build/components";
-import { imageSource } from './build/images';
+import { updateComponentRegistry, parseRegistry } from "~/build/components";
+import { imageSource } from '~/build/images';
 updateComponentRegistry(registry);
 
 export const collections = {

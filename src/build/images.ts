@@ -23,7 +23,6 @@ export type OptimizedImage = {
   format: string;
 }
 
-
 export const imageSource = (c: SchemaContext) =>
   z.object({
     meta: c.image(),

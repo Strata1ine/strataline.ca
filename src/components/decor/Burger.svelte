@@ -1,8 +1,8 @@
 <script>
-  const { active = $bindable() } = $props();
+  const { open = $bindable() } = $props();
 </script>
 
-<div class="burger pointer-events-none" class:active></div>
+<div class="burger pointer-events-none" class:open></div>
 
 <style lang="scss">
   .burger {
@@ -32,7 +32,7 @@
       left: 30%;
     }
 
-    &.active {
+    &.open {
       &::after {
         transform: rotate(45deg);
         left: 0;

@@ -1,9 +1,9 @@
 <script lang="ts">
   import Field from "./Field.svelte";
   import Valid from "@decor/Valid.svelte";
-  import { getUid } from "~/frontend/stores";
-  import { input } from "./meta";
-  import { desc } from "@sections/meta";
+  import { genUid } from "~/frontend/stores";
+  import { inputStyles } from "./styles";
+  import { descStyles } from "@sections/styles";
 
   const {
     name,
@@ -18,17 +18,17 @@
   } = $props();
 
   let valid = $state(iValid);
-  let uid = getUid();
+  let uid = genUid();
 </script>
 
 <Field {uid} {name} {required}>
-  <div class={input()}>
+  <div class={inputStyles()}>
     <input
       oninput={(e) => {
         if (oninput) oninput(e);
         valid = e.currentTarget.validity.valid;
       }}
-      class="{desc({ intent: 'sm' })} w-full focus:outline-none"
+      class="{descStyles({ size: 'sm' })} w-full focus:outline-none"
       id={uid}
       tabindex="0"
       {name}

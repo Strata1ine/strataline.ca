@@ -2,23 +2,25 @@
 import {
   Pos,
   swapPos,
-  container,
-  imageCover,
-  heading,
-  desc,
-  imageWrapper,
-} from "./meta";
+  containerStyles,
+  imageStyles,
+  headingStyles,
+  descStyles,
+  imageWrapperStyles,
+} from "./styles";
+
 import { getIndex, getServices } from "~/content.config";
 import { Image } from "astro:assets";
 
 import clsx from "clsx";
-import Link from "@actions/Link.svelte";
-import Title from "./Title.astro";
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutTitle from "./layout/Title.astro";
 
 let index = await getIndex();
 let services = await getServices();
 
 import { type PropsOf } from "./registry";
+import { actionStyles } from "@actions/styles";
 const meta = Astro.props as PropsOf<"Popular">;
 const pos = Astro.locals.getNextPos();
 
@@ -36,18 +38,18 @@ const popularServices = services
 let next = swapPos(pos);
 ---
 
-<section class={container({ intent: "div" })} id={meta.id}>
-  <Title title={meta.title} {pos} />
+<LayoutDivider id={meta.id}>
+  <LayoutTitle title={meta.title} {pos} />
 
-  <div class={container({ intent: "outer" })}>
+  <div class={containerStyles({ width: "outer" })}>
     {
       popularServices.map((service, _) => {
         const slug = service.id.split("/")[0];
         const render = () =>
           service.data.covers.map((image, _) => (
             <Image
-              class={imageCover({
-                layout: service.data.covers.length > 1 ? "divided" : null,
+              class={imageStyles({
+                layout: service.data.covers.length > 1 ? "divided" : undefined,
               })}
               src={image.meta}
               alt={image.alt}
@@ -64,20 +66,26 @@ let next = swapPos(pos);
           >
             {next === Pos.Left && (
               <div
-                class={imageWrapper({ position: "left", device: "desktop" })}
+                class={imageWrapperStyles({
+                  position: "left",
+                  device: "desktop",
+                })}
               >
                 {render()}
               </div>
             )}
 
             <div class="flex-1">
-              <h3 class={clsx("mb-2", heading({ intent: "4xl" }))}>
+              <h3 class={clsx("mb-2", headingStyles({ size: "4xl" }))}>
                 {service.data.title}
               </h3>
 
               {next === Pos.Right && (
                 <div
-                  class={imageWrapper({ position: "right", device: "mobile" })}
+                  class={imageWrapperStyles({
+                    position: "right",
+                    device: "mobile",
+                  })}
                 >
                   {render()}
                 </div>
@@ -85,24 +93,35 @@ let next = swapPos(pos);
 
               {next === Pos.Left && (
                 <div
-                  class={imageWrapper({ position: "left", device: "mobile" })}
+                  class={imageWrapperStyles({
+                    position: "left",
+                    device: "mobile",
+                  })}
                 >
                   {render()}
                 </div>
               )}
 
-              <p class={desc({ intent: "base" })}>{service.data.desc}</p>
+              <p class={descStyles({ size: "base" })}>{service.data.desc}</p>
 
               <div class="mt-8">
-                <Link href={`/services/${slug}`} data-astro-prefetch="">
+                <a
+                  class={actionStyles()}
+                  href={`/services/${slug}`}
+                  rel="noopener noreferrer"
+                  data-astro-prefetch=""
+                >
                   Explore More
-                </Link>
+                </a>
               </div>
             </div>
 
             {next === Pos.Right && (
               <div
-                class={imageWrapper({ position: "right", device: "desktop" })}
+                class={imageWrapperStyles({
+                  position: "right",
+                  device: "desktop",
+                })}
               >
                 {render()}
               </div>
@@ -112,4 +131,4 @@ let next = swapPos(pos);
       })
     }
   </div>
-</section>
+</LayoutDivider>

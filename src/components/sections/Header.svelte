@@ -1,11 +1,14 @@
 <script lang="ts">
   import Modal from "@modals/Modal.svelte";
   import Burger from "@decor/Burger.svelte";
-  import { modals, getUid } from "~/frontend/stores";
-  import { heading, desc } from "./meta";
-  let active = $state(false);
-  modals.idx.subscribe((v) => (active = v == modals.mobile));
-  const uid = getUid();
+  import { modals, genUid } from "~/frontend/stores";
+
+  import { modalStyles } from "@modals/styles";
+  import { headingStyles, descStyles } from "./styles";
+
+  let open = $state(false);
+  modals.idx.subscribe((v) => (open = v == modals.mobile));
+  const uid = genUid();
 
   import { type PropsOf } from "./registry";
   const { meta }: { meta: PropsOf<"Header"> } = $props();
@@ -16,7 +19,7 @@
     <li>
       <a
         href="#{item.id}"
-        class="{desc({ intent: 'sm' })} c relative"
+        class="{descStyles({ size: 'sm' })} c relative"
         tabindex="0"
       >
         {item.name}
@@ -35,10 +38,10 @@
     modals.toggle(modals.mobile);
   }}
 >
-  <Burger bind:active />
+  <Burger bind:open />
 </button>
 
-<Modal {uid} idx={modals.mobile}>
+<Modal class={modalStyles({ open })} {uid} bind:open>
   <ul class="px-inset flex h-full flex-col items-start justify-center gap-6">
     {#each meta.nav as item}
       <li>
@@ -48,7 +51,7 @@
             modals.close();
           }}
           tabindex="0"
-          class="{heading({ intent: '2xl' })} leading-none"
+          class="{headingStyles({ size: '2xl' })} leading-none"
         >
           {item.name}
         </a>

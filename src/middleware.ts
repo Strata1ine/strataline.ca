@@ -1,4 +1,4 @@
-import { Pos, swapPos } from '@sections/meta';
+import { Pos, swapPos } from '@sections/styles';
 
 export async function onRequest(context: { locals: App.Locals }, next: () => Promise<Response>): Promise<Response> {
   context.locals.nextPos = Pos.Left;

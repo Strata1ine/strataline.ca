@@ -1,7 +1,8 @@
 ---
-import { container } from "./meta";
+import { containerStyles } from "./styles";
 import { marked } from "marked";
-import Title from "./Title.astro";
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutTitle from "./layout/Title.astro";
 import Island from "./Review.svelte";
 
 import { type PropsOf } from "./registry";
@@ -14,11 +15,11 @@ const reviews = meta.reviews.map((review) => ({
 }));
 ---
 
-<section class={container({ intent: "div" })} id={meta.id}>
-  <Title title={meta.title} {pos} />
+<LayoutDivider id={meta.id}>
+  <LayoutTitle title={meta.title} {pos} />
   <div class="contain-paint">
-    <div class=`${container({ intent: "inner" })} select-none`>
+    <div class=`${containerStyles({ width: "inner" })} select-none`>
       <Island client:visible meta={reviews} />
     </div>
   </div>
-</section>
+</LayoutDivider>

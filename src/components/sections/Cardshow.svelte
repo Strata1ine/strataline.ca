@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Slidenav from "@interact/Slidenav.svelte";
-  import { heading, desc } from "./meta";
+  import Slidenav from "@actions/Slidenav.svelte";
+  import { headingStyles, descStyles } from "./styles";
 
   import { type SubPropsOf } from "./registry";
   const { meta }: { meta: SubPropsOf<"Cardshow", "cards"> } = $props();
@@ -25,8 +25,8 @@
       {/if}
 
       <div>
-        <h3 class="{heading({ intent: '4xl' })} mb-1">{card.title}</h3>
-        <p class={desc({ intent: "base" })}>
+        <h3 class="{headingStyles({ size: '4xl' })} mb-1">{card.title}</h3>
+        <p class={descStyles({ size: "base" })}>
           {card.desc}
         </p>
       </div>
