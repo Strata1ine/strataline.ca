@@ -1,9 +1,9 @@
 <script>
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
-  import { desc } from "@sections/meta";
-  import { input, expanded } from "./meta";
-  import { getUid } from "~/frontend/stores";
+  import { descStyles } from "@sections/styles";
+  import { inputStyles, menuStyles } from "./styles";
+  import { genUid } from "~/frontend/stores";
   import Field from "./Field.svelte";
 
   let { values, name, required } = $props();
@@ -13,8 +13,8 @@
   let open = $state(false);
   let anim = $state(false);
 
-  let uid = getUid();
-  let selectUid = getUid();
+  let uid = genUid();
+  let selectUid = genUid();
   let select;
 
   const onkeydown = (event) => {
@@ -97,7 +97,7 @@
     aria-haspopup="listbox"
     aria-expanded={open}
     aria-controls={selectUid}
-    class="{input()} w-full cursor-pointer"
+    class="{inputStyles()} w-full cursor-pointer"
     tabindex="0"
     onclick={() => {
       open = !open;
@@ -111,14 +111,14 @@
         : 'translate-y-full'}"
     >
       <span
-        class="{desc({
-          intent: 'sm',
+        class="{descStyles({
+          size: 'sm',
         })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
         >{anim ? values[selectedIdx] : values[prevIdx]}</span
       >
       <span
-        class="{desc({
-          intent: 'sm',
+        class="{descStyles({
+          size: 'sm',
         })} absolute bottom-full left-0 transition-opacity duration-300{anim
           ? ' opacity-0'
           : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
@@ -133,7 +133,7 @@
   </button>
 
   <div
-    class="{expanded({ open })} select-none"
+    class="{menuStyles({ open })} select-none"
     role="listbox"
     bind:this={select}
     id={selectUid}

@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { input } from "./meta";
-  import { getUid } from "~/frontend/stores";
-  import { desc } from "@sections/meta";
+  import { inputStyles } from "./styles";
+  import { genUid } from "~/frontend/stores";
+  import { descStyles } from "@sections/styles";
   import Field from "./Field.svelte";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
   let textarea: HTMLTextAreaElement;
-  let uid = getUid();
+  let uid = genUid();
   let offset = 0;
 </script>
 
 <Field {uid} {name} {required}>
-  <div class={input()}>
+  <div class={inputStyles()}>
     <textarea
-      class="{desc({ intent: 'sm' })} w-full resize-none focus:outline-none"
+      class="{descStyles({ size: 'sm' })} w-full resize-none focus:outline-none"
       style="height: {height}px"
       bind:this={textarea}
       onkeydown={(e) => {

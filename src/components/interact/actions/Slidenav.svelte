@@ -1,17 +1,14 @@
 <script lang="ts">
-  import type { VariantProps } from "class-variance-authority";
-  import { nav } from "@actions/meta";
+  import { navStyles } from "@actions/styles";
 
   let {
     idx = $bindable(0),
     class: className,
     length,
-    variant = {},
   }: {
     idx: number;
     class?: string;
     length: number;
-    variant?: VariantProps<typeof nav>;
   } = $props();
 </script>
 
@@ -19,8 +16,8 @@
   {#each Array(length) as _, i}
     <button
       onclick={() => (idx = i)}
-      aria-label="View slide {i}"
-      class={nav({ ...variant, state: idx === i })}
+      aria-label="View slide {i + 1}"
+      class={navStyles({ open: idx === i })}
       tabindex="0"
     ></button>
   {/each}

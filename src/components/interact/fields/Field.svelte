@@ -1,7 +1,7 @@
 <script>
   import Asterick from "~/icons/ph/asterisk-bold.svelte";
-  import { desc } from "@sections/meta";
-  import { field } from "./meta";
+  import { descStyles } from "@sections/styles";
+  import { fieldStyles } from "./styles";
   import { clickOutside } from "~/frontend/focus";
   let { name, uid, required, children, open = $bindable() } = $props();
 </script>
@@ -24,7 +24,7 @@
       }
     }}
   >
-    <span class={desc({ intent: "label" })}>
+    <span class={descStyles({ size: "md", role: "label" })}>
       {name}
     </span>
 
@@ -32,7 +32,7 @@
       <Asterick class="text-error size-3"></Asterick>
     {/if}
   </label>
-  <label class={field({ expanded: open })}>
+  <label class={fieldStyles({ expanded: open })}>
     {@render children?.()}
   </label>
 </div>

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { modals } from "~/frontend/stores";
-  import { heading, desc } from "./meta";
-  import Slidenav from "@interact/Slidenav.svelte";
-  import Button from "@actions/Button.svelte";
+  import { headingStyles, descStyles } from "./styles";
+  import Slidenav from "@actions/Slidenav.svelte";
 
   import { type PropsOf } from "./registry";
+  import { actionStyles } from "@actions/styles";
   let { meta }: { meta: PropsOf<"Hero"> } = $props();
 
   let idx = $state(0);
@@ -41,7 +41,7 @@
 </div>
 
 <div class="relative">
-  <h1 class={heading({ intent: "6xl" })}>
+  <h1 class={headingStyles({ size: "6xl" })}>
     {meta.title}
   </h1>
 
@@ -59,12 +59,13 @@
     />
   </div>
 
-  <p class="{desc({ intent: 'base' })} mt-3">
+  <p class="{descStyles({ size: 'base' })} mt-3">
     {meta.desc}
   </p>
 
   <div class="mt-9">
-    <Button class="" onclick={() => modals.open(modals.talk)}>Let's Talk</Button
+    <button class={actionStyles()} onclick={() => modals.open(modals.talk)}
+      >Let's Talk</button
     >
   </div>
 </div>

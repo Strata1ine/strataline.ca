@@ -1,5 +1,5 @@
 ---
-import { container } from "./meta";
+import { containerStyles } from "./styles";
 import Island from "./Hero.svelte";
 
 import type { PropsOf } from "./registry";
@@ -20,7 +20,7 @@ for (let image of meta.images) {
   </div>
 
   <div
-    class={`${container({ intent: "outer" })} flex w-full items-center gap-6 xl:gap-8 py-17 sm:py-30 2xl:gap-11`}
+    class={`${containerStyles({ width: "outer" })} flex w-full items-center gap-6 xl:gap-8 py-17 sm:py-30 2xl:gap-11`}
   >
     <Island client:visible {meta} />
   </div>

@@ -1,16 +1,12 @@
 <script>
   import { modals } from "~/frontend/stores";
   import { focusLock } from "~/frontend/focus";
-  import { cover } from "./meta";
 
-  const { variant = {}, uid, idx, children } = $props();
-
-  let active = $state(false);
-  modals.idx.subscribe((v) => (active = idx == v));
+  const { class: className, open = $bindable(), uid, children } = $props();
 </script>
 
 <div
-  use:focusLock={active}
+  use:focusLock={open}
   role="dialog"
   aria-modal="true"
   aria-labelledby={uid}
@@ -20,9 +16,9 @@
       modals.close();
     }
   }}
-  class={cover({ ...variant, active })}
-  inert={!active}
-  aria-hidden={!active}
+  class={className}
+  inert={!open}
+  aria-hidden={!open}
 >
   {@render children?.()}
 </div>

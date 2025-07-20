@@ -2,12 +2,12 @@
   import Field from "./Field.svelte";
   import Upload from "~/icons/ph/upload-simple-fill.svelte";
   import ImagesSquare from "~/icons/ph/images-square-fill.svelte";
-  import { input } from "./meta";
-  import { getUid } from "~/frontend/stores";
-  import { desc } from "@sections/meta";
+  import { inputStyles } from "./styles";
+  import { genUid } from "~/frontend/stores";
+  import { descStyles } from "@sections/styles";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
-  let uid = getUid();
+  let uid = genUid();
 </script>
 
 <Field {uid} {name} {required}>
@@ -28,10 +28,10 @@
     }}
   />
 
-  <div class="{input()} cursor-pointer">
+  <div class="{inputStyles()} cursor-pointer">
     <ImagesSquare class="size-8" />
     <div class="flex-1">
-      <span class={desc({ intent: "sm" })}>{value}</span>
+      <span class={descStyles({ size: "sm" })}>{value}</span>
     </div>
     <Upload class="size-6" />
   </div>

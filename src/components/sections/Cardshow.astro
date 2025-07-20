@@ -1,7 +1,8 @@
 ---
-import { container } from "./meta";
+import { containerStyles } from "./styles";
 import Island from "./Cardshow.svelte";
-import Title from "./Title.astro";
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutTitle from "./layout/Title.astro";
 
 import { type PropsOf } from "./registry";
 import { optimizeImage } from "~/build/images";
@@ -13,14 +14,14 @@ for (let card of meta.cards) {
 }
 ---
 
-<section class={container({ intent: "div" })} id={meta.id}>
-  <Title title={meta.title} {pos} />
+<LayoutDivider id={meta.id}>
+  <LayoutTitle title={meta.title} {pos} />
 
-  <div class={container({ intent: "outer" })}>
+  <div class={containerStyles({ width: "outer" })}>
     <div
       class="max-w-middle flex flex-col gap-4 md:gap-6 2xl:ml-auto 2xl:flex-row"
     >
       <Island meta={meta.cards} client:visible />
     </div>
   </div>
-</section>
+</LayoutDivider>

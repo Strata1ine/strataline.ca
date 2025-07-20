@@ -2,7 +2,7 @@ import { writable, get } from 'svelte/store';
 
 let counter = 0;
 
-export const getUid = (): string => {
+export const genUid = (): string => {
   return `uid-${counter += 1}`;
 };
 

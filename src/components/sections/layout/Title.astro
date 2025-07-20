@@ -1,5 +1,5 @@
 ---
-import { container, heading, Pos } from "./meta";
+import { containerStyles, headingStyles, Pos } from "@sections/styles";
 import clsx from "clsx";
 
 interface Props {
@@ -10,10 +10,10 @@ interface Props {
 let { title, pos } = Astro.props;
 ---
 
-<div class={clsx(container({ intent: "inner" }), "mb-16")}>
+<div class={clsx(containerStyles({ width: "inner" }), "mb-16")}>
   <h2
     class={clsx(
-      heading({ intent: "5xl" }),
+      headingStyles({ size: "5xl" }),
       "sm:max-w-[20ch]",
       pos == "right" ? "sm:ml-auto  sm:text-right" : "",
     )}
