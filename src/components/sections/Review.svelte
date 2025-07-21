@@ -107,6 +107,7 @@
   <div
     class="c flex"
     bind:this={container}
+    data-length={meta.length}
     style="transform: translateX({pos}%); --length: {meta.length}%"
   >
     {#each meta as review}

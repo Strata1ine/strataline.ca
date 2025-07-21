@@ -1,6 +1,6 @@
 <script lang="ts">
   import { modals } from "~/frontend/stores";
-  import { headingStyles, descStyles } from "./styles";
+  import { headingStyles, descStyles, imageStyles } from "./styles";
   import Slidenav from "@actions/Slidenav.svelte";
 
   import { type PropsOf } from "./registry";
@@ -13,10 +13,7 @@
 {#snippet imageCarousel()}
   {#each meta.images as image, i}
     <img
-      class="h-full object-cover transition-[width] duration-700 select-none {idx ===
-      i
-        ? 'w-full'
-        : 'w-0'}"
+      class={imageStyles({ anim: "grow", active: idx == i })}
       fetchpriority={i === idx ? "high" : "low"}
       alt={image.alt}
       {...image.meta}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { navStyles } from "@actions/styles";
+  import { dotStyles } from "@actions/styles";
 
   let {
     idx = $bindable(0),
@@ -17,7 +17,7 @@
     <button
       onclick={() => (idx = i)}
       aria-label="View slide {i + 1}"
-      class={navStyles({ open: idx === i })}
+      class={dotStyles({ open: idx === i })}
       tabindex="0"
     ></button>
   {/each}

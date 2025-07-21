@@ -3,9 +3,5 @@
 
 declare namespace App {
   interface Locals {
-    nextPos: Pos;
-    getNextPos: () => Pos;
-    nextSwap: Pos;
-    getNextSwap: () => Pos;
   }
 }

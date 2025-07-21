@@ -13,8 +13,9 @@ const index = await getIndex();
 const services = await getServices();
 
 import { type PropsOf } from "./registry";
+import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"LessPopular">;
-const pos = Astro.locals.getNextPos();
+const pos = getNextPos();
 
 const exclude = index.data.popular;
 
