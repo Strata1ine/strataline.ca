@@ -6,17 +6,15 @@ import LayoutTitle from "./layout/Title.astro";
 import Island from "./Review.svelte";
 
 import { type PropsOf } from "./registry";
-import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"Review">;
 
-const pos = getNextPos();
 for (const review of meta.reviews) {
   review.markdown = marked.parseInline(review.markdown) as string;
 }
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} {pos} />
+  <LayoutTitle title={meta.title} pos={meta.pos} />
   <div class="contain-paint">
     <div class=`${containerStyles({ width: "inner" })} select-none`>
       <Island client:visible meta={meta.reviews} />

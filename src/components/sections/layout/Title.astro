@@ -1,6 +1,6 @@
 ---
 import { containerStyles, headingStyles } from "@sections/styles";
-import { Pos } from "~/build/pos";
+import { type Pos } from "@sections/styles";
 import clsx from "clsx";
 
 interface Props {
@@ -16,7 +16,7 @@ let { title, pos } = Astro.props;
     class={clsx(
       headingStyles({ size: "5xl" }),
       "sm:max-w-[20ch]",
-      pos == "right" ? "sm:ml-auto  sm:text-right" : "",
+      pos == "right" ? "sm:ml-auto sm:text-right" : "",
     )}
   >
     {title}

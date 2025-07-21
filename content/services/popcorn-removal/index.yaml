@@ -7,3 +7,10 @@ covers:
   - meta: ./cover.jpg
     alt: |-
       A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process.
+components:
+  - type: Popular
+    title: Popular services
+    id: popular
+  - type: Popular
+    title: Popular services
+    id: popular

@@ -4,7 +4,7 @@ import Service from "@sections/Service.astro";
 import Menus from "@modals/Menus.svelte";
 
 import { getCollection } from "~/content.config";
-import { Pos, setNextPos } from "~/build/pos";
+import Content from "~/build/Content.astro";
 
 export async function getStaticPaths() {
   return (await getCollection("services")).map((service: any) => ({
@@ -16,11 +16,14 @@ const { slug } = Astro.params;
 const service = (await getCollection("services")).find(
   (s) => s.id.split("/")[0] === slug,
 )!;
-
-setNextPos(Pos.Right);
 ---
 
 <Layout>
   <Service meta={service.data} />
+  {
+    service.data.components && (
+      <Content startPos="right" components={service.data.components} />
+    )
+  }
   <Menus client:idle />
 </Layout>
