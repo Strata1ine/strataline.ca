@@ -9,20 +9,18 @@ import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
 import { getEntry, getCollection } from "~/content.config";
-const index = await getEntry("index", "index");
-const services = await getCollection("services");
 
 import { type PropsOf } from "./registry";
 import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"LessPopular">;
 const pos = getNextPos();
 
+const index = await getEntry("index", "index");
 const exclude = index.data.popular;
-
-const lessPopularServices = services.filter(
+const services = (await getCollection("services")).filter(
   (service) =>
     !exclude.some((pattern: string) =>
-      service.id.split("/")[0].includes(pattern),
+      service.id.includes(pattern),
     ),
 );
 ---
@@ -38,7 +36,7 @@ const lessPopularServices = services.filter(
       )}
     >
       {
-        lessPopularServices.map((service, _) => {
+        services.map((service, _) => {
           const slug = service.id.split("/")[0];
           return (
             <a

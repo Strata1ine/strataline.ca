@@ -1,5 +1,7 @@
-import { defineCollection, getEntry as _getEntry, getCollection as _getCollection, type SchemaContext, type CollectionEntry } from 'astro:content';
-import { z } from 'zod';
+import {
+  defineCollection, getEntry as _getEntry, getCollection as _getCollection,
+  type SchemaContext, type CollectionEntry as _CollectionEntry, z
+} from 'astro:content';
 
 import { glob } from 'astro/loaders';
 
@@ -32,6 +34,7 @@ export const collections = {
 };
 
 export type Id = keyof typeof collections;
+export type CollectionEntry<T extends Id> = _CollectionEntry<T>['data'];
 
 export const getEntry = async <T extends Id>(
   collection: T,
@@ -44,7 +47,7 @@ export const getEntry = async <T extends Id>(
 
 export const getCollection = async <T extends Id>(
   collection: T,
-  filter?: (entry: CollectionEntry<T>) => boolean
+  filter?: (entry: _CollectionEntry<T>) => boolean
 ) => {
   const entries = await _getCollection(
     collection,

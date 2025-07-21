@@ -1,7 +1,6 @@
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import type { SchemaContext } from 'astro:content';
-import z from "zod";
+import { type SchemaContext, z } from 'astro:content';
 
 export async function optimizeImage(image: ImageMetadata): Promise<OptimizedImage> {
   const opt = await getImage({

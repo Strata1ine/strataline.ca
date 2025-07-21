@@ -14,7 +14,7 @@
   const { meta }: { meta: PropsOf<"Header"> } = $props();
 </script>
 
-<ul class="mt-2 hidden gap-11 md:flex">
+<ul class="mt-1 hidden gap-11 md:flex">
   {#each meta.nav as item}
     <li>
       <a

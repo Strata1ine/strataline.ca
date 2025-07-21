@@ -1,0 +1,93 @@
+---
+import {
+  containerStyles,
+  descStyles,
+  headingStyles,
+  imageWrapperStyles,
+  imageStyles,
+  } from "./styles";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Home from "@decor/Home.astro";
+
+import { clsx } from "clsx";
+
+import type { CollectionEntry } from "~/content.config";
+
+interface Props {
+  meta: CollectionEntry<"services">;
+}
+
+const { meta } = Astro.props;
+---
+
+<main class="relative max-h-170 min-h-50 overflow-x-clip py-15 sm:h-[80vh]">
+  <div
+    class={`${containerStyles({ width: "outer" })} flex h-full items-center sm:flex-row sm:py-0 gap-6 xl:gap-8 2xl:gap-11`}
+  >
+    <div
+      class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] rounded-bl-sm sm:left-[65vw]"
+    >
+    </div>
+
+    <div>
+      <Home desc="Go back" />
+      <h1 class={`${headingStyles({ size: "5xl" })} mb-2`}>
+        {meta.title}
+      </h1>
+
+      <div
+        class={imageWrapperStyles({
+          display: "sm",
+          size: "mobile",
+          pos: "right",
+        })}
+      >
+        {
+          meta.covers.map((image, _) => (
+            <Image
+              class={imageStyles({
+                anim: meta.covers.length > 1 ? "zoom" : undefined,
+              })}
+              alt={image.alt}
+              src={image.meta}
+              draggable={false}
+            />
+          ))
+        }
+      </div>
+
+      <p class={descStyles({ size: "base" })}>
+        {meta.desc}
+      </p>
+    </div>
+
+    <div
+      class={clsx(
+        "flex-none hidden w-1/2 h-full",
+        imageWrapperStyles({ display: "md" }),
+      )}
+    >
+      {
+        meta.covers.map((image, _) => (
+          <Image
+            class={imageStyles({
+              anim: meta.covers.length > 1 ? "zoom" : undefined,
+            })}
+            alt={image.alt}
+            src={image.meta}
+            draggable={false}
+          />
+        ))
+      }
+    </div>
+  </div>
+</main>
+
+<div class={containerStyles({ width: "inner" })}>
+  <Icon
+    name="arrow"
+    class="hidden h-auto w-15 -translate-y-1/2 rotate-90 sm:block xl:w-20"
+  />
+</div>

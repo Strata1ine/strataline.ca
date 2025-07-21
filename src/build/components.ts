@@ -1,5 +1,4 @@
-import { z } from "zod";
-import { type SchemaContext } from 'astro:content';
+import { type SchemaContext, z } from 'astro:content';
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export const componentRegistry: Record<string, SchemaComponent> = {};

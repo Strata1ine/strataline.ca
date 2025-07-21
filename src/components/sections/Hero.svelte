@@ -17,6 +17,7 @@
       fetchpriority={i === idx ? "high" : "low"}
       alt={image.alt}
       {...image.meta}
+      draggable={false}
     />
   {/each}
 {/snippet}
