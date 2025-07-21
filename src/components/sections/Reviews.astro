@@ -3,12 +3,12 @@ import { containerStyles } from "./styles";
 import { marked } from "marked";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
-import Island from "./Review.svelte";
+import Island from "./Reviews.svelte";
 
 import { type PropsOf } from "./registry";
-const meta = Astro.props as PropsOf<"Review">;
+const meta = Astro.props as PropsOf<"Reviews">;
 
-for (const review of meta.reviews) {
+for (const review of meta.content) {
   review.markdown = marked.parseInline(review.markdown) as string;
 }
 ---
@@ -17,7 +17,7 @@ for (const review of meta.reviews) {
   <LayoutTitle title={meta.title} pos={meta.pos} />
   <div class="contain-paint">
     <div class=`${containerStyles({ width: "inner" })} select-none`>
-      <Island client:visible meta={meta.reviews} />
+      <Island client:visible meta={meta.content} />
     </div>
   </div>
 </LayoutDivider>

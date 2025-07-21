@@ -11,7 +11,7 @@
 </script>
 
 {#snippet imageCarousel()}
-  {#each meta.images as image, i}
+  {#each meta.content as image, i}
     <img
       class={imageStyles({ anim: "grow", active: idx == i })}
       fetchpriority={i === idx ? "high" : "low"}
@@ -34,7 +34,7 @@
   <Slidenav
     class="gap-inset flex 2xl:flex-col"
     bind:idx
-    length={meta.images.length}
+    length={meta.content.length}
   />
 </div>
 
@@ -53,7 +53,7 @@
     <Slidenav
       class="gap-inset flex flex-col"
       bind:idx
-      length={meta.images.length}
+      length={meta.content.length}
     />
   </div>
 

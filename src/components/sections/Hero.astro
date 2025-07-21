@@ -5,7 +5,7 @@ import Island from "./Hero.svelte";
 import type { PropsOf } from "./registry";
 import { optimizeImage } from "~/build/images";
 const meta = Astro.props as PropsOf<"Hero">;
-for (let image of meta.images) {
+for (let image of meta.content) {
   image.meta = await optimizeImage(image.meta);
 }
 ---

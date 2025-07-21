@@ -22,12 +22,11 @@ export type OptimizedImage = {
   format: string;
 }
 
-export const imageSource = (c: SchemaContext) =>
-  z.object({
-    meta: c.image(),
-    alt: z.string(),
-  });
+export const imageSource = (c: SchemaContext) => ({
+  meta: c.image(),
+  alt: z.string(),
+});
 
 export type ImageSource = z.infer<
-  ReturnType<typeof imageSource>
+  z.ZodObject<ReturnType<typeof imageSource>>
 >;

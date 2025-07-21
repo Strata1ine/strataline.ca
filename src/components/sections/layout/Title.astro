@@ -6,12 +6,15 @@ import clsx from "clsx";
 interface Props {
   title: string;
   pos: Pos;
+  class?: string;
 }
 
-let { title, pos } = Astro.props;
+let { title, pos, class: className } = Astro.props;
 ---
 
-<div class={clsx(containerStyles({ width: "inner" }), "mb-12")}>
+<div class={clsx(containerStyles({ width: "inner" }), "mb-12", className)}>
+  <slot name="before" />
+
   <h2
     class={clsx(
       headingStyles({ size: "5xl" }),
@@ -21,4 +24,6 @@ let { title, pos } = Astro.props;
   >
     {title}
   </h2>
+
+  <slot />
 </div>

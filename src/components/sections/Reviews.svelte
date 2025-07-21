@@ -4,7 +4,7 @@
   import Stars from "@decor/Stars.svelte";
   import { type SubPropsOf } from "./registry";
 
-  const { meta }: { meta: SubPropsOf<"Review", "reviews"> } = $props();
+  const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
   let container: HTMLElement;
   let idx = 0;
@@ -107,7 +107,6 @@
   <div
     class="c flex"
     bind:this={container}
-    data-length={meta.length}
     style="transform: translateX({pos}%); --length: {meta.length}%"
   >
     {#each meta as review}
