@@ -7,7 +7,7 @@ export function swapPos(pos: Pos): Pos {
   return pos === Pos.Left ? Pos.Right : Pos.Left;
 }
 
-let nextPos = Pos.Right;
+let nextPos = Pos.Left;
 
 export function setNextPos(pos: Pos) {
   nextPos = pos;

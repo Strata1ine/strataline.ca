@@ -2,9 +2,12 @@
 import Layout from "~/layouts/Layout.astro";
 import Content from "~/build/Content.astro";
 import Menus from "@modals/Menus.svelte";
-import { getIndex } from "~/content.config";
+import { getEntry } from "~/content.config";
+import { Pos, setNextPos } from "~/build/pos";
 
-const index = await getIndex();
+const index = await getEntry("index", "index");
+
+setNextPos(Pos.Left);
 ---
 
 <Layout>

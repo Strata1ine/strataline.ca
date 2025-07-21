@@ -7,15 +7,15 @@ import {
   imageWrapperStyles,
 } from "./styles";
 
-import { getIndex, getServices } from "~/content.config";
+import { getEntry, getCollection } from "~/content.config";
 import { Image } from "astro:assets";
 
 import clsx from "clsx";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
-let index = await getIndex();
-let services = await getServices();
+let index = await getEntry("index", "index");
+let services = await getCollection("services");
 
 import { type PropsOf } from "./registry";
 import { actionStyles } from "@actions/styles";

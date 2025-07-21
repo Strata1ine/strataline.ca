@@ -8,9 +8,9 @@ import Island from "./TextCarousel.svelte";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
-import { getIndex, getServices } from "~/content.config";
-const index = await getIndex();
-const services = await getServices();
+import { getEntry, getCollection } from "~/content.config";
+const index = await getEntry("index", "index");
+const services = await getCollection("services");
 
 import { type PropsOf } from "./registry";
 import { getNextPos } from "~/build/pos";
