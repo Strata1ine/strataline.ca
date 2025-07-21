@@ -1,4 +1,4 @@
-import { defineCollection, getEntry, getCollection, type SchemaContext } from 'astro:content';
+import { defineCollection, getEntry as _getEntry, getCollection as _getCollection, type SchemaContext, type CollectionEntry } from 'astro:content';
 import { z } from 'zod';
 
 import { glob } from 'astro/loaders';
@@ -31,19 +31,26 @@ export const collections = {
   }),
 };
 
+export type Id = keyof typeof collections;
 
-export const getIndex = async () => {
-  const entry = await getEntry("index", "index");
-  if (!entry) {
-    throw new Error("Failed to fetch index data? Does `index` exist.");
-  }
+export const getEntry = async <T extends Id>(
+  collection: T,
+  id: string
+) => {
+  const entry = await _getEntry(collection, id);
+  if (!entry) throw new Error(`Requested entry '${id}' not found in collection: ${collection}. Please create a content/${id}.yaml`);
   return entry;
 };
 
-export const getServices = async () => {
-  const services = await getCollection("services", ({ data }) => import.meta.env.DEV || !data?.draft);
-  if (!services.length) {
-    throw new Error("Failed to fetch services data? Have any services been defined.");
-  }
-  return services;
+export const getCollection = async <T extends Id>(
+  collection: T,
+  filter?: (entry: CollectionEntry<T>) => boolean
+) => {
+  const entries = await _getCollection(
+    collection,
+    filter ?? ((entry) => import.meta.env.DEV || !('draft' in entry.data && entry.data.draft))
+  );
+
+  if (!entries.length) console.warn(`No entries found in collection: ${collection}`);
+  return entries;
 };

@@ -1,16 +1,21 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import Menus from "@modals/Menus.svelte";
-import { getServices } from "~/content.config";
+import { getCollection } from "~/content.config";
+import { Pos, setNextPos } from "~/build/pos";
 
 export async function getStaticPaths() {
-  return (await getServices()).map((service: any) => ({
+  return (await getCollection("services")).map((service: any) => ({
     params: { slug: service.id.split("/")[0] },
   }));
 }
 
 const { slug } = Astro.params;
-const service = (await getServices()).find((s) => s.id.split("/")[0] === slug);
+const service = (await getCollection("services")).find(
+  (s) => s.id.split("/")[0] === slug,
+)!;
+
+setNextPos(Pos.Right);
 ---
 
 <Layout>
