@@ -6,8 +6,9 @@ import LayoutTitle from "./layout/Title.astro";
 
 import { type PropsOf } from "./registry";
 import { optimizeImage } from "~/build/images";
+import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"Cardshow">;
-const pos = Astro.locals.getNextPos();
+const pos = getNextPos();
 
 for (let card of meta.cards) {
   if (card.image) card.image.meta = await optimizeImage(card.image.meta);

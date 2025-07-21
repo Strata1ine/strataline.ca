@@ -14,7 +14,7 @@ export const fieldStyles = cva(
     },
     compoundVariants: [
       {
-        expanded: [true, false],
+        open: [true, false],
         className: 'transition-[border-radius] duration-300',
       },
     ],

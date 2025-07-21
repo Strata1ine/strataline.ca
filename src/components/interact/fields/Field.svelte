@@ -32,7 +32,7 @@
       <Asterick class="text-error size-3"></Asterick>
     {/if}
   </label>
-  <label class={fieldStyles({ expanded: open })}>
+  <label class={fieldStyles({ open })}>
     {@render children?.()}
   </label>
 </div>

@@ -41,8 +41,8 @@ export type ComponentRegistry = Record<
 export function updateComponentRegistry(
   registry: ComponentRegistry,
 ): void {
-  console.log("Component registry flushed");
   for (const [id, { schema, load }] of Object.entries(registry)) {
+    console.log(`Component ${id} flushed`);
     componentRegistry[id] = { id, schema, load };
   }
 }

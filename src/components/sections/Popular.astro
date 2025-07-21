@@ -1,7 +1,5 @@
 ---
 import {
-  Pos,
-  swapPos,
   containerStyles,
   imageStyles,
   headingStyles,
@@ -21,8 +19,10 @@ let services = await getServices();
 
 import { type PropsOf } from "./registry";
 import { actionStyles } from "@actions/styles";
+import { getNextPos, swapPos, Pos } from "~/build/pos";
+
 const meta = Astro.props as PropsOf<"Popular">;
-const pos = Astro.locals.getNextPos();
+const pos = getNextPos();
 
 const popularServices = services
   .filter((service) =>
@@ -49,7 +49,7 @@ let next = swapPos(pos);
           service.data.covers.map((image, _) => (
             <Image
               class={imageStyles({
-                layout: service.data.covers.length > 1 ? "divided" : undefined,
+                anim: service.data.covers.length > 1 ? "zoom" : undefined,
               })}
               src={image.meta}
               alt={image.alt}
@@ -67,7 +67,7 @@ let next = swapPos(pos);
             {next === Pos.Left && (
               <div
                 class={imageWrapperStyles({
-                  position: "left",
+                  pos: "left",
                   device: "desktop",
                 })}
               >
@@ -83,7 +83,7 @@ let next = swapPos(pos);
               {next === Pos.Right && (
                 <div
                   class={imageWrapperStyles({
-                    position: "right",
+                    pos: "right",
                     device: "mobile",
                   })}
                 >
@@ -94,7 +94,7 @@ let next = swapPos(pos);
               {next === Pos.Left && (
                 <div
                   class={imageWrapperStyles({
-                    position: "left",
+                    pos: "left",
                     device: "mobile",
                   })}
                 >
@@ -119,7 +119,7 @@ let next = swapPos(pos);
             {next === Pos.Right && (
               <div
                 class={imageWrapperStyles({
-                  position: "right",
+                  pos: "right",
                   device: "desktop",
                 })}
               >
