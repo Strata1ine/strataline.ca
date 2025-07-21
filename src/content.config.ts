@@ -27,7 +27,7 @@ export const collections = {
     schema: (c: SchemaContext) => z.object({
       title: z.string(),
       desc: z.string(),
-      covers: z.array(imageSource(c)),
+      covers: z.array(z.object(imageSource(c))),
       draft: z.boolean().optional(),
       components: parseRegistry(c).optional(),
     }),

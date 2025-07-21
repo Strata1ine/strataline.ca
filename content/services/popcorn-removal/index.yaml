@@ -10,7 +10,7 @@ covers:
 components:
   - type: Benefits
     title: Why remove popcorn ceilings?
-    benefits:
+    content:
       - title: Aesthetic upgrade
         markdown: |-
           Modern homes have smooth ceilings, because it makes your room feel more spacious and beautiful.
@@ -23,3 +23,26 @@ components:
       - title: Potential asbestos issues
         markdown: |-
           If your popcorn ceiling was installed before the 1980s, it likely has asbestos, requiring professional removal for safety.
+
+  - type: TextCarousel
+    text:
+      - Expert popcorn removal
+      - Kernels of design wisdom
+      - No scrape of popcorn left
+      - Ceiling texture worth savoring
+
+  - type: ImagePanel
+    title: Our process
+    content:
+      - title: Inspection
+        meta: ./before.jpg
+        alt: |-
+          A living room with a textured popcorn ceiling, ready for a modern update or smooth refinishing.
+      - title: Removal
+        meta: ./removal.jpg
+        alt: |-
+          A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+      - title: Cleanup
+        meta: ./cleanup.jpg
+        alt: |-
+          A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.

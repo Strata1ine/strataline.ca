@@ -15,8 +15,10 @@ const builtComponents =
   components != null
     ? await Promise.all(
         components.map(async (props) => {
+          let component = await componentRegistry[props.type]?.load();
+          if (component == null) return; // seems harmeless to ignore, likely cache
           return {
-            component: await componentRegistry[props.type]?.load(),
+            component,
             props,
           };
         }),
@@ -26,12 +28,13 @@ const builtComponents =
 
 {
   builtComponents.map((data) => {
+    if (!data) return null;
+
     if ("pos" in data.props) {
       data.props.pos = swapPos(pos);
-      // what the fuck is the lsp on
       pos = data.props.pos as Pos;
     }
 
-    return data ? <data.component.default {...data.props} /> : null;
+    return <data.component.default {...data.props} />;
   })
 }

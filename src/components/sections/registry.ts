@@ -11,7 +11,7 @@ export const registry = {
   Header: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      nav: z.array(z.object({ id: z.string(), name: z.string() })),
+      content: z.array(z.object({ id: z.string(), name: z.string() })),
     }),
     load: () => import('./Header.astro'),
   },
@@ -21,7 +21,7 @@ export const registry = {
       id: z.string().optional(),
       title: z.string(),
       desc: z.string(),
-      images: z.array(imageSource(c)),
+      content: z.array(z.object(imageSource(c))),
     }),
     load: () => import('./Hero.astro'),
   },
@@ -40,7 +40,7 @@ export const registry = {
       id: z.string().optional(),
       pos: ZPos,
       title: z.string().default("There's more to explore"),
-      carousel: z
+      content: z
         .object(textCarousel)
         .optional(),
     }),
@@ -57,11 +57,11 @@ export const registry = {
       id: z.string().optional(),
       pos: ZPos,
       title: z.string(),
-      cards: z.array(
+      content: z.array(
         z.object({
           title: z.string(),
           desc: z.string(),
-          image: imageSource(c).optional(),
+          image: z.object(imageSource(c)).optional(),
           id: z.string().optional(),
         })
       ),
@@ -69,12 +69,12 @@ export const registry = {
     load: () => import('./Cardshow.astro'),
   },
 
-  Review: {
+  Reviews: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
       pos: ZPos,
       title: z.string(),
-      reviews: z.array(
+      content: z.array(
         z.object({
           title: z.string(),
           markdown: z.string(),
@@ -84,7 +84,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Review.astro'),
+    load: () => import('./Reviews.astro'),
   },
 
   Benefits: {
@@ -92,7 +92,7 @@ export const registry = {
       id: z.string().optional(),
       pos: ZPos,
       title: z.string(),
-      benefits: z.array(
+      content: z.array(
         z.object({
           title: z.string(),
           markdown: z.string(),
@@ -100,6 +100,21 @@ export const registry = {
       ),
     }),
     load: () => import('./Benefits.astro'),
+  },
+
+  ImagePanel: {
+    schema: (c: SchemaContext) => ({
+      id: z.string().optional(),
+      pos: ZPos,
+      title: z.string(),
+      content: z.array(
+        z.object({
+          title: z.string(),
+          ...imageSource(c),
+        })
+      ),
+    }),
+    load: () => import('./ImagePanel.astro'),
   },
 } as const;
 
