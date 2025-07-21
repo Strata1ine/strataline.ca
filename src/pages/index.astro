@@ -3,14 +3,11 @@ import Layout from "~/layouts/Layout.astro";
 import Content from "~/build/Content.astro";
 import Menus from "@modals/Menus.svelte";
 import { getEntry } from "~/content.config";
-import { Pos, setNextPos } from "~/build/pos";
 
 const index = await getEntry("index", "index");
-
-setNextPos(Pos.Right);
 ---
 
 <Layout>
-  <Content components={index.data.components} />
+  <Content startPos="right" components={index.data.components} />
   <Menus client:idle />
 </Layout>

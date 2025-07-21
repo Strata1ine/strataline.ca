@@ -1,10 +1,12 @@
 ---
 import {
+  swapPos,
   containerStyles,
   imageStyles,
   headingStyles,
   descStyles,
   imageWrapperStyles,
+  Pos,
 } from "./styles";
 
 import { getEntry, getCollection } from "~/content.config";
@@ -18,10 +20,8 @@ let index = await getEntry("index", "index");
 
 import { type PropsOf } from "./registry";
 import { actionStyles } from "@actions/styles";
-import { getNextPos, swapPos, Pos } from "~/build/pos";
 
 const meta = Astro.props as PropsOf<"Popular">;
-const pos = getNextPos();
 
 const services = (await getCollection("services"))
   .filter((service) =>
@@ -34,11 +34,11 @@ const services = (await getCollection("services"))
       index.data.popular.indexOf(a.id) - index.data.popular.indexOf(b.id),
   );
 
-let next = swapPos(pos);
+let next = swapPos(meta.pos);
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} {pos} />
+  <LayoutTitle title={meta.title} pos={meta.pos} />
 
   <div class={containerStyles({ width: "outer" })}>
     {
@@ -63,7 +63,7 @@ let next = swapPos(pos);
             class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
             id={slug}
           >
-            {next === Pos.Left && (
+            {next === "left" && (
               <div
                 class={imageWrapperStyles({
                   pos: "left",
@@ -80,7 +80,7 @@ let next = swapPos(pos);
                 {service.data.title}
               </h3>
 
-              {next === Pos.Right && (
+              {next === "right" && (
                 <div
                   class={imageWrapperStyles({
                     pos: "right",
@@ -92,7 +92,7 @@ let next = swapPos(pos);
                 </div>
               )}
 
-              {next === Pos.Left && (
+              {next === "left" && (
                 <div
                   class={imageWrapperStyles({
                     pos: "left",
@@ -118,7 +118,7 @@ let next = swapPos(pos);
               </div>
             </div>
 
-            {next === Pos.Right && (
+            {next === "right" && (
               <div
                 class={imageWrapperStyles({
                   pos: "right",

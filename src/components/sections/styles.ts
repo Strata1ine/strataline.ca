@@ -1,4 +1,12 @@
 import { cva } from 'class-variance-authority';
+import { z } from "zod";
+
+export const Pos = z.union([z.literal('left'), z.literal('right')]).default("left");
+export type Pos = z.infer<typeof Pos>;
+
+export function swapPos(pos: Pos): Pos {
+  return pos === "left" ? "right" : "left"
+}
 
 export const containerStyles = cva(
   'md:mx-auto box-content',

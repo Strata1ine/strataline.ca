@@ -29,6 +29,7 @@ export const collections = {
       desc: z.string(),
       covers: z.array(imageSource(c)),
       draft: z.boolean().optional(),
+      components: parseRegistry(c).optional(),
     }),
   }),
 };

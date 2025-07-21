@@ -11,9 +11,7 @@ import LayoutTitle from "./layout/Title.astro";
 import { getEntry, getCollection } from "~/content.config";
 
 import { type PropsOf } from "./registry";
-import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"LessPopular">;
-const pos = getNextPos();
 
 const index = await getEntry("index", "index");
 const exclude = index.data.popular;
@@ -26,7 +24,7 @@ const services = (await getCollection("services")).filter(
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} {pos} />
+  <LayoutTitle title={meta.title} pos={meta.pos} />
 
   <div class="bg-accent">
     <nav

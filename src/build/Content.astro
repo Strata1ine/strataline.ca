@@ -1,25 +1,38 @@
 ---
 import { type SchemaRegistry, componentRegistry } from "~/build/components";
+import { type Pos, swapPos } from "@sections/styles";
 
 type Props = {
   components: SchemaRegistry;
+  startPos: Pos;
 };
 
-const { components } = Astro.props;
+const { components, startPos } = Astro.props;
 
-const builtComponents = await Promise.all(
-  components.map(async (props) => {
-    const load = componentRegistry[props.type]?.load;
-    if (!load) return null;
+let pos: Pos = swapPos(startPos);
 
-    const c = await load();
-    return { Component: c.default, props };
-  }),
-);
+const builtComponents =
+  components !== null
+    ? await Promise.all(
+        components.map(async (props) => {
+          return {
+            component: await componentRegistry[props.type]?.load(),
+            props,
+          };
+        }),
+      )
+    : [];
 ---
 
 {
-  builtComponents.map(({ Component, props }) =>
-    Component ? <Component {...props} /> : null,
-  )
+  builtComponents.length !== 0 &&
+    builtComponents.map((data) => {
+      if ("pos" in data.props) {
+        data.props.pos = swapPos(pos);
+        // what the fuck is the lsp on
+        pos = data.props.pos as Pos;
+      }
+
+      return data ? <data.component.default {...data.props} /> : null;
+    })
 }

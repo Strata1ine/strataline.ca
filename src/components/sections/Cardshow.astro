@@ -6,9 +6,7 @@ import LayoutTitle from "./layout/Title.astro";
 
 import { type PropsOf } from "./registry";
 import { optimizeImage } from "~/build/images";
-import { getNextPos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"Cardshow">;
-const pos = getNextPos();
 
 for (let card of meta.cards) {
   if (card.image) card.image.meta = await optimizeImage(card.image.meta);
@@ -16,7 +14,7 @@ for (let card of meta.cards) {
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} {pos} />
+  <LayoutTitle title={meta.title} pos={meta.pos} />
 
   <div class={containerStyles({ width: "outer" })}>
     <div
