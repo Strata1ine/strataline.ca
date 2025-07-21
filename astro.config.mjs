@@ -35,7 +35,7 @@ export default defineConfig({
         name: "DM Sans",
         cssVariable: "--font-dm-sans",
         provider: fontProviders.fontsource(),
-        weights: [400],
+        weights: [400, 600],
         styles: ["normal", "italic"],
         subsets: ["latin"],
       }
@@ -56,7 +56,6 @@ export default defineConfig({
     ],
   },
   image: {
-    layout: "full-width",
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
@@ -68,7 +67,12 @@ export default defineConfig({
   integrations: [
     svelte(),
     compressor(),
-    icon(),
+    icon({
+      include: {
+        local: ["*"],
+        ph: ["*"],
+      },
+    }),
     (await import("@playform/compress")).default({
       CSS: true,
       HTML: {

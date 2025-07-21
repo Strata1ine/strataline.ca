@@ -98,7 +98,7 @@
 </script>
 
 <div
-  class="mt-7 cursor-grab touch-pan-y touch-pinch-zoom"
+  class="mt-7 cursor-grab touch-pan-y"
   {onpointerdown}
   {onpointermove}
   {onpointerup}

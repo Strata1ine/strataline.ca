@@ -1,6 +1,8 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import Service from "@sections/Service.astro";
 import Menus from "@modals/Menus.svelte";
+
 import { getCollection } from "~/content.config";
 import { Pos, setNextPos } from "~/build/pos";
 
@@ -19,6 +21,6 @@ setNextPos(Pos.Right);
 ---
 
 <Layout>
-  <h1>{service.data.title}</h1>
+  <Service meta={service.data} />
   <Menus client:idle />
 </Layout>

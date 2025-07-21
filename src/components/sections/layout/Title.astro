@@ -1,5 +1,6 @@
 ---
-import { containerStyles, headingStyles, Pos } from "@sections/styles";
+import { containerStyles, headingStyles } from "@sections/styles";
+import { Pos } from "~/build/pos";
 import clsx from "clsx";
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 let { title, pos } = Astro.props;
 ---
 
-<div class={clsx(containerStyles({ width: "inner" }), "mb-16")}>
+<div class={clsx(containerStyles({ width: "inner" }), "mb-12")}>
   <h2
     class={clsx(
       headingStyles({ size: "5xl" }),

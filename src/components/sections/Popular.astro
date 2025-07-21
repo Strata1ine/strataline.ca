@@ -15,7 +15,6 @@ import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
 let index = await getEntry("index", "index");
-let services = await getCollection("services");
 
 import { type PropsOf } from "./registry";
 import { actionStyles } from "@actions/styles";
@@ -24,7 +23,7 @@ import { getNextPos, swapPos, Pos } from "~/build/pos";
 const meta = Astro.props as PropsOf<"Popular">;
 const pos = getNextPos();
 
-const popularServices = services
+const services = (await getCollection("services"))
   .filter((service) =>
     index.data.popular.some((pattern: string) =>
       service.id.split("/")[0].includes(pattern),
@@ -32,7 +31,7 @@ const popularServices = services
   )
   .sort(
     (a, b) =>
-      index.data.popular.indexOf(a.slug) - index.data.popular.indexOf(b.slug),
+      index.data.popular.indexOf(a.id) - index.data.popular.indexOf(b.id),
   );
 
 let next = swapPos(pos);
@@ -43,7 +42,7 @@ let next = swapPos(pos);
 
   <div class={containerStyles({ width: "outer" })}>
     {
-      popularServices.map((service, _) => {
+      services.map((service, _) => {
         const slug = service.id.split("/")[0];
         const render = () =>
           service.data.covers.map((image, _) => (
@@ -68,7 +67,8 @@ let next = swapPos(pos);
               <div
                 class={imageWrapperStyles({
                   pos: "left",
-                  device: "desktop",
+                  size: "desktop",
+                  display: "md",
                 })}
               >
                 {render()}
@@ -84,7 +84,8 @@ let next = swapPos(pos);
                 <div
                   class={imageWrapperStyles({
                     pos: "right",
-                    device: "mobile",
+                    size: "mobile",
+                    display: "sm",
                   })}
                 >
                   {render()}
@@ -95,7 +96,8 @@ let next = swapPos(pos);
                 <div
                   class={imageWrapperStyles({
                     pos: "left",
-                    device: "mobile",
+                    size: "mobile",
+                    display: "sm",
                   })}
                 >
                   {render()}
@@ -120,7 +122,8 @@ let next = swapPos(pos);
               <div
                 class={imageWrapperStyles({
                   pos: "right",
-                  device: "desktop",
+                  size: "desktop",
+                  display: "md",
                 })}
               >
                 {render()}

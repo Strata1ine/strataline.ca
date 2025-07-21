@@ -1,0 +1,28 @@
+---
+import clsx from "clsx";
+import { Icon } from "astro-icon/components";
+import { descStyles } from "@sections/styles";
+
+const {
+  slug,
+  desc = "Go home",
+  class: customClass,
+  ...slot
+} = Astro.props;
+---
+
+<a
+  class={clsx(
+    `text-accent-dark flex cursor-pointer items-end gap-3 mb-1`,
+    customClass,
+  )}
+  {...slot}
+  data-astro-prefetch
+  href={slug ? `/#${slug}` : `/`}
+>
+  <Icon
+    name="ph:house-line-fill"
+    class="h-auto w-8 translate-y-[7%] sm:w-9 xl:w-12"
+  />
+  <span class={`${descStyles({ size: "base" })} font-semibold leading-none`}>{desc}</span>
+</a>
