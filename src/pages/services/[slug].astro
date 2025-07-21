@@ -20,10 +20,6 @@ const service = (await getCollection("services")).find(
 
 <Layout>
   <Service meta={service.data} />
-  {
-    service.data.components && (
-      <Content startPos="right" components={service.data.components} />
-    )
-  }
+      <Content startPos="left" components={service.data.components} />
   <Menus client:idle />
 </Layout>

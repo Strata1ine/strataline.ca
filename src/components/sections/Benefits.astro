@@ -1,0 +1,36 @@
+---
+import { headingStyles, containerStyles, descStyles } from "./styles";
+import { marked } from "marked";
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Benefits">;
+
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutTitle from "./layout/Title.astro";
+---
+
+<LayoutDivider>
+  <LayoutTitle title={meta.title} pos={meta.pos} />
+
+  <div class={containerStyles({ width: "inner" })}>
+    <div class="gap-inset grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
+      {
+        meta.benefits.map((benefit, i) => {
+          return (
+            <div>
+              <div class="mb-2 flex items-baseline gap-4">
+                <h3
+                  class={`text-accent-dark ${headingStyles({ size: "6xl" })}`}
+                >
+                  o{i + 1}
+                </h3>
+                <h4 class={headingStyles({ size: "2xl" })}>{benefit.title}</h4>
+              </div>
+
+              <p class={descStyles({size: "base"})}>{marked.parseInline(benefit.markdown)}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</LayoutDivider>
