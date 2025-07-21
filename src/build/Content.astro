@@ -3,7 +3,7 @@ import { type SchemaRegistry, componentRegistry } from "~/build/components";
 import { type Pos, swapPos } from "@sections/styles";
 
 type Props = {
-  components: SchemaRegistry;
+  components?: SchemaRegistry;
   startPos: Pos;
 };
 
@@ -12,7 +12,7 @@ const { components, startPos } = Astro.props;
 let pos: Pos = swapPos(startPos);
 
 const builtComponents =
-  components !== null
+  components != null
     ? await Promise.all(
         components.map(async (props) => {
           return {
@@ -25,14 +25,13 @@ const builtComponents =
 ---
 
 {
-  builtComponents.length !== 0 &&
-    builtComponents.map((data) => {
-      if ("pos" in data.props) {
-        data.props.pos = swapPos(pos);
-        // what the fuck is the lsp on
-        pos = data.props.pos as Pos;
-      }
+  builtComponents.map((data) => {
+    if ("pos" in data.props) {
+      data.props.pos = swapPos(pos);
+      // what the fuck is the lsp on
+      pos = data.props.pos as Pos;
+    }
 
-      return data ? <data.component.default {...data.props} /> : null;
-    })
+    return data ? <data.component.default {...data.props} /> : null;
+  })
 }

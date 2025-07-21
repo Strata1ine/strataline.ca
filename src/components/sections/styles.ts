@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority';
 import { z } from "zod";
 
-export const Pos = z.union([z.literal('left'), z.literal('right')]).default("left");
-export type Pos = z.infer<typeof Pos>;
+export const ZPos = z.union([z.literal('left'), z.literal('right')]).default("left");
+export type Pos = z.infer<typeof ZPos>;
 
 export function swapPos(pos: Pos): Pos {
   return pos === "left" ? "right" : "left"

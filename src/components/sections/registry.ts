@@ -1,6 +1,6 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
-import { Pos } from './styles';
+import { ZPos } from './styles';
 
 const textCarousel = ({
   speed: z.number().optional().default(1),
@@ -16,7 +16,6 @@ export const registry = {
     load: () => import('./Header.astro'),
   },
 
-
   Hero: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),
@@ -30,7 +29,7 @@ export const registry = {
   Popular: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: Pos,
+      pos: ZPos,
       title: z.string(),
     }),
     load: () => import('./Popular.astro'),
@@ -39,7 +38,7 @@ export const registry = {
   LessPopular: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: Pos,
+      pos: ZPos,
       title: z.string().default("There's more to explore"),
       carousel: z
         .object(textCarousel)
@@ -56,7 +55,7 @@ export const registry = {
   Cardshow: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),
-      pos: Pos,
+      pos: ZPos,
       title: z.string(),
       cards: z.array(
         z.object({
@@ -73,7 +72,7 @@ export const registry = {
   Review: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: Pos,
+      pos: ZPos,
       title: z.string(),
       reviews: z.array(
         z.object({
@@ -86,6 +85,21 @@ export const registry = {
       ),
     }),
     load: () => import('./Review.astro'),
+  },
+
+  Benefits: {
+    schema: (_: SchemaContext) => ({
+      id: z.string().optional(),
+      pos: ZPos,
+      title: z.string(),
+      benefits: z.array(
+        z.object({
+          title: z.string(),
+          markdown: z.string(),
+        })
+      ),
+    }),
+    load: () => import('./Benefits.astro'),
   },
 } as const;
 
