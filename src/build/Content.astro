@@ -16,7 +16,10 @@ const builtComponents =
     ? await Promise.all(
         components.map(async (props) => {
           let component = await componentRegistry[props.type]?.load();
-          if (component == null) return; // seems harmeless to ignore, likely cache
+          if (component == null) {
+            console.warn(`Component: ${props.type} couldn't load. This is likely a bug from cache`);
+            return;
+          }
           return {
             component,
             props,
