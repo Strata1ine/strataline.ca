@@ -15,7 +15,7 @@
 </script>
 
 <ul class="mt-1 hidden gap-11 md:flex">
-  {#each meta.nav as item}
+  {#each meta.content as item}
     <li>
       <a
         href="#{item.id}"
@@ -43,7 +43,7 @@
 
 <Modal class={modalStyles({ open })} {uid} bind:open>
   <ul class="px-inset flex h-full flex-col items-start justify-center gap-6">
-    {#each meta.nav as item}
+    {#each meta.content as item}
       <li>
         <a
           href={`#${item.id}`}

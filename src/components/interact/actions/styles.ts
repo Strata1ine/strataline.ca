@@ -17,7 +17,7 @@ export const dotStyles = cva(
 
 
 export const actionStyles = cva(
-  'rounded-lg px-6 py-2 font-serif text-md xl:text-lg font-bold cursor-pointer',
+  'rounded-lg px-6 py-4 font-serif text-md xl:text-lg font-bold cursor-pointer leading-none',
   {
     variants: {
       background: {

@@ -8,6 +8,7 @@ import { glob } from 'astro/loaders';
 import { registry } from "@sections/registry";
 import { updateComponentRegistry, parseRegistry } from "~/build/components";
 import { imageSource } from '~/build/images';
+import { ZPos } from '@sections/styles';
 updateComponentRegistry(registry);
 
 export const collections = {
@@ -25,8 +26,10 @@ export const collections = {
   services: defineCollection({
     loader: glob({ pattern: '**/*.yaml', base: './content/services' }),
     schema: (c: SchemaContext) => z.object({
+      startPos: ZPos.optional(),
       title: z.string(),
       desc: z.string(),
+      seo: z.string(),
       covers: z.array(z.object(imageSource(c))),
       draft: z.boolean().optional(),
       components: parseRegistry(c).optional(),

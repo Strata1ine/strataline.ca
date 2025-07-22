@@ -1,6 +1,6 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
-import { ZPos } from './styles';
+import { DefaultPos } from './styles';
 
 const textCarousel = ({
   speed: z.number().optional().default(1),
@@ -29,7 +29,7 @@ export const registry = {
   Popular: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string(),
     }),
     load: () => import('./Popular.astro'),
@@ -38,7 +38,7 @@ export const registry = {
   LessPopular: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string().default("There's more to explore"),
       content: z
         .object(textCarousel)
@@ -55,7 +55,7 @@ export const registry = {
   Cardshow: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string(),
       content: z.array(
         z.object({
@@ -72,7 +72,7 @@ export const registry = {
   Reviews: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string(),
       content: z.array(
         z.object({
@@ -90,7 +90,7 @@ export const registry = {
   Benefits: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string(),
       content: z.array(
         z.object({
@@ -105,7 +105,7 @@ export const registry = {
   ImagePanel: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),
-      pos: ZPos,
+      pos: DefaultPos,
       title: z.string(),
       content: z.array(
         z.object({

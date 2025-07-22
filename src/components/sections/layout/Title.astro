@@ -12,7 +12,7 @@ interface Props {
 let { title, pos, class: className } = Astro.props;
 ---
 
-<div class={clsx(containerStyles({ width: "inner" }), "mb-12", className)}>
+<div class={clsx(containerStyles({ width: "inner" }), "mb-7 sm:mb-12", className)}>
   <slot name="before" />
 
   <h2

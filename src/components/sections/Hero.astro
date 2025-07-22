@@ -8,6 +8,7 @@ const meta = Astro.props as PropsOf<"Hero">;
 for (let image of meta.content) {
   image.meta = await optimizeImage(image.meta);
 }
+
 ---
 
 <main

@@ -30,9 +30,7 @@
 
   <div class="{inputStyles()} cursor-pointer">
     <ImagesSquare class="size-8" />
-    <div class="flex-1">
-      <span class={descStyles({ size: "sm" })}>{value}</span>
-    </div>
+    <span class="{descStyles({ size: "sm" })} flex-1">{value}</span>
     <Upload class="size-6" />
   </div>
 </Field>
