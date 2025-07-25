@@ -47,3 +47,15 @@ components:
         meta: ./cleanup.jpg
         alt: |-
           A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How much does popcorn ceiling removal cost?
+        markdown: |-
+          The cost varies depending on the size of the area and the complexity of the removal. Contact us for a free estimate!
+      - title: How long does the process take?
+        markdown: |-
+          Typically, the process can take anywhere from a few hours to a couple of days, depending on the size of the job.
+      - title: Can I do it myself?
+        markdown: |-
+          While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
