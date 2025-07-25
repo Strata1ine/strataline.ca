@@ -116,6 +116,21 @@ export const registry = {
     }),
     load: () => import('./ImagePanel.astro'),
   },
+
+  Faq: {
+    schema: (_: SchemaContext) => ({
+      id: z.string().optional(),
+      pos: DefaultPos,
+      title: z.string(),
+      content: z.array(
+        z.object({
+          title: z.string(),
+          markdown: z.string(),
+        })
+      ),
+    }),
+    load: () => import('./Faq.astro'),
+  },
 } as const;
 
 export type Id = keyof typeof registry;

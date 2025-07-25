@@ -1,0 +1,22 @@
+---
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Faq">;
+
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutTitle from "./layout/Title.astro";
+import Island from "./Faq.svelte";
+import { containerStyles } from "./styles";
+import { marked } from "marked";
+
+for (const faq of meta.content) {
+  faq.markdown = marked.parseInline(faq.markdown) as string;
+}
+---
+
+<LayoutDivider>
+  <LayoutTitle title={meta.title} pos={meta.pos} />
+
+  <div class={containerStyles({ width: "inner" })}>
+    <Island client:visible {meta} />
+  </div>
+</LayoutDivider>
