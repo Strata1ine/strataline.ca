@@ -9,6 +9,7 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "strict": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
