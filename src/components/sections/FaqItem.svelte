@@ -35,22 +35,22 @@
   }
 </script>
 
-<div class="border-accent border-t-1 py-8 first:border-t-0">
-  <button
-    class="flex w-full cursor-pointer items-center justify-between"
-    bind:this={button}
-    onclick={(e) => {
-      active = open ? null : i;
-      window.getSelection()?.removeAllRanges();
-    }}
-  >
+<button
+  class="border-accent w-full cursor-pointer border-t-1 py-8 first:border-t-0"
+  bind:this={button}
+  onclick={() => {
+    active = open ? null : i;
+    window.getSelection()?.removeAllRanges();
+  }}
+>
+  <div class="flex items-center justify-between">
     <h3 class={headingStyles({ size: "3xl" })}>{meta.title}</h3>
     <div
       class="expand relative size-6 gap-4 flex-shrink-0{i === active
         ? ' open'
         : ''}"
     ></div>
-  </button>
+  </div>
 
   {#if open}
     <p
@@ -60,7 +60,7 @@
       {@html meta.markdown}
     </p>
   {/if}
-</div>
+</button>
 
 <style lang="scss">
   .expand {

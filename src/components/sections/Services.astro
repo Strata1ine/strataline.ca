@@ -1,9 +1,4 @@
 ---
-import { containerStyles, headingStyles } from "./styles";
-import { Image } from "astro:assets";
-import clsx from "clsx";
-
-import { Icon } from "astro-icon/components";
 import Island from "./TextCarousel.svelte";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
@@ -11,16 +6,24 @@ import LayoutTitle from "./layout/Title.astro";
 import { getEntry, getCollection } from "~/content.config";
 
 import { type PropsOf } from "./registry";
-const meta = Astro.props as PropsOf<"LessPopular">;
+const meta = Astro.props as PropsOf<"Services">;
 
-const index = await getEntry("index", "index");
-const exclude = index.data.popular;
+let exclude: string[];
+if (meta.exclude == undefined) {
+  const index = await getEntry("index", "index");
+  exclude = index.data.popular;
+} else {
+  exclude = meta.exclude;
+}
+
 const services = (await getCollection("services")).filter(
-  (service) =>
-    !exclude.some((pattern: string) =>
-      service.id.includes(pattern),
-    ),
+  (service) => !exclude.some((pattern: string) => service.id.includes(pattern)),
 );
+
+import { containerStyles, headingStyles } from "./styles";
+import clsx from "clsx";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 ---
 
 <LayoutDivider id={meta.id}>
@@ -43,10 +46,13 @@ const services = (await getCollection("services")).filter(
               tabindex="0"
             >
               <Image
-                class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm object-cover transition duration-300 select-none hover:scale-[1.05] sm:w-full"
+                class="h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm transition duration-300 select-none hover:scale-[1.05] sm:w-full"
                 src={service.data.covers[0].meta}
                 alt={service.data.covers[0].alt}
                 draggable={false}
+                widths={[500, 750, 1300, 2160]}
+                sizes="100vw"
+                width={2160}
               />
 
               <div class="sm:gap-inset flex flex-col gap-1 sm:w-full sm:flex-row sm:items-center">
@@ -62,5 +68,5 @@ const services = (await getCollection("services")).filter(
     </nav>
   </div>
 
-  {meta.carousel && <Island client:visible meta={meta.carousel} />}
+  {meta.content && <Island client:visible meta={meta.content} />}
 </LayoutDivider>

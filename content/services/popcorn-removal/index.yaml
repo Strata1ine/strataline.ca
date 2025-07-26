@@ -1,13 +1,17 @@
 title: Popcorn ceiling removal
 startPos: right
+
 seo: |-
   Eliminate outdated popcorn ceilings with a dust-free process. Modernize your home, increase value, and ensure safety across the GTA and beyond.
+
 desc: |-
   Once valued for hiding imperfections, popcorn ceilings are now considered outdated and hard to maintain.
+
 covers:
   - meta: ./cover.jpg
     alt: |-
       A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process.
+
 components:
   - type: Benefits
     title: Why remove popcorn ceilings?
@@ -47,6 +51,7 @@ components:
         meta: ./cleanup.jpg
         alt: |-
           A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+
   - type: Faq
     title: Have any questions?
     content:
@@ -59,3 +64,7 @@ components:
       - title: Can I do it myself?
         markdown: |-
           While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
+
+  - type: Services
+    exclude:
+      - popcorn-removal

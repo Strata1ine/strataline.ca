@@ -6,7 +6,7 @@
   import FaqItem from "./FaqItem.svelte";
 </script>
 
-<div class="-my-4">
+<div class="-my-8">
   {#each meta.content as faq, i}
     <FaqItem meta={faq} {i} bind:active></FaqItem>
   {/each}

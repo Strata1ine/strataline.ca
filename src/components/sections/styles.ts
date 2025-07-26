@@ -5,6 +5,10 @@ export const ZPos = z.union([z.literal('left'), z.literal('right')]);
 export const DefaultPos = ZPos.default("left");
 export type Pos = z.infer<typeof ZPos>;
 
+export function swapNextPos(pos: Pos) {
+  pos = swapPos(pos);
+}
+
 export function swapPos(pos: Pos): Pos {
   return pos === "left" ? "right" : "left"
 }
@@ -31,7 +35,7 @@ export const headingStyles = cva('', {
       '5xl':
         'font-serif text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-balance',
       '4xl': 'font-serif text-xl font-semibold md:text-3xl xl:text-4xl',
-      '3xl': 'font-serif text-lg font-medium sm:text-xl md:text-2xl lg:text-3xl',
+      '3xl': 'font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl',
       '2xl': 'text-lg font-semibold font-serif md:text-2xl',
       xl: 'text-md sm:text-bg font-serif md:text-xl',
     },
@@ -55,7 +59,7 @@ export const descStyles = cva('font-sans', {
 });
 
 export const imageStyles = cva(
-  'object-cover h-full select-none',
+  'select-none h-full object-cover',
   {
     variants: {
       anim: {

@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import Service from "@sections/Service.astro";
+import ServiceHero from "@sections/ServiceHero.astro";
 import Menus from "@modals/Menus.svelte";
 
 import { getCollection } from "~/content.config";
@@ -19,7 +19,10 @@ const service = (await getCollection("services")).find(
 ---
 
 <Layout>
-  <Service meta={service.data} />
-  <Content startPos={service.data.startPos ?? "left"} components={service.data.components} />
+  <ServiceHero meta={service.data} />
+  <Content
+    startPos={service.data.startPos ?? "left"}
+    components={service.data.components}
+  />
   <Menus client:idle />
 </Layout>
