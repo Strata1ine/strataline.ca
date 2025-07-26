@@ -6,7 +6,6 @@
   import { type PropsOf } from "./registry";
   import { actionStyles } from "@actions/styles";
   let { meta }: { meta: PropsOf<"Hero"> } = $props();
-
   let idx = $state(0);
 </script>
 

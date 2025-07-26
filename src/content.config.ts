@@ -8,7 +8,7 @@ import { glob } from 'astro/loaders';
 import { registry } from "@sections/registry";
 import { updateComponentRegistry, parseRegistry } from "~/build/components";
 import { imageSource } from '~/build/images';
-import { ZPos } from '@sections/styles';
+import { ZPos } from '@sections/pos';
 updateComponentRegistry(registry);
 
 export const collections = {

@@ -1,6 +1,6 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
-import { DefaultPos } from './styles';
+import { DefaultPos } from './pos';
 
 const textCarousel = ({
   speed: z.number().optional().default(1),
