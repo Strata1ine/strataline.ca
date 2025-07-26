@@ -9,7 +9,7 @@ import { type PropsOf } from "./registry";
 const meta = Astro.props as PropsOf<"Reviews">;
 
 for (const review of meta.content) {
-  review.markdown = marked.parseInline(review.markdown) as string;
+  review.desc = marked.parseInline(review.desc) as string;
 }
 ---
 

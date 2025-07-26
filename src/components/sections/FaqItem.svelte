@@ -57,7 +57,7 @@
       transition:slideWithScroll={{ duration: 350 }}
       class="{descStyles({ size: 'base' })} mt-2"
     >
-      {@html meta.markdown}
+      {@html meta.desc}
     </p>
   {/if}
 </button>
