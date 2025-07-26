@@ -35,16 +35,17 @@ export const registry = {
     load: () => import('./Popular.astro'),
   },
 
-  LessPopular: {
+  Services: {
     schema: (_: SchemaContext) => ({
       id: z.string().optional(),
       pos: DefaultPos,
       title: z.string().default("There's more to explore"),
+      exclude: z.array(z.string()).optional(),
       content: z
         .object(textCarousel)
         .optional(),
     }),
-    load: () => import('./LessPopular.astro'),
+    load: () => import('./Services.astro'),
   },
 
   TextCarousel: {

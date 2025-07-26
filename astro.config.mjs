@@ -56,12 +56,10 @@ export default defineConfig({
     ],
   },
   image: {
-    layout: "full-width",
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
         quality: 20,
-        experimentalDefaultStyles: true,
       },
     },
   },

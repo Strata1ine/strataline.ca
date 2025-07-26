@@ -24,22 +24,26 @@ components:
     content:
       - meta: ./photos/slideshow/kitchen.jpg
         alt: |-
-          A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
+          A large renovated kitchen showcasing a generous countertop with ample workspace
+          and seating, alongside a cozy dining table for gatherings.
       - meta: ./photos/slideshow/dining_room.jpg
         alt: |-
-          A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
+          A spacious dining room, beautifully renovated, featuring a long table surrounded
+          by numerous chairs and a vibrant plant centerpiece that adds warmth.
       - meta: ./photos/slideshow/living_room.jpg
         alt: |-
-          A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
+          A renovated updated living room with a charming fireplace, featuring an L-shaped
+          couch, a small side table for decor, and an additional compact couch for extra seating.
       - meta: ./photos/slideshow/bathroom.jpg
         alt: |-
-          A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
+          A renovated washroom with a bathtub and shower, bathed in soft natural light and
+          adorned with stylish decor.
 
   - type: Popular
     title: Popular services
     id: popular
 
-  - type: LessPopular
+  - type: Services
     id: explore
     content:
       text:
@@ -59,7 +63,8 @@ components:
           the best way to get rid of popcorn ceilings.
         image:
           meta: ./photos/awards/citytv.jpg
-          alt: "Video poster for CityTV feature"
+          alt: |-
+            Video poster for CityTV feature
 
       - title: "Featured in The Star"
         desc: |-
@@ -67,14 +72,18 @@ components:
           to renovation.
         image:
           meta: ./photos/awards/star.jpg
-          alt: "A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander."
+          alt: |-
+            A newspaper article featuring Strataline's dust-free popcorn ceiling removal process,
+            highlighting a professional using a vacuum-fitted sander.
 
       - title: "Featured in House & Home"
         desc: |-
           House & Home seeks our expertise on chevron hardwood floor installation.
         image:
           meta: ./photos/awards/houseandhome.webp
-          alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
+          alt: |-
+            A stylish interior featuring chevron hardwood floors, a vintage wooden
+            console table, and a cozy velvet armchair, highlighted in a House & Home feature.
 
       - title: "Featured on HGTV's Love It or List"
         desc: |-
@@ -82,7 +91,9 @@ components:
           Love It or List It | HGTV.
         image:
           meta: ./photos/awards/houseandhome.webp
-          alt: "A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature."
+          alt: |-
+            A stylish interior featuring chevron hardwood floors, a vintage wooden console 
+            table, and a cozy velvet armchair, highlighted in a House & Home feature.
 
   - type: Reviews
     title: What our customers have to say

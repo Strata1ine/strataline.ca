@@ -6,7 +6,6 @@ import {
   headingStyles,
   descStyles,
   imageWrapperStyles,
-  Pos,
 } from "./styles";
 
 import { getEntry, getCollection } from "~/content.config";
@@ -53,6 +52,9 @@ let next = swapPos(meta.pos);
               src={image.meta}
               alt={image.alt}
               draggable={false}
+              widths={[500, 750, 1300, 2160]}
+              sizes="100vw"
+              width={2160}
             />
           ));
 
