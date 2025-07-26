@@ -78,7 +78,7 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          markdown: z.string(),
+          desc: z.string(),
           location: z.string(),
           stars: z.number(),
           id: z.string().optional(),
@@ -96,7 +96,7 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          markdown: z.string(),
+          desc: z.string(),
         })
       ),
     }),
@@ -126,11 +126,45 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          markdown: z.string(),
+          desc: z.string(),
         })
       ),
     }),
     load: () => import('./Faq.astro'),
+  },
+
+  ZigZag: {
+    schema: (c: SchemaContext) => ({
+      id: z.string().optional(),
+      pos: DefaultPos,
+      title: z.string(),
+      content: z.array(
+        z.object({
+          title: z.string(),
+          desc: z.string(),
+          image: z.object(imageSource(c)),
+        })
+      ),
+    }),
+    load: () => import('./ZigZag.astro'),
+  },
+
+  Prices: {
+    schema: (_: SchemaContext) => ({
+      id: z.string().optional(),
+      pos: DefaultPos,
+      title: z.string(),
+      content: z.array(
+        z.object({
+          title: z.string(),
+          min: z.number(),
+          max: z.number(),
+          materials: z.array(z.string()),
+          desc: z.string(),
+        })
+      ),
+    }),
+    load: () => import('./Prices.astro'),
   },
 } as const;
 

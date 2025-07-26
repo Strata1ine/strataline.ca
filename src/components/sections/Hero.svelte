@@ -13,7 +13,7 @@
   {#each meta.content as image, i}
     <img
       class={imageStyles({ anim: "grow", active: idx == i })}
-      fetchpriority={i === idx ? "high" : "low"}
+      fetchpriority={i === idx ? "low" : "high"}
       alt={image.alt}
       {...image.meta}
     />

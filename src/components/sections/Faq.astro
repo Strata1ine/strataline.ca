@@ -9,7 +9,7 @@ import { containerStyles } from "./styles";
 import { marked } from "marked";
 
 for (const faq of meta.content) {
-  faq.markdown = marked.parseInline(faq.markdown) as string;
+  faq.desc = marked.parseInline(faq.desc) as string;
 }
 ---
 

@@ -23,6 +23,13 @@ const builtComponents =
             return;
           }
 
+          if (!component.default) {
+            console.log(
+              `Failed to render: ${props.type}. There is likely a syntax error that is not being reported.`,
+            );
+            return null;
+          }
+
           return {
             component,
             props,

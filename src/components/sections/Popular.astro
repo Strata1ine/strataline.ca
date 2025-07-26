@@ -1,20 +1,12 @@
 ---
-import {
-  containerStyles,
-  imageStyles,
-  headingStyles,
-  descStyles,
-  imageWrapperStyles,
-} from "./styles";
-
-import {  swapPos} from "./pos";
-
+import { containerStyles, imageStyles } from "./styles";
+import { swapPos } from "./pos";
 import { getEntry, getCollection } from "~/content.config";
 import { Image } from "astro:assets";
 
-import clsx from "clsx";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
+import LayoutSplit from "./layout/Split.astro";
 
 let index = await getEntry("index", "index");
 
@@ -44,95 +36,41 @@ let next = swapPos(meta.pos);
     {
       services.map((service, _) => {
         const slug = service.id.split("/")[0];
-        const render = () =>
-          service.data.covers.map((image, _) => (
-            <Image
-              class={imageStyles({
-                anim: service.data.covers.length > 1 ? "zoom" : undefined,
-              })}
-              src={image.meta}
-              alt={image.alt}
-              draggable={false}
-              widths={[500, 750, 1300, 2160]}
-              sizes="100vw"
-              width={2160}
-            />
-          ));
-
         next = swapPos(next);
 
         return (
-          <div
-            class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
+          <LayoutSplit
             id={slug}
+            title={service.data.title}
+            desc={service.data.desc}
+            pos={next}
           >
-            {next === "left" && (
-              <div
-                class={imageWrapperStyles({
-                  pos: "left",
-                  size: "desktop",
-                  display: "md",
+            {service.data.covers.map((image, _) => (
+              <Image
+                slot="image"
+                class={imageStyles({
+                  anim: service.data.covers.length > 1 ? "zoom" : undefined,
                 })}
+                src={image.meta}
+                alt={image.alt}
+                draggable={false}
+                widths={[500, 750, 1300, 2160]}
+                sizes="100vw"
+                width={2160}
+              />
+            ))}
+
+            <div class="mt-8">
+              <a
+                class={actionStyles()}
+                href={`/services/${slug}`}
+                rel="noopener noreferrer"
+                data-astro-prefetch=""
               >
-                {render()}
-              </div>
-            )}
-
-            <div class="flex-1">
-              <h3 class={clsx("mb-2", headingStyles({ size: "4xl" }))}>
-                {service.data.title}
-              </h3>
-
-              {next === "right" && (
-                <div
-                  class={imageWrapperStyles({
-                    pos: "right",
-                    size: "mobile",
-                    display: "sm",
-                  })}
-                >
-                  {render()}
-                </div>
-              )}
-
-              {next === "left" && (
-                <div
-                  class={imageWrapperStyles({
-                    pos: "left",
-                    size: "mobile",
-                    display: "sm",
-                  })}
-                >
-                  {render()}
-                </div>
-              )}
-
-              <p class={descStyles({ size: "base" })}>{service.data.desc}</p>
-
-              <div class="mt-8">
-                <a
-                  class={actionStyles()}
-                  href={`/services/${slug}`}
-                  rel="noopener noreferrer"
-                  data-astro-prefetch=""
-                >
-                  Explore More
-                </a>
-              </div>
+                Explore More
+              </a>
             </div>
-
-            {next === "right" && (
-              <div
-                class={imageWrapperStyles({
-                  pos: "right",
-                  size: "desktop",
-                  display: "md",
-                })}
-              >
-                {render()}
-              </div>
-            )}
-          </div>
+          </LayoutSplit>
         );
       })
     }

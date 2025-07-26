@@ -17,16 +17,16 @@ components:
     title: Why remove popcorn ceilings?
     content:
       - title: Aesthetic upgrade
-        markdown: |-
+        desc: |-
           Modern homes have smooth ceilings, because it makes your room feel more spacious and beautiful.
       - title: Increased home value
-        markdown: |-
+        desc: |-
           Updating your ceiling improves your home’s marketability. All imperfections removed.
       - title: Easier maintenance
-        markdown: |-
+        desc: |-
           Smooth ceilings are much easier to clean and maintain than textured ones.
       - title: Potential asbestos issues
-        markdown: |-
+        desc: |-
           If your popcorn ceiling was installed before the 1980s, it likely has asbestos, requiring professional removal for safety.
 
   - type: TextCarousel
@@ -56,13 +56,13 @@ components:
     title: Have any questions?
     content:
       - title: How much does popcorn ceiling removal cost?
-        markdown: |-
+        desc: |-
           The cost varies depending on the size of the area and the complexity of the removal. Contact us for a free estimate!
       - title: How long does the process take?
-        markdown: |-
+        desc: |-
           Typically, the process can take anywhere from a few hours to a couple of days, depending on the size of the job.
       - title: Can I do it myself?
-        markdown: |-
+        desc: |-
           While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
 
   - type: Services

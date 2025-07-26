@@ -21,7 +21,7 @@ const service = (await getCollection("services")).find(
 <Layout>
   <ServiceHero meta={service.data} />
   <Content
-    startPos={service.data.startPos ?? "left"}
+    startPos={service.data.startPos ?? "right"}
     components={service.data.components}
   />
   <Menus client:idle />

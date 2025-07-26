@@ -130,14 +130,14 @@
           <Stars class="size-6" length={review.stars}></Stars>
         </div>
 
-        <p class={descStyles({ size: "base" })}>{@html review.markdown}</p>
+        <p class={descStyles({ size: "base" })}>{@html review.desc}</p>
       </div>
     {/each}
   </div>
 </div>
 
 <div
-  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint"
+  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <= 1 ? 'hidden' : ''}"
 >
   <button
     aria-label="Review scroller"
