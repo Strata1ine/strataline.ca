@@ -1,11 +1,12 @@
 ---
 interface Props {
   id?: string;
+  role?: string;
 }
 
-const { id } = Astro.props;
+const { id, role } = Astro.props;
 ---
 
-<section class="my-30 sm:my-40 last-of-type:mb-0" {id}>
+<section class="my-30 sm:my-40 last-of-type:mb-0" {id} {role}>
   <slot />
 </section>

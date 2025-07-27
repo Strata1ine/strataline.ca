@@ -9,7 +9,7 @@
 
   import { modals, genUid } from "~/frontend/stores";
   import { modalStyles } from "./styles";
-  import config from "/content/business.json";
+  import business from "@root/content/business.json";
   import { actionStyles } from "@actions/styles";
 
   let talkUid = genUid();
@@ -27,7 +27,7 @@
     <PhoneNumber validate required></PhoneNumber>
     <Select
       name="Location"
-      values={["Select a location", ...config.areaServed]}
+      values={["Select a location", ...business.areaServed]}
     />
     <TextArea required minlength="14" name="Message" />
     <Photos />

@@ -1,0 +1,44 @@
+---
+import { containerStyles, descStyles } from "./styles";
+import business from "@root/content/business.json";
+
+import { Icon } from "astro-icon/components";
+---
+
+<footer
+  class={`border-accent border-t-1 py-12 flex items-center ${containerStyles({ width: "inner" })}`}
+>
+  <span class={descStyles({ size: "base" })}
+    ><strong class="font-semibold">&copy; {business.name}</strong>. {
+      new Date().getFullYear()
+    }</span
+  >
+
+
+  <div class="flex-1"></div>
+
+  <ul class="flex flex-row gap-1">
+    {
+      business.sameAs &&
+        business.sameAs.map(
+          (media) =>
+            media.social && (
+              <li>
+                <a
+                  target="_blank"
+                  href={media.url}
+                  rel="noopener noreferrer"
+                  aria-label={`${media.social.name} Link`}
+                >
+                  <Icon
+                    style={`color: #${media.social.color}`}
+                    name={`${media.social.icon}`}
+                    class="w-16 xl:w-18 h-auto"
+                  />
+                </a>
+              </li>
+            ),
+        )
+    }
+  </ul>
+</footer>

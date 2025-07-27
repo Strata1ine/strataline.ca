@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 import Content from "~/build/Content.astro";
 import Menus from "@modals/Menus.svelte";
+import Footer from "@sections/Footer.astro";
 import { getEntry } from "~/content.config";
 
 const index = await getEntry("index", "index");
@@ -10,4 +11,5 @@ const index = await getEntry("index", "index");
 <Layout>
   <Content startPos="right" components={index.data.components} />
   <Menus client:idle />
+  <Footer />
 </Layout>
