@@ -13,7 +13,7 @@
     "@playform/compress": "^0.1.9",
     "@tailwindcss/vite": "^4.1.11",
     "class-variance-authority": "^0.7.1",
-    "svelte": "^5.36.17"
+    "svelte": "^5.37.0"
   },
   "devDependencies": {
     "typescript": "^5.8.3",

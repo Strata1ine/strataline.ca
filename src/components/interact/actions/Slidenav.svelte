@@ -12,13 +12,11 @@
   } = $props();
 </script>
 
-<div class="relative {className}">
-  {#each Array(length) as _, i}
-    <button
-      onclick={() => (idx = i)}
-      aria-label="View slide {i + 1}"
-      class={dotStyles({ open: idx === i })}
-      tabindex="0"
-    ></button>
-  {/each}
-</div>
+{#each Array(length) as _, i}
+  <button
+    onclick={() => (idx = i)}
+    aria-label="View slide {i + 1}"
+    class={dotStyles({ open: idx === i })}
+    tabindex="0"
+  ></button>
+{/each}

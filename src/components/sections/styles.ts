@@ -1,4 +1,28 @@
 import { cva } from 'class-variance-authority';
+import type { Pos } from "./registry";
+export { type Pos };
+
+export function swapNextPos(pos: Pos) {
+  pos = swapPos(pos);
+}
+
+export function swapPos(pos: Pos): Pos {
+  return pos === "left" ? "right" : "left"
+}
+
+const spaceVariants = {
+  gap: {
+    sm: 'gap-4 md:gap-6 xl:gap-8',
+    base: 'gap-6 md:gap-8 xl:gap-11',
+  },
+  space: {
+    base: 'space-y-20 sm:space-y-30',
+  },
+};
+
+export const spaceStyles = cva('', {
+  variants: spaceVariants,
+});
 
 export const containerStyles = cva(
   'md:mx-auto box-content',
@@ -10,6 +34,7 @@ export const containerStyles = cva(
         display:
           'max-w-[calc(var(--spacing-outer-span)+30rem)]',
       },
+      ...spaceVariants,
     },
   },
 );
@@ -23,8 +48,8 @@ export const headingStyles = cva('', {
         'font-serif text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-balance',
       '4xl': 'font-serif text-xl font-semibold md:text-3xl xl:text-4xl',
       '3xl': 'font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl',
-      '2xl': 'text-lg font-semibold font-serif md:text-2xl',
-      xl: 'text-md sm:text-bg font-serif md:text-xl',
+      '2xl': 'text-lg font-serif md:text-2xl',
+      xl: 'text-md sm:text-bg leading-7 font-serif md:text-xl',
     },
   },
 });

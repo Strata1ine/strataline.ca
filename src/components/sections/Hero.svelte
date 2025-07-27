@@ -29,11 +29,9 @@
     {@render imageCarousel()}
   </div>
 
-  <Slidenav
-    class="gap-inset flex 2xl:flex-col"
-    bind:idx
-    length={meta.content.length}
-  />
+  <div class="gap-5 flex 2xl:flex-col">
+    <Slidenav bind:idx length={meta.content.length}></Slidenav>
+  </div>
 </div>
 
 <div class="relative">
@@ -41,18 +39,16 @@
     {meta.title}
   </h1>
 
-  <div class="my-5 flex items-center gap-4 sm:hidden">
+  <div class="my-5 flex items-center gap-5 sm:hidden">
     <div
-      class="-ml-inset flex h-60 flex-1 justify-evenly rounded-tr-sm rounded-br-sm contain-paint"
+      class="-ml-inset flex h-60 flex-1 justify-evenly contain-paint"
     >
       {@render imageCarousel()}
     </div>
 
-    <Slidenav
-      class="gap-inset flex flex-col"
-      bind:idx
-      length={meta.content.length}
-    />
+    <div class="flex flex-col gap-5">
+      <Slidenav bind:idx length={meta.content.length} />
+    </div>
   </div>
 
   <p class="{descStyles({ size: 'base' })} mt-3">

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Slidenav from "@actions/Slidenav.svelte";
-  import { headingStyles, descStyles } from "./styles";
+  import { headingStyles, spaceStyles, descStyles } from "./styles";
 
   import { type SubPropsOf } from "./registry";
   const { meta }: { meta: SubPropsOf<"Cardshow", "content"> } = $props();
@@ -10,10 +10,9 @@
 <div class="2xl:max-w-inner bg-accent flex min-h-90 rounded-sm contain-paint">
   {#each meta as card, i}
     <div
-      class="flex w-full flex-shrink-0 flex-col items-center justify-center gap-8 px-6 py-10 transition-opacity duration-800 sm:flex-row sm:p-0 {i ==
-      idx
-        ? ''
-        : 'pointer-events-none opacity-0'}"
+      class="flex w-full flex-shrink-0 flex-col items-center justify-center px-6 py-10 transition-opacity duration-800 sm:flex-row sm:p-0
+      {spaceStyles({ gap: 'base' })}
+      {i == idx ? '' : 'pointer-events-none opacity-0'}"
       style="transform: translateX(-{i * 100}%)"
     >
       {#if card.image}
@@ -37,8 +36,6 @@
   {/each}
 </div>
 
-<Slidenav
-  class="gap-inset flex justify-center 2xl:flex-col"
-  length={meta.length}
-  bind:idx
-/>
+<div class="flex justify-center gap-5 2xl:flex-col">
+  <Slidenav length={meta.length} bind:idx />
+</div>

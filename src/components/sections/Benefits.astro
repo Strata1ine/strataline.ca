@@ -1,5 +1,10 @@
 ---
-import { headingStyles, containerStyles, descStyles } from "./styles";
+import {
+  headingStyles,
+  spaceStyles,
+  containerStyles,
+  descStyles,
+} from "./styles";
 import { marked } from "marked";
 
 import { type PropsOf } from "./registry";
@@ -17,12 +22,14 @@ import LayoutTitle from "./layout/Title.astro";
   />
 
   <div class={containerStyles({ width: "inner" })}>
-    <div class="gap-inset grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
+    <div
+      class={`gap-inset grid grid-cols-1 sm:grid-cols-2 ${spaceStyles({ gap: "base" })}`}
+    >
       {
         meta.content.map((benefit, i) => {
           return (
             <div>
-              <div class="mb-2 flex items-baseline gap-4">
+              <div class="mb-3 flex items-baseline gap-4">
                 <h3
                   class={`text-accent-dark ${headingStyles({ size: "6xl" })}`}
                 >
