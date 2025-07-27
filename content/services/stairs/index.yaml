@@ -58,37 +58,6 @@ components:
         desc: |-
           Absolutely. We offer tailored solutions to suit various budgets without compromising quality.
 
-  - type: Prices
-    title: What's the cost?
-    content:
-      - title: Basic
-        min: "$5,000"
-        max: "$15,000"
-        materials:
-          - Basic tiles
-          - Laminate countertops
-          - Standard fixtures
-        desc: |-
-          Cosmetic updates like painting, new fixtures, and minor changes such as replacing the toilet or sink.
-      - title: Mid-range
-        min: "$15,000"
-        max: "$30,000"
-        materials:
-          - Premium tiles
-          - Granite or quartz countertops
-          - Modern fixtures
-        desc: |-
-          Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
-      - title: High-end
-        min: "$30,000"
-        max: "$60,000+"
-        materials:
-          - High-end stone or marble tiles
-          - Custom cabinetry
-          - Designer fixtures
-        desc: |-
-          Full renovation with structural changes, moving plumbing, adding a steam shower, custom cabinetry, and luxury finishes.
-
   - type: Services
     exclude:
       - stairs

@@ -7,3 +7,102 @@ covers:
   - meta: ./cover.jpg
     alt: |-
       A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
+
+components:
+  - type: ZigZag
+    title: The essentials
+    content:
+      - title: Ample space
+        image:
+          meta: ./space.jpg
+          alt: A spacious, dust-free kitchen renovation with abundant white cabinetry offering ample storage, marble countertops, and a modern gas stove, designed for quality and transformation.
+        desc: |-
+          Cabinets, pull-out drawers, and pantry space keep the kitchen organized, efficient and clutter-free.
+      - title: Quality & low-maintenance
+        image:
+          meta: ./quality.jpg
+          alt: A modern kitchen featuring durable white countertops, sturdy cabinetry with black hardware, and high-quality stainless steel appliances, complemented by a sleek island and a stylish backsplash.
+        desc: |-
+          Durable countertops, sturdy cabinetry, and reliable appliances withstand daily use and maintain aesthetic appeal.
+
+  - type: TextCarousel
+    text:
+      - Modern kitchen vibes await
+      - Sizzle in style every day
+      - Cook with flair and ease
+      - Sleek style upgrades shine
+      - Flavorful designs for all
+      - Fresh looks for cooking
+
+  - type: Prices
+    title: What's the cost?
+    content:
+      - title: Basic
+        min: "$15,000"
+        max: "$25,000"
+        materials:
+          - Laminate countertops
+          - Stock cabinetry
+          - Standard appliances
+        desc: |-
+          Cosmetic updates such as repainting, replacing cabinet doors, upgrading light fixtures, and installing new countertops.
+      - title: Mid-range
+        min: "$25,000"
+        max: "$50,000"
+        materials:
+          - Quartz or granite countertops
+          - Semi-custom cabinets
+          - Energy-efficient appliances
+        desc: |-
+          Replacing cabinets, adding an island, upgrading appliances, installing new flooring, and improving lighting.
+      - title: High-end
+        min: "$50,000"
+        max: "$100,000"
+        materials:
+          - Marble countertops
+          - Custom cabinetry
+          - Premium hardwood or tile flooring
+          - Designer fixtures
+        desc: |-
+          Complete redesign, structural changes, custom cabinetry, luxury appliances, high-end finishes, and smart home features.
+
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does the process take?
+        desc: |-
+          A kitchen renovation can often be completed in just 4-8 weeks, depending on the scope.
+          With proper planning, timely ordering of materials, and an organized approach, even larger projects can move smoothly.
+
+          Minor updates like new countertops or a fresh backsplash may take just a few weeks, while more extensive remodels with new cabinets and appliances might take a couple of months.
+
+          Good preparation and clear communication can ensure your dream kitchen comes to life quickly and efficiently!
+      - title: What are the most important upgrades to prioritize?
+        desc: |-
+          When renovating a kitchen, focus on upgrades that enhance functionality, style, and convenience. Start with high-quality cabinets with smart storage solutions and durable countertops like quartz or granite.
+
+          - Upgrade to energy-efficient appliances, and improve the space with layered lighting, including task, ambient, and under-cabinet options.
+          - Add a stylish backsplash for protection and flair, and complete the look with a modern sink, a high-quality faucet with a pull-down sprayer, a hot water dispenser, and a water filtration system. Including a garbage disposal adds practicality for easier cleanup.
+
+          These thoughtful upgrades create a beautiful and highly functional kitchen you'll enjoy for years.
+      - title: What is the best countertop material?
+        desc: |-
+          The best countertop material depends on your needs:
+          1. **Quartz** is a top choice for durability, low maintenance, and style.
+          2. **Granite** offers natural beauty and heat resistance but needs sealing.
+          3. **Marble** is elegant but prone to staining.
+          4. **Butcher** block adds warmth but requires upkeep.
+
+          For a modern look, consider stainless steel or concrete. Quartz is the best all-around option for most kitchens.
+      - title: I am planning to install Wolf and Sub-Zero appliances
+        desc: |-
+          To ensure a smooth installation process, please order appliances at least six months in advance.
+
+          Once the models are selected, we will adjust the kitchen layout to accommodate their larger sizes and specific requirements. Wolf ranges require detailed planning for electrical, gas, and ventilation systems, while Sub-Zero refrigerators demand precise plumbing and electrical connections.
+      - title: Can I live at home during the renovation?
+        desc: |-
+          Yes, but it might be inconvenient. Setting up a temporary kitchen and minimizing disruptions can make it manageable.
+
+  - type: Services
+    exclude:
+      - kitchens

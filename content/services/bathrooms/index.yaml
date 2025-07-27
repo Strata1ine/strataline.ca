@@ -29,6 +29,59 @@ components:
         desc: |-
           Freestanding tub, glass shower, and marble finishes in a layout designed for durability and flow.
 
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does bathroom renovation take?
+        desc: |-
+          Once all materials are delivered, the renovation may take from one week to two weeks, depending on the complexity of the project. We always insist on having all the materials delivered prior to starting the project so that everything is at hand once the work begins.
+      - title: Will my house remain clean during the renovation?
+        desc: |-
+          Yes! Throughout the entire project, we will ensure your home remains clean. All dirt, dust, and debris will be contained, and once the work is complete, we will thoroughly clean the bathroom, leaving it ready for use.
+
+  - type: TextCarousel
+    text:
+      - Soak in luxury daily
+      - Steam up the relaxation
+      - Warm floors for comfort
+      - Sleek fixtures that shine
+      - Custom vibes for you
+      - Elegance in every detail
+      - Fresh designs to unwind
+
+  - type: Prices
+    title: What's the cost?
+    content:
+      - title: Basic
+        min: "$5,000"
+        max: "$15,000"
+        materials:
+          - Basic tiles
+          - Laminate countertops
+          - Standard fixtures
+        desc: |-
+          Cosmetic updates like painting, new fixtures, and minor changes such as replacing the toilet or sink.
+
+      - title: Mid-range
+        min: "$15,000"
+        max: "$30,000"
+        materials:
+          - Premium tiles
+          - Granite or quartz countertops
+          - Modern fixtures
+        desc: |-
+          Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
+
+      - title: High-end
+        min: "$30,000"
+        max: "$60,000+"
+        materials:
+          - High-end stone or marble tiles
+          - Custom cabinetry
+          - Designer fixtures
+        desc: |-
+          Full renovation with structural changes, moving plumbing, adding a steam shower, custom cabinetry, and luxury finishes.
+
   - type: Services
     exclude:
       - bathrooms

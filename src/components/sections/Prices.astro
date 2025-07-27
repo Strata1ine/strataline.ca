@@ -1,2 +1,59 @@
 ---
+import { type PropsOf } from "./registry";
+const meta = Astro.props as PropsOf<"Prices">;
+
+import LayoutDivider from "./layout/Divider.astro";
+import LayoutSplit from "./layout/Split.astro";
+import { headingStyles, descStyles } from "./styles";
+
+import { marked } from "marked";
+import { Icon } from "astro-icon/components";
 ---
+
+<LayoutDivider>
+  <LayoutSplit pos={meta.pos}>
+    <div slot="title" class="flex-1">
+      <h2 class={`${headingStyles({ size: "5xl" })} sm:sticky top-0`}>
+        {meta.title}
+      </h2>
+    </div>
+
+    <div class="flex-2">
+      {
+        meta.content.map((price, _) => {
+          return (
+            <div class="border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0">
+              <div class="flex w-full items-center justify-between gap-4">
+                <h3 class={headingStyles({ size: "2xl" })}>{price.title}</h3>
+                <div class="flex items-center gap-3">
+                  <span class={`${descStyles({ size: "base" })} text-success`}>
+                    {price.min}
+                  </span>
+                  <span class="">-</span>
+                  <span class={`${descStyles({ size: "base" })} text-success`}>
+                    {price.max}
+                  </span>
+                </div>
+              </div>
+
+              <p class={`my-2 ${descStyles()}`}>
+                {marked.parseInline(price.desc)}
+              </p>
+
+              {price.materials.map((s: string) => (
+                <div class="mt-1 flex gap-3 align-top">
+                  <Icon
+                    name="ph:star-four-fill"
+                    class="text-gold h-auto w-4 sm:w-5"
+                    aria-hidden="true"
+                  />
+                  <span class={descStyles({ size: "sm" })}>{s}</span>
+                </div>
+              ))}
+            </div>
+          );
+        })
+      }
+    </div>
+  </LayoutSplit>
+</LayoutDivider>

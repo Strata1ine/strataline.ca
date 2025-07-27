@@ -157,8 +157,8 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          min: z.number(),
-          max: z.number(),
+          min: z.string(),
+          max: z.string(),
           materials: z.array(z.string()),
           desc: z.string(),
         })

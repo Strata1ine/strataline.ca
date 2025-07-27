@@ -53,12 +53,12 @@
   </div>
 
   {#if open}
-    <p
+    <div
       transition:slideWithScroll={{ duration: 350 }}
-      class="{descStyles({ size: 'base' })} mt-2"
+      class="mt-2"
     >
       {@html meta.desc}
-    </p>
+    </div>
   {/if}
 </button>
 

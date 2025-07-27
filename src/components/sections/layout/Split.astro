@@ -1,89 +1,25 @@
 ---
-import { type Pos } from "../pos";
-import clsx from "clsx";
-import { imageWrapperStyles, headingStyles, descStyles } from "../styles";
+import { containerStyles } from "@sections/styles";
+import type { Pos } from "../pos";
 
 interface Props {
-  id?: string;
-  title: string;
-  desc: string;
   pos: Pos;
 }
 
 const meta = Astro.props;
-
-import { marked } from "marked";
+import { clsx } from "clsx";
 ---
 
 <div
-  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-7 2xl:gap-9"
-  id={meta.id}
+  class={clsx(
+    containerStyles({ width: "inner" }),
+    "flex sm:flex-row gap-9 sm:gap-11",
+    meta.pos == "right" ? "flex-col-reverse" : "flex-col"
+  )}
 >
-  {
-    meta.pos === "left" && (
-      <div
-        class={imageWrapperStyles({
-          pos: "left",
-          size: "desktop",
-          display: "md",
-        })}
-      >
-        <slot name="image" />
-      </div>
-    )
-  }
+  {meta.pos == "left" && <slot name="title" />}
 
-  <div class="flex-1">
-    <h3 class={clsx("mb-2", headingStyles({ size: "4xl" }))}>
-      {meta.title}
-    </h3>
+  <slot />
 
-    {
-      meta.pos === "right" && (
-        <div
-          class={imageWrapperStyles({
-            pos: "right",
-            size: "mobile",
-            display: "sm",
-          })}
-        >
-          <slot name="image" />
-        </div>
-      )
-    }
-
-    {
-      meta.pos === "left" && (
-        <div
-          class={imageWrapperStyles({
-            pos: "left",
-            size: "mobile",
-            display: "sm",
-          })}
-        >
-          <slot name="image" />
-        </div>
-      )
-    }
-
-    <p class={descStyles({ size: "base" })}>{marked.parseInline(meta.desc)}</p>
-
-    <div class="mt-8">
-      <slot />
-    </div>
-  </div>
-
-  {
-    meta.pos === "right" && (
-      <div
-        class={imageWrapperStyles({
-          pos: "right",
-          size: "desktop",
-          display: "md",
-        })}
-      >
-        <slot name="image" />
-      </div>
-    )
-  }
+  {meta.pos == "right" && <slot name="title" />}
 </div>
