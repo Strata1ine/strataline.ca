@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
-import LayoutSplit from "./layout/Split.astro";
+import LayoutCard from "./layout/Card.astro";
 import { swapPos } from "./pos";
 import { imageStyles, containerStyles } from "./styles";
 const meta = Astro.props as PropsOf<"ZigZag">;
@@ -17,11 +17,10 @@ let next = swapPos(meta.pos);
 
   <div class={containerStyles({ width: "outer" })}>
     {
-
       meta.content.map((zig, _) => {
-      next = swapPos(next);
+        next = swapPos(next);
         return (
-          <LayoutSplit title={zig.title} desc={zig.desc} pos={next}>
+          <LayoutCard title={zig.title} desc={zig.desc} pos={next}>
             <Image
               slot="image"
               class={imageStyles()}
@@ -32,7 +31,7 @@ let next = swapPos(meta.pos);
               sizes="100vw"
               width={2160}
             />
-          </LayoutSplit>
+          </LayoutCard>
         );
       })
     }

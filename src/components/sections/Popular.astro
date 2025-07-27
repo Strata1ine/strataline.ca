@@ -6,13 +6,13 @@ import { Image } from "astro:assets";
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
-import LayoutSplit from "./layout/Split.astro";
+import LayoutCard from "./layout/Card.astro";
 
 let index = await getEntry("index", "index");
 
-import { type PropsOf } from "./registry";
 import { actionStyles } from "@actions/styles";
 
+import { type PropsOf } from "./registry";
 const meta = Astro.props as PropsOf<"Popular">;
 
 const services = (await getCollection("services"))
@@ -39,7 +39,7 @@ let next = swapPos(meta.pos);
         next = swapPos(next);
 
         return (
-          <LayoutSplit
+          <LayoutCard
             id={slug}
             title={service.data.title}
             desc={service.data.desc}
@@ -70,7 +70,7 @@ let next = swapPos(meta.pos);
                 Explore More
               </a>
             </div>
-          </LayoutSplit>
+          </LayoutCard>
         );
       })
     }
