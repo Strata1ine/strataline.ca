@@ -5,6 +5,7 @@ import Menus from "@modals/Menus.svelte";
 
 import { getCollection } from "~/content.config";
 import Content from "~/build/Content.astro";
+import Footer from "@sections/Footer.astro";
 
 export async function getStaticPaths() {
   return (await getCollection("services")).map((service: any) => ({
@@ -24,5 +25,6 @@ const service = (await getCollection("services")).find(
     startPos={service.data.startPos ?? "right"}
     components={service.data.components}
   />
+    <Footer></Footer>
   <Menus client:idle />
 </Layout>
