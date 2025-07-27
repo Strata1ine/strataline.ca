@@ -5,10 +5,10 @@ import Island from "./Hero.svelte";
 import type { PropsOf } from "./registry";
 import { optimizeImage } from "~/build/images";
 const meta = Astro.props as PropsOf<"Hero">;
+
 for (let image of meta.content) {
   image.meta = await optimizeImage(image.meta);
 }
-
 ---
 
 <main
@@ -21,7 +21,7 @@ for (let image of meta.content) {
   </div>
 
   <div
-    class={`${containerStyles({ width: "outer" })} flex w-full items-center py-17 sm:py-30 gap-6 xl:gap-8 2xl:gap-11`}
+    class={`${containerStyles({ width: "outer", gap: "base" })} flex w-full items-center py-17 sm:py-30`}
   >
     <Island client:visible {meta} />
   </div>

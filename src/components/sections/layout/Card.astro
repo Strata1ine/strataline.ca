@@ -16,7 +16,7 @@ import { marked } from "marked";
 ---
 
 <div
-  class="mb-25 items-center gap-6 last:mb-0 sm:mb-33 sm:flex xl:gap-8 2xl:gap-11"
+  class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11"
   id={meta.id}
 >
   {
@@ -34,7 +34,13 @@ import { marked } from "marked";
   }
 
   <div class="flex-1">
-    <h3 class={clsx("mb-2", headingStyles({ size: "4xl" }))}>
+    <h3
+      class={clsx(
+        "mb-2",
+        meta.pos == "right" && "text-right sm:text-left",
+        headingStyles({ size: "4xl" }),
+      )}
+    >
       {meta.title}
     </h3>
 

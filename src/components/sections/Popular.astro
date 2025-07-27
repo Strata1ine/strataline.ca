@@ -1,6 +1,5 @@
 ---
-import { containerStyles, imageStyles } from "./styles";
-import { swapPos } from "./pos";
+import { containerStyles, imageStyles, swapPos } from "./styles";
 import { getEntry, getCollection } from "~/content.config";
 import { Image } from "astro:assets";
 
@@ -32,7 +31,7 @@ let next = swapPos(meta.pos);
 <LayoutDivider id={meta.id}>
   <LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div class={containerStyles({ width: "outer" })}>
+  <div class={containerStyles({ width: "outer", space: "base" })}>
     {
       services.map((service, _) => {
         const slug = service.id.split("/")[0];

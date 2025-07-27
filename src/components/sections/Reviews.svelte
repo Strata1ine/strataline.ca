@@ -111,7 +111,7 @@
   >
     {#each meta as review}
       <div
-        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 md:mx-5 md:p-10"
+        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 lg:mx-5 md:p-10"
       >
         <div
           class="bg-accent absolute top-0 -translate-y-1/2 rounded-sm px-4 py-2"
