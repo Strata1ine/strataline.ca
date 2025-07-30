@@ -1,6 +1,5 @@
 ---
 import { containerStyles } from "./styles";
-import { getImage } from "astro:assets";
 import Island from "./Cardshow.svelte";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
@@ -12,13 +11,6 @@ const meta = Astro.props as PropsOf<"Cardshow">;
 for (let card of meta.content) {
   if (card.media.type == "image")
     card.media.meta = await optimizeImage(card.media.meta);
-  else if (card.media.type == "video") {
-    let img = await getImage({
-      src: card.media.poster,
-    });
-
-    card.media.poster = img.src;
-  }
 }
 ---
 

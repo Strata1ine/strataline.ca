@@ -123,7 +123,8 @@
   --review-diff: max(calc((100vw - var(--spacing-inner)) / 2 + var(--spacing-inset)), 0px);
 
   --radius-sm: 5px;
-  --radius-lg: .5rem;
+  --radius-md: .5rem;
+  --radius-lg: 1rem;
 
   --text-sm: 1.1rem;
   --text-sm--line-height: 1.7;

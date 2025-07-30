@@ -14,7 +14,10 @@
 
   let talkUid = genUid();
   let talkModal = $state(false);
+  let reviewUid = genUid();
+  let reviewModal = $state(false);
   modals.idx.subscribe((v) => (talkModal = modals.talk == v));
+  modals.idx.subscribe((v) => (reviewModal = modals.review == v));
 </script>
 
 <Modal
@@ -23,7 +26,7 @@
   class={modalStyles({ background: "blur", overlay: true, open: talkModal })}
 >
   <Form name="contact" title="Let's talk" id={talkUid} class="mt-8 space-y-9">
-    <Input name="E-mail" required type="email" validate />
+    <Input name="E-mail" required type="email" autocomplete="email" validate />
     <PhoneNumber validate required></PhoneNumber>
     <Select
       name="Location"
@@ -31,6 +34,39 @@
     />
     <TextArea required minlength="14" name="Message" />
     <Photos />
+    <button
+      value="submit"
+      class={actionStyles({ display: "fill", background: "fill" })}
+    >
+      Submit
+    </button>
+  </Form>
+</Modal>
+
+<Modal
+  bind:open={reviewModal}
+  uid={reviewUid}
+  class={modalStyles({ background: "blur", overlay: true, open: reviewModal })}
+>
+  <Form
+    name="review"
+    title="Write a review"
+    id={reviewUid}
+    class="mt-4 space-y-9"
+  >
+    <p class="desc-base italic">
+      *To write a review, you must be a client. We will verify your submission
+      via email.
+    </p>
+
+    <Input name="Full name" required type="name" autocomplete="name" />
+    <Input name="E-mail" required type="email" autocomplete="email" validate />
+    <Select
+      name="Location"
+      values={["Select a location", ...business.areaServed]}
+      required
+    />
+
     <button
       value="submit"
       class={actionStyles({ display: "fill", background: "fill" })}

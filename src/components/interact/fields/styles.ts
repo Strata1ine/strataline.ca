@@ -7,9 +7,9 @@ export const fieldStyles = cva(
   {
     variants: {
       open: {
-        true: 'rounded-tl-lg rounded-tr-lg',
-        false: 'rounded-lg',
-        undefined: 'rounded-lg',
+        true: 'rounded-tl-md rounded-tr-md',
+        false: 'rounded-md',
+        undefined: 'rounded-md',
       },
     },
     compoundVariants: [

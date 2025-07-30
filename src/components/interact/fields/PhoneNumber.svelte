@@ -7,8 +7,8 @@
   {validate}
   {name}
   {required}
-  valid={!required}
   inputmode="tel"
+  autocomplete="tel"
   pattern={String.raw`^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$`}
   placeholder="(xxx) xxx-xxxx"
   oninput={(e) => {

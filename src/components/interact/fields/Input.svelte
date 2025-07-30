@@ -12,8 +12,9 @@
     oninput,
     valid: iValid,
     pattern,
-    placeholder,
     inputmode,
+    placeholder,
+    autocomplete,
   } = $props();
 
   let valid = $state(iValid);
@@ -30,12 +31,13 @@
       class="desc-sm w-full focus:outline-none"
       id={uid}
       tabindex="0"
+      {inputmode}
       {name}
       {type}
       {required}
       {pattern}
       {placeholder}
-      {inputmode}
+      {autocomplete}
     />
 
     {#if validate}
