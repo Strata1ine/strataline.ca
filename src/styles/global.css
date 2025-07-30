@@ -48,8 +48,9 @@
     @apply ml-8 my-4 space-y-3;
   }
 
-  .prose ul li, .prose ol li {
-   @apply pl-3;
+  .prose ul li,
+  .prose ol li {
+    @apply pl-3;
   }
 
   .prose ul {

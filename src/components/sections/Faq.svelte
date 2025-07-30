@@ -45,7 +45,7 @@
       {#if open}
         <div
           transition:slideWithScroll={{ duration: 350 }}
-          class="prose mt-3 max-w-[110ch] font-sans sm:mr-10"
+          class="prose mt-3 max-w-[110ch] font-sans mr-4"
         >
           {@html faq.desc}
         </div>

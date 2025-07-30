@@ -1,7 +1,7 @@
 import { icons } from '@phosphor-icons/core'
 import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs'
 
-const weights = ['regular', 'bold', 'light', 'thin', 'fill', 'duotone']
+const weights = ['fill', 'bold']
 
 if (existsSync('ph')) {
   rmSync('ph', { recursive: true, force: true })

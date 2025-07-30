@@ -20,11 +20,11 @@ const service = (await getCollection("services")).find(
 ---
 
 <Layout>
-  <ServiceHero meta={service.data} />
+  <ServiceHero meta={service.data} {slug} />
   <Content
     startPos={service.data.startPos ?? "right"}
     components={service.data.components}
   />
-    <Footer></Footer>
+  <Footer />
   <Menus client:idle />
 </Layout>

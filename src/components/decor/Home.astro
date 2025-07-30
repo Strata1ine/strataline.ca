@@ -6,7 +6,7 @@ const { slug, desc = "Go home", class: customClass, ...slot } = Astro.props;
 ---
 
 <a
-  class={clsx(`flex cursor-pointer items-end gap-3`, customClass)}
+  class={clsx(`inline-flex cursor-pointer items-end gap-3`, customClass)}
   {...slot}
   data-astro-prefetch
   href={slug ? `/#${slug}` : `/`}
