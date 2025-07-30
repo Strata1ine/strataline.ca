@@ -29,7 +29,10 @@
           />
         {:else if card.media.type == "video"}
           <video
-            poster={card.media.poster}
+            poster={card.media.poster.src}
+            loading="lazy"
+            playsinline
+            preload="none"
             class="h-full w-full cursor-pointer object-cover"
             controls
           >
@@ -43,7 +46,7 @@
             height="480"
             src={card.media.url}
             title="YouTube video player"
-            class="w-full h-full"
+            class="h-full w-full"
             frameborder="0"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -63,6 +66,7 @@
             <a
               rel="noopener noreferrer"
               class={actionStyles()}
+              target="_blank"
               href={card.link.url}>{card.link.name}</a
             >
           </div>

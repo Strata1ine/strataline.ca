@@ -5,9 +5,8 @@ import { type SchemaContext, z } from 'astro:content';
 export const imageOpts = {
   sizes: "100vw",
   format: "avif",
-  width: 2160,
-  inferSize: true,
   draggable: false,
+  width: 2160,
   widths: [500, 750, 1300, 2160],
 }
 
@@ -25,6 +24,7 @@ export type OptimizedImage = {
 export async function optimizeImage(image: ImageMetadata): Promise<OptimizedImage> {
   const opt = await getImage({
     src: image,
+    inferSize: true,
     ...imageOpts,
   });
 

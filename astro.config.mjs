@@ -72,22 +72,5 @@ export default defineConfig({
         ph: ["*"],
       },
     }),
-
-    // (await import("@playform/compress")).default({
-    //   CSS: true,
-    //   HTML: {
-    //     "html-minifier-terser": {
-    //       removeEmptyAttributes: false,
-    //       removeComments: false,
-    //       removeAttributeQuotes: false,
-    //       collapseWhitespace: false,
-    //       conservativeCollapse: true,
-    //     }
-    //   },
-    //   Image: true,
-    //   JavaScript: true,
-    //   JSON: true,
-    //   SVG: true,
-    // })
   ],
 });

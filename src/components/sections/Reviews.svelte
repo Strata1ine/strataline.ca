@@ -1,7 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Stars from "@decor/Stars.svelte";
+  import FeatherFill from "~/icons/ph/feather-fill.svelte";
   import { type SubPropsOf } from "./registry";
+  import { containerStyles } from "./styles";
+  import { modals } from "~/frontend/stores";
 
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
@@ -97,7 +100,7 @@
 </script>
 
 <div
-  class="mt-7 cursor-grab touch-pan-y"
+  class="relative mt-7 cursor-grab touch-pan-y"
   {onpointerdown}
   {onpointermove}
   {onpointerup}
@@ -129,9 +132,20 @@
           <Stars class="size-6" length={review.stars}></Stars>
         </div>
 
-        <p class="desc-base">{@html review.desc}</p>
+        <p class="desc-base mb-5">{@html review.desc}</p>
       </div>
     {/each}
+  </div>
+
+  <div class="absolute right-4 bottom-0 translate-y-1/2 sm:right-12">
+    <button
+      class="bg-accent gap-inset ml-auto flex cursor-pointer items-center rounded-lg px-4 py-3"
+      onclick={() => modals.open(modals.review)}
+      onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
+    >
+      <FeatherFill class="size-8"></FeatherFill>
+      <span class="desc-sm font-serif">Write a review</span>
+    </button>
   </div>
 </div>
 
