@@ -41,11 +41,12 @@ const { meta } = Astro.props;
         {
           meta.covers.map((image, _) => (
             <Image
+              alt={image.alt}
+              src={image.meta}
+              format="avif"
               class={imageStyles({
                 anim: meta.covers.length > 1 ? "zoom" : undefined,
               })}
-              alt={image.alt}
-              src={image.meta}
               draggable={false}
               widths={[500, 750, 1300, 2160]}
               sizes="100vw"
@@ -69,11 +70,15 @@ const { meta } = Astro.props;
       {
         meta.covers.map((image, _) => (
           <Image
+            alt={image.alt}
+            src={image.meta}
+            format="avif"
             class={imageStyles({
               anim: meta.covers.length > 1 ? "zoom" : undefined,
             })}
-            alt={image.alt}
-            src={image.meta}
+            widths={[500, 750, 1300, 2160]}
+            sizes="100vw"
+            width={2160}
             draggable={false}
           />
         ))

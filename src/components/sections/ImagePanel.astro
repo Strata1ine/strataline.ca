@@ -22,14 +22,16 @@ import { containerStyles, imageStyles } from "./styles";
               <Image
                 class={imageStyles({})}
                 src={panel.meta}
+                format="avif"
                 alt={panel.alt}
+                widths={[500, 750, 1300, 2160]}
+                sizes="100vw"
+                width={2160}
                 draggable={false}
               />
             </div>
 
-            <h4 class="heading-2xl font-semibold">
-              {panel.title}
-            </h4>
+            <h4 class="heading-2xl font-semibold">{panel.title}</h4>
           </div>
         );
       })

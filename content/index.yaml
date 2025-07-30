@@ -24,20 +24,16 @@ components:
     content:
       - meta: ./photos/slideshow/kitchen.jpg
         alt: |-
-          A large renovated kitchen showcasing a generous countertop with ample workspace
-          and seating, alongside a cozy dining table for gatherings.
+          A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
       - meta: ./photos/slideshow/dining_room.jpg
         alt: |-
-          A spacious dining room, beautifully renovated, featuring a long table surrounded
-          by numerous chairs and a vibrant plant centerpiece that adds warmth.
+          A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
       - meta: ./photos/slideshow/living_room.jpg
         alt: |-
-          A renovated updated living room with a charming fireplace, featuring an L-shaped
-          couch, a small side table for decor, and an additional compact couch for extra seating.
+          A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
       - meta: ./photos/slideshow/bathroom.jpg
         alt: |-
-          A renovated washroom with a bathtub and shower, bathed in soft natural light and
-          adorned with stylish decor.
+          A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
 
   - type: Popular
     title: Popular services
@@ -59,41 +55,49 @@ components:
     content:
       - title: Featured on CityTV
         desc: |-
-          Strataline is invited to CityLine and Scott McGillivray reveals
-          the best way to get rid of popcorn ceilings.
-        image:
-          meta: ./photos/awards/citytv.jpg
-          alt: |-
-            Video poster for CityTV feature
+          Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings.
+        media:
+          type: video
+          poster: ./photos/awards/citytv.jpg
+          url: /videos/cityline.mp4
 
       - title: "Featured in The Star"
         desc: |-
           The Star's sensational report on our Dust-Free approach
           to renovation.
-        image:
+        media:
+          type: image
           meta: ./photos/awards/star.jpg
           alt: |-
-            A newspaper article featuring Strataline's dust-free popcorn ceiling removal process,
-            highlighting a professional using a vacuum-fitted sander.
+            A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander.
+        link:
+          name: Read the article
+          url: |-
+            https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
 
       - title: "Featured in House & Home"
         desc: |-
           House & Home seeks our expertise on chevron hardwood floor installation.
-        image:
+        media:
+          type: image
           meta: ./photos/awards/houseandhome.webp
           alt: |-
-            A stylish interior featuring chevron hardwood floors, a vintage wooden
-            console table, and a cozy velvet armchair, highlighted in a House & Home feature.
+            A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.
+        link:
+          name: Read the article
+          url: |-
+            https://houseandhome.com/gallery/luxe-for-less-design
 
-      - title: "Featured on HGTV's Love It or List"
+      - title: "Featured on HGTV's Love It or List It"
         desc: |-
-          Mother-in-Law’s 1980s House Needs an Overhaul |
-          Love It or List It | HGTV.
-        image:
-          meta: ./photos/awards/houseandhome.webp
-          alt: |-
-            A stylish interior featuring chevron hardwood floors, a vintage wooden console 
-            table, and a cozy velvet armchair, highlighted in a House & Home feature.
+          Mother-in-Law’s 1980s house needs an overhaul.
+        media:
+          type: yt-video
+          url: https://www.youtube.com/embed/MqmEVTErkI0?si=ostasJ1wRSWsaSSG
+        link:
+          name: Tour the place
+          url: |-
+            https://my.matterport.com/show/?m=S9RBB2SkPRT
 
   - type: Reviews
     title: What our customers have to say
@@ -103,31 +107,22 @@ components:
         location: "Mississauga"
         stars: 5
         desc: |-
-          _My husband and I are unbelievably happy with the work that Max
-          and his team did on our ceilings in the house. The **professionalism**
-          of this team is incredible._
+          _My husband and I are unbelievably happy with the work that Max and his team did on our ceilings in the house. The **professionalism** of this team is incredible._
 
       - title: "Jefferson Grove"
         location: "Burlington"
         stars: 5
         desc: |-
-          _The whole process from beginning to end was an absolute pleasure.
-          Max is a great **communicator** and was always quick to reply to texts
-          or emails. We highly recommend Strataline!_
+          _The whole process from beginning to end was an absolute pleasure. Max is a great **communicator** and was always quick to reply to texts or emails. We highly recommend Strataline!_
 
       - title: "Olivia"
         location: "Toronto"
         stars: 5
         desc: |-
-          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in
-          four days and when they were done there was nothing to clean up.
-          Best decision I ever made!_
+          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!_
 
       - title: "Lyn Litvack"
         location: "Markham"
         stars: 5
         desc: |-
-          _Max is the ultimate professional, immaculate, contentious and
-          polite. He is **punctual** and follows up on things quickly. The work
-          to our stairs is transforming and with his **guidance** we are thrilled
-          with the finished product._
+          _Max is the ultimate professional, immaculate, contentious and polite. He is **punctual** and follows up on things quickly. The work to our stairs is transforming and with his **guidance** we are thrilled with the finished product._

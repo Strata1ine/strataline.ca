@@ -4,7 +4,7 @@
     "": {
       "name": "Strataline",
       "dependencies": {
-        "svelte": "^5.37.0",
+        "svelte": "^5.37.1",
       },
       "devDependencies": {
         "@astrojs/check": "^0.9.4",
@@ -16,7 +16,7 @@
         "@playform/compress": "^0.1.9",
         "@tailwindcss/typography": "^0.5.16",
         "@tailwindcss/vite": "^4.1.11",
-        "astro": "^5.12.4",
+        "astro": "^5.12.5",
         "astro-compressor": "^1.1.0",
         "astro-icon": "^1.1.5",
         "class-variance-authority": "^0.7.1",
