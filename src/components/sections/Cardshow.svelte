@@ -38,13 +38,14 @@
           </video>
         {:else if card.media.type == "yt-video"}
           <iframe
-            width="560"
-            height="315"
+            loading="lazy"
+            width="720"
+            height="480"
             src={card.media.url}
             title="YouTube video player"
-            class="h-full w-full"
+            class="w-full h-full"
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>

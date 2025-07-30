@@ -6,6 +6,7 @@ import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 import LayoutCard from "./layout/Card.astro";
 import { imageStyles, containerStyles, swapPos } from "./styles";
+import { imageOpts } from "~/build/images";
 const meta = Astro.props as PropsOf<"ZigZag">;
 
 let next = swapPos(meta.pos);
@@ -24,12 +25,8 @@ let next = swapPos(meta.pos);
               slot="image"
               class={imageStyles()}
               src={zig.image.meta}
-              format="avif"
               alt={zig.image.alt}
-              draggable={false}
-              widths={[500, 750, 1300, 2160]}
-              sizes="100vw"
-              width={2160}
+              {...imageOpts}
             />
           </LayoutCard>
         );
