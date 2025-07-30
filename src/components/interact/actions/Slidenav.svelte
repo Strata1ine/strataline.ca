@@ -3,7 +3,6 @@
 
   let {
     idx = $bindable(0),
-    class: className,
     length,
   }: {
     idx: number;
@@ -16,7 +15,9 @@
   <button
     onclick={() => (idx = i)}
     aria-label="View slide {i + 1}"
-    class={dotStyles({ open: idx === i })}
+    class="cursor-pointer touch-manipulation p-2"
     tabindex="0"
-  ></button>
+  >
+    <div class={dotStyles({ open: idx === i })}></div>
+  </button>
 {/each}

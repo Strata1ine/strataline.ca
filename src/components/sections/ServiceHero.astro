@@ -33,11 +33,11 @@ const { meta } = Astro.props;
       </h1>
 
       <div
-        class={imageWrapperStyles({
+        class={`${imageWrapperStyles({
           display: "sm",
           size: "mobile",
           pos: "right",
-        })}
+        })} my-4 ml-7`}
       >
         {
           meta.covers.map((image, _) => (

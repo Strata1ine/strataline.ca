@@ -31,7 +31,6 @@
           <video
             poster={card.media.poster.src}
             loading="lazy"
-            playsinline
             preload="none"
             class="h-full w-full cursor-pointer object-cover"
             controls
@@ -65,7 +64,7 @@
           <div class="mt-7">
             <a
               rel="noopener noreferrer"
-              class={actionStyles()}
+              class="{actionStyles()} bg-white"
               target="_blank"
               href={card.link.url}>{card.link.name}</a
             >
@@ -78,6 +77,6 @@
   {/each}
 </div>
 
-<div class="flex justify-center gap-5 2xl:flex-col">
+<div class="flex justify-center gap-2 2xl:flex-col">
   <Slidenav length={meta.length} bind:idx />
 </div>

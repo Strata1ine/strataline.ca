@@ -30,7 +30,7 @@ import { marked } from "marked";
     )
   }
 
-  <div class="flex-1">
+  <div>
     <h3
       class={clsx(
         "mb-2 heading-4xl font-semibold",
@@ -43,11 +43,11 @@ import { marked } from "marked";
     {
       meta.pos === "right" && (
         <div
-          class={imageWrapperStyles({
+          class={`${imageWrapperStyles({
             pos: "right",
             size: "mobile",
             display: "sm",
-          })}
+          })} ml-7 mb-4`}
         >
           <slot name="image" />
         </div>
@@ -57,11 +57,11 @@ import { marked } from "marked";
     {
       meta.pos === "left" && (
         <div
-          class={imageWrapperStyles({
+          class={`${imageWrapperStyles({
             pos: "left",
             size: "mobile",
             display: "sm",
-          })}
+          })} mr-7 mb-4`}
         >
           <slot name="image" />
         </div>
