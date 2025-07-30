@@ -12,9 +12,10 @@ import type { CollectionEntry } from "~/content.config";
 
 interface Props {
   meta: CollectionEntry<"services">;
+  slug: string;
 }
 
-const { meta } = Astro.props;
+const { meta, slug } = Astro.props;
 ---
 
 <main class="relative min-h-50 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170">
@@ -27,8 +28,8 @@ const { meta } = Astro.props;
     </div>
 
     <div class="">
-      <Home desc="Go back" />
-      <h1 class="heading-5xl mt-1 mb-2 font-bold">
+      <Home desc="Go back" {slug} />
+      <h1 class="heading-5xl mb-2 font-bold">
         {meta.title}
       </h1>
 
