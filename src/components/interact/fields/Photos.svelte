@@ -4,7 +4,6 @@
   import ImagesSquare from "~/icons/ph/images-square-fill.svelte";
   import { inputStyles } from "./styles";
   import { genUid } from "~/frontend/stores";
-  import { descStyles } from "@sections/styles";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
   let uid = genUid();
@@ -30,7 +29,7 @@
 
   <div class="{inputStyles()} cursor-pointer">
     <ImagesSquare class="size-8" />
-    <span class="{descStyles({ size: "sm" })} flex-1">{value}</span>
+    <span class="desc-sm flex-1">{value}</span>
     <Upload class="size-6" />
   </div>
 </Field>

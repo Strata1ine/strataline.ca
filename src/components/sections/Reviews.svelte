@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { headingStyles, descStyles } from "./styles";
   import { onMount } from "svelte";
   import Stars from "@decor/Stars.svelte";
   import { type SubPropsOf } from "./registry";
@@ -111,17 +110,17 @@
   >
     {#each meta as review}
       <div
-        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 lg:mx-5 md:p-10"
+        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 md:p-10 lg:mx-5"
       >
         <div
           class="bg-accent absolute top-0 -translate-y-1/2 rounded-sm px-4 py-2"
         >
-          <span class="{descStyles({ size: 'sm' })} font-semibold">
+          <span class="desc-sm font-semibold">
             {review.location}
           </span>
         </div>
 
-        <h3 class={headingStyles({ size: "2xl" })}>{review.title}</h3>
+        <h3 class="heading-2xl">{review.title}</h3>
 
         <div
           class="mt-3 mb-4 flex gap-1.5"
@@ -130,14 +129,17 @@
           <Stars class="size-6" length={review.stars}></Stars>
         </div>
 
-        <p class={descStyles({ size: "base" })}>{@html review.desc}</p>
+        <p class="desc-base">{@html review.desc}</p>
       </div>
     {/each}
   </div>
 </div>
 
 <div
-  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <= 1 ? 'hidden' : ''}"
+  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <=
+  1
+    ? 'hidden'
+    : ''}"
 >
   <button
     aria-label="Review scroller"

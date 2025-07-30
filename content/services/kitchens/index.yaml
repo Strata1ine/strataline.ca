@@ -1,4 +1,5 @@
 title: Kitchens
+startPos: left
 desc: |-
   We create modern, comfortable and functional kitchens.
 seo: |-
@@ -10,7 +11,7 @@ covers:
 
 components:
   - type: ZigZag
-    title: The essentials
+    title: What you shouldn't live without
     content:
       - title: Ample space
         image:

@@ -3,7 +3,6 @@
   import Valid from "@decor/Valid.svelte";
   import { genUid } from "~/frontend/stores";
   import { inputStyles } from "./styles";
-  import { descStyles } from "@sections/styles";
 
   const {
     name,
@@ -28,7 +27,7 @@
         if (oninput) oninput(e);
         valid = e.currentTarget.validity.valid;
       }}
-      class="{descStyles({ size: 'sm' })} w-full focus:outline-none"
+      class="desc-sm w-full focus:outline-none"
       id={uid}
       tabindex="0"
       {name}

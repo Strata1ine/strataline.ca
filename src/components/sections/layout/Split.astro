@@ -1,6 +1,6 @@
 ---
 import { containerStyles } from "@sections/styles";
-import type { Pos } from "../pos";
+import type { Pos } from "../styles";
 
 interface Props {
   pos: Pos;
@@ -12,9 +12,9 @@ import { clsx } from "clsx";
 
 <div
   class={clsx(
-    containerStyles({ width: "inner" }),
-    "flex sm:flex-row gap-9 sm:gap-11",
-    meta.pos == "right" ? "flex-col-reverse" : "flex-col"
+    containerStyles({ width: "inner", gap: "base" }),
+    "flex sm:flex-row",
+    meta.pos == "right" ? "flex-col-reverse" : "flex-col",
   )}
 >
   {meta.pos == "left" && <slot name="title" />}

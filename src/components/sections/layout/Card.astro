@@ -1,7 +1,7 @@
 ---
-import { type Pos } from "../pos";
+import { type Pos } from "../styles";
 import clsx from "clsx";
-import { imageWrapperStyles, headingStyles, descStyles } from "../styles";
+import { imageWrapperStyles } from "../styles";
 
 interface Props {
   id?: string;
@@ -15,10 +15,7 @@ const meta = Astro.props;
 import { marked } from "marked";
 ---
 
-<div
-  class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11"
-  id={meta.id}
->
+<div class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11" id={meta.id}>
   {
     meta.pos === "left" && (
       <div
@@ -36,9 +33,8 @@ import { marked } from "marked";
   <div class="flex-1">
     <h3
       class={clsx(
-        "mb-2",
+        "mb-2 heading-4xl",
         meta.pos == "right" && "text-right sm:text-left",
-        headingStyles({ size: "4xl" }),
       )}
     >
       {meta.title}
@@ -72,11 +68,9 @@ import { marked } from "marked";
       )
     }
 
-    <p class={descStyles({ size: "base" })}>{marked.parseInline(meta.desc)}</p>
+    <p class="desc-base">{marked.parseInline(meta.desc)}</p>
 
-    <div class="mt-8">
-      <slot />
-    </div>
+    <slot />
   </div>
 
   {

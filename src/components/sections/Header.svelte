@@ -4,7 +4,6 @@
   import { modals, genUid } from "~/frontend/stores";
 
   import { modalStyles } from "@modals/styles";
-  import { headingStyles, descStyles } from "./styles";
 
   let open = $state(false);
   modals.idx.subscribe((v) => (open = v == modals.mobile));
@@ -17,11 +16,7 @@
 <ul class="mt-1 hidden gap-11 md:flex">
   {#each meta.content as item}
     <li>
-      <a
-        href="#{item.id}"
-        class="{descStyles({ size: 'sm' })} c relative"
-        tabindex="0"
-      >
+      <a href="#{item.id}" class="desc-sm c relative" tabindex="0">
         {item.name}
       </a>
     </li>
@@ -51,7 +46,7 @@
             modals.close();
           }}
           tabindex="0"
-          class="{headingStyles({ size: '2xl' })} leading-none"
+          class="heading-2xl leading-none"
         >
           {item.name}
         </a>

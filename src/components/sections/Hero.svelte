@@ -1,6 +1,6 @@
 <script lang="ts">
   import { modals } from "~/frontend/stores";
-  import { headingStyles, descStyles, imageStyles } from "./styles";
+  import { imageStyles } from "./styles";
   import Slidenav from "@actions/Slidenav.svelte";
 
   import { type PropsOf } from "./registry";
@@ -29,20 +29,18 @@
     {@render imageCarousel()}
   </div>
 
-  <div class="gap-5 flex 2xl:flex-col">
+  <div class="flex gap-5 2xl:flex-col">
     <Slidenav bind:idx length={meta.content.length}></Slidenav>
   </div>
 </div>
 
 <div class="relative">
-  <h1 class={headingStyles({ size: "6xl" })}>
+  <h1 class="heading-6xl font-bold">
     {meta.title}
   </h1>
 
   <div class="my-5 flex items-center gap-5 sm:hidden">
-    <div
-      class="-ml-inset flex h-60 flex-1 justify-evenly contain-paint"
-    >
+    <div class="-ml-inset flex h-60 flex-1 justify-evenly contain-paint">
       {@render imageCarousel()}
     </div>
 
@@ -51,7 +49,7 @@
     </div>
   </div>
 
-  <p class="{descStyles({ size: 'base' })} mt-3">
+  <p class="desc-base mt-3">
     {meta.desc}
   </p>
 

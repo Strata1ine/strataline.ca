@@ -1,5 +1,5 @@
 ---
-import "~/styles/global.css";
+import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
 ---
 
@@ -9,8 +9,10 @@ import { Font } from "astro:assets";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="~/frontend/index.js"></script>
+    <script src="~/frontend/index.js"></script>
     <Font cssVariable="--font-cormorant" />
     <Font cssVariable="--font-dm-sans" />
+    <link rel="stylesheet" href={global} />
   </head>
   <body><slot /></body>
 </html>

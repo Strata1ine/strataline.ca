@@ -1,7 +1,6 @@
 <script lang="ts">
   import { inputStyles } from "./styles";
   import { genUid } from "~/frontend/stores";
-  import { descStyles } from "@sections/styles";
   import Field from "./Field.svelte";
 
   let { required = false, minheight = 80, height = 150, name } = $props();
@@ -13,7 +12,7 @@
 <Field {uid} {name} {required}>
   <div class={inputStyles()}>
     <textarea
-      class="{descStyles({ size: 'sm' })} w-full resize-none focus:outline-none"
+      class="desc-sm w-full resize-none focus:outline-none"
       style="height: {height}px"
       bind:this={textarea}
       onkeydown={(e) => {
