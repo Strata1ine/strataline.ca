@@ -18,6 +18,9 @@ const spaceVariants = {
   space: {
     base: 'space-y-20 sm:space-y-30',
   },
+  padding: {
+    base: 'py-7 first:pt-0 last:pb-0',
+  }
 };
 
 export const spaceStyles = cva('', {
@@ -39,44 +42,14 @@ export const containerStyles = cva(
   },
 );
 
-export const headingStyles = cva('', {
-  variants: {
-    size: {
-      '6xl':
-        'font-serif text-2xl font-bold text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl',
-      '5xl':
-        'font-serif text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-balance',
-      '4xl': 'font-serif text-xl font-semibold md:text-3xl xl:text-4xl',
-      '3xl': 'font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl',
-      '2xl': 'text-lg font-serif md:text-2xl',
-      xl: 'text-md sm:text-bg leading-7 font-serif md:text-xl',
-    },
-  },
-});
-
-export const descStyles = cva('font-sans', {
-  variants: {
-    size: {
-      base: 'text-base xl:text-md',
-      sm: 'text-sm sm:text-base',
-      md: 'text-md',
-    },
-    role: {
-      label: 'font-serif font-semibold leading-none',
-    },
-  },
-  defaultVariants: {
-    size: 'base',
-  },
-});
-
 export const imageStyles = cva(
-  'select-none h-full object-cover',
+  'select-none object-cover h-full',
   {
     variants: {
       anim: {
         grow: 'transition-[width] duration-700',
         zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
+        hover: 'transition duration-300 hover:scale-[1.05]',
       },
       active: {
         true: '',

@@ -1,13 +1,12 @@
 <script>
   import Asterick from "~/icons/ph/asterisk-bold.svelte";
-  import { descStyles } from "@sections/styles";
   import { fieldStyles } from "./styles";
   import { clickOutside } from "~/frontend/focus";
   let { name, uid, required, children, open = $bindable() } = $props();
 </script>
 
 <div
-  class="relative"
+  class="relative touch-manipulation"
   use:clickOutside={open !== undefined
     ? () => {
         open = false;
@@ -24,7 +23,7 @@
       }
     }}
   >
-    <span class={descStyles({ size: "md", role: "label" })}>
+    <span class="desc-md font-serif leading-none font-semibold">
       {name}
     </span>
 

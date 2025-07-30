@@ -1,5 +1,5 @@
 ---
-import { containerStyles, descStyles } from "./styles";
+import { containerStyles } from "./styles";
 import business from "@root/content/business.json";
 
 import { Icon } from "astro-icon/components";
@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
 <footer
   class={`border-accent border-t-1 py-12 flex items-center ${containerStyles({ width: "inner" })}`}
 >
-  <span class={descStyles({ size: "base" })}
+  <span class="desc-base"
     ><strong class="font-semibold">&copy; {business.name}</strong>. {
       new Date().getFullYear()
     }</span
@@ -16,7 +16,7 @@ import { Icon } from "astro-icon/components";
 
   <div class="flex-1"></div>
 
-  <ul class="flex flex-row gap-1">
+  <ul class="flex flex-row gap-0.5">
     {
       business.sameAs &&
         business.sameAs.map(
@@ -33,7 +33,7 @@ import { Icon } from "astro-icon/components";
                     is:inline
                     style={`color: #${media.social.color}`}
                     name={`${media.social.icon}`}
-                    class="size-14 xl:size-18"
+                    class="size-13 xl:size-18"
                   />
                 </a>
               </li>

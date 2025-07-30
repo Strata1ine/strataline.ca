@@ -1,10 +1,5 @@
 ---
-import {
-  headingStyles,
-  spaceStyles,
-  containerStyles,
-  descStyles,
-} from "./styles";
+import { spaceStyles, containerStyles } from "./styles";
 import { marked } from "marked";
 
 import { type PropsOf } from "./registry";
@@ -30,17 +25,11 @@ import LayoutTitle from "./layout/Title.astro";
           return (
             <div>
               <div class="mb-3 flex items-baseline gap-4">
-                <h3
-                  class={`text-accent-dark ${headingStyles({ size: "6xl" })}`}
-                >
-                  o{i + 1}
-                </h3>
-                <h4 class={headingStyles({ size: "2xl" })}>{benefit.title}</h4>
+                <h3 class="text-accent-dark heading-6xl">o{i + 1}</h3>
+                <h4 class="heading-2xl font-semibold">{benefit.title}</h4>
               </div>
 
-              <p class={descStyles({ size: "base" })}>
-                {marked.parseInline(benefit.desc)}
-              </p>
+              <p class="desc-base">{marked.parseInline(benefit.desc)}</p>
             </div>
           );
         })

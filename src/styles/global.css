@@ -1,5 +1,76 @@
 @import "tailwindcss";
 
+@layer components {
+
+  .heading-6xl,
+  .prose h1 {
+    @apply font-serif text-balance text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl;
+  }
+
+  .heading-5xl,
+  .prose h2 {
+    @apply font-serif text-balance text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl;
+  }
+
+  .heading-4xl,
+  .prose h3 {
+    @apply font-serif text-balance text-xl md:text-3xl xl:text-4xl;
+  }
+
+  .heading-3xl,
+  .prose h4 {
+    @apply font-serif text-balance text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .heading-2xl,
+  .prose h5 {
+    @apply font-serif text-balance text-lg md:text-2xl;
+  }
+
+  .heading-xl,
+  .prose h6 {
+    @apply font-serif text-balance text-md sm:text-base leading-7 md:text-xl;
+  }
+
+  .desc-base,
+  .prose p,
+  .prose li {
+    @apply font-sans text-base md:text-md;
+    color: var(--color-desc);
+  }
+
+  .prose {
+    @apply space-y-3;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply ml-8 my-4 space-y-2;
+  }
+
+  .prose ul li, .prose ol li {
+   @apply pl-3;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+  }
+
+  .prose ol {
+    list-style-type: decimal;
+  }
+
+  .desc-sm {
+    @apply font-sans text-sm sm:text-base;
+    color: var(--color-desc);
+  }
+
+  .desc-md {
+    @apply font-sans text-md;
+    color: var(--color-desc);
+  }
+}
+
 @theme {
   /* RESET TAILWIND DEFAULTS */
   --color-*: initial;
@@ -27,7 +98,8 @@
   --color-url: #5A7184;
   --color-accent: #FEE2E6;
   --color-accent-dark: #EF5277;
-  --color-black: #2B2B2B;
+  --color-black: #000;
+  --color-desc: #2b2b2b;
   --color-white: #FFFAFB;
   --color-tone: #F5F5F5;
   --color-gold: #FFD0B5;
@@ -54,13 +126,13 @@
   --radius-lg: .5rem;
 
   --text-sm: 1.1rem;
-  --text-sm--line-height: 1.6;
+  --text-sm--line-height: 1.7;
   --text-base: 1.2rem;
-  --text-base--line-height: 1.6;
+  --text-base--line-height: 1.7;
   --text-md: 1.45rem;
-  --text-md--line-height: 1.6;
+  --text-md--line-height: 1.7;
   --text-bg: 1.65rem;
-  --text-bg--line-height: 1.6;
+  --text-bg--line-height: 1.7;
   --text-lg: 1.9rem;
   --text-lg--line-height: 1.2;
   --text-xl: 2.1rem;
@@ -79,11 +151,10 @@
 
 :root {
   background: var(--color-white);
-  color: var(--color-black);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
-  /* scroll-behavior: smooth; */
+  color: var(--color-black);
 }
 
 /* sleepy W3C */

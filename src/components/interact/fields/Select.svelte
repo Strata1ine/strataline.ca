@@ -1,7 +1,6 @@
 <script>
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
-  import { descStyles } from "@sections/styles";
   import { inputStyles, menuStyles } from "./styles";
   import { genUid } from "~/frontend/stores";
   import Field from "./Field.svelte";
@@ -111,15 +110,12 @@
         : 'translate-y-full'}"
     >
       <span
-        class="{descStyles({
-          size: 'sm',
-        })} transition-opacity duration-300{anim ? '' : ' opacity-0'}"
-        >{anim ? values[selectedIdx] : values[prevIdx]}</span
+        class="desc-sm transition-opacity duration-300{anim
+          ? ''
+          : ' opacity-0'}">{anim ? values[selectedIdx] : values[prevIdx]}</span
       >
       <span
-        class="{descStyles({
-          size: 'sm',
-        })} absolute bottom-full left-0 transition-opacity duration-300{anim
+        class="desc-sm absolute bottom-full left-0 transition-opacity duration-300{anim
           ? ' opacity-0'
           : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
       >

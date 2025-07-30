@@ -1,6 +1,6 @@
 <script lang="ts">
   import Slidenav from "@actions/Slidenav.svelte";
-  import { headingStyles, spaceStyles, descStyles } from "./styles";
+  import { spaceStyles } from "./styles";
 
   import { type SubPropsOf } from "./registry";
   const { meta }: { meta: SubPropsOf<"Cardshow", "content"> } = $props();
@@ -25,8 +25,8 @@
       {/if}
 
       <div>
-        <h3 class="{headingStyles({ size: '4xl' })} mb-1">{card.title}</h3>
-        <p class={descStyles({ size: "base" })}>
+        <h3 class="heading-4xl mb-1">{card.title}</h3>
+        <p class="desc-base">
           {card.desc}
         </p>
       </div>

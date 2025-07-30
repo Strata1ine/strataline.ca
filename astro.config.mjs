@@ -72,6 +72,7 @@ export default defineConfig({
         ph: ["*"],
       },
     }),
+
     (await import("@playform/compress")).default({
       CSS: true,
       HTML: {

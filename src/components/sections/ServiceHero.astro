@@ -1,11 +1,5 @@
 ---
-import {
-  containerStyles,
-  descStyles,
-  headingStyles,
-  imageWrapperStyles,
-  imageStyles,
-} from "./styles";
+import { containerStyles, imageWrapperStyles, imageStyles } from "./styles";
 
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
@@ -33,7 +27,7 @@ const { meta } = Astro.props;
 
     <div class="">
       <Home desc="Go back" />
-      <h1 class={`${headingStyles({ size: "5xl" })} mb-2`}>
+      <h1 class="heading-5xl mt-1 mb-2 font-bold">
         {meta.title}
       </h1>
 
@@ -61,7 +55,7 @@ const { meta } = Astro.props;
         }
       </div>
 
-      <p class={descStyles({ size: "base" })}>
+      <p class="desc-base">
         {meta.desc}
       </p>
     </div>
