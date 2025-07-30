@@ -1,5 +1,6 @@
 ---
 import { containerStyles, imageWrapperStyles, imageStyles } from "./styles";
+import { imageOpts } from "~/build/images";
 
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
@@ -43,14 +44,10 @@ const { meta } = Astro.props;
             <Image
               alt={image.alt}
               src={image.meta}
-              format="avif"
               class={imageStyles({
                 anim: meta.covers.length > 1 ? "zoom" : undefined,
               })}
-              draggable={false}
-              widths={[500, 750, 1300, 2160]}
-              sizes="100vw"
-              width={2160}
+              {...imageOpts}
             />
           ))
         }
@@ -72,14 +69,10 @@ const { meta } = Astro.props;
           <Image
             alt={image.alt}
             src={image.meta}
-            format="avif"
+            {...imageOpts}
             class={imageStyles({
               anim: meta.covers.length > 1 ? "zoom" : undefined,
             })}
-            widths={[500, 750, 1300, 2160]}
-            sizes="100vw"
-            width={2160}
-            draggable={false}
           />
         ))
       }

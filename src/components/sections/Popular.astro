@@ -1,6 +1,7 @@
 ---
 import { containerStyles, imageStyles, swapPos } from "./styles";
 import { getEntry, getCollection } from "~/content.config";
+import { imageOpts } from "~/build/images";
 import { Image } from "astro:assets";
 
 import LayoutDivider from "./layout/Divider.astro";
@@ -46,17 +47,13 @@ let next = swapPos(meta.pos);
           >
             {service.data.covers.map((image, _) => (
               <Image
-                format="avif"
                 src={image.meta}
                 alt={image.alt}
                 class={imageStyles({
                   anim: service.data.covers.length > 1 ? "zoom" : undefined,
                 })}
-                draggable={false}
-                widths={[500, 750, 1300, 2160]}
-                sizes="100vw"
-                width={2160}
                 slot="image"
+                {...imageOpts}
               />
             ))}
 

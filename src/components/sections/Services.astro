@@ -4,6 +4,7 @@ import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
 import { getEntry, getCollection } from "~/content.config";
+import { imageOpts } from "~/build/images";
 
 import { type PropsOf } from "./registry";
 const meta = Astro.props as PropsOf<"Services">;
@@ -46,14 +47,10 @@ import { Icon } from "astro-icon/components";
               tabindex="0"
             >
               <Image
-                class={`!h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm sm:w-full ${imageStyles({ anim: "hover" })}`}
+                class={`h-[30vw] max-h-65 min-h-30 w-1/2 rounded-sm sm:w-full ${imageStyles({ anim: "hover" })}`}
                 src={service.data.covers[0].meta}
                 alt={service.data.covers[0].alt}
-                format="avif"
-                draggable={false}
-                widths={[500, 750, 1300, 2160]}
-                sizes="100vw"
-                width={2160}
+                {...imageOpts}
               />
 
               <div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
