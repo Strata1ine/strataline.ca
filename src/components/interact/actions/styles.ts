@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const dotStyles = cva(
-  'size-8 xl:size-10 rounded-[50%] border-solid border-black transition-[border] duration-250 touch-manipulation cursor-pointer',
+  'size-8 xl:size-10 rounded-[50%] border-solid border-black transition-[border] duration-250',
   {
     variants: {
       open: {
@@ -22,7 +22,7 @@ export const actionStyles = cva(
     variants: {
       background: {
         fill: 'bg-accent',
-        outline: 'bg-white border-black border',
+        outline: 'border-black border',
       },
       display: {
         fill: 'w-full text-center',

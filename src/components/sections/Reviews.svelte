@@ -100,7 +100,7 @@
 </script>
 
 <div
-  class="relative mt-7 cursor-grab touch-pan-y"
+  class="relative my-7 cursor-grab touch-pan-y"
   {onpointerdown}
   {onpointermove}
   {onpointerup}
@@ -137,20 +137,18 @@
     {/each}
   </div>
 
-  <div class="absolute right-4 bottom-0 translate-y-1/2 sm:right-12">
-    <button
-      class="bg-accent gap-inset ml-auto flex cursor-pointer items-center rounded-lg px-4 py-3"
-      onclick={() => modals.open(modals.review)}
-      onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
-    >
-      <FeatherFill class="size-8"></FeatherFill>
-      <span class="desc-sm font-serif">Write a review</span>
-    </button>
-  </div>
+  <button
+    class="bg-accent gap-inset absolute bottom-0 left-4 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+    onclick={() => modals.open(modals.review)}
+    onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
+  >
+    <FeatherFill class="size-8"></FeatherFill>
+    <span class="desc-sm font-serif">Write a review</span>
+  </button>
 </div>
 
 <div
-  class="bg-tone relative m-auto mt-12 mb-4 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <=
+  class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <=
   1
     ? 'hidden'
     : ''}"

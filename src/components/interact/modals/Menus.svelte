@@ -52,13 +52,8 @@
     name="review"
     title="Write a review"
     id={reviewUid}
-    class="mt-4 space-y-9"
+    class="mt-8 space-y-9"
   >
-    <p class="desc-base italic">
-      *To write a review, you must be a client. We will verify your submission
-      via email.
-    </p>
-
     <Input name="Full name" required type="name" autocomplete="name" />
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <Select
@@ -66,6 +61,10 @@
       values={["Select a location", ...business.areaServed]}
       required
     />
+
+    <TextArea required minlength="25" name="Review" />
+
+    <p class="desc-base italic">*We will verify your submission via email.</p>
 
     <button
       value="submit"

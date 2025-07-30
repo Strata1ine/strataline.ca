@@ -30,7 +30,7 @@
     ></textarea>
 
     <div
-      class="absolute right-0 bottom-0 cursor-ns-resize"
+      class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
       onpointerdown={(e) => {
         offset =
           e.clientY -

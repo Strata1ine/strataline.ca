@@ -74,8 +74,8 @@ export const imageWrapperStyles = cva('contain-paint', {
     },
 
     size: {
-      desktop: 'min-h-90 h-[50vh] max-h-120 w-1/2 rounded-sm',
-      mobile: 'my-4 h-65',
+      desktop: 'min-h-90 h-[50vh] max-h-120 w-1/2 rounded-sm flex-none',
+      mobile: 'h-65',
     },
 
     display: {
@@ -88,12 +88,12 @@ export const imageWrapperStyles = cva('contain-paint', {
     {
       pos: 'left',
       size: 'mobile',
-      className: '-ml-inset mr-7 rounded-tr-sm rounded-br-sm',
+      className: '-ml-inset rounded-tr-sm rounded-br-sm',
     },
     {
       pos: 'right',
       size: 'mobile',
-      className: '-mr-inset ml-7 rounded-tl-sm rounded-bl-sm',
+      className: '-mr-inset rounded-tl-sm rounded-bl-sm',
     },
   ],
 });

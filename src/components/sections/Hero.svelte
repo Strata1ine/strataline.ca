@@ -1,6 +1,6 @@
 <script lang="ts">
   import { modals } from "~/frontend/stores";
-  import { imageStyles } from "./styles";
+  import { imageStyles, imageWrapperStyles } from "./styles";
   import Slidenav from "@actions/Slidenav.svelte";
 
   import { type PropsOf } from "./registry";
@@ -21,7 +21,7 @@
 {/snippet}
 
 <div
-  class="hidden w-1/2 flex-none flex-col items-center gap-6 sm:flex 2xl:flex-row-reverse"
+  class="hidden w-1/2 flex-none flex-col items-center gap-2 sm:flex 2xl:flex-row-reverse 2xl:gap-4"
 >
   <div
     class="flex h-[70vh] max-h-165 min-h-100 justify-evenly rounded-sm contain-paint"
@@ -29,22 +29,24 @@
     {@render imageCarousel()}
   </div>
 
-  <div class="flex gap-5 2xl:flex-col">
+  <div class="flex gap-2 2xl:flex-col">
     <Slidenav bind:idx length={meta.content.length}></Slidenav>
   </div>
 </div>
 
-<div class="relative">
+<div>
   <h1 class="heading-6xl font-bold">
     {meta.title}
   </h1>
 
-  <div class="my-5 flex items-center gap-5 sm:hidden">
-    <div class="-ml-inset flex h-60 flex-1 justify-evenly contain-paint">
+  <div class="my-5 flex items-center gap-2 sm:hidden">
+    <div
+      class="{imageWrapperStyles({ pos: 'left', size: 'mobile' })} flex flex-1"
+    >
       {@render imageCarousel()}
     </div>
 
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-2">
       <Slidenav bind:idx length={meta.content.length} />
     </div>
   </div>
@@ -53,7 +55,7 @@
     {meta.desc}
   </p>
 
-  <div class="mt-9">
+  <div class="relative mt-9">
     <button class={actionStyles()} onclick={() => modals.open(modals.talk)}
       >Let's Talk</button
     >

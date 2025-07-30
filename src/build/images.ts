@@ -12,16 +12,23 @@ export const imageOpts = {
 
 export type OptimizedImage = {
   src: string;
-  srcset: string;
-  format: string;
-  width: string;
-  height: string;
-  sizes: string;
-  loading: string;
+  srcset?: string;
+  format?: string;
+  width?: string;
+  height?: string;
+  sizes?: string;
+  loading?: string;
   draggable: boolean;
 }
 
 export async function optimizeImage(image: ImageMetadata): Promise<OptimizedImage> {
+  if (import.meta.env.DEV) {
+    return {
+      src: image.src,
+      draggable: false,
+    }
+  }
+
   const opt = await getImage({
     src: image,
     inferSize: true,
