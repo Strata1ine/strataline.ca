@@ -46,20 +46,21 @@ let next = swapPos(meta.pos);
           >
             {service.data.covers.map((image, _) => (
               <Image
-                slot="image"
+                format="avif"
+                src={image.meta}
+                alt={image.alt}
                 class={imageStyles({
                   anim: service.data.covers.length > 1 ? "zoom" : undefined,
                 })}
-                src={image.meta}
-                alt={image.alt}
                 draggable={false}
                 widths={[500, 750, 1300, 2160]}
                 sizes="100vw"
                 width={2160}
+                slot="image"
               />
             ))}
 
-            <div class="mt-8">
+            <div class="mt-7">
               <a
                 class={actionStyles()}
                 href={`/services/${slug}`}

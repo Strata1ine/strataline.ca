@@ -10,6 +10,22 @@ const textCarousel = ({
   text: z.array(z.string()),
 });
 
+const media = (c: SchemaContext) => z.union([
+  z.object({
+    type: z.literal('image'),
+    ...imageSource(c),
+  }),
+  z.object({
+    type: z.literal('video'),
+    poster: c.image(),
+    url: z.string(),
+  }),
+  z.object({
+    type: z.literal('yt-video'),
+    url: z.string(),
+  })
+]);
+
 export const registry = {
   Header: {
     schema: (_: SchemaContext) => ({
@@ -65,8 +81,12 @@ export const registry = {
         z.object({
           title: z.string(),
           desc: z.string(),
-          image: z.object(imageSource(c)).optional(),
           id: z.string().optional(),
+          media: media(c),
+          link: z.object({
+            name: z.string(),
+            url: z.string(),
+          }).optional(),
         })
       ),
     }),

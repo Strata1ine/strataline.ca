@@ -7,15 +7,17 @@
 
   let active: null | number = $state(null);
 
-  function slideWithScroll(node: HTMLElement, { duration = 700 }) {
+  function slideWithScroll(node: HTMLElement, { duration = 1000 }) {
+    const r = node.getBoundingClientRect();
+    if (r.top < 0) {
+      window.scrollTo({
+        top: window.scrollY + r.top,
+        behavior: "smooth",
+      });
+    }
     return {
       ...slide(node, { duration, easing: quadOut }),
-      tick: (t: any) => {
-        const r = node.getBoundingClientRect();
-        if (r.top < 0) {
-          window.scrollTo({ top: window.scrollY + r.top * (1 - quadOut(t)) });
-        }
-      },
+      tick: (t: any) => {},
     };
   }
 </script>
