@@ -23,6 +23,6 @@ for (let image of meta.content) {
   <div
     class={`${containerStyles({ width: "outer", gap: "base" })} flex w-full items-center py-17 sm:py-30`}
   >
-    <Island client:visible {meta} />
+    <Island client:load {meta} />
   </div>
 </main>

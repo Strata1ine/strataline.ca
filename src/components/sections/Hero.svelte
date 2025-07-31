@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { modals } from "~/frontend/stores";
   import { imageStyles, imageWrapperStyles } from "./styles";
   import Slidenav from "@actions/Slidenav.svelte";
+  import FluidBox from "@decor/FluidBox.svelte";
 
   import { type PropsOf } from "./registry";
-  import { actionStyles } from "@actions/styles";
-  let { meta }: { meta: PropsOf<"Hero"> } = $props();
+  const { meta }: { meta: PropsOf<"Hero"> } = $props();
   let idx = $state(0);
 </script>
 
@@ -55,9 +54,5 @@
     {meta.desc}
   </p>
 
-  <div class="relative mt-9">
-    <button class={actionStyles()} onclick={() => modals.open(modals.talk)}
-      >Let's Talk</button
-    >
-  </div>
+  <FluidBox></FluidBox>
 </div>

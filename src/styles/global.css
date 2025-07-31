@@ -171,12 +171,11 @@ input:-webkit-autofill:focus {
 @layer base {
   button {
     text-align: left;
-    display: table;
     width: auto;
   }
 
   a {
-    display: table;
+    display: inline-block;
   }
 }
 
