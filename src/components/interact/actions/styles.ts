@@ -16,20 +16,23 @@ export const dotStyles = cva(
 );
 
 
-export const actionStyles = cva(
-  'rounded-md px-6 py-4 font-serif text-md xl:text-lg font-bold cursor-pointer leading-none touch-manipulation',
-  {
-    variants: {
-      background: {
-        fill: 'bg-accent',
-        outline: 'border-black border',
-      },
-      display: {
-        fill: 'w-full text-center',
-      },
+export const actionStyles = cva('touch-manipulation cursor-pointer', {
+  variants: {
+    variant: {
+      text: 'px-6 py-4 font-serif text-md xl:text-lg font-bold leading-none rounded-md',
+      pill: 'rounded-[50%] flex size-18 sm:size-20',
     },
-    defaultVariants: {
-      background: 'outline',
+    background: {
+      fill: 'bg-accent',
+      outline: 'border-black border',
+      accent: 'bg-accent-dark text-white',
+    },
+    display: {
+      fill: 'w-full text-center',
     },
   },
-);
+  defaultVariants: {
+    background: 'outline',
+    variant: "text",
+  },
+});

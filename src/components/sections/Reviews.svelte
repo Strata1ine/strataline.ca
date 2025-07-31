@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Stars from "@decor/Stars.svelte";
-  import FeatherFill from "~/icons/ph/feather-fill.svelte";
+  import Feather from "~/icons/ph/feather-fill.svelte";
   import { type SubPropsOf } from "./registry";
-  import { containerStyles } from "./styles";
   import { modals } from "~/frontend/stores";
 
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
@@ -142,7 +141,7 @@
     onclick={() => modals.open(modals.review)}
     onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
   >
-    <FeatherFill class="size-8"></FeatherFill>
+    <Feather class="size-8"></Feather>
     <span class="desc-sm font-serif">Write a review</span>
   </button>
 </div>

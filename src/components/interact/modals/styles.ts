@@ -14,7 +14,6 @@ export const modalStyles = cva(
       },
       overlay: {
         true: 'z-3',
-        false: '',
       },
     },
     defaultVariants: {
