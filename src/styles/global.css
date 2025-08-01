@@ -19,12 +19,12 @@
 
   .heading-3xl,
   .prose h4 {
-    @apply font-serif text-balance text-lg sm:text-xl md:text-2xl lg:text-3xl;
+    @apply font-serif text-balance text-xl sm:text-xl md:text-2xl lg:text-3xl;
   }
 
   .heading-2xl,
   .prose h5 {
-    @apply font-serif text-balance text-lg md:text-2xl;
+    @apply font-serif text-balance text-xl md:text-2xl;
   }
 
   .heading-xl,
@@ -135,10 +135,8 @@
   --text-md--line-height: 1.7;
   --text-bg: 1.65rem;
   --text-bg--line-height: 1.7;
-  --text-lg: 1.9rem;
-  --text-lg--line-height: 1.2;
-  --text-xl: 2.1rem;
-  --text-xl--line-height: 1.0;
+  --text-xl: 1.9rem;
+  --text-xl--line-height: 1.2;
   --text-2xl: 2.2rem;
   --text-2xl--line-height: 1.1;
   --text-3xl: 2.7rem;

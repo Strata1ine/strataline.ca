@@ -2,7 +2,7 @@
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
   import { inputStyles, menuStyles } from "./styles";
-  import { genUid } from "~/frontend/stores";
+  import { genUid } from "~/frontend/stores.svelte";
   import Field from "./Field.svelte";
 
   let { values, name, required } = $props();

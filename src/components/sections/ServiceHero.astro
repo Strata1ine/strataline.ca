@@ -5,6 +5,7 @@ import { imageOpts } from "~/build/images";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Home from "@decor/Home.astro";
+import FluidBox from "@decor/FluidBox.svelte";
 
 import { clsx } from "clsx";
 
@@ -27,7 +28,7 @@ const { meta, slug } = Astro.props;
     >
     </div>
 
-    <div class="">
+    <div class="flex-1">
       <Home desc="Go back" {slug} />
       <h1 class="heading-5xl mb-2 font-bold">
         {meta.title}
@@ -57,11 +58,13 @@ const { meta, slug } = Astro.props;
       <p class="desc-base">
         {meta.desc}
       </p>
+
+      <FluidBox client:load />
     </div>
 
     <div
       class={clsx(
-        "hidden h-full rounded-sm w-1/2 flex-none",
+        "hidden h-full rounded-sm flex-1",
         imageWrapperStyles({ display: "md" }),
       )}
     >

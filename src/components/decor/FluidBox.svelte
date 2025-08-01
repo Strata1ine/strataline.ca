@@ -1,68 +1,71 @@
 <script lang="ts">
-  import { modals } from "~/frontend/stores";
+  import { modals } from "~/frontend/stores.svelte";
+  import { useQueryDevice } from "~/frontend/mobile.svelte";
   import Mailbox from "~/icons/ph/mailbox-fill.svelte";
-  import { actionStyles } from "@actions/styles";
+  import { actionStyles, pillSize } from "@actions/styles";
   import { onMount } from "svelte";
 
   let sensor: HTMLElement;
-  let fixed: boolean = $state(true);
-  let tv: null | string = $state(null);
+  let above: boolean = $state(true);
+  let style: null | string = $state(null);
+  let hydrated: boolean = $state(false);
+  let transitioning: boolean = false;
+
+  const phone = useQueryDevice();
+  const inset = $derived(phone.isMobile ? 15 : 50);
 
   onMount(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const outside = !(entry.intersectionRatio < 1.0);
-        if (outside != (fixed || entry.boundingClientRect.top < 0)) {
-          fixed = outside;
+        if (outside != (above && entry.boundingClientRect.top < 0)) {
+          above = outside;
+          update();
         }
       },
       { threshold: [0, 1.0] },
     );
 
+    setTimeout(() => {
+      hydrated = true;
+    }, 20);
+
     observer.observe(sensor);
-    update();
     window.addEventListener("resize", () => update());
   });
 
-  const size = 90;
-  const inset = 20;
-
   const update = () => {
-    if (!fixed) {
+    if (!above) {
+      if (transitioning) return;
       const r = sensor.getBoundingClientRect();
-      const x = window.innerWidth - r.x;
-      const y = window.innerHeight;
-      tv = `translate: ${x - size - inset}px ${y - size - inset}px`;
+      style = `${window.innerWidth - r.x - pillSize - inset}px calc(100svh - ${pillSize + inset}px) 0 `;
     } else {
-      tv = null;
+      style = null;
     }
   };
-
-  $effect(() => {
-    fixed;
-    update();
-  });
-
-  const center =
-    "absolute transition-[opacity] will-change-[opacity] duration-800 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2";
 </script>
 
 <div class="relative mt-9 h-14 xl:h-16" bind:this={sensor}>
   <button
-    class="pointer-events-auto z-1 transform-gpu will-change-transform {fixed
-      ? `${actionStyles()} absolute inset-0 h-14 w-34 xl:h-16 xl:w-42`
-      : `${actionStyles({ variant: 'pill', background: 'accent' })} fixed top-0 w-[${size}px] h-[${size}px]`}"
-    style="{tv}; transition-property: width, height, border-radius, translate, background-color, color; transition-duration: 800ms"
+    class="z-1 {above
+      ? `${actionStyles()} absolute h-14 w-34 xl:h-16 xl:w-42`
+      : `${actionStyles({ variant: 'pill', background: 'accent' })} fixed top-0 `}"
+    class:duration-1000={hydrated}
+    style="translate: {style}; transition-property: width, height, border-radius, translate, background-color, color; will-change: width, height, border-radius, translate, background-color, color"
     onclick={() => modals.open(modals.talk)}
   >
     <div
-      class="{center} whitespace-nowrap {fixed ? 'opacity-100' : 'opacity-0'}"
+      class="absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500 {above
+        ? 'opacity-100'
+        : 'opacity-0'}"
     >
       Let's Talk
     </div>
 
     <Mailbox
-      class="{center} h-full w-full p-4 {!fixed ? 'opacity-100' : 'opacity-0'}"
-    ></Mailbox>
+      class="absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500 {above
+        ? 'opacity-0'
+        : 'opacity-100'}"
+    />
   </button>
 </div>

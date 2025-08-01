@@ -7,17 +7,15 @@
   import TextArea from "@fields/TextArea.svelte";
   import PhoneNumber from "@fields/PhoneNumber.svelte";
 
-  import { modals, genUid } from "~/frontend/stores";
+  import { modals, genUid } from "~/frontend/stores.svelte";
   import { modalStyles } from "./styles";
   import business from "@root/content/business.json";
   import { actionStyles } from "@actions/styles";
 
-  let talkUid = genUid();
-  let talkModal = $state(false);
-  let reviewUid = genUid();
-  let reviewModal = $state(false);
-  modals.idx.subscribe((v) => (talkModal = modals.talk == v));
-  modals.idx.subscribe((v) => (reviewModal = modals.review == v));
+  const talkUid = genUid();
+  let talkModal = $derived(modals.is(modals.talk));
+  const reviewUid = genUid();
+  let reviewModal = $derived(modals.is(modals.review));
 </script>
 
 <Modal
