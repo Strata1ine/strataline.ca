@@ -16,7 +16,8 @@
     dragOffset = 0,
     totalOffset = 0,
     moveDirection = -1,
-    lastFrame = 0;
+    lastFrame = 0,
+    isDragging = false;
 
   let pos = $state(0);
   let isVisible = false;
@@ -56,26 +57,28 @@
   });
 
   const onpointerdown = (e: PointerEvent) => {
-    if (e.button !== 0 || !e.isPrimary) return;
+    if (e.button !== 0 || !e.isPrimary || e.detail > 1 || isDragging) return;
     container.setPointerCapture(e.pointerId);
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
     clientY = e.clientY;
     dragOffset = pos;
     tryCancel();
+    isDragging = true;
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!container.hasPointerCapture(e.pointerId)) return;
+    if (!isDragging) return;
     totalOffset = dragOffset - (e.clientX - clientX);
     updateTranslation(totalOffset);
   };
 
   const onpointerup = (e: PointerEvent) => {
-    if (!container.hasPointerCapture(e.pointerId)) return;
+    if (!isDragging) return;
     container.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
     moveDirection = e.clientX - clientX > 0 ? -1 : 1;
+    isDragging = false;
     tryCancel();
     tryAnimate();
   };
@@ -88,6 +91,7 @@
   {onpointermove}
   {onpointerup}
   onpointercancel={onpointerup}
+  onpointerleave={onpointerup}
   role="marquee"
 >
   <div

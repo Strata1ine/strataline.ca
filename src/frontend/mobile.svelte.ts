@@ -1,6 +1,6 @@
 import { onMount } from "svelte";
 
-export const useQueryDevice = (breakpoint = 700) => {
+export const useQueryDevice = (breakpoint = 750) => {
   let isMobile = $state(true);
 
   onMount(() => {

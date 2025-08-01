@@ -8,8 +8,9 @@
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
   let container: HTMLElement;
+  let isDragging = $state(false);
   let idx = 0;
-  let clientX = 0,
+  let clientX = 0, clientY = 0,
     startPos = 0;
   let pos = $state(0);
   let lastFrame = 0;
@@ -32,12 +33,7 @@
   };
 
   const onpointerdown = (e: PointerEvent) => {
-    if (
-      e.button !== 0 ||
-      !e.isPrimary ||
-      container.hasPointerCapture(e.pointerId)
-    )
-      return;
+    if (e.button !== 0 || !e.isPrimary || e.detail > 1 || isDragging) return;
     container.setPointerCapture(e.pointerId);
 
     if (animationId) {
@@ -47,27 +43,31 @@
 
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
+    clientY = e.clientY;
     startPos = pos;
+    isDragging = true;
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!container.hasPointerCapture(e.pointerId)) return;
-    e.preventDefault();
+    if (!isDragging) return;
     pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
   };
 
   const onpointerup = (e: PointerEvent) => {
-    if (!container.hasPointerCapture(e.pointerId)) return;
+    if (!isDragging) return;
     container.releasePointerCapture(e.pointerId);
 
     const diffX = clientX - e.clientX;
+    const diffY = clientY - e.clientY;
 
-    if (Math.abs(diffX) > 30) {
+    if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
       const a = diffX / (container.offsetWidth / meta.length);
       setIdx((idx += Math.abs(a) < 1 ? Math.sign(diffX) : Math.round(a)));
     } else {
       setIdx(idx);
     }
+
+    isDragging = false;
   };
 
   let animationId: null | number = null;
