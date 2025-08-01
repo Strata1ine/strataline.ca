@@ -11,8 +11,8 @@
   let hydrated: boolean = $state(false);
   let transitioning: boolean = false;
 
-  const phone = useQueryDevice();
-  const inset = $derived(phone.isMobile ? 15 : 50);
+  const phone = useQueryDevice(1000);
+  const inset = $derived(phone.isMobile ? 10 : 50);
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -31,7 +31,10 @@
     }, 20);
 
     observer.observe(sensor);
-    window.addEventListener("resize", () => update());
+    const resizeObserver = new ResizeObserver(() => {
+      update();
+    });
+    resizeObserver.observe(document.documentElement);
   });
 
   const update = () => {
