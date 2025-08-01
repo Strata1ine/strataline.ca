@@ -16,15 +16,16 @@ export const dotStyles = cva(
 );
 
 
+export const pillSize = 90;
 export const actionStyles = cva('touch-manipulation cursor-pointer', {
   variants: {
     variant: {
-      text: 'px-6 py-4 font-serif text-md xl:text-lg font-bold leading-none rounded-md',
-      pill: 'rounded-[50%] flex size-18 sm:size-20',
+      text: 'px-6 py-4 font-serif text-md xl:text-xl font-bold leading-none rounded-md',
+      pill: `rounded-[50%] flex size-18 sm:size-20 w-[${pillSize}px] h-[${pillSize}px]`,
     },
     background: {
       fill: 'bg-accent',
-      outline: 'border-black border',
+      outline: 'border-black border bg-white',
       accent: 'bg-accent-dark text-white',
     },
     display: {

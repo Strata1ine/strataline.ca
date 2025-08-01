@@ -3,7 +3,7 @@
   import Upload from "~/icons/ph/upload-simple-fill.svelte";
   import ImagesSquare from "~/icons/ph/images-square-fill.svelte";
   import { inputStyles } from "./styles";
-  import { genUid } from "~/frontend/stores";
+  import { genUid } from "~/frontend/stores.svelte";
   let { name = "Photos", base = "None selected", required = false } = $props();
   let value = $state(base);
   let uid = genUid();

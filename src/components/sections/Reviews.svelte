@@ -1,36 +1,30 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import Stars from "@decor/Stars.svelte";
   import Feather from "~/icons/ph/feather-fill.svelte";
   import { type SubPropsOf } from "./registry";
-  import { modals } from "~/frontend/stores";
+  import { modals } from "~/frontend/stores.svelte";
+  import { useQueryDevice } from "~/frontend/mobile.svelte";
 
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
   let container: HTMLElement;
   let idx = 0;
   let clientX = 0,
-    clientY = 0,
     startPos = 0;
   let pos = $state(0);
   let lastFrame = 0;
-  let length = $state(0);
 
-  onMount(() => {
-    let mediaQuery = window.matchMedia(`(max-width: 700px)`);
+  const phone = useQueryDevice();
+  const length = $derived(meta.length - (phone.isMobile ? 0 : 1));
 
-    const resize = () => {
-      length = container.children.length - (mediaQuery.matches ? 0 : 1);
-      setIdx(idx);
-    };
-
-    resize();
-    mediaQuery.addEventListener("change", resize);
+  $effect(() => {
+    phone.isMobile;
+    setIdx(idx);
   });
 
   const setIdx = (newIdx: number) => {
     idx = Math.max(0, Math.min(newIdx, length - 1));
-    targetPos = -(idx * (100 / container.children.length));
+    targetPos = -(idx * (100 / meta.length));
 
     if (animationId) cancelAnimationFrame(animationId);
     lastFrame = performance.now();
@@ -53,16 +47,13 @@
 
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
-    clientY = e.clientY;
     startPos = pos;
   };
 
   const onpointermove = (e: PointerEvent) => {
     if (!container.hasPointerCapture(e.pointerId)) return;
     e.preventDefault();
-    if (Math.abs(clientX - e.clientX) > Math.abs(clientY - e.clientY)) {
-      pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
-    }
+    pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
   };
 
   const onpointerup = (e: PointerEvent) => {
@@ -70,9 +61,8 @@
     container.releasePointerCapture(e.pointerId);
 
     const diffX = clientX - e.clientX;
-    const diffY = clientY - e.clientY;
 
-    if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+    if (Math.abs(diffX) > 30) {
       const a = diffX / (container.offsetWidth / meta.length);
       setIdx((idx += Math.abs(a) < 1 ? Math.sign(diffX) : Math.round(a)));
     } else {
@@ -106,9 +96,10 @@
   onpointercancel={onpointerup}
 >
   <div
-    class="c flex"
+    class="flex"
     bind:this={container}
-    style="transform: translateX({pos}%); --length: {meta.length}%"
+    style="transform: translateX({pos}%); width: {meta.length *
+      (phone.isMobile ? 100 : 50)}%"
   >
     {#each meta as review}
       <div
@@ -137,7 +128,7 @@
   </div>
 
   <button
-    class="bg-accent gap-inset absolute bottom-0 left-4 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+    class="bg-accent gap-inset absolute bottom-0 left-6 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
     onclick={() => modals.open(modals.review)}
     onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
   >
@@ -146,39 +137,27 @@
   </button>
 </div>
 
-<div
-  class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint {length <=
-  1
-    ? 'hidden'
-    : ''}"
->
-  <button
-    aria-label="Review scroller"
-    class="bg-accent absolute inset-0 cursor-grab rounded-sm"
-    style="width: {100 / length}%; transform: translateX({-pos * meta.length}%)"
-    tabindex="-1"
-  ></button>
-
-  {#each Array(length) as _, i}
+{#if length > 1}
+  <div
+    class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint"
+  >
     <button
-      aria-label="View review {i}"
-      class="flex-1 cursor-pointer rounded-sm"
-      tabindex="0"
-      onclick={() => {
-        setIdx(i);
-      }}
+      aria-label="Review scroller"
+      class="bg-accent absolute inset-0 cursor-grab rounded-sm"
+      style="width: {100 / length}%; transform: translateX({-pos *
+        meta.length}%)"
+      tabindex="-1"
     ></button>
-  {/each}
-</div>
 
-<style>
-  .c {
-    width: calc(var(--length) * 100);
-  }
-
-  @media (min-width: 700px) {
-    .c {
-      width: calc(var(--length) * 50);
-    }
-  }
-</style>
+    {#each Array(length) as _, i}
+      <button
+        aria-label="View review {i}"
+        class="flex-1 cursor-pointer rounded-sm"
+        tabindex="0"
+        onclick={() => {
+          setIdx(i);
+        }}
+      ></button>
+    {/each}
+  </div>
+{/if}

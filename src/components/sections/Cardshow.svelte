@@ -12,7 +12,7 @@
   {#each meta as card, i}
     <div
       class="flex w-full flex-shrink-0 flex-col items-center justify-center px-6 py-10 transition-opacity duration-800 sm:flex-row sm:p-0
-      {spaceStyles({ gap: 'base' })}
+      {spaceStyles({ gap: 'sm' })}
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"
@@ -55,7 +55,7 @@
       </div>
 
       <div>
-        <h3 class="heading-4xl mb-1 font-semibold">{card.title}</h3>
+        <h3 class="heading-4xl mb-1">{card.title}</h3>
         <p class="desc-base">
           {card.desc}
         </p>
@@ -64,7 +64,7 @@
           <div class="mt-7">
             <a
               rel="noopener noreferrer"
-              class="{actionStyles()} bg-white"
+              class={actionStyles()}
               target="_blank"
               href={card.link.url}>{card.link.name}</a
             >
@@ -77,6 +77,6 @@
   {/each}
 </div>
 
-<div class="flex justify-center gap-2 2xl:flex-col">
+<div class="flex justify-center gap-1 2xl:flex-col">
   <Slidenav length={meta.length} bind:idx />
 </div>

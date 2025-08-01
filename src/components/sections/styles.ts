@@ -12,7 +12,7 @@ export function swapPos(pos: Pos): Pos {
 
 const spaceVariants = {
   gap: {
-    sm: 'gap-4 md:gap-6 xl:gap-8',
+    sm: 'gap-6 xl:gap-8',
     base: 'gap-6 md:gap-8 xl:gap-11',
   },
   space: {
@@ -43,11 +43,12 @@ export const containerStyles = cva(
 );
 
 export const imageStyles = cva(
-  'select-none object-cover h-full',
+  'object-cover h-full select-none',
   {
     variants: {
       anim: {
-        grow: 'transition-[width] duration-700',
+        fade: 'transition-[opacity] duration-1000 absolute inset-0',
+        // grow: 'transition-[width] duration-700',
         zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
         hover: 'transition duration-300 hover:scale-[1.05]',
       },
@@ -57,8 +58,10 @@ export const imageStyles = cva(
       },
     },
     compoundVariants: [
-      { anim: 'grow', active: true, class: 'w-full' },
-      { anim: 'grow', active: false, class: 'w-0' },
+      { anim: 'fade', active: true, class: 'opacity-100' },
+      { anim: 'fade', active: false, class: 'opacity-0' },
+      // { anim: 'grow', active: true, class: 'w-full' },
+      // { anim: 'grow', active: false, class: 'w-0' },
     ],
     defaultVariants: {
       active: false,

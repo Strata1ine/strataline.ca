@@ -1,19 +1,18 @@
 <script lang="ts">
   import Modal from "@modals/Modal.svelte";
   import Burger from "@decor/Burger.svelte";
-  import { modals, genUid } from "~/frontend/stores";
+  import { modals, genUid } from "~/frontend/stores.svelte";
 
   import { modalStyles } from "@modals/styles";
 
-  let open = $state(false);
-  modals.idx.subscribe((v) => (open = v == modals.mobile));
+  let open = $derived(modals.is(modals.mobile));
   const uid = genUid();
 
   import { type PropsOf } from "./registry";
   const { meta }: { meta: PropsOf<"Header"> } = $props();
 </script>
 
-<ul class="mt-1 hidden gap-11 md:flex">
+<ul class="mt-1 hidden gap-14 md:flex">
   {#each meta.content as item}
     <li>
       <a href="#{item.id}" class="desc-sm c relative" tabindex="0">
