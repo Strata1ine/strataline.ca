@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="px-inset relative mx-auto w-full max-w-120 rounded-sm bg-white py-12 sm:my-10 sm:px-10"
+  class="px-inset relative mx-auto w-full max-w-120 rounded-md bg-white py-12 sm:my-10 sm:px-10"
 >
   <div class="gap-inset flex items-center">
     <h2 class="flex-1 font-serif text-3xl font-bold md:text-4xl" {id}>

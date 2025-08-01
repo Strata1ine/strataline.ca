@@ -14,7 +14,7 @@
     : () => {}}
 >
   <label
-    class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-sm bg-white px-3 select-none"
+    class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 select-none"
     for={uid}
     onclick={(e) => {
       if (e.currentTarget.control instanceof HTMLButtonElement) {

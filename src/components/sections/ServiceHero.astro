@@ -23,7 +23,7 @@ const { meta, slug } = Astro.props;
     class={`${containerStyles({ width: "outer" })} gap-6 md:gap-8 xl:gap-1 flex h-full items-center sm:flex-row sm:py-0`}
   >
     <div
-      class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] rounded-bl-sm sm:left-[65vw]"
+      class="bg-accent absolute top-0 left-0 sm:left-[calc(50vw+10rem)] bottom-0 right-0 z-[-1] sm:rounded-bl-md"
     >
     </div>
 
@@ -84,6 +84,6 @@ const { meta, slug } = Astro.props;
 <div class={containerStyles({ width: "inner" })}>
   <Icon
     name="arrow"
-    class="hidden h-auto w-15 -translate-y-1/2 rotate-90 sm:block xl:w-20"
+    class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
   />
 </div>

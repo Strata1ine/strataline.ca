@@ -92,7 +92,6 @@
   --perspective-*: initial;
   --default-transition-*: initial;
   --tracking-*: initial;
-  /* --aspect-video-*: initial; */
 
   --color-error: var(--color-accent-dark);
   --color-success: #245E24;
@@ -101,7 +100,7 @@
   --color-accent: #ffebee;
   --color-accent-dark: #f26876;
   /* --color-accent-dark: #f57a98; */
-  --color-black: #000;
+  --color-black: #1c1b1b;
   --color-desc: #2b2b2b;
   --color-white: #FFFAFB;
   --color-tone: #F5F5F5;
@@ -112,7 +111,7 @@
   --font-mono: initial;
 
   --breakpoint-xs: 576px;
-  --breakpoint-sm: 700px;
+  --breakpoint-sm: 750px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1150px;
   --breakpoint-xl: 1280px;
