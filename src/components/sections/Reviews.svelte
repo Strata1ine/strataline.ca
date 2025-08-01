@@ -103,10 +103,10 @@
   >
     {#each meta as review}
       <div
-        class="border-accent relative flex-1 rounded-sm border p-7 sm:mx-2 md:p-10 lg:mx-5"
+        class="border-accent relative flex-1 rounded-md border-1 p-7 sm:mx-2 md:p-10 lg:mx-5"
       >
         <div
-          class="bg-accent absolute top-0 -translate-y-1/2 rounded-sm px-4 py-2"
+          class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
         >
           <span class="desc-sm font-semibold">
             {review.location}

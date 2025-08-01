@@ -1,7 +1,7 @@
 <script lang="ts">
   import { imageStyles, imageWrapperStyles } from "./styles";
   import Slidenav from "@actions/Slidenav.svelte";
-  import FluidBox from "@decor/FluidBox.svelte";
+  import FluidTalk from "@decor/FluidTalk.svelte";
 
   import { type PropsOf } from "./registry";
   const { meta }: { meta: PropsOf<"Hero"> } = $props();
@@ -22,11 +22,11 @@
 <div
   class="hidden w-1/2 flex-none flex-col items-center gap-2 sm:flex 2xl:flex-row-reverse 2xl:gap-4"
 >
-  <div class="flex h-[70vh] w-full max-h-165 min-h-100 rounded-sm contain-paint">
+  <div class="h-[70vh] max-h-165 min-h-100 w-full rounded-sm contain-paint">
     {@render imageCarousel()}
   </div>
 
-  <div class="flex gap-1 2xl:flex-col">
+  <div class="flex gap-2 2xl:flex-col">
     <Slidenav bind:idx length={meta.content.length}></Slidenav>
   </div>
 </div>
@@ -41,12 +41,12 @@
       class="{imageWrapperStyles({
         pos: 'left',
         size: 'mobile',
-      })} flex flex-1"
+      })} flex-1"
     >
       {@render imageCarousel()}
     </div>
 
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-2">
       <Slidenav bind:idx length={meta.content.length} />
     </div>
   </div>
@@ -55,5 +55,5 @@
     {meta.desc}
   </p>
 
-  <FluidBox></FluidBox>
+  <FluidTalk></FluidTalk>
 </div>

@@ -1,6 +1,5 @@
 <script lang="ts">
   import Slidenav from "@actions/Slidenav.svelte";
-  import { spaceStyles } from "./styles";
 
   import { type SubPropsOf } from "./registry";
   import { actionStyles } from "@actions/styles";
@@ -8,21 +7,20 @@
   let idx = $state(0);
 </script>
 
-<div class="2xl:max-w-inner bg-accent flex min-h-90 rounded-sm contain-paint">
+<div class="2xl:max-w-inner bg-accent flex rounded-sm contain-paint">
   {#each meta as card, i}
     <div
-      class="flex w-full flex-shrink-0 flex-col items-center justify-center px-6 py-10 transition-opacity duration-800 sm:flex-row sm:p-0
-      {spaceStyles({ gap: 'sm' })}
+      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"
     >
       <div
-        class="w-full flex-none rounded-sm contain-paint sm:h-full sm:w-1/2 sm:rounded-none"
+        class="relative aspect-video w-full flex-none rounded-sm contain-paint sm:h-full sm:w-1/2 sm:rounded-none"
       >
         {#if card.media.type == "image"}
           <img
-            class="h-full max-h-[min(25vh,18rem)] w-full object-cover select-none sm:max-h-[min(40vh,40rem)] sm:min-h-full"
+            class="absolute h-full w-full object-cover select-none"
             alt={card.media.alt}
             draggable={false}
             {...card.media.meta}
@@ -32,7 +30,7 @@
             poster={card.media.poster.src}
             loading="lazy"
             preload="none"
-            class="h-full w-full cursor-pointer object-cover"
+            class="absolute h-full w-full cursor-pointer object-cover"
             controls
           >
             <source src={card.media.url} />
@@ -41,20 +39,18 @@
         {:else if card.media.type == "yt-video"}
           <iframe
             loading="lazy"
-            width="720"
-            height="480"
             src={card.media.url}
             title="YouTube video player"
-            class="h-full w-full"
+            class="absolute h-full w-full select-none"
             frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>
         {/if}
       </div>
 
-      <div>
+      <div class="mt-6 sm:my-16 w-full">
         <h3 class="heading-4xl mb-1">{card.title}</h3>
         <p class="desc-base">
           {card.desc}
@@ -77,6 +73,6 @@
   {/each}
 </div>
 
-<div class="flex justify-center gap-1 2xl:flex-col">
+<div class="flex justify-center gap-2 2xl:flex-col">
   <Slidenav length={meta.length} bind:idx />
 </div>

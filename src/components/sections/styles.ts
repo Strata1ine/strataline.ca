@@ -10,23 +10,6 @@ export function swapPos(pos: Pos): Pos {
   return pos === "left" ? "right" : "left"
 }
 
-const spaceVariants = {
-  gap: {
-    sm: 'gap-6 xl:gap-8',
-    base: 'gap-6 md:gap-8 xl:gap-11',
-  },
-  space: {
-    base: 'space-y-20 sm:space-y-30',
-  },
-  padding: {
-    base: 'py-7 first:pt-0 last:pb-0',
-  }
-};
-
-export const spaceStyles = cva('', {
-  variants: spaceVariants,
-});
-
 export const containerStyles = cva(
   'md:mx-auto box-content',
   {
@@ -37,7 +20,6 @@ export const containerStyles = cva(
         display:
           'max-w-[calc(var(--spacing-outer-span)+30rem)]',
       },
-      ...spaceVariants,
     },
   },
 );
@@ -47,7 +29,7 @@ export const imageStyles = cva(
   {
     variants: {
       anim: {
-        fade: 'transition-[opacity] duration-1000 absolute inset-0',
+        fade: 'transition-[opacity] duration-1000 absolute w-full',
         // grow: 'transition-[width] duration-700',
         zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
         hover: 'transition duration-300 hover:scale-[1.05]',

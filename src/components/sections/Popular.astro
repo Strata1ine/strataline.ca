@@ -32,7 +32,7 @@ let next = swapPos(meta.pos);
 <LayoutDivider id={meta.id}>
   <LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div class={containerStyles({ width: "outer", space: "base" })}>
+  <div class=`${containerStyles({ width: "outer" })} space-y-20 sm:space-y-35`>
     {
       services.map((service, _) => {
         const slug = service.id.split("/")[0];

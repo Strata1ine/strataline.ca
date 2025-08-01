@@ -4,7 +4,6 @@ const meta = Astro.props as PropsOf<"Prices">;
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutSplit from "./layout/Split.astro";
-import { spaceStyles } from "./styles";
 
 import { marked } from "marked";
 import { Icon } from "astro-icon/components";
@@ -23,7 +22,7 @@ import { Icon } from "astro-icon/components";
         meta.content.map((price, _) => {
           return (
             <div
-              class={`border-accent border-t-1 first:border-t-0 ${spaceStyles({ padding: "base" })}`}
+              class={`border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0`}
             >
               <div class="flex w-full items-center justify-between gap-4">
                 <h3 class="heading-2xl">{price.title}</h3>

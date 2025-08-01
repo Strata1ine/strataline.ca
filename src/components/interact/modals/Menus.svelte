@@ -23,7 +23,7 @@
   uid={talkUid}
   class={modalStyles({ background: "blur", overlay: true, open: talkModal })}
 >
-  <Form name="contact" title="Let's talk" id={talkUid} class="mt-8 space-y-9">
+  <Form name="contact" title="Let's talk" id={talkUid} class="space-y-9">
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <PhoneNumber validate required></PhoneNumber>
     <Select
@@ -50,7 +50,7 @@
     name="review"
     title="Write a review"
     id={reviewUid}
-    class="mt-8 space-y-9"
+    class="space-y-8"
   >
     <Input name="Full name" required type="name" autocomplete="name" />
     <Input name="E-mail" required type="email" autocomplete="email" validate />

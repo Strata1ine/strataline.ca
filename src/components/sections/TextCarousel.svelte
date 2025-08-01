@@ -6,7 +6,7 @@
   let { meta }: { meta: PropsOf<"TextCarousel"> } = $props();
 
   // the amount of times it repeats
-  let moduloEffect = 3;
+  const moduloEffect = 3;
 
   let textCarousel: HTMLElement;
   let container: HTMLElement;
@@ -23,24 +23,23 @@
   let animationId: number | null = null;
 
   const updateTranslation = (o: number) => {
-    const w = container.scrollWidth / moduloEffect;
+    const w = textCarousel.scrollWidth / moduloEffect;
     pos = o - Math.floor(o / w) * w;
-    console.log("try update");
   };
 
   const tryAnimate = (currentTime: number = 0) => {
     if (!isVisible) return;
     totalOffset +=
       (moveDirection * meta.speed * (currentTime - lastFrame)) / 16.67;
-    updateTranslation(totalOffset);
     lastFrame = currentTime;
+
+    updateTranslation(totalOffset);
     animationId = requestAnimationFrame(tryAnimate);
   };
 
   const tryCancel = () => {
     if (animationId == null) return;
     cancelAnimationFrame(animationId);
-    console.log("cancel");
     animationId = null;
   };
 
@@ -98,7 +97,7 @@
   >
     {#each Array(moduloEffect).fill(meta.text).flat() as item}
       <h3
-        class="mx-12 shrink-0 font-serif text-xl sm:text-2xl md:mx-20 md:text-3xl lg:mx-23"
+        class="mx-12 shrink-0 font-serif text-2xl md:mx-20 md:text-3xl lg:mx-23"
       >
         {item}
       </h3>

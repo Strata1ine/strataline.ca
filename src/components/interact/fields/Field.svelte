@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="relative touch-manipulation"
+  class="relative mt-10 touch-manipulation"
   use:clickOutside={open !== undefined
     ? () => {
         open = false;
