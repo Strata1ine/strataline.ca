@@ -17,7 +17,7 @@ icons.forEach(icon => {
       const data = raw.default.replace(/<svg([^>]*)xmlns="http:\/\/www.w3.org\/2000\/svg"([^>]*)>/s, '<svg $1 $2 class={className}>')
       writeFileSync(`${path}`, `
 <script>
- const { class: className } = $props();
+ const { class: className = '' } = $props();
 </script>
 ${data}
 `)
