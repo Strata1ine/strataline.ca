@@ -96,7 +96,7 @@
     style="transform: translateX({(-pos * 100) / (power + 1)}%);"
   >
     {#each meta as review}
-      <div class="content-box w-full flex-none px-4 sm:w-1/2">
+      <div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
         <div class="border-accent h-full rounded-md border p-7 md:p-10">
           <div
             class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
@@ -122,7 +122,7 @@
   </div>
 
   <button
-    class="bg-accent gap-inset absolute bottom-0 left-6 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+    class="bg-accent gap-inset absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
     onclick={() => modals.open(modals.review)}
     onpointerdown={(e: PointerEvent): void => e.stopPropagation()}
   >
