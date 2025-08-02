@@ -8,15 +8,16 @@
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
   let container: HTMLElement;
-  let isDragging = $state(false);
+  let isDragging = false;
   let idx = 0;
-  let clientX = 0, clientY = 0,
+  let clientX = 0,
+    clientY = 0,
     startPos = 0;
   let pos = $state(0);
   let lastFrame = 0;
 
   const phone = useQueryDevice();
-  const length = $derived(meta.length - (phone.isMobile ? 0 : 1));
+  const power = $derived(phone.isMobile ? 0 : 1);
 
   $effect(() => {
     phone.isMobile;
@@ -24,9 +25,7 @@
   });
 
   const setIdx = (newIdx: number) => {
-    idx = Math.max(0, Math.min(newIdx, length - 1));
-    targetPos = -(idx * (100 / meta.length));
-
+    idx = Math.max(0, Math.min(newIdx, meta.length - power - 1));
     if (animationId) cancelAnimationFrame(animationId);
     lastFrame = performance.now();
     animationId = requestAnimationFrame(animate);
@@ -36,10 +35,8 @@
     if (e.button !== 0 || !e.isPrimary || e.detail > 1 || isDragging) return;
     container.setPointerCapture(e.pointerId);
 
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
+    if (animationId) cancelAnimationFrame(animationId);
+    animationId = null;
 
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
@@ -50,7 +47,8 @@
 
   const onpointermove = (e: PointerEvent) => {
     if (!isDragging) return;
-    pos = startPos + ((e.clientX - clientX) / container.offsetWidth) * 100;
+    pos =
+      startPos - ((e.clientX - clientX) / container.offsetWidth) * (power + 1);
   };
 
   const onpointerup = (e: PointerEvent) => {
@@ -60,9 +58,8 @@
     const diffX = clientX - e.clientX;
     const diffY = clientY - e.clientY;
 
-    if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
-      const a = diffX / (container.offsetWidth / meta.length);
-      setIdx((idx += Math.abs(a) < 1 ? Math.sign(diffX) : Math.round(a)));
+    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      setIdx(Math.sign(diffX) < 0 ? Math.floor(pos) : Math.ceil(pos));
     } else {
       setIdx(idx);
     }
@@ -71,16 +68,14 @@
   };
 
   let animationId: null | number = null;
-  let targetPos = $state(0);
 
   const animate = (currentTime: number) => {
     const dt = currentTime - lastFrame;
     lastFrame = currentTime;
 
-    const diff = targetPos - pos;
-    if (Math.abs(diff) < 0.01) {
+    const diff = idx - pos;
+    if (Math.abs(diff) < 0.001) {
       animationId = null;
-      pos = targetPos;
     } else {
       pos += diff * 0.007777 * dt;
       animationId = requestAnimationFrame(animate);
@@ -98,31 +93,30 @@
   <div
     class="flex"
     bind:this={container}
-    style="transform: translateX({pos}%); width: {meta.length *
-      (phone.isMobile ? 100 : 50)}%"
+    style="transform: translateX({(-pos * 100) / (power + 1)}%);"
   >
     {#each meta as review}
-      <div
-        class="border-accent relative flex-1 rounded-md border-1 p-7 sm:mx-2 md:p-10 lg:mx-5"
-      >
-        <div
-          class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
-        >
-          <span class="desc-sm font-semibold">
-            {review.location}
-          </span>
+      <div class="content-box w-full flex-none px-4 sm:w-1/2">
+        <div class="border-accent h-full rounded-md border p-7 md:p-10">
+          <div
+            class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
+          >
+            <span class="desc-sm font-semibold">
+              {review.location}
+            </span>
+          </div>
+
+          <h3 class="heading-2xl">{review.title}</h3>
+
+          <div
+            class="mt-3 mb-4 flex gap-1.5"
+            aria-label="{review.stars} out of 5 stars"
+          >
+            <Stars class="size-6" length={review.stars} />
+          </div>
+
+          <p class="desc-base mb-5">{@html review.desc}</p>
         </div>
-
-        <h3 class="heading-2xl">{review.title}</h3>
-
-        <div
-          class="mt-3 mb-4 flex gap-1.5"
-          aria-label="{review.stars} out of 5 stars"
-        >
-          <Stars class="size-6" length={review.stars}></Stars>
-        </div>
-
-        <p class="desc-base mb-5">{@html review.desc}</p>
       </div>
     {/each}
   </div>
@@ -137,19 +131,19 @@
   </button>
 </div>
 
-{#if length > 1}
+{#if meta.length - power > 1}
   <div
-    class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-sm contain-paint"
+    class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-md contain-paint"
   >
     <button
       aria-label="Review scroller"
-      class="bg-accent absolute inset-0 cursor-grab rounded-sm"
-      style="width: {100 / length}%; transform: translateX({-pos *
-        meta.length}%)"
+      class="bg-accent absolute inset-0 cursor-grab rounded-md"
+      style="width: {100 / (meta.length - power)}%; transform: translateX({pos *
+        100}%)"
       tabindex="-1"
     ></button>
 
-    {#each Array(length) as _, i}
+    {#each Array(meta.length - power) as _, i}
       <button
         aria-label="View review {i}"
         class="flex-1 cursor-pointer rounded-sm"

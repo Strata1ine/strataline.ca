@@ -10,6 +10,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 // https://astro.build/config
 export default defineConfig({
   build: {
+    inlineStylesheets: 'never',
     assets: '_'
   },
   prefetch: {
@@ -18,10 +19,9 @@ export default defineConfig({
   },
   devToolbar: { enabled: false },
   experimental: {
-    // csp: true,
     clientPrerender: true,
     contentIntellisense: true,
-    preserveScriptOrder: true,
+    // preserveScriptOrder: true,
     fonts: [
       {
         name: "Cormorant Garamond",

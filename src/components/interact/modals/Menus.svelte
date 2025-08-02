@@ -6,6 +6,7 @@
   import Photos from "@fields/Photos.svelte";
   import TextArea from "@fields/TextArea.svelte";
   import PhoneNumber from "@fields/PhoneNumber.svelte";
+  import StarSlider from "@fields/StarSlider.svelte";
 
   import { modals, genUid } from "~/frontend/stores.svelte";
   import { modalStyles } from "./styles";
@@ -46,12 +47,8 @@
   uid={reviewUid}
   class={modalStyles({ background: "blur", overlay: true, open: reviewModal })}
 >
-  <Form
-    name="review"
-    title="Write a review"
-    id={reviewUid}
-    class="space-y-8"
-  >
+  <Form name="review" title="Write a review" id={reviewUid} class="space-y-8">
+    <StarSlider></StarSlider>
     <Input name="Full name" required type="name" autocomplete="name" />
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <Select

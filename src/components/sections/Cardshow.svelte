@@ -7,10 +7,10 @@
   let idx = $state(0);
 </script>
 
-<div class="2xl:max-w-inner bg-accent flex rounded-sm contain-paint">
+<div class="2xl:max-w-inner bg-accent flex rounded-md contain-paint">
   {#each meta as card, i}
     <div
-      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
+      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center px-5 py-8 transition-opacity duration-800 sm:flex-row gap-6 sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"
@@ -50,7 +50,7 @@
         {/if}
       </div>
 
-      <div class="mt-6 sm:my-16 w-full">
+      <div class="w-full sm:my-10">
         <h3 class="heading-4xl mb-1">{card.title}</h3>
         <p class="desc-base">
           {card.desc}

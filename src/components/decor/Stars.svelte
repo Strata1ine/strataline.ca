@@ -1,5 +1,15 @@
 <script lang="ts">
-  let { length = $bindable(0.0), class: className } = $props();
+  import type { Snippet } from "svelte";
+
+  let {
+    length = $bindable(0.0),
+    class: className,
+    children,
+  }: {
+    length: number;
+    class?: string;
+    children?: Snippet;
+  } = $props();
   import Star from "~/icons/ph/star-fill.svelte";
 </script>
 
@@ -19,3 +29,5 @@
     </div>
   {/if}
 {/each}
+
+{@render children?.()}

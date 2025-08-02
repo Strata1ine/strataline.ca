@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority';
 export const inputStyles = cva('gap-inset flex items-center p-5 overflow-hidden');
 
 export const fieldStyles = cva(
-  'border-accent w3c-focus block border-1 select-none',
+  'border-accent w3c-focus block border select-none',
   {
     variants: {
       open: {
@@ -22,7 +22,7 @@ export const fieldStyles = cva(
 );
 
 export const menuStyles = cva(
-  'border-accent absolute z-1 top-full right-0 left-0 max-h-70 overflow-y-scroll rounded-br-lg rounded-bl-lg border-1 border-t-0 bg-white transition duration-400',
+  'border-accent absolute z-1 top-full right-0 left-0 max-h-70 overflow-y-scroll rounded-br-lg rounded-bl-lg border border-t-0 bg-white transition duration-400',
   {
     variants: {
       open: {

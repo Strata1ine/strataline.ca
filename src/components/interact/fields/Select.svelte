@@ -84,8 +84,8 @@
 <Field {uid} {name} {required} bind:open>
   <input
     tabindex="-1"
-    type="hidden"
-    value={values[selectedIdx]}
+    class="sr-only"
+    value={selectedIdx === 0 ? undefined : values[selectedIdx]}
     {name}
     {required}
   />
