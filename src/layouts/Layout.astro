@@ -1,18 +1,45 @@
 ---
 import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
+
+const { title, desc } = Astro.props;
+
+import business from "@root/content/business.json";
+import { getImage } from "astro:assets";
+
+import faviconSvgSrc from "~/icons/favicon.svg";
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
+
+import { pngIcons } from "~/pages/manifest.json.ts";
+const resolvedIcons = await pngIcons;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title slot="head">
+      {title && `${title} | `}
+      {business.name}
+    </title>
+
+    <meta name="description" content={desc} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script src="~/frontend/index.js"></script>
-    <script src="~/frontend/index.js"></script>
+
+    <link rel="stylesheet" href={global} />
     <Font cssVariable="--font-cormorant" />
     <Font cssVariable="--font-dm-sans" />
-    <link rel="stylesheet" href={global} />
+
+    <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    {
+      resolvedIcons.map((icon: any) => (
+        <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
+        <link rel="icon" type="image/png" sizes={icon.sizes} href={icon.src} />
+      ))
+    }
+
+    <script src="~/frontend/index.js"></script>
   </head>
   <body><slot /></body>
 </html>

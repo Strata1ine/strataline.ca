@@ -8,7 +8,7 @@ import { getEntry } from "~/content.config";
 const index = await getEntry("index", "index");
 ---
 
-<Layout>
+<Layout title={index.data.title} desc={index.data.desc}>
   <Content startPos="right" components={index.data.components} />
   <Menus client:idle />
   <Footer />

@@ -19,7 +19,7 @@ const service = (await getCollection("services")).find(
 )!;
 ---
 
-<Layout>
+<Layout title={service.data.title} desc={service.data.seo}>
   <ServiceHero meta={service.data} {slug} />
   <Content
     startPos={service.data.startPos ?? "right"}
