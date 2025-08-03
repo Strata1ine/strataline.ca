@@ -3,22 +3,25 @@
   import { videoPlaying, youtubeApiReady } from "~/frontend/stores.svelte";
 
   const { id }: { id: string } = $props();
-  let video: HTMLIFrameElement;
+  let video: HTMLDivElement;
 
   onMount(() => {
-    let videoSub: (() => void) | undefined;
+    let unsubVideo: (() => void) | undefined;
     let player: YT.Player;
 
-    const unsubscribe = youtubeApiReady.subscribe((ready) => {
+    const unsubPlayer = youtubeApiReady.subscribe((ready) => {
       if (ready) {
         const YT = window.YT;
         player = new YT.Player(video, {
           height: "100%",
           width: "100%",
           videoId: id,
+          playerVars: {
+            rel: 0,
+          },
           events: {
             onReady: () => {
-              videoSub = videoPlaying.subscribe((isPlaying) => {
+              unsubVideo = videoPlaying.subscribe((isPlaying) => {
                 if (
                   !isPlaying &&
                   player.getPlayerState() === YT.PlayerState.PLAYING
@@ -28,7 +31,7 @@
               });
             },
             onError: (event) => {
-              console.error("YouTube player error:", event.data);
+              console.error("YouTube player error: ", event.data);
             },
             onStateChange: (event) => {
               if (event.data === YT.PlayerState.PLAYING) {
@@ -46,8 +49,8 @@
     });
 
     return () => {
-      unsubscribe();
-      videoSub?.();
+      unsubPlayer();
+      unsubVideo?.();
       if (player && player.destroy) {
         player.destroy();
       }

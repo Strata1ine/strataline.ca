@@ -73,6 +73,14 @@ export const registry = {
     load: () => import('./TextCarousel.astro'),
   },
 
+  ImageCarousel: {
+    schema: (c: SchemaContext) => ({
+      speed: z.number().optional().default(1.0),
+      content: z.array(z.object(imageSource(c))),
+    }),
+    load: () => import('./ImageCarousel.astro'),
+  },
+
   Cardshow: {
     schema: (c: SchemaContext) => ({
       id: z.string().optional(),

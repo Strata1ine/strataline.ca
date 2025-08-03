@@ -27,6 +27,7 @@
   const setIdx = (newIdx: number) => {
     idx = Math.max(0, Math.min(newIdx, meta.length - power - 1));
     if (animationId) cancelAnimationFrame(animationId);
+
     lastFrame = performance.now();
     animationId = requestAnimationFrame(animate);
   };
@@ -97,7 +98,7 @@
   >
     {#each meta as review}
       <div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
-        <div class="border-accent h-full rounded-md border p-7 md:p-10">
+        <div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
           <div
             class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
           >
@@ -115,7 +116,7 @@
             <Stars class="size-6" length={review.stars} />
           </div>
 
-          <p class="desc-base mb-5">{@html review.desc}</p>
+          <p class="desc-base">{@html review.desc}</p>
         </div>
       </div>
     {/each}
