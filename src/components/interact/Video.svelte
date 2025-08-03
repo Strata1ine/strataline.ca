@@ -7,9 +7,7 @@
 
   onMount(() => {
     const unsub = videoPlaying.subscribe((playing) => {
-      if (playing && node.paused) {
-        node.play();
-      } else if (!playing && !node.paused) {
+      if (!playing && !node.paused) {
         node.pause();
       }
     });

@@ -8,13 +8,13 @@
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
   let container: HTMLElement;
-  let isDragging = false;
   let idx = 0;
   let clientX = 0,
     clientY = 0,
     startPos = 0;
   let pos = $state(0);
   let lastFrame = 0;
+  let pointerId: null | number = null;
 
   const phone = useQueryDevice();
   const power = $derived(phone.isMobile ? 0 : 1);
@@ -32,8 +32,9 @@
   };
 
   const onpointerdown = (e: PointerEvent) => {
-    if (e.button !== 0 || !e.isPrimary || e.detail > 1 || isDragging) return;
-    container.setPointerCapture(e.pointerId);
+    if (e.button !== 0) return;
+    pointerId = e.pointerId;
+    container.setPointerCapture(pointerId);
 
     if (animationId) cancelAnimationFrame(animationId);
     animationId = null;
@@ -42,18 +43,19 @@
     clientX = e.clientX;
     clientY = e.clientY;
     startPos = pos;
-    isDragging = true;
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!isDragging) return;
+    if (e.pointerId != pointerId) return;
+
     pos =
       startPos - ((e.clientX - clientX) / container.offsetWidth) * (power + 1);
   };
 
   const onpointerup = (e: PointerEvent) => {
-    if (!isDragging) return;
-    container.releasePointerCapture(e.pointerId);
+    if (e.pointerId != pointerId) return;
+    if (pointerId) container.releasePointerCapture(pointerId);
+    pointerId = null;
 
     const diffX = clientX - e.clientX;
     const diffY = clientY - e.clientY;
@@ -63,8 +65,6 @@
     } else {
       setIdx(idx);
     }
-
-    isDragging = false;
   };
 
   let animationId: null | number = null;

@@ -22,7 +22,7 @@ const media = (c: SchemaContext) => z.union([
   }),
   z.object({
     type: z.literal('yt-video'),
-    url: z.string(),
+    id: z.string(),
   })
 ]);
 

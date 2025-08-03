@@ -92,7 +92,7 @@ components:
           Mother-in-Law’s 1980s house needs an overhaul.
         media:
           type: yt-video
-          url: https://www.youtube.com/embed/MqmEVTErkI0?si=ostasJ1wRSWsaSSG
+          id: MqmEVTErkI0
         link:
           name: Tour the place
           url: |-

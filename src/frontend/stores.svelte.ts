@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 export const videoPlaying = writable(false);
+export const youtubeApiReady = writable(false);
 
 let counter = 0;
 export const genUid = (): string => {
