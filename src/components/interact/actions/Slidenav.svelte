@@ -1,5 +1,6 @@
 <script lang="ts">
   import { dotStyles } from "@actions/styles";
+  import { videoPlaying } from "~/frontend/stores.svelte";
 
   let {
     idx = $bindable(0),
@@ -13,7 +14,10 @@
 
 {#each Array(length) as _, i}
   <button
-    onclick={() => (idx = i)}
+    onclick={() => {
+      videoPlaying.set(false);
+      idx = i;
+    }}
     aria-label="View slide {i + 1}"
     class="cursor-pointer touch-manipulation p-2"
     tabindex="0"

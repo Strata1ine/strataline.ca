@@ -1,16 +1,31 @@
 <script lang="ts">
   import Slidenav from "@actions/Slidenav.svelte";
+  import YoutubeVideo from "@interact/YoutubeVideo.svelte";
+  import Video from "@interact/Video.svelte";
 
   import { type SubPropsOf } from "./registry";
   import { actionStyles } from "@actions/styles";
-  const { meta }: { meta: SubPropsOf<"Cardshow", "content"> } = $props();
+  import { slideshow } from "~/frontend/slideshow.svelte";
+
+  const {
+    meta,
+    speed,
+  }: { meta: SubPropsOf<"Cardshow", "content">; speed: number } = $props();
   let idx = $state(0);
 </script>
 
-<div class="2xl:max-w-inner bg-accent flex rounded-md contain-paint">
+<div
+  class="2xl:max-w-inner bg-accent flex rounded-md contain-paint"
+  use:slideshow={{
+    idx,
+    setIdx: (v) => (idx = v),
+    length: meta.length,
+    speed,
+  }}
+>
   {#each meta as card, i}
     <div
-      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center px-5 py-8 transition-opacity duration-800 sm:flex-row gap-6 sm:gap-8 sm:px-0 sm:py-0
+      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"
@@ -22,31 +37,12 @@
           <img
             class="absolute h-full w-full object-cover select-none"
             alt={card.media.alt}
-            draggable={false}
             {...card.media.meta}
           />
         {:else if card.media.type == "video"}
-          <video
-            poster={card.media.poster.src}
-            loading="lazy"
-            preload="none"
-            class="absolute h-full w-full cursor-pointer object-cover"
-            controls
-          >
-            <source src={card.media.url} />
-            Your browser does not support the video tag.
-          </video>
+          <Video poster={card.media.poster.src} url={card.media.url}></Video>
         {:else if card.media.type == "yt-video"}
-          <iframe
-            loading="lazy"
-            src={card.media.url}
-            title="YouTube video player"
-            class="absolute h-full w-full select-none"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          <YoutubeVideo url={card.media.url}></YoutubeVideo>
         {/if}
       </div>
 

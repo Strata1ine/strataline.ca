@@ -16,13 +16,11 @@ for (let image of meta.content) {
   id={meta.id}
 >
   <div
-    class="bg-accent absolute z-[-1] right-0 sm:left-0 h-full w-1/4 rounded-bl-md sm:rounded-br-md sm:block xl:w-(--right-hero-offset)"
+    class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-md sm:left-0 sm:block sm:rounded-br-md xl:w-(--right-hero-offset)"
   >
   </div>
 
-  <div
-    class={`${containerStyles({ width: "outer" })} gap-6 md:gap-8 xl:gap-11 flex w-full items-center py-20 sm:py-30`}
-  >
+  <div class={`${containerStyles({ width: "outer", center: "both" })}`}>
     <Island client:load {meta} />
   </div>
 </main>

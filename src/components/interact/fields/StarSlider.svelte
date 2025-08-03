@@ -14,7 +14,7 @@
   }
 </script>
 
-<div class="mt-4">
+<div class="mt-4 select-none">
   <input name="Stars" tabindex="-1" type="hidden" bind:value={length} />
   <div class="relative inline-flex gap-2">
     <Stars class="size-8" length={rawLength / 2}>

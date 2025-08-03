@@ -11,7 +11,7 @@ export function swapPos(pos: Pos): Pos {
 }
 
 export const containerStyles = cva(
-  'md:mx-auto box-content',
+  'w-full',
   {
     variants: {
       width: {
@@ -20,6 +20,14 @@ export const containerStyles = cva(
         display:
           'max-w-[calc(var(--spacing-outer-span)+30rem)]',
       },
+      center: {
+        x: 'md:mx-auto',
+        y: 'my-auto',
+        both: 'md:mx-auto my-auto',
+      },
+    },
+    defaultVariants: {
+      center: 'x',
     },
   },
 );

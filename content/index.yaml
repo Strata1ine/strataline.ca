@@ -20,7 +20,6 @@ components:
       Renovations designed to transform your space
     desc: |-
       We have been transforming spaces dust-free for decades.
-    speed: 3000
     content:
       - meta: ./photos/slideshow/kitchen.jpg
         alt: |-
