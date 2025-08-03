@@ -31,6 +31,9 @@
       "@decor/*": [
         "src/components/decor/*"
       ],
+      "@interact/*": [
+        "src/components/interact/*"
+      ],
       "@/*": [
         "src/components/*"
       ],

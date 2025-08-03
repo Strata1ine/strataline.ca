@@ -19,6 +19,7 @@
     "@iconify-json/twemoji": "^1.2.2",
     "@phosphor-icons/core": "^2.1.1",
     "@tailwindcss/vite": "^4.1.11",
+    "@types/youtube": "^0.1.2",
     "astro": "^5.12.8",
     "astro-compressor": "^1.1.1",
     "astro-icon": "^1.1.5",

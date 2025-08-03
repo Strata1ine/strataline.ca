@@ -98,8 +98,9 @@
   --color-url: #5A7184;
   /* --color-accent: #ffebee; */
   --color-accent: #ffebee;
-  --color-accent-dark: #f26876;
+  /* --color-accent-dark: #f26876; */
   /* --color-accent-dark: #f57a98; */
+  --color-accent-dark: #f25c7d;
   --color-black: #1c1b1b;
   --color-desc: #2b2b2b;
   --color-white: #FFFAFB;
@@ -114,8 +115,8 @@
   --breakpoint-sm: 750px;
   --breakpoint-md: 900px;
   --breakpoint-lg: 1150px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1430px;
+  --breakpoint-xl: 1320px;
+  --breakpoint-2xl: 1480px;
 
   --spacing-inset: 0.9rem;
   --spacing-inner: var(--breakpoint-xl);
@@ -146,7 +147,7 @@
   --text-4xl--line-height: 1.1;
   --text-5xl: 3.8rem;
   --text-5xl--line-height: 1.0;
-  --text-6xl: 4.4rem;
+  --text-6xl: 4.5rem;
   --text-6xl--line-height: 1.0;
 }
 

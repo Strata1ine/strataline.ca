@@ -40,6 +40,7 @@ export const registry = {
       id: z.string().optional(),
       title: z.string(),
       desc: z.string(),
+      speed: z.number().default(5.0),
       content: z.array(z.object(imageSource(c))),
     }),
     load: () => import('./Hero.astro'),
@@ -77,6 +78,7 @@ export const registry = {
       id: z.string().optional(),
       pos: DefaultPos,
       title: z.string(),
+      speed: z.number().default(5.0),
       content: z.array(
         z.object({
           title: z.string(),
