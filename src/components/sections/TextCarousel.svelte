@@ -16,12 +16,12 @@
     dragOffset = 0,
     totalOffset = 0,
     moveDirection = -1,
-    lastFrame = 0,
-    isDragging = false;
+    lastFrame = 0;
 
   let pos = $state(0);
   let isVisible = false;
   let animationId: number | null = null;
+  let pointerId: null | number = null;
 
   const updateTranslation = (o: number) => {
     const w = textCarousel.scrollWidth / moduloEffect;
@@ -57,28 +57,33 @@
   });
 
   const onpointerdown = (e: PointerEvent) => {
-    if (e.button !== 0 || !e.isPrimary || e.detail > 1 || isDragging) return;
-    container.setPointerCapture(e.pointerId);
+    if (e.button !== 0) return;
+
+    pointerId = e.pointerId;
+    container.setPointerCapture(pointerId);
+
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
     clientY = e.clientY;
     dragOffset = pos;
     tryCancel();
-    isDragging = true;
   };
 
   const onpointermove = (e: PointerEvent) => {
-    if (!isDragging) return;
+    if (e.pointerId != pointerId) return;
+
     totalOffset = dragOffset - (e.clientX - clientX);
     updateTranslation(totalOffset);
   };
 
   const onpointerup = (e: PointerEvent) => {
-    if (!isDragging) return;
+    if (e.pointerId != pointerId) return;
+    if (pointerId) container.releasePointerCapture(pointerId);
+    pointerId = null;
+
     container.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
     moveDirection = e.clientX - clientX > 0 ? -1 : 1;
-    isDragging = false;
     tryCancel();
     tryAnimate();
   };

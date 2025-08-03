@@ -42,7 +42,7 @@
         {:else if card.media.type == "video"}
           <Video poster={card.media.poster.src} url={card.media.url}></Video>
         {:else if card.media.type == "yt-video"}
-          <YoutubeVideo url={card.media.url}></YoutubeVideo>
+          <YoutubeVideo id={card.media.id}></YoutubeVideo>
         {/if}
       </div>
 
