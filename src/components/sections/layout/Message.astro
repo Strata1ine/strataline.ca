@@ -1,0 +1,12 @@
+---
+import { actionStyles } from "@actions/styles";
+
+const { title, desc } = Astro.props;
+---
+
+<div class="px-inset my-20 flex flex-col items-center justify-center">
+  <h1 class="heading-massive text-center">{title}</h1>
+  <p class="desc-base mt-2 text-center md:mt-5">{desc}</p>
+
+  <a class={`${actionStyles({})} mt-9`} href="/">Take me to the beginning</a>
+</div>

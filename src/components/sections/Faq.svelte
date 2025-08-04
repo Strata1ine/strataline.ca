@@ -36,7 +36,7 @@
       <div class="gap-inset flex items-center justify-between">
         <h3 class="heading-3xl">{faq.title}</h3>
         <div
-          class="expand relative size-6 gap-4 flex-shrink-0{i === active
+          class="expand relative size-6 gap-4 flex-none{i === active
             ? ' open'
             : ''}"
         ></div>
@@ -45,7 +45,7 @@
       {#if open}
         <div
           transition:slideWithScroll={{ duration: 350 }}
-          class="prose mt-3 max-w-[110ch] font-sans mr-4"
+          class="prose mt-3 mr-4 max-w-[110ch] font-sans"
         >
           {@html faq.desc}
         </div>

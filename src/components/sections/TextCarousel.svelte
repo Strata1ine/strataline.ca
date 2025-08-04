@@ -110,7 +110,7 @@
     moveDirection = diffX < 0 ? -1 : 1;
 
     if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-      currentVelocity *= scrollMultiplier(container) * 30;
+      currentVelocity *= scrollMultiplier(container) * 25;
       lastFrame = performance.now();
       requestAnimationFrame(animate);
     }

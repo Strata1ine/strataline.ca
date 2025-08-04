@@ -37,6 +37,13 @@
     }
   };
 
+  function reset() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
   let clientX = 0,
     clientY = 0,
     startPos = 0,
@@ -55,10 +62,7 @@
   })} cursor-grab touch-pan-y"
   onpointerdown={(e) => {
     if (e.button !== 0) return;
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
+    reset();
 
     pointerId = e.pointerId;
     e.currentTarget.setPointerCapture(pointerId);
@@ -105,9 +109,9 @@
     style="translate: {-pos}px 0 0;"
   >
     {#each Array(2) as _}
-      <div class="flex h-full flex-shrink-0">
+      <div class="flex h-full flex-none">
         {#each meta.content as image}
-          <div class="h-full flex-shrink-0">
+          <div class="h-full flex-none">
             <img
               class="{imageStyles()} mx-2 block max-w-screen rounded-sm md:mx-4"
               {...image.meta}
@@ -127,6 +131,8 @@
       variant: null,
     })} relative"
     onclick={() => {
+      reset();
+      lastFrame = performance.now();
       currentVelocity = -(scrollMultiplier(container) * 40);
       requestAnimationFrame(animate);
     }}
@@ -142,6 +148,8 @@
       variant: null,
     })} relative"
     onclick={() => {
+      reset();
+      lastFrame = performance.now();
       currentVelocity = scrollMultiplier(container) * 40;
       requestAnimationFrame(animate);
     }}

@@ -25,7 +25,7 @@
 >
   {#each meta as card, i}
     <div
-      class="sm:px-auto flex w-full flex-shrink-0 flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
+      class="sm:px-auto flex w-full flex-none flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"

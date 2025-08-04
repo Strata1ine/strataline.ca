@@ -1,0 +1,14 @@
+---
+import Message from "@sections/layout/Message.astro";
+import Services from "@sections/Services.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout>
+  <Message
+    title="404"
+    desc="Oops! The page you're looking for doesn't exist."
+  />
+
+  <Services exclude={[]} />
+</Layout>

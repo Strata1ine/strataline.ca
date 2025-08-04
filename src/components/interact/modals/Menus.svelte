@@ -24,7 +24,13 @@
   uid={talkUid}
   class={modalStyles({ background: "blur", overlay: true, open: talkModal })}
 >
-  <Form name="contact" title="Let's talk" id={talkUid} class="space-y-9">
+  <Form
+    action="/submissions/talk"
+    name="contact"
+    title="Let's talk"
+    id={talkUid}
+    class="space-y-9"
+  >
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <PhoneNumber validate required></PhoneNumber>
     <Select
@@ -47,7 +53,13 @@
   uid={reviewUid}
   class={modalStyles({ background: "blur", overlay: true, open: reviewModal })}
 >
-  <Form name="review" title="Write a review" id={reviewUid} class="space-y-8">
+  <Form
+    action="/submissions/review"
+    name="review"
+    title="Write a review"
+    id={reviewUid}
+    class="space-y-8"
+  >
     <StarSlider></StarSlider>
     <Input name="Full name" required type="name" autocomplete="name" />
     <Input name="E-mail" required type="email" autocomplete="email" validate />

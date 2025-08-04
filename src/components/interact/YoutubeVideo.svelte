@@ -58,4 +58,4 @@
   });
 </script>
 
-<div bind:this={video}></div>
+<div class="select-none" bind:this={video}></div>
