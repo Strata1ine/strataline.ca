@@ -51,7 +51,7 @@
       <div
         class="{imageWrapperStyles({
           pos: 'left',
-          size: 'mobile',
+          size: 'sm',
         })} flex-1"
       >
         {@render imageCarousel()}

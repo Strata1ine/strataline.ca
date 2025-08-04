@@ -18,12 +18,12 @@ interface Props {
 const { meta, slug } = Astro.props;
 ---
 
-<main class="relative min-h-50 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170">
+<main class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170">
   <div
     class={`${containerStyles({ width: "outer" })} gap-6 md:gap-8 xl:gap-1 flex h-full items-center sm:flex-row sm:py-0`}
   >
     <div
-      class="bg-accent absolute top-0 left-0 sm:left-[calc(50vw+10rem)] bottom-0 right-0 z-[-1] sm:rounded-bl-md"
+      class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-md"
     >
     </div>
 
@@ -36,7 +36,7 @@ const { meta, slug } = Astro.props;
       <div
         class={`${imageWrapperStyles({
           display: "sm",
-          size: "mobile",
+          size: "sm",
           pos: "right",
         })} my-4 ml-7`}
       >
@@ -82,8 +82,5 @@ const { meta, slug } = Astro.props;
 </main>
 
 <div class={containerStyles({ width: "inner" })}>
-  <Icon
-    name="arrow"
-    class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
-  />
+  <Icon name="arrow" class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20" />
 </div>

@@ -67,8 +67,8 @@ export const imageWrapperStyles = cva('contain-paint', {
     },
 
     size: {
-      desktop: 'min-h-90 h-[50vh] max-h-120 w-1/2 rounded-sm flex-none',
-      mobile: 'h-65',
+      md: 'min-h-70 h-[50vh] max-h-120 flex-none',
+      sm: 'h-65',
     },
 
     display: {
@@ -80,12 +80,12 @@ export const imageWrapperStyles = cva('contain-paint', {
   compoundVariants: [
     {
       pos: 'left',
-      size: 'mobile',
+      size: 'sm',
       className: '-ml-inset rounded-tr-sm rounded-br-sm',
     },
     {
       pos: 'right',
-      size: 'mobile',
+      size: 'sm',
       className: '-mr-inset rounded-tl-sm rounded-bl-sm',
     },
   ],

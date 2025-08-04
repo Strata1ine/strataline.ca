@@ -19,11 +19,11 @@ import { marked } from "marked";
   {
     meta.pos === "left" && (
       <div
-        class={imageWrapperStyles({
+        class={`${imageWrapperStyles({
           pos: "left",
-          size: "desktop",
+          size: "md",
           display: "md",
-        })}
+          })} w-1/2 rounded-sm`}
       >
         <slot name="image" />
       </div>
@@ -45,7 +45,7 @@ import { marked } from "marked";
         <div
           class={`${imageWrapperStyles({
             pos: "right",
-            size: "mobile",
+            size: "sm",
             display: "sm",
           })} ml-7 my-4`}
         >
@@ -59,7 +59,7 @@ import { marked } from "marked";
         <div
           class={`${imageWrapperStyles({
             pos: "left",
-            size: "mobile",
+            size: "sm",
             display: "sm",
           })} mr-7 my-4`}
         >
@@ -76,11 +76,11 @@ import { marked } from "marked";
   {
     meta.pos === "right" && (
       <div
-        class={imageWrapperStyles({
+        class=`${imageWrapperStyles({
           pos: "right",
-          size: "desktop",
+          size: "md",
           display: "md",
-        })}
+          })} w-1/2 rounded-sm`
       >
         <slot name="image" />
       </div>
