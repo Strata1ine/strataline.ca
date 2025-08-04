@@ -67,8 +67,9 @@ export const imageWrapperStyles = cva('contain-paint', {
     },
 
     size: {
-      md: 'min-h-70 h-[50vh] max-h-120 flex-none',
-      sm: 'h-65',
+      lg: 'min-h-90 h-[50vh] max-h-150 flex-none',
+      md: 'min-h-90 h-[50vh] max-h-150 flex-none',
+      sm: 'max-h-65 min-h-30',
     },
 
     display: {

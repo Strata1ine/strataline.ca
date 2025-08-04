@@ -23,7 +23,7 @@ import { marked } from "marked";
           pos: "left",
           size: "md",
           display: "md",
-          })} w-1/2 rounded-sm`}
+        })} w-1/2 rounded-sm`}
       >
         <slot name="image" />
       </div>
@@ -47,7 +47,7 @@ import { marked } from "marked";
             pos: "right",
             size: "sm",
             display: "sm",
-          })} ml-7 my-4`}
+          })} my-4 ml-7`}
         >
           <slot name="image" />
         </div>
@@ -61,7 +61,7 @@ import { marked } from "marked";
             pos: "left",
             size: "sm",
             display: "sm",
-          })} mr-7 my-4`}
+          })} my-4 mr-7`}
         >
           <slot name="image" />
         </div>
@@ -76,11 +76,11 @@ import { marked } from "marked";
   {
     meta.pos === "right" && (
       <div
-        class=`${imageWrapperStyles({
+        class={`${imageWrapperStyles({
           pos: "right",
           size: "md",
           display: "md",
-          })} w-1/2 rounded-sm`
+        })} w-1/2 rounded-sm`}
       >
         <slot name="image" />
       </div>

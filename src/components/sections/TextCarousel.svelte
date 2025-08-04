@@ -11,7 +11,7 @@
   let clientX = 0,
     clientY = 0,
     startPos = 0,
-    totalOffset = 0,
+    rawPos = 0,
     moveDirection = -1,
     lastFrame = 0;
 
@@ -20,32 +20,42 @@
   let animationId: number | null = null;
   let pointerId: null | number = null;
 
+  let currentVelocity = 0;
+  let prevX = 0;
+
   const updateTranslation = (o: number) => {
     const w = textCarousel.children[0].scrollWidth;
     pos = o - Math.floor(o / w) * w;
   };
 
-  const tryAnimate = (currentTime: number = 0) => {
-    if (!isVisible) return;
-    totalOffset +=
-      (moveDirection * meta.speed * (currentTime - lastFrame)) / 16.67;
-    lastFrame = currentTime;
-
-    updateTranslation(totalOffset);
-    animationId = requestAnimationFrame(tryAnimate);
+  const scrollMultiplier = (e: HTMLElement) => {
+    return window.innerWidth / e.getBoundingClientRect().width;
   };
 
-  const tryCancel = () => {
-    if (animationId == null) return;
-    cancelAnimationFrame(animationId);
-    animationId = null;
+  const animate = (currentTime: number = 0) => {
+    if (!isVisible) return;
+    const friction = 0.9;
+    const dt = currentTime - lastFrame;
+    lastFrame = currentTime;
+
+    const movement = currentVelocity * (dt / 16);
+    rawPos += moveDirection * meta.speed * dt + movement;
+    currentVelocity *= Math.pow(friction, dt / 16);
+
+    updateTranslation(rawPos);
+    animationId = requestAnimationFrame(animate);
   };
 
   onMount(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting != isVisible) {
         isVisible = entry.isIntersecting;
-        tryAnimate();
+        if (isVisible) {
+          requestAnimationFrame(animate);
+        } else if (animationId != null) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
       }
     });
 
@@ -63,27 +73,47 @@
     pointerId = e.pointerId;
     e.currentTarget.setPointerCapture(pointerId);
 
+    if (animationId != null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
     clientY = e.clientY;
+
+    currentVelocity = 0;
     startPos = pos;
-    tryCancel();
   }}
   onpointermove={(e) => {
     if (e.pointerId != pointerId) return;
 
-    totalOffset = startPos - (e.clientX - clientX);
-    updateTranslation(totalOffset);
+    rawPos = startPos - (e.clientX - clientX);
+    updateTranslation(rawPos);
+
+    const now = performance.now();
+    const dt = now - lastFrame;
+    if (dt > 0) {
+      currentVelocity = (prevX - e.clientX) / dt;
+    }
+
+    lastFrame = now;
+    prevX = e.clientX;
   }}
   onpointerup={(e) => {
     if (e.pointerId != pointerId) return;
     if (pointerId) e.currentTarget.releasePointerCapture(pointerId);
     pointerId = null;
 
-    lastFrame = performance.now();
-    moveDirection = e.clientX - clientX > 0 ? -1 : 1;
-    tryCancel();
-    tryAnimate();
+    const diffX = clientX - e.clientX;
+    const diffY = clientY - e.clientY;
+    moveDirection = diffX < 0 ? -1 : 1;
+
+    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      currentVelocity *= scrollMultiplier(container) * 30;
+      lastFrame = performance.now();
+      requestAnimationFrame(animate);
+    }
   }}
   role="marquee"
 >
