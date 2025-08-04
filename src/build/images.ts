@@ -3,11 +3,10 @@ import type { ImageMetadata } from 'astro';
 import { type SchemaContext, z } from 'astro:content';
 
 export const imageOpts = {
-  sizes: "100vw",
   format: "avif",
   draggable: false,
-  width: 2160,
   widths: [500, 750, 1300, 2160],
+  quality: 50,
 }
 
 export type OptimizedImage = {
@@ -39,8 +38,6 @@ export async function optimizeImage(image: ImageMetadata): Promise<OptimizedImag
     src: opt.src,
     format: "avif",
     srcset: opt.srcSet.attribute,
-    width: opt.attributes.width,
-    height: opt.attributes.height,
     sizes: opt.attributes.sizes,
     loading: (opt.attributes.loading) ? opt.attributes.loading : "lazy",
     draggable: false,

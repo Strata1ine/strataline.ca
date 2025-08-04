@@ -6,7 +6,7 @@ export const DefaultPos = ZPos.default("left");
 export type Pos = z.infer<typeof ZPos>;
 
 const textCarousel = ({
-  speed: z.number().optional().default(1.0),
+  speed: z.number().optional().default(0.1),
   text: z.array(z.string()),
 });
 

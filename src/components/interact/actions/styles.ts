@@ -17,7 +17,7 @@ export const dotStyles = cva(
 
 
 export const pillSize = 90;
-export const actionStyles = cva('touch-manipulation cursor-pointer', {
+export const actionStyles = cva('touch-manipulation cursor-pointer select-none', {
   variants: {
     variant: {
       text: 'px-6 py-4 font-serif text-md xl:text-xl font-bold leading-none rounded-md',

@@ -15,22 +15,20 @@
 
   let lastFrame = 0;
   let currentVelocity = 0;
-  const friction = 0.905;
+  let prevX = 0;
 
   const scrollMultiplier = (e: HTMLElement) => {
     return window.innerWidth / e.getBoundingClientRect().width;
   };
 
   const animate = (currentTime: number = 0) => {
+    const friction = 0.9;
     const dt = currentTime - lastFrame;
     lastFrame = currentTime;
 
     if (Math.abs(currentVelocity) > 0.1) {
-      const movement =
-        Math.sign(currentVelocity) *
-        Math.min(Math.abs(currentVelocity), 90) *
-        (dt / 16);
-      pos -= movement;
+      const movement = currentVelocity * (dt / 16);
+      pos += movement;
       updateTranslation(pos);
       currentVelocity *= Math.pow(friction, dt / 16);
       animationId = requestAnimationFrame(animate);
@@ -42,7 +40,7 @@
   let clientX = 0,
     clientY = 0,
     startPos = 0,
-    totalOffset = 0;
+    rawPos = 0;
 
   const updateTranslation = (o: number) => {
     const w = imageCarousel.children[0].scrollWidth;
@@ -53,7 +51,7 @@
 <div
   bind:this={container}
   class="{imageWrapperStyles({
-    size: 'md',
+    size: 'lg',
   })} cursor-grab touch-pan-y"
   onpointerdown={(e) => {
     if (e.button !== 0) return;
@@ -74,8 +72,17 @@
   onpointermove={(e) => {
     if (e.pointerId != pointerId) return;
 
-    totalOffset = startPos - (e.clientX - clientX);
-    updateTranslation(totalOffset);
+    rawPos = startPos - (e.clientX - clientX);
+    updateTranslation(rawPos);
+
+    const now = performance.now();
+    const dt = now - lastFrame;
+    if (dt > 0) {
+      currentVelocity = (prevX - e.clientX) / dt;
+    }
+
+    lastFrame = now;
+    prevX = e.clientX;
   }}
   onpointerup={(e) => {
     if (e.pointerId != pointerId) return;
@@ -86,15 +93,7 @@
     const diffY = clientY - e.clientY;
 
     if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-      const deltaX = e.clientX - clientX;
-      const now = performance.now();
-      const dt = now - lastFrame;
-
-      if (dt > 0) {
-        currentVelocity = (deltaX / dt) * (scrollMultiplier(container) * 40);
-        lastFrame = now;
-      }
-
+      currentVelocity *= scrollMultiplier(container) * 30;
       lastFrame = performance.now();
       requestAnimationFrame(animate);
     }
@@ -105,12 +104,12 @@
     class="flex h-full will-change-transform"
     style="translate: {-pos}px 0 0;"
   >
-    {#each Array(3) as _}
-      <div class="flex h-full flex-none">
+    {#each Array(2) as _}
+      <div class="flex h-full flex-shrink-0">
         {#each meta.content as image}
-          <div class="h-full flex-none">
+          <div class="h-full flex-shrink-0">
             <img
-              class="{imageStyles()} mx-2 block max-w-screen rounded-sm sm:mx-4 md:mx-6"
+              class="{imageStyles()} mx-2 block max-w-screen rounded-sm md:mx-4"
               {...image.meta}
               alt={image.alt}
             />
@@ -128,12 +127,13 @@
       variant: null,
     })} relative"
     onclick={() => {
-      currentVelocity = scrollMultiplier(container) * 40;
+      currentVelocity = -(scrollMultiplier(container) * 40);
       requestAnimationFrame(animate);
     }}
+    tabindex="0"
   >
     <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
-    <CaretCircleLeftFill class="text-tone size-17 sm:size-20" />
+    <CaretCircleLeftFill class="text-tone size-20" />
   </button>
 
   <button
@@ -142,11 +142,12 @@
       variant: null,
     })} relative"
     onclick={() => {
-      currentVelocity = -(scrollMultiplier(container) * 40);
+      currentVelocity = scrollMultiplier(container) * 40;
       requestAnimationFrame(animate);
     }}
+    tabindex="0"
   >
     <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
-    <CaretCircleLeftFill class="text-tone size-17 rotate-180 sm:size-20" />
+    <CaretCircleLeftFill class="text-tone size-20 rotate-180" />
   </button>
 </div>
