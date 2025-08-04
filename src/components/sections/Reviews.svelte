@@ -7,7 +7,6 @@
 
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 
-  let container: HTMLElement;
   let idx = 0;
   let clientX = 0,
     clientY = 0,
@@ -32,42 +31,6 @@
     animationId = requestAnimationFrame(animate);
   };
 
-  const onpointerdown = (e: PointerEvent) => {
-    if (e.button !== 0) return;
-    pointerId = e.pointerId;
-    container.setPointerCapture(pointerId);
-
-    if (animationId) cancelAnimationFrame(animationId);
-    animationId = null;
-
-    window.getSelection()?.removeAllRanges();
-    clientX = e.clientX;
-    clientY = e.clientY;
-    startPos = pos;
-  };
-
-  const onpointermove = (e: PointerEvent) => {
-    if (e.pointerId != pointerId) return;
-
-    pos =
-      startPos - ((e.clientX - clientX) / container.offsetWidth) * (power + 1);
-  };
-
-  const onpointerup = (e: PointerEvent) => {
-    if (e.pointerId != pointerId) return;
-    if (pointerId) container.releasePointerCapture(pointerId);
-    pointerId = null;
-
-    const diffX = clientX - e.clientX;
-    const diffY = clientY - e.clientY;
-
-    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-      setIdx(Math.sign(diffX) < 0 ? Math.floor(pos) : Math.ceil(pos));
-    } else {
-      setIdx(idx);
-    }
-  };
-
   let animationId: null | number = null;
 
   const animate = (currentTime: number) => {
@@ -82,19 +45,52 @@
       animationId = requestAnimationFrame(animate);
     }
   };
+
+  function onpointerdown(
+    e: PointerEvent & {
+      currentTarget: EventTarget & (HTMLButtonElement | HTMLDivElement);
+    },
+  ) {
+    if (e.button !== 0) return;
+    pointerId = e.pointerId;
+    e.currentTarget.setPointerCapture(pointerId);
+    if (animationId) cancelAnimationFrame(animationId);
+    animationId = null;
+    window.getSelection()?.removeAllRanges();
+    clientX = e.clientX;
+    clientY = e.clientY;
+    startPos = pos;
+  }
 </script>
 
 <div
   class="relative my-7 cursor-grab touch-pan-y"
   {onpointerdown}
-  {onpointermove}
-  {onpointerup}
-  onpointercancel={onpointerup}
+  onpointermove={(e) => {
+    if (e.pointerId != pointerId) return;
+
+    pos =
+      startPos -
+      ((e.clientX - clientX) / e.currentTarget.offsetWidth) * (power + 1);
+  }}
+  onpointerup={(e) => {
+    if (e.pointerId != pointerId) return;
+    if (pointerId) e.currentTarget.releasePointerCapture(pointerId);
+    pointerId = null;
+
+    const diffX = clientX - e.clientX;
+    const diffY = clientY - e.clientY;
+
+    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      setIdx(Math.sign(diffX) < 0 ? Math.floor(pos) : Math.ceil(pos));
+    } else {
+      setIdx(idx);
+    }
+  }}
 >
   <div
-    class="flex"
-    bind:this={container}
-    style="transform: translateX({(-pos * 100) / (power + 1)}%);"
+    class="flex will-change-transform"
+    style="translate: {(-pos * 100) / (power + 1)}% 0 0"
   >
     {#each meta as review}
       <div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
@@ -134,14 +130,28 @@
 
 {#if meta.length - power > 1}
   <div
-    class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-md contain-paint"
+    class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 rounded-md contain-paint touch-pan-y"
   >
     <button
       aria-label="Review scroller"
       class="bg-accent absolute inset-0 cursor-grab rounded-md"
-      style="width: {100 / (meta.length - power)}%; transform: translateX({pos *
-        100}%)"
+      style="width: {100 / (meta.length - power)}%; translate: {pos * 100}% 0 0"
       tabindex="-1"
+      {onpointerdown}
+      onpointermove={(e) => {
+        if (e.pointerId != pointerId) return;
+        pos = startPos + (e.clientX - clientX) / e.currentTarget.offsetWidth;
+      }}
+      onpointerup={(e) => {
+        if (e.pointerId != pointerId) return;
+
+        e.currentTarget.releasePointerCapture(pointerId);
+        pointerId = null;
+
+        setIdx(
+          Math.sign(clientX - e.clientX) > 0 ? Math.floor(pos) : Math.ceil(pos),
+        );
+      }}
     ></button>
 
     {#each Array(meta.length - power) as _, i}

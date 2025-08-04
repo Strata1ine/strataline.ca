@@ -1,6 +1,6 @@
 <script lang="ts">
   import { actionStyles } from "@actions/styles";
-  import { containerStyles, imageStyles } from "./styles";
+  import { containerStyles, imageStyles, imageWrapperStyles } from "./styles";
   import CaretCircleLeftFill from "~/icons/ph/caret-circle-left-fill.svelte";
 
   import { type PropsOf } from "./registry";
@@ -11,14 +11,14 @@
   let imageCarousel: HTMLElement;
   let pos = $state(0);
   let pointerId: null | number = null;
-  let animationId: number | null = null;
+  let animationId: null | number = null;
 
   let lastFrame = 0;
   let currentVelocity = 0;
-  const friction = 0.92;
+  const friction = 0.905;
 
-  const scrollMultiplier = () => {
-    return window.innerWidth / container.getBoundingClientRect().width;
+  const scrollMultiplier = (e: HTMLElement) => {
+    return window.innerWidth / e.getBoundingClientRect().width;
   };
 
   const animate = (currentTime: number = 0) => {
@@ -48,36 +48,14 @@
     const w = imageCarousel.children[0].scrollWidth;
     pos = o - Math.floor(o / w) * w;
   };
-
-  const onpointerup = (e: PointerEvent) => {
-    if (e.pointerId != pointerId) return;
-    if (pointerId) imageCarousel.releasePointerCapture(pointerId);
-    imageCarousel.releasePointerCapture(e.pointerId);
-    pointerId = null;
-
-    const diffX = clientX - e.clientX;
-    const diffY = clientY - e.clientY;
-
-    const deltaX = e.clientX - clientX;
-    const now = performance.now();
-    const dt = now - lastFrame;
-
-    if (dt > 0) {
-      currentVelocity = (deltaX / dt) * (scrollMultiplier() * 40);
-      lastFrame = now;
-    }
-
-    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-      lastFrame = performance.now();
-      requestAnimationFrame(animate);
-    }
-  };
 </script>
 
 <div
   bind:this={container}
-  class="h-100 cursor-grab touch-pan-y contain-paint sm:h-140"
-  onpointerdown={(e: PointerEvent) => {
+  class="{imageWrapperStyles({
+    size: 'md',
+  })} cursor-grab touch-pan-y"
+  onpointerdown={(e) => {
     if (e.button !== 0) return;
     if (animationId) {
       cancelAnimationFrame(animationId);
@@ -85,7 +63,7 @@
     }
 
     pointerId = e.pointerId;
-    imageCarousel.setPointerCapture(pointerId);
+    e.currentTarget.setPointerCapture(pointerId);
     currentVelocity = 0;
 
     window.getSelection()?.removeAllRanges();
@@ -93,19 +71,38 @@
     clientY = e.clientY;
     startPos = pos;
   }}
-  onpointermove={(e: PointerEvent) => {
+  onpointermove={(e) => {
     if (e.pointerId != pointerId) return;
 
-    const deltaX = e.clientX - clientX;
-    totalOffset = startPos - deltaX;
+    totalOffset = startPos - (e.clientX - clientX);
     updateTranslation(totalOffset);
   }}
-  {onpointerup}
-  onpointercancel={onpointerup}
+  onpointerup={(e) => {
+    if (e.pointerId != pointerId) return;
+    e.currentTarget.releasePointerCapture(pointerId);
+    pointerId = null;
+
+    const diffX = clientX - e.clientX;
+    const diffY = clientY - e.clientY;
+
+    if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      const deltaX = e.clientX - clientX;
+      const now = performance.now();
+      const dt = now - lastFrame;
+
+      if (dt > 0) {
+        currentVelocity = (deltaX / dt) * (scrollMultiplier(container) * 40);
+        lastFrame = now;
+      }
+
+      lastFrame = performance.now();
+      requestAnimationFrame(animate);
+    }
+  }}
 >
   <div
     bind:this={imageCarousel}
-    class="flex h-full will-change-transform sm:justify-center"
+    class="flex h-full will-change-transform"
     style="translate: {-pos}px 0 0;"
   >
     {#each Array(3) as _}
@@ -131,13 +128,12 @@
       variant: null,
     })} relative"
     onclick={() => {
-      currentVelocity = scrollMultiplier() * 40;
+      currentVelocity = scrollMultiplier(container) * 40;
       requestAnimationFrame(animate);
     }}
   >
-    <div class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></div>
-    <CaretCircleLeftFill class="text-tone size-17 sm:size-20"
-    ></CaretCircleLeftFill>
+    <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
+    <CaretCircleLeftFill class="text-tone size-17 sm:size-20" />
   </button>
 
   <button
@@ -146,12 +142,11 @@
       variant: null,
     })} relative"
     onclick={() => {
-      currentVelocity = -(scrollMultiplier() * 40);
+      currentVelocity = -(scrollMultiplier(container) * 40);
       requestAnimationFrame(animate);
     }}
   >
-    <div class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></div>
-    <CaretCircleLeftFill class="text-tone size-17 rotate-180 sm:size-20"
-    ></CaretCircleLeftFill>
+    <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
+    <CaretCircleLeftFill class="text-tone size-17 rotate-180 sm:size-20" />
   </button>
 </div>

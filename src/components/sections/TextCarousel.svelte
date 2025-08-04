@@ -52,56 +52,48 @@
     observer.observe(container);
     return () => observer.disconnect();
   });
+</script>
 
-  const onpointerdown = (e: PointerEvent) => {
+<div
+  class="border-accent py-inset touch-pan-y border-y-1 contain-paint"
+  bind:this={container}
+  onpointerdown={(e) => {
     if (e.button !== 0) return;
 
     pointerId = e.pointerId;
-    container.setPointerCapture(pointerId);
+    e.currentTarget.setPointerCapture(pointerId);
 
     window.getSelection()?.removeAllRanges();
     clientX = e.clientX;
     clientY = e.clientY;
     startPos = pos;
     tryCancel();
-  };
-
-  const onpointermove = (e: PointerEvent) => {
+  }}
+  onpointermove={(e) => {
     if (e.pointerId != pointerId) return;
 
     totalOffset = startPos - (e.clientX - clientX);
     updateTranslation(totalOffset);
-  };
-
-  const onpointerup = (e: PointerEvent) => {
+  }}
+  onpointerup={(e) => {
     if (e.pointerId != pointerId) return;
-    if (pointerId) container.releasePointerCapture(pointerId);
+    if (pointerId) e.currentTarget.releasePointerCapture(pointerId);
     pointerId = null;
 
-    container.releasePointerCapture(e.pointerId);
     lastFrame = performance.now();
     moveDirection = e.clientX - clientX > 0 ? -1 : 1;
     tryCancel();
     tryAnimate();
-  };
-</script>
-
-<div
-  class="border-accent py-inset touch-pan-y border-y-1 contain-paint"
-  bind:this={container}
-  {onpointerdown}
-  {onpointermove}
-  {onpointerup}
-  onpointercancel={onpointerup}
+  }}
   role="marquee"
 >
   <div
     bind:this={textCarousel}
-    style="transform: translateX(-{pos}px)"
-    class="flex h-20 items-center will-change-transform select-none md:h-25"
+    style="translate: {-pos}px 0 0"
+    class="flex h-20 will-change-transform select-none md:h-25"
   >
     {#each Array(3) as _}
-      <div class="flex flex-none">
+      <div class="flex flex-none items-center">
         {#each meta.text as item}
           <h3
             class="mx-12 flex-none font-serif text-2xl md:mx-20 md:text-3xl lg:mx-23"
