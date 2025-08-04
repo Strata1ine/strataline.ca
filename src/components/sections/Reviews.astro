@@ -8,8 +8,11 @@ import Island from "./Reviews.svelte";
 import { type PropsOf } from "./registry";
 const meta = Astro.props as PropsOf<"Reviews">;
 
-for (const review of meta.content) {
+const id = crypto.randomUUID();
+for (const [i, review] of meta.content.entries()) {
   review.desc = marked.parseInline(review.desc) as string;
+  review.id = `${id}-${i}`;
+  Astro.locals.reviewData.push(review);
 }
 ---
 

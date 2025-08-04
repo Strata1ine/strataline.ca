@@ -3,12 +3,35 @@ import Layout from "~/layouts/Layout.astro";
 import Content from "~/build/Content.astro";
 import Menus from "@modals/Menus.svelte";
 import Footer from "@sections/Footer.astro";
-import { getEntry } from "~/content.config";
+import { getEntry, getCollection } from "~/content.config";
 
 const index = await getEntry("index", "index");
 ---
 
-<Layout title={index.data.title} desc={index.data.desc}>
+<Layout
+  title={index.data.title}
+  desc={index.data.desc}
+  schemas={{
+    "@type": "OfferCatalog",
+    "@context": "https://schema.org",
+    "@id": `${Astro.url.origin}#offers`,
+    itemListElement: (await getCollection("services")).map((service) => ({
+      "@type": "Offer",
+      "@id": `${Astro.url.origin}${service.id.split("/")[0]}#offer`,
+      itemOffered: {
+        "@type": "Service",
+        name: service.data.title,
+        serviceType: "Home Renovation",
+        description: service.data.desc,
+        image: service.data.covers.map((cover) => ({
+          "@type": "ImageObject",
+          url: `${Astro.url.origin}${cover.meta.src}`,
+          description: cover.alt || service.data.title,
+        })),
+      },
+    })),
+  }}
+>
   <Content startPos="right" components={index.data.components} />
   <Menus client:idle />
   <Footer />

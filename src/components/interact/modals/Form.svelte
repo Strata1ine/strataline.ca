@@ -2,7 +2,7 @@
   import X from "~/icons/ph/x-bold.svelte";
   import { modals } from "~/frontend/stores.svelte";
 
-  let { title, id, class: className, action = "/index", children, name } = $props();
+  let { title, id, class: className, action = "/", children, name } = $props();
 </script>
 
 <div
