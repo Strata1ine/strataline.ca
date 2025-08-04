@@ -19,7 +19,26 @@ const service = (await getCollection("services")).find(
 )!;
 ---
 
-<Layout title={service.data.title} desc={service.data.seo}>
+<Layout
+  title={service.data.title}
+  desc={service.data.seo}
+  schemas={{
+    "@type": "Service",
+    "@id": `${Astro.url.origin}${Astro.url.pathname}#service`,
+    serviceType: "Home Renovation",
+    name: service.data.title,
+    description: service.data.desc,
+    image: service.data.covers.map((cover) => ({
+      "@type": "ImageObject",
+      url: `${Astro.url.origin}${cover.meta.src}`,
+      description: cover.alt,
+    })),
+    offers: {
+      "@type": "Offer",
+      "@id": `${Astro.url.origin}${Astro.url.pathname}#offer`,
+    },
+  }}
+>
   <ServiceHero meta={service.data} {slug} />
   <Content
     startPos={service.data.startPos ?? "right"}

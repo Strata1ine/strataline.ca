@@ -2,7 +2,10 @@
 import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
 
-const { title, desc } = Astro.props;
+const { title, desc, schemas: extraSchema = [] } = Astro.props;
+const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
+
+const document = await Astro.slots.render("default");
 
 import business from "@root/content/business.json";
 import { getImage } from "astro:assets";
@@ -12,15 +15,95 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 
 import { pngIcons } from "~/pages/manifest.json.ts";
 const resolvedIcons = await pngIcons;
+
+const schema = {
+  "@type": "GeneralContractor",
+  "@id": `${Astro.url.origin}#company`,
+  "@context": "https://schema.org",
+  url: `${Astro.url.origin}${Astro.url.pathname}`,
+  ...(Astro.locals.reviewData &&
+    Astro.locals.reviewData.length > 0 && {
+      review: Astro.locals.reviewData.map((review) => ({
+        "@type": "Review",
+        "@id": `${Astro.url.origin}${Astro.url.pathname}#${review.id ?? crypto.randomUUID()}`,
+        author: {
+          "@type": "Person",
+          name: review.title,
+        },
+        itemReviewed: {
+          "@type": "GeneralContractor",
+          "@id": `${Astro.url.origin}#company`,
+        },
+        contentLocation: {
+          "@type": "Place",
+          name: review.location,
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: review.stars,
+          bestRating: 5,
+        },
+        reviewBody: review.desc,
+        ...(review.date && { datePublished: review.date.toISOString() }),
+        ...(review.url && {
+          associatedMedia: {
+            "@type": "MediaObject",
+            contentUrl: review.url,
+          },
+        }),
+      })),
+    }),
+  ...business,
+};
+
+if (Astro.locals.faqData.length > 0) {
+  extraSchemas.push({
+    "@type": "FAQPage",
+    "@id": `${Astro.url.origin}${Astro.url.pathname}#faq`,
+    mainEntity: Astro.locals.faqData.map((faq) => ({
+      "@type": "Question",
+      name: faq.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.desc,
+      },
+    })),
+    provider: {
+      type: "GeneralContractor",
+      "@id": `${Astro.url.origin}#company`,
+    },
+  });
+}
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title slot="head">
-      {title && `${title} | `}
-      {business.name}
+      {title ? `${title} | ${business.name}` : business.name}
     </title>
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
+
+    {
+      extraSchemas.map((schema) => (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            ...schema,
+            provider: {
+              "@type": "GeneralContractor",
+              "@id": `${Astro.url.origin}#company`,
+            },
+          })}
+        />
+      ))
+    }
 
     <meta name="description" content={desc} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,12 +117,21 @@ const resolvedIcons = await pngIcons;
     <link rel="manifest" href="/manifest.json" />
     {
       resolvedIcons.map((icon: any) => (
-        <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
-        <link rel="icon" type="image/png" sizes={icon.sizes} href={icon.src} />
+        <>
+          <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes={icon.sizes}
+            href={icon.src}
+          />
+        </>
       ))
     }
 
     <script src="~/frontend/index.ts"></script>
   </head>
-  <body><slot /></body>
+  <body>
+    <Fragment set:html={document} />
+  </body>
 </html>

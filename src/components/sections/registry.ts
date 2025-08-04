@@ -112,6 +112,8 @@ export const registry = {
         z.object({
           title: z.string(),
           desc: z.string(),
+          date: z.date().optional(),
+          url: z.string().optional(),
           location: z.string(),
           stars: z.number(),
           id: z.string().optional(),
