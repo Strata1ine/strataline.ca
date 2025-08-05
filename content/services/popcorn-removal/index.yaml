@@ -52,16 +52,6 @@ sections:
         alt: |-
           A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
 
-  - type: Reviews
-    title: What our customers have to say
-    id: reviews
-    content:
-      - title: "Olivia"
-        location: "Toronto"
-        stars: 5
-        desc: |-
-          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!_
-
   - type: Faq
     title: Have any questions?
     content:
@@ -74,6 +64,16 @@ sections:
       - title: Can I do it myself?
         desc: |-
           While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
+
+  - type: Reviews
+    title: What our customers have to say
+    id: reviews
+    content:
+      - title: "Olivia"
+        location: "Toronto"
+        stars: 5
+        desc: |-
+          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!_
 
   - type: Services
     exclude:

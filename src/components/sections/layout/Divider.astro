@@ -1,12 +1,24 @@
 ---
 interface Props {
   id?: string;
-  role?: string;
 }
 
-const { id, role } = Astro.props;
+const { id } = Astro.props;
+
+import { cva } from "class-variance-authority";
+export const divisionStyle = cva("", {
+  variants: {
+    spacing: {
+      top: "mt-28 xl:mt-38",
+      both: "my-28 xl:my-38 last-of-type:mb-0",
+    },
+  },
+  defaultVariants: {
+    spacing: "both",
+  },
+});
 ---
 
-<section class="my-28 xl:my-33" {id} {role}>
+<section class={divisionStyle({ spacing: "both" })} {id}>
   <slot />
 </section>
