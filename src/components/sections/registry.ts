@@ -1,6 +1,6 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
-import type { ComponentData } from '~/build/components';
+import type { ComponentData } from './components';
 
 export const ZPos = z.union([z.literal('left'), z.literal('right')]);
 export const DefaultPos = ZPos.default("left");
@@ -213,7 +213,7 @@ export type SubPropsOf<
   K extends keyof PropsOf<T>,
 > = PropsOf<T>[K];
 
-export function queryComponentsByType<T extends Id>(
+export function queryComponents<T extends Id>(
   components: ComponentData[] | undefined | never[],
   componentType: T
 ): (PropsOf<T> & { type: T; _componentIdx: number })[] {

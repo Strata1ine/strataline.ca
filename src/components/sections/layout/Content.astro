@@ -1,9 +1,9 @@
 ---
-import { type SchemaRegistry, componentRegistry } from "~/build/components";
-import { type Pos, swapPos } from "@sections/styles";
+import { type ComponentData, componentRegistry } from "../components";
+import { type Pos, swapPos } from "../styles";
 
 type Props = {
-  components?: SchemaRegistry;
+  components?: ComponentData[];
   startPos: Pos;
 };
 

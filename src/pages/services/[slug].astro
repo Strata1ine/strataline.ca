@@ -4,8 +4,8 @@ import ServiceHero from "@sections/ServiceHero.astro";
 import Menus from "@modals/Menus.svelte";
 
 import { getCollection } from "~/content.config";
-import Content from "~/build/Content.astro";
 import Footer from "@sections/Footer.astro";
+import { serviceSchema } from "~/build/service";
 
 export async function getStaticPaths() {
   return (await getCollection("services")).map((service: any) => ({
@@ -23,23 +23,9 @@ const service = (await getCollection("services")).find(
   title={service.data.title}
   desc={service.data.seo}
   components={service.data.components}
-  schemas={{
-    "@type": "Service",
-    serviceType: "Home Renovation",
-    name: service.data.title,
-    description: service.data.desc,
-    image: service.data.covers.map((cover) => ({
-      "@type": "ImageObject",
-      url: `${Astro.url.origin}${cover.meta.src}`,
-      description: cover.alt,
-    })),
-    offers: {
-      "@type": "Offer",
-      "@id": `${Astro.url.origin}${Astro.url.pathname}#offer`,
-    },
-  }}
+  schemas={serviceSchema(Astro, service)}
 >
-  <ServiceHero slot="before" meta={service.data} {slug} />
+  <ServiceHero slot="before" meta={service} {slug} />
   <Footer />
   <Menus client:idle />
 </Layout>
