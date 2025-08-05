@@ -6,7 +6,6 @@ import business from "@root/content/business.json";
 export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"services">) => {
   const reviews = querySections(service.data.sections, "Reviews");
   const prices = querySections(service.data.sections, "Prices");
-  const s = querySections(service.data.sections, "wasd");
 
   return {
     "@type": "Product",

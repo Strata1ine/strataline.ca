@@ -15,10 +15,10 @@ for (let image of meta.content) {
   class="relative flex min-h-[clamp(10rem,100svh,50rem)] overflow-x-clip sm:min-h-[clamp(10rem,100svh,90rem)]"
   id={meta.id}
 >
-  <div
-    class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-md sm:left-0 sm:block sm:rounded-br-md xl:w-(--right-hero-offset)"
+  <span
+    class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
   >
-  </div>
+  </span>
 
   <div class={`${containerStyles({ width: "outer", center: "both" })}`}>
     <Island client:load {meta} />

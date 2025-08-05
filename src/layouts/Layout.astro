@@ -42,6 +42,10 @@ const schema = {
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname}`,
   ...business,
+  sameAs: [
+    ...(business.sameAs || []),
+    ...business.socials.map((social) => social.url),
+  ],
   ...(reviews.length > 0 && {
     review: reviews.flatMap((review) =>
       review.content.map((content) => ({

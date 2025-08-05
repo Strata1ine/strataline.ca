@@ -100,7 +100,7 @@
 
   --color-error: var(--color-accent-dark);
   --color-success: #245E24;
-  --color-url: #5A7184;
+  --color-url: #6351e8;
   /* --color-accent: #ffebee; */
   --color-accent: #ffebee;
   /* --color-accent-dark: #f26876; */
@@ -132,7 +132,8 @@
 
   --radius-sm: 7px;
   --radius-md: 9px;
-  --radius-lg: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
 
   --text-sm: 1.1rem;
   --text-sm--line-height: 1.7;

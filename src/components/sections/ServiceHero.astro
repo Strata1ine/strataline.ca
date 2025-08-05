@@ -22,10 +22,10 @@ const { meta, slug } = Astro.props;
   <div
     class={`${containerStyles({ width: "outer" })} gap-6 md:gap-8 xl:gap-1 flex h-full items-center sm:flex-row sm:py-0`}
   >
-    <div
-      class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-md"
+    <span
+      class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
     >
-    </div>
+    </span>
 
     <div class="flex-1">
       <Home desc="Go back" {slug} />
