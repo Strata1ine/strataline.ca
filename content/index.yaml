@@ -3,7 +3,7 @@ desc: "Transform your home with dust-free, quality renovations. Trusted experts 
 popular:
   - popcorn-removal
   - stairs
-components:
+sections:
   - type: Header
     content:
       - id: "popular"

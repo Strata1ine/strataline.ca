@@ -9,7 +9,7 @@ covers:
     alt: |-
       A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
 
-components:
+sections:
   - type: ZigZag
     title: What you shouldn't live without
     content:

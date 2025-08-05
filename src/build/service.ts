@@ -1,11 +1,12 @@
 import type { AstroGlobal } from "astro";
 import type { CollectionEntry } from "~/content.config";
-import { queryComponents } from "@sections/registry";
+import { querySections } from "@sections/registry";
 import business from "@root/content/business.json";
 
 export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"services">) => {
-  const reviews = queryComponents(service.data.components, "Reviews");
-  const prices = queryComponents(service.data.components, "Prices");
+  const reviews = querySections(service.data.sections, "Reviews");
+  const prices = querySections(service.data.sections, "Prices");
+  const s = querySections(service.data.sections, "wasd");
 
   return {
     "@type": "Product",
@@ -13,7 +14,7 @@ export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"serv
     description: service.data.desc,
     url: `${Astro.url.origin}/services/${service.id.split("/")[0]}`,
     brand: {
-      "@type": business["@type"],
+      "@type": "LocalBusiness",
       "@id": `${Astro.url.origin}#company`,
     },
     ...(reviews.length > 0 && {
