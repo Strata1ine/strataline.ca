@@ -1,6 +1,5 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
-import type { ComponentData } from './components';
 
 export const ZPos = z.union([z.literal('left'), z.literal('right')]);
 export const DefaultPos = ZPos.default("left");
@@ -213,15 +212,50 @@ export type SubPropsOf<
   K extends keyof PropsOf<T>,
 > = PropsOf<T>[K];
 
-export function queryComponents<T extends Id>(
-  components: ComponentData[] | undefined | never[],
-  componentType: T
-): (PropsOf<T> & { type: T; _componentIdx: number })[] {
-  if (!components || components.length === 0) {
+export function querySections<T extends Id>(
+  sections: SectionMeta[] | undefined | never[],
+  sectionType: T
+): (PropsOf<T> & SectionMeta)[] {
+  if (!sections || sections.length === 0) {
     return [];
   }
-  return components
-    .filter((component): component is ComponentData & { type: T } =>
-      component.type === componentType
-    ) as (PropsOf<T> & { type: T; _componentIdx: number })[];
+  return sections
+    .filter((section): section is SectionMeta =>
+      section.type === sectionType
+    ) as (PropsOf<T> & SectionMeta)[];
+}
+
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+export const sectionRegistry: Record<string, SchemaComponent> = {};
+
+export type SchemaComponent = {
+  id: string,
+  schema: (c: SchemaContext) => z.ZodRawShape;
+  load: () => Promise<{ default: AstroComponentFactory }>;
+};
+
+export type SectionMeta = z.infer<ReturnType<typeof parseRegistry>>[number];
+export function parseRegistry(c: SchemaContext) {
+  const schemas = Object.values(sectionRegistry).map((item, i) =>
+    z.object({
+      type: z.literal(item.id),
+      _sectionIdx: z.number().default(i),
+      ...item.schema(c),
+    }),
+  );
+
+  if (schemas.length === 0) {
+    console.warn("componentRegistry is empty");
+    return z.preprocess(() => [], z.array(z.never()));
+  }
+
+  const [first, ...rest] = schemas;
+  return z.array(z.discriminatedUnion('type', [first, ...rest]));
+}
+
+// init's the registry
+for (const [id, { schema, load }] of Object.entries(registry)) {
+  console.log(`Section '${id}' flushed`);
+  sectionRegistry[id] = { id, schema, load };
 }

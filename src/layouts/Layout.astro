@@ -6,7 +6,7 @@ import Content from "@sections/layout/Content.astro";
 interface Props {
   title: string;
   desc: string;
-  components?: ComponentData[];
+  sections?: SectionMeta[];
   startPos?: Pos;
   schemas: any[] | any;
 }
@@ -15,7 +15,7 @@ const {
   title,
   desc,
   startPos,
-  components,
+  sections,
   schemas: extraSchema = [],
 } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
@@ -30,12 +30,12 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 
 import { pngIcons } from "~/pages/manifest.json.ts";
 import type { Pos } from "@sections/styles";
-import type { ComponentData } from "@sections/components";
-import { queryComponents } from "@sections/registry";
+import type { SectionMeta } from "@sections/registry";
+import { querySections } from "@sections/registry";
 const resolvedIcons = await pngIcons;
 
-const reviews = queryComponents(components, "Reviews");
-const faq = queryComponents(components, "Faq");
+const reviews = querySections(sections, "Reviews");
+const faq = querySections(sections, "Faq");
 
 const schema = {
   "@id": `${Astro.url.origin}#company`,
@@ -170,7 +170,7 @@ if (faq.length > 0) {
   </head>
   <body>
     <slot name="before" />
-    <Content startPos={startPos ?? "right"} {components} />
+    <Content startPos={startPos ?? "right"} {sections} />
     <slot />
   </body>
 </html>

@@ -1,29 +1,29 @@
 ---
-import { type ComponentData, componentRegistry } from "../components";
+import { type SectionMeta, sectionRegistry } from "../registry";
 import { type Pos, swapPos } from "../styles";
 
 type Props = {
-  components?: ComponentData[];
+  sections?: SectionMeta[];
   startPos: Pos;
 };
 
-let { components, startPos } = Astro.props;
+let { sections, startPos } = Astro.props;
 let pos: Pos = swapPos(startPos);
 
-const builtComponents =
-  components != null
+const builtSections =
+  sections != null
     ? await Promise.all(
-        components.map(async (props) => {
-          let component = await componentRegistry[props.type]?.load();
+        sections.map(async (props) => {
+          let section = await sectionRegistry[props.type]?.load();
 
-          if (component == null) {
+          if (section == null) {
             console.warn(
               `Component: ${props.type} couldn't load. This is likely a bug from cache`,
             );
             return;
           }
 
-          if (!component.default) {
+          if (!section.default) {
             console.log(
               `Failed to render: ${props.type}. There is likely a syntax error that is not being reported.`,
             );
@@ -31,7 +31,7 @@ const builtComponents =
           }
 
           return {
-            component,
+            component: section,
             props,
           };
         }),
@@ -40,7 +40,7 @@ const builtComponents =
 ---
 
 {
-  builtComponents.map((data) => {
+  builtSections.map((data) => {
     if (!data) return null;
 
     if ("pos" in data.props) {

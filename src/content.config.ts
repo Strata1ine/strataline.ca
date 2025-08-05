@@ -5,10 +5,8 @@ import {
 
 import { glob } from 'astro/loaders';
 
-import { ZPos, registry } from "@sections/registry";
-import { updateComponentRegistry, parseRegistry } from "@sections/components";
+import { ZPos, parseRegistry } from "@sections/registry";
 import { imageSource } from '~/build/images';
-updateComponentRegistry(registry);
 
 export const collections = {
   index: defineCollection({
@@ -18,7 +16,7 @@ export const collections = {
         title: z.string(),
         desc: z.string(),
         popular: z.array(z.string()),
-        components: parseRegistry(c),
+        sections: parseRegistry(c),
       });
     },
   }),
@@ -31,7 +29,7 @@ export const collections = {
       seo: z.string(),
       covers: z.array(z.object(imageSource(c))),
       draft: z.boolean().optional(),
-      components: parseRegistry(c).optional(),
+      sections: parseRegistry(c).optional(),
     }),
   }),
 };

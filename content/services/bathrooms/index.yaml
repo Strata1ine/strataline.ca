@@ -9,7 +9,7 @@ covers:
     alt: |-
       A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.
 
-components:
+sections:
   - type: ZigZag
     title: There's no price
     content:
