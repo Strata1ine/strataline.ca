@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.4.2",
     "@astrojs/svelte": "^7.1.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/ph": "^1.2.2",

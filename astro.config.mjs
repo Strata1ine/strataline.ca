@@ -6,6 +6,7 @@ import svelte from "@astrojs/svelte";
 import compressor from "astro-compressor";
 import icon from "astro-icon";
 import { visualizer } from "rollup-plugin-visualizer";
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,11 +49,11 @@ export default defineConfig({
       sourcemap: true,
     },
     plugins: [
-      visualizer({
-        emitFile: true,
-        filename: "stats.html",
-        sourcemap: true,
-      }),
+      // visualizer({
+      //   emitFile: true,
+      //   filename: "stats.html",
+      //   sourcemap: true,
+      // }),
       tailwindcss(),
     ],
   },
@@ -63,6 +64,7 @@ export default defineConfig({
   },
   integrations: [
     svelte(),
+    sitemap({}),
     compressor(),
     icon({
       include: {

@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 import ServiceHero from "@sections/ServiceHero.astro";
 import Menus from "@modals/Menus.svelte";
+import Talk from "@decor/Talk.svelte";
 
 import { getCollection } from "~/content.config";
 import Footer from "@sections/Footer.astro";
@@ -26,6 +27,7 @@ const service = (await getCollection("services")).find(
   startPos={service.data.startPos ?? "right"}
   schemas={serviceSchema(Astro, service)}
 >
+  <Talk slot="before" client:load />
   <ServiceHero slot="before" meta={service} {slug} />
   <Footer />
   <Menus client:idle />
