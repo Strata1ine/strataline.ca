@@ -1,7 +1,7 @@
 <script lang="ts">
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
-  import { inputStyles, menuStyles } from "./styles";
+  import { inputStyles, menuButton, menuStyles } from "./styles";
   import { genUid } from "~/frontend/stores.svelte";
   import Field from "./Field.svelte";
 
@@ -129,11 +129,11 @@
   </button>
 
   <div
-    class="{menuStyles({ open })} select-none"
+    class="{menuStyles({ open })} max-h-70 overflow-y-scroll"
     role="listbox"
     bind:this={select}
     id={selectUid}
-    aria-activedescendant="{selectUid}-{selectedIdx}"
+    aria-activedescendant="{selectUid}-{hoverIdx}"
     tabindex="-1"
     onmouseleave={() => {
       hoverIdx = -1;
@@ -147,10 +147,7 @@
         type="button"
         aria-selected={selectedIdx == i}
         tabindex="-1"
-        class="block w-full cursor-pointer px-5 py-2{hoverIdx == i ||
-        selectedIdx == i
-          ? ' bg-tone'
-          : ''}"
+        class={menuButton({ hover: hoverIdx == i || selectedIdx == i })}
         onclick={(_) => {
           if (selectedIdx != i) {
             prevIdx = selectedIdx;

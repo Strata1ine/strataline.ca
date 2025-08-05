@@ -4,12 +4,30 @@ import business from "@root/content/business.json";
 
 import { Icon } from "astro-icon/components";
 import Search from "@actions/Search.svelte";
+import type { VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+import { divisionStyle } from "./layout/Divider.astro";
+
+interface Props {
+  spacing?: VariantProps<typeof divisionStyle>["spacing"];
+}
+
+const { spacing = "top" } = Astro.props;
 ---
 
 <footer
-  class="relative z-2 bg-gradient-to-b from-transparent via-white/90 py-10 to-white border-t-1 border-accent"
+  class={twMerge(
+    divisionStyle({ spacing }),
+    "relative z-2 bg-gradient-to-b from-transparent via-white/90 to-white",
+  )}
 >
-  <div class={containerStyles({ width: "inner" })}>
+  <div
+    class={twMerge(
+      containerStyles({ width: "inner" }),
+      "py-12",
+      spacing != null && "border-t-1 border-accent",
+    )}
+  >
     <div
       class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
     >
@@ -27,21 +45,25 @@ import Search from "@actions/Search.svelte";
                   is:inline
                   style={`color: #${social.color}`}
                   name={`${social.icon}`}
-                  class="size-15 xl:size-19"
+                  class="size-15 md:size-19"
                 />
               </a>
             </li>
           ))
         }
       </ul>
-      <Search placeholder="Find your municipality" client:visible />
+      <Search
+        values={business.areaServed}
+        placeholder="Find your municipality"
+        client:visible
+      />
     </div>
 
     <div
       class="sm:gap-inset mt-15 flex flex-col items-center gap-1 text-center sm:flex-row"
     >
       <span class="desc-sm"
-        ><b>© Strataline. 2025.</b> All rights reserved</span
+        ><b>© Strataline. 2025</b> All rights reserved.</span
       >
 
       <ul class="flex gap-6 sm:ml-auto sm:gap-12">

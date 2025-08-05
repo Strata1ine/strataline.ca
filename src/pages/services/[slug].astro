@@ -23,6 +23,7 @@ const service = (await getCollection("services")).find(
   title={service.data.title}
   desc={service.data.seo}
   sections={service.data.sections}
+  startPos={service.data.startPos ?? "right"}
   schemas={serviceSchema(Astro, service)}
 >
   <ServiceHero slot="before" meta={service} {slug} />

@@ -15,15 +15,6 @@
       class="desc-sm w-full resize-none focus:outline-none"
       style="height: {height}px"
       bind:this={textarea}
-      onkeydown={(e) => {
-        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-          e.preventDefault();
-          height = Math.max(
-            minheight,
-            height + (e.key === "ArrowDown" ? 20 : -20),
-          );
-        }
-      }}
       id={uid}
       {name}
       {required}
