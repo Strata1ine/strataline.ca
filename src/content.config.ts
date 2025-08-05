@@ -48,7 +48,7 @@ export const getEntry = async <T extends Id>(
 
 export const getCollection = async <T extends Id>(
   collection: T,
-  filter?: (entry: _CollectionEntry<T>) => boolean
+  filter?: (entry: CollectionEntry<T>) => boolean
 ) => {
   const entries = await _getCollection(
     collection,

@@ -4,11 +4,33 @@
   "legalName": "Dust Free Popcorn Removal & Stair Refinishing by Strataline Inc.",
   "alternateName": "Strataline Inc",
   "description": "With over 15 years of experience, we specialize in dust-free renovations, setting a new industry standard with our ultra-clean approach. We excel in dustless popcorn ceiling removal and stair sanding, ensuring every project is completed in a spotless environment. Our meticulous attention to detail eliminates costly rework, enhances the finished product's quality, and accelerates project completion—all while ensuring your complete satisfaction. Our expertise shines in kitchen and bathroom remodeling, where we deliver stunning transformations with unmatched cleanliness and precision. We also offer a range of exterior renovation services, including door and window replacements, as well as brick and concrete cutting. Our interior renovation services cover electrical work, plumbing, flooring, painting, wall repairs, wallpaper removal, floor refinishing, and tile installation. We specialize in custom finishes such as crown molding, wainscoting, coffered ceilings, custom inlay medallions, and stone fireplace surrounds. Our dedication to customer service and quality control is second to none—we don’t just promise excellence, we deliver it.",
+  "socials": [
+    {
+      "color": "000000",
+      "icon": "ph:tiktok-logo-fill",
+      "name": "tiktok social icon",
+      "url": "https://www.tiktok.com/@stratalineinc"
+    },
+    {
+      "color": "e1306c",
+      "icon": "ph:instagram-logo-fill",
+      "name": "instagram social icon",
+      "url": "https://www.instagram.com/strataline.ca"
+    },
+    {
+      "color": "4267b2",
+      "icon": "ph:facebook-logo-fill",
+      "name": "facebook social icon",
+      "url": "https://www.facebook.com/stratalineinc"
+    },
+    {
+      "color": "000000",
+      "icon": "ph:x-logo-fill",
+      "name": "x social icon",
+      "url": "https://www.facebook.com/stratalineinc"
+    }
+  ],
   "sameAs": [
-    "https://www.tiktok.com/@stratalineinc",
-    "https://x.com/Strataline_Inc",
-    "https://www.instagram.com/strataline.ca",
-    "https://www.facebook.com/stratalineinc",
     "https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html",
     "https://houseandhome.com/gallery/luxe-for-less-design/",
     "https://www.houzz.com/professionals/specialty-contractors/strataline-inc-pfvwus-pf~849729290",

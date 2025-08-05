@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import Caret from "~/icons/ph/caret-down-bold.svelte";
   import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
   import { inputStyles, menuStyles } from "./styles";
   import { genUid } from "~/frontend/stores.svelte";
   import Field from "./Field.svelte";
 
-  let { values, name, required } = $props();
+  const { values, name, required } = $props();
   let prevIdx = $state(0);
   let selectedIdx = $state(0);
   let hoverIdx = $state(0);
@@ -14,9 +14,9 @@
 
   let uid = genUid();
   let selectUid = genUid();
-  let select;
+  let select: HTMLDivElement;
 
-  const onkeydown = (event) => {
+  const onkeydown = (event: KeyboardEvent) => {
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
