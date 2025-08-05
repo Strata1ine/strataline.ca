@@ -53,8 +53,8 @@ components:
     title: What's the cost?
     content:
       - title: Basic
-        min: "$5,000"
-        max: "$15,000"
+        min: 5000
+        max: 15000
         materials:
           - Basic tiles
           - Laminate countertops
@@ -63,8 +63,8 @@ components:
           Cosmetic updates like painting, new fixtures, and minor changes such as replacing the toilet or sink.
 
       - title: Mid-range
-        min: "$15,000"
-        max: "$30,000"
+        min: 15000
+        max: 30000
         materials:
           - Premium tiles
           - Granite or quartz countertops
@@ -73,8 +73,8 @@ components:
           Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
 
       - title: High-end
-        min: "$30,000"
-        max: "$60,000+"
+        min: 30000
+        max: 60000
         materials:
           - High-end stone or marble tiles
           - Custom cabinetry

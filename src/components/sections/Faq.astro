@@ -10,7 +10,6 @@ import { marked } from "marked";
 
 for (const faq of meta.content) {
   faq.desc = marked.parse(faq.desc) as string;
-  Astro.locals.faqData.push(faq);
 }
 ---
 

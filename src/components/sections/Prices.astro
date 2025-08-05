@@ -27,9 +27,13 @@ import { Icon } from "astro-icon/components";
               <div class="flex w-full items-center justify-between gap-4">
                 <h3 class="heading-2xl">{price.title}</h3>
                 <div class="flex items-center gap-3">
-                  <span class="desc-base text-success">{price.min}</span>
+                  <span class="desc-base text-success">
+                    ${price.min.toLocaleString()}
+                  </span>
                   <span class="">-</span>
-                  <span class="desc-base text-success">{price.max}</span>
+                  <span class="desc-base text-success">
+                    ${price.max.toLocaleString()}
+                  </span>
                 </div>
               </div>
 

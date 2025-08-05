@@ -1,5 +1,6 @@
 import { imageSource } from '~/build/images';
 import { type SchemaContext, z } from 'astro:content';
+import type { ComponentData } from '~/build/components';
 
 export const ZPos = z.union([z.literal('left'), z.literal('right')]);
 export const DefaultPos = ZPos.default("left");
@@ -192,8 +193,8 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          min: z.string(),
-          max: z.string(),
+          min: z.number().min(0),
+          max: z.number().min(0),
           materials: z.array(z.string()),
           desc: z.string(),
         })
@@ -211,3 +212,16 @@ export type SubPropsOf<
   T extends Id,
   K extends keyof PropsOf<T>,
 > = PropsOf<T>[K];
+
+export function queryComponentsByType<T extends Id>(
+  components: ComponentData[] | undefined | never[],
+  componentType: T
+): (PropsOf<T> & { type: T; _componentIdx: number })[] {
+  if (!components || components.length === 0) {
+    return [];
+  }
+  return components
+    .filter((component): component is ComponentData & { type: T } =>
+      component.type === componentType
+    ) as (PropsOf<T> & { type: T; _componentIdx: number })[];
+}

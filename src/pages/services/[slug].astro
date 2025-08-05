@@ -22,6 +22,7 @@ const service = (await getCollection("services")).find(
 <Layout
   title={service.data.title}
   desc={service.data.seo}
+  components={service.data.components}
   schemas={{
     "@type": "Service",
     serviceType: "Home Renovation",
@@ -38,11 +39,7 @@ const service = (await getCollection("services")).find(
     },
   }}
 >
-  <ServiceHero meta={service.data} {slug} />
-  <Content
-    startPos={service.data.startPos ?? "right"}
-    components={service.data.components}
-  />
+  <ServiceHero slot="before" meta={service.data} {slug} />
   <Footer />
   <Menus client:idle />
 </Layout>

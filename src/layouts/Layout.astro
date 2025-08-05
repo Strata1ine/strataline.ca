@@ -1,22 +1,37 @@
 ---
 import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
+import Content from "~/build/Content.astro";
 
-const { title, desc, schemas: extraSchema = [] } = Astro.props;
+interface Props {
+  title: string;
+  desc: string;
+  components?: ComponentData[];
+  startPos?: Pos;
+  schemas: any[] | any;
+}
+
+const { title, desc, startPos, components, schemas: extraSchema = [] } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
 
 import { stripHtml } from "string-strip-html";
-
-const document = await Astro.slots.render("default");
+import { marked } from "marked";
+import { getImage } from "astro:assets";
 
 import business from "@root/content/business.json";
-import { getImage } from "astro:assets";
 
 import faviconSvgSrc from "~/icons/favicon.svg";
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 
 import { pngIcons } from "~/pages/manifest.json.ts";
+import type { ComponentData } from "~/build/components";
+import type { Pos } from "@sections/styles";
+import { queryComponentsByType } from "@sections/registry";
 const resolvedIcons = await pngIcons;
+
+const prices = queryComponentsByType(components, "Prices");
+const reviews = queryComponentsByType(components, "Reviews");
+const faq = queryComponentsByType(components, "Faq");
 
 const schema = {
   "@type": "GeneralContractor",
@@ -24,13 +39,13 @@ const schema = {
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname}`,
   ...business,
-  ...(Astro.locals.reviewData &&
-    Astro.locals.reviewData.length > 0 && {
-      review: Astro.locals.reviewData.map((review) => ({
+  ...(reviews.length > 0 && {
+    review: reviews.flatMap((review) =>
+      review.content.map((content) => ({
         "@type": "Review",
         author: {
           "@type": "Person",
-          name: review.title,
+          name: content.title,
         },
         itemReviewed: {
           "@type": "GeneralContractor",
@@ -38,55 +53,58 @@ const schema = {
         },
         contentLocation: {
           "@type": "Place",
-          name: review.location,
+          name: content.location,
         },
         reviewRating: {
           "@type": "Rating",
-          ratingValue: review.stars,
+          ratingValue: content.stars,
           bestRating: 5,
         },
-        reviewBody: review.desc,
-        ...(review.date && { datePublished: review.date.toISOString() }),
-        ...(review.url && {
+        reviewBody: marked(content.desc) as string,
+        ...(content.date && { datePublished: content.date.toISOString() }),
+        ...(content.url && {
           associatedMedia: {
             "@type": "MediaObject",
-            contentUrl: review.url,
+            associatedArticle: content.url,
           },
         }),
       })),
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: parseFloat(
-          (
-            Astro.locals.reviewData.reduce(
-              (total, review) => total + review.stars,
-              0,
-            ) / Astro.locals.reviewData.length
-          ).toFixed(1),
-        ),
-        reviewCount: Astro.locals.reviewData.length,
-        bestRating: 5,
-        worstRating: 0,
-        itemReviewed: {
-          "@type": "GeneralContractor",
-          "@id": `${Astro.url.origin}#company`,
-        },
+    ),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: parseFloat(
+        (
+          reviews
+            .flatMap((review) => review.content)
+            .reduce((total, content) => total + content.stars, 0) /
+          reviews.flatMap((review) => review.content).length
+        ).toFixed(1),
+      ),
+      reviewCount: reviews.length,
+      bestRating: 5,
+      worstRating: 0,
+      itemReviewed: {
+        "@type": "GeneralContractor",
+        "@id": `${Astro.url.origin}#company`,
       },
-    }),
+    },
+  }),
 };
 
-if (Astro.locals.faqData.length > 0) {
+if (faq.length > 0) {
   extraSchemas.push({
     "@type": "FAQPage",
     "@context": "https://schema.org",
-    mainEntity: Astro.locals.faqData.map((faq) => ({
-      "@type": "Question",
-      name: faq.title,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: stripHtml(faq.desc).result,
-      },
-    })),
+    mainEntity: faq.flatMap((faq) =>
+      faq.content.map((content) => ({
+        "@type": "Question",
+        name: content.title,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: stripHtml(marked(content.desc) as string).result,
+        },
+      })),
+    ),
     provider: {
       type: "GeneralContractor",
       "@id": `${Astro.url.origin}#company`,
@@ -151,6 +169,8 @@ if (Astro.locals.faqData.length > 0) {
     <script src="~/frontend/index.ts"></script>
   </head>
   <body>
-    <Fragment set:html={document} />
+    <slot name="before" />
+    <Content startPos={startPos ?? "right"} {components} />
+    <slot />
   </body>
 </html>
