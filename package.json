@@ -32,6 +32,7 @@
     "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.89.2",
     "sharp-ico": "^0.1.5",
+    "string-strip-html": "^13.4.13",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"

@@ -93,10 +93,7 @@
     style="translate: {(-pos * 100) / (power + 1)}% 0 0"
   >
     {#each meta as review}
-      <div
-        class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4"
-        id={review.id}
-      >
+      <div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
         <div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
           <div
             class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2"
