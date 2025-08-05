@@ -28,7 +28,6 @@ export function parseRegistry(c: SchemaContext) {
   return z.array(z.discriminatedUnion('type', [first, ...rest]));
 }
 
-export type SchemaRegistry = z.infer<ReturnType<typeof parseRegistry>>;
 
 export type ComponentRegistry = Record<
   string,

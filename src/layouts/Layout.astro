@@ -1,7 +1,7 @@
 ---
 import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
-import Content from "~/build/Content.astro";
+import Content from "@sections/layout/Content.astro";
 
 interface Props {
   title: string;
@@ -11,10 +11,15 @@ interface Props {
   schemas: any[] | any;
 }
 
-const { title, desc, startPos, components, schemas: extraSchema = [] } = Astro.props;
+const {
+  title,
+  desc,
+  startPos,
+  components,
+  schemas: extraSchema = [],
+} = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
 
-import { stripHtml } from "string-strip-html";
 import { marked } from "marked";
 import { getImage } from "astro:assets";
 
@@ -24,17 +29,15 @@ import faviconSvgSrc from "~/icons/favicon.svg";
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 
 import { pngIcons } from "~/pages/manifest.json.ts";
-import type { ComponentData } from "~/build/components";
 import type { Pos } from "@sections/styles";
-import { queryComponentsByType } from "@sections/registry";
+import type { ComponentData } from "@sections/components";
+import { queryComponents } from "@sections/registry";
 const resolvedIcons = await pngIcons;
 
-const prices = queryComponentsByType(components, "Prices");
-const reviews = queryComponentsByType(components, "Reviews");
-const faq = queryComponentsByType(components, "Faq");
+const reviews = queryComponents(components, "Reviews");
+const faq = queryComponents(components, "Faq");
 
 const schema = {
-  "@type": "GeneralContractor",
   "@id": `${Astro.url.origin}#company`,
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname}`,
@@ -48,7 +51,7 @@ const schema = {
           name: content.title,
         },
         itemReviewed: {
-          "@type": "GeneralContractor",
+          "@type": business["@type"],
           "@id": `${Astro.url.origin}#company`,
         },
         contentLocation: {
@@ -60,7 +63,7 @@ const schema = {
           ratingValue: content.stars,
           bestRating: 5,
         },
-        reviewBody: marked(content.desc) as string,
+        reviewBody: marked.parseInline(content.desc) as string,
         ...(content.date && { datePublished: content.date.toISOString() }),
         ...(content.url && {
           associatedMedia: {
@@ -84,7 +87,7 @@ const schema = {
       bestRating: 5,
       worstRating: 0,
       itemReviewed: {
-        "@type": "GeneralContractor",
+        "@type": business["@type"],
         "@id": `${Astro.url.origin}#company`,
       },
     },
@@ -101,12 +104,12 @@ if (faq.length > 0) {
         name: content.title,
         acceptedAnswer: {
           "@type": "Answer",
-          text: stripHtml(marked(content.desc) as string).result,
+          text: marked.parse(content.desc),
         },
       })),
     ),
     provider: {
-      type: "GeneralContractor",
+      "@type": business["@type"],
       "@id": `${Astro.url.origin}#company`,
     },
   });
@@ -132,11 +135,8 @@ if (faq.length > 0) {
           is:inline
           type="application/ld+json"
           set:html={JSON.stringify({
+            "@context": "https://schema.org",
             ...schema,
-            provider: {
-              "@type": "GeneralContractor",
-              "@id": `${Astro.url.origin}#company`,
-            },
           })}
         />
       ))

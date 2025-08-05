@@ -3,8 +3,7 @@ import Layout from "~/layouts/Layout.astro";
 import Menus from "@modals/Menus.svelte";
 import Footer from "@sections/Footer.astro";
 import { getEntry, getCollection } from "~/content.config";
-import { queryComponentsByType } from "@sections/registry";
-import business from "@root/content/business.json";
+import { serviceSchema } from "~/build/service";
 
 const index = await getEntry("index", "index");
 
@@ -17,35 +16,10 @@ const services = await getCollection("services");
   components={index.data.components}
   schemas={{
     "@type": "ItemList",
-    "@context": "https://schema.org",
     numberOfItems: services.length,
-    itemListElement: services.map((service) => ({
-      "@type": "Product",
-      url: `${Astro.url.origin}/services/${service.id.split("/")[0]}`,
-      name: service.data.title,
-      description: service.data.desc,
-      offers: queryComponentsByType(service.data.components, "Prices").flatMap(
-        (prices) =>
-          prices.content.map((content) => ({
-            "@type": "Offer",
-            name: content.title,
-            description: content.desc,
-            price: content.min,
-            priceCurrency: business["currenciesAccepted"],
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: content.min,
-              maxPrice: content.max,
-              priceCurrency: business["currenciesAccepted"],
-            },
-          })),
-      ),
-      image: service.data.covers.map((cover) => ({
-        "@type": "ImageObject",
-        url: `${Astro.url.origin}${cover.meta.src}`,
-        description: cover.alt,
-      })),
-    })),
+    itemListElement: services.map((service) => {
+      return serviceSchema(Astro, service);
+    }),
   }}
 >
   <Menus client:idle />

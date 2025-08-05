@@ -30,7 +30,7 @@ const { meta, slug } = Astro.props;
     <div class="flex-1">
       <Home desc="Go back" {slug} />
       <h1 class="heading-5xl mb-2 font-bold">
-        {meta.title}
+        {meta.data.title}
       </h1>
 
       <div
@@ -41,12 +41,12 @@ const { meta, slug } = Astro.props;
         })} my-4 ml-7`}
       >
         {
-          meta.covers.map((image, _) => (
+          meta.data.covers.map((image, _) => (
             <Image
               alt={image.alt}
               src={image.meta}
               class={imageStyles({
-                anim: meta.covers.length > 1 ? "zoom" : undefined,
+                anim: meta.data.covers.length > 1 ? "zoom" : undefined,
               })}
               {...imageOpts}
             />
@@ -55,7 +55,7 @@ const { meta, slug } = Astro.props;
       </div>
 
       <p class="desc-base">
-        {meta.desc}
+        {meta.data.desc}
       </p>
     </div>
 
@@ -66,13 +66,13 @@ const { meta, slug } = Astro.props;
       )}
     >
       {
-        meta.covers.map((image, _) => (
+        meta.data.covers.map((image, _) => (
           <Image
             alt={image.alt}
             src={image.meta}
             {...imageOpts}
             class={imageStyles({
-              anim: meta.covers.length > 1 ? "zoom" : undefined,
+              anim: meta.data.covers.length > 1 ? "zoom" : undefined,
             })}
           />
         ))

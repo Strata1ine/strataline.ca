@@ -6,7 +6,7 @@ import {
 import { glob } from 'astro/loaders';
 
 import { ZPos, registry } from "@sections/registry";
-import { updateComponentRegistry, parseRegistry } from "~/build/components";
+import { updateComponentRegistry, parseRegistry } from "@sections/components";
 import { imageSource } from '~/build/images';
 updateComponentRegistry(registry);
 
@@ -37,7 +37,7 @@ export const collections = {
 };
 
 export type Id = keyof typeof collections;
-export type CollectionEntry<T extends Id> = _CollectionEntry<T>['data'];
+export type CollectionEntry<T extends Id> = _CollectionEntry<T>;
 
 export const getEntry = async <T extends Id>(
   collection: T,
