@@ -5,6 +5,8 @@ import { Font } from "astro:assets";
 const { title, desc, schemas: extraSchema = [] } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
 
+import { stripHtml } from "string-strip-html";
+
 const document = await Astro.slots.render("default");
 
 import business from "@root/content/business.json";
@@ -21,11 +23,11 @@ const schema = {
   "@id": `${Astro.url.origin}#company`,
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname}`,
+  ...business,
   ...(Astro.locals.reviewData &&
     Astro.locals.reviewData.length > 0 && {
       review: Astro.locals.reviewData.map((review) => ({
         "@type": "Review",
-        "@id": `${Astro.url.origin}${Astro.url.pathname}#${review.id ?? crypto.randomUUID()}`,
         author: {
           "@type": "Person",
           name: review.title,
@@ -52,20 +54,37 @@ const schema = {
           },
         }),
       })),
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: parseFloat(
+          (
+            Astro.locals.reviewData.reduce(
+              (total, review) => total + review.stars,
+              0,
+            ) / Astro.locals.reviewData.length
+          ).toFixed(1),
+        ),
+        reviewCount: Astro.locals.reviewData.length,
+        bestRating: 5,
+        worstRating: 0,
+        itemReviewed: {
+          "@type": "GeneralContractor",
+          "@id": `${Astro.url.origin}#company`,
+        },
+      },
     }),
-  ...business,
 };
 
 if (Astro.locals.faqData.length > 0) {
   extraSchemas.push({
     "@type": "FAQPage",
-    "@id": `${Astro.url.origin}${Astro.url.pathname}#faq`,
+    "@context": "https://schema.org",
     mainEntity: Astro.locals.faqData.map((faq) => ({
       "@type": "Question",
       name: faq.title,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.desc,
+        text: stripHtml(faq.desc).result,
       },
     })),
     provider: {

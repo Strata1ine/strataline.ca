@@ -13,11 +13,9 @@ const index = await getEntry("index", "index");
   desc={index.data.desc}
   schemas={{
     "@type": "OfferCatalog",
-    "@context": "https://schema.org",
-    "@id": `${Astro.url.origin}#offers`,
     itemListElement: (await getCollection("services")).map((service) => ({
       "@type": "Offer",
-      "@id": `${Astro.url.origin}${service.id.split("/")[0]}#offer`,
+      "@id": `${Astro.url.origin}/${service.id.split("/")[0]}#offer`,
       itemOffered: {
         "@type": "Service",
         name: service.data.title,
@@ -26,7 +24,7 @@ const index = await getEntry("index", "index");
         image: service.data.covers.map((cover) => ({
           "@type": "ImageObject",
           url: `${Astro.url.origin}${cover.meta.src}`,
-          description: cover.alt || service.data.title,
+          description: cover.alt,
         })),
       },
     })),

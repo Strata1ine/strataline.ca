@@ -24,7 +24,6 @@ const service = (await getCollection("services")).find(
   desc={service.data.seo}
   schemas={{
     "@type": "Service",
-    "@id": `${Astro.url.origin}${Astro.url.pathname}#service`,
     serviceType: "Home Renovation",
     name: service.data.title,
     description: service.data.desc,
