@@ -39,8 +39,8 @@ components:
     title: What's the cost?
     content:
       - title: Basic
-        min: "$15,000"
-        max: "$25,000"
+        min: 15000
+        max: 25000
         materials:
           - Laminate countertops
           - Stock cabinetry
@@ -48,8 +48,8 @@ components:
         desc: |-
           Cosmetic updates such as repainting, replacing cabinet doors, upgrading light fixtures, and installing new countertops.
       - title: Mid-range
-        min: "$25,000"
-        max: "$50,000"
+        min: 25000
+        max: 50000
         materials:
           - Quartz or granite countertops
           - Semi-custom cabinets
@@ -57,8 +57,8 @@ components:
         desc: |-
           Replacing cabinets, adding an island, upgrading appliances, installing new flooring, and improving lighting.
       - title: High-end
-        min: "$50,000"
-        max: "$100,000"
+        min: 50000
+        max: 100000
         materials:
           - Marble countertops
           - Custom cabinetry

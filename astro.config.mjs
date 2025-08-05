@@ -73,6 +73,10 @@ export default defineConfig({
   ],
   redirects: {
     '/services': '/',
+    '/stairs': '/services/stairs',
+    '/kitchens': '/services/kitchens',
+    '/bathrooms': '/services/bathrooms',
+    '/popcorn-removal': '/services/popcorn-removal',
 
     '/kitchen': '/services/kitchens',
     '/kitchen/18-2-2': '/services/kitchens',

@@ -1,36 +1,53 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import Content from "~/build/Content.astro";
 import Menus from "@modals/Menus.svelte";
 import Footer from "@sections/Footer.astro";
 import { getEntry, getCollection } from "~/content.config";
+import { queryComponentsByType } from "@sections/registry";
+import business from "@root/content/business.json";
 
 const index = await getEntry("index", "index");
+
+const services = await getCollection("services");
 ---
 
 <Layout
   title={index.data.title}
   desc={index.data.desc}
+  components={index.data.components}
   schemas={{
-    "@type": "OfferCatalog",
-    itemListElement: (await getCollection("services")).map((service) => ({
-      "@type": "Offer",
-      "@id": `${Astro.url.origin}/${service.id.split("/")[0]}#offer`,
-      itemOffered: {
-        "@type": "Service",
-        name: service.data.title,
-        serviceType: "Home Renovation",
-        description: service.data.desc,
-        image: service.data.covers.map((cover) => ({
-          "@type": "ImageObject",
-          url: `${Astro.url.origin}${cover.meta.src}`,
-          description: cover.alt,
-        })),
-      },
+    "@type": "ItemList",
+    "@context": "https://schema.org",
+    numberOfItems: services.length,
+    itemListElement: services.map((service) => ({
+      "@type": "Product",
+      url: `${Astro.url.origin}/services/${service.id.split("/")[0]}`,
+      name: service.data.title,
+      description: service.data.desc,
+      offers: queryComponentsByType(service.data.components, "Prices").flatMap(
+        (prices) =>
+          prices.content.map((content) => ({
+            "@type": "Offer",
+            name: content.title,
+            description: content.desc,
+            price: content.min,
+            priceCurrency: business["currenciesAccepted"],
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: content.min,
+              maxPrice: content.max,
+              priceCurrency: business["currenciesAccepted"],
+            },
+          })),
+      ),
+      image: service.data.covers.map((cover) => ({
+        "@type": "ImageObject",
+        url: `${Astro.url.origin}${cover.meta.src}`,
+        description: cover.alt,
+      })),
     })),
   }}
 >
-  <Content startPos="right" components={index.data.components} />
   <Menus client:idle />
   <Footer />
 </Layout>

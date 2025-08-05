@@ -9,6 +9,7 @@ export type SchemaComponent = {
   load: () => Promise<{ default: AstroComponentFactory }>;
 };
 
+export type ComponentData = z.infer<ReturnType<typeof parseRegistry>>[number];
 export function parseRegistry(c: SchemaContext) {
   const schemas = Object.values(componentRegistry).map((item, i) =>
     z.object({
