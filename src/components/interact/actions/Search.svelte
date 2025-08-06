@@ -9,17 +9,13 @@
 
   let value: string = $state("");
   let open = $derived(value.length > 0);
-  let hoverIdx: number = $state(-1);
+  let hoverIdx: number | null = $state(null);
   let select: HTMLDivElement;
 
   let uid = genUid();
   let selectUid = genUid();
 
   const filteredValues = $derived.by(() => {
-    if (value.length > 40) {
-      return ["We had to end that, you were having too much fun :)"];
-    }
-
     const filtered = values.filter((option) =>
       option.toLowerCase().includes(value.toLowerCase()),
     );
@@ -37,27 +33,31 @@
   });
 
   function close() {
-    value = filteredValues[hoverIdx];
+    if (hoverIdx) value = filteredValues[hoverIdx];
     open = false;
-    hoverIdx = -1;
+    hoverIdx = null;
   }
 
   const onkeydown = (event: KeyboardEvent) => {
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        hoverIdx = (hoverIdx + 1) % filteredValues.length;
-        select.children[hoverIdx]?.scrollIntoView({
-          block: "nearest",
-        });
+        if (hoverIdx) {
+          hoverIdx = (hoverIdx + 1) % filteredValues.length;
+          select.children[hoverIdx]?.scrollIntoView({
+            block: "nearest",
+          });
+        }
         break;
       case "ArrowUp":
         event.preventDefault();
-        hoverIdx =
-          (hoverIdx - 1 + filteredValues.length) % filteredValues.length;
-        select.children[hoverIdx]?.scrollIntoView({
-          block: "nearest",
-        });
+        if (hoverIdx) {
+          hoverIdx =
+            (hoverIdx - 1 + filteredValues.length) % filteredValues.length;
+          select.children[hoverIdx]?.scrollIntoView({
+            block: "nearest",
+          });
+        }
         break;
       case "Enter":
         event.stopPropagation();

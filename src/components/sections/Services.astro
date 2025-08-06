@@ -61,7 +61,7 @@ import { Icon } from "astro-icon/components";
               <div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
                 <h3 class="heading-xl">{service.data.title}</h3>
 
-                <Icon name="arrow" is:inline />
+                <Icon aria-hidden={true} name="arrow" is:inline />
               </div>
             </a>
           );

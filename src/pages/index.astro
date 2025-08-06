@@ -17,9 +17,7 @@ const services = await getCollection("services");
   schemas={{
     "@type": "ItemList",
     numberOfItems: services.length,
-    itemListElement: services.map((service) => {
-      return serviceSchema(Astro, service);
-    }),
+    itemListElement: services.map((service) => serviceSchema(Astro, service)),
   }}
 >
   <Menus client:idle />
