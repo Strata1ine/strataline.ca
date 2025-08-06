@@ -19,6 +19,15 @@
   let reviewModal = $derived(modals.is(modals.review));
 </script>
 
+<svelte:window
+  onkeydown={(e) => {
+    if (e.ctrlKey && e.key === "/") {
+      e.preventDefault();
+      modals.open(modals.talk);
+    }
+  }}
+/>
+
 <Modal
   bind:open={talkModal}
   uid={talkUid}

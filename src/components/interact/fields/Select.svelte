@@ -105,20 +105,20 @@
     {onkeydown}
   >
     <NavArrow class="size-8" />
+
+    <span class="sr-only">{values[selectedIdx]}</span>
     <div
+      aria-hidden="true"
       class="flex-1 transition-transform duration-200 {anim
         ? ''
         : 'translate-y-full'}"
-      aria-live="polite"
     >
       <span
-        aria-hidden={!anim}
         class="desc-sm transition-opacity duration-300{anim
           ? ''
           : ' opacity-0'}">{anim ? values[selectedIdx] : values[prevIdx]}</span
       >
       <span
-        aria-hidden={anim}
         class="desc-sm absolute bottom-full left-0 transition-opacity duration-300{anim
           ? ' opacity-0'
           : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
