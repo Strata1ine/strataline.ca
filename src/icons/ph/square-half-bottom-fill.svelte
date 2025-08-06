@@ -1,5 +1,5 @@
 
 <script>
- const { class: className = '' } = $props();
+ const { 'aria-hidden': aria = true, ...props } = $props();
 </script>
-<svg    viewBox="0 0 256 256" fill="currentColor" class={className}><path d="M200,40H56A16,16,0,0,0,40,56V200a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,16v72H56V56Z"/></svg>
+<svg    viewBox="0 0 256 256" fill="currentColor" aria-hidden={aria} {...props}><path d="M200,40H56A16,16,0,0,0,40,56V200a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,16v72H56V56Z"/></svg>

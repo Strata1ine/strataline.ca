@@ -93,6 +93,7 @@
   <button
     type="button"
     id={uid}
+    aria-label="Select option"
     aria-haspopup="listbox"
     aria-expanded={open}
     aria-controls={selectUid}
@@ -108,13 +109,16 @@
       class="flex-1 transition-transform duration-200 {anim
         ? ''
         : 'translate-y-full'}"
+      aria-live="polite"
     >
       <span
+        aria-hidden={!anim}
         class="desc-sm transition-opacity duration-300{anim
           ? ''
           : ' opacity-0'}">{anim ? values[selectedIdx] : values[prevIdx]}</span
       >
       <span
+        aria-hidden={anim}
         class="desc-sm absolute bottom-full left-0 transition-opacity duration-300{anim
           ? ' opacity-0'
           : ''}">{anim ? values[prevIdx] : values[selectedIdx]}</span
