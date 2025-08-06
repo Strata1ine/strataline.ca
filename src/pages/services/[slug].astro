@@ -5,7 +5,7 @@ import Menus from "@modals/Menus.svelte";
 
 import { getCollection } from "~/content.config";
 import Footer from "@sections/Footer.astro";
-import { serviceSchema } from "~/build/service";
+import { generateServiceSchema } from "~/build/schemas/service";
 
 export async function getStaticPaths() {
   return (await getCollection("services")).map((service: any) => ({
@@ -28,7 +28,7 @@ const service = (await getCollection("services")).find(
   desc={service.data.seo}
   sections={service.data.sections}
   startPos={service.data.startPos ?? "right"}
-  schemas={serviceSchema(Astro, service)}
+  schemas={generateServiceSchema(Astro, service)}
 >
   <ServiceHero slot="before" meta={service} {slug} />
   <Footer />

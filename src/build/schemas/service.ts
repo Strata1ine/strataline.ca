@@ -1,9 +1,10 @@
-import type { AstroGlobal } from "astro";
 import type { CollectionEntry } from "~/content.config";
 import { querySections } from "@sections/registry";
 import business from "@root/content/business.json";
+import { computeAggregateRating } from "./reviews";
+import type { AstroGlobal } from "astro";
 
-export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"services">) => {
+export const generateServiceSchema = (Astro: AstroGlobal, service: CollectionEntry<"services">) => {
   const reviews = querySections(service.data.sections, "Reviews");
   const prices = querySections(service.data.sections, "Prices");
 
@@ -17,24 +18,7 @@ export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"serv
       "@id": `${Astro.url.origin}#company`,
     },
     ...(reviews.length > 0 && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: parseFloat(
-          (
-            reviews
-              .flatMap((review) => review.content)
-              .reduce((total, content) => total + content.stars, 0) /
-            reviews.flatMap((review) => review.content).length
-          ).toFixed(1),
-        ),
-        reviewCount: reviews.length,
-        bestRating: 5,
-        worstRating: 0,
-        itemReviewed: {
-          "@type": business["@type"],
-          "@id": `${Astro.url.origin}#company`,
-        },
-      },
+      ...computeAggregateRating(Astro, reviews),
     }),
     ...(prices.length > 0 && {
       offers: prices.flatMap((prices) =>
@@ -59,5 +43,5 @@ export const serviceSchema = (Astro: AstroGlobal, service: CollectionEntry<"serv
       url: `${Astro.url.origin}${cover.meta.src}`,
       description: cover.alt,
     })),
-  }
-}
+  };
+};

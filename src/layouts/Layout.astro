@@ -1,8 +1,27 @@
 ---
 import global from "~/styles/global.css?url";
-import { Font } from "astro:assets";
-import Content from "@sections/layout/Content.astro";
 import { google } from "googleapis";
+import { marked } from "marked";
+import { Font, getImage } from "astro:assets";
+import business from "@root/content/business.json";
+import type { Pos } from "@sections/styles";
+import type { SectionMeta } from "@sections/registry";
+import { querySections } from "@sections/registry";
+import {
+  computeAggregateRating,
+  generateReviews,
+} from "~/build/schemas/reviews";
+
+import Content from "@sections/layout/Content.astro";
+
+const pngIcons = await import("~/pages/manifest.json.ts").then(
+  (m) => m.pngIcons,
+);
+
+const faviconSvg = await getImage({
+  src: (await import("~/icons/favicon.svg")).default,
+  format: "svg",
+});
 
 interface Props {
   title: string;
@@ -21,23 +40,10 @@ const {
 } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
 
-import { marked } from "marked";
-import { getImage } from "astro:assets";
-
-import business from "@root/content/business.json";
-
-import faviconSvgSrc from "~/icons/favicon.svg";
-const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
-
-import { pngIcons } from "~/pages/manifest.json.ts";
-import type { Pos } from "@sections/styles";
-import type { SectionMeta } from "@sections/registry";
-import { querySections } from "@sections/registry";
-const resolvedIcons = await pngIcons;
-
 const reviews = querySections(sections, "Reviews");
-
 const faq = querySections(sections, "Faq");
+const cardshow = querySections(sections, "Cardshow");
+
 if (faq.length > 0) {
   extraSchemas.push({
     "@type": "FAQPage",
@@ -59,28 +65,43 @@ if (faq.length > 0) {
   });
 }
 
-const cardshow = querySections(sections, "Cardshow");
+{
+  cardshow
+    .flatMap((section) => section.content)
+    .forEach((card) => {
+      if (card.media?.type === "video") {
+        extraSchemas.push({
+          "@type": "VideoObject",
+          name: card.title,
+          description: card.desc,
+          thumbnailUrl: card.media.poster.src,
+          uploadDate: card.media.uploadDate,
+          contentUrl: card.media.url,
+        });
+      }
+    });
+}
 
-const videoIds = cardshow
-  .flatMap((section) => section.content)
-  .map((item) => item.media)
-  .filter((media) => media?.type === "yt-video")
-  .map((media) => media.id);
+{
+  const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+  const youtubeVideos = cardshow
+    .flatMap((section) => section.content)
+    .map((item) => item.media)
+    .filter((media) => media?.type === "yt-video")
+    .map((media) => media.id);
 
-const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
-if (videoIds.length > 0 && YOUTUBE_API_KEY != null) {
-  const youtube = google.youtube({
-    version: "v3",
-    auth: YOUTUBE_API_KEY,
-  });
-  const response = await youtube.videos.list({
-    part: ["snippet"],
-    id: videoIds,
-  });
+  if (youtubeVideos.length > 0 && YOUTUBE_API_KEY != null) {
+    const youtube = google.youtube({
+      version: "v3",
+      auth: YOUTUBE_API_KEY,
+    });
 
-  const data = response.data;
-  if (data?.items?.length) {
-    data.items.map((video) =>
+    const response = await youtube.videos.list({
+      part: ["snippet"],
+      id: youtubeVideos,
+    });
+
+    response.data.items?.map((video) =>
       extraSchemas.push({
         "@type": "VideoObject",
         name: video.snippet?.title || null,
@@ -114,54 +135,8 @@ const schema = {
     ...business.socials.map((social) => social.url),
   ],
   ...(reviews.length > 0 && {
-    review: reviews.flatMap((review) =>
-      review.content.map((content) => ({
-        "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: content.title,
-        },
-        itemReviewed: {
-          "@type": business["@type"],
-          "@id": `${Astro.url.origin}#company`,
-        },
-        contentLocation: {
-          "@type": "Place",
-          name: content.location,
-        },
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: content.stars,
-          bestRating: 5,
-        },
-        reviewBody: marked.parseInline(content.desc) as string,
-        ...(content.date && { datePublished: content.date.toISOString() }),
-        ...(content.url && {
-          associatedMedia: {
-            "@type": "MediaObject",
-            associatedArticle: content.url,
-          },
-        }),
-      })),
-    ),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: parseFloat(
-        (
-          reviews
-            .flatMap((review) => review.content)
-            .reduce((total, content) => total + content.stars, 0) /
-          reviews.flatMap((review) => review.content).length
-        ).toFixed(1),
-      ),
-      reviewCount: reviews.length,
-      bestRating: 5,
-      worstRating: 0,
-      itemReviewed: {
-        "@type": business["@type"],
-        "@id": `${Astro.url.origin}#company`,
-      },
-    },
+    ...generateReviews(Astro, reviews),
+    ...computeAggregateRating(Astro, reviews),
   }),
 };
 ---
@@ -203,7 +178,7 @@ const schema = {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
     {
-      resolvedIcons.map((icon: any) => (
+      pngIcons.map((icon: any) => (
         <>
           <link rel="apple-touch-icon" sizes={icon.sizes} href={icon.src} />
           <link

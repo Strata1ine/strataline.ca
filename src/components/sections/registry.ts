@@ -18,6 +18,7 @@ const media = (c: SchemaContext) => z.union([
   z.object({
     type: z.literal('video'),
     poster: c.image(),
+    uploadDate: z.coerce.date(),
     url: z.string(),
   }),
   z.object({
