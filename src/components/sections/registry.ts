@@ -112,7 +112,7 @@ export const registry = {
         z.object({
           title: z.string(),
           desc: z.string(),
-          date: z.date().optional(),
+          date: z.coerce.date().optional(),
           url: z.string().optional(),
           location: z.string(),
           stars: z.number(),

@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "googleapis": "^155.0.0",
     "svelte": "^5.37.3"
   },
   "devDependencies": {
