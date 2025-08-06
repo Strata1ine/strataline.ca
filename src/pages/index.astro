@@ -3,7 +3,7 @@ import Layout from "~/layouts/Layout.astro";
 import Menus from "@modals/Menus.svelte";
 import Footer from "@sections/Footer.astro";
 import { getEntry, getCollection } from "~/content.config";
-import { serviceSchema } from "~/build/service";
+import { generateServiceSchema } from "~/build/schemas/service";
 
 const index = await getEntry("index", "index");
 
@@ -17,7 +17,9 @@ const services = await getCollection("services");
   schemas={{
     "@type": "ItemList",
     numberOfItems: services.length,
-    itemListElement: services.map((service) => serviceSchema(Astro, service)),
+    itemListElement: services.map((service) =>
+      generateServiceSchema(Astro, service),
+    ),
   }}
 >
   <Menus client:idle />

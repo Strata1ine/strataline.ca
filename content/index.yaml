@@ -57,6 +57,7 @@ sections:
           Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings.
         media:
           type: video
+          uploadDate: "Jan 1, 2020"
           poster: ./photos/awards/citytv.jpg
           url: /videos/cityline.mp4
 
