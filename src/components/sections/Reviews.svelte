@@ -105,10 +105,8 @@
 
           <h3 class="heading-2xl">{review.title}</h3>
 
-          <div
-            class="mt-3 mb-4 flex gap-1.5"
-            aria-label="{review.stars} out of 5 stars"
-          >
+          <div class="mt-3 mb-4 flex gap-1.5">
+            <span class="sr-only">{review.stars} stars out of 5</span>
             <Stars class="size-6" length={review.stars} />
           </div>
 

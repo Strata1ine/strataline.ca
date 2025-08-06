@@ -102,14 +102,19 @@
       requestAnimationFrame(animate);
     }
   }}
+  role="region"
+  aria-label="Image carousel"
 >
   <div
     bind:this={imageCarousel}
     class="flex h-full will-change-transform"
     style="translate: {-pos}px 0 0;"
   >
-    {#each Array(2) as _}
-      <div class="flex h-full flex-none">
+    {#each Array(2) as _, i}
+      <div
+        class="flex h-full flex-none"
+        aria-hidden={i > 0 ? "true" : undefined}
+      >
         {#each meta.content as image}
           <div class="h-full flex-none">
             <img
@@ -136,6 +141,7 @@
       currentVelocity = -(scrollMultiplier(container) * 40);
       requestAnimationFrame(animate);
     }}
+    aria-label="Scroll carousel left"
     tabindex="0"
   >
     <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
@@ -153,6 +159,7 @@
       currentVelocity = scrollMultiplier(container) * 40;
       requestAnimationFrame(animate);
     }}
+    aria-label="Scroll carousel right"
     tabindex="0"
   >
     <span class="absolute inset-4 z-[-1] rounded-[50%] bg-black"></span>
