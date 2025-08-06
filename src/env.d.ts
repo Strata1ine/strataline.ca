@@ -5,3 +5,9 @@ declare namespace App {
   interface Locals {
   }
 }
+
+declare global {
+  interface Window {
+    onYouTubeIframeAPIReady(): void;
+  }
+}

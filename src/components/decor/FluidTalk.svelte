@@ -50,6 +50,7 @@
 
 <div class="relative mt-9 h-14 xl:h-16" bind:this={sensor}>
   <button
+    aria-label="Let's talk (Ctrl+/)"
     class="z-1 {above
       ? `${actionStyles()} absolute h-14 w-34 xl:h-16 xl:w-42`
       : `${actionStyles({ variant: 'pill', background: 'accent' })} fixed top-0 `}"
@@ -58,6 +59,7 @@
     onclick={() => modals.open(modals.talk)}
   >
     <div
+      aria-hidden="true"
       class="absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500 {above
         ? 'opacity-100'
         : 'opacity-0'}"

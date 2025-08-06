@@ -39,10 +39,11 @@ const { spacing = "top" } = Astro.props;
                 target="_blank"
                 href={social.url}
                 rel="noopener noreferrer"
-                aria-label={`${social.name} url`}
+                aria-label={social.name}
               >
                 <Icon
                   is:inline
+                  aria-hidden={true}
                   style={`color: #${social.color}`}
                   name={`${social.icon}`}
                   class="size-15 md:size-19"
@@ -55,7 +56,7 @@ const { spacing = "top" } = Astro.props;
       <Search
         values={business.areaServed}
         placeholder="Find your municipality"
-        client:visible
+        client:idle
       />
     </div>
 
@@ -66,8 +67,7 @@ const { spacing = "top" } = Astro.props;
         ><b>© Strataline. 2025</b> All rights reserved.</span
       >
 
-      <ul class="flex gap-6 sm:ml-auto sm:gap-12">
-      </ul>
+      <ul class="flex gap-6 sm:ml-auto sm:gap-12"></ul>
     </div>
   </div>
 </footer>

@@ -5,6 +5,7 @@ import { imageOpts } from "~/build/images";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Home from "@decor/Home.astro";
+import FluidTalk from "@decor/FluidTalk.svelte";
 
 import { clsx } from "clsx";
 
@@ -57,6 +58,8 @@ const { meta, slug } = Astro.props;
       <p class="desc-base">
         {meta.data.desc}
       </p>
+
+      <FluidTalk client:load />
     </div>
 
     <div
@@ -82,5 +85,10 @@ const { meta, slug } = Astro.props;
 </main>
 
 <div class={containerStyles({ width: "inner" })}>
-  <Icon name="arrow" class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20" />
+  <Icon
+    aria-hidden={true}
+    is:inline
+    name="arrow"
+    class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
+  />
 </div>

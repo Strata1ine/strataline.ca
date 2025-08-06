@@ -20,8 +20,9 @@
     <Stars class="size-8" {length}>
       <div
         class="absolute inset-0 cursor-pointer touch-none"
-        role="slider"
         tabindex="0"
+        role="slider"
+        aria-label="Star rating"
         aria-valuemin={min}
         aria-valuemax={max / 2}
         aria-valuenow={length}

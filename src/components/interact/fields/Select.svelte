@@ -93,6 +93,7 @@
   <button
     type="button"
     id={uid}
+    aria-label="Select option"
     aria-haspopup="listbox"
     aria-expanded={open}
     aria-controls={selectUid}
@@ -104,7 +105,10 @@
     {onkeydown}
   >
     <NavArrow class="size-8" />
+
+    <span class="sr-only">{values[selectedIdx]}</span>
     <div
+      aria-hidden="true"
       class="flex-1 transition-transform duration-200 {anim
         ? ''
         : 'translate-y-full'}"

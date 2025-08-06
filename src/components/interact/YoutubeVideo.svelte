@@ -1,11 +1,24 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { get } from "svelte/store";
   import { videoPlaying, youtubeApiReady } from "~/frontend/stores.svelte";
 
   const { id }: { id: string } = $props();
   let video: HTMLDivElement;
 
   onMount(() => {
+    // load youtube API if it doesn't exist or is being loaded
+    if (!window.YT && get(youtubeApiReady) != null) {
+      youtubeApiReady.set(null);
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.insertBefore(tag, document.head.firstChild);
+
+      window.onYouTubeIframeAPIReady = function () {
+        youtubeApiReady.set(true);
+      };
+    }
+
     let unsubVideo: (() => void) | undefined;
     let player: YT.Player;
 
