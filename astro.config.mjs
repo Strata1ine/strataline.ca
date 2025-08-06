@@ -10,10 +10,12 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  trailingSlash: 'never',
   site: 'https://strataline.ca',
   build: {
     inlineStylesheets: 'never',
-    assets: '_'
+    assets: '_',
+    format: 'file',
   },
   prefetch: {
     prefetchAll: true,
