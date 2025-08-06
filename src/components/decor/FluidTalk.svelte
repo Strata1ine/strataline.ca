@@ -69,6 +69,7 @@
       class="absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500 {above
         ? 'opacity-0'
         : 'opacity-100'}"
+      aria-hidden="true"
     />
   </button>
 </div>
