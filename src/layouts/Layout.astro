@@ -2,6 +2,7 @@
 import global from "~/styles/global.css?url";
 import { Font } from "astro:assets";
 import Content from "@sections/layout/Content.astro";
+import { google } from "googleapis";
 
 interface Props {
   title: string;
@@ -35,7 +36,73 @@ import { querySections } from "@sections/registry";
 const resolvedIcons = await pngIcons;
 
 const reviews = querySections(sections, "Reviews");
+
 const faq = querySections(sections, "Faq");
+if (faq.length > 0) {
+  extraSchemas.push({
+    "@type": "FAQPage",
+    "@context": "https://schema.org",
+    mainEntity: faq.flatMap((faq) =>
+      faq.content.map((content) => ({
+        "@type": "Question",
+        name: content.title,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: marked.parse(content.desc),
+        },
+      })),
+    ),
+    provider: {
+      "@type": business["@type"],
+      "@id": `${Astro.url.origin}#company`,
+    },
+  });
+}
+
+const cardshow = querySections(sections, "Cardshow");
+
+const videoIds = cardshow
+  .flatMap((section) => section.content)
+  .map((item) => item.media)
+  .filter((media) => media?.type === "yt-video")
+  .map((media) => media.id);
+
+const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+if (videoIds.length > 0 && YOUTUBE_API_KEY != null) {
+  const youtube = google.youtube({
+    version: "v3",
+    auth: YOUTUBE_API_KEY,
+  });
+  const response = await youtube.videos.list({
+    part: ["snippet"],
+    id: videoIds,
+  });
+
+  const data = response.data;
+  if (data?.items?.length) {
+    data.items.map((video) =>
+      extraSchemas.push({
+        "@type": "VideoObject",
+        name: video.snippet?.title || null,
+        description: video.snippet?.description || null,
+        uploadDate: video.snippet?.publishedAt || null,
+        thumbnailUrl:
+          video.snippet?.thumbnails?.maxres?.url ||
+          video.snippet?.thumbnails?.high?.url ||
+          `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
+        embedUrl: `https://www.youtube.com/embed/${video.id}`,
+        contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+        publisher: {
+          "@type": "Organization",
+          name: video.snippet?.channelTitle || null,
+          identifier: video.snippet?.channelId || null,
+        },
+        keywords: video.snippet?.tags?.join(", ") || null,
+        inLanguage: video.snippet?.defaultAudioLanguage || null,
+      }),
+    );
+  }
+}
 
 const schema = {
   "@id": `${Astro.url.origin}#company`,
@@ -97,27 +164,6 @@ const schema = {
     },
   }),
 };
-
-if (faq.length > 0) {
-  extraSchemas.push({
-    "@type": "FAQPage",
-    "@context": "https://schema.org",
-    mainEntity: faq.flatMap((faq) =>
-      faq.content.map((content) => ({
-        "@type": "Question",
-        name: content.title,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: marked.parse(content.desc),
-        },
-      })),
-    ),
-    provider: {
-      "@type": business["@type"],
-      "@id": `${Astro.url.origin}#company`,
-    },
-  });
-}
 ---
 
 <html lang="en">
