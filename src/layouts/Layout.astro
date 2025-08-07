@@ -31,6 +31,7 @@ interface Props {
   sections?: SectionMeta[];
   startPos?: Pos;
   schemas: any[] | any;
+  noIndex: boolean;
 }
 
 const {
@@ -38,6 +39,7 @@ const {
   desc,
   startPos,
   sections,
+  noIndex = false,
   schemas: extraSchema = [],
 } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
@@ -132,10 +134,7 @@ const schema = {
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname.replace(/\.html$/, "")}`,
   ...business,
-  sameAs: [
-    ...(business.sameAs || []),
-    ...socials.map((social) => social.url),
-  ],
+  sameAs: [...(business.sameAs || []), ...socials.map((social) => social.url)],
   ...(reviews.length > 0 && {
     ...generateReviews(Astro, reviews),
     ...computeAggregateRating(Astro, reviews),
@@ -146,7 +145,7 @@ const schema = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title slot="head">
+    <title>
       {title ? `${title} | ${business.name}` : business.name}
     </title>
     <link rel="canonical" href={schema.url} />
@@ -205,6 +204,8 @@ const schema = {
         />
       )
     }
+
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
   </head>
   <body>
     <slot name="before" />
