@@ -1,0 +1,10 @@
+title: Wallpaper
+desc: |-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+seo: |-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+draft: true
+covers:
+  - meta: ./cover.jpg
+    alt: |-
+      A cozy bedroom featuring elegant patterned wallpaper, complementing soft tones and natural light for a serene atmosphere.
