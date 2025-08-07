@@ -41,7 +41,7 @@
     class="space-y-9"
   >
     <Input name="E-mail" required type="email" autocomplete="email" validate />
-    <PhoneNumber validate required></PhoneNumber>
+    <PhoneNumber validate></PhoneNumber>
     <Select
       name="Location"
       values={["Select a location", ...business.areaServed]}

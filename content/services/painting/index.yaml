@@ -1,0 +1,9 @@
+title: Painting
+desc: |-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+seo: |-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+draft: true
+covers:
+  - meta: ./cover.jpg
+    alt: "A freshly painted hallway with crisp white walls, dark doors for contrast, and a polished railing enhancing the elegant design."
