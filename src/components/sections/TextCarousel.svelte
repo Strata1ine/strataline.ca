@@ -120,7 +120,7 @@
   <div
     bind:this={textCarousel}
     style="translate: {-pos}px 0 0"
-    class="flex h-20 will-change-transform select-none md:h-25"
+    class="flex h-20 will-change-transform select-none md:h-25 "
   >
     {#each Array(3) as _}
       <div class="flex flex-none items-center">
@@ -131,7 +131,7 @@
             {item}
           </h3>
 
-          <Star class="text-gold size-7 shrink-0 sm:size-9" />
+          <Star class="text-gold size-7 flex-none sm:size-9" />
         {/each}
       </div>
     {/each}
