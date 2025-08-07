@@ -1,0 +1,19 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { Content, frontmatter } from "@root/content/privacy.md";
+import { containerStyles } from "@sections/styles";
+import Footer from "@sections/Footer.astro";
+import Home from "@decor/Home.astro";
+---
+
+<Layout>
+  <div class={`${containerStyles({ width: "inner" })} mt-20`}>
+    <Home class="mb-2" />
+    <h1 class="heading-massive mb-9">{frontmatter.title}</h1>
+    <div class="prose">
+      <Content />
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
