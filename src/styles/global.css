@@ -14,7 +14,7 @@
     @apply font-serif text-balance text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl;
   }
 
-  .prose h2, h3, h4, h5, h6 {
+  .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
     @apply mt-9 first:mt-0 font-semibold;
   }
 
