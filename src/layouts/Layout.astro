@@ -128,7 +128,7 @@ if (faq.length > 0) {
 const schema = {
   "@id": `${Astro.url.origin}#company`,
   "@context": "https://schema.org",
-  url: `${Astro.url.origin}${Astro.url.pathname}`,
+  url: `${Astro.url.origin}${Astro.url.pathname.replace(/\.html$/, "")}`,
   ...business,
   sameAs: [
     ...(business.sameAs || []),
@@ -147,6 +147,7 @@ const schema = {
     <title slot="head">
       {title ? `${title} | ${business.name}` : business.name}
     </title>
+    <link rel="canonical" href={schema.url} />
 
     <script
       is:inline
