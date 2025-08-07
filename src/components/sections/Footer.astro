@@ -1,6 +1,7 @@
 ---
 import { containerStyles } from "./styles";
 import business from "@root/content/business.json";
+import socials from "@root/content/socials.json";
 
 import { Icon } from "astro-icon/components";
 import Search from "@actions/Search.svelte";
@@ -33,7 +34,7 @@ const { spacing = "top" } = Astro.props;
     >
       <ul class="flex h-fit gap-3">
         {
-          business.socials.map((social) => (
+          socials.map((social) => (
             <li class="inline-flex">
               <a
                 target="_blank"

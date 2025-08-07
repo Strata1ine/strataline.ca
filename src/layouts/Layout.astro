@@ -4,6 +4,7 @@ import { google } from "googleapis";
 import { marked } from "marked";
 import { Font, getImage } from "astro:assets";
 import business from "@root/content/business.json";
+import socials from "@root/content/socials.json";
 import type { Pos } from "@sections/styles";
 import type { SectionMeta } from "@sections/registry";
 import { querySections } from "@sections/registry";
@@ -13,6 +14,7 @@ import {
 } from "~/build/schemas/reviews";
 
 import Content from "@sections/layout/Content.astro";
+const isProd = import.meta.env.PROD;
 
 const pngIcons = await import("~/pages/manifest.json.ts").then(
   (m) => m.pngIcons,
@@ -132,7 +134,7 @@ const schema = {
   ...business,
   sameAs: [
     ...(business.sameAs || []),
-    ...business.socials.map((social) => social.url),
+    ...socials.map((social) => social.url),
   ],
   ...(reviews.length > 0 && {
     ...generateReviews(Astro, reviews),
@@ -148,26 +150,6 @@ const schema = {
       {title ? `${title} | ${business.name}` : business.name}
     </title>
     <link rel="canonical" href={schema.url} />
-
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(schema)}
-    />
-
-    {
-      extraSchemas.map((schema) => (
-        <script
-          is:inline
-          type="application/ld+json"
-          set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            ...schema,
-          })}
-        />
-      ))
-    }
-
     <meta name="description" content={desc} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -193,6 +175,36 @@ const schema = {
     }
 
     <script src="~/frontend/index.ts"></script>
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
+
+    {
+      extraSchemas.map((schema) => (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            ...schema,
+          })}
+        />
+      ))
+    }
+
+    {
+      isProd && (
+        <script
+          is:inline
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="HvLQm3PHR0ElL+Vu8t6KBg"
+          async
+        />
+      )
+    }
   </head>
   <body>
     <slot name="before" />
