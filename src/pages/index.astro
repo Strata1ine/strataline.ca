@@ -5,15 +5,14 @@ import Footer from "@sections/Footer.astro";
 import { getEntry, getCollection } from "~/content.config";
 import { generateServiceSchema } from "~/build/schemas/service";
 
-const index = await getEntry("index", "index");
-
+const data = (await getEntry("index", "index")).data;
 const services = await getCollection("services");
 ---
 
 <Layout
-  title={index.data.title}
-  desc={index.data.desc}
-  sections={index.data.sections}
+  title={data.title}
+  desc={data.desc}
+  sections={data.sections}
   schemas={{
     "@type": "ItemList",
     numberOfItems: services.length,

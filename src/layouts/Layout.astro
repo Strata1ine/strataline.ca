@@ -27,11 +27,11 @@ const faviconSvg = await getImage({
 
 interface Props {
   title: string;
-  desc: string;
+  desc?: string;
   sections?: SectionMeta[];
   startPos?: Pos;
-  schemas: any[] | any;
-  noIndex: boolean;
+  schemas?: any[] | any;
+  noIndex?: boolean;
 }
 
 const {

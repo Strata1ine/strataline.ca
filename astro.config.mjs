@@ -7,6 +7,7 @@ import compressor from "astro-compressor";
 import icon from "astro-icon";
 import { visualizer } from "rollup-plugin-visualizer";
 import sitemap from '@astrojs/sitemap';
+import yaml from '@rollup/plugin-yaml';
 
 // https://astro.build/config
 export default defineConfig({
@@ -56,6 +57,7 @@ export default defineConfig({
       //   filename: "stats.html",
       //   sourcemap: true,
       // }),
+      yaml(),
       tailwindcss(),
     ],
   },

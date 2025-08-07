@@ -1,20 +1,25 @@
 @import "tailwindcss";
 
 @layer components {
-
-  .heading-massive,
-  .prose h1 {
+  .heading-massive {
     @apply font-serif text-balance text-5xl sm:text-6xl md:text-7xl;
   }
 
-  .heading-6xl,
-  .prose h1 {
+  .heading-6xl {
     @apply font-serif text-balance text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl;
   }
 
   .heading-5xl,
   .prose h2 {
     @apply font-serif text-balance text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl;
+  }
+
+  .prose h2, h3, h4, h5, h6 {
+    @apply mt-9 first:mt-0 font-semibold;
+  }
+
+  .prose a {
+    @apply text-url;
   }
 
   .heading-4xl,
@@ -45,12 +50,12 @@
   }
 
   .prose {
-    @apply space-y-3;
+    @apply space-y-2 max-w-[100ch];
   }
 
   .prose ul,
   .prose ol {
-    @apply ml-8 my-4 space-y-3;
+    @apply ml-8 my-4 space-y-2;
   }
 
   .prose ul li,
