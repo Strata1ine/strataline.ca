@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const dotStyles = cva(
-  'size-8 xl:size-10 rounded-[50%] border-solid border-black transition-[border] duration-250',
+  'size-8 xl:size-9 rounded-[50%] border-solid border-black transition-[border] duration-250',
   {
     variants: {
       open: {

@@ -1,7 +1,7 @@
 {
   "name": "Strataline",
   "type": "module",
-  "version": "1.6.0",
+  "version": "2.0.1",
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
@@ -9,10 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "googleapis": "^155.0.0",
     "svelte": "^5.38.0"
   },
   "devDependencies": {
+    "googleapis": "^155.0.1",
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.4.2",
     "@astrojs/svelte": "^7.1.0",
@@ -23,7 +23,7 @@
     "@rollup/plugin-yaml": "^4.1.2",
     "@tailwindcss/vite": "^4.1.11",
     "@types/youtube": "^0.1.2",
-    "astro": "^5.12.8",
+    "astro": "^5.12.9",
     "astro-compressor": "^1.1.2",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
