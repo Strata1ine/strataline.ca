@@ -41,7 +41,7 @@ const { spacing = "top" } = Astro.props;
                   is:inline
                   aria-hidden={true}
                   style={`color: #${social.color}`}
-                  name={`${social.icon}`}
+                  name={social.icon}
                   class="size-15 md:size-19"
                 />
               </a>
@@ -49,6 +49,7 @@ const { spacing = "top" } = Astro.props;
           ))
         }
       </ul>
+
       <Search
         values={business.areaServed}
         placeholder="Find your municipality"
@@ -65,7 +66,11 @@ const { spacing = "top" } = Astro.props;
 
       <ul class="flex gap-6 sm:ml-auto sm:gap-12">
         <li>
-          <a class="desc-sm text-url hover:underline" href="/privacy">Privacy policy</a>
+          <a
+            class="desc-sm text-url hover:underline"
+            data-astro-prefetch
+            href="/privacy">Privacy policy</a
+          >
         </li>
       </ul>
     </div>

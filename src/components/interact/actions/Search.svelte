@@ -15,9 +15,20 @@
   let uid = genUid();
   let selectUid = genUid();
 
+  const fuzzyMatch = (search: string, target: string) => {
+    search = search.toLowerCase();
+    target = target.toLowerCase();
+
+    let searchIndex = 0;
+    for (let i = 0; i < target.length && searchIndex < search.length; i++) {
+      if (target[i] === search[searchIndex]) searchIndex++;
+    }
+    return searchIndex === search.length;
+  };
+
   const filteredValues = $derived.by(() => {
     const filtered = values.filter((option) =>
-      option.toLowerCase().includes(value.toLowerCase()),
+      fuzzyMatch(value.toLowerCase(), option.toLowerCase()),
     );
 
     if (filtered.length === 0 && value.length > 0) {
@@ -33,7 +44,7 @@
   });
 
   function close() {
-    if (hoverIdx) value = filteredValues[hoverIdx];
+    if (hoverIdx != null) value = filteredValues[hoverIdx];
     open = false;
     hoverIdx = null;
   }
@@ -42,22 +53,13 @@
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        if (hoverIdx) {
-          hoverIdx = (hoverIdx + 1) % filteredValues.length;
-          select.children[hoverIdx]?.scrollIntoView({
-            block: "nearest",
-          });
-        }
+        if (hoverIdx) hoverIdx = (hoverIdx + 1) % filteredValues.length;
         break;
       case "ArrowUp":
         event.preventDefault();
-        if (hoverIdx) {
+        if (hoverIdx)
           hoverIdx =
             (hoverIdx - 1 + filteredValues.length) % filteredValues.length;
-          select.children[hoverIdx]?.scrollIntoView({
-            block: "nearest",
-          });
-        }
         break;
       case "Enter":
         event.stopPropagation();

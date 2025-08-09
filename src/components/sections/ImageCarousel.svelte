@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<div class="{containerStyles({ width: 'inner' })} mt-8 flex justify-end gap-1">
+<div class="{containerStyles({ width: 'inner' })} mt-9 flex justify-end gap-1">
   <button
     class="{actionStyles({
       background: null,

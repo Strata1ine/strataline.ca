@@ -30,14 +30,14 @@
     speed: meta.speed,
   }}
 >
-  <div
-    class="hidden w-1/2 flex-none flex-col items-center gap-2 sm:flex 2xl:flex-row-reverse 2xl:gap-4"
-  >
+  <div class="hidden w-1/2 flex-none flex-col sm:flex 2xl:flex-row-reverse">
     <div class="h-[70vh] max-h-165 min-h-100 w-full rounded-sm contain-paint">
       {@render imageCarousel()}
     </div>
 
-    <div class="flex gap-2 2xl:flex-col">
+    <div
+      class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col"
+    >
       <Slidenav bind:idx length={meta.content.length} />
     </div>
   </div>

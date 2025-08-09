@@ -6,10 +6,12 @@ import Footer from "@sections/Footer.astro";
 import Home from "@decor/Home.astro";
 ---
 
-<Layout>
+<Layout title={frontmatter?.title} desc={frontmatter?.desc}>
   <div class={`${containerStyles({ width: "inner" })} mt-20`}>
     <Home class="mb-2" />
-    <h1 class="heading-massive mb-9">{frontmatter.title}</h1>
+    <h1 class="heading-massive pointer-events-none mb-9 select-none">
+      {frontmatter?.title}
+    </h1>
     <div class="prose">
       <Content />
     </div>

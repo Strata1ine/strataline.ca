@@ -14,8 +14,10 @@
   let idx = $state(0);
 </script>
 
+<div class="2xl:w-diff flex-shrink-0"></div>
+
 <div
-  class="2xl:max-w-inner bg-accent flex rounded-md contain-paint"
+  class="bg-accent flex rounded-md contain-paint"
   use:slideshow={{
     idx,
     setIdx: (v) => (idx = v),
@@ -25,13 +27,13 @@
 >
   {#each meta as card, i}
     <div
-      class="sm:px-auto flex w-full flex-none flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
+      class="sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
       style="transform: translateX(-{i * 100}%)"
     >
       <div
-        class="relative aspect-video w-full flex-none rounded-sm contain-paint sm:h-full sm:w-1/2 sm:rounded-none"
+        class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-paint sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none"
       >
         {#if card.media.type == "image"}
           <img
@@ -69,6 +71,8 @@
   {/each}
 </div>
 
-<div class="flex justify-center gap-2 2xl:flex-col">
+<div
+  class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col"
+>
   <Slidenav length={meta.length} bind:idx />
 </div>

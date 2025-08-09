@@ -38,8 +38,12 @@
     name="contact"
     title="Let's talk"
     id={talkUid}
-    class="space-y-9"
+    class="space-y-8"
   >
+    <p class="mt-2 desc-sm">
+      Feel free to ask a question and/or quote.
+    </p>
+
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <PhoneNumber validate></PhoneNumber>
     <Select
@@ -67,9 +71,11 @@
     name="review"
     title="Write a review"
     id={reviewUid}
-    class="space-y-8"
+    class="space-y-4"
   >
-    <StarSlider></StarSlider>
+    <p class="mt-2 desc-sm italic">*We will verify your submission via email.</p>
+
+    <StarSlider />
     <Input name="Full name" required type="name" autocomplete="name" />
     <Input name="E-mail" required type="email" autocomplete="email" validate />
     <Select
@@ -79,8 +85,6 @@
     />
 
     <TextArea required minlength="25" name="Review" />
-
-    <p class="desc-base italic">*We will verify your submission via email.</p>
 
     <button
       value="submit"
