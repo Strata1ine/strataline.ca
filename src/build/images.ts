@@ -51,6 +51,8 @@ export async function optimizeImages(images: ImageMetadata[]): Promise<Optimized
 export const imageSource = (c: SchemaContext) => ({
   meta: c.image(),
   alt: z.string(),
+  x: z.enum(['left', 'right']).optional(),
+  y: z.enum(['top', 'bottom']).optional(),
 });
 
 export type ImageSource = z.infer<

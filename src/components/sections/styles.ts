@@ -38,7 +38,6 @@ export const imageStyles = cva(
     variants: {
       anim: {
         fade: 'transition-[opacity] duration-1000 absolute w-full',
-        // grow: 'transition-[width] duration-700',
         zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
         hover: 'transition duration-300 hover:scale-[1.05]',
       },
@@ -46,12 +45,18 @@ export const imageStyles = cva(
         true: '',
         false: '',
       },
+      x: {
+        left: 'object-left',
+        right: 'object-right',
+      },
+      y: {
+        top: 'object-top',
+        bottom: 'object-bottom',
+      },
     },
     compoundVariants: [
       { anim: 'fade', active: true, class: 'opacity-100' },
       { anim: 'fade', active: false, class: 'opacity-0' },
-      // { anim: 'grow', active: true, class: 'w-full' },
-      // { anim: 'grow', active: false, class: 'w-0' },
     ],
     defaultVariants: {
       active: false,

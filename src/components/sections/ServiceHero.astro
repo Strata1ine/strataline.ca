@@ -48,6 +48,8 @@ const { meta, slug } = Astro.props;
               src={image.meta}
               class={imageStyles({
                 anim: meta.data.covers.length > 1 ? "zoom" : undefined,
+                x: image.x,
+                y: image.y,
               })}
               {...imageOpts}
             />
@@ -76,6 +78,8 @@ const { meta, slug } = Astro.props;
             {...imageOpts}
             class={imageStyles({
               anim: meta.data.covers.length > 1 ? "zoom" : undefined,
+              x: image.x,
+              y: image.y,
             })}
           />
         ))

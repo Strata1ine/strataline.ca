@@ -5,29 +5,21 @@ import socials from "@root/content/socials.json";
 
 import { Icon } from "astro-icon/components";
 import Search from "@actions/Search.svelte";
-import type { VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import { divisionStyle } from "./layout/Divider.astro";
-
-interface Props {
-  spacing?: VariantProps<typeof divisionStyle>["spacing"];
-}
-
-const { spacing = "top" } = Astro.props;
 ---
 
-<footer class={divisionStyle({ spacing })}>
+<footer class={divisionStyle({ spacing: "top" })}>
   <div
     class={twMerge(
       containerStyles({ width: "inner" }),
-      "py-12 bg-gradient-to-b from-transparent via-white/90 to-white relative z-2",
-      spacing != null && "border-t-1 border-accent",
+      "py-12 bg-gradient-to-b from-transparent via-white/90 to-white relative z-2 border-t-1 border-accent",
     )}
   >
     <div
       class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
     >
-      <ul class="flex h-fit gap-3">
+      <ul class="flex gap-3">
         {
           socials.map((social) => (
             <li class="inline-flex">

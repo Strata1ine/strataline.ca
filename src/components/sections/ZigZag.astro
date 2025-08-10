@@ -25,7 +25,10 @@ let next = swapPos(meta.pos);
           <LayoutCard title={zig.title} desc={zig.desc} pos={next}>
             <Image
               slot="image"
-              class={imageStyles()}
+              class={imageStyles({
+                x: zig.image.x,
+                y: zig.image.y,
+              })}
               src={zig.image.meta}
               alt={zig.image.alt}
               {...imageOpts}

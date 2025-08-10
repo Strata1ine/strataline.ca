@@ -6,6 +6,7 @@
   import { type SubPropsOf } from "./registry";
   import { actionStyles } from "@actions/styles";
   import { slideshow } from "~/frontend/slideshow.svelte";
+  import { imageStyles } from "./styles";
 
   const {
     meta,
@@ -30,14 +31,17 @@
       class="sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0
       {i == idx ? '' : 'pointer-events-none opacity-0'}"
       inert={i != idx}
-      style="transform: translateX(-{i * 100}%)"
+      style="translate: -{i * 100}% 0"
     >
       <div
         class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-paint sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none"
       >
         {#if card.media.type == "image"}
           <img
-            class="absolute h-full w-full object-cover select-none"
+            class="absolute w-full {imageStyles({
+              x: card.media.x,
+              y: card.media.y,
+            })}"
             alt={card.media.alt}
             {...card.media.meta}
           />
