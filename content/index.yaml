@@ -80,6 +80,7 @@ sections:
           House & Home seeks our expertise on chevron hardwood floor installation.
         media:
           type: image
+          y: top
           meta: ./photos/awards/houseandhome.webp
           alt: |-
             A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.

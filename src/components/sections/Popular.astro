@@ -51,6 +51,8 @@ let next = swapPos(meta.pos);
                 alt={image.alt}
                 class={imageStyles({
                   anim: service.data.covers.length > 1 ? "zoom" : undefined,
+                  x: image.x,
+                  y: image.y,
                 })}
                 slot="image"
                 {...imageOpts}

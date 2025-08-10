@@ -13,7 +13,12 @@
 {#snippet imageCarousel()}
   {#each meta.content as image, i}
     <img
-      class={imageStyles({ anim: "fade", active: idx == i })}
+      class={imageStyles({
+        anim: "fade",
+        active: idx == i,
+        x: image.x,
+        y: image.y,
+      })}
       fetchpriority={i === idx ? "low" : "high"}
       alt={image.alt}
       {...image.meta}

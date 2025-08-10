@@ -118,7 +118,10 @@
         {#each meta.content as image}
           <div class="h-full flex-none">
             <img
-              class="{imageStyles()} mx-2 block max-w-screen rounded-sm md:mx-4"
+              class="{imageStyles({
+                x: image.x,
+                y: image.y,
+              })} mx-2 block max-w-screen rounded-sm md:mx-4"
               {...image.meta}
               alt={image.alt}
             />
