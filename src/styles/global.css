@@ -62,6 +62,10 @@
     @apply ml-8 my-4 space-y-2;
   }
 
+  .prose ul li::marker {
+    color: #d1d5db;
+  }
+
   .prose ul li,
   .prose ol li {
     @apply pl-3;
@@ -115,8 +119,8 @@
   /* --color-accent-dark: #f26876; */
   /* --color-accent-dark: #f57a98; */
   --color-accent-dark: #f25c7d;
-  --color-black: #1c1b1b;
-  --color-desc: #2b2b2b;
+  --color-black: #111827;
+  --color-desc: #374151;
   --color-white: #FFFAFB;
   --color-tone: #F5F5F5;
   --color-gold: #fce1c2;
