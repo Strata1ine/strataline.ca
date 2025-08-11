@@ -8,9 +8,14 @@ import icon from "astro-icon";
 import { visualizer } from "rollup-plugin-visualizer";
 import sitemap from '@astrojs/sitemap';
 import yaml from '@rollup/plugin-yaml';
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: netlify({
+    edgeMiddleware: true,
+    cacheOnDemandPages: true,
+  }),
   trailingSlash: 'never',
   site: 'https://strataline.ca',
   build: {
@@ -20,7 +25,7 @@ export default defineConfig({
   },
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport',
+    defaultStrategy: 'hover',
   },
   devToolbar: { enabled: false },
   experimental: {
@@ -52,18 +57,17 @@ export default defineConfig({
       sourcemap: true,
     },
     plugins: [
-      // visualizer({
-      //   emitFile: true,
-      //   filename: "stats.html",
-      //   sourcemap: true,
-      // }),
       yaml(),
       tailwindcss(),
     ],
   },
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp',
+      entrypoint: '@astrojs/netlify/image-service',
+      config: {
+        quality: 45,
+        format: 'avif',
+      }
     },
   },
   integrations: [

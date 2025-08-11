@@ -2,12 +2,11 @@
 import global from "~/styles/global.css?url";
 import { google } from "googleapis";
 import { marked } from "marked";
-import { Font, getImage } from "astro:assets";
+import { Font } from "astro:assets";
 import business from "@root/content/business.json";
 import socials from "@root/content/socials.json";
 import type { Pos } from "@sections/styles";
-import type { SectionMeta } from "@sections/registry";
-import { querySections } from "@sections/registry";
+import { type SectionMeta, querySections } from "@sections/registry";
 import {
   computeAggregateRating,
   generateReviews,
@@ -19,11 +18,6 @@ const isProd = import.meta.env.PROD;
 const pngIcons = await import("~/pages/manifest.json.ts").then(
   (m) => m.pngIcons,
 );
-
-const faviconSvg = await getImage({
-  src: (await import("~/icons/favicon.svg")).default,
-  format: "svg",
-});
 
 interface Props {
   title: string;
@@ -134,7 +128,7 @@ const schema = {
   "@context": "https://schema.org",
   url: `${Astro.url.origin}${Astro.url.pathname.replace(/\.html$/, "")}`,
   ...business,
-  sameAs: [...(business.sameAs || []), ...socials.map((social) => social.url)],
+  sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
   ...(reviews.length > 0 && {
     ...generateReviews(Astro, reviews),
     ...computeAggregateRating(Astro, reviews),
@@ -156,7 +150,7 @@ const schema = {
     <Font cssVariable="--font-cormorant" />
     <Font cssVariable="--font-dm-sans" />
 
-    <link rel="icon" type="image/svg+xml" href=`${faviconSvg.src}` />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
     {
