@@ -61,15 +61,6 @@ export default defineConfig({
       tailwindcss(),
     ],
   },
-  image: {
-    service: {
-      entrypoint: '@astrojs/netlify/image-service',
-      config: {
-        quality: 45,
-        format: 'avif',
-      }
-    },
-  },
   integrations: [
     svelte(),
     sitemap({
