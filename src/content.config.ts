@@ -3,7 +3,7 @@ import {
   type SchemaContext, type CollectionEntry as _CollectionEntry, z
 } from 'astro:content';
 
-import { file, glob } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 
 import { ZPos, parseRegistry } from "@sections/registry";
 import { imageSource } from '~/build/images';
