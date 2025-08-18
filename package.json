@@ -9,26 +9,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.5.6",
-    "svelte": "^5.38.0"
+    "@astrojs/netlify": "^6.5.7",
+    "svelte": "^5.38.2"
   },
   "devDependencies": {
     "googleapis": "^155.0.1",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.4.2",
+    "@astrojs/sitemap": "^3.5.0",
     "@astrojs/svelte": "^7.1.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/ph": "^1.2.2",
-    "@iconify-json/twemoji": "^1.2.2",
+    "@iconify-json/twemoji": "^1.2.4",
     "@phosphor-icons/core": "^2.1.1",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.12",
     "@types/youtube": "^0.1.2",
-    "astro": "^5.12.9",
+    "astro": "^5.13.2",
     "astro-compressor": "^1.1.2",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
-    "marked": "^16.1.2",
+    "marked": "^16.2.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^3.4.0",
@@ -38,7 +38,7 @@
     "sharp-ico": "^0.1.5",
     "string-strip-html": "^13.4.13",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
   }
 }

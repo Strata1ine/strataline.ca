@@ -6,4 +6,5 @@ seo: |-
 draft: true
 covers:
   - meta: ./cover.jpg
-    alt: "A freshly painted hallway with crisp white walls, dark doors for contrast, and a polished railing enhancing the elegant design."
+    alt: |-
+      A freshly painted hallway with crisp white walls, dark doors for contrast, and a polished railing enhancing the elegant design.

@@ -12,10 +12,10 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: netlify({
-    edgeMiddleware: true,
-    cacheOnDemandPages: true,
-  }),
+  // adapter: netlify({
+  //   edgeMiddleware: true,
+  //   cacheOnDemandPages: true,
+  // }),
   trailingSlash: 'never',
   site: 'https://strataline.ca',
   build: {
