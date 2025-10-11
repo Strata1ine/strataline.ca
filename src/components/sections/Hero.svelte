@@ -1,10 +1,11 @@
 <script lang="ts">
   import { imageStyles, imageWrapperStyles } from "./styles";
-  import Slidenav from "@actions/Slidenav.svelte";
-  import FluidTalk from "@decor/FluidTalk.svelte";
+  import Slidenav from "@/components/actions/Slidenav.svelte";
+  import FluidTalk from "@/components/decor/FluidTalk.svelte";
+  import Image from "@/components/Image.svelte";
 
-  import { type PropsOf } from "./registry";
-  import { slideshow } from "~/frontend/slideshow.svelte";
+  import { type PropsOf } from "@/components/registry";
+  import { slideshow } from "@/frontend/slideshow.svelte";
   const { meta }: { meta: PropsOf<"Hero"> } = $props();
 
   let idx: number = $state(0);
@@ -12,17 +13,16 @@
 
 {#snippet imageCarousel()}
   {#each meta.content as image, i}
-    <img
-      class={imageStyles({
-        anim: "fade",
-        active: idx == i,
-        x: image.x,
-        y: image.y,
-      })}
-      fetchpriority={i === idx ? "low" : "high"}
-      alt={image.alt}
-      {...image.meta}
-    />
+    <Image {image} widths={[400, 650, 1300]}/>
+    <!-- <img -->
+    <!--   class={imageStyles({ -->
+    <!--     anim: "fade", -->
+    <!--     active: idx == i, -->
+    <!--     x: image.x, -->
+    <!--     y: image.y, -->
+    <!--   })} -->
+    <!--   fetchpriority={i === idx ? "low" : "high"} -->
+    <!-- /> -->
   {/each}
 {/snippet}
 

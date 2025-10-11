@@ -40,7 +40,6 @@ export function slideshow(
 
   observer.observe(node);
 
-  
   const unsub = videoPlaying.subscribe((playing) => {
     if (playing) {
       next();

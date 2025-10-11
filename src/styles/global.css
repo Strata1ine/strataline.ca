@@ -104,7 +104,7 @@
   --drop-*: initial;
   --shadow-*: initial;
   --inset-*: initial;
-  --animate-*: initial;
+  /* --animate-*: initial; */
   --blur-*: initial;
   --ease-*: initial;
   --perspective-*: initial;
@@ -114,10 +114,7 @@
   --color-error: var(--color-accent-dark);
   --color-success: #245E24;
   --color-url: #6351e8;
-  /* --color-accent: #ffebee; */
   --color-accent: #ffebee;
-  /* --color-accent-dark: #f26876; */
-  /* --color-accent-dark: #f57a98; */
   --color-accent-dark: #f25c7d;
   --color-black: #111827;
   --color-desc: #374151;
@@ -173,9 +170,6 @@
 
 :root {
   background: var(--color-white);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -webkit-tap-highlight-color: transparent;
   color: var(--color-black);
 }
 

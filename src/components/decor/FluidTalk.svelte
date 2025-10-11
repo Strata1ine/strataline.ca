@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { modals } from "~/frontend/stores.svelte";
-  import { useQueryDevice } from "~/frontend/mobile.svelte";
-  import Mailbox from "~/icons/ph/mailbox-fill.svelte";
-  import { actionStyles, pillSize } from "@actions/styles";
+  import { modals } from "@/frontend/stores.svelte";
+  import { useQueryDevice } from "@/frontend/mobile.svelte";
+  import Mailbox from "@/icons/ph/mailbox-fill.svelte";
+  import { actionStyles, pillSize } from "@/components/actions/styles";
   import { onMount } from "svelte";
 
   let sensor: HTMLElement;

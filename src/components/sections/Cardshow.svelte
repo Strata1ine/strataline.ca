@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Slidenav from "@actions/Slidenav.svelte";
-  import YoutubeVideo from "@interact/YoutubeVideo.svelte";
-  import Video from "@interact/Video.svelte";
+  import Slidenav from "@/components/actions/Slidenav.svelte";
+  import YoutubeVideo from "@/components/YoutubeVideo.svelte";
+  import Video from "@/components/Video.svelte";
 
-  import { type SubPropsOf } from "./registry";
-  import { actionStyles } from "@actions/styles";
-  import { slideshow } from "~/frontend/slideshow.svelte";
+  import { type SubPropsOf } from "@/components/registry";
+  import { actionStyles } from "@/components/actions/styles";
+  import { slideshow } from "@/frontend/slideshow.svelte";
   import { imageStyles } from "./styles";
 
   const {
@@ -39,16 +39,15 @@
         {#if card.media.type == "image"}
           <img
             class="absolute w-full {imageStyles({
-              x: card.media.x,
-              y: card.media.y,
+              x: card.media.image.x,
+              y: card.media.image.y,
             })}"
-            alt={card.media.alt}
-            {...card.media.meta}
+            {...card.media.image}
           />
         {:else if card.media.type == "video"}
-          <Video poster={card.media.poster.src} url={card.media.url}></Video>
+          <Video poster={card.media.image.src} url={card.media.url} />
         {:else if card.media.type == "yt-video"}
-          <YoutubeVideo id={card.media.id}></YoutubeVideo>
+          <YoutubeVideo id={card.media.id} />
         {/if}
       </div>
 

@@ -1,5 +1,5 @@
-import { type PropsOf } from "@sections/registry";
-import business from "@root/content/business.json";
+import { type PropsOf } from "@/components/registry";
+import business from "#/business.json";
 import { marked } from "marked";
 import type { AstroGlobal } from "astro";
 

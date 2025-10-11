@@ -1,4 +1,4 @@
-import { imageSource } from '~/build/images';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import { type SchemaContext, z } from 'astro:content';
 
 export const ZPos = z.union([z.literal('left'), z.literal('right')]);
@@ -10,22 +10,36 @@ const textCarousel = ({
   text: z.array(z.string()),
 });
 
-const media = (c: SchemaContext) => z.union([
+export type ImageSource = z.infer<ReturnType<typeof image>>;
+
+export const image = (
+  c: SchemaContext,
+) =>
   z.object({
-    type: z.literal('image'),
-    ...imageSource(c),
-  }),
-  z.object({
-    type: z.literal('video'),
-    poster: c.image(),
-    uploadDate: z.coerce.date(),
-    url: z.string(),
-  }),
-  z.object({
-    type: z.literal('yt-video'),
-    id: z.string(),
+    src: c.image(),
+    alt: z.string(),
+    x: z.enum(['left', 'right']).optional(),
+    y: z.enum(['top', 'bottom']).optional(),
   })
-]);
+
+const media = (c: SchemaContext) => {
+  return z.union([
+    z.object({
+      type: z.literal('image'),
+      image: image(c),
+    }),
+    z.object({
+      type: z.literal('video'),
+      image: image(c),
+      uploadDate: z.coerce.date(),
+      url: z.string(),
+    }),
+    z.object({
+      type: z.literal('yt-video'),
+      id: z.string(),
+    })
+  ]);
+};
 
 export const registry = {
   Header: {
@@ -33,7 +47,7 @@ export const registry = {
       id: z.string().optional(),
       content: z.array(z.object({ id: z.string(), name: z.string() })),
     }),
-    load: () => import('./Header.astro'),
+    load: () => import('./sections/Header.astro'),
   },
 
   Hero: {
@@ -42,9 +56,9 @@ export const registry = {
       title: z.string(),
       desc: z.string(),
       speed: z.number().default(5.0),
-      content: z.array(z.object(imageSource(c))),
+      content: z.array(image(c)),
     }),
-    load: () => import('./Hero.astro'),
+    load: () => import('./sections/Hero.astro'),
   },
 
   Popular: {
@@ -53,7 +67,7 @@ export const registry = {
       pos: DefaultPos,
       title: z.string(),
     }),
-    load: () => import('./Popular.astro'),
+    load: () => import('./sections/Popular.astro'),
   },
 
   Services: {
@@ -66,20 +80,20 @@ export const registry = {
         .object(textCarousel)
         .optional(),
     }),
-    load: () => import('./Services.astro'),
+    load: () => import('./sections/Services.astro'),
   },
 
   TextCarousel: {
     schema: (_: SchemaContext) => textCarousel,
-    load: () => import('./TextCarousel.astro'),
+    load: () => import('./sections/TextCarousel.astro'),
   },
 
   ImageCarousel: {
     schema: (c: SchemaContext) => ({
       speed: z.number().optional().default(1.0),
-      content: z.array(z.object(imageSource(c))),
+      content: z.array(image(c)),
     }),
-    load: () => import('./ImageCarousel.astro'),
+    load: () => import('./sections/ImageCarousel.astro'),
   },
 
   Cardshow: {
@@ -101,7 +115,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Cardshow.astro'),
+    load: () => import('./sections/Cardshow.astro'),
   },
 
   Reviews: {
@@ -121,7 +135,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Reviews.astro'),
+    load: () => import('./sections/Reviews.astro'),
   },
 
   Benefits: {
@@ -136,7 +150,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Benefits.astro'),
+    load: () => import('./sections/Benefits.astro'),
   },
 
   ImagePanel: {
@@ -147,11 +161,11 @@ export const registry = {
       content: z.array(
         z.object({
           title: z.string(),
-          ...imageSource(c),
+          image: image(c),
         })
       ),
     }),
-    load: () => import('./ImagePanel.astro'),
+    load: () => import('./sections/ImagePanel.astro'),
   },
 
   Faq: {
@@ -166,7 +180,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Faq.astro'),
+    load: () => import('./sections/Faq.astro'),
   },
 
   ZigZag: {
@@ -178,11 +192,11 @@ export const registry = {
         z.object({
           title: z.string(),
           desc: z.string(),
-          image: z.object(imageSource(c)),
+          image: image(c),
         })
       ),
     }),
-    load: () => import('./ZigZag.astro'),
+    load: () => import('./sections/ZigZag.astro'),
   },
 
   Prices: {
@@ -200,7 +214,7 @@ export const registry = {
         })
       ),
     }),
-    load: () => import('./Prices.astro'),
+    load: () => import('./sections/Prices.astro'),
   },
 } as const;
 
@@ -225,8 +239,6 @@ export function querySections<T extends Id>(
       section.type === sectionType
     ) as (PropsOf<T> & SectionMeta)[];
 }
-
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export const sectionRegistry: Record<string, SchemaComponent> = {};
 

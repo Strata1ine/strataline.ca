@@ -1,6 +1,6 @@
 <script lang="ts">
   import { inputStyles } from "./styles";
-  import { genUid } from "~/frontend/stores.svelte";
+  import { genUid } from "@/frontend/stores.svelte";
   import Field from "./Field.svelte";
 
   let { required = false, minheight = 80, height = 150, name } = $props();

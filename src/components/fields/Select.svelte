@@ -1,8 +1,9 @@
 <script lang="ts">
-  import Caret from "~/icons/ph/caret-down-bold.svelte";
-  import NavArrow from "~/icons/ph/navigation-arrow-fill.svelte";
+  import Caret from "@/icons/ph/caret-down-bold.svelte";
+  import NavArrow from "@/icons/ph/navigation-arrow-fill.svelte";
+  import { genUid } from "@/frontend/stores.svelte";
+
   import { inputStyles, menuButton, menuStyles } from "./styles";
-  import { genUid } from "~/frontend/stores.svelte";
   import Field from "./Field.svelte";
 
   const { values, name, required } = $props();

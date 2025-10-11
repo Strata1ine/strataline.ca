@@ -5,7 +5,7 @@ desc: |-
 seo: |-
   Modern kitchen renovations with custom cabinetry, quartz countertops, and energy-efficient appliances. Expert design for functionality and style, tailored to your budget.
 covers:
-  - meta: ./cover.jpg
+  - src: ./cover.jpg
     alt: |-
       A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
 
@@ -15,13 +15,13 @@ sections:
     content:
       - title: Ample space
         image:
-          meta: ./space.jpg
+          src: ./space.jpg
           alt: A spacious, dust-free kitchen renovation with abundant white cabinetry offering ample storage, marble countertops, and a modern gas stove, designed for quality and transformation.
         desc: |-
           Cabinets, pull-out drawers, and pantry space keep the kitchen organized, efficient and clutter-free.
       - title: Quality & low-maintenance
         image:
-          meta: ./quality.jpg
+          src: ./quality.jpg
           alt: A modern kitchen featuring durable white countertops, sturdy cabinetry with black hardware, and high-quality stainless steel appliances, complemented by a sleek island and a stylish backsplash.
         desc: |-
           Durable countertops, sturdy cabinetry, and reliable appliances withstand daily use and maintain aesthetic appeal.

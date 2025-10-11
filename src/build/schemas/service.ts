@@ -1,6 +1,6 @@
-import type { CollectionEntry } from "~/content.config";
-import { querySections } from "@sections/registry";
-import business from "@root/content/business.json";
+import type { CollectionEntry } from "@/content.config";
+import { querySections } from "@/components/registry";
+import business from "#/business.json";
 import { computeAggregateRating } from "./reviews";
 import type { AstroGlobal } from "astro";
 
@@ -40,7 +40,7 @@ export const generateServiceSchema = (Astro: AstroGlobal, service: CollectionEnt
     }),
     image: service.data.covers.map((cover) => ({
       "@type": "ImageObject",
-      url: `${Astro.url.origin}${cover.meta.src}`,
+      url: `${Astro.url.origin}${cover.src}`,
       description: cover.alt,
     })),
   };

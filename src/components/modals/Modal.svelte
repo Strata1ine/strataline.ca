@@ -1,6 +1,6 @@
 <script>
-  import { modals } from "~/frontend/stores.svelte";
-  import { focusLock } from "~/frontend/focus";
+  import { modals } from "@/frontend/stores.svelte";
+  import { focusLock } from "@/frontend/focus";
 
   const { class: className, open = $bindable(), uid, children } = $props();
 </script>

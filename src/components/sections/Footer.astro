@@ -1,12 +1,13 @@
 ---
 import { containerStyles } from "./styles";
-import business from "@root/content/business.json";
-import socials from "@root/content/socials.json";
+import business from "#/business.json";
+import socials from "#/socials.json";
 
 import { Icon } from "astro-icon/components";
-import Search from "@actions/Search.svelte";
-import { twMerge } from "tailwind-merge";
 import { divisionStyle } from "./layout/Divider.astro";
+import { twMerge } from "tailwind-merge";
+
+import Search from "@/components/actions/Search.svelte";
 ---
 
 <footer class={divisionStyle({ spacing: "top" })}>

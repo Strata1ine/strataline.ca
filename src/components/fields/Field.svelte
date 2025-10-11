@@ -1,7 +1,8 @@
 <script>
-  import Label from "@fields/Label.svelte";
+  import Label from "@/components/fields/Label.svelte";
   import { fieldStyles } from "./styles";
-  import { clickOutside } from "~/frontend/focus";
+
+  import { clickOutside } from "@/frontend/focus";
   let { name, uid, required, children, open = $bindable() } = $props();
 </script>
 

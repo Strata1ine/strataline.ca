@@ -4,7 +4,7 @@ seo: |-
 desc: |
   Transform your staircase with elevated design, improved safety, and refined, modern railings.
 covers:
-  - meta: ./cover.jpg
+  - src: ./cover.jpg
     alt: |-
       A beautifully renovated open space featuring elegant hardwood floors, decorative iron railings, and bright natural light highlighting the cozy living area and stylish decor.
 
@@ -12,23 +12,23 @@ sections:
   - type: ImageCarousel
     speed: 4.0
     content:
-      - meta: ./photos/10.jpg
+      - src: ./photos/10.jpg
         alt: A carpeted staircase with wooden handrails and black balusters, accented by framed artwork on neutral walls.
-      - meta: ./photos/00.jpg
+      - src: ./photos/00.jpg
         alt: A grand staircase with dark wood steps, intricate wrought iron balusters, and bright white walls for contrast.
-      - meta: ./photos/07.jpg
+      - src: ./photos/07.jpg
         alt: Light wood stairs with slim metal balusters and white risers, seamlessly integrated into a minimalist hallway.
-      - meta: ./photos/05.jpg
+      - src: ./photos/05.jpg
         alt: A spiral staircase with rich wood steps and sleek black railings, combining elegance and functionality.
-      - meta: ./photos/03.jpg
+      - src: ./photos/03.jpg
         alt: A bold curved staircase featuring dark wood treads, matching handrails, and vertical black balusters.
-      - meta: ./photos/01.jpg
+      - src: ./photos/01.jpg
         alt: A curved staircase with dark wood treads, white risers, and decorative black balusters, framed by clean white walls.
-      - meta: ./photos/02.jpg
+      - src: ./photos/02.jpg
         alt: A staircase with dark wood steps, white risers, and stainless steel balusters, with a cat lounging on the steps and a potted plant nearby.
-      - meta: ./photos/11.jpg
+      - src: ./photos/11.jpg
         alt: A curved staircase with polished dark wood steps, black balusters, and neutral walls, set above a glossy tile floor.
-      - meta: ./photos/09.jpg
+      - src: ./photos/09.jpg
         alt: A staircase with glass railings and a stainless steel handrail, opening into a bright space with wood floors and a stone accent wall.
 
   - type: Benefits

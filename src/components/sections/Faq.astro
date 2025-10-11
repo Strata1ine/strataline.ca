@@ -1,11 +1,12 @@
 ---
-import { type PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
 const meta = Astro.props as PropsOf<"Faq">;
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
-import Island from "./Faq.svelte";
 import { containerStyles } from "./styles";
+
+import Island from "./Faq.svelte";
 import { marked } from "marked";
 
 for (const faq of meta.content) {

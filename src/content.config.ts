@@ -5,12 +5,11 @@ import {
 
 import { glob } from 'astro/loaders';
 
-import { ZPos, parseRegistry } from "@sections/registry";
-import { imageSource } from '~/build/images';
+import { image, ZPos, parseRegistry } from "@/components/registry";
 
 export const collections = {
   index: defineCollection({
-    loader: glob({ pattern: '*.yaml', base: './content' }),
+    loader: glob({ pattern: '*.yaml', base: 'content' }),
     schema: (c: SchemaContext) => {
       return z.object({
         title: z.string(),
@@ -27,7 +26,7 @@ export const collections = {
       title: z.string(),
       desc: z.string(),
       seo: z.string(),
-      covers: z.array(z.object(imageSource(c))),
+      covers: z.array(image(c)),
       draft: z.boolean().optional(),
       sections: parseRegistry(c).optional(),
     }),

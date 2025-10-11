@@ -5,5 +5,5 @@ seo: |-
   tomatoes
 draft: true
 covers:
-  - meta: ./cover.jpg
+  - src: ./cover.jpg
     alt: tomatoes

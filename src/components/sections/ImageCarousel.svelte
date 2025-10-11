@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { actionStyles } from "@actions/styles";
   import { containerStyles, imageStyles, imageWrapperStyles } from "./styles";
-  import CaretCircleLeftFill from "~/icons/ph/caret-circle-left-fill.svelte";
-
-  import { type PropsOf } from "./registry";
+  import { actionStyles } from "@/components/actions/styles";
+  import CaretCircleLeftFill from "@/icons/ph/caret-circle-left-fill.svelte";
+  import { type PropsOf } from "@/components/registry";
 
   const { meta }: { meta: PropsOf<"ImageCarousel"> } = $props();
 
@@ -112,7 +111,7 @@
   >
     {#each Array(2) as _, i}
       <div
-        class="flex h-full flex-none"
+        class="flex"
         aria-hidden={i > 0 ? "true" : undefined}
       >
         {#each meta.content as image}
@@ -122,8 +121,8 @@
                 x: image.x,
                 y: image.y,
               })} mx-2 block max-w-screen rounded-sm md:mx-4"
-              {...image.meta}
-              alt={image.alt}
+              loading="async"
+              {...image}
             />
           </div>
         {/each}

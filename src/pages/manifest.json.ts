@@ -1,10 +1,10 @@
 import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
 
-import favicon from "~/icons/favicon.png";
+import favicon from "@/icons/favicon.png";
 const sizes = [32, 180, 512];
 
-import business from "@root/content/business.json";
+import business from "#/business.json";
 
 export const pngIcons = Promise.all(
   sizes.map(async (size: number) => {

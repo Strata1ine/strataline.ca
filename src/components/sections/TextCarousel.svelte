@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Star from "~/icons/ph/star-four-fill.svelte";
+  import Star from "@/icons/ph/star-four-fill.svelte";
   import { onMount } from "svelte";
 
-  import { type PropsOf } from "./registry";
+  import { type PropsOf } from "@/components/registry";
   let { meta }: { meta: PropsOf<"TextCarousel"> } = $props();
 
   let textCarousel: HTMLElement;
@@ -120,7 +120,7 @@
   <div
     bind:this={textCarousel}
     style="translate: {-pos}px 0 0"
-    class="flex h-20 will-change-transform select-none md:h-25 "
+    class="flex h-20 will-change-transform select-none md:h-25"
   >
     {#each Array(3) as _}
       <div class="flex flex-none items-center">

@@ -1,13 +1,14 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import { Content, frontmatter } from "@root/content/privacy.md";
-import { containerStyles } from "@sections/styles";
-import Footer from "@sections/Footer.astro";
-import Home from "@decor/Home.astro";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/sections/Footer.astro";
+import Home from "@/components/decor/Home.astro";
+import { Content, frontmatter } from "#/privacy.md";
+import { containerStyles } from "@/components/sections/styles";
+import { twMerge } from "tailwind-merge";
 ---
 
 <Layout title={frontmatter?.title} desc={frontmatter?.desc}>
-  <div class={`${containerStyles({ width: "inner" })} mt-20`}>
+  <div class={twMerge(containerStyles({ width: "inner" }), "mt-20")}>
     <Home class="mb-2" />
     <h1 class="heading-massive pointer-events-none mb-9 select-none">
       {frontmatter?.title}

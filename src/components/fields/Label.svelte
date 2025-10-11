@@ -1,6 +1,6 @@
 <script>
   let { name, uid, required = false, open = $bindable() } = $props();
-  import Asterick from "~/icons/ph/asterisk-bold.svelte";
+  import Asterick from "@/icons/ph/asterisk-bold.svelte";
 </script>
 
 <label

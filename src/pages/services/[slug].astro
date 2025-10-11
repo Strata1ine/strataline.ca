@@ -1,11 +1,24 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import ServiceHero from "@sections/ServiceHero.astro";
-import Menus from "@modals/Menus.svelte";
+import Layout from "@/layouts/Layout.astro";
 
-import { getCollection } from "~/content.config";
-import Footer from "@sections/Footer.astro";
-import { generateServiceSchema } from "~/build/schemas/service";
+import Menus from "@/components/modals/Menus.svelte";
+import Footer from "@/components/sections/Footer.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import { twMerge } from "tailwind-merge";
+import { getCollection } from "@/content.config";
+import { generateServiceSchema } from "@/build/schemas/service";
+import {
+  containerStyles,
+  imageWrapperStyles,
+  imageStyles,
+} from "@/components/sections/styles";
+
+import Home from "@/components/decor/Home.astro";
+import FluidTalk from "@/components/decor/FluidTalk.svelte";
+
+export const prerender = true;
 
 export async function getStaticPaths() {
   return (await getCollection("services")).map((service: any) => ({
@@ -30,7 +43,96 @@ const service = (await getCollection("services")).find(
   startPos={service.data.startPos ?? "right"}
   schemas={generateServiceSchema(Astro, service)}
 >
-  <ServiceHero slot="before" meta={service} {slug} />
+  <main
+    class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170"
+    slot="before"
+  >
+    <div
+      class={twMerge(
+        containerStyles({ width: "outer" }),
+        "gap-6 md:gap-8 xl:gap-1 flex h-full items-center sm:flex-row sm:py-0",
+      )}
+    >
+      <span
+        class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
+      >
+      </span>
+
+      <div class="flex-1">
+        <Home desc="Go back" {slug} />
+        <h1 class="heading-5xl mb-2 font-bold">
+          {service.data.title}
+        </h1>
+
+        <div
+          class={twMerge(
+            imageWrapperStyles({
+              display: "sm",
+              size: "sm",
+              pos: "right",
+            }),
+            "my-4 ml-7",
+          )}
+        >
+          {
+            service.data.covers.map((image, _) => (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                class={imageStyles({
+                  anim: service.data.covers.length > 1 ? "zoom" : undefined,
+                  x: image.x,
+                  y: image.y,
+                })}
+                widths={[400, 730]}
+                draggable="false"
+                format="webp"
+                loading="eager"
+              />
+            ))
+          }
+        </div>
+
+        <p class="desc-base">
+          {service.data.desc}
+        </p>
+
+        <FluidTalk client:load />
+      </div>
+
+      <div
+        class={twMerge(
+          "hidden h-full rounded-sm flex-1",
+          imageWrapperStyles({ display: "md" }),
+        )}
+      >
+        {
+          service.data.covers.map((image, _) => (
+            <Image
+              alt={image.alt}
+              src={image.src}
+              widths={[730, 1460]}
+              class={imageStyles({
+                anim: service.data.covers.length > 1 ? "zoom" : undefined,
+                x: image.x,
+                y: image.y,
+              })}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+
+  <div class={containerStyles({ width: "inner" })}>
+    <Icon
+      aria-hidden={true}
+      is:inline
+      name="arrow"
+      class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
+    />
+  </div>
+
   <Footer />
   <Menus client:idle />
 </Layout>

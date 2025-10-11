@@ -1,21 +1,24 @@
 ---
-import global from "~/styles/global.css?url";
+import global from "@/styles/global.css?url";
 import { google } from "googleapis";
 import { marked } from "marked";
 import { Font } from "astro:assets";
-import business from "@root/content/business.json";
-import socials from "@root/content/socials.json";
-import type { Pos } from "@sections/styles";
-import { type SectionMeta, querySections } from "@sections/registry";
+import business from "#/business.json";
+import socials from "#/socials.json";
+import type { Pos } from "@/components/sections/styles";
+
+import { type SectionMeta, querySections } from "@/components/registry";
+
+>>>>>>> 58f9533b (test)
 import {
   computeAggregateRating,
   generateReviews,
-} from "~/build/schemas/reviews";
+} from "@/build/schemas/reviews";
 
-import Content from "@sections/layout/Content.astro";
+import Content from "@/components/sections/layout/Content.astro";
 const isProd = import.meta.env.PROD;
 
-const pngIcons = await import("~/pages/manifest.json.ts").then(
+const pngIcons = await import("@/pages/manifest.json.ts").then(
   (m) => m.pngIcons,
 );
 
@@ -72,7 +75,7 @@ if (faq.length > 0) {
           "@type": "VideoObject",
           name: card.title,
           description: card.desc,
-          thumbnailUrl: card.media.poster.src,
+          thumbnailUrl: card.media.image.src,
           uploadDate: card.media.uploadDate,
           contentUrl: card.media.url,
         });
@@ -167,7 +170,7 @@ const schema = {
       ))
     }
 
-    <script src="~/frontend/index.ts"></script>
+    <script src="@/frontend/index.ts"></script>
 
     <script
       is:inline

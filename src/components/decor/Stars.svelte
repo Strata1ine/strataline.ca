@@ -10,7 +10,8 @@
     class?: string;
     children?: Snippet;
   } = $props();
-  import Star from "~/icons/ph/star-fill.svelte";
+
+  import Star from "@/icons/ph/star-fill.svelte";
 </script>
 
 {#each Array(5) as _, i}

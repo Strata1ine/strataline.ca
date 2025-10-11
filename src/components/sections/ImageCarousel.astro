@@ -1,14 +1,9 @@
 ---
-import { optimizeImage } from "~/build/images";
 import Island from "./ImageCarousel.svelte";
 import LayoutDivider from "./layout/Divider.astro";
 
-import type { PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
 const meta = Astro.props as PropsOf<"ImageCarousel">;
-
-for (let image of meta.content) {
-  image.meta = await optimizeImage(image.meta);
-}
 ---
 
 <LayoutDivider>

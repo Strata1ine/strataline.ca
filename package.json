@@ -9,36 +9,36 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.5.7",
-    "svelte": "^5.38.2"
+    "@astrojs/netlify": "^6.5.11",
+    "svelte": "^5.39.8",
+    "virtua": "^0.44.2"
   },
   "devDependencies": {
-    "googleapis": "^155.0.1",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.5.0",
-    "@astrojs/svelte": "^7.1.0",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/svelte": "^7.2.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/ph": "^1.2.2",
-    "@iconify-json/twemoji": "^1.2.4",
     "@phosphor-icons/core": "^2.1.1",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@tailwindcss/vite": "^4.1.12",
+    "@tailwindcss/vite": "^4.1.14",
     "@types/youtube": "^0.1.2",
-    "astro": "^5.13.2",
+    "astro": "^5.14.1",
     "astro-compressor": "^1.1.2",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
-    "marked": "^16.2.0",
+    "googleapis": "^161.0.0",
+    "marked": "^16.3.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "rollup-plugin-visualizer": "^6.0.3",
-    "sass": "^1.90.0",
+    "rollup-plugin-visualizer": "^6.0.4",
+    "sass": "^1.93.2",
     "sharp-ico": "^0.1.5",
     "string-strip-html": "^13.4.13",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.12",
-    "typescript": "^5.9.2"
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   }
 }

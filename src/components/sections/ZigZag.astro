@@ -1,12 +1,12 @@
 ---
-import { type PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
 import { Image } from "astro:assets";
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 import LayoutCard from "./layout/Card.astro";
 import { imageStyles, containerStyles, swapPos } from "./styles";
-import { imageOpts } from "~/build/images";
+import { twMerge } from "tailwind-merge";
 const meta = Astro.props as PropsOf<"ZigZag">;
 
 let next = swapPos(meta.pos);
@@ -16,7 +16,10 @@ let next = swapPos(meta.pos);
   <LayoutTitle title={meta.title} pos={meta.pos} />
 
   <div
-    class={`${containerStyles({ width: "outer" })} space-y-20 sm:space-y-35`}
+    class={twMerge(
+      containerStyles({ width: "outer" }),
+      "space-y-20 sm:space-y-35",
+    )}
   >
     {
       meta.content.map((zig, _) => {
@@ -29,9 +32,10 @@ let next = swapPos(meta.pos);
                 x: zig.image.x,
                 y: zig.image.y,
               })}
-              src={zig.image.meta}
+              src={zig.image.src}
               alt={zig.image.alt}
-              {...imageOpts}
+              width="1440"
+              draggable="false"
             />
           </LayoutCard>
         );

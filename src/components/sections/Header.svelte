@@ -1,14 +1,13 @@
 <script lang="ts">
-  import Modal from "@modals/Modal.svelte";
-  import Burger from "@decor/Burger.svelte";
-  import { modals, genUid } from "~/frontend/stores.svelte";
-
-  import { modalStyles } from "@modals/styles";
+  import Modal from "@/components/modals/Modal.svelte";
+  import Burger from "@/components/decor/Burger.svelte";
+  import { modals, genUid } from "@/frontend/stores.svelte";
 
   let open = $derived(modals.is(modals.mobile));
   const uid = genUid();
 
-  import { type PropsOf } from "./registry";
+  import { modalStyles } from "@/components/modals/styles";
+  import { type PropsOf } from "@/components/registry";
   const { meta }: { meta: PropsOf<"Header"> } = $props();
 </script>
 

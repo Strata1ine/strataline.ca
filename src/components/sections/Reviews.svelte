@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Stars from "@decor/Stars.svelte";
-  import Feather from "~/icons/ph/feather-fill.svelte";
-  import { type SubPropsOf } from "./registry";
-  import { modals } from "~/frontend/stores.svelte";
-  import { useQueryDevice } from "~/frontend/mobile.svelte";
+  import Stars from "@/components/decor/Stars.svelte";
+  import Feather from "@/icons/ph/feather-fill.svelte";
+  import { type SubPropsOf } from "@/components/registry";
+  import { modals } from "@/frontend/stores.svelte";
+  import { useQueryDevice } from "@/frontend/mobile.svelte";
 
   const { meta }: { meta: SubPropsOf<"Reviews", "content"> } = $props();
 

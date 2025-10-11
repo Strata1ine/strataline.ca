@@ -8,7 +8,7 @@ desc: |-
   Once valued for hiding imperfections, popcorn ceilings are now considered outdated and hard to maintain.
 
 covers:
-  - meta: ./cover.jpg
+  - src: ./cover.jpg
     alt: |-
       A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process.
 
@@ -40,17 +40,20 @@ sections:
     title: Our process
     content:
       - title: Inspection
-        meta: ./before.jpg
-        alt: |-
-          A living room with a textured popcorn ceiling, ready for a modern update or smooth refinishing.
+        image:
+          src: ./before.jpg
+          alt: |-
+            A living room with a textured popcorn ceiling, ready for a modern update or smooth refinishing.
       - title: Removal
-        meta: ./removal.jpg
-        alt: |-
-          A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+        image:
+          src: ./removal.jpg
+          alt: |-
+            A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
       - title: Cleanup
-        meta: ./cleanup.jpg
-        alt: |-
-          A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+        image:
+          src: ./cleanup.jpg
+          alt: |-
+            A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
 
   - type: Faq
     title: Have any questions?

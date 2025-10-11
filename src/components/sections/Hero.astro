@@ -2,13 +2,8 @@
 import { containerStyles } from "./styles";
 import Island from "./Hero.svelte";
 
-import type { PropsOf } from "./registry";
-import { optimizeImage } from "~/build/images";
+import { type PropsOf } from "@/components/registry";
 const meta = Astro.props as PropsOf<"Hero">;
-
-for (let image of meta.content) {
-  image.meta = await optimizeImage(image.meta);
-}
 ---
 
 <main
@@ -20,7 +15,7 @@ for (let image of meta.content) {
   >
   </span>
 
-  <div class={`${containerStyles({ width: "outer", center: "both" })}`}>
+  <div class={containerStyles({ width: "outer", center: "both" })}>
     <Island client:load {meta} />
   </div>
 </main>

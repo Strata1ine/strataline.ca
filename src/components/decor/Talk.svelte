@@ -1,8 +1,8 @@
 <script>
-  import Mailbox from "~/icons/ph/mailbox-fill.svelte";
+  import Mailbox from "@/icons/ph/mailbox-fill.svelte";
 
-  import { modals } from "~/frontend/stores.svelte";
-  import { actionStyles } from "@actions/styles";
+  import { modals } from "@/frontend/stores.svelte";
+  import { actionStyles } from "@/components/actions/styles";
 </script>
 
 <button

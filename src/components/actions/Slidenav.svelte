@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { dotStyles } from "@actions/styles";
-  import { videoPlaying } from "~/frontend/stores.svelte";
+  import { dotStyles } from "@/components/actions/styles";
+  import { videoPlaying } from "@/frontend/stores.svelte";
 
   let {
     idx = $bindable(0),

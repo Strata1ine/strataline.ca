@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { get } from "svelte/store";
-  import { videoPlaying, youtubeApiReady } from "~/frontend/stores.svelte";
+  import { videoPlaying, youtubeApiReady } from "@/frontend/stores.svelte";
 
   const { id }: { id: string } = $props();
   let video: HTMLDivElement;

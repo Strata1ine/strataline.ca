@@ -16,32 +16,11 @@
       }
     ],
     "paths": {
-      "@sections/*": [
-        "src/components/sections/*"
-      ],
-      "@actions/*": [
-        "src/components/interact/actions/*"
-      ],
-      "@modals/*": [
-        "src/components/interact/modals/*"
-      ],
-      "@fields/*": [
-        "src/components/interact/fields/*"
-      ],
-      "@decor/*": [
-        "src/components/decor/*"
-      ],
-      "@interact/*": [
-        "src/components/interact/*"
-      ],
       "@/*": [
-        "src/components/*"
-      ],
-      "~/*": [
         "src/*"
       ],
-      "@root/*": [
-        "./*"
+      "#/*": [
+        "./content/*"
       ]
     }
   }

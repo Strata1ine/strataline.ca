@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
 
-  import { type PropsOf } from "./registry";
+  import { type PropsOf } from "@/components/registry";
   import { quadOut } from "svelte/easing";
   const { meta }: { meta: PropsOf<"Faq"> } = $props();
 

@@ -1,19 +1,22 @@
 ---
-import { type PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
 const meta = Astro.props as PropsOf<"ImagePanel">;
 
 import { Image } from "astro:assets";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 import { containerStyles, imageStyles } from "./styles";
-import { imageOpts } from "~/build/images";
+import { twMerge } from "tailwind-merge";
 ---
 
 <LayoutDivider>
   <LayoutTitle title={meta.title} pos={meta.pos} />
 
   <div
-    class={`${containerStyles({ width: "outer" })} gap-10 sm:gap-8 flex flex-wrap justify-center`}
+    class={twMerge(
+      containerStyles({ width: "outer" }),
+      "gap-10 sm:gap-8 flex flex-wrap justify-center",
+    )}
   >
     {
       meta.content.map((panel, _) => {
@@ -22,12 +25,14 @@ import { imageOpts } from "~/build/images";
             <div class="h-70 rounded-sm contain-paint md:h-95">
               <Image
                 class={imageStyles({
-                  x: panel.x,
-                  y: panel.y,
+                  x: panel.image.x,
+                  y: panel.image.y,
                 })}
-                src={panel.meta}
-                alt={panel.alt}
-                {...imageOpts}
+                widths={[300, 462, 924]}
+                src={panel.image.src}
+                alt={panel.image.alt}
+                format="webp"
+                draggable="false"
               />
             </div>
 

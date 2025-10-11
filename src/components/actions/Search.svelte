@@ -2,10 +2,15 @@
   const { placeholder, values }: { placeholder: string; values: string[] } =
     $props();
 
-  import { fieldStyles, menuButton, menuStyles } from "@fields/styles";
-  import { clickOutside } from "~/frontend/focus";
-  import { genUid } from "~/frontend/stores.svelte";
-  import MagnifyingGlass from "~/icons/ph/magnifying-glass-bold.svelte";
+  import {
+    fieldStyles,
+    menuButton,
+    menuStyles,
+  } from "@/components/fields/styles";
+
+  import { clickOutside } from "@/frontend/focus";
+  import { genUid } from "@/frontend/stores.svelte";
+  import MagnifyingGlass from "@/icons/ph/magnifying-glass-bold.svelte";
 
   let value: string = $state("");
   let open = $derived(value.length > 0);
@@ -23,6 +28,7 @@
     for (let i = 0; i < target.length && searchIndex < search.length; i++) {
       if (target[i] === search[searchIndex]) searchIndex++;
     }
+
     return searchIndex === search.length;
   };
 
@@ -45,6 +51,7 @@
 
   function close() {
     if (hoverIdx != null) value = filteredValues[hoverIdx];
+
     open = false;
     hoverIdx = null;
   }

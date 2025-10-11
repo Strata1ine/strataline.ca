@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { videoPlaying } from "~/frontend/stores.svelte";
+  import { videoPlaying } from "@/frontend/stores.svelte";
 
   let node: HTMLVideoElement;
   const { poster, url }: { poster: string; url: string } = $props();

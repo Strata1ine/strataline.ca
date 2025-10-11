@@ -1,17 +1,17 @@
 <script>
-  import Modal from "@modals/Modal.svelte";
-  import Form from "@modals/Form.svelte";
-  import Input from "@fields/Input.svelte";
-  import Select from "@fields/Select.svelte";
-  import Photos from "@fields/Photos.svelte";
-  import TextArea from "@fields/TextArea.svelte";
-  import PhoneNumber from "@fields/PhoneNumber.svelte";
-  import StarSlider from "@fields/StarSlider.svelte";
+  import Modal from "@/components/modals/Modal.svelte";
+  import Form from "@/components/modals/Form.svelte";
+  import Input from "@/components/fields/Input.svelte";
+  import Select from "@/components/fields/Select.svelte";
+  import Photos from "@/components/fields/Photos.svelte";
+  import TextArea from "@/components/fields/TextArea.svelte";
+  import PhoneNumber from "@/components/fields/PhoneNumber.svelte";
+  import StarSlider from "@/components/fields/StarSlider.svelte";
 
-  import { modals, genUid } from "~/frontend/stores.svelte";
+  import { actionStyles } from "@/components/actions/styles";
+  import { modals, genUid } from "@/frontend/stores.svelte";
   import { modalStyles } from "./styles";
-  import business from "@root/content/business.json";
-  import { actionStyles } from "@actions/styles";
+  import business from "#/business.json";
 
   const talkUid = genUid();
   let talkModal = $derived(modals.is(modals.talk));

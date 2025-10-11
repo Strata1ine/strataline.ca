@@ -1,20 +1,18 @@
 ---
+import { getEntry, getCollection } from "@/content.config";
 import { containerStyles, imageStyles, swapPos } from "./styles";
-import { getEntry, getCollection } from "~/content.config";
-import { imageOpts } from "~/build/images";
-import { Image } from "astro:assets";
+import { actionStyles } from "@/components/actions/styles";
 
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 import LayoutCard from "./layout/Card.astro";
+import { Image } from "astro:assets";
 
-let index = await getEntry("index", "index");
-
-import { actionStyles } from "@actions/styles";
-
-import { type PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
+import { twMerge } from "tailwind-merge";
 const meta = Astro.props as PropsOf<"Popular">;
 
+let index = await getEntry("index", "index");
 const services = (await getCollection("services"))
   .filter((service) =>
     index.data.popular.some((pattern: string) =>
@@ -32,7 +30,12 @@ let next = swapPos(meta.pos);
 <LayoutDivider id={meta.id}>
   <LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div class=`${containerStyles({ width: "outer" })} space-y-20 sm:space-y-35`>
+  <div
+    class={twMerge(
+      containerStyles({ width: "outer" }),
+      "space-y-20 sm:space-y-35",
+    )}
+  >
     {
       services.map((service, _) => {
         const slug = service.id.split("/")[0];
@@ -47,15 +50,17 @@ let next = swapPos(meta.pos);
           >
             {service.data.covers.map((image, _) => (
               <Image
-                src={image.meta}
+                src={image.src}
                 alt={image.alt}
                 class={imageStyles({
                   anim: service.data.covers.length > 1 ? "zoom" : undefined,
                   x: image.x,
                   y: image.y,
                 })}
+                widths={[400, 725, 1450]}
                 slot="image"
-                {...imageOpts}
+                format="webp"
+                draggable="false"
               />
             ))}
 

@@ -3,10 +3,9 @@ import Island from "./TextCarousel.svelte";
 import LayoutDivider from "./layout/Divider.astro";
 import LayoutTitle from "./layout/Title.astro";
 
-import { getEntry, getCollection } from "~/content.config";
-import { imageOpts } from "~/build/images";
+import { getEntry, getCollection } from "@/content.config";
 
-import { type PropsOf } from "./registry";
+import { type PropsOf } from "@/components/registry";
 const meta = Astro.props as PropsOf<"Services">;
 
 let exclude: string[];
@@ -58,9 +57,11 @@ import { Icon } from "astro-icon/components";
                   }),
                   imageWrapperStyles({ size: "xs" }),
                 )}
-                src={cover.meta}
+                src={cover.src}
                 alt={cover.alt}
-                {...imageOpts}
+                widths={[200, 400, 600, 800]}
+                format="webp"
+                draggable="false"
               />
 
               <div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">

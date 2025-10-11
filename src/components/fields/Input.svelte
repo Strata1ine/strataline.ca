@@ -1,7 +1,7 @@
 <script lang="ts">
   import Field from "./Field.svelte";
-  import Valid from "@decor/Valid.svelte";
-  import { genUid } from "~/frontend/stores.svelte";
+  import Valid from "@/components/decor/Valid.svelte";
+  import { genUid } from "@/frontend/stores.svelte";
   import { inputStyles } from "./styles";
 
   const {

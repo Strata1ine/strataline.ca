@@ -5,7 +5,7 @@ desc: |-
 seo: |-
   Stylish bathroom remodels with bespoke vanities, premium stone tiles, and sleek fixtures. Expert craftsmanship for comfort and elegance, customized to your budget.
 covers:
-  - meta: ./cover.jpg
+  - src: ./cover.jpg
     alt: |-
       A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.
 
@@ -14,20 +14,20 @@ sections:
     title: There's no price
     content:
       - title: Durable & optimized
-        image:
-          meta: ./spa.jpg
-          alt: |-
-            A luxurious renovated bathroom with a freestanding soaking tub, glass-enclosed shower with marble walls, and a built-in bench.
         desc: |-
           Freestanding tub, glass shower, and marble finishes in a layout designed for durability and flow.
+        image:
+          src: ./spa.jpg
+          alt: |-
+            A luxurious renovated bathroom with a freestanding soaking tub, glass-enclosed shower with marble walls, and a built-in bench.
 
       - title: Customized to your heart's content
-        image:
-          meta: ./customization.jpg
-          alt: |-
-            A renovated bathroom with a double vanity, light wood cabinets, white countertops, and modern lighting, tailored for functionality.
         desc: |-
           Double vanities, storage, and lighting designed to fit your style and needs for a personalized space.
+        image:
+          src: ./customization.jpg
+          alt: |-
+            A renovated bathroom with a double vanity, light wood cabinets, white countertops, and modern lighting, tailored for functionality.
 
   - type: Faq
     title: Have any questions?
