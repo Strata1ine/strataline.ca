@@ -1,0 +1,3 @@
+[submodule "lib/astro-frontmatter-components"]
+	path = lib/astro-frontmatter-components
+	url = git@github.com:da-shalev/astro-frontmatter-components.git
