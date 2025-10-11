@@ -1,13 +1,29 @@
 ---
-import { type PropsOf } from '@/components/registry';
-const meta = Astro.props as PropsOf<'Faq'>;
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
+
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			desc: z.string(),
+		}),
+	),
+});
 
 import LayoutDivider from './layout/Divider.astro';
 import LayoutTitle from './layout/Title.astro';
 import { containerStyles } from './styles';
 
-import Island from './Faq.svelte';
+import Island from './Faq';
 import { marked } from 'marked';
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 
 for (const faq of meta.content) {
 	faq.desc = marked.parse(faq.desc) as string;
@@ -18,6 +34,6 @@ for (const faq of meta.content) {
 	<LayoutTitle title={meta.title} pos={meta.pos} />
 
 	<div class={containerStyles({ width: 'inner' })}>
-		<Island client:visible {meta} />
+		<Island client:visible meta={meta.content} />
 	</div>
 </LayoutDivider>

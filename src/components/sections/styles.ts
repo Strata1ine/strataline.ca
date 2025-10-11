@@ -1,6 +1,5 @@
 import { cva } from 'class-variance-authority';
-import type { Pos } from './registry';
-export { type Pos };
+import type { Pos } from '@/schemas/pos';
 
 export function swapNextPos(pos: Pos) {
 	pos = swapPos(pos);

@@ -8,8 +8,9 @@ import {
 } from 'astro:content';
 
 import { glob } from 'astro/loaders';
-
-import { image, ZPos, parseRegistry } from '@/components/registry';
+import { parseBlocks } from 'astro-frontmatter-components';
+import { logger } from '@it-astro:logger:astro-frontmatter-components';
+import { image, ZPos } from './schemas';
 
 export const collections = {
 	index: defineCollection({
@@ -19,7 +20,7 @@ export const collections = {
 				title: z.string(),
 				desc: z.string(),
 				popular: z.array(z.string()),
-				sections: parseRegistry(c),
+				sections: parseBlocks(c, logger),
 			});
 		},
 	}),
@@ -31,9 +32,9 @@ export const collections = {
 				title: z.string(),
 				desc: z.string(),
 				seo: z.string(),
-				covers: z.array(image(c)),
+				covers: z.array(z.object(image(c))),
 				draft: z.boolean().optional(),
-				sections: parseRegistry(c).optional(),
+				sections: parseBlocks(c, logger),
 			}),
 	}),
 };

@@ -1,10 +1,18 @@
 ---
 import { containerStyles } from './styles';
 import { Icon } from 'astro-icon/components';
-import Island from './Header.svelte';
+import Island from './Header';
 
-import { type PropsOf } from './registry';
-const meta = Astro.props as PropsOf<'Header'>;
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	content: z.array(z.object({ id: z.string(), name: z.string() })),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 ---
 
 <header class="absolute top-0 right-0 left-0 z-2 py-3">

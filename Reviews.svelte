@@ -1,7 +1,7 @@
 <script lang="ts">
   import Stars from "@/components/decor/Stars.svelte";
   import Feather from "@/icons/ph/feather-fill.svelte";
-  import { type SubPropsOf } from "@/components/registry";
+	import type { Props as HeroMeta } from "./Hero.astro";
   import { modals } from "@/frontend/stores.svelte";
   import { useQueryDevice } from "@/frontend/mobile.svelte";
 

@@ -1,14 +1,14 @@
 ---
 import { containerStyles } from './styles';
-import Island from './Cardshow.svelte';
+import Island from './Cardshow';
 import LayoutDivider from './layout/Divider.astro';
 import LayoutTitle from './layout/Title.astro';
 
-import type { SchemaOf, SchemaBuilder } from 'astro-frontmatter-components';
+import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
-import { image } from '@/schemas/image';
+import { DefaultPos, media } from '@/schemas';
 
-export const schema: SchemaBuilder = (c: SchemaContext) => ({
+export const schema = (c: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
@@ -18,7 +18,7 @@ export const schema: SchemaBuilder = (c: SchemaContext) => ({
 			title: z.string(),
 			desc: z.string(),
 			id: z.string().optional(),
-			media: media(c),
+			// media: media(c),
 			link: z
 				.object({
 					name: z.string(),
@@ -29,9 +29,9 @@ export const schema: SchemaBuilder = (c: SchemaContext) => ({
 	),
 });
 
-import { type PropsOf } from '@/components/registry';
 import { twMerge } from 'tailwind-merge';
-const meta = Astro.props as PropsOf<'Cardshow'>;
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 ---
 
 <LayoutDivider id={meta.id}>

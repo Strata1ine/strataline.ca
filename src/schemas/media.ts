@@ -1,12 +1,15 @@
-const media = (c: SchemaContext) => {
+import { type SchemaContext, z } from 'astro:content';
+import { image } from './image';
+
+export const media = (c: SchemaContext) => {
 	return z.union([
 		z.object({
 			type: z.literal('image'),
-			image: image(c),
+			image: z.object(image(c)),
 		}),
 		z.object({
 			type: z.literal('video'),
-			image: image(c),
+			image: z.object(image(c)),
 			uploadDate: z.coerce.date(),
 			url: z.string(),
 		}),

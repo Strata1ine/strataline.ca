@@ -5,8 +5,29 @@ import LayoutDivider from './layout/Divider.astro';
 import LayoutTitle from './layout/Title.astro';
 import Island from './Reviews.svelte';
 
-import { type PropsOf } from './registry';
-const meta = Astro.props as PropsOf<'Reviews'>;
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
+
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			desc: z.string(),
+			date: z.coerce.date().optional(),
+			url: z.string().optional(),
+			location: z.string(),
+			stars: z.number(),
+			id: z.string().optional(),
+		}),
+	),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 
 for (const [_, review] of meta.content.entries()) {
 	review.desc = marked.parseInline(review.desc) as string;

@@ -7,7 +7,7 @@ import { Icon } from 'astro-icon/components';
 import { divisionStyle } from './layout/Divider.astro';
 import { twMerge } from 'tailwind-merge';
 
-import Search from '@/components/actions/Search.svelte';
+// import Search from '@/components/actions/Search.svelte';
 ---
 
 <footer class={divisionStyle({ spacing: 'top' })}>
@@ -41,7 +41,7 @@ import Search from '@/components/actions/Search.svelte';
 				}
 			</ul>
 
-			<Search values={business.areaServed} placeholder="Find your municipality" client:idle />
+			<!-- <Search values={business.areaServed} placeholder="Find your municipality" client:idle /> -->
 		</div>
 
 		<div class="sm:gap-inset mt-9 flex flex-col items-center gap-1 text-center sm:flex-row">

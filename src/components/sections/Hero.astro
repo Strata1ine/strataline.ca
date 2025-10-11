@@ -1,6 +1,6 @@
 ---
 import { containerStyles } from './styles';
-import Island from './Hero.svelte';
+import Island from './Hero';
 
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
@@ -11,7 +11,7 @@ export const schema = (c: SchemaContext) => ({
 	title: z.string(),
 	desc: z.string(),
 	speed: z.number().default(5.0),
-	content: z.array(image(c)),
+	// content: z.array(z.object(image(c))),
 });
 
 export type Props = SchemaOf<typeof schema>;
@@ -28,6 +28,6 @@ const meta = Astro.props;
 	</span>
 
 	<div class={containerStyles({ width: 'outer', center: 'both' })}>
-		<Island client:load {meta} />
+		<Island client:load {...meta} />
 	</div>
 </main>

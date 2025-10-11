@@ -1,18 +1,18 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
-import Menus from '@/components/modals/Menus.svelte';
-import Footer from '@/components/sections/Footer.astro';
+// import Menus from '@/components/modals/Menus.svelte';
+// import Footer from '@/components/sections/Footer.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
 import { twMerge } from 'tailwind-merge';
 import { getCollection } from '@/content.config';
-import { generateServiceSchema } from '@/build/schemas/service';
+// import { generateServiceSchema } from '@/build/schemas/service';
 import { containerStyles, imageWrapperStyles, imageStyles } from '@/components/sections/styles';
 
 import Home from '@/components/decor/Home.astro';
-import FluidTalk from '@/components/decor/FluidTalk.svelte';
+// import FluidTalk from '@/components/decor/FluidTalk.svelte';
 
 export const prerender = true;
 
@@ -28,14 +28,15 @@ interface Props {
 
 const { slug } = Astro.params;
 const service = (await getCollection('services')).find((s) => s.id.split('/')[0] === slug)!;
+
+// schemas={generateServiceSchema(Astro, service)}
 ---
 
 <Layout
 	title={service.data.title}
 	desc={service.data.seo}
-	sections={service.data.sections}
+	schemas={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
-	schemas={generateServiceSchema(Astro, service)}
 >
 	<main class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
 		<div
@@ -65,30 +66,30 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 						'my-4 ml-7',
 					)}
 				>
-					{
-						service.data.covers.map((image, _) => (
-							<Image
-								src={image.src}
-								alt={image.alt}
-								class={imageStyles({
-									anim: service.data.covers.length > 1 ? 'zoom' : undefined,
-									x: image.x,
-									y: image.y,
-								})}
-								widths={[400, 730]}
-								draggable="false"
-								format="webp"
-								loading="eager"
-							/>
-						))
-					}
+					<!-- { -->
+					<!-- 	service.data.covers.map((image, _) => ( -->
+					<!-- 		<Image -->
+					<!-- 			src={image.src} -->
+					<!-- 			alt={image.alt} -->
+					<!-- 			class={imageStyles({ -->
+					<!-- 				anim: service.data.covers.length > 1 ? 'zoom' : undefined, -->
+					<!-- 				x: image.x, -->
+					<!-- 				y: image.y, -->
+					<!-- 			})} -->
+					<!-- 			widths={[400, 730]} -->
+					<!-- 			draggable="false" -->
+					<!-- 			format="webp" -->
+					<!-- 			loading="eager" -->
+					<!-- 		/> -->
+					<!-- 	)) -->
+					<!-- } -->
 				</div>
 
 				<p class="desc-base">
 					{service.data.desc}
 				</p>
 
-				<FluidTalk client:load />
+				<!-- <FluidTalk client:load /> -->
 			</div>
 
 			<div
@@ -121,6 +122,6 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 		/>
 	</div>
 
-	<Footer />
-	<Menus client:idle />
+	<!-- <Footer /> -->
+	<!-- <Menus client:idle /> -->
 </Layout>

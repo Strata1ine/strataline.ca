@@ -5,13 +5,16 @@ import { marked } from 'marked';
 import { Font } from 'astro:assets';
 import business from '#/business.json';
 import socials from '#/socials.json';
-import type { Pos } from '@/components/sections/styles';
+import type { Pos } from '@/schemas';
 
-import { type SectionMeta, querySections } from '@/components/registry';
+import Frontmatter from 'astro-frontmatter-components/renderer';
 
-import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
+// import { type SectionMeta, querySections } from '@/components/registry';
+
+// import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
 
 import Content from '@/components/sections/layout/Content.astro';
+import type { SchemaMeta } from 'astro-frontmatter-components';
 const isProd = import.meta.env.PROD;
 
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
@@ -19,100 +22,101 @@ const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons
 interface Props {
 	title: string;
 	desc?: string;
-	sections?: SectionMeta[];
+	blocks?: SchemaMeta[];
 	startPos?: Pos;
 	schemas?: any[] | any;
 	noIndex?: boolean;
 }
 
-const { title, desc, startPos, sections, noIndex = false, schemas: extraSchema = [] } = Astro.props;
+const { title, desc, startPos, blocks, noIndex = false, schemas: extraSchema = [] } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
 
-const reviews = querySections(sections, 'Reviews');
-const faq = querySections(sections, 'Faq');
-const cardshow = querySections(sections, 'Cardshow');
+// const reviews = querySections(sections, 'Reviews');
+// const faq = querySections(sections, 'Faq');
+// const cardshow = querySections(sections, 'Cardshow');
+//
+// if (faq.length > 0) {
+// 	extraSchemas.push({
+// 		'@type': 'FAQPage',
+// 		'@context': 'https://schema.org',
+// 		mainEntity: faq.flatMap((faq) =>
+// 			faq.content.map((content) => ({
+// 				'@type': 'Question',
+// 				name: content.title,
+// 				acceptedAnswer: {
+// 					'@type': 'Answer',
+// 					text: marked.parse(content.desc),
+// 				},
+// 			})),
+// 		),
+// 		provider: {
+// 			'@type': business['@type'],
+// 			'@id': `${Astro.url.origin}#company`,
+// 		},
+// 	});
+// }
 
-if (faq.length > 0) {
-	extraSchemas.push({
-		'@type': 'FAQPage',
-		'@context': 'https://schema.org',
-		mainEntity: faq.flatMap((faq) =>
-			faq.content.map((content) => ({
-				'@type': 'Question',
-				name: content.title,
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: marked.parse(content.desc),
-				},
-			})),
-		),
-		provider: {
-			'@type': business['@type'],
-			'@id': `${Astro.url.origin}#company`,
-		},
-	});
-}
+// {
+// 	cardshow
+// 		.flatMap((section) => section.content)
+// 		.forEach((card) => {
+// 			if (card.media?.type === 'video') {
+// 				extraSchemas.push({
+// 					'@type': 'VideoObject',
+// 					name: card.title,
+// 					description: card.desc,
+// 					thumbnailUrl: card.media.image.src,
+// 					uploadDate: card.media.uploadDate,
+// 					contentUrl: card.media.url,
+// 				});
+// 			}
+// 		});
+// }
+//
+// {
+// 	const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+// 	const youtubeVideos = cardshow
+// 		.flatMap((section) => section.content)
+// 		.map((item) => item.media)
+// 		.filter((media) => media?.type === 'yt-video')
+// 		.map((media) => media.id);
+//
+// 	if (youtubeVideos.length > 0 && YOUTUBE_API_KEY != null) {
+// 		const youtube = google.youtube({
+// 			version: 'v3',
+// 			auth: YOUTUBE_API_KEY,
+// 		});
+//
+// 		const response = await youtube.videos.list({
+// 			part: ['snippet'],
+// 			id: youtubeVideos,
+// 		});
+//
+// 		response.data.items?.map((video) =>
+// 			extraSchemas.push({
+// 				'@type': 'VideoObject',
+// 				name: video.snippet?.title || null,
+// 				description: video.snippet?.description || null,
+// 				uploadDate: video.snippet?.publishedAt || null,
+// 				thumbnailUrl:
+// 					video.snippet?.thumbnails?.maxres?.url ||
+// 					video.snippet?.thumbnails?.high?.url ||
+// 					`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
+// 				embedUrl: `https://www.youtube.com/embed/${video.id}`,
+// 				contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+// 				publisher: {
+// 					'@type': 'Organization',
+// 					name: video.snippet?.channelTitle || null,
+// 					identifier: video.snippet?.channelId || null,
+// 				},
+// 				keywords: video.snippet?.tags?.join(', ') || null,
+// 				inLanguage: video.snippet?.defaultAudioLanguage || null,
+// 			}),
+// 		);
+// 	}
+// }
 
-{
-	cardshow
-		.flatMap((section) => section.content)
-		.forEach((card) => {
-			if (card.media?.type === 'video') {
-				extraSchemas.push({
-					'@type': 'VideoObject',
-					name: card.title,
-					description: card.desc,
-					thumbnailUrl: card.media.image.src,
-					uploadDate: card.media.uploadDate,
-					contentUrl: card.media.url,
-				});
-			}
-		});
-}
-
-{
-	const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
-	const youtubeVideos = cardshow
-		.flatMap((section) => section.content)
-		.map((item) => item.media)
-		.filter((media) => media?.type === 'yt-video')
-		.map((media) => media.id);
-
-	if (youtubeVideos.length > 0 && YOUTUBE_API_KEY != null) {
-		const youtube = google.youtube({
-			version: 'v3',
-			auth: YOUTUBE_API_KEY,
-		});
-
-		const response = await youtube.videos.list({
-			part: ['snippet'],
-			id: youtubeVideos,
-		});
-
-		response.data.items?.map((video) =>
-			extraSchemas.push({
-				'@type': 'VideoObject',
-				name: video.snippet?.title || null,
-				description: video.snippet?.description || null,
-				uploadDate: video.snippet?.publishedAt || null,
-				thumbnailUrl:
-					video.snippet?.thumbnails?.maxres?.url ||
-					video.snippet?.thumbnails?.high?.url ||
-					`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
-				embedUrl: `https://www.youtube.com/embed/${video.id}`,
-				contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
-				publisher: {
-					'@type': 'Organization',
-					name: video.snippet?.channelTitle || null,
-					identifier: video.snippet?.channelId || null,
-				},
-				keywords: video.snippet?.tags?.join(', ') || null,
-				inLanguage: video.snippet?.defaultAudioLanguage || null,
-			}),
-		);
-	}
-}
-
+/*
 const schema = {
 	'@id': `${Astro.url.origin}#company`,
 	'@context': 'https://schema.org',
@@ -124,6 +128,7 @@ const schema = {
 		...computeAggregateRating(Astro, reviews),
 	}),
 };
+*/
 ---
 
 <html lang="en">
@@ -132,13 +137,13 @@ const schema = {
 		<title>
 			{title ? `${title} | ${business.name}` : business.name}
 		</title>
-		<link rel="canonical" href={schema.url} />
+		<!-- <link rel="canonical" href={schema.url} /> -->
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="stylesheet" href={global} />
-		<Font cssVariable="--font-cormorant" />
-		<Font cssVariable="--font-dm-sans" />
+		<!-- <Font cssVariable="--font-cormorant" /> -->
+		<!-- <Font cssVariable="--font-dm-sans" /> -->
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -154,20 +159,20 @@ const schema = {
 
 		<script src="@/frontend/index.ts"></script>
 
-		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+		<!-- <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /> -->
 
-		{
-			extraSchemas.map((schema) => (
-				<script
-					is:inline
-					type="application/ld+json"
-					set:html={JSON.stringify({
-						'@context': 'https://schema.org',
-						...schema,
-					})}
-				/>
-			))
-		}
+		<!-- { -->
+		<!-- 	extraSchemas.map((schema) => ( -->
+		<!-- 		<script -->
+		<!-- 			is:inline -->
+		<!-- 			type="application/ld+json" -->
+		<!-- 			set:html={JSON.stringify({ -->
+		<!-- 				'@context': 'https://schema.org', -->
+		<!-- 				...schema, -->
+		<!-- 			})} -->
+		<!-- 		/> -->
+		<!-- 	)) -->
+		<!-- } -->
 
 		{
 			isProd && (
@@ -184,7 +189,7 @@ const schema = {
 	</head>
 	<body>
 		<slot name="before" />
-		<Content startPos={startPos ?? 'right'} {sections} />
+		<Frontmatter {blocks} />
 		<slot />
 	</body>
 </html>

@@ -13,6 +13,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 import solidJs from '@astrojs/solid-js';
 
+import { frontmatterComponents, glob } from 'astro-frontmatter-components';
+
 // https://astro.build/config
 export default defineConfig({
 	adapter: netlify({
@@ -70,7 +72,9 @@ export default defineConfig({
 		],
 	},
 	integrations: [
-		svelte(),
+		frontmatterComponents({
+			components: glob('./src/components/sections/**/*.astro'),
+		}),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),
@@ -82,6 +86,7 @@ export default defineConfig({
 			},
 		}),
 		solidJs(),
+		svelte(),
 	],
 	redirects: redirects,
 });

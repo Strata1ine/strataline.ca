@@ -7,3 +7,14 @@ draft: true
 covers:
   - src: ./cover.jpg
     alt: tomatoes
+sections:
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does a staircase renovation take?
+        desc: |-
+          Our projects typically take a week, depending on the complexity.
+
+      - title: Can you work within my budget?
+        desc: |-
+          Absolutely. We offer tailored solutions to suit various budgets without compromising quality.
