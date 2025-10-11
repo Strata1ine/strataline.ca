@@ -1,5 +1,0 @@
-
-<script>
- const { 'aria-hidden': aria = true, ...props } = $props();
-</script>
-<svg    viewBox="0 0 256 256" fill="currentColor" aria-hidden={aria} {...props}><path d="M39.51,80.49a12,12,0,0,1,17-17L128,135l71.51-71.52a12,12,0,0,1,17,17l-80,80a12,12,0,0,1-17,0ZM208,180H48a12,12,0,0,0,0,24H208a12,12,0,0,0,0-24Z"/></svg>
