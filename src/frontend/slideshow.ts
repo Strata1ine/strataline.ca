@@ -30,7 +30,7 @@ export function slideshow(node: HTMLElement, accessor: () => SlideshowParams) {
 	}
 
 	const observer = new IntersectionObserver(([entry]) => {
-		if (entry.isIntersecting !== isVisible) {
+		if (entry && entry.isIntersecting !== isVisible) {
 			isVisible = entry.isIntersecting;
 			next();
 		}

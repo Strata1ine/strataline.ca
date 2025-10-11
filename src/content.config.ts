@@ -14,15 +14,14 @@ import { image, ZPos } from './schemas';
 
 export const collections = {
 	index: defineCollection({
-		loader: glob({ pattern: '*.yaml', base: 'content' }),
-		schema: (c: SchemaContext) => {
-			return z.object({
+		loader: glob({ pattern: '*.yaml', base: './content' }),
+		schema: (c: SchemaContext) =>
+			z.object({
 				title: z.string(),
 				desc: z.string(),
 				popular: z.array(z.string()),
 				sections: parseBlocks(c, logger),
-			});
-		},
+			}),
 	}),
 	services: defineCollection({
 		loader: glob({ pattern: '**/*.yaml', base: './content/services' }),

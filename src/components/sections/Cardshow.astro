@@ -38,6 +38,6 @@ const meta = Astro.props;
 	<LayoutTitle title={meta.title} pos={meta.pos} />
 
 	<div class={twMerge(containerStyles({ width: 'outer' }), 'flex flex-col 2xl:flex-row')}>
-		<Island meta={meta.content} speed={meta.speed} client:visible />
+		<Island client:visible meta={meta.content} speed={meta.speed} />
 	</div>
 </LayoutDivider>

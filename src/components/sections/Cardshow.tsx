@@ -1,7 +1,7 @@
 import { createSignal, For, Show, Switch, Match } from 'solid-js';
-import Slidenav from '@/components/actions/Slidenav';
-import YoutubeVideo from '@/components/YoutubeVideo';
-import Video from '@/components/Video';
+// import Slidenav from '@/components/actions/Slidenav';
+// import YoutubeVideo from '@/components/YoutubeVideo';
+// import Video from '@/components/Video';
 import { actionStyles } from '@/components/actions/styles';
 import { slideshow } from '@/frontend/slideshow';
 import type { Props as CardshowMeta } from './Cardshow.astro';
@@ -96,7 +96,7 @@ export default function Cardshow(props: Props) {
 			</div>
 
 			<div class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col">
-				<Slidenav idx={idx()} setIdx={setIdx} length={props.meta.length} />
+				{/*<Slidenav idx={idx()} setIdx={setIdx} length={props.meta.length} />*/}
 			</div>
 		</>
 	);

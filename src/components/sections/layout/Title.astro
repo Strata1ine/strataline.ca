@@ -1,5 +1,7 @@
 ---
-import { containerStyles, type Pos } from '@/components/sections/styles';
+import { containerStyles } from '@/components/sections/styles';
+import type { Pos } from '@/schemas';
+
 import clsx from 'clsx';
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 	class?: string;
 }
 
-let { title, pos, class: className } = Astro.props;
+const { title, pos, class: className } = Astro.props;
 ---
 
 <div class={clsx(containerStyles({ width: 'inner' }), 'mb-10 sm:mb-14', className)}>

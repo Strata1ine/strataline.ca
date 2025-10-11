@@ -3,7 +3,6 @@ import { imageStyles } from "./sections/styles";
 import type { ImageSource } from "@/schemas";
 
 const IMAGE_CDN = import.meta.env.PUBLIC_IMAGE_CDN as string;
-console.log(IMAGE_CDN);
 
 export type Props = {
   image: ImageSource;
@@ -13,7 +12,7 @@ export type Props = {
   anim?: VariantProps<typeof imageStyles>["anim"];
 };
 
-export default function Image(props: Props) {
+export default function CDNImage(props: Props) {
   const quality = () => props.quality ?? 70;
   const widths = () => props.widths ?? [];
 

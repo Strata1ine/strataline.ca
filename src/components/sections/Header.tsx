@@ -1,4 +1,3 @@
-import type { JSX } from 'solid-js';
 // import Modal from "@/components/modals/Modal.svelte";
 // import Burger from "@/components/decor/Burger.svelte";
 // import { modals, genUid } from "@/frontend/stores.svelte";

@@ -11,7 +11,7 @@ export const schema = (c: SchemaContext) => ({
 	title: z.string(),
 	desc: z.string(),
 	speed: z.number().default(5.0),
-	// content: z.array(z.object(image(c))),
+	content: z.array(z.object(image(c))),
 });
 
 export type Props = SchemaOf<typeof schema>;

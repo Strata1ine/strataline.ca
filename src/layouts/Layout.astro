@@ -22,7 +22,7 @@ const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons
 interface Props {
 	title: string;
 	desc?: string;
-	blocks?: SchemaMeta[];
+	blocks: SchemaMeta[];
 	startPos?: Pos;
 	schemas?: any[] | any;
 	noIndex?: boolean;
