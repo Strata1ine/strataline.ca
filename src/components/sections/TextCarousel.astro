@@ -1,8 +1,15 @@
 ---
-//import { type PropsOf } from './registry';
-//const meta = Astro.props as PropsOf<'TextCarousel'>;
-//
-//import Island from './TextCarousel.svelte';
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+
+export const schema = (c: SchemaContext) => ({
+	speed: z.number().optional().default(0.1),
+	text: z.array(z.string()),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+import Island from './TextCarousel';
 ---
 
-<!-- <Island client:visible {meta} /> -->
+<Island client:visible {...meta} />

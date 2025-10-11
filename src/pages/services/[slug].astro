@@ -1,17 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
-// import Menus from '@/components/modals/Menus.svelte';
-// import Footer from '@/components/sections/Footer.astro';
-import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
 import { twMerge } from 'tailwind-merge';
 import { getCollection } from '@/content.config';
+import { containerStyles } from '@/components/sections/styles';
 // import { generateServiceSchema } from '@/build/schemas/service';
-import { containerStyles, imageWrapperStyles, imageStyles } from '@/components/sections/styles';
+import { Image, imageWrapperStyles } from '@/components/Image';
 
 import Home from '@/components/decor/Home.astro';
+// import Menus from '@/components/modals/Menus.svelte';
+// import Footer from '@/components/sections/Footer.astro';
 // import FluidTalk from '@/components/decor/FluidTalk.svelte';
 
 export const prerender = true;
@@ -42,7 +42,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 		<div
 			class={twMerge(
 				containerStyles({ width: 'outer' }),
-				'gap-6 md:gap-8 xl:gap-1 flex h-full items-center sm:flex-row sm:py-0',
+				'gap-6 md:gap-8 xl:gap-12 flex h-full items-center sm:flex-row sm:py-0',
 			)}
 		>
 			<span
@@ -66,23 +66,15 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 						'my-4 ml-7',
 					)}
 				>
-					<!-- { -->
-					<!-- 	service.data.covers.map((image, _) => ( -->
-					<!-- 		<Image -->
-					<!-- 			src={image.src} -->
-					<!-- 			alt={image.alt} -->
-					<!-- 			class={imageStyles({ -->
-					<!-- 				anim: service.data.covers.length > 1 ? 'zoom' : undefined, -->
-					<!-- 				x: image.x, -->
-					<!-- 				y: image.y, -->
-					<!-- 			})} -->
-					<!-- 			widths={[400, 730]} -->
-					<!-- 			draggable="false" -->
-					<!-- 			format="webp" -->
-					<!-- 			loading="eager" -->
-					<!-- 		/> -->
-					<!-- 	)) -->
-					<!-- } -->
+					{
+						service.data.covers.map((image, _) => (
+							<Image
+								{image}
+								anim={service.data.covers.length > 1 ? 'zoom' : undefined}
+								widths={[400, 730]}
+							/>
+						))
+					}
 				</div>
 
 				<p class="desc-base">
@@ -98,14 +90,9 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 				{
 					service.data.covers.map((image, _) => (
 						<Image
-							alt={image.alt}
-							src={image.src}
+							{image}
 							widths={[730, 1460]}
-							class={imageStyles({
-								anim: service.data.covers.length > 1 ? 'zoom' : undefined,
-								x: image.x,
-								y: image.y,
-							})}
+							anim={service.data.covers.length > 1 ? 'zoom' : undefined}
 						/>
 					))
 				}

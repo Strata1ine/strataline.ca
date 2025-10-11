@@ -8,7 +8,7 @@ type SlideshowParams = {
 	speed: number;
 };
 
-export function slideshow(node: HTMLElement, accessor: () => SlideshowParams) {
+export function slideshow(node: HTMLElement, accessor: SlideshowParams) {
 	let timeoutId: ReturnType<typeof setTimeout> | null = null;
 	let isVisible = false;
 
@@ -21,7 +21,7 @@ export function slideshow(node: HTMLElement, accessor: () => SlideshowParams) {
 
 	function next() {
 		clear();
-		const { idx, setIdx, length, speed } = accessor();
+		const { idx, setIdx, length, speed } = accessor;
 		if (isVisible && length > 1 && !videoPlaying()) {
 			timeoutId = setTimeout(() => {
 				setIdx((idx + 1) % length);
@@ -44,11 +44,6 @@ export function slideshow(node: HTMLElement, accessor: () => SlideshowParams) {
 		} else {
 			next();
 		}
-	});
-
-	createEffect(() => {
-		accessor();
-		next();
 	});
 
 	onCleanup(() => {

@@ -206,3 +206,30 @@ input:-webkit-autofill:focus {
 		outline: Highlight auto;
 	}
 }
+
+.expand::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: calc(50% - 1px);
+	bottom: 0;
+	width: 2px;
+	background-color: var(--color-black);
+	transform-origin: center;
+	transition: transform 250ms;
+}
+
+.expand::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: calc(50% - 1px);
+	right: 0;
+	height: 2px;
+	background-color: var(--color-black);
+	transform-origin: center;
+}
+
+.expand.open::before {
+	transform: rotateZ(90deg);
+}

@@ -18,7 +18,7 @@ export const schema = (c: SchemaContext) => ({
 			title: z.string(),
 			desc: z.string(),
 			id: z.string().optional(),
-			// media: media(c),
+			media: media(c),
 			link: z
 				.object({
 					name: z.string(),

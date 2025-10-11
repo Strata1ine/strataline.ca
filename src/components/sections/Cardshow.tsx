@@ -1,17 +1,14 @@
-import { createSignal, For, Show, Switch, Match } from 'solid-js';
-// import Slidenav from '@/components/actions/Slidenav';
-// import YoutubeVideo from '@/components/YoutubeVideo';
-// import Video from '@/components/Video';
-import { actionStyles } from '@/components/actions/styles';
-import { slideshow } from '@/frontend/slideshow';
 import type { Props as CardshowMeta } from './Cardshow.astro';
 
-type Props = {
-	meta: CardshowMeta['content'];
-	speed: number;
-};
+import { createSignal, For, Show } from 'solid-js';
+import Image from '@/components/Image';
+import Slidenav from '@/components/actions/Slidenav';
+import YoutubeVideo from '@/components/YoutubeVideo';
+import Video from '@/components/Video';
+import { actionStyles } from '@/components/actions/styles';
+import { slideshow } from '@/frontend/slideshow';
 
-export default function Cardshow(props: Props) {
+export default function Cardshow(props: { meta: CardshowMeta['content']; speed: number }) {
 	const [idx, setIdx] = createSignal(0);
 
 	return (
@@ -20,12 +17,12 @@ export default function Cardshow(props: Props) {
 			<div
 				class="contain-paint flex rounded-md bg-accent"
 				ref={(el) =>
-					slideshow(el, () => ({
+					slideshow(el, {
 						idx: idx(),
-						setIdx,
+						setIdx: setIdx,
 						length: props.meta.length,
 						speed: props.speed,
-					}))
+					})
 				}
 			>
 				<For each={props.meta}>
@@ -40,32 +37,16 @@ export default function Cardshow(props: Props) {
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
 								<div class="contain-paint relative aspect-video w-full flex-shrink-0 rounded-sm sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none">
-									{/*<Switch>
-										<Match when={card.media.type === 'image'}>
-											<></>
-											{/*
-											<img
-												class={`absolute w-full ${imageStyles({
-													x: (card.media as any).image.x,
-													y: (card.media as any).image.y,
-												})}`}
-												{...(card.media as any).image}
-												loading="lazy"
-												decoding="async"
-											/>
-
-										</Match>
-										<Match when={card.media.type === 'video'}>
-											<Video
-												poster={(card.media as any).image?.src}
-												url={(card.media as any).url}
-											/>
-										</Match>
-										<Match when={card.media.type === 'yt-video'}>
-											<YoutubeVideo id={(card.media as any).id} />
-										</Match>
-									</Switch>
-									*/}
+									{(() => {
+										switch (card.media.type) {
+											case 'image':
+												return <Image image={card.media.image} widths={[400, 650, 1300]} />;
+											case 'video':
+												return <Video poster={card.media.image.src.src} url={card.media.url} />;
+											case 'yt-video':
+												return <YoutubeVideo id={card.media.id} />;
+										}
+									})()}
 								</div>
 
 								<div class="w-full sm:my-10">
@@ -96,7 +77,7 @@ export default function Cardshow(props: Props) {
 			</div>
 
 			<div class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col">
-				{/*<Slidenav idx={idx()} setIdx={setIdx} length={props.meta.length} />*/}
+				<Slidenav idx={idx()} setIdx={setIdx} length={props.meta.length} />
 			</div>
 		</>
 	);

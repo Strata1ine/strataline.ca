@@ -13,7 +13,6 @@ import Frontmatter from 'astro-frontmatter-components/renderer';
 
 // import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
 
-import Content from '@/components/sections/layout/Content.astro';
 import type { SchemaMeta } from 'astro-frontmatter-components';
 const isProd = import.meta.env.PROD;
 
@@ -22,7 +21,7 @@ const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons
 interface Props {
 	title: string;
 	desc?: string;
-	blocks: SchemaMeta[];
+	blocks?: SchemaMeta[];
 	startPos?: Pos;
 	schemas?: any[] | any;
 	noIndex?: boolean;

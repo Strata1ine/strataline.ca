@@ -2,7 +2,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
-import svelte from '@astrojs/svelte';
+import Icons from 'unplugin-icons/vite';
 import compressor from 'astro-compressor';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
@@ -65,6 +65,10 @@ export default defineConfig({
 		plugins: [
 			yaml(),
 			tailwindcss(),
+			Icons({
+				compiler: 'solid',
+				autoInstall: true,
+			}),
 			visualizer({
 				emitFile: true,
 				filename: 'stats.html',
@@ -86,7 +90,6 @@ export default defineConfig({
 			},
 		}),
 		solidJs(),
-		svelte(),
 	],
 	redirects: redirects,
 });

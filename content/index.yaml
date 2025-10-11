@@ -63,7 +63,7 @@ sections:
             alt: wasd
           url: /videos/cityline.mp4
 
-      - title: 'Featured in The Star'
+      - title: Featured in The Star
         desc: |-
           The Star's sensational report on our Dust-Free approach
           to renovation.
@@ -78,15 +78,11 @@ sections:
           url: |-
             https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
 
-      - title: 'Featured in House & Home'
+      - title: Featured in House & Home
         desc: |-
           House & Home seeks our expertise on chevron hardwood floor installation.
         media:
           type: image
-          y: top
-          meta: ./photos/awards/houseandhome.webp
-          alt: |-
-            A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.
           image:
             y: top
             src: ./photos/awards/houseandhome.webp
