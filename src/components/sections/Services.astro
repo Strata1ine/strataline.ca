@@ -1,80 +1,80 @@
 ---
-import Island from "./TextCarousel.svelte";
-import LayoutDivider from "./layout/Divider.astro";
-import LayoutTitle from "./layout/Title.astro";
+import Island from './TextCarousel.svelte';
+import LayoutDivider from './layout/Divider.astro';
+import LayoutTitle from './layout/Title.astro';
 
-import { getEntry, getCollection } from "@/content.config";
+import { getEntry, getCollection } from '@/content.config';
 
-import { type PropsOf } from "@/components/registry";
-const meta = Astro.props as PropsOf<"Services">;
+import { type PropsOf } from '@/components/registry';
+const meta = Astro.props as PropsOf<'Services'>;
 
 let exclude: string[];
 if (meta.exclude == undefined) {
-  const index = await getEntry("index", "index");
-  exclude = index.data.popular;
+	const index = await getEntry('index', 'index');
+	exclude = index.data.popular;
 } else {
-  exclude = meta.exclude;
+	exclude = meta.exclude;
 }
 
-const services = (await getCollection("services")).filter(
-  (service) => !exclude.some((pattern: string) => service.id.includes(pattern)),
+const services = (await getCollection('services')).filter(
+	(service) => !exclude.some((pattern: string) => service.id.includes(pattern)),
 );
 
-import { containerStyles, imageStyles, imageWrapperStyles } from "./styles";
-import { twMerge } from "tailwind-merge";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
+import { containerStyles, imageStyles, imageWrapperStyles } from './styles';
+import { twMerge } from 'tailwind-merge';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} pos={meta.pos} />
+	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div class="bg-accent">
-    <nav
-      class={twMerge(
-        containerStyles({ width: "inner" }),
-        "flex flex-wrap justify-center py-12 md:py-22 gap-6 xl:gap-8",
-      )}
-    >
-      {
-        services.map((service, _) => {
-          const slug = service.id.split("/")[0];
-          const cover = service.data.covers[0];
-          return (
-            <a
-              class="flex w-full items-center gap-5 sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
-              href={`/services/${slug}`}
-              id={slug}
-              tabindex="0"
-            >
-              <Image
-                class={twMerge(
-                  "w-1/2 rounded-sm sm:w-full",
-                  imageStyles({
-                    anim: "hover",
-                    x: cover.x,
-                    y: cover.y,
-                  }),
-                  imageWrapperStyles({ size: "xs" }),
-                )}
-                src={cover.src}
-                alt={cover.alt}
-                widths={[200, 400, 600, 800]}
-                format="webp"
-                draggable="false"
-              />
+	<div class="bg-accent">
+		<nav
+			class={twMerge(
+				containerStyles({ width: 'inner' }),
+				'flex flex-wrap justify-center py-12 md:py-22 gap-6 xl:gap-8',
+			)}
+		>
+			{
+				services.map((service, _) => {
+					const slug = service.id.split('/')[0];
+					const cover = service.data.covers[0];
+					return (
+						<a
+							class="flex w-full items-center gap-5 sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
+							href={`/services/${slug}`}
+							id={slug}
+							tabindex="0"
+						>
+							<Image
+								class={twMerge(
+									'w-1/2 rounded-sm sm:w-full',
+									imageStyles({
+										anim: 'hover',
+										x: cover.x,
+										y: cover.y,
+									}),
+									imageWrapperStyles({ size: 'xs' }),
+								)}
+								src={cover.src}
+								alt={cover.alt}
+								widths={[200, 400, 600, 800]}
+								format="webp"
+								draggable="false"
+							/>
 
-              <div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
-                <h3 class="heading-xl">{service.data.title}</h3>
+							<div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
+								<h3 class="heading-xl">{service.data.title}</h3>
 
-                <Icon aria-hidden={true} name="arrow" is:inline />
-              </div>
-            </a>
-          );
-        })
-      }
-    </nav>
-  </div>
+								<Icon aria-hidden={true} name="arrow" is:inline />
+							</div>
+						</a>
+					);
+				})
+			}
+		</nav>
+	</div>
 
-  {meta.content && <Island client:visible meta={meta.content} />}
+	{meta.content && <Island client:visible meta={meta.content} />}
 </LayoutDivider>

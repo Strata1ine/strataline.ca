@@ -1,23 +1,43 @@
 ---
-import { containerStyles } from "./styles";
-import Island from "./Cardshow.svelte";
-import LayoutDivider from "./layout/Divider.astro";
-import LayoutTitle from "./layout/Title.astro";
+import { containerStyles } from './styles';
+import Island from './Cardshow.svelte';
+import LayoutDivider from './layout/Divider.astro';
+import LayoutTitle from './layout/Title.astro';
 
-import { type PropsOf } from "@/components/registry";
-import { twMerge } from "tailwind-merge";
-const meta = Astro.props as PropsOf<"Cardshow">;
+import type { SchemaOf, SchemaBuilder } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { image } from '@/schemas/image';
+
+export const schema: SchemaBuilder = (c: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	speed: z.number().default(5.0),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			desc: z.string(),
+			id: z.string().optional(),
+			media: media(c),
+			link: z
+				.object({
+					name: z.string(),
+					url: z.string(),
+				})
+				.optional(),
+		}),
+	),
+});
+
+import { type PropsOf } from '@/components/registry';
+import { twMerge } from 'tailwind-merge';
+const meta = Astro.props as PropsOf<'Cardshow'>;
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} pos={meta.pos} />
+	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div
-    class={twMerge(
-      containerStyles({ width: "outer" }),
-      "flex flex-col 2xl:flex-row",
-    )}
-  >
-    <Island meta={meta.content} speed={meta.speed} client:visible />
-  </div>
+	<div class={twMerge(containerStyles({ width: 'outer' }), 'flex flex-col 2xl:flex-row')}>
+		<Island meta={meta.content} speed={meta.speed} client:visible />
+	</div>
 </LayoutDivider>

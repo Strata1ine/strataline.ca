@@ -1,19 +1,19 @@
-title: "Dust-Free Renovation"
-desc: "Transform your home with dust-free, quality renovations. Trusted experts in comprehensive home transformations across the GTA and beyond."
+title: Dust-Free Renovation
+desc: Transform your home with dust-free, quality renovations. Trusted experts in comprehensive home transformations across the GTA and beyond.
 popular:
   - popcorn-removal
   - stairs
 sections:
   - type: Header
     content:
-      - id: "popular"
-        name: "Popular"
-      - id: "explore"
-        name: "Explore"
-      - id: "accomplishments"
-        name: "Accomplishments"
-      - id: "reviews"
-        name: "Reviews"
+      - id: popular
+        name: Popular
+      - id: explore
+        name: Explore
+      - id: accomplishments
+        name: Accomplishments
+      - id: reviews
+        name: Reviews
 
   - type: Hero
     title: |-
@@ -63,7 +63,7 @@ sections:
             alt: wasd
           url: /videos/cityline.mp4
 
-      - title: "Featured in The Star"
+      - title: 'Featured in The Star'
         desc: |-
           The Star's sensational report on our Dust-Free approach
           to renovation.
@@ -78,7 +78,7 @@ sections:
           url: |-
             https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
 
-      - title: "Featured in House & Home"
+      - title: 'Featured in House & Home'
         desc: |-
           House & Home seeks our expertise on chevron hardwood floor installation.
         media:
@@ -112,20 +112,20 @@ sections:
     title: What our customers have to say
     id: reviews
     content:
-      - title: "Maggie and Scott"
-        location: "Mississauga"
+      - title: Maggie and Scott
+        location: Mississauga
         stars: 5
         desc: |-
           _My husband and I are unbelievably happy with the work that Max and his team did on our ceilings in the house. The **professionalism** of this team is incredible._
 
-      - title: "Jefferson Grove"
-        location: "Burlington"
+      - title: Jefferson Grove
+        location: Burlington
         stars: 5
         desc: |-
           _The whole process from beginning to end was an absolute pleasure. Max is a great **communicator** and was always quick to reply to texts or emails. We highly recommend Strataline!_
 
-      - title: "Lyn Litvack"
-        location: "Markham"
+      - title: Lyn Litvack
+        location: Markham
         stars: 5
         desc: |-
           _Max is the ultimate professional, immaculate, contentious and polite. He is **punctual** and follows up on things quickly. The work to our stairs is transforming and with his **guidance** we are thrilled with the finished product._

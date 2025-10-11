@@ -1,9 +1,9 @@
 {
-    "editor.formatOnSave": true,
-    "files.exclude": {
-        "{node_modules,src,.netlify,build,dist}": true,
-        ".git*": true,
-        "*.{lock,md,toml,js,mjs}": true,
-        "{tsconfig,package*}.json": true
-    }
+	"editor.formatOnSave": true,
+	"files.exclude": {
+		"{node_modules,src,.netlify,build,dist}": true,
+		".git*": true,
+		"*.{lock,md,toml,js,mjs}": true,
+		"{tsconfig,package*}.json": true
+	}
 }

@@ -1,28 +1,34 @@
-import { icons } from '@phosphor-icons/core'
-import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs'
+import { icons } from '@phosphor-icons/core';
+import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 
-const weights = ['fill', 'bold']
+const weights = ['fill', 'bold'];
 
 if (existsSync('ph')) {
-  rmSync('ph', { recursive: true, force: true })
+	rmSync('ph', { recursive: true, force: true });
 }
-mkdirSync('ph', { recursive: true })
+mkdirSync('ph', { recursive: true });
 
-icons.forEach(icon => {
-  weights.forEach(async weight => {
-    const id = `${icon.name}-${weight}`;
-    const path = `./ph/${id}.svelte`;
-    try {
-      const raw = await import(`@phosphor-icons/core/assets/${weight}/${id}.svg?raw`)
-      const data = raw.default.replace(/<svg([^>]*)xmlns="http:\/\/www.w3.org\/2000\/svg"([^>]*)>/s, '<svg $1 $2 aria-hidden={aria} {...props}>')
-      writeFileSync(`${path}`, `
+icons.forEach((icon) => {
+	weights.forEach(async (weight) => {
+		const id = `${icon.name}-${weight}`;
+		const path = `./ph/${id}.svelte`;
+		try {
+			const raw = await import(`@phosphor-icons/core/assets/${weight}/${id}.svg?raw`);
+			const data = raw.default.replace(
+				/<svg([^>]*)xmlns="http:\/\/www.w3.org\/2000\/svg"([^>]*)>/s,
+				'<svg $1 $2 aria-hidden={aria} {...props}>',
+			);
+			writeFileSync(
+				`${path}`,
+				`
 <script>
  const { 'aria-hidden': aria = true, ...props } = $props();
 </script>
 ${data}
-`)
-    } catch (e) {
-      console.log(`Failed exporting ${path}: ${e}`);
-    }
-  })
-})
+`,
+			);
+		} catch (e) {
+			console.log(`Failed exporting ${path}: ${e}`);
+		}
+	});
+});

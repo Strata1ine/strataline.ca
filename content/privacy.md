@@ -5,7 +5,7 @@ desc: How we collect, use, store, and delete your personal information.
 
 **Last updated:** August 7, 2025
 
-_*This policy applies to users in Canada. If outside of Canada, this service is not applicable._
+_\*This policy applies to users in Canada. If outside of Canada, this service is not applicable._
 
 ### Information collection
 

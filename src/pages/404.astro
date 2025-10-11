@@ -1,20 +1,14 @@
 ---
-import Message from "@/components/sections/layout/Message.astro";
-import Footer from "@/components/sections/Footer.astro";
-import Services from "@/components/sections/Services.astro";
-import Layout from "@/layouts/Layout.astro";
+import Message from '@/components/sections/layout/Message.astro';
+import Footer from '@/components/sections/Footer.astro';
+import Services from '@/components/sections/Services.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout
-  title="404 - Page Not Found"
-  desc="The requested page could not be found on this site."
->
-  <Message
-    title="404"
-    desc="Oops! The page you're looking for doesn't exist."
-  />
+<Layout title="404 - Page Not Found" desc="The requested page could not be found on this site.">
+	<Message title="404" desc="Oops! The page you're looking for doesn't exist." />
 
-  <Services exclude={[]} />
+	<Services exclude={[]} />
 
-  <Footer />
+	<Footer />
 </Layout>

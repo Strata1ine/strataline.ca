@@ -1,0 +1,17 @@
+[formatter.prettier]
+command = "bunx"
+options = ["prettier", "--config", "prettier.config.js", "--write"]
+includes = [
+  "*.css",
+  "*.html",
+  "*.js",
+  "*.json",
+  "*.jsx",
+  "*.md",
+  "*.mdx",
+  "*.css",
+  "*.ts",
+  "*.yaml",
+  "*.astro",
+  "*.mjs",
+]

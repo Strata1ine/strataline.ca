@@ -1,59 +1,66 @@
-<script lang="ts">
-  import { onMount } from "svelte";
-  import { get } from "svelte/store";
-  import { videoPlaying, youtubeApiReady } from "@/frontend/stores.svelte";
+import { onMount, onCleanup, createEffect } from "solid-js";
+import { videoPlaying, setVideoPlaying, youtubeApiReady, setYoutubeApiReady } from "@/frontend/stores";
 
-  const { id }: { id: string } = $props();
-  let video: HTMLDivElement;
+type Props = {
+  id: string;
+};
+
+export default function YoutubePlayer(props: Props) {
+  let video: HTMLDivElement | undefined;
 
   onMount(() => {
     // load youtube API if it doesn't exist or is being loaded
-    if (!window.YT && get(youtubeApiReady) != null) {
-      youtubeApiReady.set(null);
-      var tag = document.createElement("script");
+    if (!window.YT && youtubeApiReady() != null) {
+      setYoutubeApiReady(null);
+      const tag = document.createElement("script");
       tag.src = "https://www.youtube.com/iframe_api";
       document.head.insertBefore(tag, document.head.firstChild);
-
       window.onYouTubeIframeAPIReady = function () {
-        youtubeApiReady.set(true);
+        setYoutubeApiReady(true);
       };
     }
 
-    let unsubVideo: (() => void) | undefined;
-    let player: YT.Player;
+    let player: YT.Player | undefined;
+    let videoPlayingCleanup: (() => void) | undefined;
 
-    const unsubPlayer = youtubeApiReady.subscribe((ready) => {
-      if (ready) {
+    // Watch for API ready state
+    createEffect(() => {
+      const ready = youtubeApiReady();
+      if (ready && video) {
         const YT = window.YT;
         player = new YT.Player(video, {
           height: "100%",
           width: "100%",
-          videoId: id,
+          videoId: props.id,
           playerVars: {
             rel: 0,
           },
           events: {
             onReady: () => {
-              unsubVideo = videoPlaying.subscribe((isPlaying) => {
+              // Watch videoPlaying changes after player is ready
+              const cleanup = createEffect(() => {
+                const isPlaying = videoPlaying();
                 if (
                   !isPlaying &&
+                  player &&
                   player.getPlayerState() === YT.PlayerState.PLAYING
                 ) {
                   player.pauseVideo();
                 }
               });
+              videoPlayingCleanup = cleanup;
             },
             onError: (event) => {
               console.error("YouTube player error: ", event.data);
             },
             onStateChange: (event) => {
               if (event.data === YT.PlayerState.PLAYING) {
-                videoPlaying.set(true);
+                setVideoPlaying(true);
               } else if (
                 event.data === YT.PlayerState.PAUSED ||
                 event.data === YT.PlayerState.ENDED
               ) {
-                videoPlaying.set(false);
+                setVideoPlaying(false);
               }
             },
           },
@@ -61,14 +68,13 @@
       }
     });
 
-    return () => {
-      unsubPlayer();
-      unsubVideo?.();
+    onCleanup(() => {
+      videoPlayingCleanup?.();
       if (player && player.destroy) {
         player.destroy();
       }
-    };
+    });
   });
-</script>
 
-<div class="select-none" bind:this={video}></div>
+  return <div class="select-none" ref={video}></div>;
+}

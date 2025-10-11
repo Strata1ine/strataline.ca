@@ -1,24 +1,24 @@
 ---
 interface Props {
-  id?: string;
+	id?: string;
 }
 
 const { id } = Astro.props;
 
-import { cva } from "class-variance-authority";
-export const divisionStyle = cva("", {
-  variants: {
-    spacing: {
-      top: "mt-28 xl:mt-38",
-      both: "my-28 xl:my-38",
-    },
-  },
-  defaultVariants: {
-    spacing: "both",
-  },
+import { cva } from 'class-variance-authority';
+export const divisionStyle = cva('', {
+	variants: {
+		spacing: {
+			top: 'mt-28 xl:mt-38',
+			both: 'my-28 xl:my-38',
+		},
+	},
+	defaultVariants: {
+		spacing: 'both',
+	},
 });
 ---
 
-<section class={divisionStyle({ spacing: "both" })} {id}>
-  <slot />
+<section class={divisionStyle({ spacing: 'both' })} {id}>
+	<slot />
 </section>

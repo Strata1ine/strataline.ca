@@ -1,102 +1,102 @@
 ---
-import { type Pos } from "../styles";
-import clsx from "clsx";
-import { imageWrapperStyles } from "../styles";
+import { type Pos } from '../styles';
+import clsx from 'clsx';
+import { imageWrapperStyles } from '../styles';
 
 interface Props {
-  id?: string;
-  title: string;
-  desc: string;
-  pos: Pos;
+	id?: string;
+	title: string;
+	desc: string;
+	pos: Pos;
 }
 
 const meta = Astro.props;
 
-import { marked } from "marked";
-import { twMerge } from "tailwind-merge";
+import { marked } from 'marked';
+import { twMerge } from 'tailwind-merge';
 ---
 
 <div class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11" id={meta.id}>
-  {
-    meta.pos === "left" && (
-      <div
-        class={twMerge(
-          imageWrapperStyles({
-            pos: "left",
-            size: "md",
-            display: "md",
-          }),
-          "w-1/2 rounded-sm",
-        )}
-      >
-        <slot name="image" />
-      </div>
-    )
-  }
+	{
+		meta.pos === 'left' && (
+			<div
+				class={twMerge(
+					imageWrapperStyles({
+						pos: 'left',
+						size: 'md',
+						display: 'md',
+					}),
+					'w-1/2 rounded-sm',
+				)}
+			>
+				<slot name="image" />
+			</div>
+		)
+	}
 
-  <div>
-    <h3
-      class={clsx(
-        "mb-2 heading-4xl font-semibold",
-        meta.pos == "right" && "text-right sm:text-left",
-      )}
-    >
-      {meta.title}
-    </h3>
+	<div>
+		<h3
+			class={clsx(
+				'mb-2 heading-4xl font-semibold',
+				meta.pos == 'right' && 'text-right sm:text-left',
+			)}
+		>
+			{meta.title}
+		</h3>
 
-    {
-      meta.pos === "right" && (
-        <div
-          class={twMerge(
-            imageWrapperStyles({
-              pos: "right",
-              size: "sm",
-              display: "sm",
-            }),
-            "my-4 ml-7",
-          )}
-        >
-          <slot name="image" />
-        </div>
-      )
-    }
+		{
+			meta.pos === 'right' && (
+				<div
+					class={twMerge(
+						imageWrapperStyles({
+							pos: 'right',
+							size: 'sm',
+							display: 'sm',
+						}),
+						'my-4 ml-7',
+					)}
+				>
+					<slot name="image" />
+				</div>
+			)
+		}
 
-    {
-      meta.pos === "left" && (
-        <div
-          class={twMerge(
-            imageWrapperStyles({
-              pos: "left",
-              size: "sm",
-              display: "sm",
-            }),
-            "my-4 mr-7",
-          )}
-        >
-          <slot name="image" />
-        </div>
-      )
-    }
+		{
+			meta.pos === 'left' && (
+				<div
+					class={twMerge(
+						imageWrapperStyles({
+							pos: 'left',
+							size: 'sm',
+							display: 'sm',
+						}),
+						'my-4 mr-7',
+					)}
+				>
+					<slot name="image" />
+				</div>
+			)
+		}
 
-    <p class="desc-base">{marked.parseInline(meta.desc)}</p>
+		<p class="desc-base">{marked.parseInline(meta.desc)}</p>
 
-    <slot />
-  </div>
+		<slot />
+	</div>
 
-  {
-    meta.pos === "right" && (
-      <div
-        class={twMerge(
-          imageWrapperStyles({
-            pos: "right",
-            size: "md",
-            display: "md",
-          }),
-          "w-1/2 rounded-sm",
-        )}
-      >
-        <slot name="image" />
-      </div>
-    )
-  }
+	{
+		meta.pos === 'right' && (
+			<div
+				class={twMerge(
+					imageWrapperStyles({
+						pos: 'right',
+						size: 'md',
+						display: 'md',
+					}),
+					'w-1/2 rounded-sm',
+				)}
+			>
+				<slot name="image" />
+			</div>
+		)
+	}
 </div>

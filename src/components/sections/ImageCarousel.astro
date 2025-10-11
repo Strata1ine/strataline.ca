@@ -1,11 +1,11 @@
 ---
-import Island from "./ImageCarousel.svelte";
-import LayoutDivider from "./layout/Divider.astro";
+import Island from './ImageCarousel.svelte';
+import LayoutDivider from './layout/Divider.astro';
 
-import { type PropsOf } from "@/components/registry";
-const meta = Astro.props as PropsOf<"ImageCarousel">;
+import { type PropsOf } from '@/components/registry';
+const meta = Astro.props as PropsOf<'ImageCarousel'>;
 ---
 
 <LayoutDivider>
-  <Island client:visible {meta} />
+	<Island client:visible {meta} />
 </LayoutDivider>

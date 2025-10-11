@@ -1,37 +1,33 @@
 ---
-import { marked } from "marked";
-import { containerStyles } from "./styles";
+import { marked } from 'marked';
+import { containerStyles } from './styles';
 
-import { type PropsOf } from "@/components/registry";
-const meta = Astro.props as PropsOf<"Benefits">;
+import { type PropsOf } from '@/components/registry';
+const meta = Astro.props as PropsOf<'Benefits'>;
 
-import LayoutDivider from "./layout/Divider.astro";
-import LayoutTitle from "./layout/Title.astro";
+import LayoutDivider from './layout/Divider.astro';
+import LayoutTitle from './layout/Title.astro';
 ---
 
 <LayoutDivider>
-  <LayoutTitle
-    title={meta.title}
-    pos={meta.pos}
-    class="relative flex items-center gap-6"
-  />
+	<LayoutTitle title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
 
-  <div class={containerStyles({ width: "inner" })}>
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
-      {
-        meta.content.map((benefit, i) => {
-          return (
-            <div>
-              <div class="mb-3 flex items-baseline gap-4">
-                <h3 class="text-accent-dark heading-6xl font-bold">o{i + 1}</h3>
-                <h4 class="heading-2xl font-semibold">{benefit.title}</h4>
-              </div>
+	<div class={containerStyles({ width: 'inner' })}>
+		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
+			{
+				meta.content.map((benefit, i) => {
+					return (
+						<div>
+							<div class="mb-3 flex items-baseline gap-4">
+								<h3 class="text-accent-dark heading-6xl font-bold">o{i + 1}</h3>
+								<h4 class="heading-2xl font-semibold">{benefit.title}</h4>
+							</div>
 
-              <p class="desc-base">{marked.parseInline(benefit.desc)}</p>
-            </div>
-          );
-        })
-      }
-    </div>
-  </div>
+							<p class="desc-base">{marked.parseInline(benefit.desc)}</p>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
 </LayoutDivider>

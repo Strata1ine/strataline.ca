@@ -1,29 +1,27 @@
 ---
-import { containerStyles, type Pos } from "@/components/sections/styles";
-import clsx from "clsx";
+import { containerStyles, type Pos } from '@/components/sections/styles';
+import clsx from 'clsx';
 
 interface Props {
-  title: string;
-  pos: Pos;
-  class?: string;
+	title: string;
+	pos: Pos;
+	class?: string;
 }
 
 let { title, pos, class: className } = Astro.props;
 ---
 
-<div
-  class={clsx(containerStyles({ width: "inner" }), "mb-10 sm:mb-14", className)}
->
-  <slot name="before" />
+<div class={clsx(containerStyles({ width: 'inner' }), 'mb-10 sm:mb-14', className)}>
+	<slot name="before" />
 
-  <h2
-    class={clsx(
-      "heading-5xl sm:max-w-[20ch] font-bold",
-      pos == "right" ? "sm:ml-auto sm:text-right" : "",
-    )}
-  >
-    {title}
-  </h2>
+	<h2
+		class={clsx(
+			'heading-5xl sm:max-w-[20ch] font-bold',
+			pos == 'right' ? 'sm:ml-auto sm:text-right' : '',
+		)}
+	>
+		{title}
+	</h2>
 
-  <slot />
+	<slot />
 </div>

@@ -1,23 +1,21 @@
 ---
-import clsx from "clsx";
-import { Icon } from "astro-icon/components";
+import clsx from 'clsx';
+import { Icon } from 'astro-icon/components';
 
-const { slug, desc = "Go home", class: customClass, ...slot } = Astro.props;
+const { slug, desc = 'Go home', class: customClass, ...slot } = Astro.props;
 ---
 
 <a
-  class={clsx(`inline-flex cursor-pointer items-end gap-3`, customClass)}
-  {...slot}
-  data-astro-prefetch
-  href={slug ? `/#${slug}` : `/`}
+	class={clsx(`inline-flex cursor-pointer items-end gap-3`, customClass)}
+	{...slot}
+	data-astro-prefetch
+	href={slug ? `/#${slug}` : `/`}
 >
-  <Icon
-    aria-hidden={true}
-    name="ph:house-line-fill"
-    is:inline
-    class="text-accent-dark size-8 translate-y-[7%] xl:size-12"
-  />
-  <span class="desc-base text-accent-dark leading-none font-semibold"
-    >{desc}</span
-  >
+	<Icon
+		aria-hidden={true}
+		name="ph:house-line-fill"
+		is:inline
+		class="text-accent-dark size-8 translate-y-[7%] xl:size-12"
+	/>
+	<span class="desc-base text-accent-dark leading-none font-semibold">{desc}</span>
 </a>

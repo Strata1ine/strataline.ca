@@ -1,19 +1,21 @@
-import { onMount } from "svelte";
+import { onMount } from 'svelte';
 
 export const useQueryDevice = (breakpoint = 750) => {
-  let isMobile = $state(true);
+	let isMobile = $state(true);
 
-  onMount(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
-    const handler = () => isMobile = mediaQuery.matches;
+	onMount(() => {
+		const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
+		const handler = () => (isMobile = mediaQuery.matches);
 
-    handler();
-    mediaQuery.addEventListener("change", handler);
+		handler();
+		mediaQuery.addEventListener('change', handler);
 
-    return () => mediaQuery.removeEventListener("change", handler);
-  });
+		return () => mediaQuery.removeEventListener('change', handler);
+	});
 
-  return {
-    get isMobile() { return isMobile; }
-  };
+	return {
+		get isMobile() {
+			return isMobile;
+		},
+	};
 };

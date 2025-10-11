@@ -1,71 +1,59 @@
 ---
-import { containerStyles } from "./styles";
-import business from "#/business.json";
-import socials from "#/socials.json";
+import { containerStyles } from './styles';
+import business from '#/business.json';
+import socials from '#/socials.json';
 
-import { Icon } from "astro-icon/components";
-import { divisionStyle } from "./layout/Divider.astro";
-import { twMerge } from "tailwind-merge";
+import { Icon } from 'astro-icon/components';
+import { divisionStyle } from './layout/Divider.astro';
+import { twMerge } from 'tailwind-merge';
 
-import Search from "@/components/actions/Search.svelte";
+import Search from '@/components/actions/Search.svelte';
 ---
 
-<footer class={divisionStyle({ spacing: "top" })}>
-  <div
-    class={twMerge(
-      containerStyles({ width: "inner" }),
-      "py-12 bg-gradient-to-b from-transparent via-white/90 to-white relative z-2 border-t-1 border-accent",
-    )}
-  >
-    <div
-      class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
-    >
-      <ul class="flex gap-3">
-        {
-          socials.map((social) => (
-            <li class="inline-flex">
-              <a
-                target="_blank"
-                href={social.url}
-                rel="noopener noreferrer"
-                aria-label={social.name}
-              >
-                <Icon
-                  is:inline
-                  aria-hidden={true}
-                  style={`color: #${social.color}`}
-                  name={social.icon}
-                  class="size-15 md:size-19"
-                />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+<footer class={divisionStyle({ spacing: 'top' })}>
+	<div
+		class={twMerge(
+			containerStyles({ width: 'inner' }),
+			'py-12 bg-gradient-to-b from-transparent via-white/90 to-white relative z-2 border-t-1 border-accent',
+		)}
+	>
+		<div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+			<ul class="flex gap-3">
+				{
+					socials.map((social) => (
+						<li class="inline-flex">
+							<a
+								target="_blank"
+								href={social.url}
+								rel="noopener noreferrer"
+								aria-label={social.name}
+							>
+								<Icon
+									is:inline
+									aria-hidden={true}
+									style={`color: #${social.color}`}
+									name={social.icon}
+									class="size-15 md:size-19"
+								/>
+							</a>
+						</li>
+					))
+				}
+			</ul>
 
-      <Search
-        values={business.areaServed}
-        placeholder="Find your municipality"
-        client:idle
-      />
-    </div>
+			<Search values={business.areaServed} placeholder="Find your municipality" client:idle />
+		</div>
 
-    <div
-      class="sm:gap-inset mt-9 flex flex-col items-center gap-1 text-center sm:flex-row"
-    >
-      <span class="desc-sm"
-        ><b>© Strataline. 2025.</b> All rights reserved.</span
-      >
+		<div class="sm:gap-inset mt-9 flex flex-col items-center gap-1 text-center sm:flex-row">
+			<span class="desc-sm"><b>© Strataline. 2025.</b> All rights reserved.</span>
 
-      <ul class="flex gap-6 sm:ml-auto sm:gap-12">
-        <li>
-          <a
-            class="desc-sm text-url hover:underline"
-            data-astro-prefetch
-            href="/privacy">Privacy policy</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
+			<ul class="flex gap-6 sm:ml-auto sm:gap-12">
+				<li>
+					<a class="desc-sm text-url hover:underline" data-astro-prefetch href="/privacy"
+						>Privacy policy</a
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
 </footer>

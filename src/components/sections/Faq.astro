@@ -1,23 +1,23 @@
 ---
-import { type PropsOf } from "@/components/registry";
-const meta = Astro.props as PropsOf<"Faq">;
+import { type PropsOf } from '@/components/registry';
+const meta = Astro.props as PropsOf<'Faq'>;
 
-import LayoutDivider from "./layout/Divider.astro";
-import LayoutTitle from "./layout/Title.astro";
-import { containerStyles } from "./styles";
+import LayoutDivider from './layout/Divider.astro';
+import LayoutTitle from './layout/Title.astro';
+import { containerStyles } from './styles';
 
-import Island from "./Faq.svelte";
-import { marked } from "marked";
+import Island from './Faq.svelte';
+import { marked } from 'marked';
 
 for (const faq of meta.content) {
-  faq.desc = marked.parse(faq.desc) as string;
+	faq.desc = marked.parse(faq.desc) as string;
 }
 ---
 
 <LayoutDivider>
-  <LayoutTitle title={meta.title} pos={meta.pos} />
+	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div class={containerStyles({ width: "inner" })}>
-    <Island client:visible {meta} />
-  </div>
+	<div class={containerStyles({ width: 'inner' })}>
+		<Island client:visible {meta} />
+	</div>
 </LayoutDivider>

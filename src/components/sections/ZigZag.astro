@@ -1,45 +1,40 @@
 ---
-import { type PropsOf } from "@/components/registry";
-import { Image } from "astro:assets";
+import { type PropsOf } from '@/components/registry';
+import { Image } from 'astro:assets';
 
-import LayoutDivider from "./layout/Divider.astro";
-import LayoutTitle from "./layout/Title.astro";
-import LayoutCard from "./layout/Card.astro";
-import { imageStyles, containerStyles, swapPos } from "./styles";
-import { twMerge } from "tailwind-merge";
-const meta = Astro.props as PropsOf<"ZigZag">;
+import LayoutDivider from './layout/Divider.astro';
+import LayoutTitle from './layout/Title.astro';
+import LayoutCard from './layout/Card.astro';
+import { imageStyles, containerStyles, swapPos } from './styles';
+import { twMerge } from 'tailwind-merge';
+const meta = Astro.props as PropsOf<'ZigZag'>;
 
 let next = swapPos(meta.pos);
 ---
 
 <LayoutDivider id={meta.id}>
-  <LayoutTitle title={meta.title} pos={meta.pos} />
+	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-  <div
-    class={twMerge(
-      containerStyles({ width: "outer" }),
-      "space-y-20 sm:space-y-35",
-    )}
-  >
-    {
-      meta.content.map((zig, _) => {
-        next = swapPos(next);
-        return (
-          <LayoutCard title={zig.title} desc={zig.desc} pos={next}>
-            <Image
-              slot="image"
-              class={imageStyles({
-                x: zig.image.x,
-                y: zig.image.y,
-              })}
-              src={zig.image.src}
-              alt={zig.image.alt}
-              width="1440"
-              draggable="false"
-            />
-          </LayoutCard>
-        );
-      })
-    }
-  </div>
+	<div class={twMerge(containerStyles({ width: 'outer' }), 'space-y-20 sm:space-y-35')}>
+		{
+			meta.content.map((zig, _) => {
+				next = swapPos(next);
+				return (
+					<LayoutCard title={zig.title} desc={zig.desc} pos={next}>
+						<Image
+							slot="image"
+							class={imageStyles({
+								x: zig.image.x,
+								y: zig.image.y,
+							})}
+							src={zig.image.src}
+							alt={zig.image.alt}
+							width="1440"
+							draggable="false"
+						/>
+					</LayoutCard>
+				);
+			})
+		}
+	</div>
 </LayoutDivider>

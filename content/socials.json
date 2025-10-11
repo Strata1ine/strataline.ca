@@ -1,26 +1,26 @@
 [
-  {
-    "color": "000000",
-    "icon": "ph:tiktok-logo-fill",
-    "name": "tiktok social icon",
-    "url": "https://www.tiktok.com/@stratalineinc"
-  },
-  {
-    "color": "e1306c",
-    "icon": "ph:instagram-logo-fill",
-    "name": "instagram social icon",
-    "url": "https://www.instagram.com/strataline.ca"
-  },
-  {
-    "color": "4267b2",
-    "icon": "ph:facebook-logo-fill",
-    "name": "facebook social icon",
-    "url": "https://www.facebook.com/stratalineinc"
-  },
-  {
-    "color": "000000",
-    "icon": "ph:x-logo-fill",
-    "name": "x social icon",
-    "url": "https://x.com/Strataline_Inc"
-  }
+	{
+		"color": "000000",
+		"icon": "ph:tiktok-logo-fill",
+		"name": "tiktok social icon",
+		"url": "https://www.tiktok.com/@stratalineinc"
+	},
+	{
+		"color": "e1306c",
+		"icon": "ph:instagram-logo-fill",
+		"name": "instagram social icon",
+		"url": "https://www.instagram.com/strataline.ca"
+	},
+	{
+		"color": "4267b2",
+		"icon": "ph:facebook-logo-fill",
+		"name": "facebook social icon",
+		"url": "https://www.facebook.com/stratalineinc"
+	},
+	{
+		"color": "000000",
+		"icon": "ph:x-logo-fill",
+		"name": "x social icon",
+		"url": "https://x.com/Strataline_Inc"
+	}
 ]

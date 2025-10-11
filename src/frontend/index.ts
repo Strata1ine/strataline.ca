@@ -1,9 +1,9 @@
 if (window.location.hash) {
-  const target = document.querySelector(window.location.hash);
-  if (target) target.scrollIntoView();
-  history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+	const target = document.querySelector(window.location.hash);
+	if (target) target.scrollIntoView();
+	history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
 }
 
 window.addEventListener('hashchange', () => {
-  history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+	history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
 });

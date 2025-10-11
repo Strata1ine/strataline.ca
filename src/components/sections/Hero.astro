@@ -1,21 +1,33 @@
 ---
-import { containerStyles } from "./styles";
-import Island from "./Hero.svelte";
+import { containerStyles } from './styles';
+import Island from './Hero.svelte';
 
-import { type PropsOf } from "@/components/registry";
-const meta = Astro.props as PropsOf<"Hero">;
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { image } from '@/schemas/image';
+
+export const schema = (c: SchemaContext) => ({
+	id: z.string().optional(),
+	title: z.string(),
+	desc: z.string(),
+	speed: z.number().default(5.0),
+	content: z.array(image(c)),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 ---
 
 <main
-  class="relative flex min-h-[clamp(10rem,100svh,50rem)] overflow-x-clip sm:min-h-[clamp(10rem,100svh,90rem)]"
-  id={meta.id}
+	class="relative flex min-h-[clamp(10rem,100svh,50rem)] overflow-x-clip sm:min-h-[clamp(10rem,100svh,90rem)]"
+	id={meta.id}
 >
-  <span
-    class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
-  >
-  </span>
+	<span
+		class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
+	>
+	</span>
 
-  <div class={containerStyles({ width: "outer", center: "both" })}>
-    <Island client:load {meta} />
-  </div>
+	<div class={containerStyles({ width: 'outer', center: 'both' })}>
+		<Island client:load {meta} />
+	</div>
 </main>

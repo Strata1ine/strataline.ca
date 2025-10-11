@@ -1,26 +1,24 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Menus from "@/components/modals/Menus.svelte";
-import Footer from "@/components/sections/Footer.astro";
-import { getEntry, getCollection } from "@/content.config";
-import { generateServiceSchema } from "@/build/schemas/service";
+import Layout from '@/layouts/Layout.astro';
+import Menus from '@/components/modals/Menus.svelte';
+import Footer from '@/components/sections/Footer.astro';
+import { getEntry, getCollection } from '@/content.config';
+import { generateServiceSchema } from '@/build/schemas/service';
 
-const data = (await getEntry("index", "index")).data;
-const services = await getCollection("services");
+const data = (await getEntry('index', 'index')).data;
+const services = await getCollection('services');
 ---
 
 <Layout
-  title={data.title}
-  desc={data.desc}
-  sections={data.sections}
-  schemas={{
-    "@type": "ItemList",
-    numberOfItems: services.length,
-    itemListElement: services.map((service) =>
-      generateServiceSchema(Astro, service),
-    ),
-  }}
+	title={data.title}
+	desc={data.desc}
+	sections={data.sections}
+	schemas={{
+		'@type': 'ItemList',
+		numberOfItems: services.length,
+		itemListElement: services.map((service) => generateServiceSchema(Astro, service)),
+	}}
 >
-  <Menus client:idle />
-  <Footer />
+	<Menus client:idle />
+	<Footer />
 </Layout>
