@@ -2,10 +2,10 @@ import type { Props as CardshowMeta } from './Cardshow.astro';
 
 import { createSignal, For, Show } from 'solid-js';
 import Image from '@/components/Image';
-import Slidenav from '@/components/actions/Slidenav';
+import SlideNav from '@/components/SlideNav';
 import YoutubeVideo from '@/components/YoutubeVideo';
 import Video from '@/components/Video';
-import { actionStyles } from '@/components/actions/styles';
+import { Link } from '@/components/Actions';
 import { slideshow } from '@/frontend/slideshow';
 
 export default function Cardshow(props: { meta: CardshowMeta['content']; speed: number }) {
@@ -56,14 +56,9 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 									<Show when={card.link}>
 										{(link) => (
 											<div class="mt-7">
-												<a
-													rel="noopener noreferrer"
-													class={actionStyles()}
-													target="_blank"
-													href={link().url}
-												>
+												<Link rel="noopener noreferrer" target="_blank" href={link().url}>
 													{link().name}
-												</a>
+												</Link>
 											</div>
 										)}
 									</Show>
@@ -77,7 +72,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 			</div>
 
 			<div class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col">
-				<Slidenav idx={idx()} setIdx={setIdx} length={props.meta.length} />
+				<SlideNav idx={idx()} setIdx={setIdx} length={props.meta.length} />
 			</div>
 		</>
 	);

@@ -6,7 +6,7 @@ import { Icon } from 'astro-icon/components';
 import { twMerge } from 'tailwind-merge';
 import { getCollection } from '@/content.config';
 // import { generateServiceSchema } from '@/build/schemas/service';
-import { Image, imageWrapperStyles } from '@/components/Image';
+import { Image, imageWrapperVariants } from '@/components/Image';
 
 import Home from '@/components/decor/Home.astro';
 import Container from '@/sections/layout/Container.astro';
@@ -56,7 +56,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 
 				<div
 					class={twMerge(
-						imageWrapperStyles({
+						imageWrapperVariants({
 							display: 'sm',
 							size: 'sm',
 							pos: 'right',
@@ -83,7 +83,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 			</div>
 
 			<div
-				class={twMerge('hidden h-full rounded-sm flex-1', imageWrapperStyles({ display: 'md' }))}
+				class={twMerge('hidden h-full rounded-sm flex-1', imageWrapperVariants({ display: 'md' }))}
 			>
 				{
 					service.data.covers.map((image, _) => (

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Stars from "@/components/decor/Stars.svelte";
+  import Stars from "@/components/Stars";
   let rawLength = $state(10.0);
   let length = $derived(rawLength / 2);
 

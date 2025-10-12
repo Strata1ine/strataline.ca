@@ -1,5 +1,5 @@
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
-import Stars from '@/components/decor/Stars';
+import Stars from '@/components/Stars';
 import Feather from '~icons/ph/feather-fill';
 import type { Props as ReviewsProps } from './Reviews.astro';
 import { modals } from '@/frontend/stores';

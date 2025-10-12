@@ -10,7 +10,6 @@ export const schema = (_: SchemaContext) => ({
 });
 
 import { getEntry, getCollection } from '@/content.config';
-import { actionStyles } from '@/components/actions/styles';
 
 const index = await getEntry('index', 'index');
 const services = (await getCollection('services'))
@@ -23,7 +22,8 @@ export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 let next = swapPos(meta.pos);
 
-import { Image } from '@/components/Image';
+import { Link } from '@/components/Actions';
+import Image from '@/components/Image';
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Container from './layout/Container.astro';
@@ -50,14 +50,9 @@ import Card from './layout/Card.astro';
 						))}
 
 						<div class="mt-9">
-							<a
-								class={actionStyles()}
-								href={`/services/${slug}`}
-								rel="noopener noreferrer"
-								data-astro-prefetch=""
-							>
+							<Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">
 								Explore More
-							</a>
+							</Link>
 						</div>
 					</Card>
 				);

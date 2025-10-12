@@ -1,7 +1,7 @@
 ---
 import type { Pos } from '@/schemas';
 import clsx from 'clsx';
-import { imageWrapperStyles } from '@/components/Image';
+import { imageWrapperVariants } from '@/components/Image';
 
 interface Props {
 	id?: string;
@@ -21,7 +21,7 @@ import { twMerge } from 'tailwind-merge';
 		meta.pos === 'left' && (
 			<div
 				class={twMerge(
-					imageWrapperStyles({
+					imageWrapperVariants({
 						pos: 'left',
 						size: 'md',
 						display: 'md',
@@ -48,7 +48,7 @@ import { twMerge } from 'tailwind-merge';
 			meta.pos === 'right' && (
 				<div
 					class={twMerge(
-						imageWrapperStyles({
+						imageWrapperVariants({
 							pos: 'right',
 							size: 'sm',
 							display: 'sm',
@@ -65,7 +65,7 @@ import { twMerge } from 'tailwind-merge';
 			meta.pos === 'left' && (
 				<div
 					class={twMerge(
-						imageWrapperStyles({
+						imageWrapperVariants({
 							pos: 'left',
 							size: 'sm',
 							display: 'sm',
@@ -87,7 +87,7 @@ import { twMerge } from 'tailwind-merge';
 		meta.pos === 'right' && (
 			<div
 				class={twMerge(
-					imageWrapperStyles({
+					imageWrapperVariants({
 						pos: 'right',
 						size: 'md',
 						display: 'md',

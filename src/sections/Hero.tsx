@@ -1,7 +1,7 @@
 import { createSignal, For } from 'solid-js';
-import Slidenav from '@/components/actions/Slidenav';
-import FluidTalk from '@/components/decor/FluidTalk';
-import { Image, imageWrapperStyles } from '@/components/Image';
+import SlideNav from '@/components/SlideNav';
+import FluidTalk from '@/components/FluidTalk';
+import { Image, imageWrapperVariants } from '@/components/Image';
 import { slideshow } from '@/frontend/slideshow';
 import type { Props as HeroMeta } from './Hero.astro';
 
@@ -34,7 +34,7 @@ export default function Hero(props: HeroMeta) {
 				</div>
 
 				<div class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col">
-					<Slidenav idx={idx()} setIdx={setIdx} length={props.content.length} />
+					<SlideNav idx={idx()} setIdx={setIdx} length={props.content.length} />
 				</div>
 			</div>
 
@@ -43,7 +43,7 @@ export default function Hero(props: HeroMeta) {
 
 				<div class="my-5 flex items-center gap-2 sm:hidden">
 					<div
-						class={`${imageWrapperStyles({
+						class={`${imageWrapperVariants({
 							pos: 'left',
 							size: 'sm',
 						})} flex-1`}
@@ -52,7 +52,7 @@ export default function Hero(props: HeroMeta) {
 					</div>
 
 					<div class="flex flex-col gap-2">
-						<Slidenav idx={idx()} setIdx={setIdx} length={props.content.length} />
+						<SlideNav idx={idx()} setIdx={setIdx} length={props.content.length} />
 					</div>
 				</div>
 

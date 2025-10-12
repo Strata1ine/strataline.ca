@@ -10,7 +10,7 @@
 
   import { clickOutside } from "@/frontend/focus";
   import { genUid } from "@/frontend/stores.svelte";
-  import MagnifyingGlass from "@/icons/ph/magnifying-glass-bold.svelte";
+  import MagnifyingGlass from "~icons/ph/magnifying-glass-bold";
 
   let value: string = $state("");
   let open = $derived(value.length > 0);

@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority';
 
-export const inputStyles = cva('gap-inset flex items-center p-5 overflow-hidden');
+export const inputVariants = cva('gap-inset flex items-center p-5 overflow-hidden');
 
-export const fieldStyles = cva(
+export const fieldVariants = cva(
 	'border-accent w3c-focus block border-1 select-none transition-[border-radius] duration-400',
 	{
 		variants: {
@@ -46,7 +46,7 @@ export const menuButton = cva('block w-full cursor-pointer px-5 py-2 overflow-hi
 	},
 });
 
-export const menuStyles = cva(
+export const menuVariants = cva(
 	'border-accent absolute z-1 border bg-white transition duration-400 right-0 left-0 select-none',
 	{
 		variants: {

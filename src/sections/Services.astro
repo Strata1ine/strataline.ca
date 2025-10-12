@@ -35,7 +35,7 @@ import Container from './layout/Container.astro';
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Island from './TextCarousel';
-import { Image, imageWrapperStyles } from '@/components/Image';
+import { Image, imageWrapperVariants } from '@/components/Image';
 ---
 
 <Divider id={meta.id}>
@@ -54,7 +54,7 @@ import { Image, imageWrapperStyles } from '@/components/Image';
 							id={slug}
 							tabindex="0"
 						>
-							<div class={imageWrapperStyles({ size: 'xs' })}>
+							<div class={imageWrapperVariants({ size: 'xs' })}>
 								<!-- <Image -->
 								<!-- 	class={twMerge( -->
 								<!-- 		'w-1/2 rounded-sm sm:w-full', -->

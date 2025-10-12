@@ -1,7 +1,7 @@
 ---
 import { twMerge } from 'tailwind-merge';
 import { cva, type VariantProps } from 'class-variance-authority';
-export const containerStyles = cva('w-full', {
+export const containerVariants = cva('w-full', {
 	variants: {
 		width: {
 			inner: 'max-w-inner px-inset',
@@ -21,14 +21,14 @@ export const containerStyles = cva('w-full', {
 
 interface Props {
 	class?: string | (string | undefined)[];
-	width?: VariantProps<typeof containerStyles>['width'];
-	center?: VariantProps<typeof containerStyles>['center'];
+	width?: VariantProps<typeof containerVariants>['width'];
+	center?: VariantProps<typeof containerVariants>['center'];
 	as?: 'div' | 'nav';
 }
 const { width, center, class: className, as: Tag = 'div' } = Astro.props;
 const classArray = (Array.isArray(className) ? className : [className]).filter(Boolean);
 ---
 
-<Tag class={twMerge(containerStyles({ width, center }), ...classArray)}>
+<Tag class={twMerge(containerVariants({ width, center }), ...classArray)}>
 	<slot />
 </Tag>
