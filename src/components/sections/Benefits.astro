@@ -1,18 +1,33 @@
 ---
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
 import { marked } from 'marked';
-import { containerStyles } from './styles';
 
-import { type PropsOf } from '@/components/registry';
-const meta = Astro.props as PropsOf<'Benefits'>;
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			desc: z.string(),
+		}),
+	),
+});
 
-import LayoutDivider from './layout/Divider.astro';
-import LayoutTitle from './layout/Title.astro';
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Container from './layout/Container.astro';
 ---
 
-<LayoutDivider>
-	<LayoutTitle title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
+<Divider>
+	<Title title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
 
-	<div class={containerStyles({ width: 'inner' })}>
+	<Container width="inner">
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
 			{
 				meta.content.map((benefit, i) => {
@@ -29,5 +44,5 @@ import LayoutTitle from './layout/Title.astro';
 				})
 			}
 		</div>
-	</div>
-</LayoutDivider>
+	</Container>
+</Divider>

@@ -1,5 +1,5 @@
 import { For, onCleanup, onMount } from 'solid-js';
-// import Star from '@/icons/ph/star-four-fill';
+import Star from '~icons/ph/star-four-fill';
 import type { Props as TextCarouselMeta } from './TextCarousel.astro';
 
 export default function TextCarousel(props: TextCarouselMeta) {
@@ -13,7 +13,6 @@ export default function TextCarousel(props: TextCarouselMeta) {
 	let moveDirection = -1;
 	let lastFrame = 0;
 
-	// mirrors Svelte $state(0); mutated and applied to style directly
 	let pos = 0;
 	let isVisible = false;
 	let animationId: number | null = null;
@@ -144,7 +143,8 @@ export default function TextCarousel(props: TextCarouselMeta) {
 										<h3 class="mx-12 flex-none font-serif text-2xl md:mx-20 md:text-3xl lg:mx-23">
 											{item}
 										</h3>
-										{/*<Star class="text-gold size-7 flex-none sm:size-9" />*/}
+
+										<Star class="text-gold size-7 flex-none sm:size-9" />
 									</>
 								)}
 							</For>

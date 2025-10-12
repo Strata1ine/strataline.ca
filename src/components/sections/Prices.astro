@@ -1,16 +1,35 @@
 ---
-import { type PropsOf } from './registry';
-const meta = Astro.props as PropsOf<'Prices'>;
+import type { SchemaOf } from "astro-frontmatter-components";
+import { type SchemaContext, z } from "astro:content";
+import { DefaultPos } from "@/schemas";
 
-import LayoutDivider from './layout/Divider.astro';
-import LayoutSplit from './layout/Split.astro';
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			min: z.number().min(0),
+			max: z.number().min(0),
+			materials: z.array(z.string()),
+			desc: z.string(),
+		}),
+	),
+});
 
-import { marked } from 'marked';
-import { Icon } from 'astro-icon/components';
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+
+import Divider from "./layout/Divider.astro";
+import Split from "./layout/Split.astro";
+
+import { marked } from "marked";
+import { Icon } from "astro-icon/components";
 ---
 
-<LayoutDivider>
-	<LayoutSplit pos={meta.pos}>
+<Divider>
+	<Split pos={meta.pos}>
 		<div slot="title" class="flex-1">
 			<h2 class="heading-5xl top-0 font-bold sm:sticky">
 				{meta.title}
@@ -21,7 +40,7 @@ import { Icon } from 'astro-icon/components';
 			{
 				meta.content.map((price, _) => {
 					return (
-						<div class={`border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0`}>
+						<div class="border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0">
 							<div class="flex w-full items-center justify-between gap-4">
 								<h3 class="heading-2xl">{price.title}</h3>
 								<div class="flex items-center gap-3">
@@ -50,5 +69,5 @@ import { Icon } from 'astro-icon/components';
 				})
 			}
 		</div>
-	</LayoutSplit>
-</LayoutDivider>
+	</Split>
+</Divider>

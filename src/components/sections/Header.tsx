@@ -2,7 +2,7 @@
 // import Burger from "@/components/decor/Burger.svelte";
 // import { modals, genUid } from "@/frontend/stores.svelte";
 
-import type { Props as HeaderMeta } from './Header.astro';
+import type { Props as HeaderMeta } from "./Header.astro";
 
 export default function Header(props: HeaderMeta) {
 	// const open = createMemo(() => modals.is(modals.mobile));

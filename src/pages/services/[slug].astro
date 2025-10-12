@@ -5,11 +5,11 @@ import { Icon } from 'astro-icon/components';
 
 import { twMerge } from 'tailwind-merge';
 import { getCollection } from '@/content.config';
-import { containerStyles } from '@/components/sections/styles';
 // import { generateServiceSchema } from '@/build/schemas/service';
 import { Image, imageWrapperStyles } from '@/components/Image';
 
 import Home from '@/components/decor/Home.astro';
+import Container from '@/components/sections/layout/Container.astro';
 // import Menus from '@/components/modals/Menus.svelte';
 // import Footer from '@/components/sections/Footer.astro';
 // import FluidTalk from '@/components/decor/FluidTalk.svelte';
@@ -35,15 +35,13 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 <Layout
 	title={service.data.title}
 	desc={service.data.seo}
-	schemas={service.data.sections}
+	blocks={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
 >
 	<main class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
-		<div
-			class={twMerge(
-				containerStyles({ width: 'outer' }),
-				'gap-6 md:gap-8 xl:gap-12 flex h-full items-center sm:flex-row sm:py-0',
-			)}
+		<Container
+			width="outer"
+			class="flex h-full items-center gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
 		>
 			<span
 				class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
@@ -97,17 +95,17 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 					))
 				}
 			</div>
-		</div>
+		</Container>
 	</main>
 
-	<div class={containerStyles({ width: 'inner' })}>
+	<Container width="inner">
 		<Icon
 			aria-hidden={true}
 			is:inline
 			name="arrow"
 			class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
 		/>
-	</div>
+	</Container>
 
 	<!-- <Footer /> -->
 	<!-- <Menus client:idle /> -->

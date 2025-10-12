@@ -15,26 +15,24 @@ export const schema = (_: SchemaContext) => ({
 	),
 });
 
-import LayoutDivider from './layout/Divider.astro';
-import LayoutTitle from './layout/Title.astro';
-import { containerStyles } from './styles';
-
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Container from './layout/Container.astro';
 import Island from './Faq';
-import { marked } from 'marked';
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
+import { marked } from 'marked';
 for (const faq of meta.content) {
 	faq.desc = marked.parse(faq.desc) as string;
 }
 ---
 
-<LayoutDivider>
-	<LayoutTitle title={meta.title} pos={meta.pos} />
+<Divider>
+	<Title title={meta.title} pos={meta.pos} />
 
-	<div class={containerStyles({ width: 'inner' })}>
-		<!-- client:visible -->
-		<!-- <Island meta={meta.content} /> -->
-	</div>
-</LayoutDivider>
+	<Container width="inner">
+		<Island client:visible {...meta.content} />
+	</Container>
+</Divider>

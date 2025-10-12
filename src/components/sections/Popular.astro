@@ -1,51 +1,51 @@
 ---
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { swapPos, DefaultPos } from '@/schemas';
+
+export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+});
+
 import { getEntry, getCollection } from '@/content.config';
-import { containerStyles, imageStyles, swapPos } from './styles';
 import { actionStyles } from '@/components/actions/styles';
 
-import LayoutDivider from './layout/Divider.astro';
-import LayoutTitle from './layout/Title.astro';
-import LayoutCard from './layout/Card.astro';
-import { Image } from 'astro:assets';
-
-import { type PropsOf } from '@/components/registry';
-import { twMerge } from 'tailwind-merge';
-const meta = Astro.props as PropsOf<'Popular'>;
-
-let index = await getEntry('index', 'index');
+const index = await getEntry('index', 'index');
 const services = (await getCollection('services'))
 	.filter((service) =>
 		index.data.popular.some((pattern: string) => service.id.split('/')[0].includes(pattern)),
 	)
 	.sort((a, b) => index.data.popular.indexOf(a.id) - index.data.popular.indexOf(b.id));
 
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
 let next = swapPos(meta.pos);
+
+import { Image } from '@/components/Image';
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Container from './layout/Container.astro';
+import Card from './layout/Card.astro';
 ---
 
-<LayoutDivider id={meta.id}>
-	<LayoutTitle title={meta.title} pos={meta.pos} />
+<Divider id={meta.id}>
+	<Title title={meta.title} pos={meta.pos} />
 
-	<div class={twMerge(containerStyles({ width: 'outer' }), 'space-y-20 sm:space-y-35')}>
+	<Container width="outer" class="space-y-20 sm:space-y-35">
 		{
 			services.map((service, _) => {
 				const slug = service.id.split('/')[0];
 				next = swapPos(next);
 
 				return (
-					<LayoutCard id={slug} title={service.data.title} desc={service.data.desc} pos={next}>
+					<Card id={slug} title={service.data.title} desc={service.data.desc} pos={next}>
 						{service.data.covers.map((image, _) => (
 							<Image
-								src={image.src}
-								alt={image.alt}
-								class={imageStyles({
-									anim: service.data.covers.length > 1 ? 'zoom' : undefined,
-									x: image.x,
-									y: image.y,
-								})}
+								image={image}
+								anim={service.data.covers.length > 1 ? 'zoom' : undefined}
 								widths={[400, 725, 1450]}
-								slot="image"
-								format="webp"
-								draggable="false"
 							/>
 						))}
 
@@ -59,9 +59,9 @@ let next = swapPos(meta.pos);
 								Explore More
 							</a>
 						</div>
-					</LayoutCard>
+					</Card>
 				);
 			})
 		}
-	</div>
-</LayoutDivider>
+	</Container>
+</Divider>

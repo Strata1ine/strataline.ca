@@ -1,8 +1,8 @@
 ---
-import { containerStyles } from '@/components/sections/styles';
 import type { Pos } from '@/schemas';
 
-import clsx from 'clsx';
+import Container from './Container.astro';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
 	title: string;
@@ -13,11 +13,11 @@ interface Props {
 const { title, pos, class: className } = Astro.props;
 ---
 
-<div class={clsx(containerStyles({ width: 'inner' }), 'mb-10 sm:mb-14', className)}>
+<Container width="outer" class={[className, 'mb-10 sm:mb-14']}>
 	<slot name="before" />
 
 	<h2
-		class={clsx(
+		class={twMerge(
 			'heading-5xl sm:max-w-[20ch] font-bold',
 			pos == 'right' ? 'sm:ml-auto sm:text-right' : '',
 		)}
@@ -26,4 +26,4 @@ const { title, pos, class: className } = Astro.props;
 	</h2>
 
 	<slot />
-</div>
+</Container>

@@ -1,7 +1,4 @@
 ---
-import { containerStyles } from './styles';
-import Island from './Hero';
-
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { image } from '@/schemas/image';
@@ -16,6 +13,9 @@ export const schema = (c: SchemaContext) => ({
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
+
+import Container from './layout/Container.astro';
+import Island from './Hero';
 ---
 
 <main
@@ -24,10 +24,9 @@ const meta = Astro.props;
 >
 	<span
 		class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
-	>
-	</span>
+	></span>
 
-	<div class={containerStyles({ width: 'outer', center: 'both' })}>
+	<Container width="outer" center="both">
 		<Island client:load {...meta} />
-	</div>
+	</Container>
 </main>

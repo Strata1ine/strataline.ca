@@ -1,7 +1,7 @@
-import { For, Show, createSignal } from 'solid-js';
-import type { Props as FaqMeta } from './Faq.astro';
+import { For, Show, createSignal } from "solid-js";
+import type { Props as FaqMeta } from "./Faq.astro";
 
-export default function Faq(props: FaqMeta['content']) {
+export default function Faq(props: FaqMeta["content"]) {
 	const [active, setActive] = createSignal<number | null>(null);
 
 	return (
@@ -18,11 +18,11 @@ export default function Faq(props: FaqMeta['content']) {
 						>
 							<div class="gap-inset flex items-center justify-between">
 								<h3 class="heading-3xl">{faq.title}</h3>
-								<div class={`expand relative size-6 gap-4 flex-none${open() ? ' open' : ''}`} />
+								<div class={`expand relative size-6 gap-4 flex-none${open() ? "open" : ""}`} />
 							</div>
 
 							<Show when={open()}>
-								<div class="prose mt-3 mr-4 max-w-[110ch] font-sans" innerHTML={faq.desc} />
+								<div class="prose mt-3 mr-4 max-w-[110ch] font-sans">{faq.desc}</div>
 							</Show>
 						</button>
 					);

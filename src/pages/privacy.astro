@@ -2,21 +2,22 @@
 import Layout from '@/layouts/Layout.astro';
 import Footer from '@/components/sections/Footer.astro';
 import Home from '@/components/decor/Home.astro';
+import Container from '@/components/sections/layout/Container.astro';
+
 import { Content, frontmatter } from '#/privacy.md';
-import { containerStyles } from '@/components/sections/styles';
-import { twMerge } from 'tailwind-merge';
 ---
 
 <Layout title={frontmatter?.title} desc={frontmatter?.desc}>
-	<div class={twMerge(containerStyles({ width: 'inner' }), 'mt-20')}>
+	<Container width="inner" class="mt-20">
 		<Home class="mb-2" />
 		<h1 class="heading-massive pointer-events-none mb-9 select-none">
 			{frontmatter?.title}
 		</h1>
+
 		<div class="prose">
 			<Content />
 		</div>
-	</div>
+	</Container>
 
 	<Footer />
 </Layout>

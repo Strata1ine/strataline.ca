@@ -1,9 +1,4 @@
 ---
-import { containerStyles } from './styles';
-import Island from './Cardshow';
-import LayoutDivider from './layout/Divider.astro';
-import LayoutTitle from './layout/Title.astro';
-
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos, media } from '@/schemas';
@@ -29,15 +24,19 @@ export const schema = (c: SchemaContext) => ({
 	),
 });
 
-import { twMerge } from 'tailwind-merge';
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
+
+import Island from './Cardshow';
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Container from './layout/Container.astro';
 ---
 
-<LayoutDivider id={meta.id}>
-	<LayoutTitle title={meta.title} pos={meta.pos} />
+<Divider id={meta.id}>
+	<Title title={meta.title} pos={meta.pos} />
 
-	<div class={twMerge(containerStyles({ width: 'outer' }), 'flex flex-col 2xl:flex-row')}>
+	<Container width="outer" class="flex flex-col 2xl:flex-row">
 		<Island client:visible meta={meta.content} speed={meta.speed} />
-	</div>
-</LayoutDivider>
+	</Container>
+</Divider>

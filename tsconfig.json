@@ -23,7 +23,7 @@
 		"noPropertyAccessFromIndexSignature": false,
 		"baseUrl": ".",
 		"jsxImportSource": "solid-js",
-		"types": ["unplugin-icons/types/solid"],
+		"types": ["unplugin-icons/types/solid", "@types/youtube"],
 		"plugins": [
 			{
 				"name": "@astrojs/ts-plugin"

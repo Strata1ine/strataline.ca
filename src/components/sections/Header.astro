@@ -1,5 +1,4 @@
 ---
-import { containerStyles } from './styles';
 import { Icon } from 'astro-icon/components';
 import Island from './Header';
 
@@ -7,20 +6,18 @@ import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 
 export const schema = (_: SchemaContext) => ({
-	id: z.string().optional(),
 	content: z.array(z.object({ id: z.string(), name: z.string() })),
 });
 
+import Container from './layout/Container.astro';
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 ---
 
 <header class="absolute top-0 right-0 left-0 z-2 py-3">
-	<div class={`${containerStyles({ width: 'inner' })} flex items-center gap-3`}>
+	<Container width="inner" class="flex items-center gap-3">
 		<Icon aria-label="Strataline" name="logo" class="z-1 h-auto w-34 sm:w-40 xl:w-50" is:inline />
 
 		<div class="flex-1"></div>
-
-		<!-- <Island class="md:hidden" {meta} client:load /> -->
-	</div>
+	</Container>
 </header>

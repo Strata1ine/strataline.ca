@@ -1,9 +1,5 @@
 ---
-import { containerStyles } from './styles';
 import { marked } from 'marked';
-import LayoutDivider from './layout/Divider.astro';
-import LayoutTitle from './layout/Title.astro';
-import Island from './Reviews.svelte';
 
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
@@ -32,13 +28,18 @@ const meta = Astro.props;
 for (const [_, review] of meta.content.entries()) {
 	review.desc = marked.parseInline(review.desc) as string;
 }
+
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Container from './layout/Container.astro';
+import Island from './Reviews';
 ---
 
-<LayoutDivider id={meta.id}>
-	<LayoutTitle title={meta.title} pos={meta.pos} />
+<Divider id={meta.id}>
+	<Title title={meta.title} pos={meta.pos} />
 	<div class="contain-paint">
-		<div class=`${containerStyles({ width: "inner" })} select-none`>
-			<Island client:visible meta={meta.content} />
-		</div>
+		<Container width="inner" class="select-none">
+			<Island client:visible {...meta.content} />
+		</Container>
 	</div>
-</LayoutDivider>
+</Divider>

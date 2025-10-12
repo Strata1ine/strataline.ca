@@ -1,8 +1,8 @@
-import { createSignal, onMount, onCleanup } from 'solid-js';
-import { modals } from '@/frontend/stores';
-import { useQueryDevice } from '@/frontend/mobile';
-import Mailbox from '~icons/ph/mailbox-fill';
-import { actionStyles, pillSize } from '@/components/actions/styles';
+import { createSignal, onMount, onCleanup } from "solid-js";
+import { modals } from "@/frontend/stores";
+import { useQueryDevice } from "@/frontend/mobile";
+import Mailbox from "~icons/ph/mailbox-fill";
+import { actionStyles, pillSize } from "@/components/actions/styles";
 
 export default function FluidTalk() {
 	let sensor: HTMLElement;
@@ -13,15 +13,13 @@ export default function FluidTalk() {
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
-		const r = sensor.getBoundingClientRect();
+		const { x } = sensor.getBoundingClientRect();
 		setStyle(
-			`${window.innerWidth - r.x - pillSize - inset()}px calc(100svh - ${pillSize + inset()}px) 0`,
+			`${window.innerWidth - x - pillSize - inset()}px calc(100svh - ${pillSize + inset()}px) 0`,
 		);
 	};
 
 	onMount(() => {
-		if (!sensor) return;
-
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (!entry) return;
@@ -35,15 +33,15 @@ export default function FluidTalk() {
 		);
 		observer.observe(sensor);
 
-		const resize = new ResizeObserver(update);
+		const resize = new ResizeObserver(() => update());
 		resize.observe(document.documentElement);
 
-		window.addEventListener('resize', update, { passive: true });
+		window.addEventListener("resize", update, { passive: true });
 
 		onCleanup(() => {
 			observer.disconnect();
 			resize.disconnect();
-			window.removeEventListener('resize', update);
+			window.removeEventListener("resize", update);
 		});
 	});
 
@@ -54,7 +52,10 @@ export default function FluidTalk() {
 				class={`z-1 ${
 					above()
 						? `${actionStyles()} absolute h-14 w-34 xl:h-16 xl:w-42`
-						: `${actionStyles({ variant: 'pill', background: 'accent' })} fixed top-0`
+						: `${actionStyles({
+								variant: "pill",
+								background: "accent",
+							})} fixed top-0`
 				} duration-1000`}
 				style={`translate: ${style()}; transition-property: width, height, border-radius, translate, background-color, color; will-change: width, height, border-radius, translate, background-color, color`}
 				onClick={() => modals.open(modals.talk)}
@@ -62,14 +63,14 @@ export default function FluidTalk() {
 				<div
 					aria-hidden="true"
 					class={`absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500 ${
-						above() ? 'opacity-100' : 'opacity-0'
+						above() ? "opacity-100" : "opacity-0"
 					}`}
 				>
 					Let's Talk
 				</div>
 				<Mailbox
 					class={`absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500 ${
-						above() ? 'opacity-0' : 'opacity-100'
+						above() ? "opacity-0" : "opacity-100"
 					}`}
 				/>
 			</button>

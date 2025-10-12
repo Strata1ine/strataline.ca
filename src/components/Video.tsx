@@ -1,5 +1,5 @@
-import { onMount, onCleanup, createEffect } from 'solid-js';
-import { videoPlaying, setVideoPlaying } from '@/frontend/stores';
+import { onMount, onCleanup, createEffect } from "solid-js";
+import { videoPlaying, setVideoPlaying } from "@/frontend/stores";
 
 export default function Video(props: { poster: string; url: string }) {
 	let node: HTMLVideoElement | undefined;

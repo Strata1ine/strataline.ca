@@ -1,21 +1,17 @@
 ---
-import { containerStyles } from './styles';
-import business from '#/business.json';
-import socials from '#/socials.json';
-
 import { Icon } from 'astro-icon/components';
-import { divisionStyle } from './layout/Divider.astro';
-import { twMerge } from 'tailwind-merge';
-
+import Divider from './layout/Divider.astro';
+import Container from './layout/Container.astro';
 // import Search from '@/components/actions/Search.svelte';
+
+import socials from '#/socials.json';
+import business from '#/business.json';
 ---
 
-<footer class={divisionStyle({ spacing: 'top' })}>
-	<div
-		class={twMerge(
-			containerStyles({ width: 'inner' }),
-			'py-12 bg-gradient-to-b from-transparent via-white/90 to-white relative z-2 border-t-1 border-accent',
-		)}
+<Divider as="footer" spacing="both">
+	<Container
+		width="inner"
+		class="border-accent relative z-2 border-t-1 bg-gradient-to-b from-transparent via-white/90 to-white py-12"
 	>
 		<div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
 			<ul class="flex gap-3">
@@ -55,5 +51,5 @@ import { twMerge } from 'tailwind-merge';
 				</li>
 			</ul>
 		</div>
-	</div>
-</footer>
+	</Container>
+</Divider>

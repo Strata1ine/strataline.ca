@@ -1,25 +1,24 @@
 ---
-import { containerStyles } from '@/components/sections/styles';
 import type { Pos } from '@/schemas';
+import Container from './Container.astro';
 
 interface Props {
 	pos: Pos;
 }
 
 const meta = Astro.props;
-import { clsx } from 'clsx';
 ---
 
-<div
-	class={clsx(
-		containerStyles({ width: 'inner' }),
+<Container
+	width="inner"
+	class={[
 		'flex sm:flex-row gap-6 md:gap-8 xl:gap-11',
 		meta.pos == 'right' ? 'flex-col-reverse' : 'flex-col',
-	)}
+	]}
 >
 	{meta.pos == 'left' && <slot name="title" />}
 
 	<slot />
 
 	{meta.pos == 'right' && <slot name="title" />}
-</div>
+</Container>

@@ -1,0 +1,84 @@
+---
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
+
+import { schema as textCarousel } from './TextCarousel.astro';
+export const schema = (c: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string().default("There's more to explore"),
+	exclude: z.array(z.string()).optional(),
+	content: z.object(textCarousel(c)).optional(),
+});
+
+import { getEntry, getCollection } from '@/content.config';
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+
+let exclude: string[];
+if (meta.exclude == undefined) {
+	const index = await getEntry('index', 'index');
+	exclude = index.data.popular;
+} else {
+	exclude = meta.exclude;
+}
+
+const services = (await getCollection('services')).filter(
+	(service) => !exclude.some((pattern: string) => service.id.includes(pattern)),
+);
+
+import { Icon } from 'astro-icon/components';
+
+import Container from './layout/Container.astro';
+import Divider from './layout/Divider.astro';
+import Title from './layout/Title.astro';
+import Island from './TextCarousel';
+import { Image, imageWrapperStyles } from '@/components/Image';
+---
+
+<Divider id={meta.id}>
+	<Title title={meta.title} pos={meta.pos} />
+
+	<div class="bg-accent">
+		<Container width="inner" class="flex flex-wrap justify-center gap-6 py-12 md:py-22 xl:gap-8">
+			{
+				services.map((service, _) => {
+					const slug = service.id.split('/')[0];
+					const cover = service.data.covers[0];
+					return (
+						<a
+							class="flex w-full items-center gap-5 sm:max-w-1/2 sm:flex-[40%] sm:flex-col lg:max-w-1/3 lg:flex-[30%]"
+							href={`/services/${slug}`}
+							id={slug}
+							tabindex="0"
+						>
+							<div class={imageWrapperStyles({ size: 'xs' })}>
+								<!-- <Image -->
+								<!-- 	class={twMerge( -->
+								<!-- 		'w-1/2 rounded-sm sm:w-full', -->
+								<!-- 		imageStyles({ -->
+								<!-- 			anim: 'hover', -->
+								<!-- 			x: cover.x, -->
+								<!-- 			y: cover.y, -->
+								<!-- 		}), -->
+								<!-- 	)} -->
+								<!-- 	widths={[200, 400, 600, 800]} -->
+								<!-- /> -->
+							</div>
+
+							<div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
+								<h3 class="heading-xl">{service.data.title}</h3>
+
+								<Icon aria-hidden={true} name="arrow" is:inline />
+							</div>
+						</a>
+					);
+				})
+			}
+		</Container>
+	</div>
+
+	{meta.content && <Island client:visible meta={meta.content} />}
+</Divider>

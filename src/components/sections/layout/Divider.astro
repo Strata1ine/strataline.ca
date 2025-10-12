@@ -1,12 +1,13 @@
 ---
 interface Props {
 	id?: string;
+	spacing?: VariantProps<typeof divisionStyles>['spacing'];
+	as?: 'section' | 'footer' | 'main';
 }
+const { id, spacing, as: Tag = 'section' } = Astro.props;
 
-const { id } = Astro.props;
-
-import { cva } from 'class-variance-authority';
-export const divisionStyle = cva('', {
+import { cva, type VariantProps } from 'class-variance-authority';
+const divisionStyles = cva('', {
 	variants: {
 		spacing: {
 			top: 'mt-28 xl:mt-38',
@@ -19,6 +20,6 @@ export const divisionStyle = cva('', {
 });
 ---
 
-<section class={divisionStyle({ spacing: 'both' })} {id}>
+<Tag class={divisionStyles({ spacing })} {id}>
 	<slot />
-</section>
+</Tag>

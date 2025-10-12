@@ -11,6 +11,7 @@ includes = [
   "*.mdx",
   "*.css",
   "*.ts",
+  "*.tsx",
   "*.yaml",
   "*.astro",
   "*.mjs",

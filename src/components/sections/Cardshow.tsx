@@ -15,7 +15,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 		<>
 			<div class="2xl:w-diff flex-shrink-0" />
 			<div
-				class="contain-paint flex rounded-md bg-accent"
+				class="bg-accent flex rounded-md contain-paint"
 				ref={(el) =>
 					slideshow(el, {
 						idx: idx(),
@@ -30,13 +30,13 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 						const isActive = () => i() === idx();
 						return (
 							<div
-								class={`flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0 ${
+								class={`sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0 ${
 									isActive() ? '' : 'pointer-events-none opacity-0'
 								}`}
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
-								<div class="contain-paint relative aspect-video w-full flex-shrink-0 rounded-sm sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none">
+								<div class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-paint sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none">
 									{(() => {
 										switch (card.media.type) {
 											case 'image':

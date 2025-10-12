@@ -3,7 +3,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import Icons from 'unplugin-icons/vite';
-import compressor from 'astro-compressor';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import yaml from '@rollup/plugin-yaml';
@@ -76,13 +75,9 @@ export default defineConfig({
 		],
 	},
 	integrations: [
-		frontmatterComponents({
-			components: glob('./src/components/sections/**/*.astro'),
-		}),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),
-		compressor(),
 		icon({
 			include: {
 				local: ['*'],
@@ -90,6 +85,9 @@ export default defineConfig({
 			},
 		}),
 		solidJs(),
+		frontmatterComponents({
+			components: glob('./src/components/sections/**/*.astro'),
+		}),
 	],
 	redirects: redirects,
 });

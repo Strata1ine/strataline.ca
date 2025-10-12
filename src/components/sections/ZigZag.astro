@@ -1,40 +1,45 @@
 ---
-import { type PropsOf } from '@/components/registry';
-import { Image } from 'astro:assets';
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { image, DefaultPos, swapPos } from '@/schemas';
 
+export const schema = (c: SchemaContext) => ({
+	id: z.string().optional(),
+	pos: DefaultPos,
+	title: z.string(),
+	content: z.array(
+		z.object({
+			title: z.string(),
+			desc: z.string(),
+			image: z.object(image(c)),
+		}),
+	),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+let next = swapPos(meta.pos);
+
+import Image from '@/components/Image';
 import LayoutDivider from './layout/Divider.astro';
 import LayoutTitle from './layout/Title.astro';
 import LayoutCard from './layout/Card.astro';
-import { imageStyles, containerStyles, swapPos } from './styles';
-import { twMerge } from 'tailwind-merge';
-const meta = Astro.props as PropsOf<'ZigZag'>;
-
-let next = swapPos(meta.pos);
+import Container from './layout/Container.astro';
 ---
 
 <LayoutDivider id={meta.id}>
 	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-	<div class={twMerge(containerStyles({ width: 'outer' }), 'space-y-20 sm:space-y-35')}>
+	<Container width="outer" class="space-y-20 sm:space-y-35">
 		{
 			meta.content.map((zig, _) => {
 				next = swapPos(next);
 				return (
 					<LayoutCard title={zig.title} desc={zig.desc} pos={next}>
-						<Image
-							slot="image"
-							class={imageStyles({
-								x: zig.image.x,
-								y: zig.image.y,
-							})}
-							src={zig.image.src}
-							alt={zig.image.alt}
-							width="1440"
-							draggable="false"
-						/>
+						<Image image={zig.image} />
 					</LayoutCard>
 				);
 			})
 		}
-	</div>
+	</Container>
 </LayoutDivider>

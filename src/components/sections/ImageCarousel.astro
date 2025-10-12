@@ -1,11 +1,20 @@
 ---
-import Island from './ImageCarousel.svelte';
-import LayoutDivider from './layout/Divider.astro';
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { image } from '@/schemas';
+import Divider from './layout/Divider.astro';
 
-import { type PropsOf } from '@/components/registry';
-const meta = Astro.props as PropsOf<'ImageCarousel'>;
+export const schema = (c: SchemaContext) => ({
+	speed: z.number().optional().default(1.0),
+	content: z.array(z.object(image(c))),
+});
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props;
+
+import Island from './ImageCarousel';
 ---
 
-<LayoutDivider>
-	<Island client:visible {meta} />
-</LayoutDivider>
+<Divider>
+	<Island client:visible {...meta} />
+</Divider>
