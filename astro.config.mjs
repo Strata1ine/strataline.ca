@@ -86,7 +86,7 @@ export default defineConfig({
 		}),
 		solidJs(),
 		frontmatterComponents({
-			components: glob('./src/components/sections/**/*.astro'),
+			components: glob('./src/sections/**/*.astro'),
 		}),
 	],
 	redirects: redirects,
