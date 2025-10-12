@@ -1,12 +1,12 @@
 ---
-import clsx from 'clsx';
+import { cn } from '@/frontend/utils';
 import { Icon } from 'astro-icon/components';
 
 const { slug, desc = 'Go home', class: customClass, ...slot } = Astro.props;
 ---
 
 <a
-	class={clsx(`inline-flex cursor-pointer items-end gap-3`, customClass)}
+	class={cn(`inline-flex cursor-pointer items-end gap-3`, customClass)}
 	{...slot}
 	data-astro-prefetch
 	href={slug ? `/#${slug}` : `/`}

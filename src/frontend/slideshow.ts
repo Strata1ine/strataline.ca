@@ -8,9 +8,8 @@ type SlideshowParams = {
 	speed: number;
 };
 
-export function slideshow(node: HTMLElement, accessor: SlideshowParams) {
+export function slideshow(accessor: SlideshowParams) {
 	let timeoutId: ReturnType<typeof setTimeout> | null = null;
-	let isVisible = false;
 
 	function clear() {
 		if (timeoutId) {
@@ -22,21 +21,12 @@ export function slideshow(node: HTMLElement, accessor: SlideshowParams) {
 	function next() {
 		clear();
 		const { idx, setIdx, length, speed } = accessor;
-		if (isVisible && length > 1 && !videoPlaying()) {
+		if (length > 1 && !videoPlaying()) {
 			timeoutId = setTimeout(() => {
 				setIdx((idx + 1) % length);
 			}, speed * 1000);
 		}
 	}
-
-	const observer = new IntersectionObserver(([entry]) => {
-		if (entry && entry.isIntersecting !== isVisible) {
-			isVisible = entry.isIntersecting;
-			next();
-		}
-	});
-
-	observer.observe(node);
 
 	createEffect(() => {
 		if (videoPlaying()) {
@@ -48,6 +38,5 @@ export function slideshow(node: HTMLElement, accessor: SlideshowParams) {
 
 	onCleanup(() => {
 		clear();
-		observer.disconnect();
 	});
 }

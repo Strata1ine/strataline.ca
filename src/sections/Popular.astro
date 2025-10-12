@@ -41,14 +41,7 @@ import Card from './layout/Card.astro';
 
 				return (
 					<Card id={slug} title={service.data.title} desc={service.data.desc} pos={next}>
-						{service.data.covers.map((image, _) => (
-							<Image
-								slot="image"
-								image={image}
-								anim={service.data.covers.length > 1 ? 'zoom' : undefined}
-								widths={[400, 725, 1450]}
-							/>
-						))}
+						<Image slot="image" image={service.data.image} widths={[400, 725, 1450]} />
 
 						<div class="mt-9">
 							<Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">

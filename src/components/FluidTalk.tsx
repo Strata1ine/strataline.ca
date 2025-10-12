@@ -4,6 +4,7 @@ import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
 import { buttonVariants } from '@/components/Button';
 import { fabVariants, fabSize } from '@/components/Fab';
+import { cn } from '@/frontend/utils';
 
 export default function FluidTalk() {
 	let sensor: HTMLElement;
@@ -24,8 +25,8 @@ export default function FluidTalk() {
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (!entry) return;
-				const nextAbove = entry.intersectionRatio >= 1 && !(entry.boundingClientRect.top < 0);
-				if (nextAbove !== above()) {
+				const nextAbove = !(entry.intersectionRatio < 1);
+				if (nextAbove != (above() && entry.boundingClientRect.top < 0)) {
 					setAbove(nextAbove);
 					update();
 				}
@@ -50,14 +51,12 @@ export default function FluidTalk() {
 		<div class="relative mt-9 h-14 xl:h-16" ref={(el) => (sensor = el!)}>
 			<button
 				aria-label="Let's talk (Ctrl+/)"
-				class={`z-1 ${
+				class={cn(
+					'z-1 duration-1000',
 					above()
-						? `${buttonVariants()} absolute h-14 w-34 xl:h-16 xl:w-42`
-						: `${fabVariants({
-								variant: 'pill',
-								background: 'accent',
-							})} fixed top-0`
-				} duration-1000`}
+						? cn(buttonVariants(), 'absolute h-14 w-34 xl:h-16 xl:w-42')
+						: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
+				)}
 				style={{
 					translate: style() ?? undefined,
 					'transition-property': 'width, height, border-radius, translate, background-color, color',
@@ -67,16 +66,18 @@ export default function FluidTalk() {
 			>
 				<div
 					aria-hidden="true"
-					class={`absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500 ${
-						above() ? 'opacity-100' : 'opacity-0'
-					}`}
+					class={cn(
+						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500',
+						above() ? 'opacity-100' : 'opacity-0',
+					)}
 				>
 					Let's Talk
 				</div>
 				<Mailbox
-					class={`absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500 ${
-						above() ? 'opacity-0' : 'opacity-100'
-					}`}
+					class={cn(
+						'absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500',
+						above() ? 'opacity-0' : 'opacity-100',
+					)}
 				/>
 			</button>
 		</div>

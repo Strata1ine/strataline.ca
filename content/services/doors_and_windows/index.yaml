@@ -4,9 +4,9 @@ desc: |-
 seo: |-
   tomatoes
 draft: true
-covers:
-  - src: ./cover.jpg
-    alt: tomatoes
+image:
+  src: ./cover.jpg
+  alt: tomatoes
 sections:
   - type: Faq
     title: Have any questions?

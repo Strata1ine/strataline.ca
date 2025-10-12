@@ -2,7 +2,7 @@
 import type { Pos } from '@/schemas';
 
 import Container from './Container.astro';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/frontend/utils';
 
 interface Props {
 	title: string;
@@ -17,7 +17,7 @@ const { title, pos, class: className } = Astro.props;
 	<slot name="before" />
 
 	<h2
-		class={twMerge(
+		class={cn(
 			'heading-5xl sm:max-w-[20ch] font-bold',
 			pos == 'right' ? 'sm:ml-auto sm:text-right' : '',
 		)}

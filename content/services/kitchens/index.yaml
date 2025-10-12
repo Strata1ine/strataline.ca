@@ -4,10 +4,10 @@ desc: |-
   We create modern, comfortable and functional kitchens.
 seo: |-
   Modern kitchen renovations with custom cabinetry, quartz countertops, and energy-efficient appliances. Expert design for functionality and style, tailored to your budget.
-covers:
-  - src: ./cover.jpg
-    alt: |-
-      A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
+image:
+  src: ./cover.jpg
+  alt: |-
+    A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
 
 sections:
   - type: ZigZag

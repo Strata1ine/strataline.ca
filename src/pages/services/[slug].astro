@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 
 import { Icon } from 'astro-icon/components';
 
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/frontend/utils';
 import { getCollection } from '@/content.config';
 // import { generateServiceSchema } from '@/build/schemas/service';
 import { Image, imageWrapperVariants } from '@/components/Image';
@@ -12,7 +12,7 @@ import Home from '@/components/Home.astro';
 import Container from '@/sections/layout/Container.astro';
 // import Footer from '@/sections/Footer.astro';
 // import Menus from '@/components/modals/Menus.svelte';
-// import FluidTalk from '@/components/decor/FluidTalk.svelte';
+import FluidTalk from '@/components/FluidTalk';
 
 export const prerender = true;
 
@@ -41,21 +41,21 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 	<main class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
 		<Container
 			variant="outer"
-			class="flex h-full items-center gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
+			class="flex h-full gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
 		>
 			<span
 				class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
 			>
 			</span>
 
-			<div class="flex-1">
+			<div class="flex-1 sm:my-auto">
 				<Home desc="Go back" {slug} />
 				<h1 class="heading-5xl mb-2 font-bold">
 					{service.data.title}
 				</h1>
 
 				<div
-					class={twMerge(
+					class={cn(
 						imageWrapperVariants({
 							display: 'sm',
 							size: 'sm',
@@ -64,36 +64,20 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 						'my-4 ml-7',
 					)}
 				>
-					{
-						service.data.covers.map((image, _) => (
-							<Image
-								{image}
-								anim={service.data.covers.length > 1 ? 'zoom' : undefined}
-								widths={[400, 730]}
-							/>
-						))
-					}
+					<Image image={service.data.image} widths={[400, 730]} />
 				</div>
 
 				<p class="desc-base">
 					{service.data.desc}
 				</p>
 
-				<!-- <FluidTalk client:load /> -->
+				<FluidTalk client:load />
 			</div>
 
 			<div
-				class={twMerge('hidden h-full rounded-sm flex-1', imageWrapperVariants({ display: 'md' }))}
+				class={cn('hidden rounded-sm flex-1', imageWrapperVariants({ display: 'md' }))}
 			>
-				{
-					service.data.covers.map((image, _) => (
-						<Image
-							{image}
-							widths={[730, 1460]}
-							anim={service.data.covers.length > 1 ? 'zoom' : undefined}
-						/>
-					))
-				}
+				<Image image={service.data.image} widths={[400, 730]} />
 			</div>
 		</Container>
 	</main>

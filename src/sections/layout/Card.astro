@@ -1,6 +1,5 @@
 ---
 import type { Pos } from '@/schemas';
-import clsx from 'clsx';
 import { imageWrapperVariants } from '@/components/Image';
 
 interface Props {
@@ -13,14 +12,14 @@ interface Props {
 const meta = Astro.props;
 
 import { marked } from 'marked';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/frontend/utils';
 ---
 
 <div class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11" id={meta.id}>
 	{
 		meta.pos === 'left' && (
 			<div
-				class={twMerge(
+				class={cn(
 					imageWrapperVariants({
 						pos: 'left',
 						size: 'md',
@@ -36,7 +35,7 @@ import { twMerge } from 'tailwind-merge';
 
 	<div>
 		<h3
-			class={clsx(
+			class={cn(
 				'mb-2 heading-4xl font-semibold',
 				meta.pos == 'right' && 'text-right sm:text-left',
 			)}
@@ -47,7 +46,7 @@ import { twMerge } from 'tailwind-merge';
 		{
 			meta.pos === 'right' && (
 				<div
-					class={twMerge(
+					class={cn(
 						imageWrapperVariants({
 							pos: 'right',
 							size: 'sm',
@@ -64,7 +63,7 @@ import { twMerge } from 'tailwind-merge';
 		{
 			meta.pos === 'left' && (
 				<div
-					class={twMerge(
+					class={cn(
 						imageWrapperVariants({
 							pos: 'left',
 							size: 'sm',
@@ -86,7 +85,7 @@ import { twMerge } from 'tailwind-merge';
 	{
 		meta.pos === 'right' && (
 			<div
-				class={twMerge(
+				class={cn(
 					imageWrapperVariants({
 						pos: 'right',
 						size: 'md',

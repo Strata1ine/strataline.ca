@@ -37,10 +37,10 @@ export function Image(props: Props) {
 	);
 }
 
-export const imageVariants = cva('object-cover h-full select-none', {
+export const imageVariants = cva('object-cover absolute w-full h-full select-none', {
 	variants: {
 		anim: {
-			fade: 'transition-[opacity] duration-1000 absolute w-full',
+			fade: 'transition-[opacity] duration-1000 absolute',
 			zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
 			hover: 'transition duration-300 hover:scale-[1.05]',
 		},
@@ -66,7 +66,7 @@ export const imageVariants = cva('object-cover h-full select-none', {
 	},
 });
 
-export const imageWrapperVariants = cva('contain-paint', {
+export const imageWrapperVariants = cva('contain-paint relative', {
 	variants: {
 		pos: {
 			left: '',

@@ -16,17 +16,27 @@ const meta = Astro.props;
 
 import Container from './layout/Container.astro';
 import Island from './Hero';
+import FluidTalk from '@/components/FluidTalk';
+import { cn } from '@/frontend/utils';
 ---
 
-<main
-	class="relative flex min-h-[clamp(10rem,100svh,50rem)] overflow-x-clip sm:min-h-[clamp(10rem,100svh,90rem)]"
-	id={meta.id}
->
-	<span
-		class="bg-accent absolute right-0 z-[-1] h-full w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
-	></span>
+<section class="" id={meta.id}>
+	<Container
+		variant="outer"
+		class={cn('grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6 md:gap-x-8 xl:gap-x-11', 'relative')}
+	>
+		<div
+			class="order-2 mt-5 flex items-center gap-2 sm:order-1 sm:my-0 sm:h-[clamp(10rem,100svh,90rem)] sm:flex-col 2xl:flex-row-reverse"
+		>
+			<Island client:visible {...meta} />
+		</div>
 
-	<Container variant="outer" center="both">
-		<Island client:load {...meta} />
+		<div class="contents sm:order-2 sm:flex sm:flex-col sm:justify-center">
+			<h1 class="heading-6xl order-1 font-bold sm:order-none">{meta.title}</h1>
+			<div class="order-3">
+				<p class="desc-base mt-5">{meta.desc}</p>
+				<FluidTalk client:load />
+			</div>
+		</div>
 	</Container>
-</main>
+</section>

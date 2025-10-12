@@ -1,8 +1,9 @@
-import { createSignal, onCleanup } from 'solid-js';
+import { createSignal, For, onCleanup } from 'solid-js';
 import { containerVariants } from './layout/Container.astro';
 import { imageWrapperVariants } from '@/components/Image';
 import CaretCircleLeftFill from '~icons/ph/caret-circle-left-fill';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
+import { cn } from '@/frontend/utils';
 
 export default function ImageCarousel(props: ImageCarouselMeta) {
 	let container!: HTMLDivElement;
@@ -112,7 +113,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 		<>
 			<div
 				ref={container}
-				class={`${imageWrapperVariants({ size: 'lg' })} cursor-grab touch-pan-y`}
+				class={cn(imageWrapperVariants({ size: 'lg' }), 'cursor-grab touch-pan-y')}
 				onPointerDown={onPointerDown}
 				onPointerMove={onPointerMove}
 				onPointerUp={onPointerUp}
@@ -124,19 +125,17 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 					class="flex h-full will-change-transform"
 					style={{ translate: `${-pos()}px 0 0` }}
 				>
-					{[0, 1].map((_, i) => (
-						<div class="flex" aria-hidden={i > 0 ? 'true' : undefined}>
-							{props.content.map((image) => (
-								<div class="h-full flex-none">
-									{/*									<Image class="mx-2 block max-w-screen rounded-sm md:mx-4" image={image}></Image>   */}
-								</div>
-							))}
-						</div>
-					))}
+					<For each={props.content}>
+						{(image) => (
+							<div class="h-full flex-none">
+								{/* <Image class="mx-2 block max-w-screen rounded-sm md:mx-4" image={image} /> */}
+							</div>
+						)}
+					</For>
 				</div>
 			</div>
 
-			<div class={`${containerVariants({ width: 'inner' })} mt-9 flex justify-end gap-1`}>
+			<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1')}>
 				<button
 					onClick={() => {
 						reset();

@@ -1,6 +1,7 @@
 import { For } from 'solid-js';
 import { setVideoPlaying } from '@/frontend/stores';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/frontend/utils';
 
 type Props = {
 	idx: number;
@@ -26,20 +27,22 @@ export const navStyles = cva(
 
 export default function Slidenav(props: Props) {
 	return (
-		<For each={Array(props.length)}>
-			{(_, i) => (
-				<button
-					onClick={() => {
-						setVideoPlaying(false);
-						props.setIdx(i());
-					}}
-					aria-label={`View slide ${i() + 1}`}
-					class="cursor-pointer touch-manipulation p-2"
-					tabindex="0"
-				>
-					<div class={navStyles({ open: props.idx === i() })} />
-				</button>
-			)}
-		</For>
+		<div class={cn('2xl:w-diff flex flex-shrink-0 items-center justify-center gap-2', props.class)}>
+			<For each={Array(props.length)}>
+				{(_, i) => (
+					<button
+						onClick={() => {
+							setVideoPlaying(false);
+							props.setIdx(i());
+						}}
+						aria-label={`View slide ${i() + 1}`}
+						class="cursor-pointer touch-manipulation p-2"
+						tabindex="0"
+					>
+						<div class={navStyles({ open: props.idx === i() })} />
+					</button>
+				)}
+			</For>
+		</div>
 	);
 }

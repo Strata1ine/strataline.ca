@@ -7,32 +7,31 @@ import YoutubeVideo from '@/components/YoutubeVideo';
 import Video from '@/components/Video';
 import { Link } from '@/components/Actions';
 import { slideshow } from '@/frontend/slideshow';
+import { cn } from '@/frontend/utils';
 
 export default function Cardshow(props: { meta: CardshowMeta['content']; speed: number }) {
 	const [idx, setIdx] = createSignal(0);
 
+	slideshow({
+		idx: idx(),
+		setIdx: setIdx,
+		length: props.meta.length,
+		speed: props.speed,
+	});
+
 	return (
 		<>
 			<div class="2xl:w-diff flex-shrink-0" />
-			<div
-				class="bg-accent flex rounded-md contain-paint"
-				ref={(el) =>
-					slideshow(el, {
-						idx: idx(),
-						setIdx: setIdx,
-						length: props.meta.length,
-						speed: props.speed,
-					})
-				}
-			>
+			<div class="bg-accent flex rounded-md contain-paint">
 				<For each={props.meta}>
 					{(card, i) => {
 						const isActive = () => i() === idx();
 						return (
 							<div
-								class={`sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0 ${
-									isActive() ? '' : 'pointer-events-none opacity-0'
-								}`}
+								class={cn(
+									'sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0',
+									!isActive() ? 'pointer-events-none opacity-0' : '',
+								)}
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
@@ -71,9 +70,12 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 				</For>
 			</div>
 
-			<div class="2xl:w-diff mt-3 flex flex-shrink-0 items-center justify-center gap-2 2xl:mt-0 2xl:flex-col">
-				<SlideNav idx={idx()} setIdx={setIdx} length={props.meta.length} />
-			</div>
+			<SlideNav
+				class="mt-3 2xl:mt-0 2xl:flex-col"
+				idx={idx()}
+				setIdx={setIdx}
+				length={props.meta.length}
+			/>
 		</>
 	);
 }

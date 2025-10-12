@@ -1,14 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Footer from '@/sections/Footer.astro';
-import Home from '@/components/decor/Home.astro';
+import Home from '@/components/Home.astro';
 import Container from '@/sections/layout/Container.astro';
 
 import { Content, frontmatter } from '#/privacy.md';
 ---
 
 <Layout title={frontmatter?.title} desc={frontmatter?.desc}>
-	<Container width="inner" class="mt-20">
+	<Container variant="inner" class="mt-20">
 		<Home class="mb-2" />
 		<h1 class="heading-massive pointer-events-none mb-9 select-none">
 			{frontmatter?.title}
