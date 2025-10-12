@@ -27,7 +27,7 @@ import Container from './layout/Container.astro';
 <Divider>
 	<Title title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
 
-	<Container width="inner">
+	<Container variant="inner">
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
 			{
 				meta.content.map((benefit, i) => {

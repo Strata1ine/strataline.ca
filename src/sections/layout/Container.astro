@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { cva, type VariantProps } from 'class-variance-authority';
 export const containerVariants = cva('w-full', {
 	variants: {
-		width: {
+		variant: {
 			inner: 'max-w-inner px-inset',
 			outer: 'max-w-outer px-inset',
 			display: 'max-w-[calc(var(--spacing-outer-span)+30rem)]',
@@ -21,14 +21,14 @@ export const containerVariants = cva('w-full', {
 
 interface Props {
 	class?: string | (string | undefined)[];
-	width?: VariantProps<typeof containerVariants>['width'];
+	variant?: VariantProps<typeof containerVariants>['variant'];
 	center?: VariantProps<typeof containerVariants>['center'];
 	as?: 'div' | 'nav';
 }
-const { width, center, class: className, as: Tag = 'div' } = Astro.props;
+const { variant, center, class: className, as: Tag = 'div' } = Astro.props;
 const classArray = (Array.isArray(className) ? className : [className]).filter(Boolean);
 ---
 
-<Tag class={twMerge(containerVariants({ width, center }), ...classArray)}>
+<Tag class={twMerge(containerVariants({ variant, center }), ...classArray)}>
 	<slot />
 </Tag>

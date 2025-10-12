@@ -36,7 +36,7 @@ import Container from './layout/Container.astro';
 <Divider id={meta.id}>
 	<Title title={meta.title} pos={meta.pos} />
 
-	<Container width="outer" class="flex flex-col 2xl:flex-row">
+	<Container variant="outer" class="flex flex-col 2xl:flex-row">
 		<Island client:visible meta={meta.content} speed={meta.speed} />
 	</Container>
 </Divider>

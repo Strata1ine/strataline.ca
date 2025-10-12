@@ -30,7 +30,7 @@ import Container from './layout/Container.astro';
 <LayoutDivider id={meta.id}>
 	<LayoutTitle title={meta.title} pos={meta.pos} />
 
-	<Container width="outer" class="space-y-20 sm:space-y-35">
+	<Container variant="outer" class="space-y-20 sm:space-y-35">
 		{
 			meta.content.map((zig, _) => {
 				next = swapPos(next);

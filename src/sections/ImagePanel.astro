@@ -27,7 +27,7 @@ import Container from './layout/Container.astro';
 <Divider>
 	<Title title={meta.title} pos={meta.pos} />
 
-	<Container width="outer" class="flex flex-wrap justify-center gap-10 sm:gap-8">
+	<Container variant="outer" class="flex flex-wrap justify-center gap-10 sm:gap-8">
 		{
 			meta.content.map((panel, _) => {
 				return (

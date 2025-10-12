@@ -13,7 +13,7 @@ interface Props {
 const { title, pos, class: className } = Astro.props;
 ---
 
-<Container width="outer" class={[className, 'mb-10 sm:mb-14']}>
+<Container variant="outer" class={[className, 'mb-10 sm:mb-14']}>
 	<slot name="before" />
 
 	<h2

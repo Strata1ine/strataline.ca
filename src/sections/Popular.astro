@@ -33,7 +33,7 @@ import Card from './layout/Card.astro';
 <Divider id={meta.id}>
 	<Title title={meta.title} pos={meta.pos} />
 
-	<Container width="outer" class="space-y-20 sm:space-y-35">
+	<Container variant="outer" class="space-y-20 sm:space-y-35">
 		{
 			services.map((service, _) => {
 				const slug = service.id.split('/')[0];
@@ -43,6 +43,7 @@ import Card from './layout/Card.astro';
 					<Card id={slug} title={service.data.title} desc={service.data.desc} pos={next}>
 						{service.data.covers.map((image, _) => (
 							<Image
+								slot="image"
 								image={image}
 								anim={service.data.covers.length > 1 ? 'zoom' : undefined}
 								widths={[400, 725, 1450]}

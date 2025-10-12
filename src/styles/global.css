@@ -153,19 +153,19 @@
 	--text-md: 1.45rem;
 	--text-md--line-height: 1.7;
 	--text-bg: 1.65rem;
-	--text-bg--line-height: 1.7;
+	--text-bg--line-height: 1.5;
 	--text-xl: 1.9rem;
-	--text-xl--line-height: 1.2;
+	--text-xl--line-height: 1.1;
 	--text-2xl: 2.2rem;
-	--text-2xl--line-height: 1.1;
+	--text-2xl--line-height: 1;
 	--text-3xl: 2.7rem;
-	--text-3xl--line-height: 1.1;
+	--text-3xl--line-height: 1;
 	--text-4xl: 3.3rem;
-	--text-4xl--line-height: 1.1;
+	--text-4xl--line-height: 1;
 	--text-5xl: 3.8rem;
 	--text-5xl--line-height: 1;
 	--text-6xl: 4.5rem;
-	--text-6xl--line-height: 1;
+	--text-6xl--line-height: 0.95;
 	--text-7xl: 10rem;
 	--text-7xl--line-height: 0.9;
 }
