@@ -1,14 +1,18 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { ImageSource } from '@/schemas';
+import { cn } from '@/frontend/utils';
 
 const IMAGE_CDN = import.meta.env.PUBLIC_IMAGE_CDN as string;
 
 export type Props = {
 	image: ImageSource;
+	class?: string;
 	widths?: number[];
 	quality?: number;
 	active?: boolean;
+	pos?: VariantProps<typeof imageRoundedVariants>['pos'];
 	anim?: VariantProps<typeof imageVariants>['anim'];
+	variant?: VariantProps<typeof imageWrapperVariants>['variant'];
 };
 
 export function Image(props: Props) {
@@ -23,12 +27,17 @@ export function Image(props: Props) {
 
 	return (
 		<img
-			class={imageVariants({
-				anim: props.anim,
-				active: props.active,
-				x: props.image.x,
-				y: props.image.y,
-			})}
+			class={cn(
+				imageVariants({
+					anim: props.anim,
+					active: props.active,
+					x: props.image.x,
+					y: props.image.y,
+				}),
+				props.pos ? imageRoundedVariants({ pos: props.pos }) : undefined,
+				imageWrapperVariants({ variant: props.variant }),
+				props.class,
+			)}
 			src={src}
 			alt={props.image.alt}
 			srcset={srcSet}
@@ -37,7 +46,7 @@ export function Image(props: Props) {
 	);
 }
 
-export const imageVariants = cva('object-cover absolute w-full h-full select-none', {
+export const imageVariants = cva('object-cover w-full h-full select-none', {
 	variants: {
 		anim: {
 			fade: 'transition-[opacity] duration-1000 absolute',
@@ -66,36 +75,32 @@ export const imageVariants = cva('object-cover absolute w-full h-full select-non
 	},
 });
 
-export const imageWrapperVariants = cva('contain-paint relative', {
+export const imageWrapperVariants = cva('', {
 	variants: {
-		pos: {
-			left: '',
-			right: '',
-		},
-
-		size: {
+		variant: {
 			lg: 'min-h-90 h-[60vh] max-h-150 flex-none',
 			md: 'min-h-100 h-[45vh] max-h-150 flex-none',
 			sm: 'h-svh max-h-65',
 			xs: 'h-[30vw] min-h-30 sm:h-65',
 		},
+	},
+});
 
-		display: {
-			md: 'hidden sm:flex sm:justify-center',
-			sm: 'flex justify-center sm:hidden',
+export const imageRoundedVariants = cva('sm:rounded-md', {
+	variants: {
+		pos: {
+			left: '',
+			right: '',
 		},
 	},
-
 	compoundVariants: [
 		{
 			pos: 'left',
-			size: 'sm',
-			className: '-ml-inset rounded-tr-sm rounded-br-sm',
+			className: 'rounded-tl-sm rounded-bl-sm translate-x-inset sm:translate-none',
 		},
 		{
 			pos: 'right',
-			size: 'sm',
-			className: '-mr-inset rounded-tl-sm rounded-bl-sm',
+			className: 'rounded-tr-sm rounded-br-sm -translate-x-inset sm:translate-none',
 		},
 	],
 });

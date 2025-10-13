@@ -32,7 +32,7 @@ export default defineConfig({
 		prefetchAll: true,
 		defaultStrategy: 'hover',
 	},
-	devToolbar: { enabled: false },
+	devToolbar: { enabled: true },
 	experimental: {
 		clientPrerender: true,
 		failOnPrerenderConflict: true,

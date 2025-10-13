@@ -35,7 +35,7 @@ import Container from './layout/Container.astro';
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Island from './TextCarousel';
-import { Image, imageWrapperVariants } from '@/components/Image';
+import { Image } from '@/components/Image';
 ---
 
 <Divider id={meta.id}>
@@ -53,19 +53,17 @@ import { Image, imageWrapperVariants } from '@/components/Image';
 							id={slug}
 							tabindex="0"
 						>
-							<div class={imageWrapperVariants({ size: 'xs' })}>
-								<!-- <Image -->
-								<!-- 	class={twMerge( -->
-								<!-- 		'w-1/2 rounded-sm sm:w-full', -->
-								<!-- 		imageStyles({ -->
-								<!-- 			anim: 'hover', -->
-								<!-- 			x: cover.x, -->
-								<!-- 			y: cover.y, -->
-								<!-- 		}), -->
-								<!-- 	)} -->
-								<!-- 	widths={[200, 400, 600, 800]} -->
-								<!-- /> -->
-							</div>
+							<!-- <Image -->
+							<!-- 	class={twMerge( -->
+							<!-- 		'w-1/2 rounded-sm sm:w-full', -->
+							<!-- 		imageStyles({ -->
+							<!-- 			anim: 'hover', -->
+							<!-- 			x: cover.x, -->
+							<!-- 			y: cover.y, -->
+							<!-- 		}), -->
+							<!-- 	)} -->
+							<!-- 	widths={[200, 400, 600, 800]} -->
+							<!-- /> -->
 
 							<div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
 								<h3 class="heading-xl">{service.data.title}</h3>

@@ -38,49 +38,37 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 	blocks={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
 >
-	<main class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
+	<section class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
 		<Container
 			variant="outer"
-			class="flex h-full gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
+			class="flex h-full flex-col gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
 		>
 			<span
 				class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
 			>
 			</span>
 
-			<div class="flex-1 sm:my-auto">
-				<Home desc="Go back" {slug} />
-				<h1 class="heading-5xl mb-2 font-bold">
-					{service.data.title}
-				</h1>
-
-				<div
-					class={cn(
-						imageWrapperVariants({
-							display: 'sm',
-							size: 'sm',
-							pos: 'right',
-						}),
-						'my-4 ml-7',
-					)}
-				>
-					<Image image={service.data.image} widths={[400, 730]} />
+			<div class="contents flex-1 flex-col sm:flex sm:justify-center">
+				<div>
+					<Home desc="Go back" {slug} />
+					<h1 class="heading-5xl font-bold">
+						{service.data.title}
+					</h1>
 				</div>
-
-				<p class="desc-base">
-					{service.data.desc}
-				</p>
-
-				<FluidTalk client:load />
+				<div class="order-3">
+					<p class="desc-base">
+						{service.data.desc}
+					</p>
+					<FluidTalk client:load />
+				</div>
 			</div>
-
-			<div
-				class={cn('hidden rounded-sm flex-1', imageWrapperVariants({ display: 'md' }))}
-			>
-				<Image image={service.data.image} widths={[400, 730]} />
-			</div>
+			<Image
+				class="order-2 sm:w-1/2 sm:rounded-md"
+				image={service.data.image}
+				widths={[400, 730]}
+			/>
 		</Container>
-	</main>
+	</section>
 
 	<Container variant="inner">
 		<Icon

@@ -35,7 +35,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
-								<div class="relative w-full flex-shrink-0 rounded-sm contain-paint sm:aspect-auto sm:h-full sm:w-1/2 sm:rounded-none">
+								<div class="relative w-full flex-shrink-0 rounded-sm contain-paint sm:h-full sm:w-1/2 sm:rounded-none aspect-video">
 									{(() => {
 										switch (card.media.type) {
 											case 'image':

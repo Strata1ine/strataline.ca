@@ -12,7 +12,7 @@ export const containerVariants = cva('w-full md:mx-auto', {
 });
 
 interface Props {
-	class?: string | string[];
+	class?: string | (string | undefined)[];
 	variant?: VariantProps<typeof containerVariants>['variant'];
 	as?: 'div' | 'nav';
 }

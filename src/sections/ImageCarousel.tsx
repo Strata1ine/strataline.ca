@@ -135,7 +135,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 				</div>
 			</div>
 
-			<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1')}>
+			<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1 rela')}>
 				<button
 					onClick={() => {
 						reset();
@@ -145,6 +145,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 						setAnimationId(id);
 					}}
 					aria-label="Scroll carousel left"
+					class="relative"
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
@@ -160,6 +161,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 						setAnimationId(id);
 					}}
 					aria-label="Scroll carousel right"
+					class="relative"
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />

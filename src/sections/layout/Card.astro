@@ -1,101 +1,41 @@
 ---
-import type { Pos } from '@/schemas';
-import { imageWrapperVariants } from '@/components/Image';
-
+import type { ImageSource, Pos } from '@/schemas';
 interface Props {
 	id?: string;
 	title: string;
+	image: ImageSource;
 	desc: string;
 	pos: Pos;
 }
 
 const meta = Astro.props;
-
 import { marked } from 'marked';
 import { cn } from '@/frontend/utils';
+
+import Image from '@/components/Image';
 ---
 
-<div class="items-center gap-6 sm:flex xl:gap-8 2xl:gap-11" id={meta.id}>
-	{
-		meta.pos === 'left' && (
-			<div
-				class={cn(
-					imageWrapperVariants({
-						pos: 'left',
-						size: 'md',
-						display: 'md',
-					}),
-					'w-1/2 rounded-sm',
-				)}
-			>
-				<slot name="image" />
-			</div>
-		)
-	}
+<div
+	class={cn(
+		'flex flex-col sm:flex-row gap-6 sm:gap-8 xl:gap-8 2xl:gap-11',
+		meta.pos === 'right' && 'sm:flex-row-reverse',
+	)}
+	id={meta.id}
+>
+	<Image
+		class="order-2 w-full sm:order-none sm:w-1/2 sm:min-h-90 h-[50vh] max-h-65 sm:max-h-120"
+		pos={meta.pos}
+		image={meta.image}
+		widths={[400, 725, 1450]}
+	/>
 
-	<div>
-		<h3
-			class={cn(
-				'mb-2 heading-4xl font-semibold',
-				meta.pos == 'right' && 'text-right sm:text-left',
-			)}
-		>
+	<div class="contents sm:my-auto sm:flex sm:flex-1 sm:flex-col">
+		<h3 class="heading-4xl order-1 mb-2 font-semibold sm:order-none">
 			{meta.title}
 		</h3>
-
-		{
-			meta.pos === 'right' && (
-				<div
-					class={cn(
-						imageWrapperVariants({
-							pos: 'right',
-							size: 'sm',
-							display: 'sm',
-						}),
-						'my-4 ml-7',
-					)}
-				>
-					<slot name="image" />
-				</div>
-			)
-		}
-
-		{
-			meta.pos === 'left' && (
-				<div
-					class={cn(
-						imageWrapperVariants({
-							pos: 'left',
-							size: 'sm',
-							display: 'sm',
-						}),
-						'my-4 mr-7',
-					)}
-				>
-					<slot name="image" />
-				</div>
-			)
-		}
-
-		<p class="desc-base">{marked.parseInline(meta.desc)}</p>
-
-		<slot />
+		<p class="desc-base order-3 sm:order-none">{marked.parseInline(meta.desc)}</p>
+		<div class="order-4 sm:order-none">
+			<slot />
+		</div>
 	</div>
-
-	{
-		meta.pos === 'right' && (
-			<div
-				class={cn(
-					imageWrapperVariants({
-						pos: 'right',
-						size: 'md',
-						display: 'md',
-					}),
-					'w-1/2 rounded-sm',
-				)}
-			>
-				<slot name="image" />
-			</div>
-		)
-	}
 </div>

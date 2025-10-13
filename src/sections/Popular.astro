@@ -23,7 +23,6 @@ const meta = Astro.props;
 let next = swapPos(meta.pos);
 
 import { Link } from '@/components/Actions';
-import Image from '@/components/Image';
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Container from './layout/Container.astro';
@@ -40,14 +39,16 @@ import Card from './layout/Card.astro';
 				next = swapPos(next);
 
 				return (
-					<Card id={slug} title={service.data.title} desc={service.data.desc} pos={next}>
-						<Image slot="image" image={service.data.image} widths={[400, 725, 1450]} />
-
-						<div class="mt-9">
-							<Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">
-								Explore More
-							</Link>
-						</div>
+					<Card
+						id={slug}
+						image={service.data.image}
+						title={service.data.title}
+						desc={service.data.desc}
+						pos={next}
+					>
+						<Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">
+							Explore More
+						</Link>
 					</Card>
 				);
 			})
