@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 // import Menus from '@/components/modals/Menus.svelte';
 import { getEntry, getCollection } from '@/content.config';
-// import { generateServiceSchema } from '@/build/schemas/service';
+// import { generateServiceSchema } from '@/schemas/service';
 
 const data = (await getEntry('index', 'index')).data;
 const services = await getCollection('services');

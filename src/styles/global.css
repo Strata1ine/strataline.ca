@@ -43,7 +43,7 @@
 
 	.heading-xl,
 	.prose h6 {
-		@apply text-md font-serif leading-7 text-balance sm:text-base md:text-xl;
+		@apply text-md sm:text-md font-serif text-base leading-7 text-balance md:text-xl;
 	}
 
 	.desc-base,

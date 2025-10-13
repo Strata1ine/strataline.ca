@@ -34,11 +34,7 @@ import Container from './layout/Container.astro';
 		{
 			meta.content.map((zig, _) => {
 				next = swapPos(next);
-				return (
-					<LayoutCard title={zig.title} desc={zig.desc} pos={next}>
-						<Image image={zig.image} />
-					</LayoutCard>
-				);
+				return <LayoutCard image={zig.image} title={zig.title} desc={zig.desc} pos={next} />;
 			})
 		}
 	</Container>

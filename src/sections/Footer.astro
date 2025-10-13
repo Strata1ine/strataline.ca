@@ -4,11 +4,13 @@ import Divider from './layout/Divider.astro';
 import Container from './layout/Container.astro';
 // import Search from '@/components/actions/Search.svelte';
 
+export const schema = (c: SchemaContext) => ({});
+
 import socials from '#/socials.json';
 import business from '#/business.json';
 ---
 
-<Divider as="footer" spacing="both">
+<Divider as="footer" spacing="top">
 	<Container
 		variant="inner"
 		class="border-accent relative z-2 border-t-1 bg-gradient-to-b from-transparent via-white/90 to-white py-12"

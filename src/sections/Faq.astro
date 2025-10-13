@@ -25,7 +25,7 @@ const meta = Astro.props;
 
 import { marked } from 'marked';
 for (const faq of meta.content) {
-	faq.desc = marked.parse(faq.desc) as string;
+	faq.desc = await marked.parse(faq.desc);
 }
 ---
 

@@ -16,7 +16,12 @@ export default function ImageCarousel(props: HeroMeta) {
 
 	return (
 		<>
-			<div class={cn('relative h-80 w-full min-h-60 sm:min-h-120 max-h-180 sm:h-[60vh] contain-paint', imageRoundedVariants({ pos: 'right' }))}>
+			<div
+				class={cn(
+					'relative h-80 max-h-180 min-h-50 w-full contain-paint sm:h-[60vh] sm:min-h-120',
+					imageRoundedVariants({ pos: 'right' }),
+				)}
+			>
 				<For each={props.content}>
 					{(image, i) => (
 						<Image

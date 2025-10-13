@@ -26,7 +26,7 @@ export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
 for (const [_, review] of meta.content.entries()) {
-	review.desc = marked.parseInline(review.desc) as string;
+	review.desc = await marked.parseInline(review.desc);
 }
 
 import Divider from './layout/Divider.astro';
@@ -39,7 +39,7 @@ import Island from './Reviews';
 	<Title title={meta.title} pos={meta.pos} />
 	<div class="contain-paint">
 		<Container variant="inner" class="select-none">
-			<Island client:visible {...meta.content} />
+			<Island client:visible meta={meta.content} />
 		</Container>
 	</div>
 </Divider>

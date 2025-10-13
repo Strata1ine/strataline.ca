@@ -30,7 +30,7 @@ import Container from './layout/Container.astro';
 	<Container variant="inner">
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
 			{
-				meta.content.map((benefit, i) => {
+				meta.content.map(async (benefit, i) => {
 					return (
 						<div>
 							<div class="mb-3 flex items-baseline gap-4">
@@ -38,7 +38,7 @@ import Container from './layout/Container.astro';
 								<h4 class="heading-2xl font-semibold">{benefit.title}</h4>
 							</div>
 
-							<p class="desc-base">{marked.parseInline(benefit.desc)}</p>
+							<p class="desc-base">{await marked.parseInline(benefit.desc)}</p>
 						</div>
 					);
 				})

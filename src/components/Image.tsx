@@ -14,15 +14,22 @@ export type Props = {
 	anim?: VariantProps<typeof imageVariants>['anim'];
 };
 
+const DEFAULT_QUALITY = 70;
+
+export function optImage(path: string, widths?: number[], quality?: number) {
+	const src = `${IMAGE_CDN}?url=${path}&fm=webp&q=${quality ?? DEFAULT_QUALITY}`;
+	const srcSet = (widths ?? [])
+		.map((w) => `${IMAGE_CDN}?url=${path}&w=${w}&fm=webp&q=${quality} ${w}w`)
+		.join(', ');
+
+	return { src, srcSet };
+}
+
 export function Image(props: Props) {
-	const quality = props.quality ?? 70;
+	const quality = props.quality ?? DEFAULT_QUALITY;
 	const widths = props.widths ?? [];
 
-	const src = `${IMAGE_CDN}?url=${props.image.src.src}&fm=webp&q=${quality}`;
-
-	const srcSet = widths
-		.map((w) => `${IMAGE_CDN}?url=${props.image.src.src}&w=${w}&fm=webp&q=${quality} ${w}w`)
-		.join(', ');
+	const { src, srcSet } = optImage(props.image.src.src, widths, quality);
 
 	return (
 		<img

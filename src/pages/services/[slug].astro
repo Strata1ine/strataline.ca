@@ -41,36 +41,40 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 	<section class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
 		<Container
 			variant="outer"
-			class="flex h-full flex-col gap-6 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
+			class="flex h-full flex-col gap-3 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
 		>
 			<span
 				class="bg-accent absolute top-0 right-0 bottom-0 left-0 z-[-1] sm:left-[calc(50vw+10rem)] sm:rounded-bl-lg"
 			>
 			</span>
 
-			<div class="contents flex-1 flex-col sm:flex sm:justify-center">
+			<div class="contents flex-1 flex-col gap-2 sm:flex sm:justify-center">
 				<div>
 					<Home desc="Go back" {slug} />
 					<h1 class="heading-5xl font-bold">
 						{service.data.title}
 					</h1>
 				</div>
+
 				<div class="order-3">
 					<p class="desc-base">
 						{service.data.desc}
 					</p>
+
 					<FluidTalk client:load />
 				</div>
 			</div>
+
 			<Image
-				class="order-2 sm:w-1/2 sm:rounded-md"
+				class="order-2 aspect-[16/10] sm:w-1/2 sm:rounded-md"
+				pos="left"
 				image={service.data.image}
 				widths={[400, 730]}
 			/>
 		</Container>
 	</section>
 
-	<Container variant="inner">
+	<Container variant="inner" slot="before">
 		<Icon
 			aria-hidden={true}
 			is:inline

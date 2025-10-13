@@ -134,7 +134,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 				</div>
 			</div>
 
-			<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1 rela')}>
+			<div class={cn(containerVariants({ variant: 'inner' }), 'rela mt-9 flex justify-end gap-1')}>
 				<button
 					onClick={() => {
 						reset();

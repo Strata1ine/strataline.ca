@@ -1,5 +1,5 @@
-import { onMount, onCleanup, createEffect } from "solid-js";
-import { videoPlaying, setVideoPlaying } from "@/frontend/stores";
+import { onMount, onCleanup, createEffect } from 'solid-js';
+import { videoPlaying, setVideoPlaying } from '@/frontend/stores';
 
 export default function Video(props: { poster: string; url: string }) {
 	let node: HTMLVideoElement | undefined;
@@ -32,9 +32,9 @@ export default function Video(props: { poster: string; url: string }) {
 			preload="none"
 			class="absolute h-full w-full cursor-pointer object-cover"
 			controls
-			onplay={() => setVideoPlaying(true)}
-			onpause={() => setVideoPlaying(false)}
-			onended={() => setVideoPlaying(false)}
+			onPlay={() => setVideoPlaying(true)}
+			onPause={() => setVideoPlaying(false)}
+			onEnded={() => setVideoPlaying(false)}
 		>
 			<source src={props.url} />
 			Your browser does not support the video tag.

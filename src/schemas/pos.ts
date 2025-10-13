@@ -10,3 +10,7 @@ export function swapNextPos(pos: Pos) {
 export function swapPos(pos: Pos): Pos {
 	return pos === 'left' ? 'right' : 'left';
 }
+
+export function isPos(value: unknown): value is Pos {
+	return ZPos.safeParse(value).success;
+}

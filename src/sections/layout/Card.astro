@@ -29,14 +29,14 @@ import Image from '@/components/Image';
 		widths={[400, 725, 1450]}
 	/>
 
-	<div class="contents sm:my-auto sm:flex sm:flex-1 sm:flex-col">
-		<h3 class="heading-4xl order-1 mb-2 font-semibold sm:order-none">
+	<div class="contents gap-3 sm:my-auto sm:flex sm:flex-1 sm:flex-col">
+		<h3 class="heading-4xl order-1 font-semibold sm:order-none">
 			{meta.title}
 		</h3>
 
-		<p class="desc-base order-3 sm:order-none">{marked.parseInline(meta.desc)}</p>
+		<p class="desc-base order-3 sm:order-none">{await marked.parseInline(meta.desc)}</p>
 
-		<div class="order-4 mt-6 sm:order-none sm:mt-8">
+		<div class="order-4 mt-6 sm:order-none">
 			<slot />
 		</div>
 	</div>

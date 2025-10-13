@@ -1,7 +1,7 @@
 ---
-import type { SchemaOf } from "astro-frontmatter-components";
-import { type SchemaContext, z } from "astro:content";
-import { DefaultPos } from "@/schemas";
+import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
 
 export const schema = (_: SchemaContext) => ({
 	id: z.string().optional(),
@@ -21,11 +21,11 @@ export const schema = (_: SchemaContext) => ({
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
-import Divider from "./layout/Divider.astro";
-import Split from "./layout/Split.astro";
+import Divider from './layout/Divider.astro';
+import Split from './layout/Split.astro';
 
-import { marked } from "marked";
-import { Icon } from "astro-icon/components";
+import { marked } from 'marked';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Divider>
@@ -38,7 +38,7 @@ import { Icon } from "astro-icon/components";
 
 		<div class="flex-2">
 			{
-				meta.content.map((price, _) => {
+				meta.content.map(async (price, _) => {
 					return (
 						<div class="border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0">
 							<div class="flex w-full items-center justify-between gap-4">
@@ -50,7 +50,7 @@ import { Icon } from "astro-icon/components";
 								</div>
 							</div>
 
-							<p class="desc-base my-4">{marked.parseInline(price.desc)}</p>
+							<p class="desc-base my-4">{await marked.parseInline(price.desc)}</p>
 
 							{price.materials.map((s: string) => (
 								<div class="mt-1 flex gap-3 align-top">

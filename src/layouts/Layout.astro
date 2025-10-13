@@ -5,7 +5,7 @@ import { marked } from 'marked';
 import { Font } from 'astro:assets';
 import business from '#/business.json';
 import socials from '#/socials.json';
-import type { Pos } from '@/schemas';
+import { type Pos, isPos, swapPos } from '@/schemas';
 
 import Frontmatter from 'astro-frontmatter-components/renderer';
 
@@ -29,6 +29,8 @@ interface Props {
 
 const { title, desc, startPos, blocks, noIndex = false, schemas: extraSchema = [] } = Astro.props;
 const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
+
+let pos = startPos ?? 'right';
 
 // const reviews = querySections(sections, 'Reviews');
 // const faq = querySections(sections, 'Faq');
@@ -188,7 +190,15 @@ const schema = {
 	</head>
 	<body>
 		<slot name="before" />
-		<Frontmatter {blocks} />
+		<Frontmatter
+			callback={(data) => {
+				if (isPos(data.pos)) {
+					data.pos = pos;
+					pos = swapPos(pos);
+				}
+			}}
+			{blocks}
+		/>
 		<slot />
 	</body>
 </html>
