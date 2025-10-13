@@ -1,6 +1,5 @@
 import { createSignal, For, onCleanup } from 'solid-js';
 import { containerVariants } from './layout/Container.astro';
-import { imageWrapperVariants } from '@/components/Image';
 import CaretCircleLeftFill from '~icons/ph/caret-circle-left-fill';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
 import { cn } from '@/frontend/utils';
@@ -113,7 +112,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 		<>
 			<div
 				ref={container}
-				class={cn(imageWrapperVariants({ size: 'lg' }), 'cursor-grab touch-pan-y')}
+				// class={cn(imageWrapperVariants({ variant: 'lg' }), 'cursor-grab touch-pan-y')}
 				onPointerDown={onPointerDown}
 				onPointerMove={onPointerMove}
 				onPointerUp={onPointerUp}

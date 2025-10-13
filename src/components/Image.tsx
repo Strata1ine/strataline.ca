@@ -12,7 +12,6 @@ export type Props = {
 	active?: boolean;
 	pos?: VariantProps<typeof imageRoundedVariants>['pos'];
 	anim?: VariantProps<typeof imageVariants>['anim'];
-	variant?: VariantProps<typeof imageWrapperVariants>['variant'];
 };
 
 export function Image(props: Props) {
@@ -35,7 +34,6 @@ export function Image(props: Props) {
 					y: props.image.y,
 				}),
 				props.pos ? imageRoundedVariants({ pos: props.pos }) : undefined,
-				imageWrapperVariants({ variant: props.variant }),
 				props.class,
 			)}
 			src={src}
@@ -72,17 +70,6 @@ export const imageVariants = cva('object-cover w-full h-full select-none', {
 	],
 	defaultVariants: {
 		active: false,
-	},
-});
-
-export const imageWrapperVariants = cva('', {
-	variants: {
-		variant: {
-			lg: 'min-h-90 h-[60vh] max-h-150 flex-none',
-			md: 'min-h-100 h-[45vh] max-h-150 flex-none',
-			sm: 'h-svh max-h-65',
-			xs: 'h-[30vw] min-h-30 sm:h-65',
-		},
 	},
 });
 

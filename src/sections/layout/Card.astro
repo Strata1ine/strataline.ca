@@ -17,13 +17,13 @@ import Image from '@/components/Image';
 
 <div
 	class={cn(
-		'flex flex-col sm:flex-row gap-6 sm:gap-8 xl:gap-8 2xl:gap-11',
+		'flex flex-col sm:flex-row gap-2 sm:gap-8 xl:gap-8 2xl:gap-11',
 		meta.pos === 'right' && 'sm:flex-row-reverse',
 	)}
 	id={meta.id}
 >
 	<Image
-		class="order-2 w-full sm:order-none sm:w-1/2 sm:min-h-90 h-[50vh] max-h-65 sm:max-h-120"
+		class="order-2 h-[50vh] max-h-65 w-full sm:order-none sm:max-h-120 sm:min-h-90 sm:w-1/2"
 		pos={meta.pos}
 		image={meta.image}
 		widths={[400, 725, 1450]}
@@ -33,8 +33,10 @@ import Image from '@/components/Image';
 		<h3 class="heading-4xl order-1 mb-2 font-semibold sm:order-none">
 			{meta.title}
 		</h3>
+
 		<p class="desc-base order-3 sm:order-none">{marked.parseInline(meta.desc)}</p>
-		<div class="order-4 sm:order-none">
+
+		<div class="order-4 mt-6 sm:order-none sm:mt-8">
 			<slot />
 		</div>
 	</div>

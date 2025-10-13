@@ -19,22 +19,20 @@ import Island from './Hero';
 import FluidTalk from '@/components/FluidTalk';
 ---
 
-<span
-	class="bg-accent absolute top-0 right-0 z-[-1] h-[80vh] w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
->
-</span>
+<section class="relative py-10 xl:py-20 box-content" id={meta.id}>
+	<span
+		class="bg-accent absolute -top-25 right-0 -bottom-15 z-[-1] w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
+	>
+	</span>
 
-<section class="" id={meta.id}>
 	<Container
 		variant="outer"
-		class="relative mt-4 flex flex-col gap-4 sm:flex-row md:gap-x-8 xl:mt-20 xl:gap-x-11"
+		class="relative flex flex-col gap-4 sm:flex-row md:gap-x-8 xl:gap-x-11"
 	>
-		<div
-			class="order-2 flex w-full sm:w-1/2 sm:flex-shrink-0 sm:flex-col 2xl:flex-row-reverse"
-		>
+		<div class="order-2 flex w-full sm:w-1/2 sm:flex-shrink-0 sm:flex-col 2xl:flex-row-reverse">
 			<Island client:visible {...meta} />
 		</div>
-		<div class="contents sm:order-2 sm:flex flex-1 flex-col sm:justify-center">
+		<div class="contents flex-1 flex-col gap-3 sm:order-2 sm:flex sm:justify-center">
 			<h1 class="heading-6xl font-bold">{meta.title}</h1>
 			<div class="order-3">
 				<p class="desc-base">{meta.desc}</p>
