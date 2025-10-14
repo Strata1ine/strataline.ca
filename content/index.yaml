@@ -21,18 +21,19 @@ sections:
     desc: |-
       We have been transforming spaces dust-free for decades.
     content:
-      - src: ./photos/slideshow/kitchen.jpg
-        alt: |-
-          A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
-      - src: ./photos/slideshow/dining_room.jpg
-        alt: |-
-          A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
-      - src: ./photos/slideshow/living_room.jpg
-        alt: |-
-          A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
-      - src: ./photos/slideshow/bathroom.jpg
-        alt: |-
-          A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
+      images:
+        - src: ./photos/slideshow/kitchen.jpg
+          alt: |-
+            A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
+        - src: ./photos/slideshow/dining_room.jpg
+          alt: |-
+            A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
+        - src: ./photos/slideshow/living_room.jpg
+          alt: |-
+            A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
+        - src: ./photos/slideshow/bathroom.jpg
+          alt: |-
+            A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
 
   - type: Popular
     title: Popular services
@@ -125,4 +126,3 @@ sections:
         stars: 5
         desc: |-
           _Max is the ultimate professional, immaculate, contentious and polite. He is **punctual** and follows up on things quickly. The work to our stairs is transforming and with his **guidance** we are thrilled with the finished product._
-  - type: Footer

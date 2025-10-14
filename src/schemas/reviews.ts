@@ -1,6 +1,6 @@
-import business from '#/business.json';
-import { marked } from 'marked';
-import type { AstroGlobal } from 'astro';
+// import business from '#/business.json';
+// import { marked } from 'marked';
+// import type { AstroGlobal } from 'astro';
 
 // export const generateReviews = (Astro: AstroGlobal, reviews: PropsOf<'Reviews'>[]) => {
 // 	return {

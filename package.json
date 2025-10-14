@@ -12,8 +12,8 @@
 		"@astrojs/netlify": "^6.5.12",
 		"@astrojs/solid-js": "^5.1.1",
 		"astro": "^5.14.4",
-		"solid-js": "^1.9.9",
-		"virtua": "^0.45.2"
+		"corvu": "^0.7.2",
+		"solid-js": "^1.9.9"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.4",
@@ -24,7 +24,7 @@
 		"@rollup/plugin-yaml": "^4.1.2",
 		"@tailwindcss/vite": "^4.1.14",
 		"@types/youtube": "^0.1.2",
-		"@typescript-eslint/parser": "^8.46.0",
+		"@typescript-eslint/parser": "^8.46.1",
 		"astro-frontmatter-components": "./lib/astro-frontmatter-components",
 		"astro-icon": "^1.1.5",
 		"class-variance-authority": "^0.7.1",
@@ -43,6 +43,7 @@
 		"tailwind-merge": "^3.3.1",
 		"tailwindcss": "^4.1.14",
 		"typescript": "^5.9.3",
+		"typescript-plugin-css-modules": "^5.2.0",
 		"unplugin-icons": "^22.4.2"
 	}
 }

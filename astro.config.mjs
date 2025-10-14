@@ -70,11 +70,13 @@ export default defineConfig({
 			}),
 			visualizer({
 				emitFile: true,
+				brotliSize: true,
 				filename: 'stats.html',
 			}),
 		],
 	},
 	integrations: [
+		solidJs(),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),
@@ -84,7 +86,6 @@ export default defineConfig({
 				ph: ['*'],
 			},
 		}),
-		solidJs(),
 		frontmatterComponents({
 			components: glob('./src/sections/**/*.astro'),
 		}),

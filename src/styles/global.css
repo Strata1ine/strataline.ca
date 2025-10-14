@@ -93,23 +93,6 @@
 @theme {
 	/* RESET TAILWIND DEFAULTS */
 	--color-*: initial;
-	--default-font-*: initial;
-	--default-mono-*: initial;
-
-	--text-*: initial;
-	--radius-*: initial;
-	--leading-*: initial;
-	--container-*: initial;
-
-	--drop-*: initial;
-	--shadow-*: initial;
-	--inset-*: initial;
-	/* --animate-*: initial; */
-	--blur-*: initial;
-	--ease-*: initial;
-	--perspective-*: initial;
-	--default-transition-*: initial;
-	--tracking-*: initial;
 
 	--color-error: var(--color-accent-dark);
 	--color-success: #245e24;
@@ -205,33 +188,6 @@ input:-webkit-autofill:focus {
 	.w3c-focus:focus-within:has(:focus-visible) {
 		outline: Highlight auto;
 	}
-}
-
-.expand::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: calc(50% - 1px);
-	bottom: 0;
-	width: 2px;
-	background-color: var(--color-black);
-	transform-origin: center;
-	transition: transform 250ms;
-}
-
-.expand::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: calc(50% - 1px);
-	right: 0;
-	height: 2px;
-	background-color: var(--color-black);
-	transform-origin: center;
-}
-
-.expand.open::before {
-	transform: rotateZ(90deg);
 }
 
 .burger {

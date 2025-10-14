@@ -1,5 +1,5 @@
 import { createSignal, For, onCleanup } from 'solid-js';
-import { containerVariants } from './layout/Container.astro';
+// import { containerVariants } from './layout/Container.astro';
 import CaretCircleLeftFill from '~icons/ph/caret-circle-left-fill';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
 import { cn } from '@/frontend/utils';
@@ -133,40 +133,40 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 					</For>
 				</div>
 			</div>
-
-			<div class={cn(containerVariants({ variant: 'inner' }), 'rela mt-9 flex justify-end gap-1')}>
-				<button
-					onClick={() => {
-						reset();
-						lastFrame = performance.now();
-						currentVelocity = -(scrollMultiplier(container) * 40);
-						const id = requestAnimationFrame(animate);
-						setAnimationId(id);
-					}}
-					aria-label="Scroll carousel left"
-					class="relative"
-					tabIndex={0}
-				>
-					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20" />
-				</button>
-
-				<button
-					onClick={() => {
-						reset();
-						lastFrame = performance.now();
-						currentVelocity = scrollMultiplier(container) * 40;
-						const id = requestAnimationFrame(animate);
-						setAnimationId(id);
-					}}
-					aria-label="Scroll carousel right"
-					class="relative"
-					tabIndex={0}
-				>
-					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20 rotate-180" />
-				</button>
-			</div>
 		</>
 	);
 }
+
+			// 	<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1')}>
+			// 	<button
+			// 		onClick={() => {
+			// 			reset();
+			// 			lastFrame = performance.now();
+			// 			currentVelocity = -(scrollMultiplier(container) * 40);
+			// 			const id = requestAnimationFrame(animate);
+			// 			setAnimationId(id);
+			// 		}}
+			// 		aria-label="Scroll carousel left"
+			// 		class="relative"
+			// 		tabIndex={0}
+			// 	>
+			// 		<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
+			// 		<CaretCircleLeftFill class="text-tone size-20" />
+			// 	</button>
+			//
+			// 	<button
+			// 		onClick={() => {
+			// 			reset();
+			// 			lastFrame = performance.now();
+			// 			currentVelocity = scrollMultiplier(container) * 40;
+			// 			const id = requestAnimationFrame(animate);
+			// 			setAnimationId(id);
+			// 		}}
+			// 		aria-label="Scroll carousel right"
+			// 		class="relative"
+			// 		tabIndex={0}
+			// 	>
+			// 		<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
+			// 		<CaretCircleLeftFill class="text-tone size-20 rotate-180" />
+			// 	</button>
+			// </div>/*}

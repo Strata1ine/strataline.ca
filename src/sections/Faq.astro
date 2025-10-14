@@ -33,6 +33,6 @@ for (const faq of meta.content) {
 	<Title title={meta.title} pos={meta.pos} />
 
 	<Container variant="inner">
-		<Island client:visible {...meta.content} />
+		<Island client:load content={meta.content} />
 	</Container>
 </Divider>

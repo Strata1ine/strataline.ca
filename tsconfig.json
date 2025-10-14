@@ -27,7 +27,8 @@
 		"plugins": [
 			{
 				"name": "@astrojs/ts-plugin"
-			}
+			},
+			{ "name": "typescript-plugin-css-modules" }
 		],
 		"paths": {
 			"@/*": ["src/*"],

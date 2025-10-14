@@ -8,6 +8,7 @@ import socials from '#/socials.json';
 import { type Pos, isPos, swapPos } from '@/schemas';
 
 import Frontmatter from 'astro-frontmatter-components/renderer';
+import Footer from '@/sections/Footer.astro';
 
 // import { type SectionMeta, querySections } from '@/components/registry';
 
@@ -200,5 +201,7 @@ const schema = {
 			{blocks}
 		/>
 		<slot />
+
+		<Footer />
 	</body>
 </html>

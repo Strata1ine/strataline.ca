@@ -5,12 +5,12 @@ import { slideshow } from '@/frontend/slideshow';
 import type { Props as HeroMeta } from './Hero.astro';
 import { cn } from '@/frontend/utils';
 
-export default function ImageCarousel(props: HeroMeta) {
+export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 	const [idx, setIdx] = createSignal(0);
 	slideshow({
 		idx: idx(),
 		setIdx: setIdx,
-		length: props.content.length,
+		length: props.content.images.length,
 		speed: props.speed,
 	});
 
@@ -22,14 +22,14 @@ export default function ImageCarousel(props: HeroMeta) {
 					imageRoundedVariants({ pos: 'right' }),
 				)}
 			>
-				<For each={props.content}>
+				<For each={props.content.images}>
 					{(image, i) => (
 						<Image
 							class="absolute inset-0"
 							active={i() === idx()}
 							anim="fade"
 							image={image}
-							widths={[400, 650, 1300]}
+							widths={[400, 650, 1400]}
 						/>
 					)}
 				</For>
@@ -39,7 +39,7 @@ export default function ImageCarousel(props: HeroMeta) {
 				class="2xl:w-diff flex-col sm:flex-row 2xl:flex-col"
 				idx={idx()}
 				setIdx={setIdx}
-				length={props.content.length}
+				length={props.content.images.length}
 			/>
 		</>
 	);

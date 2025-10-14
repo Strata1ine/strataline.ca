@@ -7,8 +7,10 @@ export const schema = (c: SchemaContext) => ({
 	id: z.string().optional(),
 	title: z.string(),
 	desc: z.string(),
-	speed: z.number().default(5.0),
-	content: z.array(z.object(image(c))),
+	content: z.object({
+		images: z.array(z.object(image(c))),
+		speed: z.number().default(5.0),
+	}),
 });
 
 export type Props = SchemaOf<typeof schema>;
@@ -30,7 +32,7 @@ import FluidTalk from '@/components/FluidTalk';
 		class="relative flex flex-col gap-4 sm:flex-row md:gap-x-8 xl:gap-x-11"
 	>
 		<div class="order-2 flex w-full sm:w-1/2 sm:flex-shrink-0 sm:flex-col 2xl:flex-row-reverse">
-			<Island client:visible {...meta} />
+			<Island client:visible content={meta.content} />
 		</div>
 		<div class="contents flex-1 flex-col gap-3 sm:order-2 sm:flex sm:justify-center">
 			<h1 class="heading-6xl font-bold">{meta.title}</h1>
