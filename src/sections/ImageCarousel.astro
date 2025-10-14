@@ -4,6 +4,7 @@ import { type SchemaContext, z } from 'astro:content';
 import { image } from '@/schemas';
 
 export const schema = (c: SchemaContext) => ({
+	id: z.string().optional(),
 	speed: z.number().optional().default(1.0),
 	content: z.array(z.object(image(c))),
 });
@@ -15,6 +16,6 @@ import * as Layout from '@/components/Layout';
 import Island from './ImageCarousel';
 ---
 
-<Layout.Divider>
+<Layout.Divider id={meta.id}>
 	<Island client:visible meta={meta} />
 </Layout.Divider>

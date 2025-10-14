@@ -36,7 +36,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 			</div>
 
 			<SlideNav
-				class="2xl:w-diff my-3 sm:mb-0 2xl:mt-0 flex-col sm:flex-row 2xl:flex-col"
+				class="2xl:w-diff my-3 flex-col sm:mb-0 sm:flex-row 2xl:mt-0 2xl:flex-col"
 				idx={idx()}
 				setIdx={setIdx}
 				length={props.content.images.length}

@@ -3,6 +3,7 @@ import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 
 export const schema = (_: SchemaContext) => ({
+	id: z.string().optional(),
 	speed: z.number().optional().default(0.1),
 	text: z.array(z.string()),
 });
@@ -13,6 +14,6 @@ import Island from './TextCarousel';
 import * as Layout from '@/components/Layout';
 ---
 
-<Layout.Divider>
+<Layout.Divider id={meta.id}>
 	<Island client:visible meta={meta} />
 </Layout.Divider>

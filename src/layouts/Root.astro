@@ -14,6 +14,7 @@ import Footer from '@/sections/Footer.astro';
 // import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
 
 import type { SchemaMeta } from 'astro-frontmatter-components';
+import { undefined } from 'astro:schema';
 const isProd = import.meta.env.PROD;
 
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
@@ -191,10 +192,18 @@ const schema = {
 	<body>
 		<slot />
 		<Frontmatter
-			callback={(data) => {
+			callback={(data, i) => {
 				if (isPos(data.pos)) {
 					data.pos = pos;
 					pos = swapPos(pos);
+				}
+
+				if (i == 0) {
+					if (data.id == undefined) {
+						data.id = `${data.id} intro`;
+					} else {
+						data.id = 'intro';
+					}
 				}
 			}}
 			{blocks}

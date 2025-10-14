@@ -18,7 +18,7 @@ export default function ModalForm(props: {
 	return (
 		<div class="px-inset relative mx-auto w-full max-w-120 rounded-md bg-white py-12 sm:my-10 sm:px-10">
 			<div class="gap-inset flex items-center">
-				<h2 class="flex-1 font-serif font-bold text-5xl" id={props.id}>
+				<h2 class="flex-1 font-serif text-5xl font-bold" id={props.id}>
 					{props.title}
 				</h2>
 

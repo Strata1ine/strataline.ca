@@ -27,10 +27,10 @@ import { Icon } from 'astro-icon/components';
 import markdown from '@/backend/markdown';
 ---
 
-<Layout.Divider>
+<Layout.Divider id={meta.id}>
 	<Layout.Split pos={meta.pos}>
 		<div slot="title" class="flex-1">
-			<h2 class="text-4xl xl:text-5xl 2xl:text-6xl font-serif top-0 font-bold sm:sticky">
+			<h2 class="top-0 font-serif text-4xl font-bold sm:sticky xl:text-5xl 2xl:text-6xl">
 				{meta.title}
 			</h2>
 		</div>
@@ -41,11 +41,11 @@ import markdown from '@/backend/markdown';
 					return (
 						<div class="border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0">
 							<div class="flex w-full items-center justify-between gap-4">
-								<h3 class="font-serif font-semibold text-3xl">{price.title}</h3>
+								<h3 class="font-serif text-3xl font-semibold">{price.title}</h3>
 								<div class="flex items-center gap-3">
-									<span class="sm:text-base text-success">${price.min.toLocaleString()}</span>
+									<span class="text-success sm:text-base">${price.min.toLocaleString()}</span>
 									<span class="">-</span>
-									<span class="sm:text-base text-success">${price.max.toLocaleString()}</span>
+									<span class="text-success sm:text-base">${price.max.toLocaleString()}</span>
 								</div>
 							</div>
 

@@ -1,4 +1,5 @@
 import { createSignal, onMount, onCleanup } from 'solid-js';
+
 import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
 import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
@@ -9,8 +10,9 @@ export default function FluidTalk() {
 	let sensor: HTMLElement;
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
-	const phone = useQueryDevice(1000);
-	const inset = () => (phone.isMobile() ? 25 : 70);
+	const [hydrated, setHydrated] = createSignal(false);
+	const queryMobile = useQueryDevice(800);
+	const inset = () => (queryMobile.isMobile() ? 25 : 70);
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
@@ -21,6 +23,11 @@ export default function FluidTalk() {
 	};
 
 	onMount(() => {
+		update();
+		const wait = setTimeout(() => {
+			setHydrated(true);
+		}, 20);
+
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (!entry) return;
@@ -37,12 +44,12 @@ export default function FluidTalk() {
 		const resize = new ResizeObserver(() => update());
 		resize.observe(document.documentElement);
 
-		window.addEventListener('resize', update, { passive: true });
-
 		onCleanup(() => {
+			clearTimeout(wait);
 			observer.disconnect();
 			resize.disconnect();
 			window.removeEventListener('resize', update);
+			window.removeEventListener('load', load);
 		});
 	});
 
@@ -51,7 +58,8 @@ export default function FluidTalk() {
 			<LetsTalk
 				aria-label="Let's talk (Ctrl+/)"
 				class={cn(
-					'z-1 duration-1000',
+					'z-1',
+					hydrated() && 'duration-1000',
 					above()
 						? cn(buttonVariants(), 'absolute h-14 w-34 xl:h-16 xl:w-42')
 						: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
@@ -65,7 +73,8 @@ export default function FluidTalk() {
 				<span
 					aria-hidden="true"
 					class={cn(
-						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500',
+						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap',
+						hydrated() && 'transition-opacity duration-500',
 						above() ? 'opacity-100' : 'opacity-0',
 					)}
 				>
@@ -74,7 +83,8 @@ export default function FluidTalk() {
 
 				<Mailbox
 					class={cn(
-						'absolute top-1/2 left-1/2 size-10 -translate-1/2 transition-opacity duration-500 sm:size-12',
+						'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
+						hydrated() && 'transition-opacity duration-500',
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>
