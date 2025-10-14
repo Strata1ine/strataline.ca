@@ -22,10 +22,10 @@
 			transform-origin: center;
 		}
 	}
-	
+
 	&[data-expanded] .expand::before {
-    transform: rotateZ(90deg);
-  }
+		transform: rotateZ(90deg);
+	}
 }
 
 .content {

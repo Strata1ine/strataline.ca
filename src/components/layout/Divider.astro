@@ -10,8 +10,8 @@ import { cva, type VariantProps } from 'class-variance-authority';
 const divisionStyles = cva('', {
 	variants: {
 		spacing: {
-			top: 'mt-28 xl:mt-38',
-			both: 'my-28 xl:my-38',
+			top: 'mt-38',
+			both: 'my-38',
 		},
 	},
 	defaultVariants: {
@@ -20,6 +20,6 @@ const divisionStyles = cva('', {
 });
 ---
 
-<Tag class={divisionStyles({ spacing })} {id}>
+<Tag class="mt-38" {id}>
 	<slot />
 </Tag>

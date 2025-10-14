@@ -20,6 +20,6 @@ const meta = Astro.props as Props;
 
 		<div class="flex-1"></div>
 
-		<Island content={meta.content} />
+		<Island client:visible content={meta.content} />
 	</Layout.Container>
 </header>

@@ -1,11 +1,8 @@
 ---
-import Message from '@/sections/layout/Message.astro';
-import Footer from '@/sections/Footer.astro';
-import Layout from '@/layouts/Layout.astro';
+import * as Layout from '@/components/Layout';
+import Root from '@/layouts/Root.astro';
 ---
 
-<Layout title="404 - Page Not Found" desc="The requested page could not be found on this site.">
-	<Message title="404" desc="Oops! The page you're looking for doesn't exist." />
-
-	<Footer />
-</Layout>
+<Root title="404 - Page Not Found" desc="The requested page could not be found on this site.">
+	<Layout.Message title="404" desc="Oops! The page you're looking for doesn't exist." />
+</Root>

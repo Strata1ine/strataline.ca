@@ -1,5 +1,6 @@
+import { cn } from '@/frontend/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { type ComponentProps } from 'solid-js';
+import { splitProps, type ComponentProps } from 'solid-js';
 
 export const buttonVariants = cva(
 	'touch-manipulation cursor-pointer select-none px-6 py-4 font-serif text-md xl:text-xl font-bold leading-none rounded-md',
@@ -21,27 +22,35 @@ export const buttonVariants = cva(
 );
 
 function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
+	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
+
 	return (
 		<button
-			class={buttonVariants({
-				variant: props.variant,
-				display: props.display,
-				class: props.class,
-			})}
-			{...props}
+			class={cn(
+				buttonVariants({
+					variant: local.variant,
+					display: local.display,
+				}),
+				local.class,
+			)}
+			{...rest}
 		/>
 	);
 }
 
 function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
+	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
+
 	return (
 		<a
-			class={buttonVariants({
-				variant: props.variant,
-				display: props.display,
-				class: props.class,
-			})}
-			{...props}
+			class={cn(
+				buttonVariants({
+					variant: local.variant,
+					display: local.display,
+				}),
+				local.class,
+			)}
+			{...rest}
 		/>
 	);
 }

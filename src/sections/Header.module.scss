@@ -1,0 +1,57 @@
+.link {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -0.4rem;
+		right: 10%;
+		left: 10%;
+		transform: scaleX(0);
+		height: 1px;
+		background: var(--color-black);
+		transition: transform 200ms ease-in-out;
+		opacity: 0.5;
+	}
+	&:hover::after {
+		transform: scaleX(1);
+	}
+}
+
+.burger {
+	position: relative;
+
+	&::after,
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		background: var(--color-black);
+		height: 2px;
+		transform-origin: center;
+		transition:
+			transform 250ms ease,
+			left 250ms ease;
+	}
+
+	&::before {
+		transform: translateY(-7px);
+	}
+
+	&::after {
+		transform: translateY(7px);
+		left: 30%;
+	}
+
+	&.open {
+		&::after {
+			transform: rotate(45deg);
+			left: 0;
+		}
+
+		&::before {
+			transform: rotate(-45deg);
+		}
+	}
+}

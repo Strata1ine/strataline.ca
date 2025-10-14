@@ -3,6 +3,7 @@
 // import { modals, genUid } from "@/frontend/stores.svelte";
 
 import type { Props as HeaderMeta } from './Header.astro';
+import styles from './Header.module.scss';
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	// const open = createMemo(() => modals.is(modals.mobile));
@@ -13,7 +14,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 			<ul class="mt-1 hidden gap-14 md:flex">
 				{props.content.map((item) => (
 					<li>
-						<a href={`#${item.id}`} class="desc-sm c relative" tabindex="0">
+						<a class={styles.link} href={`#${item.id}`} class="desc-sm relative" tabindex="0">
 							{item.name}
 						</a>
 					</li>
@@ -56,29 +57,6 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
         </ul>
       </Modal>
       */}
-
-			<style>
-				{`
-          .c {
-            position: relative;
-          }
-          .c::after {
-            content: "";
-            position: absolute;
-            bottom: -0.4rem;
-            right: 10%;
-            left: 10%;
-            transform: scaleX(0);
-            height: 1px;
-            background: var(--color-black);
-            transition: transform 200ms ease-in-out;
-            opacity: 0.5;
-          }
-          .c:hover::after {
-            transform: scaleX(1);
-          }
-        `}
-			</style>
 		</>
 	);
 }
