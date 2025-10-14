@@ -24,8 +24,8 @@ const meta = Astro.props;
 import Divider from './layout/Divider.astro';
 import Split from './layout/Split.astro';
 
-import { marked } from 'marked';
 import { Icon } from 'astro-icon/components';
+import markdown from '@/backend/markdown';
 ---
 
 <Divider>
@@ -50,7 +50,7 @@ import { Icon } from 'astro-icon/components';
 								</div>
 							</div>
 
-							<p class="desc-base my-4">{await marked.parseInline(price.desc)}</p>
+							<p class="desc-base my-4" set:html={await markdown.parseInline(price.desc)} />
 
 							{price.materials.map((s: string) => (
 								<div class="mt-1 flex gap-3 align-top">

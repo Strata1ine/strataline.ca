@@ -12,6 +12,7 @@ export type Props = {
 	active?: boolean;
 	pos?: VariantProps<typeof imageRoundedVariants>['pos'];
 	anim?: VariantProps<typeof imageVariants>['anim'];
+	loading?: 'eager' | 'lazy';
 };
 
 const DEFAULT_QUALITY = 70;
@@ -47,6 +48,7 @@ export function Image(props: Props) {
 			alt={props.image.alt}
 			srcset={srcSet}
 			draggable={false}
+			loading={props.loading ?? 'lazy'}
 		/>
 	);
 }

@@ -1,6 +1,4 @@
 ---
-import { marked } from 'marked';
-
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos } from '@/schemas';
@@ -25,14 +23,15 @@ export const schema = (_: SchemaContext) => ({
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
-for (const [_, review] of meta.content.entries()) {
-	review.desc = await marked.parseInline(review.desc);
-}
-
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Container from './layout/Container.astro';
 import Island from './Reviews';
+import markdown from '@/backend/markdown';
+
+for (const [_, review] of meta.content.entries()) {
+	review.desc = await markdown.parseInline(review.desc);
+}
 ---
 
 <Divider id={meta.id}>

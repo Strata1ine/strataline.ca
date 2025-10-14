@@ -1,10 +1,10 @@
-import { createSignal, For, onCleanup } from 'solid-js';
-// import { containerVariants } from './layout/Container.astro';
-import CaretCircleLeftFill from '~icons/ph/caret-circle-left-fill';
+import { createSignal, For, onCleanup, onMount } from 'solid-js';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
+import Image from '@/components/Image';
 import { cn } from '@/frontend/utils';
+import CaretCircleLeftFill from '~icons/ph/CaretCircleLeftFill';
 
-export default function ImageCarousel(props: ImageCarouselMeta) {
+export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	let container!: HTMLDivElement;
 	let imageCarousel!: HTMLDivElement;
 
@@ -15,7 +15,6 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 	let lastFrame = 0;
 	let currentVelocity = 0;
 	let prevX = 0;
-
 	let clientX = 0;
 	let clientY = 0;
 	let startPos = 0;
@@ -27,8 +26,11 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 
 	const updateTranslation = (o: number) => {
 		if (!imageCarousel || !imageCarousel.children.length) return;
-		const w = (imageCarousel.children[0] as HTMLElement).scrollWidth;
+		const firstChild = imageCarousel.children[0] as HTMLElement;
+		const w = firstChild.scrollWidth;
 		const wrapped = o - Math.floor(o / w) * w;
+
+		imageCarousel.style.transform = `translate3d(${-wrapped}px, 0, 0)`;
 		setPos(wrapped);
 	};
 
@@ -51,7 +53,7 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 
 	function reset() {
 		const id = animationId();
-		if (id) {
+		if (id !== null) {
 			cancelAnimationFrame(id);
 			setAnimationId(null);
 		}
@@ -60,12 +62,10 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 	const onPointerDown = (e: PointerEvent) => {
 		if (e.button !== 0) return;
 		reset();
-
 		const id = e.pointerId;
 		setPointerId(id);
 		(e.currentTarget as HTMLElement).setPointerCapture(id);
 		currentVelocity = 0;
-
 		window.getSelection?.()?.removeAllRanges();
 		clientX = e.clientX;
 		clientY = e.clientY;
@@ -74,16 +74,13 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 
 	const onPointerMove = (e: PointerEvent) => {
 		if (e.pointerId !== pointerId()) return;
-
 		rawPos = startPos - (e.clientX - clientX);
 		updateTranslation(rawPos);
-
 		const now = performance.now();
 		const dt = now - lastFrame;
 		if (dt > 0) {
 			currentVelocity = (prevX - e.clientX) / dt;
 		}
-
 		lastFrame = now;
 		prevX = e.clientX;
 	};
@@ -92,15 +89,12 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 		if (e.pointerId !== pointerId()) return;
 		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
 		setPointerId(null);
-
 		const diffX = clientX - e.clientX;
 		const diffY = clientY - e.clientY;
-
 		if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
 			currentVelocity *= scrollMultiplier(container) * 30;
 			lastFrame = performance.now();
-			const id = requestAnimationFrame(animate);
-			setAnimationId(id);
+			requestAnimationFrame(animate);
 		}
 	};
 
@@ -112,61 +106,59 @@ export default function ImageCarousel(props: ImageCarouselMeta) {
 		<>
 			<div
 				ref={container}
-				// class={cn(imageWrapperVariants({ variant: 'lg' }), 'cursor-grab touch-pan-y')}
+				class="h-[60vh] max-h-150 min-h-90 cursor-grab touch-pan-y overflow-hidden"
 				onPointerDown={onPointerDown}
 				onPointerMove={onPointerMove}
 				onPointerUp={onPointerUp}
 				role="region"
 				aria-label="Image carousel"
 			>
-				<div
-					ref={imageCarousel}
-					class="flex h-full will-change-transform"
-					style={{ translate: `${-pos()}px 0 0` }}
-				>
-					<For each={props.content}>
-						{(image) => (
-							<div class="h-full flex-none">
-								{/* <Image class="mx-2 block max-w-screen rounded-sm md:mx-4" image={image} /> */}
+				<div ref={imageCarousel} class="flex h-full flex-none will-change-transform">
+					<For each={[0, 1]}>
+						{(i) => (
+							<div class="flex flex-none" aria-hidden={i > 0 ? 'true' : undefined}>
+								<For each={props.meta.content}>
+									{(image) => <Image class="w-fit" image={image} />}
+								</For>
 							</div>
 						)}
 					</For>
 				</div>
 			</div>
+
+			<div class={cn('mt-9 flex justify-end gap-1')}>
+				<button
+					onClick={() => {
+						reset();
+						lastFrame = performance.now();
+						currentVelocity = -(scrollMultiplier(container) * 40);
+						const id = requestAnimationFrame(animate);
+						setAnimationId(id);
+					}}
+					aria-label="Scroll carousel left"
+					class="relative"
+					tabIndex={0}
+				>
+					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
+					<CaretCircleLeftFill class="text-tone size-20" />
+				</button>
+
+				<button
+					onClick={() => {
+						reset();
+						lastFrame = performance.now();
+						currentVelocity = scrollMultiplier(container) * 40;
+						const id = requestAnimationFrame(animate);
+						setAnimationId(id);
+					}}
+					aria-label="Scroll carousel right"
+					class="relative"
+					tabIndex={0}
+				>
+					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
+					<CaretCircleLeftFill class="text-tone size-20 rotate-180" />
+				</button>
+			</div>
 		</>
 	);
 }
-
-			// 	<div class={cn(containerVariants({ variant: 'inner' }), 'mt-9 flex justify-end gap-1')}>
-			// 	<button
-			// 		onClick={() => {
-			// 			reset();
-			// 			lastFrame = performance.now();
-			// 			currentVelocity = -(scrollMultiplier(container) * 40);
-			// 			const id = requestAnimationFrame(animate);
-			// 			setAnimationId(id);
-			// 		}}
-			// 		aria-label="Scroll carousel left"
-			// 		class="relative"
-			// 		tabIndex={0}
-			// 	>
-			// 		<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-			// 		<CaretCircleLeftFill class="text-tone size-20" />
-			// 	</button>
-			//
-			// 	<button
-			// 		onClick={() => {
-			// 			reset();
-			// 			lastFrame = performance.now();
-			// 			currentVelocity = scrollMultiplier(container) * 40;
-			// 			const id = requestAnimationFrame(animate);
-			// 			setAnimationId(id);
-			// 		}}
-			// 		aria-label="Scroll carousel right"
-			// 		class="relative"
-			// 		tabIndex={0}
-			// 	>
-			// 		<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-			// 		<CaretCircleLeftFill class="text-tone size-20 rotate-180" />
-			// 	</button>
-			// </div>/*}

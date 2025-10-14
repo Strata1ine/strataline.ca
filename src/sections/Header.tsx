@@ -4,7 +4,7 @@
 
 import type { Props as HeaderMeta } from './Header.astro';
 
-export default function Header(props: HeaderMeta) {
+export default function Header(props: { content: HeaderMeta['content'] }) {
 	// const open = createMemo(() => modals.is(modals.mobile));
 	// const uid = genUid();
 

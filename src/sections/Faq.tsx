@@ -1,7 +1,7 @@
 import { For } from 'solid-js';
 import type { Props as FaqMeta } from './Faq.astro';
 import Accordion from '@corvu/accordion';
-import styles from './Faq.module.css';
+import styles from './Faq.module.scss';
 import { cn } from '@/frontend/utils';
 
 export default function Faq(props: { content: FaqMeta['content'] }) {
@@ -11,10 +11,15 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 				<For each={props.content}>
 					{(faq) => {
 						return (
-							<div class={cn('border-accent border-t-1 py-8 first:border-t-0', styles.trigger)}>
+							<div class="border-accent border-t-1 py-8 first:border-t-0">
 								<Accordion.Item>
 									<h3 class="heading-3xl">
-										<Accordion.Trigger class="gap-inset flex w-full cursor-pointer touch-manipulation items-center justify-between">
+										<Accordion.Trigger
+											class={cn(
+												'gap-inset flex w-full cursor-pointer touch-manipulation items-center justify-between',
+												styles.trigger,
+											)}
+										>
 											{faq.title}
 											<div
 												class={cn('relative size-6 flex-none gap-4', styles.expand)}

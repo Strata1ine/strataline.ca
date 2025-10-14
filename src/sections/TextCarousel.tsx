@@ -71,7 +71,7 @@ export default function TextCarousel(props: TextCarouselMeta) {
 		if (e.button !== 0) return;
 
 		pointerId = e.pointerId;
-		(e.currentTarget as HTMLElement).setPointerCapture(pointerId);
+		e.currentTarget.setPointerCapture(pointerId);
 
 		if (animationId != null) {
 			cancelAnimationFrame(animationId);

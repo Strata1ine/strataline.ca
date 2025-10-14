@@ -7,8 +7,11 @@
         "@astrojs/netlify": "^6.5.12",
         "@astrojs/solid-js": "^5.1.1",
         "astro": "^5.14.4",
+        "class-variance-authority": "^0.7.1",
         "corvu": "^0.7.2",
+        "solid-focus-trap": "^0.1.9",
         "solid-js": "^1.9.9",
+        "tailwind-merge": "^3.3.1",
       },
       "devDependencies": {
         "@astrojs/check": "^0.9.4",
@@ -22,12 +25,10 @@
         "@typescript-eslint/parser": "^8.46.1",
         "astro-frontmatter-components": "./lib/astro-frontmatter-components",
         "astro-icon": "^1.1.5",
-        "class-variance-authority": "^0.7.1",
         "eslint": "^9.37.0",
         "eslint-plugin-astro": "^1.3.1",
         "eslint-plugin-solid": "^0.14.5",
         "googleapis": "^161.0.0",
-        "marked": "^16.4.0",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.6.14",
@@ -35,7 +36,6 @@
         "sass": "^1.93.2",
         "sharp-ico": "^0.1.5",
         "string-strip-html": "^13.4.24",
-        "tailwind-merge": "^3.3.1",
         "tailwindcss": "^4.1.14",
         "typescript": "^5.9.3",
         "typescript-plugin-css-modules": "^5.2.0",
@@ -1383,8 +1383,6 @@
     "map-obj": ["map-obj@5.0.2", "", {}, "sha512-K6K2NgKnTXimT3779/4KxSvobxOtMmx1LBZ3NwRxT/MDIR3Br/fQ4Q+WCX5QxjyUR8zg5+RV9Tbf2c5pAWTD2A=="],
 
     "markdown-table": ["markdown-table@3.0.4", "", {}, "sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw=="],
-
-    "marked": ["marked@16.4.0", "", { "bin": { "marked": "bin/marked.js" } }, "sha512-CTPAcRBq57cn3R8n3hwc2REddc28hjR7RzDXQ+lXLmMJYqn20BaI2cGw6QjgZGIgVfp2Wdfw4aMzgNteQ6qJgQ=="],
 
     "math-intrinsics": ["math-intrinsics@1.1.0", "", {}, "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="],
 

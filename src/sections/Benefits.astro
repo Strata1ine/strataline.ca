@@ -2,7 +2,6 @@
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos } from '@/schemas';
-import { marked } from 'marked';
 
 export const schema = (_: SchemaContext) => ({
 	id: z.string().optional(),
@@ -22,6 +21,7 @@ const meta = Astro.props;
 import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Container from './layout/Container.astro';
+import markdown from '@/backend/markdown';
 ---
 
 <Divider>
@@ -38,7 +38,7 @@ import Container from './layout/Container.astro';
 								<h4 class="heading-2xl font-semibold">{benefit.title}</h4>
 							</div>
 
-							<p class="desc-base">{await marked.parseInline(benefit.desc)}</p>
+							<p class="desc-base" set:html={await markdown.parseInline(benefit.desc)} />
 						</div>
 					);
 				})

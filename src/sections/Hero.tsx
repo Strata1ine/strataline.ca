@@ -11,7 +11,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 		idx: idx(),
 		setIdx: setIdx,
 		length: props.content.images.length,
-		speed: props.speed,
+		speed: props.content.speed,
 	});
 
 	return (

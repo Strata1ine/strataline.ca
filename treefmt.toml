@@ -15,4 +15,6 @@ includes = [
   "*.yaml",
   "*.astro",
   "*.mjs",
+  "*.scss",
+  "*.css",
 ]

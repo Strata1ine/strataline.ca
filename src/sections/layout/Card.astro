@@ -9,8 +9,8 @@ interface Props {
 }
 
 const meta = Astro.props;
-import { marked } from 'marked';
 import { cn } from '@/frontend/utils';
+import markdown from '@/backend/markdown';
 
 import Image from '@/components/Image';
 ---
@@ -34,7 +34,7 @@ import Image from '@/components/Image';
 			{meta.title}
 		</h3>
 
-		<p class="desc-base order-3 sm:order-none">{await marked.parseInline(meta.desc)}</p>
+		<p class="desc-base order-3 sm:order-none" set:html={await markdown.parseInline(meta.desc)} />
 
 		<div class="order-4 mt-6 sm:order-none">
 			<slot />

@@ -19,13 +19,13 @@ import Divider from './layout/Divider.astro';
 import Title from './layout/Title.astro';
 import Container from './layout/Container.astro';
 import Island from './Faq';
+import markdown from '@/backend/markdown';
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
-import { marked } from 'marked';
 for (const faq of meta.content) {
-	faq.desc = await marked.parse(faq.desc);
+	faq.desc = await markdown.parse(faq.desc);
 }
 ---
 

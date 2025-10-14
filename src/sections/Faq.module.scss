@@ -1,0 +1,60 @@
+.trigger {
+	.expand {
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: calc(50% - 1px);
+			bottom: 0;
+			width: 2px;
+			background-color: var(--color-black);
+			transform-origin: center;
+			transition: transform 250ms;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: calc(50% - 1px);
+			right: 0;
+			height: 2px;
+			background-color: var(--color-black);
+			transform-origin: center;
+		}
+	}
+	
+	&[data-expanded] .expand::before {
+    transform: rotateZ(90deg);
+  }
+}
+
+.content {
+	&[data-collapsed] {
+		animation: collapse 350ms ease forwards;
+	}
+	&[data-expanded] {
+		animation: expand 350ms ease forwards;
+	}
+}
+
+@keyframes collapse {
+	0% {
+		max-height: var(--corvu-disclosure-content-height, 500px);
+		opacity: 1;
+	}
+	100% {
+		max-height: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes expand {
+	0% {
+		max-height: 0;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		max-height: var(--corvu-disclosure-content-height, 500px);
+	}
+}
