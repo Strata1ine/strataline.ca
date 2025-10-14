@@ -1,5 +1,4 @@
 import { createSignal, onMount, onCleanup } from 'solid-js';
-import { modals } from '@/frontend/stores';
 import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
 import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
@@ -61,7 +60,7 @@ export default function FluidTalk() {
 					'transition-property': 'width, height, border-radius, translate, background-color, color',
 					'will-change': 'width, height, border-radius, translate, background-color, color',
 				}}
-				onClick={() => modals.open(modals.talk)}
+				onClick={() => {}}
 			>
 				<div
 					aria-hidden="true"

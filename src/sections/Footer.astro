@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import * as Layout from '@/components/Layout';
-// import Search from '@/components/actions/Search.svelte';
+// import Search from '@/components/Search';
 
 export const schema = (c: SchemaContext) => ({});
 
@@ -9,7 +9,7 @@ import socials from '#/socials.json';
 import business from '#/business.json';
 ---
 
-<Layout.Divider as="footer" spacing="top">
+<Layout.Divider as="footer">
 	<Layout.Container
 		variant="inner"
 		class="border-accent relative z-2 border-t-1 bg-gradient-to-b from-transparent via-white/90 to-white py-12"

@@ -21,7 +21,7 @@ import Island from './Hero';
 import FluidTalk from '@/components/FluidTalk';
 ---
 
-<section class="relative box-content py-10 xl:py-20" id={meta.id}>
+<section class="relative box-content py-5 xl:py-20" id={meta.id}>
 	<span
 		class="bg-accent absolute -top-25 right-0 -bottom-15 z-[-1] w-1/4 rounded-bl-lg sm:left-0 sm:block sm:rounded-br-lg xl:w-(--right-hero-offset)"
 	>
@@ -29,12 +29,12 @@ import FluidTalk from '@/components/FluidTalk';
 
 	<Layout.Container
 		variant="outer"
-		class="relative flex flex-col sm:flex-row gap-5 md:gap-8 xl:gap-11"
+		class="relative flex flex-col gap-5 sm:flex-row sm:gap-8 xl:gap-13"
 	>
 		<div class="order-2 flex w-full sm:w-1/2 sm:flex-shrink-0 sm:flex-col 2xl:flex-row-reverse">
 			<Island client:visible content={meta.content} />
 		</div>
-		<div class="contents flex-1 flex-col gap-2 sm:gap-4 sm:order-2 sm:flex sm:justify-center">
+		<div class="contents flex-1 flex-col gap-2 sm:order-2 sm:flex sm:justify-center sm:gap-4">
 			<h1 class="heading-7xl font-bold">{meta.title}</h1>
 			<div class="order-3">
 				<p class="desc-base">{meta.desc}</p>

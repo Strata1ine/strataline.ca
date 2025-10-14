@@ -2,7 +2,6 @@ import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'so
 import Stars from '@/components/Stars';
 import Feather from '~icons/ph/feather-fill';
 import type { Props as ReviewsProps } from './Reviews.astro';
-import { modals } from '@/frontend/stores';
 import { useQueryDevice } from '@/frontend/mobile';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
@@ -141,7 +140,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 
 				<button
 					class="bg-accent gap-inset absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
-					onClick={() => modals.open(modals.review)}
+					onClick={() => {}}
 					onPointerDown={(e) => e.stopPropagation()}
 				>
 					<Feather class="size-8" />

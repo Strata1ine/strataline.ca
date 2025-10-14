@@ -1,14 +1,14 @@
 ---
-import Message from '@/sections/layout/Message.astro';
+import * as Layout from '@/components/Layout';
 import Footer from '@/sections/Footer.astro';
-import Layout from '@/layouts/Layout.astro';
+import Root from '@/layouts/Root.astro';
 ---
 
-<Layout title="Thank you!" noIndex={true}>
-	<Message
+<Root title="Thank you!" noIndex={true}>
+	<Layout.Message
 		title="Thank you!"
 		desc="We have received your message, we will respond as soon as we can. Expect a response tomorrow!"
 	/>
 
 	<Footer />
-</Layout>
+</Root>
