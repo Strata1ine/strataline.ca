@@ -100,7 +100,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	return (
-		<div class="relative my-7 cursor-grab touch-pan-y">
+		<>
 			<div
 				class="relative my-7 cursor-grab touch-pan-y"
 				onPointerDown={onPointerDown}
@@ -164,7 +164,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					/>
 				</div>
 			</Show>
-		</div>
+		</>
 	);
 }
 
@@ -176,7 +176,7 @@ const Review = (review: ReviewsProps['content'][number]) => {
 					<span class="font-semibold">{review.location}</span>
 				</div>
 
-				<h3 class="font-serif text-balance text-2xl xl:text-3xl">{review.title}</h3>
+				<h3 class="font-serif text-2xl text-balance xl:text-3xl">{review.title}</h3>
 
 				<div class="mt-3 mb-4 flex gap-1.5">
 					<span class="sr-only">{review.stars} stars out of 5</span>

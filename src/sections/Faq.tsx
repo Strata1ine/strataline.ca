@@ -28,7 +28,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 									</Accordion.Trigger>
 								</h3>
 
-								<Accordion.Content class="data-expanded:animate-expand data-collapsed:animate-collapse data-expanded:fade-in-0% data-collapsed:fade-out-0% transition-opacity duration-300 contain-paint data-collapsed:opacity-0 data-expanded:opacity-100">
+								<Accordion.Content class="data-expanded:animate-expand data-collapsed:animate-collapse data-expanded:fade-in-0% data-collapsed:fade-out-0% transition-opacity duration-400 contain-content data-collapsed:opacity-0 data-expanded:opacity-100">
 									{/* eslint-disable-next-line solid/no-innerhtml */}
 									<div class="prose my-3 mr-4 max-w-[110ch]" innerHTML={faq.desc} />
 								</Accordion.Content>

@@ -22,7 +22,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 	return (
 		<>
 			<div class="2xl:w-diff flex-shrink-0" />
-			<div class="bg-accent flex rounded-md contain-paint">
+			<div class="bg-accent flex rounded-md contain-content">
 				<For each={props.meta}>
 					{(card, i) => {
 						const isActive = () => i() === idx();
@@ -35,7 +35,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
-								<div class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-paint sm:h-full sm:w-1/2 sm:rounded-none">
+								<div class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-content sm:h-full sm:w-1/2 sm:rounded-none">
 									{(() => {
 										switch (card.media.type) {
 											case 'image':

@@ -122,7 +122,7 @@ export default function TextCarousel(props: { meta: TextCarouselMeta }) {
 
 	return (
 		<div
-			class="border-accent py-inset touch-pan-y border-y-1 contain-paint"
+			class="border-accent py-inset touch-pan-y border-y-1 contain-content"
 			ref={(el) => (container = el)}
 			onPointerDown={onPointerDown}
 			onPointerMove={onPointerMove}

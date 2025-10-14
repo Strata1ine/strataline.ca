@@ -8,7 +8,7 @@ export const schema = (_: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 import Island from './TextCarousel';
 import * as Layout from '@/components/Layout';
 ---
