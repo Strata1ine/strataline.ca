@@ -5,7 +5,7 @@ import { Image, optImage } from '@/components/Image';
 import SlideNav from '@/components/SlideNav';
 import YoutubeVideo from '@/components/YoutubeVideo';
 import Video from '@/components/Video';
-import { Link } from '@/components/Actions';
+import Actions from '@/components/Actions';
 import { slideshow } from '@/frontend/slideshow';
 import { cn } from '@/frontend/utils';
 
@@ -60,9 +60,9 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 									<Show when={card.link}>
 										{(link) => (
 											<div class="mt-7">
-												<Link rel="noopener noreferrer" target="_blank" href={link().url}>
+												<Actions.Link rel="noopener noreferrer" target="_blank" href={link().url}>
 													{link().name}
-												</Link>
+												</Actions.Link>
 											</div>
 										)}
 									</Show>

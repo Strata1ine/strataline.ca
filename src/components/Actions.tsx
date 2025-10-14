@@ -20,7 +20,7 @@ export const buttonVariants = cva(
 	},
 );
 
-export function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
+function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
 	return (
 		<button
 			class={buttonVariants({
@@ -33,7 +33,7 @@ export function Button(props: ComponentProps<'button'> & VariantProps<typeof but
 	);
 }
 
-export function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
+function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
 	return (
 		<a
 			class={buttonVariants({
@@ -45,3 +45,10 @@ export function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVari
 		/>
 	);
 }
+
+const Actions = Object.assign(Button, {
+	Link,
+	Button,
+});
+
+export default Actions;

@@ -16,18 +16,16 @@ export const schema = (_: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
-import Divider from './layout/Divider.astro';
-import Title from './layout/Title.astro';
-import Container from './layout/Container.astro';
+import * as Layout from '@/components/Layout';
 import markdown from '@/backend/markdown';
 ---
 
-<Divider>
-	<Title title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
+<Layout.Divider>
+	<Layout.Title title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
 
-	<Container variant="inner">
+	<Layout.Container variant="inner">
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
 			{
 				meta.content.map(async (benefit, i) => {
@@ -44,5 +42,5 @@ import markdown from '@/backend/markdown';
 				})
 			}
 		</div>
-	</Container>
-</Divider>
+	</Layout.Container>
+</Layout.Divider>

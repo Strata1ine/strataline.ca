@@ -22,36 +22,33 @@ export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 let next = swapPos(meta.pos);
 
-import { Link } from '@/components/Actions';
-import Divider from './layout/Divider.astro';
-import Title from './layout/Title.astro';
-import Container from './layout/Container.astro';
-import Card from './layout/Card.astro';
+import Actions from '@/components/Actions';
+import * as Layout from '@/components/Layout';
 ---
 
-<Divider id={meta.id}>
-	<Title title={meta.title} pos={meta.pos} />
+<Layout.Divider id={meta.id}>
+	<Layout.Title title={meta.title} pos={meta.pos} />
 
-	<Container variant="outer" class="space-y-20 sm:space-y-35">
+	<Layout.Container variant="outer" class="space-y-20 sm:space-y-35">
 		{
 			services.map((service, _) => {
 				const slug = service.id.split('/')[0];
 				next = swapPos(next);
 
 				return (
-					<Card
+					<Layout.Card
 						id={slug}
 						image={service.data.image}
 						title={service.data.title}
 						desc={service.data.desc}
 						pos={next}
 					>
-						<Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">
+						<Actions.Link href={`/services/${slug}`} rel="noopener noreferrer" data-astro-prefetch="">
 							Explore More
-						</Link>
-					</Card>
+						</Actions.Link>
+					</Layout.Card>
 				);
 			})
 		}
-	</Container>
-</Divider>
+	</Layout.Container>
+</Layout.Divider>

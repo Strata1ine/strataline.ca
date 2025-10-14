@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Root from '@/layouts/Root.astro';
 // import Menus from '@/components/modals/Menus.svelte';
 import { getEntry, getCollection } from '@/content.config';
 // import { generateServiceSchema } from '@/schemas/service';
@@ -16,6 +16,6 @@ const services = await getCollection('services');
 */
 ---
 
-<Layout title={data.title} desc={data.desc} blocks={data.sections}>
+<Root title={data.title} desc={data.desc} blocks={data.sections}>
 	<!-- <Menus client:idle /> -->
-</Layout>
+</Root>

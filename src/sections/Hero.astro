@@ -16,7 +16,7 @@ export const schema = (c: SchemaContext) => ({
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 
-import Container from './layout/Container.astro';
+import * as Layout from '@/components/Layout';
 import Island from './Hero';
 import FluidTalk from '@/components/FluidTalk';
 ---
@@ -27,7 +27,7 @@ import FluidTalk from '@/components/FluidTalk';
 	>
 	</span>
 
-	<Container
+	<Layout.Container
 		variant="outer"
 		class="relative flex flex-col gap-4 sm:flex-row md:gap-x-8 xl:gap-x-11"
 	>
@@ -41,5 +41,5 @@ import FluidTalk from '@/components/FluidTalk';
 				<FluidTalk client:load />
 			</div>
 		</div>
-	</Container>
+	</Layout.Container>
 </section>

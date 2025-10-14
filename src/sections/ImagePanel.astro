@@ -16,18 +16,16 @@ export const schema = (c: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
 import Image from '@/components/Image';
-import Divider from './layout/Divider.astro';
-import Title from './layout/Title.astro';
-import Container from './layout/Container.astro';
+import * as Layout from '@/components/Layout';
 ---
 
-<Divider>
-	<Title title={meta.title} pos={meta.pos} />
+<Layout.Divider>
+	<Layout.Title title={meta.title} pos={meta.pos} />
 
-	<Container variant="outer" class="flex flex-wrap justify-center gap-10 sm:gap-8">
+	<Layout.Container variant="outer" class="flex flex-wrap justify-center gap-10 sm:gap-8">
 		{
 			meta.content.map((panel, _) => {
 				return (
@@ -41,5 +39,5 @@ import Container from './layout/Container.astro';
 				);
 			})
 		}
-	</Container>
-</Divider>
+	</Layout.Container>
+</Layout.Divider>

@@ -25,18 +25,16 @@ export const schema = (c: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
+import * as Layout from '@/components/Layout';
 import Island from './Cardshow';
-import Divider from './layout/Divider.astro';
-import Title from './layout/Title.astro';
-import Container from './layout/Container.astro';
 ---
 
-<Divider id={meta.id}>
-	<Title title={meta.title} pos={meta.pos} />
+<Layout.Divider id={meta.id}>
+	<Layout.Title title={meta.title} pos={meta.pos} />
 
-	<Container variant="outer" class="flex flex-col 2xl:flex-row">
+	<Layout.Container variant="outer" class="flex flex-col 2xl:flex-row">
 		<Island client:visible meta={meta.content} speed={meta.speed} />
-	</Container>
-</Divider>
+	</Layout.Container>
+</Layout.Divider>

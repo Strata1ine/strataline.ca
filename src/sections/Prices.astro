@@ -19,17 +19,16 @@ export const schema = (_: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
-import Divider from './layout/Divider.astro';
-import Split from './layout/Split.astro';
+import * as Layout from '@/components/Layout';
 
 import { Icon } from 'astro-icon/components';
 import markdown from '@/backend/markdown';
 ---
 
-<Divider>
-	<Split pos={meta.pos}>
+<Layout.Divider>
+	<Layout.Split pos={meta.pos}>
 		<div slot="title" class="flex-1">
 			<h2 class="heading-5xl top-0 font-bold sm:sticky">
 				{meta.title}
@@ -69,5 +68,5 @@ import markdown from '@/backend/markdown';
 				})
 			}
 		</div>
-	</Split>
-</Divider>
+	</Layout.Split>
+</Layout.Divider>

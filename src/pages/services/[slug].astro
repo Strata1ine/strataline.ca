@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Root from '@/layouts/Root.astro';
 
 import { Icon } from 'astro-icon/components';
 
@@ -9,7 +9,7 @@ import { getCollection } from '@/content.config';
 import { Image } from '@/components/Image';
 
 import Home from '@/components/Home.astro';
-import Container from '@/sections/layout/Container.astro';
+import * as Layout from '@/components/Layout';
 // import Footer from '@/sections/Footer.astro';
 // import Menus from '@/components/modals/Menus.svelte';
 import FluidTalk from '@/components/FluidTalk';
@@ -32,14 +32,14 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 // schemas={generateServiceSchema(Astro, service)}
 ---
 
-<Layout
+<Root
 	title={service.data.title}
 	desc={service.data.seo}
 	blocks={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
 >
 	<section class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
-		<Container
+		<Layout.Container
 			variant="outer"
 			class="flex h-full flex-col gap-3 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
 		>
@@ -71,18 +71,18 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 				image={service.data.image}
 				widths={[400, 730]}
 			/>
-		</Container>
+		</Layout.Container>
 	</section>
 
-	<Container variant="inner" slot="before">
+	<Layout.Container variant="inner" slot="before">
 		<Icon
 			aria-hidden={true}
 			is:inline
 			name="arrow"
 			class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
 		/>
-	</Container>
+	</Layout.Container>
 
 	<!-- <Footer /> -->
 	<!-- <Menus client:idle /> -->
-</Layout>
+</Root>

@@ -2,7 +2,6 @@
 import type { SchemaOf } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { image } from '@/schemas';
-import Divider from './layout/Divider.astro';
 
 export const schema = (c: SchemaContext) => ({
 	speed: z.number().optional().default(1.0),
@@ -10,11 +9,12 @@ export const schema = (c: SchemaContext) => ({
 });
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
+import * as Layout from '@/components/Layout';
 import Island from './ImageCarousel';
 ---
 
-<Divider>
+<Layout.Divider>
 	<Island client:visible meta={meta} />
-</Divider>
+</Layout.Divider>
