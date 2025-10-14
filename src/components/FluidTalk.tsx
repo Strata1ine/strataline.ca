@@ -2,8 +2,7 @@ import { createSignal, onMount, onCleanup } from 'solid-js';
 import { modals } from '@/frontend/stores';
 import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
-import { buttonVariants } from '@/components/Button';
-import { fabVariants, fabSize } from '@/components/Fab';
+import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import { cn } from '@/frontend/utils';
 
 export default function FluidTalk() {
@@ -11,7 +10,7 @@ export default function FluidTalk() {
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
 	const phone = useQueryDevice(1000);
-	const inset = () => (phone.isMobile() ? 10 : 50);
+	const inset = () => (phone.isMobile() ? 25 : 70);
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
@@ -75,7 +74,7 @@ export default function FluidTalk() {
 				</div>
 				<Mailbox
 					class={cn(
-						'absolute top-1/2 left-1/2 size-11 -translate-1/2 transition-opacity duration-500',
+						'absolute top-1/2 left-1/2 size-10 sm:size-12 -translate-1/2 transition-opacity duration-500',
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>

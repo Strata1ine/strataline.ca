@@ -1,15 +1,16 @@
 import type { Root } from 'hast';
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 
+const blockProcessor = await createMarkdownProcessor();
+const processor = await createMarkdownProcessor({
+	rehypePlugins: [rehypeUnwrapParagraphs],
+});
+
 const markdown = {
 	parse: async (content: string): Promise<string> => {
-		const processor = await createMarkdownProcessor();
-		return (await processor.render(content)).code;
+		return (await blockProcessor.render(content)).code;
 	},
 	parseInline: async (content: string): Promise<string> => {
-		const processor = await createMarkdownProcessor({
-			rehypePlugins: [rehypeUnwrapParagraphs],
-		});
 		return (await processor.render(content)).code;
 	},
 };

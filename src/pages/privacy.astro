@@ -1,23 +1,23 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Root from '@/layouts/Root.astro';
 import Footer from '@/sections/Footer.astro';
-import Home from '@/components/Home.astro';
-import Container from '@/sections/layout/Container.astro';
+import Home from '@/components/Home';
+import * as Layout from '@/components/Layout';
 
 import { Content, frontmatter } from '#/privacy.md';
 ---
 
-<Layout title={frontmatter?.title} desc={frontmatter?.desc}>
-	<Container variant="inner" class="mt-20">
-		<Home class="mb-2" />
-		<h1 class="heading-massive pointer-events-none mb-9 select-none">
+<Root title={frontmatter?.title} desc={frontmatter?.desc}>
+	<Layout.Container variant="inner" class="mt-20">
+		<Home class="mb-3 xl:mb-6" />
+		<h1 class="heading-9xl mb-9">
 			{frontmatter?.title}
 		</h1>
 
 		<div class="prose">
 			<Content />
 		</div>
-	</Container>
+	</Layout.Container>
 
 	<Footer />
-</Layout>
+</Root>

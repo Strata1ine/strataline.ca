@@ -2,8 +2,10 @@
 // import Burger from "@/components/decor/Burger.svelte";
 // import { modals, genUid } from "@/frontend/stores.svelte";
 
+import { For } from 'solid-js';
 import type { Props as HeaderMeta } from './Header.astro';
 import styles from './Header.module.scss';
+import { cn } from '@/frontend/utils';
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	// const open = createMemo(() => modals.is(modals.mobile));
@@ -11,14 +13,17 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 
 	return (
 		<>
-			<ul class="mt-1 hidden gap-14 md:flex">
-				{props.content.map((item) => (
-					<li>
-						<a class={styles.link} href={`#${item.id}`} class="desc-sm relative" tabindex="0">
-							{item.name}
-						</a>
-					</li>
-				))}
+			<ul class="mt-1 hidden gap-14 xl:flex">
+				<For
+					each={props.content}
+					children={(item, _) => (
+						<li>
+							<a class={cn(styles.link, 'relative text-base')} href={`#${item.id}`} tabindex="0">
+								{item.name}
+							</a>
+						</li>
+					)}
+				/>
 			</ul>
 
 			{/* 

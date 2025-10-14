@@ -63,7 +63,7 @@ import Island from './TextCarousel';
 							/>
 
 							<div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
-								<h3 class="heading-xl">{service.data.title}</h3>
+								<h3 class="font-serif text-xl text-balance sm:text-2xl xl:text-3xl">{service.data.title}</h3>
 
 								<Icon aria-hidden={true} name="arrow" is:inline />
 							</div>
@@ -74,5 +74,5 @@ import Island from './TextCarousel';
 		</Layout.Container>
 	</div>
 
-	{meta.content && <Island client:visible {...meta.content} />}
+	{meta.content && <Island client:visible meta={meta.content} />}
 </Layout.Divider>

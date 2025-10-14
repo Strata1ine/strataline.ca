@@ -8,35 +8,34 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 	return (
 		<div class="-mt-6">
 			<Accordion collapseBehavior="hide">
-				<For each={props.content}>
-					{(faq) => {
-						return (
-							<div class="border-accent border-t-1 py-8 first:border-t-0">
-								<Accordion.Item>
-									<h3 class="heading-3xl">
-										<Accordion.Trigger
-											class={cn(
-												'gap-inset flex w-full cursor-pointer touch-manipulation items-center justify-between',
-												styles.trigger,
-											)}
-										>
-											{faq.title}
-											<div
-												class={cn('relative size-6 flex-none gap-4', styles.expand)}
-												aria-hidden="true"
-											/>
-										</Accordion.Trigger>
-									</h3>
+				<For
+					each={props.content}
+					children={(faq, _) => (
+						<div class="border-accent border-t-1 py-8 first:border-t-0">
+							<Accordion.Item>
+								<h3 class="text-3xl md:text-4xl font-serif">
+									<Accordion.Trigger
+										class={cn(
+											'gap-inset flex w-full cursor-pointer touch-manipulation items-center justify-between',
+											styles.trigger,
+										)}
+									>
+										{faq.title}
+										<div
+											class={cn('relative size-6 flex-none gap-4', styles.expand)}
+											aria-hidden="true"
+										/>
+									</Accordion.Trigger>
+								</h3>
 
-									<Accordion.Content class={cn('contain-paint', styles.content)}>
-										{/* eslint-disable-next-line solid/no-innerhtml */}
-										<div class="prose my-3 mr-4 max-w-[110ch] font-sans" innerHTML={faq.desc} />
-									</Accordion.Content>
-								</Accordion.Item>
-							</div>
-						);
-					}}
-				</For>
+								<Accordion.Content class={cn('contain-paint', styles.content)}>
+									{/* eslint-disable-next-line solid/no-innerhtml */}
+									<div class="prose my-3 mr-4 max-w-[110ch]" innerHTML={faq.desc} />
+								</Accordion.Content>
+							</Accordion.Item>
+						</div>
+					)}
+				/>
 			</Accordion>
 		</div>
 	);

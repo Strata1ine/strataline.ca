@@ -1,49 +1,18 @@
 @import 'tailwindcss';
 
 @layer components {
-	.heading-massive {
-		@apply font-serif text-5xl text-balance sm:text-6xl md:text-7xl;
+	.heading-9xl {
+		@apply font-serif text-5xl text-balance sm:text-9xl;
 	}
 
-	.heading-6xl {
-		@apply font-serif text-2xl text-balance md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl;
+	.heading-7xl,
+	.prose h1 {
+		@apply font-serif text-4xl text-balance sm:text-5xl xl:text-6xl 2xl:text-7xl;
 	}
 
 	.heading-5xl,
 	.prose h2 {
-		@apply font-serif text-2xl text-balance md:text-3xl xl:text-4xl 2xl:text-5xl;
-	}
-
-	.prose h2,
-	.prose h3,
-	.prose h4,
-	.prose h5,
-	.prose h6 {
-		@apply mt-9 font-semibold first:mt-0;
-	}
-
-	.prose a {
-		@apply text-url;
-	}
-
-	.heading-4xl,
-	.prose h3 {
-		@apply font-serif text-xl text-balance md:text-3xl xl:text-4xl;
-	}
-
-	.heading-3xl,
-	.prose h4 {
-		@apply font-serif text-xl text-balance sm:text-xl md:text-2xl lg:text-3xl;
-	}
-
-	.heading-2xl,
-	.prose h5 {
-		@apply font-serif text-xl text-balance md:text-2xl;
-	}
-
-	.heading-xl,
-	.prose h6 {
-		@apply text-md sm:text-md font-serif text-base leading-7 text-balance md:text-xl;
+		@apply font-serif text-4xl text-balance md:text-5xl xl:text-6xl;
 	}
 
 	.desc-base,
@@ -51,6 +20,27 @@
 	.prose li {
 		@apply md:text-md font-sans text-base;
 		color: var(--color-desc);
+	}
+
+	.heading-4xl,
+	.prose h3 {
+		@apply font-serif text-balance text-4xl xl:text-5xl;
+	}
+
+	.prose h4 {
+		@apply font-serif text-balance text-3xl xl:text-4xl;
+	}
+
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose h5,
+	.prose h6 {
+		@apply mt-9 first:mt-0 font-semibold;
+	}
+
+	.prose a {
+		@apply text-url;
 	}
 
 	.prose {
@@ -78,16 +68,6 @@
 	.prose ol {
 		list-style-type: decimal;
 	}
-
-	.desc-sm {
-		@apply font-sans text-sm sm:text-base;
-		color: var(--color-desc);
-	}
-
-	.desc-md {
-		@apply text-md font-sans;
-		color: var(--color-desc);
-	}
 }
 
 @theme {
@@ -109,12 +89,12 @@
 	--font-sans: var(--font-dm-sans);
 	--font-mono: initial;
 
-	--breakpoint-xs: 576px;
-	--breakpoint-sm: 750px;
-	--breakpoint-md: 900px;
-	--breakpoint-lg: 1150px;
-	--breakpoint-xl: 1320px;
-	--breakpoint-2xl: 1480px;
+	/* --breakpoint-xs: 576px; */
+	/* --breakpoint-sm: 750px; */
+	/* --breakpoint-md: 900px; */
+	/* --breakpoint-lg: 1150px; */
+	/* --breakpoint-xl: 1320px; */
+	/* --breakpoint-2xl: 1480px; */
 
 	--spacing-inset: 0.9rem;
 	--spacing-inner: var(--breakpoint-xl);
@@ -129,28 +109,9 @@
 	--radius-lg: 1.25rem;
 	--radius-xl: 2rem;
 
-	--text-sm: 1.1rem;
-	--text-sm--line-height: 1.7;
 	--text-base: 1.2rem;
-	--text-base--line-height: 1.7;
-	--text-md: 1.45rem;
+	--text-md: 1.35rem;
 	--text-md--line-height: 1.7;
-	--text-bg: 1.65rem;
-	--text-bg--line-height: 1.5;
-	--text-xl: 1.9rem;
-	--text-xl--line-height: 1.1;
-	--text-2xl: 2.2rem;
-	--text-2xl--line-height: 1.1;
-	--text-3xl: 2.7rem;
-	--text-3xl--line-height: 1.1;
-	--text-4xl: 3.3rem;
-	--text-4xl--line-height: 1.1;
-	--text-5xl: 3.8rem;
-	--text-5xl--line-height: 1;
-	--text-6xl: 4.5rem;
-	--text-6xl--line-height: 0.95;
-	--text-7xl: 10rem;
-	--text-7xl--line-height: 0.9;
 }
 
 :root {

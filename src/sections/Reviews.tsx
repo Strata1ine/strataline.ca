@@ -145,15 +145,16 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					onPointerDown={(e) => e.stopPropagation()}
 				>
 					<Feather class="size-8" />
-					<span class="desc-sm font-serif">Write a review</span>
+					<span class="font-serif">Write a review</span>
 				</button>
 			</div>
 
 			<Show when={pagesCount() > 1}>
 				<div class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint">
 					<Thumb />
-					<For each={Array.from({ length: pagesCount() })}>
-						{(_, i) => (
+					<For
+						each={Array.from({ length: pagesCount() })}
+						children={(_, i) => (
 							<button
 								aria-label={`View review ${i()}`}
 								class="flex-1 cursor-pointer rounded-sm"
@@ -161,7 +162,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 								onClick={() => setIdx(i())}
 							/>
 						)}
-					</For>
+					/>
 				</div>
 			</Show>
 		</div>
@@ -173,10 +174,10 @@ const Review = (review: ReviewsProps['content'][number]) => {
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
 			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
 				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
-					<span class="desc-sm font-semibold">{review.location}</span>
+					<span class="font-semibold">{review.location}</span>
 				</div>
 
-				<h3 class="heading-2xl">{review.title}</h3>
+				<h3 class="font-serif text-balance text-2xl xl:text-3xl">{review.title}</h3>
 
 				<div class="mt-3 mb-4 flex gap-1.5">
 					<span class="sr-only">{review.stars} stars out of 5</span>

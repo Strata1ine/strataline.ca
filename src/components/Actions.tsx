@@ -1,9 +1,9 @@
 import { cn } from '@/frontend/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { splitProps, type ComponentProps } from 'solid-js';
+import { type ComponentProps } from 'solid-js';
 
 export const buttonVariants = cva(
-	'touch-manipulation cursor-pointer select-none px-6 py-4 font-serif text-md xl:text-xl font-bold leading-none rounded-md',
+	'touch-manipulation cursor-pointer select-none px-6 py-4 font-serif text-2xl xl:text-3xl font-bold leading-none rounded-md',
 	{
 		variants: {
 			variant: {
@@ -22,16 +22,15 @@ export const buttonVariants = cva(
 );
 
 function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
-	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
-
+	const { class: className, variant, display, ...rest } = props;
 	return (
 		<button
 			class={cn(
 				buttonVariants({
-					variant: local.variant,
-					display: local.display,
+					variant,
+					display,
 				}),
-				local.class,
+				className,
 			)}
 			{...rest}
 		/>
@@ -39,16 +38,49 @@ function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVari
 }
 
 function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
-	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
-
+	const { class: className, variant, display, ...rest } = props;
 	return (
 		<a
 			class={cn(
 				buttonVariants({
-					variant: local.variant,
-					display: local.display,
+					variant,
+					display,
 				}),
-				local.class,
+				className,
+			)}
+			{...rest}
+		/>
+	);
+}
+
+export const fabSize = 95;
+export const fabVariants = cva('touch-manipulation cursor-pointer select-none', {
+	variants: {
+		variant: {
+			pill: `rounded-[50%] flex size-18 sm:size-23 w-[${fabSize}px] h-[${fabSize}px]`,
+		},
+		background: {
+			outline: 'border-black border bg-white',
+			accent: 'bg-accent/60 border border-black backdrop-blur-md',
+		},
+	},
+	defaultVariants: {
+		background: 'outline',
+		variant: 'pill',
+	},
+});
+
+
+function Fab(props: ComponentProps<'button'> & VariantProps<typeof fabVariants>) {
+	const { class: className, variant, background, ...rest } = props;
+	return (
+		<button
+			class={cn(
+				fabVariants({
+					variant: variant,
+					background: background,
+				}),
+				className,
 			)}
 			{...rest}
 		/>
@@ -58,6 +90,7 @@ function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) 
 const Actions = Object.assign(Button, {
 	Link,
 	Button,
+	Fab,
 });
 
 export default Actions;

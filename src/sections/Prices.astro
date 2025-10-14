@@ -30,7 +30,7 @@ import markdown from '@/backend/markdown';
 <Layout.Divider>
 	<Layout.Split pos={meta.pos}>
 		<div slot="title" class="flex-1">
-			<h2 class="heading-5xl top-0 font-bold sm:sticky">
+			<h2 class="text-4xl xl:text-5xl 2xl:text-6xl font-serif top-0 font-bold sm:sticky">
 				{meta.title}
 			</h2>
 		</div>
@@ -41,18 +41,18 @@ import markdown from '@/backend/markdown';
 					return (
 						<div class="border-accent border-t-1 py-7 first:border-t-0 first:pt-0 last:pb-0">
 							<div class="flex w-full items-center justify-between gap-4">
-								<h3 class="heading-2xl">{price.title}</h3>
+								<h3 class="font-serif font-semibold text-3xl">{price.title}</h3>
 								<div class="flex items-center gap-3">
-									<span class="desc-base text-success">${price.min.toLocaleString()}</span>
+									<span class="sm:text-base text-success">${price.min.toLocaleString()}</span>
 									<span class="">-</span>
-									<span class="desc-base text-success">${price.max.toLocaleString()}</span>
+									<span class="sm:text-base text-success">${price.max.toLocaleString()}</span>
 								</div>
 							</div>
 
 							<p class="desc-base my-4" set:html={await markdown.parseInline(price.desc)} />
 
 							{price.materials.map((s: string) => (
-								<div class="mt-1 flex gap-3 align-top">
+								<div class="mt-2 flex gap-3 align-top">
 									<Icon
 										aria-hidden={true}
 										name="ph:star-four-fill"
@@ -60,7 +60,7 @@ import markdown from '@/backend/markdown';
 										aria-hidden="true"
 										is:inline
 									/>
-									<span class="desc-sm">{s}</span>
+									<span class="text-base">{s}</span>
 								</div>
 							))}
 						</div>

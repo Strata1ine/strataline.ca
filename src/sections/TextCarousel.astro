@@ -10,6 +10,9 @@ export const schema = (_: SchemaContext) => ({
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
 import Island from './TextCarousel';
+import * as Layout from '@/components/Layout';
 ---
 
-<Island client:visible {...meta} />
+<Layout.Divider>
+	<Island client:visible meta={meta} />
+</Layout.Divider>

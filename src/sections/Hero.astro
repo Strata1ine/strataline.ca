@@ -29,13 +29,13 @@ import FluidTalk from '@/components/FluidTalk';
 
 	<Layout.Container
 		variant="outer"
-		class="relative flex flex-col gap-4 sm:flex-row md:gap-x-8 xl:gap-x-11"
+		class="relative flex flex-col sm:flex-row gap-5 md:gap-8 xl:gap-11"
 	>
 		<div class="order-2 flex w-full sm:w-1/2 sm:flex-shrink-0 sm:flex-col 2xl:flex-row-reverse">
 			<Island client:visible content={meta.content} />
 		</div>
-		<div class="contents flex-1 flex-col gap-3 sm:order-2 sm:flex sm:justify-center">
-			<h1 class="heading-6xl font-bold">{meta.title}</h1>
+		<div class="contents flex-1 flex-col gap-2 sm:gap-4 sm:order-2 sm:flex sm:justify-center">
+			<h1 class="heading-7xl font-bold">{meta.title}</h1>
 			<div class="order-3">
 				<p class="desc-base">{meta.desc}</p>
 				<FluidTalk client:load />

@@ -28,8 +28,9 @@ export const navStyles = cva(
 export default function Slidenav(props: Props) {
 	return (
 		<div class={cn('2xl:w-diff flex flex-shrink-0 items-center justify-center gap-2', props.class)}>
-			<For each={Array(props.length)}>
-				{(_, i) => (
+			<For
+				each={Array(props.length)}
+				children={(_, i) => (
 					<button
 						onClick={() => {
 							setVideoPlaying(false);
@@ -42,7 +43,7 @@ export default function Slidenav(props: Props) {
 						<div class={navStyles({ open: props.idx === i() })} />
 					</button>
 				)}
-			</For>
+			/>
 		</div>
 	);
 }
