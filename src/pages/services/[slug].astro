@@ -3,15 +3,12 @@ import Root from '@/layouts/Root.astro';
 
 import { Icon } from 'astro-icon/components';
 
-import { cn } from '@/frontend/utils';
 import { getCollection } from '@/content.config';
 // import { generateServiceSchema } from '@/build/schemas/service';
 import { Image } from '@/components/Image';
 
 import Home from '@/components/Home';
 import * as Layout from '@/components/Layout';
-// import Footer from '@/sections/Footer.astro';
-// import Menus from '@/components/modals/Menus.svelte';
 import FluidTalk from '@/components/FluidTalk';
 
 export const prerender = true;
@@ -38,7 +35,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 	blocks={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
 >
-	<section class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170" slot="before">
+	<section class="relative min-h-90 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170">
 		<Layout.Container
 			variant="outer"
 			class="flex h-full flex-col gap-5 sm:flex-row sm:py-0 md:gap-8 xl:gap-12"
@@ -74,7 +71,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 		</Layout.Container>
 	</section>
 
-	<Layout.Container variant="inner" slot="before">
+	<Layout.Container variant="inner">
 		<Icon
 			aria-hidden={true}
 			is:inline
@@ -82,7 +79,4 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 			class="h-auto w-15 -translate-y-1/2 rotate-90 xl:w-20"
 		/>
 	</Layout.Container>
-
-	<!-- <Footer /> -->
-	<!-- <Menus client:idle /> -->
 </Root>

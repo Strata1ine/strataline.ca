@@ -3,6 +3,7 @@ import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
 import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import { cn } from '@/frontend/utils';
+import LetsTalk from './menus/Talk';
 
 export default function FluidTalk() {
 	let sensor: HTMLElement;
@@ -47,7 +48,7 @@ export default function FluidTalk() {
 
 	return (
 		<div class="relative mt-9 h-14 xl:h-16" ref={(el) => (sensor = el!)}>
-			<button
+			<LetsTalk
 				aria-label="Let's talk (Ctrl+/)"
 				class={cn(
 					'z-1 duration-1000',
@@ -58,11 +59,10 @@ export default function FluidTalk() {
 				style={{
 					translate: style() ?? undefined,
 					'transition-property': 'width, height, border-radius, translate, background-color, color',
-					'will-change': 'width, height, border-radius, translate, background-color, color',
 				}}
 				onClick={() => {}}
 			>
-				<div
+				<span
 					aria-hidden="true"
 					class={cn(
 						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap transition-opacity duration-500',
@@ -70,14 +70,15 @@ export default function FluidTalk() {
 					)}
 				>
 					Let's Talk
-				</div>
+				</span>
+
 				<Mailbox
 					class={cn(
-						'absolute top-1/2 left-1/2 size-10 sm:size-12 -translate-1/2 transition-opacity duration-500',
+						'absolute top-1/2 left-1/2 size-10 -translate-1/2 transition-opacity duration-500 sm:size-12',
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>
-			</button>
+			</LetsTalk>
 		</div>
 	);
 }

@@ -189,7 +189,7 @@ const schema = {
 		{noIndex && <meta name="robots" content="noindex, nofollow" />}
 	</head>
 	<body>
-		<slot name="before" />
+		<slot />
 		<Frontmatter
 			callback={(data) => {
 				if (isPos(data.pos)) {
@@ -199,8 +199,6 @@ const schema = {
 			}}
 			{blocks}
 		/>
-		<slot />
-
 		<Footer />
 	</body>
 </html>

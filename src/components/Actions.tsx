@@ -1,6 +1,6 @@
 import { cn } from '@/frontend/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { type ComponentProps } from 'solid-js';
+import type { ComponentProps } from 'solid-js';
 
 export const buttonVariants = cva(
 	'touch-manipulation cursor-pointer select-none px-6 py-4 font-serif text-2xl xl:text-3xl font-bold leading-none rounded-md',
@@ -69,7 +69,6 @@ export const fabVariants = cva('touch-manipulation cursor-pointer select-none', 
 		variant: 'pill',
 	},
 });
-
 
 function Fab(props: ComponentProps<'button'> & VariantProps<typeof fabVariants>) {
 	const { class: className, variant, background, ...rest } = props;
