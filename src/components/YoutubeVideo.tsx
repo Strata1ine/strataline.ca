@@ -1,4 +1,4 @@
-import { onMount, onCleanup, createEffect } from 'solid-js';
+import { onMount, onCleanup, createEffect, createSignal } from 'solid-js';
 import {
 	videoPlaying,
 	setVideoPlaying,
@@ -8,6 +8,8 @@ import {
 
 export default function YoutubePlayer(props: { id: string }) {
 	let video: HTMLDivElement | undefined;
+
+	const [player, setPlayer] = createSignal<YT.Player | undefined>(undefined);
 
 	onMount(() => {
 		// load youtube API if it doesn't exist or is being loaded
@@ -21,45 +23,35 @@ export default function YoutubePlayer(props: { id: string }) {
 			};
 		}
 
-		let player: YT.Player | undefined;
-
-		// Watch for API ready state
 		createEffect(() => {
-			const ready = youtubeApiReady();
-			if (ready && video) {
-				const YT = window.YT;
-				player = new YT.Player(video, {
-					height: '100%',
-					width: '100%',
-					videoId: props.id,
-					playerVars: {
-						rel: 0,
-					},
-					events: {
-						onReady: () => {},
-						onError: (event) => {
-							console.error('YouTube player error: ', event.data);
-						},
-						onStateChange: (event) => {
-							setVideoPlaying(event.data === YT.PlayerState.PLAYING);
-						},
-					},
-				});
+			if (!youtubeApiReady() || !video) return;
 
-				createEffect(() => {
-					if (!videoPlaying() && player?.getPlayerState?.() === YT.PlayerState.PLAYING) {
-						player.pauseVideo();
-					}
-				});
-			}
-		});
+			const YT = window.YT;
+			const p = new YT.Player(video, {
+				height: '100%',
+				width: '100%',
+				videoId: props.id,
+				playerVars: { rel: 0 },
+				events: {
+					onReady: () => {},
+					onError: (e) => console.error('YouTube player error:', e.data),
+					onStateChange: (e) => setVideoPlaying(e.data === YT.PlayerState.PLAYING),
+				},
+			});
 
-		onCleanup(() => {
-			if (player && player.destroy) {
-				player.destroy();
-			}
+			setPlayer(p);
+
+			onCleanup(() => {
+				player()?.destroy();
+				setPlayer(undefined);
+			});
 		});
 	});
 
-	return <div class="select-none" ref={video}></div>;
+	createEffect(() => {
+		if (!player() || !youtubeApiReady()) return;
+		if (!videoPlaying()) player()?.pauseVideo();
+	});
+
+	return <div class="select-none" ref={video} />;
 }
