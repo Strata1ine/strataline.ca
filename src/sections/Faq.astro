@@ -18,7 +18,7 @@ export const schema = (_: SchemaContext) => ({
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 
-import markdown from '@/backend/markdown';
+import markdown from '@/build/markdown';
 for (const faq of meta.content) {
 	faq.desc = await markdown.parse(faq.desc);
 }

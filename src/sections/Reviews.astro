@@ -25,7 +25,7 @@ const meta = Astro.props as Props;
 
 import * as Layout from '@/components/Layout';
 import Island from './Reviews';
-import markdown from '@/backend/markdown';
+import markdown from '@/build/markdown';
 
 for (const [_, review] of meta.content.entries()) {
 	review.desc = await markdown.parseInline(review.desc);

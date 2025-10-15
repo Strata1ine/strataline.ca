@@ -8,12 +8,9 @@ export const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				fill: 'bg-accent',
+				fill: 'bg-accent w-full text-center',
 				outline: 'border-black border bg-white',
 				accent: 'bg-accent-dark text-white',
-			},
-			display: {
-				fill: 'w-full text-center',
 			},
 		},
 		defaultVariants: {
@@ -23,14 +20,13 @@ export const buttonVariants = cva(
 );
 
 function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
-	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
-	const { class: className, variant, display } = local;
+	const [local, rest] = splitProps(props, ['class', 'variant']);
+	const { class: className, variant } = local;
 	return (
 		<button
 			class={cn(
 				buttonVariants({
 					variant,
-					display,
 				}),
 				className,
 			)}
@@ -40,14 +36,13 @@ function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVari
 }
 
 function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
-	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
-	const { class: className, variant, display } = local;
+	const [local, rest] = splitProps(props, ['class', 'variant']);
+	const { class: className, variant } = local;
 	return (
 		<a
 			class={cn(
 				buttonVariants({
 					variant,
-					display,
 				}),
 				className,
 			)}

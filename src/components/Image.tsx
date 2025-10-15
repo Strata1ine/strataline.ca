@@ -58,7 +58,7 @@ export const imageVariants = cva('object-cover w-full h-full select-none', {
 		anim: {
 			fade: 'transition-[opacity] duration-1000 absolute',
 			zoom: 'min-w-0 transition-[flex] duration-800 flex-1 hover:flex-5',
-			hover: 'transition-scale duration-300 hover:scale-[1.05]',
+			hover: 'transition-[scale] duration-300 hover:scale-[1.05]',
 		},
 		active: {
 			true: '',

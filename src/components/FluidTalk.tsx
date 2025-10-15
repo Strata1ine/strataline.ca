@@ -4,7 +4,7 @@ import { useQueryDevice } from '@/frontend/mobile';
 import Mailbox from '~icons/ph/mailbox-fill';
 import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import { cn } from '@/frontend/utils';
-import LetsTalk from './menus/Talk';
+import Menus from './Menus';
 
 export default function FluidTalk() {
 	let sensor: HTMLElement;
@@ -54,7 +54,7 @@ export default function FluidTalk() {
 
 	return (
 		<div class="relative mt-9 h-14 xl:h-16" ref={(el) => (sensor = el!)}>
-			<LetsTalk
+			<Menus.LetsTalk
 				aria-label="Let's talk (Ctrl+/)"
 				class={cn(
 					'z-1',
@@ -87,7 +87,7 @@ export default function FluidTalk() {
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>
-			</LetsTalk>
+			</Menus.LetsTalk>
 		</div>
 	);
 }

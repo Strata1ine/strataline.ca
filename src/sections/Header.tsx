@@ -7,6 +7,10 @@ import type { Props as HeaderMeta } from './Header.astro';
 import styles from './Header.module.scss';
 import { cn } from '@/frontend/utils';
 
+export function Burger(props: { open: boolean }) {
+	return <div class={cn('pointer-events-none', styles.burger)} classList={{ open: props.open }} />;
+}
+
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	// const open = createMemo(() => modals.is(modals.mobile));
 	// const uid = genUid();
