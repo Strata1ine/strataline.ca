@@ -1,0 +1,150 @@
+import { cva } from 'class-variance-authority';
+import { createSignal, splitProps, type ComponentProps, type JSX } from 'solid-js';
+import Asterick from '~icons/ph/asterisk-bold';
+import Check from '~icons/ph/check-bold';
+import X from '~icons/ph/x-bold';
+
+function ValidityIcon(props: { valid?: boolean }) {
+	return (
+		<div class="relative size-6" aria-live="polite">
+			<Check
+				class={
+					'text-success absolute size-full duration-250 ' +
+					(!props.valid ? '-translate-y-full opacity-0' : '')
+				}
+				aria-hidden={!props.valid}
+				aria-label={props.valid ? 'Valid' : undefined}
+			/>
+			<X
+				class={
+					'text-error size-full duration-250 ' + (props.valid ? '-translate-y-full opacity-0' : '')
+				}
+				aria-hidden={!!props.valid}
+				aria-label={!props.valid ? 'Invalid' : undefined}
+			/>
+		</div>
+	);
+}
+
+export const fieldVariants = cva(
+	'border-accent w3c-focus block border-1 select-none transition-[border-radius] duration-400 gap-inset flex items-center p-5 overflow-hidden',
+	{
+		variants: {
+			variant: {
+				md: '',
+				xl: '',
+			},
+			open: {
+				true: '',
+				false: '',
+			},
+			top: {
+				true: '',
+				false: '',
+			},
+		},
+		compoundVariants: [
+			{ open: false, variant: 'md', className: 'rounded-md' },
+			{ open: false, variant: 'xl', className: 'rounded-xl' },
+
+			{ open: true, top: false, variant: 'md', className: 'rounded-tl-md rounded-tr-md' },
+			{ open: true, top: false, variant: 'xl', className: 'rounded-tl-xl rounded-tr-xl' },
+
+			{ open: true, top: true, variant: 'md', className: 'rounded-bl-md rounded-br-md' },
+			{ open: true, top: true, variant: 'xl', className: 'rounded-bl-xl rounded-br-xl' },
+		],
+		defaultVariants: {
+			open: false,
+			variant: 'md',
+			top: false,
+		},
+	},
+);
+
+let counter = 0;
+export const genUid = (): string => {
+	return `input-${(counter += 1)}`;
+};
+
+function Input(
+	props: {
+		name: string;
+		required?: boolean;
+		open?: boolean;
+		children?: JSX.Element;
+	} & ComponentProps<'input'>,
+) {
+	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children']);
+	const id = genUid();
+
+	return (
+		<div class="relative touch-manipulation">
+			<label
+				class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 select-none"
+				for={id}
+				onClick={(e) => {
+					if (e.currentTarget?.control instanceof HTMLButtonElement) {
+						e.currentTarget.control.click();
+						e.preventDefault();
+					}
+				}}
+			>
+				<span class="text-md font-serif leading-none font-semibold">{local.name}</span>
+				{local.required ? <Asterick class="text-error size-3" /> : null}
+			</label>
+
+			<label class={fieldVariants({ open: !!local.open })}>
+				<input class="w-full text-base focus:outline-none" id={id} {...input} />
+
+				{local.children}
+			</label>
+		</div>
+	);
+}
+
+function PhoneNumber(
+	props: {
+		name?: string;
+		required?: boolean;
+		open?: boolean;
+		validate?: boolean;
+	} & ComponentProps<'input'>,
+) {
+	const [local, rest] = splitProps(props, ['name']);
+
+	const [valid, setValid] = createSignal(false);
+	return (
+		<Input
+			name={local.name ?? 'Phone number'}
+			inputmode="tel"
+			autocomplete="tel"
+			pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
+			placeholder="(xxx) xxx-xxxx"
+			onInput={(e) => {
+				let parse = e.currentTarget.value.replace(/\D/g, '');
+				let pos = e.currentTarget.selectionStart || 0;
+
+				if (parse.length == 4 || parse.length == 7) {
+					pos += 3;
+				}
+
+				if (parse.length > 3 && parse.length <= 6) {
+					parse = `(${parse.slice(0, 3)}) ${parse.slice(3)}`;
+				} else if (parse.length > 6) {
+					parse = `(${parse.slice(0, 3)}) ${parse.slice(3, 6)}-${parse.slice(6, 10)}`;
+				}
+
+				e.currentTarget.value = parse;
+				e.currentTarget.setSelectionRange(pos, pos);
+				setValid(e.currentTarget.validity.valid);
+			}}
+			{...rest}
+		>
+			<ValidityIcon valid={valid()} />
+		</Input>
+	);
+}
+
+const Fields = { Input, PhoneNumber };
+
+export default Fields;

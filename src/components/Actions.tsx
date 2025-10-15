@@ -1,6 +1,7 @@
 import { cn } from '@/frontend/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { ComponentProps } from 'solid-js';
+import { splitProps } from 'solid-js';
 
 export const buttonVariants = cva(
 	'touch-manipulation cursor-pointer select-none px-6 py-4 font-serif text-2xl xl:text-3xl font-bold leading-none rounded-md',
@@ -22,7 +23,8 @@ export const buttonVariants = cva(
 );
 
 function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
-	const { class: className, variant, display, ...rest } = props;
+	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
+	const { class: className, variant, display } = local;
 	return (
 		<button
 			class={cn(
@@ -38,7 +40,8 @@ function Button(props: ComponentProps<'button'> & VariantProps<typeof buttonVari
 }
 
 function Link(props: ComponentProps<'a'> & VariantProps<typeof buttonVariants>) {
-	const { class: className, variant, display, ...rest } = props;
+	const [local, rest] = splitProps(props, ['class', 'variant', 'display']);
+	const { class: className, variant, display } = local;
 	return (
 		<a
 			class={cn(
@@ -71,7 +74,8 @@ export const fabVariants = cva('touch-manipulation cursor-pointer select-none', 
 });
 
 function Fab(props: ComponentProps<'button'> & VariantProps<typeof fabVariants>) {
-	const { class: className, variant, background, ...rest } = props;
+	const [local, rest] = splitProps(props, ['class', 'variant', 'background']);
+	const { class: className, variant, background } = local;
 	return (
 		<button
 			class={cn(
@@ -86,10 +90,5 @@ function Fab(props: ComponentProps<'button'> & VariantProps<typeof fabVariants>)
 	);
 }
 
-const Actions = Object.assign(Button, {
-	Link,
-	Button,
-	Fab,
-});
-
+const Actions = { Button, Link, Fab };
 export default Actions;

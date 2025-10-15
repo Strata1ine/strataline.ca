@@ -49,7 +49,6 @@ export default function FluidTalk() {
 			observer.disconnect();
 			resize.disconnect();
 			window.removeEventListener('resize', update);
-			window.removeEventListener('load', load);
 		});
 	});
 
@@ -74,7 +73,7 @@ export default function FluidTalk() {
 					aria-hidden="true"
 					class={cn(
 						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap',
-						hydrated() && 'transition-opacity duration-500',
+						hydrated() && 'transition-opacity duration-750',
 						above() ? 'opacity-100' : 'opacity-0',
 					)}
 				>
@@ -84,7 +83,7 @@ export default function FluidTalk() {
 				<Mailbox
 					class={cn(
 						'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
-						hydrated() && 'transition-opacity duration-500',
+						hydrated() && 'transition-opacity duration-750',
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>
