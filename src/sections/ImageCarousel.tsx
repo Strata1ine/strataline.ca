@@ -117,9 +117,10 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					<For each={[0, 1]}>
 						{(i) => (
 							<div class="flex flex-none" aria-hidden={i > 0 ? 'true' : undefined}>
-								<For each={props.meta.content}>
-									{(image) => <Image class="w-fit" image={image} />}
-								</For>
+								<For
+									each={props.meta.content}
+									children={(image) => <Image class="w-fit" image={image} />}
+								/>
 							</div>
 						)}
 					</For>

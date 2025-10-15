@@ -115,8 +115,8 @@
 	--animate-expand: expand 400ms cubic-bezier(0.32, 0.72, 0, 0.75);
 	--animate-collapse: collapse 400ms cubic-bezier(0.32, 0.72, 0, 0.75);
 	--animate-caret-blink: caret-blink 1.25s ease-out infinite;
-	--animate-in: enter 150ms ease;
-	--animate-out: exit 150ms ease;
+	--animate-in: enter 250ms ease;
+	--animate-out: exit 250ms ease;
 
 	@keyframes expand {
 		0% {
@@ -181,6 +181,28 @@
 }
 @utility zoom-out-* {
 	--tw-exit-scale: --value(percentage, ratio);
+}
+
+@utility slide-in-from-top-* {
+	--tw-enter-translate-y: calc(--value(percentage) * -1);
+	--tw-enter-translate-y: calc(--value(ratio) * -100%);
+	--tw-enter-translate-y: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-in-from-bottom-* {
+	--tw-enter-translate-y: --value(percentage);
+	--tw-enter-translate-y: calc(--value(ratio) * 100%);
+	--tw-enter-translate-y: calc(--value(integer) * var(--spacing));
+}
+
+@utility slide-out-to-top-* {
+	--tw-exit-translate-y: calc(--value(percentage) * -1);
+	--tw-exit-translate-y: calc(--value(ratio) * -100%);
+	--tw-exit-translate-y: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-out-to-bottom-* {
+	--tw-exit-translate-y: --value(percentage);
+	--tw-exit-translate-y: calc(--value(ratio) * 100%);
+	--tw-exit-translate-y: calc(--value(integer) * var(--spacing));
 }
 
 :root {
