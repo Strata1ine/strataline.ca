@@ -4,13 +4,14 @@
     "": {
       "name": "Strataline",
       "dependencies": {
-        "@astrojs/netlify": "^6.5.12",
+        "@astrojs/netlify": "^6.5.13",
         "@astrojs/solid-js": "^5.1.1",
-        "astro": "^5.14.4",
+        "astro": "^5.14.5",
         "class-variance-authority": "^0.7.1",
         "corvu": "^0.7.2",
         "solid-focus-trap": "^0.1.9",
         "solid-js": "^1.9.9",
+        "solid-list": "^0.3.0",
         "solid-persistent": "^0.1.0",
         "tailwind-merge": "^3.3.1",
       },

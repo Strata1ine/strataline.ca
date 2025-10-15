@@ -95,7 +95,6 @@ function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
 	]);
 	const id = genInput();
 	let textarea: HTMLTextAreaElement | undefined;
-
 	const minheight = local.minheight ?? 100;
 
 	const [height, setHeight] = createSignal(local.height ?? 100);
@@ -132,14 +131,14 @@ function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
 					e.currentTarget.releasePointerCapture(e.pointerId);
 				}}
 			>
-				<Resize class="p-inset size-12" />
+				<Resize class="size-5 -translate-5" />
 			</div>
 		</Label>
 	);
 }
 
 function PhoneNumber(props: Input) {
-	const [valid, setValid] = createSignal(false);
+	const [valid, setValid] = createSignal(!props.required);
 
 	return (
 		<Input
@@ -251,6 +250,6 @@ export const fieldVariants = cva(
 	},
 );
 
-const Fields = { Input, TextArea, PhoneNumber, PhotosInput, Email };
+const Inputs = { Input, TextArea, PhoneNumber, PhotosInput, Email };
 
-export default Fields;
+export default Inputs;

@@ -16,6 +16,7 @@
 		"corvu": "^0.7.2",
 		"solid-focus-trap": "^0.1.9",
 		"solid-js": "^1.9.9",
+		"solid-list": "^0.3.0",
 		"solid-persistent": "^0.1.0",
 		"tailwind-merge": "^3.3.1"
 	},
