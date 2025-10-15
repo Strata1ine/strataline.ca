@@ -1,10 +1,12 @@
 import { cva } from 'class-variance-authority';
-import { createSignal, splitProps, type ComponentProps } from 'solid-js';
+import { createSignal, splitProps, type ComponentProps, type JSX } from 'solid-js';
 import Asterick from '~icons/ph/asterisk-bold';
 import Check from '~icons/ph/check-bold';
 import Upload from '~icons/ph/upload-simple-fill';
 import ImagesSquare from '~icons/ph/images-square-fill';
+import Resize from '~icons/ph/arrow-line-down-fill';
 import X from '~icons/ph/x-bold';
+import { cn } from '@/frontend/utils';
 
 let counter = 0;
 export const genInput = (): string => {
@@ -15,17 +17,19 @@ function ValidityIcon(props: { valid?: boolean }) {
 	return (
 		<div class="relative size-6" aria-live="polite">
 			<Check
-				class={
-					'text-success absolute size-full duration-250 ' +
-					(!props.valid ? '-translate-y-full opacity-0' : '')
-				}
+				class={cn(
+					'text-success absolute size-full duration-250',
+					!props.valid ? '-translate-y-full opacity-0' : '',
+				)}
 				aria-hidden={!props.valid}
 				aria-label={props.valid ? 'Valid' : undefined}
 			/>
+
 			<X
-				class={
-					'text-error size-full duration-250 ' + (props.valid ? '-translate-y-full opacity-0' : '')
-				}
+				class={cn(
+					'text-error size-full duration-250',
+					props.valid ? '-translate-y-full opacity-0' : '',
+				)}
 				aria-hidden={!!props.valid}
 				aria-label={!props.valid ? 'Invalid' : undefined}
 			/>
@@ -33,22 +37,12 @@ function ValidityIcon(props: { valid?: boolean }) {
 	);
 }
 
-export type InputProps = {
-	name?: string;
-	required?: boolean;
-	open?: boolean;
-	validate?: boolean;
-};
-
-function Input(props: InputProps & ComponentProps<'input'>) {
-	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children']);
-	const id = genInput();
-
+function Label(props: Input & { id: string }) {
 	return (
 		<div class="relative touch-manipulation">
 			<label
 				class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 select-none"
-				for={id}
+				for={props.id}
 				onClick={(e) => {
 					if (e.currentTarget?.control instanceof HTMLButtonElement) {
 						e.currentTarget.control.click();
@@ -56,20 +50,95 @@ function Input(props: InputProps & ComponentProps<'input'>) {
 					}
 				}}
 			>
-				<span class="text-md font-serif leading-none font-semibold">{local.name}</span>
-				{local.required ? <Asterick class="text-error size-3" /> : null}
+				<span class="text-md font-serif leading-none font-semibold">{props.name}</span>
+				{props.required ? <Asterick class="text-error size-3" /> : null}
 			</label>
 
-			<label class={fieldVariants({ open: !!local.open })}>
-				<input class="w-full text-base focus:outline-none" id={id} {...input} />
-
-				{local.children}
-			</label>
+			<label class={fieldVariants({ open: !!props.open })}>{props.children}</label>
 		</div>
 	);
 }
 
-function PhoneNumber(props: InputProps) {
+export type Input = {
+	name?: string;
+	required?: boolean;
+	validate?: boolean;
+	open?: boolean;
+	children?: JSX.Element;
+};
+
+function Input(props: Input & ComponentProps<'input'>) {
+	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children']);
+	const id = genInput();
+
+	return (
+		<Label id={id} {...local}>
+			<input class="w-full text-base focus:outline-none" id={id} {...input} />
+			{local.children}
+		</Label>
+	);
+}
+
+export type TextArea = {
+	height?: number;
+	minheight?: number;
+};
+
+function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
+	const [local, input] = splitProps(props, [
+		'name',
+		'required',
+		'open',
+		'children',
+		'height',
+		'minheight',
+	]);
+	const id = genInput();
+	let textarea: HTMLTextAreaElement | undefined;
+
+	const minheight = local.minheight ?? 100;
+
+	const [height, setHeight] = createSignal(local.height ?? 100);
+
+	let offset = 0;
+	return (
+		<Label id={id} {...local}>
+			<textarea
+				ref={textarea}
+				class="w-full resize-none text-base focus:outline-none"
+				style={{
+					height: `${height()}px`,
+				}}
+				id={id}
+				{...input}
+			/>
+			<div
+				class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
+				onPointerDown={(e) => {
+					offset =
+						e.clientY -
+						e.currentTarget.getBoundingClientRect().top -
+						e.currentTarget.getBoundingClientRect().height / 2;
+					e.currentTarget.setPointerCapture(e.pointerId);
+				}}
+				onPointerMove={(e) => {
+					if (e.currentTarget.hasPointerCapture(e.pointerId) && textarea) {
+						setHeight(
+							Math.max(minheight, e.clientY - offset - textarea?.getBoundingClientRect().top),
+						);
+					}
+				}}
+				onPointerUp={(e) => {
+					e.currentTarget.releasePointerCapture(e.pointerId);
+				}}
+			>
+				<Resize class="p-inset size-12" />
+			</div>
+		</Label>
+	);
+}
+
+function PhoneNumber(props: Input) {
 	const [valid, setValid] = createSignal(false);
 
 	return (
@@ -103,7 +172,7 @@ function PhoneNumber(props: InputProps) {
 	);
 }
 
-function PhotosInput(props: InputProps) {
+function PhotosInput(props: Input) {
 	const label = 'None selected';
 	const [value, setValue] = createSignal(label);
 
@@ -131,7 +200,7 @@ function PhotosInput(props: InputProps) {
 	);
 }
 
-function Email(props: InputProps) {
+function Email(props: Input) {
 	const [valid, setValid] = createSignal(false);
 	return (
 		<Input
@@ -182,6 +251,6 @@ export const fieldVariants = cva(
 	},
 );
 
-const Fields = { Input, PhoneNumber, PhotosInput, Email };
+const Fields = { Input, TextArea, PhoneNumber, PhotosInput, Email };
 
 export default Fields;
