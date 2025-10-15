@@ -92,11 +92,11 @@ export const imageRoundedVariants = cva('sm:rounded-md', {
 	compoundVariants: [
 		{
 			pos: 'left',
-			className: 'rounded-tl-sm rounded-bl-sm translate-x-inset sm:translate-none',
+			className: 'rounded-tl-sm rounded-bl-sm translate-x-4 sm:translate-none',
 		},
 		{
 			pos: 'right',
-			className: 'rounded-tr-sm rounded-br-sm -translate-x-inset sm:translate-none',
+			className: 'rounded-tr-sm rounded-br-sm -translate-x-4 sm:translate-none',
 		},
 	],
 });

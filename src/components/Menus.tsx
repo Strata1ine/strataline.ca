@@ -47,7 +47,7 @@ function Form(props: {
 }) {
 	return (
 		<>
-			<div class="gap-inset flex items-center">
+			<div class="gap-3 flex items-center">
 				<Dialog.Label class="flex-1 font-serif text-5xl font-bold lg:text-6xl">
 					{props.title}
 				</Dialog.Label>

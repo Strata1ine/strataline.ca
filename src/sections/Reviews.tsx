@@ -139,7 +139,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</div>
 
 				<button
-					class="bg-accent gap-inset absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					class="bg-accent gap-4 absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
 					onClick={() => {}}
 					onPointerDown={(e) => e.stopPropagation()}
 				>

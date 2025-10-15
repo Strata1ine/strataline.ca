@@ -48,7 +48,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 
 			{/* 
       <Modal class={modalStyles({ open: open() })} uid={uid} open={open()} onOpenChange={(v) => v ? modals.toggle(modals.mobile) : modals.close()}>
-        <ul class="px-inset flex h-full flex-col items-start justify-center gap-6">
+        <ul class="flex h-full flex-col items-start justify-center gap-6">
           {props.content.map((item) => (
             <li>
               <a

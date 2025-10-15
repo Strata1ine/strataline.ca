@@ -67,7 +67,6 @@ export default function FluidTalk() {
 					translate: style() ?? undefined,
 					'transition-property': 'width, height, border-radius, translate, background-color, color',
 				}}
-				onClick={() => {}}
 			>
 				<span
 					aria-hidden="true"

@@ -44,7 +44,7 @@
 	}
 
 	.prose {
-		@apply max-w-[100ch] space-y-2;
+		@apply max-w-[100ch] space-y-3;
 	}
 
 	.prose ul,
@@ -89,7 +89,6 @@
 	--font-sans: var(--font-dm-sans);
 	--font-mono: initial;
 
-	--spacing-inset: 0.9rem;
 	--spacing-inner: var(--breakpoint-xl);
 	--spacing-outer: var(--breakpoint-2xl);
 	--spacing-diff: calc((var(--breakpoint-2xl) - var(--breakpoint-xl)) / 2);

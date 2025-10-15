@@ -131,7 +131,7 @@ export default function TextCarousel(props: { meta: TextCarouselMeta }) {
 		>
 			<div
 				ref={(el) => (textCarousel = el)}
-				class="flex h-20 will-change-transform select-none md:h-25"
+				class="flex h-25 will-change-transform select-none md:h-30"
 				style={{ translate: `${-pos}px 0 0` }}
 			>
 				<For each={[0, 1, 2]}>

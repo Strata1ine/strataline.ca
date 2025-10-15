@@ -1,13 +1,7 @@
-import {
-	For,
-	createEffect,
-	createMemo,
-	createSignal,
-	splitProps,
-	type ComponentProps,
-	type JSX,
-} from 'solid-js';
+import { For, createMemo, createSignal, splitProps, type ComponentProps, type JSX } from 'solid-js';
 import { createList } from 'solid-list';
+import type { RootChildrenProps as PopoverProps } from '@corvu/popover';
+import type { RootChildrenProps as DialogProps } from '@corvu/dialog';
 import Popover from '@corvu/popover';
 import Asterick from '~icons/ph/asterisk-bold';
 import Check from '~icons/ph/check-bold';
@@ -15,81 +9,57 @@ import Upload from '~icons/ph/upload-simple-fill';
 import ImagesSquare from '~icons/ph/images-square-fill';
 import Resize from '~icons/ph/arrow-line-down-fill';
 import NavArrow from '~icons/ph/navigation-arrow-fill';
+import Caret from '~icons/ph/caret-down-bold';
 import X from '~icons/ph/x-bold';
 import { cn } from '@/frontend/utils';
 import { cva } from 'class-variance-authority';
 
-let counter = 0;
-export const genInput = (): string => {
-	return `input-${(counter += 1)}`;
-};
-
-function ValidityIcon(props: { valid?: boolean }) {
-	return (
-		<div class="relative size-6" aria-live="polite">
-			<Check
-				class={cn(
-					'text-success absolute size-full duration-250',
-					!props.valid ? '-translate-y-full opacity-0' : '',
-				)}
-				aria-hidden={!props.valid}
-				aria-label={props.valid ? 'Valid' : undefined}
-			/>
-
-			<X
-				class={cn(
-					'text-error size-full duration-250',
-					props.valid ? '-translate-y-full opacity-0' : '',
-				)}
-				aria-hidden={!!props.valid}
-				aria-label={!props.valid ? 'Invalid' : undefined}
-			/>
-		</div>
-	);
-}
-
-function Label(props: Input & { id: string }) {
+function Label(props: FieldProps & { id: string }) {
 	return (
 		<div class="relative touch-manipulation">
 			<label
-				class="absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 select-none"
+				class={cn(
+					'absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 transition-opacity select-none',
+					props.top ? 'opacity-0' : 'opacity-100',
+				)}
 				for={props.id}
 			>
 				<span class="text-md font-serif leading-none font-semibold">{props.name}</span>
 				{props.required ? <Asterick class="text-error size-3" /> : null}
 			</label>
 
-			<label class={inputVariants({ open: !!props.open })}>{props.children}</label>
+			<label class={inputVariants({ open: props.open, top: props.top })}>{props.children}</label>
 		</div>
 	);
 }
 
-export type Input = {
+export type FieldProps = {
 	name?: string;
 	required?: boolean;
 	validate?: boolean;
 	open?: boolean;
+	top?: boolean;
 	children?: JSX.Element;
 };
 
-function Input(props: Input & ComponentProps<'input'>) {
-	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children']);
+function Input(props: FieldProps & ComponentProps<'input'>) {
+	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children', 'top']);
 	const id = genInput();
 
 	return (
 		<Label id={id} {...local}>
-			<input class="w-full text-base focus:outline-none" id={id} {...input} />
+			<input class="w-full focus:outline-none" id={id} {...input} />
 			{local.children}
 		</Label>
 	);
 }
 
-export type TextArea = {
+export type TextAreaProps = {
 	height?: number;
 	minheight?: number;
 };
 
-function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
+function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>) {
 	const [local, input] = splitProps(props, [
 		'name',
 		'required',
@@ -109,7 +79,7 @@ function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
 		<Label id={id} {...local}>
 			<textarea
 				ref={textarea}
-				class="w-full resize-none text-base focus:outline-none"
+				class="w-full resize-none focus:outline-none"
 				style={{
 					height: `${height()}px`,
 				}}
@@ -142,7 +112,7 @@ function TextArea(props: Input & TextArea & ComponentProps<'textarea'>) {
 	);
 }
 
-function PhoneNumber(props: Input) {
+function PhoneNumber(props: FieldProps) {
 	const [valid, setValid] = createSignal(!props.required);
 
 	return (
@@ -176,7 +146,7 @@ function PhoneNumber(props: Input) {
 	);
 }
 
-function Photos(props: Input) {
+function Photos(props: FieldProps) {
 	const label = 'None selected';
 	const [value, setValue] = createSignal(label);
 
@@ -204,7 +174,7 @@ function Photos(props: Input) {
 	);
 }
 
-function Email(props: Input) {
+function Email(props: FieldProps) {
 	const [valid, setValid] = createSignal(false);
 	return (
 		<Input
@@ -220,14 +190,105 @@ function Email(props: Input) {
 	);
 }
 
-function Select(
-	props: Input & {
-		items: string[];
-	},
-) {
-	const [anim, _setAnim] = createSignal(false);
-	const [prev, _setPrev] = createSignal(0);
-	const [selected, _setSelected] = createSignal(0);
+type SelectProps = FieldProps & {
+	items: string[];
+};
+
+function Select(props: SelectProps) {
+	function Menu(popover: PopoverProps & DialogProps) {
+		const [swap, _setSwap] = createSignal(false);
+		const [prev, _setPrev] = createSignal(0);
+		const [selected, _setSelected] = createSignal(0);
+
+		const prevItem = createMemo(() => props.items[prev() ?? 0]);
+		const currentItem = createMemo(() => props.items[selected() ?? 0]);
+
+		const { active, setActive, onKeyDown } = createList({
+			items: props.items.map((_, i) => i),
+			initialActive: 0,
+			orientation: 'vertical',
+			loop: true,
+			textDirection: 'ltr',
+			handleTab: true,
+			vimMode: true,
+			onActiveChange: (active) => {
+				if (!active) return;
+				popover.contentRef?.children[active]?.scrollIntoView({
+					block: 'nearest',
+					behavior: 'instant',
+				});
+			},
+		});
+
+		const top = (): boolean => popover.floatingState.placement == 'top';
+		const setSelected = (value: number) => {
+			_setPrev(selected());
+			_setSelected(value);
+			setActive(value);
+			if (selected() != prev()) {
+				_setSwap(!swap());
+			}
+
+			popover.setOpen(false);
+		};
+
+		return (
+			<Input
+				class="sr-only"
+				tabindex="-1"
+				open={popover.open}
+				top={popover.open && top()}
+				{...props}
+			>
+				<Popover.Trigger class="absolute inset-0 z-1 cursor-pointer" />
+				<NavArrow class="size-8" />
+
+				<SwapText current={currentItem()} prev={prevItem()} swap={swap()} />
+
+				<Caret
+					class={cn('size-6 transition-transform duration-300', popover.open ? '-rotate-180' : '')}
+				/>
+
+				<Popover.Portal>
+					<Popover.Content
+						class={cn(
+							'border-accent z-4 max-h-70 overflow-y-scroll border bg-white transition-[border-radius] duration-400 outline-none select-none',
+							'data-open:fade-in-0% data-open:animate-in data-closed:animate-out data-closed:fade-out-0%',
+							top()
+								? 'data-open:slide-in-from-top-10 data-closed:slide-out-to-top-10'
+								: 'data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10',
+							menuStyles({ top: top() }),
+						)}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								setSelected(active() ?? 0);
+							} else {
+								onKeyDown(e);
+							}
+						}}
+					>
+						<For
+							each={props.items}
+							children={(item, index) => (
+								<span
+									class="hover:bg-tone aria-selected:bg-tone block w-full cursor-pointer px-5 py-2"
+									aria-selected={active() === index()}
+									onMouseDown={(e) => {
+										if (e.button == 0) {
+											setSelected(index());
+										}
+									}}
+								>
+									{item}
+								</span>
+							)}
+						/>
+					</Popover.Content>
+				</Popover.Portal>
+			</Input>
+		);
+	}
+
 	return (
 		<Popover
 			floatingOptions={{
@@ -238,111 +299,7 @@ function Select(
 				},
 			}}
 		>
-			{(popover) => {
-				const { active, setActive, onKeyDown } = createList({
-					items: props.items.map((_, i) => i),
-					initialActive: 0,
-					orientation: 'vertical',
-					loop: true,
-					textDirection: 'ltr',
-					handleTab: true,
-					vimMode: true,
-					onActiveChange: (active) => {
-						if (!active) return;
-						select?.children[active]?.scrollIntoView({
-							block: 'nearest',
-							behavior: 'instant',
-						});
-					},
-				});
-
-				let select: HTMLDivElement | undefined;
-				const prevItem = createMemo(() => props.items[prev() ?? 0]);
-				const currentItem = createMemo(() => props.items[selected() ?? 0]);
-
-				const setSelected = (value: number) => {
-					_setPrev(selected());
-					_setSelected(value);
-					setActive(value);
-					if (selected() != prev()) {
-						_setAnim(!anim());
-						popover.setOpen(false);
-					}
-				};
-
-				// if (popover.open && select) {
-				// 	select.children[active() ?? 0]?.scrollIntoView({
-				// 		block: 'center',
-				// 		behavior: 'instant',
-				// 	});
-				// }
-
-				return (
-					<>
-						<Input class="sr-only" tabindex="-1" open={popover.open} {...props}>
-							<Popover.Trigger class="absolute inset-0 z-1 cursor-pointer" />
-							<NavArrow class="size-8" />
-
-							<span class="sr-only">{currentItem()}</span>
-							<div
-								aria-hidden="true"
-								class={cn(
-									'flex-1 transition-transform duration-200',
-									!anim() && 'translate-y-full',
-								)}
-							>
-								<span class={cn('desc-sm transition-opacity duration-300', !anim() && 'opacity-0')}>
-									{anim() ? currentItem() : prevItem()}
-								</span>
-								<span
-									class={cn(
-										'desc-sm absolute bottom-full left-0 transition-opacity duration-300',
-										anim() && 'opacity-0',
-									)}
-								>
-									{anim() ? prevItem() : currentItem()}
-								</span>
-							</div>
-						</Input>
-
-						<Popover.Portal>
-							<Popover.Content
-								class={cn(
-									'border-accent z-4 max-h-70 overflow-y-scroll border bg-white transition duration-400 select-none',
-									'data-open:fade-in-0% data-open:animate-in data-closed:animate-out data-closed:fade-out-0%',
-									'data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10',
-									menuStyles(),
-								)}
-								onKeyDown={(e) => {
-									if (e.key === 'Enter') {
-										setSelected(active() ?? 0);
-									} else {
-										onKeyDown(e);
-									}
-								}}
-								ref={select}
-							>
-								<For
-									each={props.items}
-									children={(item, index) => (
-										<span
-											class="hover:bg-tone aria-selected:bg-tone block w-full cursor-pointer px-5 py-2"
-											aria-selected={active() === index()}
-											onMouseDown={(e) => {
-												if (e.button == 0) {
-													setSelected(index());
-												}
-											}}
-										>
-											{item}
-										</span>
-									)}
-								/>
-							</Popover.Content>
-						</Popover.Portal>
-					</>
-				);
-			}}
+			{(popover) => <Menu {...popover} />}
 		</Popover>
 	);
 }
@@ -350,8 +307,8 @@ function Select(
 export const menuStyles = cva('border-accent', {
 	variants: {
 		top: {
-			true: '',
-			false: '',
+			true: undefined,
+			false: undefined,
 		},
 		rounded: {
 			md: '',
@@ -381,13 +338,12 @@ export const menuStyles = cva('border-accent', {
 		},
 	],
 	defaultVariants: {
-		top: false,
 		rounded: 'md',
 	},
 });
 
 export const inputVariants = cva(
-	'border-accent w3c-focus block border-1 select-none transition-[border-radius] duration-400 gap-inset flex items-center p-5 overflow-hidden',
+	'border-accent w3c-focus block border-1 select-none transition-[border-radius] duration-400 gap-4 flex items-center p-5 overflow-hidden',
 	{
 		variants: {
 			variant: {
@@ -399,8 +355,8 @@ export const inputVariants = cva(
 				false: '',
 			},
 			top: {
-				true: '',
-				false: '',
+				true: undefined,
+				false: undefined,
 			},
 		},
 		compoundVariants: [
@@ -424,3 +380,62 @@ export const inputVariants = cva(
 const Inputs = { Input, TextArea, PhoneNumber, Photos, Select, Email };
 
 export default Inputs;
+
+let counter = 0;
+export const genInput = (): string => {
+	return `input-${(counter += 1)}`;
+};
+
+function ValidityIcon(props: { valid?: boolean }) {
+	return (
+		<div class="relative size-6" aria-live="polite">
+			<Check
+				class={cn(
+					'text-success absolute size-full duration-250',
+					!props.valid && '-translate-y-full opacity-0',
+				)}
+				aria-hidden={!props.valid}
+				aria-label={props.valid ? 'Valid' : undefined}
+			/>
+
+			<X
+				class={cn(
+					'text-error size-full duration-250',
+					props.valid && '-translate-y-full opacity-0',
+				)}
+				aria-hidden={!!props.valid}
+				aria-label={!props.valid ? 'Invalid' : undefined}
+			/>
+		</div>
+	);
+}
+
+export function SwapText(props: {
+	current: string | undefined;
+	prev: string | undefined;
+	swap: boolean;
+}): JSX.Element {
+	return (
+		<>
+			<span class="sr-only">{props.current}</span>
+
+			<div
+				aria-hidden="true"
+				class={cn('flex-1 transition-transform duration-200', !props.swap && 'translate-y-full')}
+			>
+				<span class={cn('desc-sm transition-opacity duration-300', !props.swap && 'opacity-0')}>
+					{props.swap ? props.current : props.prev}
+				</span>
+
+				<span
+					class={cn(
+						'desc-sm absolute bottom-full left-0 transition-opacity duration-300',
+						props.swap && 'opacity-0',
+					)}
+				>
+					{props.swap ? props.prev : props.current}
+				</span>
+			</div>
+		</>
+	);
+}

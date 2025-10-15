@@ -16,7 +16,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 								<h3 class="font-serif text-3xl md:text-4xl">
 									<Accordion.Trigger
 										class={cn(
-											'gap-inset flex w-full cursor-pointer touch-manipulation items-center justify-between',
+											'gap-3 flex w-full cursor-pointer touch-manipulation items-center justify-between',
 											styles.trigger,
 										)}
 									>
