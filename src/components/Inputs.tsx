@@ -24,7 +24,7 @@ function Label(props: FieldProps & { id: string }) {
 				)}
 				for={props.id}
 			>
-				<span class="text-md font-serif leading-none font-semibold">{props.name}</span>
+				<span class="text-md font-serif leading-none">{props.name}</span>
 				{props.required ? <Asterick class="text-error size-3" /> : null}
 			</label>
 
@@ -42,13 +42,13 @@ export type FieldProps = {
 	children?: JSX.Element;
 };
 
-function Input(props: FieldProps & ComponentProps<'input'>) {
+function Field(props: FieldProps & ComponentProps<'input'>) {
 	const [local, input] = splitProps(props, ['name', 'required', 'open', 'children', 'top']);
 	const id = genInput();
 
 	return (
 		<Label id={id} {...local}>
-			<input class="w-full focus:outline-none" id={id} {...input} />
+			<input class="w-full outline-none" id={id} {...input} />
 			{local.children}
 		</Label>
 	);
@@ -79,13 +79,14 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 		<Label id={id} {...local}>
 			<textarea
 				ref={textarea}
-				class="w-full resize-none focus:outline-none"
+				class="w-full resize-none outline-none"
 				style={{
 					height: `${height()}px`,
 				}}
 				id={id}
 				{...input}
 			/>
+
 			<div
 				class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
 				onPointerDown={(e) => {
@@ -116,7 +117,7 @@ function PhoneNumber(props: FieldProps) {
 	const [valid, setValid] = createSignal(!props.required);
 
 	return (
-		<Input
+		<Field
 			name={props.name ?? 'Phone number'}
 			inputmode="tel"
 			autocomplete="tel"
@@ -142,7 +143,7 @@ function PhoneNumber(props: FieldProps) {
 			}}
 		>
 			<ValidityIcon valid={valid()} />
-		</Input>
+		</Field>
 	);
 }
 
@@ -151,7 +152,7 @@ function Photos(props: FieldProps) {
 	const [value, setValue] = createSignal(label);
 
 	return (
-		<Input
+		<Field
 			name="Photos"
 			accept="image/*"
 			multiple
@@ -170,14 +171,14 @@ function Photos(props: FieldProps) {
 			<ImagesSquare class="size-8" />
 			<span class="flex-1">{value()}</span>
 			<Upload class="size-6" />
-		</Input>
+		</Field>
 	);
 }
 
 function Email(props: FieldProps) {
 	const [valid, setValid] = createSignal(false);
 	return (
-		<Input
+		<Field
 			name={props.name ?? 'E-mail'}
 			type="email"
 			inputmode="email"
@@ -186,7 +187,7 @@ function Email(props: FieldProps) {
 			{...props}
 		>
 			<ValidityIcon valid={valid()} />
-		</Input>
+		</Field>
 	);
 }
 
@@ -233,14 +234,14 @@ function Select(props: SelectProps) {
 		};
 
 		return (
-			<Input
+			<Field
 				class="sr-only"
 				tabindex="-1"
 				open={popover.open}
 				top={popover.open && top()}
 				{...props}
 			>
-				<Popover.Trigger class="absolute inset-0 z-1 cursor-pointer" />
+				<Popover.Trigger class="absolute inset-0 z-1 cursor-pointer outline-none" />
 				<NavArrow class="size-8" />
 
 				<SwapText current={currentItem()} prev={prevItem()} swap={swap()} />
@@ -252,7 +253,7 @@ function Select(props: SelectProps) {
 				<Popover.Portal>
 					<Popover.Content
 						class={cn(
-							'border-accent z-4 max-h-70 overflow-y-scroll border bg-white transition-[border-radius] duration-400 outline-none select-none',
+							'border-accent z-2 max-h-70 overflow-y-scroll border bg-white transition-[border-radius] duration-400 outline-none select-none',
 							'data-open:fade-in-0% data-open:animate-in data-closed:animate-out data-closed:fade-out-0%',
 							top()
 								? 'data-open:slide-in-from-top-10 data-closed:slide-out-to-top-10'
@@ -285,7 +286,7 @@ function Select(props: SelectProps) {
 						/>
 					</Popover.Content>
 				</Popover.Portal>
-			</Input>
+			</Field>
 		);
 	}
 
@@ -377,7 +378,7 @@ export const inputVariants = cva(
 	},
 );
 
-const Inputs = { Input, TextArea, PhoneNumber, Photos, Select, Email };
+const Inputs = { Field, TextArea, PhoneNumber, Photos, Select, Email };
 
 export default Inputs;
 

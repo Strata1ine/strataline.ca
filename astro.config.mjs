@@ -39,7 +39,7 @@ export default defineConfig({
 		contentIntellisense: true,
 		fonts: [
 			{
-				name: 'Cormorant Garamond',
+				name: 'Cormorant',
 				cssVariable: '--font-cormorant',
 				provider: fontProviders.fontsource(),
 				weights: [500, 600, 700],
@@ -50,7 +50,7 @@ export default defineConfig({
 				name: 'DM Sans',
 				cssVariable: '--font-dm-sans',
 				provider: fontProviders.fontsource(),
-				weights: [400, 600],
+				weights: [400],
 				styles: ['normal', 'italic'],
 				subsets: ['latin'],
 			},
@@ -70,13 +70,11 @@ export default defineConfig({
 			}),
 			visualizer({
 				emitFile: true,
-				brotliSize: true,
 				filename: 'stats.html',
 			}),
 		],
 	},
 	integrations: [
-		solidJs(),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),
@@ -86,6 +84,7 @@ export default defineConfig({
 				ph: ['*'],
 			},
 		}),
+		solidJs(),
 		frontmatterComponents({
 			components: glob('./src/sections/**/*.astro'),
 		}),

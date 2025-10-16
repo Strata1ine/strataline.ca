@@ -1,10 +1,15 @@
-import { createSignal, onMount, onCleanup } from 'solid-js';
-
+import { createSignal, onMount, onCleanup, type ComponentProps } from 'solid-js';
+import createPersistent from 'solid-persistent';
 import { useQueryDevice } from '@/frontend/mobile';
-import Mailbox from '~icons/ph/mailbox-fill';
-import { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import { cn } from '@/frontend/utils';
+
+import Dialog from '@corvu/dialog';
+import Mailbox from '~icons/ph/mailbox-fill';
+import Actions, { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import Menus from './Menus';
+import Inputs from './Inputs';
+
+import business from '#/business.json';
 
 export default function FluidTalk() {
 	let sensor: HTMLElement;
@@ -54,7 +59,7 @@ export default function FluidTalk() {
 
 	return (
 		<div class="relative mt-9 h-14 xl:h-16" ref={(el) => (sensor = el!)}>
-			<Menus.LetsTalk
+			<LetsTalk
 				aria-label="Let's talk (Ctrl+/)"
 				class={cn(
 					'z-1',
@@ -71,7 +76,7 @@ export default function FluidTalk() {
 				<span
 					aria-hidden="true"
 					class={cn(
-						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap',
+						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap font-bold',
 						hydrated() && 'transition-opacity duration-750',
 						above() ? 'opacity-100' : 'opacity-0',
 					)}
@@ -86,7 +91,38 @@ export default function FluidTalk() {
 						above() ? 'opacity-0' : 'opacity-100',
 					)}
 				/>
-			</Menus.LetsTalk>
+			</LetsTalk>
 		</div>
+	);
+}
+
+function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
+	const persistedContent = createPersistent(() => {
+		return (
+			<div class="mt-12 space-y-11">
+				<Inputs.Email required />
+				<Inputs.PhoneNumber validate />
+				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
+				<Inputs.TextArea name="Messege" />
+				<Inputs.Photos />
+				<Actions.Button variant="fill">Submit</Actions.Button>
+			</div>
+		);
+	});
+
+	return (
+		<Dialog>
+			<Dialog.Trigger {...props} />
+			<Dialog.Portal>
+				<Menus.DialogForm
+					title="Let's talk"
+					desc="Feel free to ask a question and a quote."
+					name="contact"
+					action="/submissions/talk"
+				>
+					{persistedContent()}
+				</Menus.DialogForm>
+			</Dialog.Portal>
+		</Dialog>
 	);
 }

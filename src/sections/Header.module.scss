@@ -3,7 +3,7 @@
 	&::after {
 		content: '';
 		position: absolute;
-		bottom: -0.4rem;
+		bottom: -1rem;
 		right: 10%;
 		left: 10%;
 		transform: scaleX(0);
@@ -28,7 +28,8 @@
 		left: 0;
 		right: 0;
 		background: var(--color-black);
-		height: 2px;
+		height: 2.5px;
+		border-radius: 5px;
 		transform-origin: center;
 		transition:
 			transform 250ms ease,

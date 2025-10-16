@@ -48,7 +48,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 			<div class="contents flex-1 flex-col gap-3 sm:flex sm:justify-center">
 				<div>
 					<Home desc="Go back" class="mb-2" {slug} />
-					<h1 class="heading-5xl font-bold">
+					<h1 class="heading-5xl">
 						{service.data.title}
 					</h1>
 				</div>

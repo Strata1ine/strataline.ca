@@ -3,6 +3,7 @@ import Stars from '@/components/Stars';
 import Feather from '~icons/ph/feather-fill';
 import type { Props as ReviewsProps } from './Reviews.astro';
 import { useQueryDevice } from '@/frontend/mobile';
+import Menus from '@/components/Menus';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const phone = useQueryDevice();
@@ -139,9 +140,10 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</div>
 
 				<button
-					class="bg-accent gap-4 absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
-					onClick={() => {}}
-					onPointerDown={(e) => e.stopPropagation()}
+					class="bg-accent absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					onPointerDown={(e) => {
+						e.stopPropagation();
+					}}
 				>
 					<Feather class="size-8" />
 					<span class="font-serif">Write a review</span>
@@ -173,10 +175,10 @@ const Review = (review: ReviewsProps['content'][number]) => {
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
 			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
 				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
-					<span class="font-semibold">{review.location}</span>
+					<span class="text-base font-semibold">{review.location}</span>
 				</div>
 
-				<h3 class="font-serif text-2xl text-balance xl:text-3xl">{review.title}</h3>
+				<h3 class="font-serif text-2xl font-semibold text-balance xl:text-3xl">{review.title}</h3>
 
 				<div class="mt-3 mb-4 flex gap-1.5">
 					<span class="sr-only">{review.stars} stars out of 5</span>

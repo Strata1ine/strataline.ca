@@ -67,66 +67,60 @@ export default function TextCarousel(props: { meta: TextCarouselMeta }) {
 		});
 	});
 
-	function onPointerDown(e: PointerEvent) {
-		if (e.button !== 0) return;
-
-		pointerId = e.pointerId;
-		e.currentTarget.setPointerCapture(pointerId);
-
-		if (animationId != null) {
-			cancelAnimationFrame(animationId);
-			animationId = null;
-		}
-
-		window.getSelection()?.removeAllRanges();
-		clientX = e.clientX;
-		clientY = e.clientY;
-
-		currentVelocity = 0;
-		startPos = pos;
-	}
-
-	function onPointerMove(e: PointerEvent) {
-		if (e.pointerId !== pointerId) return;
-
-		rawPos = startPos - (e.clientX - clientX);
-		updateTranslation(rawPos);
-
-		const now = performance.now();
-		const dt = now - lastFrame;
-		if (dt > 0) {
-			currentVelocity = (prevX - e.clientX) / dt;
-		}
-
-		lastFrame = now;
-		prevX = e.clientX;
-	}
-
-	function onPointerUp(e: PointerEvent) {
-		if (e.pointerId !== pointerId) return;
-		if (pointerId != null) {
-			(e.currentTarget as HTMLElement).releasePointerCapture(pointerId);
-		}
-		pointerId = null;
-
-		const diffX = clientX - e.clientX;
-		const diffY = clientY - e.clientY;
-		moveDirection = diffX < 0 ? -1 : 1;
-
-		if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-			currentVelocity *= scrollMultiplier(container) * 25;
-			lastFrame = performance.now();
-			requestAnimationFrame(animate);
-		}
-	}
-
 	return (
 		<div
-			class="border-accent py-inset touch-pan-y border-y-1 contain-content"
+			class="border-accent touch-pan-y border-y-1 contain-content"
 			ref={(el) => (container = el)}
-			onPointerDown={onPointerDown}
-			onPointerMove={onPointerMove}
-			onPointerUp={onPointerUp}
+			onPointerDown={(e) => {
+				if (e.button !== 0) return;
+
+				pointerId = e.pointerId;
+				e.currentTarget.setPointerCapture(pointerId);
+
+				if (animationId != null) {
+					cancelAnimationFrame(animationId);
+					animationId = null;
+				}
+
+				window.getSelection()?.removeAllRanges();
+				clientX = e.clientX;
+				clientY = e.clientY;
+
+				currentVelocity = 0;
+				startPos = pos;
+			}}
+			onPointerMove={(e) => {
+				if (e.pointerId !== pointerId) return;
+
+				rawPos = startPos - (e.clientX - clientX);
+				updateTranslation(rawPos);
+
+				const now = performance.now();
+				const dt = now - lastFrame;
+				if (dt > 0) {
+					currentVelocity = (prevX - e.clientX) / dt;
+				}
+
+				lastFrame = now;
+				prevX = e.clientX;
+			}}
+			onPointerUp={(e) => {
+				if (e.pointerId !== pointerId) return;
+				if (pointerId != null) {
+					e.currentTarget.releasePointerCapture(pointerId);
+				}
+				pointerId = null;
+
+				const diffX = clientX - e.clientX;
+				const diffY = clientY - e.clientY;
+				moveDirection = diffX < 0 ? -1 : 1;
+
+				if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+					currentVelocity *= scrollMultiplier(container) * 25;
+					lastFrame = performance.now();
+					requestAnimationFrame(animate);
+				}
+			}}
 			role="marquee"
 		>
 			<div

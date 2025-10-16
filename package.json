@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/sitemap": "^3.6.0",
-		"@astrojs/ts-plugin": "^1.10.4",
+		"@astrojs/ts-plugin": "^1.10.5",
 		"@iconify-json/ph": "^1.2.2",
 		"@phosphor-icons/core": "^2.1.1",
 		"@rollup/plugin-yaml": "^4.1.2",
@@ -42,7 +42,7 @@
 		"rollup-plugin-visualizer": "^6.0.4",
 		"sass": "^1.93.2",
 		"sharp-ico": "^0.1.5",
-		"string-strip-html": "^13.4.24",
+		"string-strip-html": "^13.5.0",
 		"tailwindcss": "^4.1.14",
 		"typescript": "^5.9.3",
 		"typescript-plugin-css-modules": "^5.2.0",

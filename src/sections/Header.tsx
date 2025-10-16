@@ -17,6 +17,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 
 	return (
 		<>
+			{/* 
 			<ul class="mt-1 hidden gap-14 xl:flex">
 				<For
 					each={props.content}
@@ -29,22 +30,11 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 					)}
 				/>
 			</ul>
-
-			{/* 
-      <button
-        aria-label="Open mobile menu"
-        class="relative z-1 size-10 cursor-pointer touch-manipulation md:hidden"
-        data-include-in-focuslock
-        tabindex="0"
-        onClick={() => {
-          document.body.scrollTop = 1;
-          document.documentElement.scrollTop = 1;
-          modals.toggle(modals.mobile);
-        }}
-      >
-        <Burger open={open()} onOpenChange={() => modals.toggle(modals.mobile)} />
-      </button>
       */}
+
+			<button class="size-10 cursor-pointer touch-manipulation ">
+				<Burger></Burger>
+			</button>
 
 			{/* 
       <Modal class={modalStyles({ open: open() })} uid={uid} open={open()} onOpenChange={(v) => v ? modals.toggle(modals.mobile) : modals.close()}>
