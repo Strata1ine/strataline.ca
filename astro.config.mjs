@@ -67,7 +67,6 @@ export default defineConfig({
 			Icons({
 				compiler: 'solid',
 				autoInstall: true,
-				iconCustomizer(collection, icon, props) {},
 			}),
 			visualizer({
 				emitFile: true,

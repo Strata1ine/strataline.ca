@@ -12,6 +12,22 @@ import Inputs from './Inputs';
 import business from '#/business.json';
 
 function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
+	const [open, setOpen] = createSignal(false);
+	onMount(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.ctrlKey && e.key === 'l') {
+				e.preventDefault();
+				setOpen(true);
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+
+		onCleanup(() => {
+			window.removeEventListener('keydown', handleKeyDown);
+		});
+	});
+
 	const persistedContent = createPersistent(() => {
 		return (
 			<div class="mt-12 space-y-11">
@@ -26,7 +42,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	});
 
 	return (
-		<Dialog>
+		<Dialog open={open()} onOpenChange={setOpen}>
 			<Dialog.Trigger {...props} />
 			<Dialog.Portal>
 				<Menus.DialogForm

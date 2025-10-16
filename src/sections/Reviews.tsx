@@ -157,7 +157,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					}}
 				>
 					<Feather class="size-8" />
-					<span class="font-serif">Write a review</span>
+					<span class="font-serif sm:text-base">Write a review</span>
 				</button>
 			</div>
 
@@ -214,10 +214,16 @@ function WriteReview() {
 				<div class="mt-4">
 					<Inputs.StarSlider />
 				</div>
+
 				<div class="mt-12 space-y-11">
+					<Inputs.Field name="Full name" required type="name" autocomplete="name" />
 					<Inputs.Email required />
-					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-					<Inputs.TextArea name="Review" />
+					<Inputs.Select
+						required
+						name="Location"
+						items={['Select a location', ...business.areaServed]}
+					/>
+					<Inputs.TextArea required name="Review" />
 					<Actions.Button variant="fill">Submit</Actions.Button>
 				</div>
 			</>
