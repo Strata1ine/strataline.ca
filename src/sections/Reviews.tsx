@@ -151,6 +151,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					class="bg-accent absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
 					onPointerDown={(e) => {
 						e.stopPropagation();
+					}}
+					onClick={() => {
 						menu.setOpen(true);
 					}}
 				>
@@ -208,23 +210,28 @@ function WriteReview() {
 	const [open, setOpen] = createSignal(false);
 	const persistedContent = createPersistent(() => {
 		return (
-			<div class="mt-12 space-y-11">
-				<Inputs.Email required />
-				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea name="Review" />
-				<Actions.Button variant="fill">Submit</Actions.Button>
-			</div>
+			<>
+				<div class="mt-4">
+					<Inputs.StarSlider />
+				</div>
+				<div class="mt-12 space-y-11">
+					<Inputs.Email required />
+					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
+					<Inputs.TextArea name="Review" />
+					<Actions.Button variant="fill">Submit</Actions.Button>
+				</div>
+			</>
 		);
 	});
 
 	return {
 		open,
 		setOpen,
-		dialog: () => (
-			<Dialog>
+		dialog: (
+			<Dialog open={open()} onOpenChange={setOpen}>
 				<Dialog.Portal>
 					<Menus.DialogForm
-						title="Write a review"
+						title="Review"
 						desc="We will verify your submission via email."
 						name="review"
 						action="/submissions/review"

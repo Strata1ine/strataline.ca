@@ -54,7 +54,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 								</div>
 
 								<div class="w-full sm:my-10">
-									<h3 class="heading-4xl font-bold mb-2">{card.title}</h3>
+									<h3 class="heading-4xl mb-2 font-bold">{card.title}</h3>
 									<p class="desc-base">{card.desc}</p>
 
 									<Show when={card.link}>

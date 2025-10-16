@@ -18,7 +18,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 				<Inputs.Email required />
 				<Inputs.PhoneNumber validate />
 				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea name="Messege" />
+				<Inputs.TextArea required name="Messege" />
 				<Inputs.Photos />
 				<Actions.Button variant="fill">Submit</Actions.Button>
 			</div>

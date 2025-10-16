@@ -56,7 +56,7 @@ export function Image(props: Props) {
 	);
 }
 
-export const imageVariants = cva('object-cover w-full h-full select-none', {
+export const imageVariants = cva('object-cover size-full select-none', {
 	variants: {
 		anim: {
 			fade: 'transition-[opacity] duration-1000 absolute',

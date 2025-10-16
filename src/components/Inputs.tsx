@@ -13,6 +13,7 @@ import Caret from '~icons/ph/caret-down-bold';
 import X from '~icons/ph/x-bold';
 import { cn } from '@/frontend/utils';
 import { cva } from 'class-variance-authority';
+import Stars from './Stars';
 
 function Label(props: FieldProps & { id: string }) {
 	return (
@@ -305,6 +306,60 @@ function Select(props: SelectProps) {
 	);
 }
 
+function StarSlider() {
+	const min = 0;
+	const max = 10;
+	const [length, setLength] = createSignal(max);
+	let pointerId: null | number = null;
+
+	function u(e: any) {
+		const rect = e.currentTarget.getBoundingClientRect();
+		const x = Math.max(0, e.clientX - rect.left);
+		setLength(Math.round(Math.min(max, (x / rect.width) * max)));
+	}
+
+	return (
+		<>
+			<input name="Stars" tabindex="-1" type="hidden" value={length() / 2} />
+			<div class="relative inline-flex gap-2">
+				<Stars class="size-8" length={length() / 2}>
+					<div
+						class="absolute inset-0 cursor-pointer touch-none"
+						tabindex="0"
+						role="slider"
+						aria-label="Star rating"
+						aria-valuemin={min}
+						aria-valuemax={max / 2}
+						aria-valuenow={length() / 2}
+						onPointerDown={(e) => {
+							if (e.button !== 0) return;
+							pointerId = e.pointerId;
+							e.currentTarget.setPointerCapture(pointerId);
+							u(e);
+						}}
+						onPointerUp={(e) => {
+							if (e.pointerId != pointerId) return;
+							e.currentTarget.releasePointerCapture(pointerId);
+							pointerId = null;
+						}}
+						onPointerMove={(e) => {
+							if (e.pointerId != pointerId) return;
+							u(e);
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'ArrowLeft') {
+								setLength(Math.max(min, length() - 1.0));
+							} else if (e.key === 'ArrowRight') {
+								setLength(Math.min(max, length() + 1.0));
+							}
+						}}
+					/>
+				</Stars>
+			</div>
+		</>
+	);
+}
+
 export const menuStyles = cva('border-accent', {
 	variants: {
 		top: {
@@ -344,7 +399,7 @@ export const menuStyles = cva('border-accent', {
 });
 
 export const inputVariants = cva(
-	'border-accent w3c-focus block border-1 select-none transition-[border-radius] duration-400 gap-4 flex items-center p-5 overflow-hidden',
+	'border-accent w3c-focus block border select-none transition-[border-radius] duration-400 gap-4 flex items-center p-5 overflow-hidden',
 	{
 		variants: {
 			variant: {
@@ -378,7 +433,7 @@ export const inputVariants = cva(
 	},
 );
 
-const Inputs = { Field, TextArea, PhoneNumber, Photos, Select, Email };
+const Inputs = { Field, TextArea, PhoneNumber, Photos, Select, Email, StarSlider };
 
 export default Inputs;
 

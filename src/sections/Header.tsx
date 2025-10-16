@@ -24,11 +24,12 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 						<>
 							<Popover.Trigger
 								class={cn('size-10 cursor-pointer touch-manipulation', styles.burger)}
+								aria-label="mobile menu"
 							/>
 							<Popover.Portal>
 								<Popover.Content
 									class={cn(
-										'flex flex-col gap-7 rounded-xl bg-white p-9 border-accent border',
+										'border-accent flex flex-col gap-7 rounded-xl border-2 bg-white p-9',
 										'data-open:animate-in data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out data-open:zoom-in-80% data-closed:zoom-out-80%',
 									)}
 								>

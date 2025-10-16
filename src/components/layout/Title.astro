@@ -16,12 +16,7 @@ const { title, pos, class: className } = Astro.props;
 <Container variant="inner" class={[className, 'mb-10 sm:mb-14']}>
 	<slot name="before" />
 
-	<h2
-		class={cn(
-			'heading-5xl sm:max-w-[25ch]',
-			pos == 'right' ? 'sm:ml-auto sm:text-right' : '',
-		)}
-	>
+	<h2 class={cn('heading-5xl sm:max-w-[25ch]', pos == 'right' ? 'sm:ml-auto sm:text-right' : '')}>
 		{title}
 	</h2>
 
