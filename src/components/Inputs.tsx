@@ -24,7 +24,7 @@ function Label(props: FieldProps & { id: string }) {
 				)}
 				for={props.id}
 			>
-				<span class="text-md font-serif leading-none">{props.name}</span>
+				<span class="text-md font-serif leading-none font-semibold">{props.name}</span>
 				{props.required ? <Asterick class="text-error size-3" /> : null}
 			</label>
 

@@ -208,7 +208,6 @@
 :root {
 	background: var(--color-white);
 	color: var(--color-black);
-	scroll-behavior: smooth;
 }
 [id] {
 	scroll-margin-top: 50px;

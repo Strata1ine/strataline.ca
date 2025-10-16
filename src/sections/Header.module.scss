@@ -45,7 +45,7 @@
 		left: 30%;
 	}
 
-	&.open {
+	&[data-open] {
 		&::after {
 			transform: rotate(45deg);
 			left: 0;

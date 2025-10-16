@@ -1,61 +1,65 @@
-// import Modal from "@/components/modals/Modal.svelte";
-// import Burger from "@/components/decor/Burger.svelte";
-// import { modals, genUid } from "@/frontend/stores.svelte";
-
 import { For } from 'solid-js';
 import type { Props as HeaderMeta } from './Header.astro';
 import styles from './Header.module.scss';
 import { cn } from '@/frontend/utils';
-
-export function Burger(props: { open: boolean }) {
-	return <div class={cn('pointer-events-none', styles.burger)} classList={{ open: props.open }} />;
-}
+import Popover from '@corvu/popover';
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
-	// const open = createMemo(() => modals.is(modals.mobile));
-	// const uid = genUid();
-
 	return (
 		<>
-			{/* 
-			<ul class="mt-1 hidden gap-14 xl:flex">
-				<For
-					each={props.content}
-					children={(item, _) => (
-						<li>
-							<a class={cn(styles.link, 'relative text-base')} href={`#${item.id}`} tabindex="0">
-								{item.name}
-							</a>
-						</li>
-					)}
-				/>
-			</ul>
-      */}
-
-			<button class="size-10 cursor-pointer touch-manipulation ">
-				<Burger></Burger>
-			</button>
-
-			{/* 
-      <Modal class={modalStyles({ open: open() })} uid={uid} open={open()} onOpenChange={(v) => v ? modals.toggle(modals.mobile) : modals.close()}>
-        <ul class="flex h-full flex-col items-start justify-center gap-6">
-          {props.content.map((item) => (
-            <li>
-              <a
-                href={`#${item.id}`}
-                onClick={() => {
-                  modals.close();
-                }}
-                tabindex="0"
-                class="heading-2xl leading-none"
-              >
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Modal>
-      */}
+			<Popover
+				restoreFocus={false}
+				floatingOptions={{
+					flip: true,
+					shift: true,
+					hide: false,
+					offset: {
+						mainAxis: 20,
+					},
+				}}
+			>
+				{(popover) => {
+					return (
+						<>
+							<Popover.Trigger
+								class={cn('size-10 cursor-pointer touch-manipulation', styles.burger)}
+							/>
+							<Popover.Portal>
+								<Popover.Content
+									class={cn(
+										'flex flex-col gap-8 rounded-xl bg-white/80 p-9 backdrop-blur-xl',
+										'data-open:animate-in data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out',
+									)}
+								>
+									<ul class="contents">
+										<For
+											each={props.content}
+											children={(item, index) => (
+												<li
+													class="animate-in [animation-fill-mode:backwards]"
+													style={{
+														'--tw-enter-translate-x': '-3rem',
+														'animation-delay': `${index() * 150}ms`,
+													}}
+												>
+													<a
+														class={cn(styles.link, 'text-base font-semibold')}
+														href={`#${item.id}`}
+														tabindex="0"
+														onClick={() => popover.setOpen(false)}
+													>
+														{item.name}
+													</a>
+												</li>
+											)}
+										/>
+									</ul>
+								</Popover.Content>
+							</Popover.Portal>
+						</>
+					);
+				}}
+			</Popover>
 		</>
 	);
 }

@@ -7,3 +7,7 @@ if (window.location.hash) {
 window.addEventListener('hashchange', () => {
 	history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
 });
+
+window.addEventListener('load', () => {
+	document.documentElement.style.scrollBehavior = 'smooth';
+});
