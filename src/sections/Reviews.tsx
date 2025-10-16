@@ -178,7 +178,7 @@ const Review = (review: ReviewsProps['content'][number]) => {
 					<span class="text-base font-semibold">{review.location}</span>
 				</div>
 
-				<h3 class="font-serif text-2xl font-semibold text-balance xl:text-3xl">{review.title}</h3>
+				<h3 class="font-serif text-2xl text-balance xl:text-3xl">{review.title}</h3>
 
 				<div class="mt-3 mb-4 flex gap-1.5">
 					<span class="sr-only">{review.stars} stars out of 5</span>
