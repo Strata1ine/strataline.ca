@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { ImageSource } from '@/schemas';
 import { cn } from '@/frontend/utils';
+import { splitProps, type ComponentProps } from 'solid-js';
 
 const IMAGE_CDN = import.meta.env.PUBLIC_IMAGE_CDN as string;
 
@@ -12,8 +13,7 @@ export type Props = {
 	active?: boolean;
 	pos?: VariantProps<typeof imageRoundedVariants>['pos'];
 	anim?: VariantProps<typeof imageVariants>['anim'];
-	loading?: 'eager' | 'lazy';
-};
+} & ComponentProps<'img'>;
 
 const DEFAULT_QUALITY = 70;
 
@@ -27,28 +27,31 @@ export function optImage(path: string, widths?: number[], quality?: number) {
 }
 
 export function Image(props: Props) {
+	const [local, rest] = splitProps(props, ['class', 'anim', 'active', 'image']);
 	const quality = props.quality ?? DEFAULT_QUALITY;
 	const widths = props.widths ?? [];
 
-	const { src, srcSet } = optImage(props.image.src.src, widths, quality);
+	const { src, srcSet } = optImage(local.image.src.src, widths, quality);
 
 	return (
 		<img
 			class={cn(
 				imageVariants({
-					anim: props.anim,
-					active: props.active,
+					anim: local.anim,
+					active: local.active,
 					x: props.image.x,
 					y: props.image.y,
 				}),
-				props.pos ? imageRoundedVariants({ pos: props.pos }) : undefined,
 				props.class,
+				imageRoundedVariants({ pos: props.pos }),
 			)}
 			src={src}
 			alt={props.image.alt}
 			srcset={srcSet}
 			draggable={false}
 			loading={props.loading ?? 'lazy'}
+			fetchpriority={props.fetchpriority}
+			{...rest}
 		/>
 	);
 }

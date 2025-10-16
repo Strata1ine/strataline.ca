@@ -49,40 +49,5 @@ function DialogForm(props: {
 	);
 }
 
-// function WriteReview() {
-// 	const [open, setOpen] = createSignal(false);
-// 	const persistedContent = createPersistent(() => {
-// 		return (
-// 			<div class="mt-12 space-y-11">
-// 				<Inputs.Email required />
-// 				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-// 				<Inputs.TextArea name="Review" />
-// 				<Actions.Button variant="fill">Submit</Actions.Button>
-// 			</div>
-// 		);
-// 	});
-//
-// 	return {
-// 		open,
-// 		setOpen,
-// 		dialog: (
-// 			<Dialog>
-// 				<Dialog.Portal>
-// 					<BlurredDialog>
-// 						<Form
-// 							title="Write a review"
-// 							desc="We will verify your submission via email."
-// 							name="review"
-// 							action="/submissions/review"
-// 						>
-// 							{persistedContent()}
-// 						</Form>
-// 					</BlurredDialog>
-// 				</Dialog.Portal>
-// 			</Dialog>
-// 		),
-// 	};
-// }
-
 const Menus = { DialogForm };
 export default Menus;

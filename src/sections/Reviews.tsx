@@ -1,9 +1,15 @@
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
-import Stars from '@/components/Stars';
-import Feather from '~icons/ph/feather-fill';
 import type { Props as ReviewsProps } from './Reviews.astro';
 import { useQueryDevice } from '@/frontend/mobile';
+import createPersistent from 'solid-persistent';
+
+import business from '#/business.json';
+import Inputs from '@/components/Inputs';
 import Menus from '@/components/Menus';
+import Stars from '@/components/Stars';
+import Feather from '~icons/ph/feather-fill';
+import Actions from '@/components/Actions';
+import Dialog from 'corvu/dialog';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const phone = useQueryDevice();
@@ -100,6 +106,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		);
 	};
 
+	const menu = WriteReview();
+
 	return (
 		<>
 			<div
@@ -143,6 +151,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					class="bg-accent absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
 					onPointerDown={(e) => {
 						e.stopPropagation();
+						menu.setOpen(true);
 					}}
 				>
 					<Feather class="size-8" />
@@ -166,6 +175,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					/>
 				</div>
 			</Show>
+
+			{menu.dialog}
 		</>
 	);
 }
@@ -192,3 +203,36 @@ const Review = (review: ReviewsProps['content'][number]) => {
 		</div>
 	);
 };
+
+function WriteReview() {
+	const [open, setOpen] = createSignal(false);
+	const persistedContent = createPersistent(() => {
+		return (
+			<div class="mt-12 space-y-11">
+				<Inputs.Email required />
+				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
+				<Inputs.TextArea name="Review" />
+				<Actions.Button variant="fill">Submit</Actions.Button>
+			</div>
+		);
+	});
+
+	return {
+		open,
+		setOpen,
+		dialog: () => (
+			<Dialog>
+				<Dialog.Portal>
+					<Menus.DialogForm
+						title="Write a review"
+						desc="We will verify your submission via email."
+						name="review"
+						action="/submissions/review"
+					>
+						{persistedContent()}
+					</Menus.DialogForm>
+				</Dialog.Portal>
+			</Dialog>
+		),
+	};
+}

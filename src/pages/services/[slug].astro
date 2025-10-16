@@ -9,7 +9,7 @@ import { Image } from '@/components/Image';
 
 import Home from '@/components/Home';
 import * as Layout from '@/components/Layout';
-import FluidTalk from '@/components/FluidTalk';
+import Talk from '@/components/Talk';
 
 export const prerender = true;
 
@@ -58,7 +58,7 @@ const service = (await getCollection('services')).find((s) => s.id.split('/')[0]
 						{service.data.desc}
 					</p>
 
-					<FluidTalk client:load />
+					<Talk client:load />
 				</div>
 			</div>
 

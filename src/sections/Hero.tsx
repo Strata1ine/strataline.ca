@@ -25,7 +25,8 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 				<For each={props.content.images}>
 					{(image, i) => (
 						<Image
-							class="absolute inset-0"
+							loading={i() == 0 ? 'eager' : 'lazy'}
+							fetchpriority={i() == 0 ? 'high' : 'low'}
 							active={i() === idx()}
 							anim="fade"
 							image={image}

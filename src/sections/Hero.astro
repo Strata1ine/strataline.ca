@@ -18,7 +18,7 @@ const meta = Astro.props;
 
 import * as Layout from '@/components/Layout';
 import Island from './Hero';
-import FluidTalk from '@/components/FluidTalk';
+import Talk from '@/components/Talk';
 ---
 
 <section class="relative box-content py-5 xl:py-20" id={meta.id}>
@@ -39,7 +39,7 @@ import FluidTalk from '@/components/FluidTalk';
 			<h1 class="heading-7xl">{meta.title}</h1>
 			<div class="order-3">
 				<p class="desc-base">{meta.desc}</p>
-				<FluidTalk client:load />
+				<Talk client:load />
 			</div>
 		</div>
 	</Layout.Container>

@@ -11,10 +11,11 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 				restoreFocus={false}
 				floatingOptions={{
 					flip: true,
-					shift: true,
 					hide: false,
+					shift: true,
 					offset: {
 						mainAxis: 20,
+						crossAxis: -100,
 					},
 				}}
 			>
@@ -27,8 +28,8 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 							<Popover.Portal>
 								<Popover.Content
 									class={cn(
-										'flex flex-col gap-8 rounded-xl bg-white/80 p-9 backdrop-blur-xl',
-										'data-open:animate-in data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out',
+										'flex flex-col gap-7 rounded-xl bg-white p-9 border-accent border',
+										'data-open:animate-in data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out data-open:zoom-in-80% data-closed:zoom-out-80%',
 									)}
 								>
 									<ul class="contents">
@@ -38,7 +39,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 												<li
 													class="animate-in [animation-fill-mode:backwards]"
 													style={{
-														'--tw-enter-translate-x': '-3rem',
+														'--tw-enter-translate-x': '-5rem',
 														'animation-delay': `${index() * 150}ms`,
 													}}
 												>

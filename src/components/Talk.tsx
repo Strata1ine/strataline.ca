@@ -11,7 +11,38 @@ import Inputs from './Inputs';
 
 import business from '#/business.json';
 
-export default function FluidTalk() {
+function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
+	const persistedContent = createPersistent(() => {
+		return (
+			<div class="mt-12 space-y-11">
+				<Inputs.Email required />
+				<Inputs.PhoneNumber validate />
+				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
+				<Inputs.TextArea name="Messege" />
+				<Inputs.Photos />
+				<Actions.Button variant="fill">Submit</Actions.Button>
+			</div>
+		);
+	});
+
+	return (
+		<Dialog>
+			<Dialog.Trigger {...props} />
+			<Dialog.Portal>
+				<Menus.DialogForm
+					title="Let's talk"
+					desc="Feel free to ask a question and a quote."
+					name="contact"
+					action="/submissions/talk"
+				>
+					{persistedContent()}
+				</Menus.DialogForm>
+			</Dialog.Portal>
+		</Dialog>
+	);
+}
+
+export default function Talk() {
 	let sensor: HTMLElement;
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
@@ -76,7 +107,7 @@ export default function FluidTalk() {
 				<span
 					aria-hidden="true"
 					class={cn(
-						'absolute top-1/2 left-1/2 -translate-1/2 whitespace-nowrap font-bold',
+						'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap',
 						hydrated() && 'transition-opacity duration-750',
 						above() ? 'opacity-100' : 'opacity-0',
 					)}
@@ -93,36 +124,5 @@ export default function FluidTalk() {
 				/>
 			</LetsTalk>
 		</div>
-	);
-}
-
-function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
-	const persistedContent = createPersistent(() => {
-		return (
-			<div class="mt-12 space-y-11">
-				<Inputs.Email required />
-				<Inputs.PhoneNumber validate />
-				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea name="Messege" />
-				<Inputs.Photos />
-				<Actions.Button variant="fill">Submit</Actions.Button>
-			</div>
-		);
-	});
-
-	return (
-		<Dialog>
-			<Dialog.Trigger {...props} />
-			<Dialog.Portal>
-				<Menus.DialogForm
-					title="Let's talk"
-					desc="Feel free to ask a question and a quote."
-					name="contact"
-					action="/submissions/talk"
-				>
-					{persistedContent()}
-				</Menus.DialogForm>
-			</Dialog.Portal>
-		</Dialog>
 	);
 }

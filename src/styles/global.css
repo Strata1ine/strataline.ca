@@ -25,7 +25,7 @@
 
 	.heading-4xl,
 	.prose h3 {
-		@apply font-serif text-4xl text-balance xl:text-5xl;
+		@apply font-serif text-3xl text-balance xl:text-5xl;
 	}
 
 	.prose h4 {
