@@ -27,7 +27,7 @@ export function optImage(path: string, widths?: number[], quality?: number) {
 }
 
 export function Image(props: Props) {
-	const [local, rest] = splitProps(props, ['class', 'anim', 'active', 'image']);
+	const [local, rest] = splitProps(props, ['class', 'anim', 'active', 'image', 'pos']);
 	const quality = props.quality ?? DEFAULT_QUALITY;
 	const widths = props.widths ?? [];
 
@@ -42,8 +42,8 @@ export function Image(props: Props) {
 					x: props.image.x,
 					y: props.image.y,
 				}),
-				props.class,
-				imageRoundedVariants({ pos: props.pos }),
+				local.class,
+				imageRoundedVariants({ pos: local.pos }),
 			)}
 			src={src}
 			alt={props.image.alt}
@@ -85,7 +85,7 @@ export const imageVariants = cva('object-cover size-full select-none', {
 	},
 });
 
-export const imageRoundedVariants = cva('sm:rounded-md', {
+export const imageRoundedVariants = cva('', {
 	variants: {
 		pos: {
 			left: '',
@@ -100,6 +100,14 @@ export const imageRoundedVariants = cva('sm:rounded-md', {
 		{
 			pos: 'right',
 			className: 'rounded-tr-sm rounded-br-sm -translate-x-4 sm:translate-none',
+		},
+		{
+			pos: undefined,
+			className: 'rounded-sm',
+		},
+		{
+			pos: ['left', 'right'],
+			className: 'sm:rounded-sm',
 		},
 	],
 });

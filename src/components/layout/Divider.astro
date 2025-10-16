@@ -1,11 +1,14 @@
 ---
+import { cn } from '@/frontend/utils';
+
 interface Props {
 	id?: string;
 	as?: 'section' | 'footer' | 'main';
+	class?: string;
 }
-const { id, as: Tag = 'section' }: Props = Astro.props;
+const { id, class: className, as: Tag = 'section' }: Props = Astro.props;
 ---
 
-<Tag class="mt-30 md:mt-38" {id}>
+<Tag class={cn('mt-30 md:mt-38', className)} {id}>
 	<slot />
 </Tag>

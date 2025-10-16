@@ -1,6 +1,6 @@
 import { createSignal, onMount, onCleanup } from 'solid-js';
 
-export function useQueryDevice(breakpoint = 750) {
+export function useQueryDevice(breakpoint = 650) {
 	const [isMobile, setIsMobile] = createSignal(true);
 
 	onMount(() => {

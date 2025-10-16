@@ -7,15 +7,15 @@ import business from '#/business.json';
 import Inputs from '@/components/Inputs';
 import Menus from '@/components/Menus';
 import Stars from '@/components/Stars';
-import Feather from '~icons/ph/feather-fill';
 import Actions from '@/components/Actions';
 import Dialog from 'corvu/dialog';
+import Feather from '~icons/ph/feather-fill';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const phone = useQueryDevice();
 	const power = createMemo(() => (phone.isMobile() ? 0 : 1));
 
-	const [idx, setIdxSignal] = createSignal(0);
+	const [idx, _setIdx] = createSignal(0);
 	const [pos, setPos] = createSignal(0);
 
 	let clientX = 0;
@@ -24,10 +24,6 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	let lastFrame = 0;
 	let pointerId: number | null = null;
 	let animationId: number | null = null;
-
-	const maxIdx = () => Math.max(0, (props.meta.length ?? 0) - power() - 1);
-
-	const clampIdx = (newIdx: number) => Math.max(0, Math.min(newIdx, maxIdx()));
 
 	const animate = (t: number) => {
 		const dt = t - lastFrame;
@@ -43,8 +39,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	const setIdx = (newIdx: number) => {
-		const next = clampIdx(newIdx);
-		setIdxSignal(next);
+		const next = Math.max(0, Math.min(newIdx, Math.max(0, (props.meta.length ?? 0) - power() - 1)));
+		_setIdx(next);
 		if (animationId) cancelAnimationFrame(animationId);
 		lastFrame = performance.now();
 		animationId = requestAnimationFrame(animate);
@@ -75,7 +71,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		startPos = pos();
 	};
 
-	const pagesCount = createMemo(() => Math.max(0, (props.meta.length ?? 0) - power()));
+	const reviewCount = createMemo(() => Math.max(0, props.meta.length - power()));
 
 	const Thumb = () => {
 		return (
@@ -83,7 +79,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				aria-label="Review scroller"
 				class="bg-accent absolute inset-0 cursor-grab rounded-md"
 				style={{
-					width: `${100 / pagesCount()}%`,
+					width: `${100 / reviewCount()}%`,
 					translate: `${pos() * 100}% 0 0`,
 				}}
 				tabIndex={-1}
@@ -161,11 +157,11 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</button>
 			</div>
 
-			<Show when={pagesCount() > 1}>
+			<Show when={reviewCount() > 1}>
 				<div class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint">
 					<Thumb />
 					<For
-						each={Array.from({ length: pagesCount() })}
+						each={Array.from({ length: reviewCount() })}
 						children={(_, i) => (
 							<button
 								aria-label={`View review ${i()}`}

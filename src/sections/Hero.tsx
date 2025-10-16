@@ -18,8 +18,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 		<>
 			<div
 				class={cn(
-					'relative h-80 max-h-180 min-h-50 w-full contain-content sm:h-[60vh] sm:min-h-120',
-					imageRoundedVariants({ pos: 'right' }),
+					'relative h-80 max-h-180 min-h-50 w-full sm:h-[60vh] sm:min-h-120',
 				)}
 			>
 				<For each={props.content.images}>
@@ -29,6 +28,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 							fetchpriority={i() == 0 ? 'high' : 'low'}
 							active={i() === idx()}
 							anim="fade"
+							pos="right"
 							image={image}
 							widths={[400, 650, 1400]}
 						/>

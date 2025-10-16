@@ -1,8 +1,9 @@
-import { createSignal, For, onCleanup, onMount } from 'solid-js';
+import { createSignal, For, onCleanup } from 'solid-js';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
 import Image from '@/components/Image';
 import { cn } from '@/frontend/utils';
 import CaretCircleLeftFill from '~icons/ph/CaretCircleLeftFill';
+import { containerVariants } from '@/components/layout/Container.astro';
 
 export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	let container!: HTMLDivElement;
@@ -30,7 +31,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		const w = firstChild.scrollWidth;
 		const wrapped = o - Math.floor(o / w) * w;
 
-		imageCarousel.style.transform = `translate3d(${-wrapped}px, 0, 0)`;
+		imageCarousel.style.transform = `translateX(${-wrapped}px)`;
 		setPos(wrapped);
 	};
 
@@ -59,45 +60,6 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		}
 	}
 
-	const onPointerDown = (e: PointerEvent) => {
-		if (e.button !== 0) return;
-		reset();
-		const id = e.pointerId;
-		setPointerId(id);
-		(e.currentTarget as HTMLElement).setPointerCapture(id);
-		currentVelocity = 0;
-		window.getSelection?.()?.removeAllRanges();
-		clientX = e.clientX;
-		clientY = e.clientY;
-		startPos = pos();
-	};
-
-	const onPointerMove = (e: PointerEvent) => {
-		if (e.pointerId !== pointerId()) return;
-		rawPos = startPos - (e.clientX - clientX);
-		updateTranslation(rawPos);
-		const now = performance.now();
-		const dt = now - lastFrame;
-		if (dt > 0) {
-			currentVelocity = (prevX - e.clientX) / dt;
-		}
-		lastFrame = now;
-		prevX = e.clientX;
-	};
-
-	const onPointerUp = (e: PointerEvent) => {
-		if (e.pointerId !== pointerId()) return;
-		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-		setPointerId(null);
-		const diffX = clientX - e.clientX;
-		const diffY = clientY - e.clientY;
-		if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
-			currentVelocity *= scrollMultiplier(container) * 30;
-			lastFrame = performance.now();
-			requestAnimationFrame(animate);
-		}
-	};
-
 	onCleanup(() => {
 		reset();
 	});
@@ -106,20 +68,56 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		<>
 			<div
 				ref={container}
-				class="h-[60vh] max-h-150 min-h-90 cursor-grab touch-pan-y overflow-hidden"
-				onPointerDown={onPointerDown}
-				onPointerMove={onPointerMove}
-				onPointerUp={onPointerUp}
+				class="cursor-grab touch-pan-y contain-content"
+				onPointerDown={(e) => {
+					if (e.button !== 0) return;
+					reset();
+					const id = e.pointerId;
+					setPointerId(id);
+					e.currentTarget.setPointerCapture(id);
+					currentVelocity = 0;
+					window.getSelection()?.removeAllRanges();
+					clientX = e.clientX;
+					clientY = e.clientY;
+					startPos = pos();
+				}}
+				onPointerMove={(e) => {
+					if (e.pointerId !== pointerId()) return;
+					rawPos = startPos - (e.clientX - clientX);
+					updateTranslation(rawPos);
+					const now = performance.now();
+					const dt = now - lastFrame;
+					if (dt > 0) {
+						currentVelocity = (prevX - e.clientX) / dt;
+					}
+					lastFrame = now;
+					prevX = e.clientX;
+				}}
+				onPointerUp={(e) => {
+					if (e.pointerId !== pointerId()) return;
+					e.currentTarget.releasePointerCapture(e.pointerId);
+					setPointerId(null);
+					const diffX = clientX - e.clientX;
+					const diffY = clientY - e.clientY;
+					if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+						currentVelocity *= scrollMultiplier(container) * 30;
+						lastFrame = performance.now();
+						requestAnimationFrame(animate);
+					}
+				}}
 				role="region"
 				aria-label="Image carousel"
 			>
-				<div ref={imageCarousel} class="flex h-full flex-none will-change-transform">
+				<div
+					ref={imageCarousel}
+					class="flex h-[60vh] max-h-150 min-h-100 gap-6 will-change-transform"
+				>
 					<For each={[0, 1]}>
 						{(i) => (
-							<div class="flex flex-none" aria-hidden={i > 0 ? 'true' : undefined}>
+							<div class="flex flex-none gap-6" aria-hidden={i > 0 ? 'true' : undefined}>
 								<For
 									each={props.meta.content}
-									children={(image) => <Image class="w-fit" image={image} />}
+									children={(image) => <Image class="w-fit max-w-svw" image={image} />}
 								/>
 							</div>
 						)}
@@ -127,7 +125,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				</div>
 			</div>
 
-			<div class={cn('mt-9 flex justify-end gap-1')}>
+			<div class={cn('mt-9 flex justify-end gap-1', containerVariants({ variant: 'inner' }))}>
 				<button
 					onClick={() => {
 						reset();
@@ -141,7 +139,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20" />
+					<CaretCircleLeftFill class="text-tone size-20 cursor-pointer" />
 				</button>
 
 				<button
@@ -157,7 +155,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20 rotate-180" />
+					<CaretCircleLeftFill class="text-tone size-20 rotate-180 cursor-pointer" />
 				</button>
 			</div>
 		</>

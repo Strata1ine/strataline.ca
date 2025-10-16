@@ -336,6 +336,7 @@ function StarSlider() {
 							pointerId = e.pointerId;
 							e.currentTarget.setPointerCapture(pointerId);
 							u(e);
+							window.getSelection()?.removeAllRanges();
 						}}
 						onPointerUp={(e) => {
 							if (e.pointerId != pointerId) return;
