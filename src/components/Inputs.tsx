@@ -1,4 +1,12 @@
-import { For, createMemo, createSignal, splitProps, type ComponentProps, type JSX } from 'solid-js';
+import {
+	For,
+	Show,
+	createMemo,
+	createSignal,
+	splitProps,
+	type ComponentProps,
+	type JSX,
+} from 'solid-js';
 import { createList } from 'solid-list';
 import type { RootChildrenProps as PopoverProps } from '@corvu/popover';
 import type { RootChildrenProps as DialogProps } from '@corvu/dialog';
@@ -18,16 +26,18 @@ import Stars from './Stars';
 function Label(props: FieldProps & { id: string }) {
 	return (
 		<div class="relative touch-manipulation">
-			<label
-				class={cn(
-					'absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 transition-opacity select-none',
-					props.top ? 'opacity-0' : 'opacity-100',
-				)}
-				for={props.id}
-			>
-				<span class="text-md font-serif leading-none font-bold">{props.name}</span>
-				{props.required ? <Asterick class="text-error size-3" /> : null}
-			</label>
+			<Show when={props.name}>
+				<label
+					class={cn(
+						'absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 transition-opacity select-none',
+						props.top ? 'opacity-0' : 'opacity-100',
+					)}
+					for={props.id}
+				>
+					<span class="text-md font-serif leading-none font-bold">{props.name}</span>
+					{props.required ? <Asterick class="text-error size-3" /> : null}
+				</label>
+			</Show>
 
 			<label class={inputVariants({ open: props.open, top: props.top })}>{props.children}</label>
 		</div>
@@ -192,7 +202,7 @@ function Email(props: FieldProps) {
 	);
 }
 
-type SelectProps = FieldProps & {
+export type SelectProps = FieldProps & {
 	items: string[];
 };
 
@@ -208,9 +218,6 @@ function Select(props: SelectProps) {
 		const { active, setActive, onKeyDown } = createList({
 			items: props.items.map((_, i) => i),
 			initialActive: 0,
-			orientation: 'vertical',
-			loop: true,
-			textDirection: 'ltr',
 			handleTab: true,
 			vimMode: true,
 			onActiveChange: (active) => {
@@ -259,7 +266,91 @@ function Select(props: SelectProps) {
 							top()
 								? 'data-open:slide-in-from-top-10 data-closed:slide-out-to-top-10'
 								: 'data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10',
-							menuStyles({ top: top() }),
+							menuVariants({ top: top() }),
+						)}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								setSelected(active() ?? 0);
+							} else {
+								onKeyDown(e);
+							}
+						}}
+					>
+						<For
+							each={props.items}
+							children={(item, index) => (
+								<span
+									class="hover:bg-tone aria-selected:bg-tone block w-full cursor-pointer px-5 py-2"
+									aria-selected={active() === index()}
+									onMouseDown={(e) => {
+										if (e.button == 0) {
+											setSelected(index());
+										}
+									}}
+								>
+									{item}
+								</span>
+							)}
+						/>
+					</Popover.Content>
+				</Popover.Portal>
+			</Field>
+		);
+	}
+
+	return (
+		<Popover
+			floatingOptions={{
+				flip: true,
+				offset: -1,
+				size: {
+					matchSize: true,
+				},
+			}}
+		>
+			{(popover) => <Menu {...popover} />}
+		</Popover>
+	);
+}
+
+export function Search(props: SelectProps & { placeholder?: string }) {
+	function Menu(popover: PopoverProps & DialogProps) {
+		const [selected, _setSelected] = createSignal(0);
+		const currentItem = createMemo(() => props.items[selected() ?? 0]);
+
+		const { active, setActive, onKeyDown } = createList({
+			items: props.items.map((_, i) => i),
+			initialActive: 0,
+			handleTab: true,
+			vimMode: true,
+			onActiveChange: (active) => {
+				if (!active) return;
+				popover.contentRef?.children[active]?.scrollIntoView({
+					block: 'nearest',
+					behavior: 'instant',
+				});
+			},
+		});
+
+		const top = (): boolean => popover.floatingState.placement == 'top';
+		const setSelected = (value: number) => {
+			_setSelected(value);
+			setActive(value);
+
+			popover.setOpen(false);
+		};
+
+		return (
+			<Field open={popover.open} top={popover.open && top()} {...props}>
+				<Popover.Portal>
+					<Popover.Content
+						class={cn(
+							'border-accent z-2 max-h-70 overflow-y-scroll border bg-white transition-[border-radius] duration-400 outline-none select-none',
+							'data-open:fade-in-0% data-open:animate-in data-closed:animate-out data-closed:fade-out-0%',
+							top()
+								? 'data-open:slide-in-from-top-10 data-closed:slide-out-to-top-10'
+								: 'data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10',
+							menuVariants({ top: top() }),
 						)}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
@@ -361,7 +452,7 @@ function StarSlider() {
 	);
 }
 
-export const menuStyles = cva('border-accent', {
+export const menuVariants = cva('border-accent', {
 	variants: {
 		top: {
 			true: undefined,
@@ -434,12 +525,12 @@ export const inputVariants = cva(
 	},
 );
 
-const Inputs = { Field, TextArea, PhoneNumber, Photos, Select, Email, StarSlider };
+const Inputs = { Field, TextArea, PhoneNumber, Photos, Select, Email, StarSlider, Search };
 
 export default Inputs;
 
 let counter = 0;
-export const genInput = (): string => {
+const genInput = (): string => {
 	return `input-${(counter += 1)}`;
 };
 
@@ -467,7 +558,7 @@ function ValidityIcon(props: { valid?: boolean }) {
 	);
 }
 
-export function SwapText(props: {
+function SwapText(props: {
 	current: string | undefined;
 	prev: string | undefined;
 	swap: boolean;

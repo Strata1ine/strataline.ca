@@ -16,7 +16,9 @@ const meta = Astro.props as Props;
 
 <header class="block py-3">
 	<Layout.Container variant="inner" class="flex items-center justify-between gap-3">
-		<Icon aria-label="Strataline" name="logo" class="z-1 h-auto w-34 sm:w-40 xl:w-50" is:inline />
-		<Island client:visible content={meta.content} />
+		<Icon aria-label="Strataline" name="logo" class="h-auto w-34 sm:w-40 xl:w-50" is:inline />
+		<div class="relative">
+			<Island client:visible content={meta.content} />
+		</div>
 	</Layout.Container>
 </header>

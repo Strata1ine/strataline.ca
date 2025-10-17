@@ -153,7 +153,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					}}
 				>
 					<Feather class="size-8" />
-					<span class="font-serif sm:text-base">Write a review</span>
+					<span class="font-sans sm:text-base">Write a review</span>
 				</button>
 			</div>
 

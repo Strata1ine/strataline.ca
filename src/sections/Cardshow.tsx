@@ -39,7 +39,9 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 									{(() => {
 										switch (card.media.type) {
 											case 'image':
-												return <Image image={card.media.image} widths={[400, 650, 1300]} />;
+												return (
+													<Image pos={null} image={card.media.image} widths={[400, 650, 1300]} />
+												);
 											case 'video':
 												return (
 													<Video
