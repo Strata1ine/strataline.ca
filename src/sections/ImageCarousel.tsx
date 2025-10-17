@@ -3,7 +3,6 @@ import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
 import Image from '@/components/Image';
 import { cn } from '@/frontend/utils';
 import CaretCircleLeftFill from '~icons/ph/CaretCircleLeftFill';
-import { containerVariants } from '@/components/layout/Container.astro';
 
 export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	let container!: HTMLDivElement;
@@ -125,7 +124,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				</div>
 			</div>
 
-			<div class={cn('mt-9 flex justify-end gap-1', containerVariants({ variant: 'inner' }))}>
+			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4">
 				<button
 					onClick={() => {
 						reset();

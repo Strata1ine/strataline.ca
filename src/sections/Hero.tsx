@@ -16,11 +16,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 
 	return (
 		<>
-			<div
-				class={cn(
-					'relative h-80 max-h-180 min-h-50 w-full sm:h-[60vh] sm:min-h-120',
-				)}
-			>
+			<div class={cn('relative h-80 max-h-180 min-h-50 w-full sm:h-[60vh] sm:min-h-120')}>
 				<For each={props.content.images}>
 					{(image, i) => (
 						<Image

@@ -14,13 +14,15 @@ import solidJs from '@astrojs/solid-js';
 
 import { frontmatterComponents, glob } from 'astro-frontmatter-components';
 
+import compressor from 'astro-compressor';
+
 // https://astro.build/config
 export default defineConfig({
-	adapter: netlify({
-		edgeMiddleware: true,
-		experimentalStaticHeaders: true,
-		cacheOnDemandPages: true,
-	}),
+	// adapter: netlify({
+	// 	edgeMiddleware: true,
+	// 	experimentalStaticHeaders: true,
+	// 	cacheOnDemandPages: true,
+	// }),
 	trailingSlash: 'never',
 	site: 'https://strataline.ca',
 	build: {
@@ -69,6 +71,7 @@ export default defineConfig({
 				autoInstall: true,
 			}),
 			visualizer({
+				sourcemap: true,
 				emitFile: true,
 				filename: 'stats.html',
 			}),
@@ -88,6 +91,7 @@ export default defineConfig({
 		frontmatterComponents({
 			components: glob('./src/sections/**/*.astro'),
 		}),
+		compressor(),
 	],
 	redirects: redirects,
 });

@@ -15,7 +15,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	const [open, setOpen] = createSignal(false);
 	onMount(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.ctrlKey && e.key === 'l') {
+			if (e.ctrlKey && e.key == '/') {
 				e.preventDefault();
 				setOpen(true);
 			}
