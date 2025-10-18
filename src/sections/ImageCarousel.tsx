@@ -67,7 +67,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		<>
 			<div
 				ref={container}
-				class="cursor-grab touch-pan-y contain-content"
+				class="cursor-grab touch-pan-y"
 				onPointerDown={(e) => {
 					if (e.button !== 0) return;
 					reset();
@@ -124,7 +124,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				</div>
 			</div>
 
-			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4">
+			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4 md:mx-auto">
 				<button
 					onClick={() => {
 						reset();

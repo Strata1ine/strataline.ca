@@ -222,8 +222,10 @@ function WriteReview() {
 						name="Location"
 						items={['Select a location', ...business.areaServed]}
 					/>
-					<Inputs.TextArea required name="Review" />
-					<Actions.Button variant="fill">Submit</Actions.Button>
+					<Inputs.TextArea required minlength="20" name="Review" />
+					<Actions.Button value="submit" variant="fill">
+						Submit
+					</Actions.Button>
 				</div>
 			</>
 		);

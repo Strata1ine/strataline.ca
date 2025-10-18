@@ -56,7 +56,7 @@ function FieldRoot(props: FieldProps) {
 }
 
 function FieldBody(props: ComponentProps<'input'>) {
-	return <input class="w-full outline-none" {...props} />;
+	return <input required={props.required} class="w-full outline-none" {...props} />;
 }
 
 function FieldHead(props: { children: JSX.Element }) {
@@ -79,14 +79,7 @@ export type TextAreaProps = {
 };
 
 function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>) {
-	const [local, input] = splitProps(props, [
-		'name',
-		'required',
-		'open',
-		'children',
-		'height',
-		'minheight',
-	]);
+	const [local, input] = splitProps(props, ['name', 'open', 'children', 'height', 'minheight']);
 	let textarea: HTMLTextAreaElement | undefined;
 	const minheight = local.minheight ?? 100;
 
@@ -403,7 +396,7 @@ export function Search(props: SelectProps) {
 						<X
 							class={cn(
 								'size-4 transition-opacity duration-200',
-								open() ? 'opacity-100' : 'opacity-0',
+								value().length !== 0 ? 'opacity-100' : 'opacity-0',
 							)}
 							aria-hidden="true"
 						/>

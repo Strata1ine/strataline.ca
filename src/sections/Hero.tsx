@@ -1,6 +1,6 @@
 import { createSignal, For } from 'solid-js';
 import SlideNav from '@/components/SlideNav';
-import Image, { imageRoundedVariants } from '@/components/Image';
+import Image from '@/components/Image';
 import { slideshow } from '@/frontend/slideshow';
 import type { Props as HeroMeta } from './Hero.astro';
 import { cn } from '@/frontend/utils';

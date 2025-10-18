@@ -1,6 +1,6 @@
 import type { Props as CardshowMeta } from './Cardshow.astro';
 
-import { createSignal, For, Show } from 'solid-js';
+import { createSignal, For, Match, Show, Switch } from 'solid-js';
 import { Image, optImage } from '@/components/Image';
 import SlideNav from '@/components/SlideNav';
 import YoutubeVideo from '@/components/YoutubeVideo';
@@ -36,23 +36,13 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
 								<div class="relative aspect-video w-full flex-shrink-0 rounded-sm contain-content sm:h-full sm:w-1/2 sm:rounded-none">
-									{(() => {
-										switch (card.media.type) {
-											case 'image':
-												return (
-													<Image pos={null} image={card.media.image} widths={[400, 650, 1300]} />
-												);
-											case 'video':
-												return (
-													<Video
-														poster={optImage(card.media.image.src.src).src}
-														url={card.media.url}
-													/>
-												);
-											case 'yt-video':
-												return <YoutubeVideo id={card.media.id} />;
-										}
-									})()}
+									{card.media.type === 'image' && (
+										<Image pos={null} image={card.media.image} widths={[400, 650, 1300]} />
+									)}
+									{card.media.type === 'video' && (
+										<Video poster={optImage(card.media.image.src.src).src} url={card.media.url} />
+									)}
+									{card.media.type === 'yt-video' && <YoutubeVideo id={card.media.id} />}
 								</div>
 
 								<div class="w-full sm:my-10">

@@ -25,11 +25,11 @@
 
 	.heading-4xl,
 	.prose h3 {
-		@apply font-serif text-3xl text-balance xl:text-5xl font-bold;
+		@apply font-serif text-3xl font-bold text-balance xl:text-5xl;
 	}
 
 	.prose h4 {
-		@apply font-serif text-3xl text-balance xl:text-4xl font-bold;
+		@apply font-serif text-3xl font-bold text-balance xl:text-4xl;
 	}
 
 	.prose h2,

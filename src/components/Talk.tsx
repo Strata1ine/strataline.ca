@@ -31,12 +31,14 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	const persistedContent = createPersistent(() => {
 		return (
 			<div class="mt-12 space-y-11">
-				<Inputs.Email required  />
+				<Inputs.Email required />
 				<Inputs.PhoneNumber validate />
 				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea required name="Messege" />
+				<Inputs.TextArea required minlength="14" name="Messege" />
 				<Inputs.Photos />
-				<Actions.Button variant="fill">Submit</Actions.Button>
+				<Actions.Button value="submit" variant="fill">
+					Submit
+				</Actions.Button>
 			</div>
 		);
 	});
