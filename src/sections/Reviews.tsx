@@ -153,7 +153,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					}}
 				>
 					<Feather class="size-8" />
-					<span class="font-sans sm:text-base">Write a review</span>
+					<span class="font-sans">Write a review</span>
 				</button>
 			</div>
 
@@ -182,7 +182,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 const Review = (review: ReviewsProps['content'][number]) => {
 	return (
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
-			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
+			<div class="border-accent h-full rounded-md border p-7 md:p-10">
 				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
 					<span class="text-base font-semibold">{review.location}</span>
 				</div>
@@ -212,7 +212,10 @@ function WriteReview() {
 				</div>
 
 				<div class="mt-12 space-y-11">
-					<Inputs.Field name="Full name" required type="name" autocomplete="name" />
+					<Inputs.Field name="Full name" required>
+						<Inputs.Field.Body type="name" autocomplete="name" />
+					</Inputs.Field>
+
 					<Inputs.Email required />
 					<Inputs.Select
 						required

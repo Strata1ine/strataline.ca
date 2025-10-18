@@ -18,11 +18,11 @@ import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
-	// adapter: netlify({
-	// 	edgeMiddleware: true,
-	// 	experimentalStaticHeaders: true,
-	// 	cacheOnDemandPages: true,
-	// }),
+	adapter: netlify({
+		edgeMiddleware: true,
+		experimentalStaticHeaders: true,
+		cacheOnDemandPages: true,
+	}),
 	trailingSlash: 'never',
 	site: 'https://strataline.ca',
 	build: {
@@ -95,3 +95,4 @@ export default defineConfig({
 	],
 	redirects: redirects,
 });
+

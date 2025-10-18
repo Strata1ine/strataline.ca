@@ -25,11 +25,11 @@
 
 	.heading-4xl,
 	.prose h3 {
-		@apply font-serif text-3xl text-balance xl:text-5xl;
+		@apply font-serif text-3xl text-balance xl:text-5xl font-bold;
 	}
 
 	.prose h4 {
-		@apply font-serif text-3xl text-balance xl:text-4xl;
+		@apply font-serif text-3xl text-balance xl:text-4xl font-bold;
 	}
 
 	.prose h2,
@@ -233,14 +233,13 @@ input:-webkit-autofill:focus {
 	}
 }
 
-@supports (-webkit-appearance: none) {
-	.w3c-focus:focus-within:has(:focus-visible) {
-		outline: -webkit-focus-ring-color auto;
-	}
-}
-
-@supports (-moz-appearance: none) {
-	.w3c-focus:focus-within:has(:focus-visible) {
-		outline: Highlight auto;
-	}
-}
+/* @supports (-webkit-appearance: none) { */
+/* 	.w3c-focus:has(:focus-visible) { */
+/* 		outline: -webkit-focus-ring-color auto; */
+/* 	} */
+/* } */
+/* @supports (-moz-appearance: none) { */
+/* 	.w3c-focus:has(:focus-visible) { */
+/* 		outline: Highlight auto; */
+/* 	} */
+/* } */

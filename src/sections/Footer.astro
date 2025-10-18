@@ -12,7 +12,7 @@ import business from '#/business.json';
 <Layout.Divider as="footer">
 	<Layout.Container
 		variant="inner"
-		class="border-accent relative z-2 border-t-2 bg-gradient-to-b from-transparent via-white/90 to-white py-12 backdrop-blur-xs"
+		class="border-accent relative z-2 border-t-1 bg-gradient-to-b from-transparent via-white/90 to-white py-12 backdrop-blur-xs"
 	>
 		<div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
 			<ul class="flex gap-3">
@@ -38,7 +38,12 @@ import business from '#/business.json';
 				}
 			</ul>
 
-			<Inputs.Search items={business.areaServed} placeholder="Find your municipality" client:idle />
+			<Inputs.Search
+				variant="xl"
+				items={business.areaServed}
+				placeholder="Find your municipality"
+				client:visible
+			/>
 		</div>
 
 		<div class="mt-9 flex flex-col items-center gap-2 text-center sm:flex-row">
