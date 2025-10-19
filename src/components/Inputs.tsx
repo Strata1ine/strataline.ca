@@ -119,37 +119,45 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 	let offset = 0;
 	return (
 		<Field {...local}>
-			<textarea
-				ref={textarea}
-				class="w-full resize-none outline-none"
-				style={{
-					height: `${height()}px`,
-				}}
-				{...input}
-			/>
-
-			<div
-				class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
-				onPointerDown={(e) => {
-					offset =
-						e.clientY -
-						e.currentTarget.getBoundingClientRect().top -
-						e.currentTarget.getBoundingClientRect().height / 2;
-					e.currentTarget.setPointerCapture(e.pointerId);
-				}}
-				onPointerMove={(e) => {
-					if (e.currentTarget.hasPointerCapture(e.pointerId) && textarea) {
-						setHeight(
-							Math.max(minheight, e.clientY - offset - textarea?.getBoundingClientRect().top),
-						);
-					}
-				}}
-				onPointerUp={(e) => {
-					e.currentTarget.releasePointerCapture(e.pointerId);
-				}}
-			>
-				<Resize class="size-5 -translate-5" />
-			</div>
+			{(() => {
+				const context = useContext(FieldContext);
+				return (
+					<>
+						<textarea
+							id={context?.id}
+							required={context?.required}
+							ref={textarea}
+							class="w-full resize-none outline-none"
+							style={{
+								height: `${height()}px`,
+							}}
+							{...input}
+						/>
+						<div
+							class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
+							onPointerDown={(e) => {
+								offset =
+									e.clientY -
+									e.currentTarget.getBoundingClientRect().top -
+									e.currentTarget.getBoundingClientRect().height / 2;
+								e.currentTarget.setPointerCapture(e.pointerId);
+							}}
+							onPointerMove={(e) => {
+								if (e.currentTarget.hasPointerCapture(e.pointerId) && textarea) {
+									setHeight(
+										Math.max(minheight, e.clientY - offset - textarea?.getBoundingClientRect().top),
+									);
+								}
+							}}
+							onPointerUp={(e) => {
+								e.currentTarget.releasePointerCapture(e.pointerId);
+							}}
+						>
+							<Resize class="size-5 -translate-5" />
+						</div>
+					</>
+				);
+			})()}
 		</Field>
 	);
 }
