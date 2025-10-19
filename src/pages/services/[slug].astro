@@ -9,7 +9,8 @@ import Image from '@/components/Image';
 import { queryBlocks } from 'astro-frontmatter-components';
 import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
 import { schema as pricesSchemas, seo as seoPrices } from '@/sections/Prices.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
+import { getCollection } from '@/content.config';
 export const prerender = true;
 
 export const seo = async (Astro: Astro, service: CollectionEntry<'services'>) => {
