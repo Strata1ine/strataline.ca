@@ -217,11 +217,7 @@ function WriteReview() {
 					</Inputs.Field>
 
 					<Inputs.Email required />
-					<Inputs.Select
-						required
-						name="Location"
-						items={['Select a location', ...business.areaServed]}
-					/>
+					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
 					<Inputs.TextArea required minlength="20" name="Review" />
 					<Actions.Button value="submit" variant="fill">
 						Submit

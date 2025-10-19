@@ -110,7 +110,14 @@ export type TextAreaProps = {
 };
 
 function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>) {
-	const [local, input] = splitProps(props, ['name', 'open', 'children', 'height', 'minheight']);
+	const [local, input] = splitProps(props, [
+		'name',
+		'open',
+		'children',
+		'height',
+		'minheight',
+		'required',
+	]);
 	let textarea: HTMLTextAreaElement | undefined;
 	const minheight = local.minheight ?? 100;
 
@@ -126,6 +133,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 						<textarea
 							id={context?.id}
 							required={context?.required}
+							name={context?.name}
 							ref={textarea}
 							class="w-full resize-none outline-none"
 							style={{
@@ -286,7 +294,12 @@ function Select(props: SelectProps) {
 		return (
 			<Field open={popover.open} top={popover.open && top()} {...props}>
 				<Popover.Trigger class="absolute inset-0 z-1 cursor-pointer outline-none" />
-				<Field.Body class="sr-only" tabindex="-1" placeholder={props.placeholder} />
+				<Field.Body
+					class="sr-only"
+					tabindex="-1"
+					value={currentItem()}
+					placeholder={props.placeholder}
+				/>
 
 				<Field.Head>
 					<NavArrow class="size-8" />
