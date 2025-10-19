@@ -1,8 +1,5 @@
 ---
 import Root from '@/layouts/Root.astro';
-
-import { Icon } from 'astro-icon/components';
-
 import { getCollection } from '@/content.config';
 // import { generateServiceSchema } from '@/build/schemas/service';
 import { Image } from '@/components/Image';
@@ -24,7 +21,12 @@ interface Props {
 }
 
 const { slug } = Astro.params;
-const service = (await getCollection('services')).find((s) => s.id.split('/')[0] === slug)!;
+const service = (await getCollection('services')).find((s) => s.id.split('/')[0] === slug);
+
+if (!service) {
+	console.error(`Failed to fetch: ${slug}`);
+	return;
+}
 
 // schemas={generateServiceSchema(Astro, service)}
 ---

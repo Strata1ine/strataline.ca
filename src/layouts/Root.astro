@@ -6,17 +6,18 @@ import business from '#/business.json';
 import socials from '#/socials.json';
 import { type Pos, isPos, swapPos } from '@/schemas';
 
-import Frontmatter from 'astro-frontmatter-components/renderer';
+import { Frontmatter } from 'astro-frontmatter-components';
 import Footer from '@/sections/Footer.astro';
+import { schema } from '@/sections/Reviews.astro';
 
 // import { type SectionMeta, querySections } from '@/components/registry';
 
 // import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
 
-import type { SchemaMeta } from 'astro-frontmatter-components';
-import { undefined } from 'astro:schema';
+import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-components';
 const isProd = import.meta.env.PROD;
 
+// DYNAMIC IMPORTS AT BOTTOM
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
 
 interface Props {
@@ -28,14 +29,14 @@ interface Props {
 	noIndex?: boolean;
 }
 
-const { title, desc, startPos, blocks, noIndex = false, schemas: extraSchema = [] } = Astro.props;
-const extraSchemas = Array.isArray(extraSchema) ? extraSchema : [extraSchema];
-
+const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
+const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
 
-// const reviews = querySections(sections, 'Reviews');
-// const faq = querySections(sections, 'Faq');
-// const cardshow = querySections(sections, 'Cardshow');
+// const reviews = queryBlocks(blocks, schema);
+// console.log(reviews);
+// const faq = queryBlocks(blocks, 'Faq');
+// const cardshow = queryBlocks(blocks, 'Cardshow');
 //
 // if (faq.length > 0) {
 // 	extraSchemas.push({
@@ -163,18 +164,18 @@ const schema = {
 
 		<!-- <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /> -->
 
-		<!-- { -->
-		<!-- 	extraSchemas.map((schema) => ( -->
-		<!-- 		<script -->
-		<!-- 			is:inline -->
-		<!-- 			type="application/ld+json" -->
-		<!-- 			set:html={JSON.stringify({ -->
-		<!-- 				'@context': 'https://schema.org', -->
-		<!-- 				...schema, -->
-		<!-- 			})} -->
-		<!-- 		/> -->
-		<!-- 	)) -->
-		<!-- } -->
+		{
+			schemas.map((schema) => (
+				<script
+					is:inline
+					type="application/ld+json"
+					set:html={JSON.stringify({
+						'@context': 'https://schema.org',
+						...schema,
+					})}
+				/>
+			))
+		}
 
 		{
 			isProd && (

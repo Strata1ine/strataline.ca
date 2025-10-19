@@ -1,16 +1,16 @@
 ---
-import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos } from '@/schemas';
 
 import { schema as textCarousel } from './TextCarousel.astro';
-export const schema = (c: SchemaContext) => ({
+export const schema = createSchema((c: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string().default("There's more to explore"),
 	exclude: z.array(z.string()).optional(),
 	content: z.object(textCarousel(c)).optional(),
-});
+}));
 
 import { getEntry, getCollection } from '@/content.config';
 
@@ -63,7 +63,7 @@ import Island from './TextCarousel';
 							/>
 
 							<div class="flex flex-col gap-3 sm:w-full sm:flex-row sm:items-center sm:gap-6">
-								<h3 class="font-serif text-xl text-balance sm:text-2xl xl:text-3xl">
+								<h3 class="font-serif text-2xl text-balance sm:text-2xl xl:text-3xl">
 									{service.data.title}
 								</h3>
 

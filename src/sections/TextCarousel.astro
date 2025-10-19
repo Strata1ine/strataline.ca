@@ -1,12 +1,12 @@
 ---
-import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 
-export const schema = (_: SchemaContext) => ({
+export const schema = createSchema((_: SchemaContext) => ({
 	id: z.string().optional(),
 	speed: z.number().optional().default(0.1),
 	text: z.array(z.string()),
-});
+}));
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;

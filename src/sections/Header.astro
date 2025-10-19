@@ -2,12 +2,12 @@
 import { Icon } from 'astro-icon/components';
 import Island from './Header';
 
-import type { SchemaOf } from 'astro-frontmatter-components';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 
-export const schema = (_: SchemaContext) => ({
+export const schema = createSchema((_: SchemaContext) => ({
 	content: z.array(z.object({ id: z.string(), name: z.string() })),
-});
+}));
 
 import * as Layout from '@/components/Layout';
 export type Props = SchemaOf<typeof schema>;

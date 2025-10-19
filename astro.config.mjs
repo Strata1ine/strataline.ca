@@ -12,7 +12,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 import solidJs from '@astrojs/solid-js';
 
-import { frontmatterComponents, glob } from 'astro-frontmatter-components';
+import { frontmatterComponents, glob } from 'astro-frontmatter-components/integration';
 
 import compressor from 'astro-compressor';
 
@@ -78,6 +78,9 @@ export default defineConfig({
 		],
 	},
 	integrations: [
+		frontmatterComponents({
+			components: glob('./src/sections/**/*.astro'),
+		}),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),
@@ -88,9 +91,6 @@ export default defineConfig({
 			},
 		}),
 		solidJs(),
-		frontmatterComponents({
-			components: glob('./src/sections/**/*.astro'),
-		}),
 		compressor(),
 	],
 	redirects: redirects,

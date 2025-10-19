@@ -265,7 +265,7 @@ function Select(props: SelectProps) {
 
 				<Popover.Portal>
 					<Popover.Content
-						class={cn('z-2 max-h-70', menuVariants({ top: top(), open: popover.open }))}
+						class={cn('z-2', menuVariants({ top: top(), open: popover.open }))}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
 								setSelected(active() ?? 0);
@@ -408,7 +408,7 @@ export function Search(props: SelectProps) {
 				ref={setMenuRef}
 				class={cn(
 					!present() && 'hidden',
-					'absolute right-0 bottom-full left-0 z-2 max-h-[50vh]',
+					'absolute right-0 bottom-full left-0 z-2',
 					menuVariants({ top: true, variant: props.variant, open: open() }),
 				)}
 				role="listbox"
@@ -494,7 +494,7 @@ function StarSlider() {
 }
 
 export const menuVariants = cva(
-	'border-accent overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none',
+	'border-accent overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70',
 	{
 		variants: {
 			top: {
