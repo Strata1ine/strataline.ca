@@ -30,7 +30,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 							<div
 								class={cn(
 									'sm:px-auto flex min-w-full flex-col items-center justify-center gap-6 px-5 py-8 transition-opacity duration-800 sm:flex-row sm:gap-8 sm:px-0 sm:py-0',
-									!isActive() ? 'pointer-events-none opacity-0' : '',
+									!isActive() && 'pointer-events-none opacity-0',
 								)}
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}

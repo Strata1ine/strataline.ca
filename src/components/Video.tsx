@@ -31,7 +31,7 @@ export default function Video(props: { poster: string; url: string }) {
 			poster={props.poster}
 			// dont trust typescript or google depends on your pov
 			loading="lazy"
-			class="absolute h-full w-full cursor-pointer object-cover"
+			class="absolute size-full cursor-pointer object-cover"
 			controls
 			onPlay={() => setVideoPlaying(true)}
 			onPause={() => setVideoPlaying(false)}

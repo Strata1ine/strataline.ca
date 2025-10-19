@@ -1,12 +1,10 @@
 import { createSignal, For, onCleanup } from 'solid-js';
 import type { Props as ImageCarouselMeta } from './ImageCarousel.astro';
 import Image from '@/components/Image';
-import { cn } from '@/frontend/utils';
 import CaretCircleLeftFill from '~icons/ph/CaretCircleLeftFill';
 
 export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	let container!: HTMLDivElement;
-	let imageCarousel!: HTMLDivElement;
 
 	const [pos, setPos] = createSignal(0);
 	const [pointerId, setPointerId] = createSignal<number | null>(null);
@@ -25,12 +23,12 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	};
 
 	const updateTranslation = (o: number) => {
-		if (!imageCarousel || !imageCarousel.children.length) return;
-		const firstChild = imageCarousel.children[0] as HTMLElement;
+		if (!container || !container.children.length) return;
+		const firstChild = container.children[0] as HTMLElement;
 		const w = firstChild.scrollWidth;
 		const wrapped = o - Math.floor(o / w) * w;
 
-		imageCarousel.style.transform = `translateX(${-wrapped}px)`;
+		container.style.transform = `translate3d(${-wrapped}px, 0, 0)`;
 		setPos(wrapped);
 	};
 
@@ -67,7 +65,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		<>
 			<div
 				ref={container}
-				class="cursor-grab touch-pan-y"
+				class="flex h-[60vh] max-h-150 min-h-100 cursor-grab touch-pan-y gap-6 will-change-transform"
 				onPointerDown={(e) => {
 					if (e.button !== 0) return;
 					reset();
@@ -107,21 +105,18 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				role="region"
 				aria-label="Image carousel"
 			>
-				<div
-					ref={imageCarousel}
-					class="flex h-[60vh] max-h-150 min-h-100 gap-6 will-change-transform"
-				>
-					<For each={[0, 1]}>
-						{(i) => (
-							<div class="flex flex-none gap-6" aria-hidden={i > 0 ? 'true' : undefined}>
-								<For
-									each={props.meta.content}
-									children={(image) => <Image class="w-fit max-w-svw" image={image} />}
-								/>
-							</div>
-						)}
-					</For>
-				</div>
+				<For each={[0, 1]}>
+					{(i) => (
+						<div class="flex flex-none gap-6" aria-hidden={i > 0 ? 'true' : undefined}>
+							<For
+								each={props.meta.content}
+								children={(image) => (
+									<Image widths={[400, 600, 800]} class="aspect-[12/16] max-w-svw" image={image} />
+								)}
+							/>
+						</div>
+					)}
+				</For>
 			</div>
 
 			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4 md:mx-auto">

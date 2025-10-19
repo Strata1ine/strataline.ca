@@ -119,7 +119,8 @@ export default function Talk() {
 				)}
 				style={{
 					translate: style() ?? undefined,
-					'transition-property': 'width, height, border-radius, translate, background-color, color',
+					'transition-property': 'width, height, border-radius, translate, background-color',
+					'will-change': 'width, height, border-radius, translate, background-color',
 				}}
 			>
 				<span

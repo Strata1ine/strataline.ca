@@ -46,5 +46,5 @@ export default function YoutubePlayer(props: { id: string }) {
 		if (videoPlaying() == false) player?.pauseVideo();
 	});
 
-	return <div class="select-none" ref={videoRef} />;
+	return <div ref={videoRef} />;
 }
