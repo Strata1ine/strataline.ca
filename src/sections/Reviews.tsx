@@ -182,7 +182,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 const Review = (review: ReviewsProps['content'][number]) => {
 	return (
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
-			<div class="border-accent h-full rounded-md border p-7 md:p-10 mb-7">
+			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
 				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
 					<span class="text-base font-semibold">{review.location}</span>
 				</div>

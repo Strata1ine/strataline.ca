@@ -2,7 +2,7 @@
 
 @layer components {
 	.heading-9xl {
-		@apply font-serif text-5xl text-balance sm:text-9xl font-bold;
+		@apply font-serif text-5xl font-bold text-balance sm:text-9xl;
 	}
 
 	.heading-7xl,

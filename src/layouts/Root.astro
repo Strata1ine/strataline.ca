@@ -1,5 +1,5 @@
 ---
-import global from '@/styles/global.css?url';
+import globalStyles from '@/styles/global.css?url';
 import { Font } from 'astro:assets';
 import business from '#/business.json';
 import socials from '#/socials.json';
@@ -9,12 +9,9 @@ import { Frontmatter } from 'astro-frontmatter-components';
 import Footer from '@/sections/Footer.astro';
 
 import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-components';
-import { schema as reviewSchemas, generate as generateReviews } from '@/sections/Reviews.astro';
-import { schema as faqSchemas, generate as generateFaqs } from '@/sections/Faq.astro';
-import {
-	schema as cardshowSchemas,
-	generate as generateCardshows,
-} from '@/sections/Cardshow.astro';
+import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
+import { schema as faqSchemas, seo as seoFaqs } from '@/sections/Faq.astro';
+import { schema as cardshowSchemas, seo as seoCardshows } from '@/sections/Cardshow.astro';
 
 const isProd = import.meta.env.PROD;
 
@@ -34,9 +31,6 @@ const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = []
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
 
-const origin = `${Astro.url.origin}#company`;
-
-const reviews = queryBlocks(blocks, reviewSchemas);
 const schema = {
 	'@id': `${Astro.url.origin}#company`,
 	'@context': 'https://schema.org',
@@ -45,20 +39,21 @@ const schema = {
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
+const reviews = queryBlocks(blocks, reviewSchemas);
 if (reviews.length > 0) {
-	schemas.push(await generateReviews(origin, reviews));
+	schemas.push(await seoReviews(Astro, reviews));
 }
 
 const faqs = queryBlocks(blocks, faqSchemas);
 if (faqs.length > 0) {
-	schemas.push(await generateFaqs(origin, faqs));
+	schemas.push(await seoFaqs(Astro, faqs));
 }
 
 const cardshow = queryBlocks(blocks, cardshowSchemas);
 if (cardshow.length > 0) {
 	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefuly
 	// it can easily leak here, this is kinda stupid
-	schemas.push(await generateCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow));
+	schemas.push(...(await seoCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow)));
 }
 ---
 
@@ -75,13 +70,16 @@ if (cardshow.length > 0) {
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href={global} />
+		<link rel="stylesheet" href={globalStyles} />
 		<Font cssVariable="--font-cormorant" />
 		<Font cssVariable="--font-dm-sans" />
 
+		<script src="@/frontend/index.ts"></script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
 		<link rel="manifest" href="/manifest.json" />
+
 		{
 			pngIcons.map((icon: any) => (
 				<>
@@ -91,7 +89,6 @@ if (cardshow.length > 0) {
 			))
 		}
 
-		<script src="@/frontend/index.ts"></script>
 		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 		{

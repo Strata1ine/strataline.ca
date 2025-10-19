@@ -25,7 +25,7 @@ export const schema = createSchema('Cardshow', (c: SchemaContext) => ({
 	),
 }));
 
-export const generate = async (key: string, cardshow: Props[]) => {
+export const seo = async (apiKey: string, cardshow: Props[]) => {
 	const videoSchemas: any[] = [];
 	cardshow
 		.flatMap((section) => section.content)
@@ -35,7 +35,7 @@ export const generate = async (key: string, cardshow: Props[]) => {
 					'@type': 'VideoObject',
 					name: card.title,
 					description: card.desc,
-					thumbnailUrl: card.media.image.src,
+					thumbnailUrl: card.media.image.src.src,
 					uploadDate: card.media.uploadDate,
 					contentUrl: card.media.url,
 				});
@@ -49,10 +49,10 @@ export const generate = async (key: string, cardshow: Props[]) => {
 		.map((media) => media!.id);
 
 	if (youtubeVideos.length > 0) {
-		if (key != null) {
+		if (apiKey != null) {
 			const youtube = google.youtube({
 				version: 'v3',
-				auth: key,
+				auth: apiKey,
 			});
 			const response = await youtube.videos.list({
 				part: ['snippet'],

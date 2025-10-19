@@ -18,6 +18,28 @@ export const schema = createSchema('Prices', (_: SchemaContext) => ({
 	),
 }));
 
+import business from '#/business.json';
+export const seo = (prices: Props[]) => {
+	return {
+		offers: prices.flatMap((prices) =>
+			prices.content.map((content) => ({
+				'@type': 'Offer',
+				name: content.title,
+				description: content.desc,
+				price: content.min,
+				priceCurrency: business['currenciesAccepted'],
+				priceSpecification: {
+					'@type': 'PriceSpecification',
+					minPrice: content.min,
+					maxPrice: content.max,
+					priceCurrency: business['currenciesAccepted'],
+				},
+				availability: 'https://schema.org/InStock',
+			})),
+		),
+	};
+};
+
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 

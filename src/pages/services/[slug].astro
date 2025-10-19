@@ -1,14 +1,39 @@
 ---
 import Root from '@/layouts/Root.astro';
-import { getCollection } from '@/content.config';
-// import { generateServiceSchema } from '@/build/schemas/service';
-import { Image } from '@/components/Image';
 
-import Home from '@/components/Home';
 import * as Layout from '@/components/Layout';
+import Home from '@/components/Home';
 import Talk from '@/components/Talk';
+import Image from '@/components/Image';
 
+import { queryBlocks } from 'astro-frontmatter-components';
+import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
+import { schema as pricesSchemas, seo as seoPrices } from '@/sections/Prices.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
 export const prerender = true;
+
+export const seo = async (Astro: Astro, service: CollectionEntry<'services'>) => {
+	const reviews = queryBlocks(service.data.sections, reviewSchemas);
+	const prices = queryBlocks(service.data.sections, pricesSchemas);
+
+	return {
+		'@type': 'Product',
+		name: service.data.title,
+		description: service.data.desc,
+		url: `${Astro.url.origin}/services/${service.id.split('/')[0]}`,
+		brand: {
+			'@type': 'LocalBusiness',
+			'@id': `${Astro.url.origin}#company`,
+		},
+		...(reviews.length > 0 && (await seoReviews(Astro, reviews))),
+		...(prices.length > 0 && seoPrices(prices)),
+		image: {
+			'@type': 'ImageObject',
+			url: `${Astro.url.origin}${service.data.image.src.src}`,
+			description: service.data.image.alt,
+		},
+	};
+};
 
 export async function getStaticPaths() {
 	return (await getCollection('services')).map((service: any) => ({
@@ -27,8 +52,6 @@ if (!service) {
 	console.error(`Failed to fetch: ${slug}`);
 	return;
 }
-
-// schemas={generateServiceSchema(Astro, service)}
 ---
 
 <Root
@@ -36,6 +59,7 @@ if (!service) {
 	desc={service.data.seo}
 	blocks={service.data.sections}
 	startPos={service.data.startPos ?? 'right'}
+	schemas={await seo(Astro, service)}
 >
 	<section class="relative min-h-100 overflow-x-clip py-15 sm:h-[80vh] sm:max-h-170">
 		<Layout.Container
@@ -68,7 +92,7 @@ if (!service) {
 				class="order-2 aspect-video sm:w-1/2 sm:rounded-md"
 				pos="left"
 				image={service.data.image}
-				widths={[400, 730]}
+				widths={[400, 800, 1200]}
 			/>
 		</Layout.Container>
 	</section>

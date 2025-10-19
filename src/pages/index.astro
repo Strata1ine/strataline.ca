@@ -1,18 +1,19 @@
 ---
 import Root from '@/layouts/Root.astro';
 import { getEntry, getCollection } from '@/content.config';
-// import { generateServiceSchema } from '@/schemas/service';
 
 const data = (await getEntry('index', 'index')).data;
 const services = await getCollection('services');
+import { seo } from '@/pages/services/[slug].astro';
+---
 
-/*
+<Root
+	title={data.title}
+	desc={data.desc}
+	blocks={data.sections}
 	schemas={{
 		'@type': 'ItemList',
 		numberOfItems: services.length,
-		itemListElement: services.map((service) => generateServiceSchema(Astro, service)),
+		itemListElement: await Promise.all(services.map(async (service) => await seo(Astro, service))),
 	}}
-*/
----
-
-<Root title={data.title} desc={data.desc} blocks={data.sections} />
+/>

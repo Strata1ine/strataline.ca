@@ -16,7 +16,7 @@ export const schema = createSchema('Faq', (_: SchemaContext) => ({
 	),
 }));
 
-export const generate = async (origin: string, faqs: Props[]) => {
+export const seo = async (Astro: Astro, faqs: Props[]) => {
 	return {
 		'@type': 'FAQPage',
 		mainEntity: await Promise.all(
@@ -33,7 +33,7 @@ export const generate = async (origin: string, faqs: Props[]) => {
 		),
 		provider: {
 			'@type': business['@type'],
-			'@id': origin,
+			'@id': `${Astro.url.origin}#company`,
 		},
 	};
 };

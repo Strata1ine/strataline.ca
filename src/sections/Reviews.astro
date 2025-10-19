@@ -21,7 +21,7 @@ export const schema = createSchema('Reviews', (_: SchemaContext) => ({
 	),
 }));
 
-export const generate = async (origin: string, reviews: Props[]) => {
+export const seo = async (Astro: Astro, reviews: Props[]) => {
 	return {
 		aggregateRating: {
 			'@type': 'AggregateRating',
@@ -38,7 +38,7 @@ export const generate = async (origin: string, reviews: Props[]) => {
 			worstRating: 0,
 			itemReviewed: {
 				'@type': business['@type'],
-				'@id': origin,
+				'@id': `${Astro.url.origin}#company`,
 			},
 		},
 		review: await Promise.all(
@@ -51,7 +51,7 @@ export const generate = async (origin: string, reviews: Props[]) => {
 					},
 					itemReviewed: {
 						'@type': business['@type'],
-						'@id': origin,
+						'@id': `${Astro.url.origin}#company`,
 					},
 					contentLocation: {
 						'@type': 'Place',
