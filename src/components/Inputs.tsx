@@ -1,4 +1,12 @@
-import { For, Show, createMemo, createSignal, splitProps } from 'solid-js';
+import {
+	For,
+	Show,
+	createContext,
+	createMemo,
+	createSignal,
+	splitProps,
+	useContext,
+} from 'solid-js';
 import { createList } from 'solid-list';
 import type { ComponentProps, JSX } from 'solid-js';
 import type { RootChildrenProps as PopoverProps } from '@corvu/popover';
@@ -30,33 +38,56 @@ export type FieldProps = {
 	variant?: VariantProps<typeof fieldVariants>['variant'];
 };
 
+export type FieldContextProps = {
+	id: string;
+	required?: boolean;
+	name?: string;
+};
+
+const FieldContext = createContext<FieldContextProps>({
+	id: '',
+	required: undefined,
+	name: undefined,
+});
+
 function FieldRoot(props: FieldProps) {
 	const id = genInput();
 
 	return (
-		<div class="relative touch-manipulation">
-			<Show when={props.name}>
-				<label
-					class={cn(
-						'absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 transition-opacity select-none',
-						props.top ? 'opacity-0' : 'opacity-100',
-					)}
-					for={id}
-				>
-					<span class="text-md font-serif leading-none font-bold">{props.name}</span>
-					{props.required ? <Asterick class="text-error size-3" /> : null}
-				</label>
-			</Show>
+		<FieldContext.Provider value={{ id, name: props.name, required: props.required }}>
+			<div class="relative touch-manipulation">
+				<Show when={props.name}>
+					<label
+						class={cn(
+							'absolute left-2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white px-3 transition-opacity select-none',
+							props.top ? 'opacity-0' : 'opacity-100',
+						)}
+						for={id}
+					>
+						<span class="text-md font-serif leading-none font-bold">{props.name}</span>
+						{props.required ? <Asterick class="text-error size-3" /> : null}
+					</label>
+				</Show>
 
-			<label class={fieldVariants({ open: props.open, top: props.top, variant: props.variant })}>
-				{props.children}
-			</label>
-		</div>
+				<label class={fieldVariants({ open: props.open, top: props.top, variant: props.variant })}>
+					{props.children}
+				</label>
+			</div>
+		</FieldContext.Provider>
 	);
 }
 
 function FieldBody(props: ComponentProps<'input'>) {
-	return <input required={props.required} class="w-full outline-none" {...props} />;
+	const context = useContext(FieldContext);
+	return (
+		<input
+			id={context.id}
+			name={context.name}
+			required={context.required}
+			class="w-full outline-none"
+			{...props}
+		/>
+	);
 }
 
 function FieldHead(props: { children: JSX.Element }) {

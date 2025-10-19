@@ -2,8 +2,9 @@
 import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos, media } from '@/schemas';
+import { google } from 'googleapis';
 
-export const schema = createSchema((c: SchemaContext) => ({
+export const schema = createSchema('Cardshow', (c: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
@@ -23,6 +24,66 @@ export const schema = createSchema((c: SchemaContext) => ({
 		}),
 	),
 }));
+
+export const generate = async (key: string, cardshow: Props[]) => {
+	const videoSchemas: any[] = [];
+	cardshow
+		.flatMap((section) => section.content)
+		.forEach((card) => {
+			if (card.media?.type === 'video') {
+				videoSchemas.push({
+					'@type': 'VideoObject',
+					name: card.title,
+					description: card.desc,
+					thumbnailUrl: card.media.image.src,
+					uploadDate: card.media.uploadDate,
+					contentUrl: card.media.url,
+				});
+			}
+		});
+
+	const youtubeVideos = cardshow
+		.flatMap((section) => section.content)
+		.map((card) => card.media)
+		.filter((media) => media?.type === 'yt-video')
+		.map((media) => media!.id);
+
+	if (youtubeVideos.length > 0) {
+		if (key != null) {
+			const youtube = google.youtube({
+				version: 'v3',
+				auth: key,
+			});
+			const response = await youtube.videos.list({
+				part: ['snippet'],
+				id: youtubeVideos,
+			});
+			response.data.items?.forEach((video) => {
+				videoSchemas.push({
+					'@type': 'VideoObject',
+					name: video.snippet?.title || null,
+					description: video.snippet?.description || null,
+					uploadDate: video.snippet?.publishedAt || null,
+					thumbnailUrl:
+						video.snippet?.thumbnails?.maxres?.url ||
+						video.snippet?.thumbnails?.high?.url ||
+						`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
+					embedUrl: `https://www.youtube.com/embed/${video.id}`,
+					contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+					publisher: {
+						'@type': 'Organization',
+						name: video.snippet?.channelTitle || null,
+						identifier: video.snippet?.channelId || null,
+					},
+					keywords: video.snippet?.tags?.join(', ') || null,
+					inLanguage: video.snippet?.defaultAudioLanguage || null,
+				});
+			});
+		}
+	}
+
+	return videoSchemas;
+};
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;

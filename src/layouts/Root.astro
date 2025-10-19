@@ -1,6 +1,5 @@
 ---
 import global from '@/styles/global.css?url';
-import { google } from 'googleapis';
 import { Font } from 'astro:assets';
 import business from '#/business.json';
 import socials from '#/socials.json';
@@ -8,17 +7,16 @@ import { type Pos, isPos, swapPos } from '@/schemas';
 
 import { Frontmatter } from 'astro-frontmatter-components';
 import Footer from '@/sections/Footer.astro';
-import { schema } from '@/sections/Reviews.astro';
-
-// import { type SectionMeta, querySections } from '@/components/registry';
-
-// import { computeAggregateRating, generateReviews } from '@/build/schemas/reviews';
 
 import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-components';
-const isProd = import.meta.env.PROD;
+import { schema as reviewSchemas, generate as generateReviews } from '@/sections/Reviews.astro';
+import { schema as faqSchemas, generate as generateFaqs } from '@/sections/Faq.astro';
+import {
+	schema as cardshowSchemas,
+	generate as generateCardshows,
+} from '@/sections/Cardshow.astro';
 
-// DYNAMIC IMPORTS AT BOTTOM
-const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
+const isProd = import.meta.env.PROD;
 
 interface Props {
 	title: string;
@@ -29,118 +27,51 @@ interface Props {
 	noIndex?: boolean;
 }
 
+// DYNAMIC IMPORTS AT BOTTOM
+const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
+
 const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
 
-// const reviews = queryBlocks(blocks, schema);
-// console.log(reviews);
-// const faq = queryBlocks(blocks, 'Faq');
-// const cardshow = queryBlocks(blocks, 'Cardshow');
-//
-// if (faq.length > 0) {
-// 	extraSchemas.push({
-// 		'@type': 'FAQPage',
-// 		'@context': 'https://schema.org',
-// 		mainEntity: faq.flatMap((faq) =>
-// 			faq.content.map((content) => ({
-// 				'@type': 'Question',
-// 				name: content.title,
-// 				acceptedAnswer: {
-// 					'@type': 'Answer',
-// 					text: marked.parse(content.desc),
-// 				},
-// 			})),
-// 		),
-// 		provider: {
-// 			'@type': business['@type'],
-// 			'@id': `${Astro.url.origin}#company`,
-// 		},
-// 	});
-// }
+const origin = `${Astro.url.origin}#company`;
 
-// {
-// 	cardshow
-// 		.flatMap((section) => section.content)
-// 		.forEach((card) => {
-// 			if (card.media?.type === 'video') {
-// 				extraSchemas.push({
-// 					'@type': 'VideoObject',
-// 					name: card.title,
-// 					description: card.desc,
-// 					thumbnailUrl: card.media.image.src,
-// 					uploadDate: card.media.uploadDate,
-// 					contentUrl: card.media.url,
-// 				});
-// 			}
-// 		});
-// }
-//
-// {
-// 	const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
-// 	const youtubeVideos = cardshow
-// 		.flatMap((section) => section.content)
-// 		.map((item) => item.media)
-// 		.filter((media) => media?.type === 'yt-video')
-// 		.map((media) => media.id);
-//
-// 	if (youtubeVideos.length > 0 && YOUTUBE_API_KEY != null) {
-// 		const youtube = google.youtube({
-// 			version: 'v3',
-// 			auth: YOUTUBE_API_KEY,
-// 		});
-//
-// 		const response = await youtube.videos.list({
-// 			part: ['snippet'],
-// 			id: youtubeVideos,
-// 		});
-//
-// 		response.data.items?.map((video) =>
-// 			extraSchemas.push({
-// 				'@type': 'VideoObject',
-// 				name: video.snippet?.title || null,
-// 				description: video.snippet?.description || null,
-// 				uploadDate: video.snippet?.publishedAt || null,
-// 				thumbnailUrl:
-// 					video.snippet?.thumbnails?.maxres?.url ||
-// 					video.snippet?.thumbnails?.high?.url ||
-// 					`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
-// 				embedUrl: `https://www.youtube.com/embed/${video.id}`,
-// 				contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
-// 				publisher: {
-// 					'@type': 'Organization',
-// 					name: video.snippet?.channelTitle || null,
-// 					identifier: video.snippet?.channelId || null,
-// 				},
-// 				keywords: video.snippet?.tags?.join(', ') || null,
-// 				inLanguage: video.snippet?.defaultAudioLanguage || null,
-// 			}),
-// 		);
-// 	}
-// }
-
-/*
+const reviews = queryBlocks(blocks, reviewSchemas);
 const schema = {
 	'@id': `${Astro.url.origin}#company`,
 	'@context': 'https://schema.org',
 	url: `${Astro.url.origin}${Astro.url.pathname.replace(/\.html$/, '')}`,
 	...business,
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
-	...(reviews.length > 0 && {
-		...generateReviews(Astro, reviews),
-		...computeAggregateRating(Astro, reviews),
-	}),
 };
-*/
+
+if (reviews.length > 0) {
+	schemas.push(await generateReviews(origin, reviews));
+}
+
+const faqs = queryBlocks(blocks, faqSchemas);
+if (faqs.length > 0) {
+	schemas.push(await generateFaqs(origin, faqs));
+}
+
+const cardshow = queryBlocks(blocks, cardshowSchemas);
+if (cardshow.length > 0) {
+	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefuly
+	// it can easily leak here, this is kinda stupid
+	schemas.push(await generateCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow));
+}
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		{noIndex && <meta name="robots" content="noindex, nofollow" />}
+
 		<title>
 			{title ? `${title} | ${business.name}` : business.name}
 		</title>
-		<!-- <link rel="canonical" href={schema.url} /> -->
+
+		<link rel="canonical" href={schema.url} />
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -161,8 +92,7 @@ const schema = {
 		}
 
 		<script src="@/frontend/index.ts"></script>
-
-		<!-- <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /> -->
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 		{
 			schemas.map((schema) => (
@@ -187,8 +117,6 @@ const schema = {
 				/>
 			)
 		}
-
-		{noIndex && <meta name="robots" content="noindex, nofollow" />}
 	</head>
 	<body>
 		<slot />

@@ -2,8 +2,9 @@
 import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos } from '@/schemas';
+import business from '#/business.json';
 
-export const schema = createSchema((_: SchemaContext) => ({
+export const schema = createSchema('Reviews', (_: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
@@ -19,6 +20,61 @@ export const schema = createSchema((_: SchemaContext) => ({
 		}),
 	),
 }));
+
+export const generate = async (origin: string, reviews: Props[]) => {
+	return {
+		aggregateRating: {
+			'@type': 'AggregateRating',
+			ratingValue: parseFloat(
+				(
+					reviews
+						.flatMap((review) => review.content)
+						.reduce((total, content) => total + content.stars, 0) /
+					reviews.flatMap((review) => review.content).length
+				).toFixed(1),
+			),
+			reviewCount: reviews.flatMap((review) => review.content).length,
+			bestRating: 5,
+			worstRating: 0,
+			itemReviewed: {
+				'@type': business['@type'],
+				'@id': origin,
+			},
+		},
+		review: await Promise.all(
+			reviews.flatMap((review) =>
+				review.content.map(async (content) => ({
+					'@type': 'Review',
+					author: {
+						'@type': 'Person',
+						name: content.title,
+					},
+					itemReviewed: {
+						'@type': business['@type'],
+						'@id': origin,
+					},
+					contentLocation: {
+						'@type': 'Place',
+						name: content.location,
+					},
+					reviewRating: {
+						'@type': 'Rating',
+						ratingValue: content.stars,
+						bestRating: 5,
+					},
+					reviewBody: await markdown.parseInline(content.desc),
+					...(content.date && { datePublished: content.date.toISOString() }),
+					...(content.url && {
+						associatedMedia: {
+							'@type': 'MediaObject',
+							associatedArticle: content.url,
+						},
+					}),
+				})),
+			),
+		),
+	};
+};
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;

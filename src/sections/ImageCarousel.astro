@@ -3,7 +3,7 @@ import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { image } from '@/schemas';
 
-export const schema = createSchema((c: SchemaContext) => ({
+export const schema = createSchema('ImageCarousel', (c: SchemaContext) => ({
 	id: z.string().optional(),
 	speed: z.number().optional().default(1.0),
 	content: z.array(z.object(image(c))),

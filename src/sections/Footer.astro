@@ -3,11 +3,11 @@ import { Icon } from 'astro-icon/components';
 import * as Layout from '@/components/Layout';
 import Inputs from '@/components/Inputs';
 
-export const schema = createSchema((c: SchemaContext) => ({}));
+import { createSchema } from 'astro-frontmatter-components';
+export const schema = createSchema('Footer', (c: SchemaContext) => ({}));
 
 import socials from '#/socials.json';
 import business from '#/business.json';
-import { createSchema } from 'astro-frontmatter-components';
 import type { SchemaContext } from 'astro:content';
 ---
 

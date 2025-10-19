@@ -3,7 +3,7 @@ import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { swapPos, DefaultPos } from '@/schemas';
 
-export const schema = createSchema((_: SchemaContext) => ({
+export const schema = createSchema('Popular', (_: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),

@@ -2,7 +2,7 @@
 import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 
-export const schema = createSchema((_: SchemaContext) => ({
+export const schema = createSchema('TextCarousel', (_: SchemaContext) => ({
 	id: z.string().optional(),
 	speed: z.number().optional().default(0.1),
 	text: z.array(z.string()),

@@ -2,8 +2,9 @@
 import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
 import { DefaultPos } from '@/schemas';
+import business from '#/business.json';
 
-export const schema = createSchema((_: SchemaContext) => ({
+export const schema = createSchema('Faq', (_: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
@@ -14,6 +15,28 @@ export const schema = createSchema((_: SchemaContext) => ({
 		}),
 	),
 }));
+
+export const generate = async (origin: string, faqs: Props[]) => {
+	return {
+		'@type': 'FAQPage',
+		mainEntity: await Promise.all(
+			faqs.flatMap((faq) =>
+				faq.content.map(async (content) => ({
+					'@type': 'Question',
+					name: content.title,
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: await markdown.parse(content.desc),
+					},
+				})),
+			),
+		),
+		provider: {
+			'@type': business['@type'],
+			'@id': origin,
+		},
+	};
+};
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;

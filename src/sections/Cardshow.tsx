@@ -1,6 +1,6 @@
 import type { Props as CardshowMeta } from './Cardshow.astro';
 
-import { createSignal, For, Match, Show, Switch } from 'solid-js';
+import { createSignal, For, Show } from 'solid-js';
 import { Image, optImage } from '@/components/Image';
 import SlideNav from '@/components/SlideNav';
 import YoutubeVideo from '@/components/YoutubeVideo';

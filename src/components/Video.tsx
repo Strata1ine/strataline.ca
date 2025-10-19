@@ -29,8 +29,7 @@ export default function Video(props: { poster: string; url: string }) {
 		<video
 			ref={node}
 			poster={props.poster}
-			// dont trust typescript or google depends on your pov
-			loading="lazy"
+			preload="none"
 			class="absolute size-full cursor-pointer object-cover"
 			controls
 			onPlay={() => setVideoPlaying(true)}
