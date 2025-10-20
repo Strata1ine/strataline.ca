@@ -77,7 +77,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		return (
 			<button
 				aria-label="Review scroller"
-				class="bg-accent absolute inset-0 cursor-grab rounded-md"
+				class="bg-primary absolute inset-0 cursor-grab rounded-md"
 				style={{
 					width: `${100 / reviewCount()}%`,
 					translate: `${pos() * 100}% 0 0`,
@@ -144,7 +144,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</div>
 
 				<button
-					class="bg-accent absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					class="bg-primary absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
 					onPointerDown={(e) => {
 						e.stopPropagation();
 					}}
@@ -158,7 +158,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 			</div>
 
 			<Show when={reviewCount() > 1}>
-				<div class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint">
+				<div class="relative m-auto mt-20 flex h-5 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint bg-gray-100">
 					<Thumb />
 					<For
 						each={Array.from({ length: reviewCount() })}
@@ -182,8 +182,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 const Review = (review: ReviewsProps['content'][number]) => {
 	return (
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
-			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
-				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
+			<div class="border-primary-dark mb-7 h-full rounded-md border p-7 md:p-10">
+				<div class="bg-primary absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
 					<span class="text-base font-semibold">{review.location}</span>
 				</div>
 

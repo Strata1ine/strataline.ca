@@ -65,7 +65,7 @@ function FieldRoot(props: FieldProps) {
 						for={id}
 					>
 						<span class="text-md font-serif leading-none font-bold">{props.name}</span>
-						{props.required ? <Asterick class="text-error size-3" /> : null}
+						{props.required ? <Asterick class="text-secondary size-3" /> : null}
 					</label>
 				</Show>
 
@@ -84,7 +84,7 @@ function FieldBody(props: ComponentProps<'input'>) {
 			id={context.id}
 			name={context.name}
 			required={context.required}
-			class="w-full outline-none"
+			class="w-full outline-none placeholder:text-gray-400"
 			{...props}
 		/>
 	);
@@ -121,7 +121,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 	let textarea: HTMLTextAreaElement | undefined;
 	const minheight = local.minheight ?? 100;
 
-	const [height, setHeight] = createSignal(local.height ?? 100);
+	const [height, setHeight] = createSignal(local.height ?? 150);
 
 	let offset = 0;
 	return (
@@ -546,7 +546,7 @@ function StarSlider() {
 }
 
 export const menuVariants = cva(
-	'border-accent overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70',
+	'border-primary-dark overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70',
 	{
 		variants: {
 			top: {
@@ -559,7 +559,7 @@ export const menuVariants = cva(
 			},
 			variant: {
 				md: 'border',
-				xl: 'border-2',
+				xl: 'border',
 			},
 		},
 		compoundVariants: [
@@ -610,10 +610,10 @@ export const menuVariants = cva(
 	},
 );
 
-const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-tone', {
+const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-gray-100', {
 	variants: {
 		active: {
-			true: 'bg-tone',
+			true: 'bg-gray-100',
 			false: '',
 		},
 	},
@@ -623,12 +623,12 @@ const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-ton
 });
 
 export const fieldVariants = cva(
-	'border-accent block select-none transition-[border-radius] duration-400 gap-4 flex items-center overflow-hidden',
+	'border-primary-dark block select-none transition-[border-radius] duration-400 gap-4 flex items-center overflow-hidden border',
 	{
 		variants: {
 			variant: {
-				md: 'p-5 border',
-				xl: 'px-5 py-3 border-2',
+				md: 'p-5',
+				xl: 'px-5 py-3',
 			},
 			open: {
 				true: '',
@@ -671,7 +671,7 @@ function ValidityIcon(props: { valid?: boolean }) {
 		<div class="relative size-6" aria-live="polite">
 			<Check
 				class={cn(
-					'text-success absolute size-full duration-250',
+					'absolute size-full text-emerald-600 duration-250',
 					!props.valid && '-translate-y-full opacity-0',
 				)}
 				aria-hidden={!props.valid}
@@ -680,7 +680,7 @@ function ValidityIcon(props: { valid?: boolean }) {
 
 			<X
 				class={cn(
-					'text-error size-full duration-250',
+					'size-full text-red-400 duration-250',
 					props.valid && '-translate-y-full opacity-0',
 				)}
 				aria-hidden={props.valid}
@@ -703,13 +703,13 @@ function SwapText(props: {
 				aria-hidden="true"
 				class={cn('flex-1 transition-transform duration-200', !props.swap && 'translate-y-full')}
 			>
-				<span class={cn('desc-sm transition-opacity duration-300', !props.swap && 'opacity-0')}>
+				<span class={cn('transition-opacity duration-300', !props.swap && 'opacity-0')}>
 					{props.swap ? props.current : props.prev}
 				</span>
 
 				<span
 					class={cn(
-						'desc-sm absolute bottom-full left-0 transition-opacity duration-300',
+						'absolute bottom-full left-0 transition-opacity duration-300',
 						props.swap && 'opacity-0',
 					)}
 				>

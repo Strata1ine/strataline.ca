@@ -69,7 +69,7 @@ export default function TextCarousel(props: { meta: TextCarouselMeta }) {
 
 	return (
 		<div
-			class="border-accent touch-pan-y border-y contain-paint"
+			class="border-primary touch-pan-y border-y contain-paint"
 			ref={(el) => (container = el)}
 			onPointerDown={(e) => {
 				if (e.button !== 0) return;

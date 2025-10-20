@@ -22,7 +22,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 	return (
 		<>
 			<div class="2xl:w-diff shrink-0" />
-			<div class="bg-accent flex rounded-md contain-paint">
+			<div class="bg-primary flex rounded-md contain-paint">
 				<For each={props.meta}>
 					{(card, i) => {
 						const isActive = () => i() === idx();

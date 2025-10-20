@@ -9,7 +9,7 @@
 		transform: scaleY(0);
 		transform-origin: left;
 		width: 4px;
-		background: var(--color-accent-dark);
+		background-color: var(--color-secondary);
 		transition: transform 300ms ease-in-out;
 		border-radius: 5px;
 		opacity: 0.4;
@@ -29,7 +29,7 @@
 		top: 50%;
 		left: 0;
 		right: 0;
-		background: var(--color-black);
+		background-color: currentColor;
 		height: 2.5px;
 		border-radius: 5px;
 		transform-origin: center;

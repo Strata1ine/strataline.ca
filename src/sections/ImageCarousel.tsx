@@ -108,15 +108,11 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				<For
 					each={[0, 1]}
 					children={() => (
-						<div class="flex shrink-0">
+						<div class="flex flex-none">
 							<For
 								each={props.meta.content}
 								children={(image) => (
-									<Image
-										widths={[400, 600, 800]}
-										class="mx-3 w-90 max-w-svw"
-										image={image}
-									/>
+									<Image widths={[400, 600, 800]} class="mx-3 w-90 max-w-svw" image={image} />
 								)}
 							/>
 						</div>
@@ -138,7 +134,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20 cursor-pointer" />
+					<CaretCircleLeftFill class="text-gray-100 size-20 cursor-pointer" />
 				</button>
 
 				<button
@@ -154,7 +150,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-tone size-20 rotate-180 cursor-pointer" />
+					<CaretCircleLeftFill class="text-gray-100 size-20 rotate-180 cursor-pointer" />
 				</button>
 			</div>
 		</>

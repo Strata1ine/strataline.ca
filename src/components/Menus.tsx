@@ -24,7 +24,7 @@ function DialogForm(props: {
 
 						<Dialog.Close
 							type="button"
-							class="bg-tone cursor-pointer rounded-[50%] p-2"
+							class="bg-gray-100 cursor-pointer rounded-[50%] p-2"
 							tabIndex={0}
 						>
 							<X class="size-10 rounded-[50%] lg:w-11" />

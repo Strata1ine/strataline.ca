@@ -26,7 +26,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 							anim="fade"
 							pos="right"
 							image={image}
-							widths={[400, 650, 1400]}
+							widths={[400, 700, 1400]}
 						/>
 					)}
 				</For>

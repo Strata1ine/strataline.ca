@@ -7,7 +7,7 @@
 			left: calc(50% - 1px);
 			bottom: 0;
 			width: 2px;
-			background-color: var(--color-black);
+			background-color: currentColor;
 			transform-origin: center;
 			transition: transform 250ms;
 		}
@@ -18,11 +18,10 @@
 			top: calc(50% - 1px);
 			right: 0;
 			height: 2px;
-			background-color: var(--color-black);
+			background-color: currentColor;
 			transform-origin: center;
 		}
 	}
-
 	&[data-expanded] .expand::before {
 		transform: rotateZ(90deg);
 	}
