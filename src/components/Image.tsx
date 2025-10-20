@@ -45,7 +45,6 @@ export function Image(props: Props) {
 				local.class,
 				imageRoundedVariants({ pos: local.pos }),
 			)}
-			width="1024"
 			src={src}
 			alt={props.image.alt}
 			srcset={srcSet}

@@ -3,9 +3,11 @@ import type { JSX } from 'solid-js';
 import { Show } from 'solid-js';
 import X from '~icons/ph/x-bold';
 
+const siteUrl = import.meta.env.SITE;
+
 function DialogForm(props: {
 	title: string;
-	name: string;
+	id: string;
 	desc?: string;
 	action?: string;
 	children?: JSX.Element;
@@ -33,14 +35,8 @@ function DialogForm(props: {
 						<Dialog.Description class="mt-3 text-base">{props.desc}</Dialog.Description>
 					</Show>
 
-					<form
-						name={props.name}
-						action={props.action}
-						enctype="multipart/form-data"
-						method="post"
-						data-netlify
-					>
-						<input type="hidden" name="form-name" value={props.name} />
+					<form action={`https://submit-form.com/${props.id}`} method="post">
+						<input type="hidden" name="_redirect" value={`${siteUrl}${props.action}`} />
 						{props.children}
 					</form>
 				</div>

@@ -218,7 +218,7 @@ function WriteReview() {
 
 					<Inputs.Email required />
 					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-					<Inputs.TextArea required minlength="20" name="Review" />
+					<Inputs.TextArea required name="Review" />
 					<Actions.Button value="submit" variant="fill">
 						Submit
 					</Actions.Button>
@@ -236,7 +236,7 @@ function WriteReview() {
 					<Menus.DialogForm
 						title="Review"
 						desc="We will verify your submission via email."
-						name="review"
+						id="0fqNd4cJ0"
 						action="/submissions/review"
 					>
 						{persistedContent()}

@@ -27,7 +27,7 @@ export const navStyles = cva(
 
 export default function Slidenav(props: Props) {
 	return (
-		<div class={cn('2xl:w-diff flex flex-shrink-0 items-center justify-center gap-2', props.class)}>
+		<div class={cn('2xl:w-diff flex shrink-0 items-center justify-center gap-2', props.class)}>
 			<For
 				each={Array(props.length)}
 				children={(_, i) => (

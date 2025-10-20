@@ -34,8 +34,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 				<Inputs.Email required />
 				<Inputs.PhoneNumber validate />
 				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea required minlength="14" name="Messege" />
-				<Inputs.Photos />
+				<Inputs.TextArea required name="Messege" />
 				<Actions.Button value="submit" variant="fill">
 					Submit
 				</Actions.Button>
@@ -50,7 +49,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 				<Menus.DialogForm
 					title="Let's talk"
 					desc="Feel free to ask a question and a quote."
-					name="contact"
+					id="jReRE2JLR"
 					action="/submissions/talk"
 				>
 					{persistedContent()}

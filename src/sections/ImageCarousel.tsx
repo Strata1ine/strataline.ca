@@ -65,7 +65,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		<>
 			<div
 				ref={container}
-				class="flex h-[60vh] max-h-150 min-h-100 cursor-grab touch-pan-y gap-6 will-change-transform"
+				class="flex h-120 cursor-grab touch-pan-y will-change-transform"
 				onPointerDown={(e) => {
 					if (e.button !== 0) return;
 					reset();
@@ -105,18 +105,23 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				role="region"
 				aria-label="Image carousel"
 			>
-				<For each={[0, 1]}>
-					{(i) => (
-						<div class="flex flex-none gap-6" aria-hidden={i > 0 ? 'true' : undefined}>
+				<For
+					each={[0, 1]}
+					children={() => (
+						<div class="flex shrink-0">
 							<For
 								each={props.meta.content}
 								children={(image) => (
-									<Image widths={[400, 600, 800]} class="aspect-[12/16] max-w-svw" image={image} />
+									<Image
+										widths={[400, 600, 800]}
+										class="mx-3 w-90 max-w-svw"
+										image={image}
+									/>
 								)}
 							/>
 						</div>
 					)}
-				</For>
+				/>
 			</div>
 
 			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4 md:mx-auto">

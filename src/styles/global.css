@@ -7,7 +7,7 @@
 
 	.heading-7xl,
 	.prose h1 {
-		@apply font-serif text-4xl font-bold text-pretty sm:text-5xl xl:text-6xl 2xl:text-7xl;
+		@apply font-serif text-4xl font-bold text-pretty sm:text-5xl xl:text-6xl;
 	}
 
 	.heading-5xl,
@@ -89,6 +89,9 @@
 	--font-serif: var(--font-cormorant);
 	--font-sans: var(--font-dm-sans);
 	--font-mono: initial;
+
+	--breakpoint-xl: 75rem;
+	--breakpoint-2xl: 89rem;
 
 	--spacing-inner: var(--breakpoint-xl);
 	--spacing-outer: var(--breakpoint-2xl);
