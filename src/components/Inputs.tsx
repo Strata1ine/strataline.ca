@@ -546,7 +546,7 @@ function StarSlider() {
 }
 
 export const menuVariants = cva(
-	'border-primary-dark overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70',
+	'border-primary-dark overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70 border',
 	{
 		variants: {
 			top: {
@@ -558,8 +558,8 @@ export const menuVariants = cva(
 				false: 'animate-out fade-out-0%',
 			},
 			variant: {
-				md: 'border',
-				xl: 'border',
+				md: '',
+				xl: '',
 			},
 		},
 		compoundVariants: [

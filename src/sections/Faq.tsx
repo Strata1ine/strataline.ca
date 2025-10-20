@@ -13,7 +13,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 						let trigger: HTMLButtonElement | undefined;
 						return (
 							<div
-								class="border-primary cursor-pointer border-t py-8 first:border-t-0"
+								class="border-primary-dark border-t py-8 first:border-t-0"
 								onClick={(e) => {
 									if (e.target !== e.currentTarget) return;
 									trigger?.click();
@@ -24,7 +24,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 										<Accordion.Trigger
 											ref={trigger}
 											class={cn(
-												'flex w-full cursor-pointer touch-manipulation items-center justify-between gap-3',
+												'flex w-full cursor-pointer touch-manipulation items-center justify-between gap-6',
 												styles.trigger,
 											)}
 										>

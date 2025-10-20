@@ -47,13 +47,17 @@ import * as Layout from '@/components/Layout';
 
 import { Icon } from 'astro-icon/components';
 import markdown from '@/build/markdown';
+import { cn } from '@/frontend/utils';
 ---
 
 <Layout.Divider id={meta.id}>
 	<Layout.Split pos={meta.pos}>
 		<div slot="title" class="flex-2">
 			<h2
-				class="top-0 font-serif text-4xl font-bold sm:sticky xl:text-right xl:text-5xl 2xl:text-6xl"
+				class={cn(
+					'top-0 font-serif text-4xl font-bold sm:sticky xl:text-5xl 2xl:text-6xl',
+					meta.pos == 'right' ? 'md:text-right' : '',
+				)}
 			>
 				{meta.title}
 			</h2>
@@ -61,9 +65,11 @@ import markdown from '@/build/markdown';
 
 		<div class="flex-3">
 			{
-				meta.content.map(async (price, _) => {
+				meta.content.map(async (price, i) => {
 					return (
-						<div class="border-primary border-t py-7 first:border-t-0 first:pt-0 last:pb-0">
+						<>
+							{i != 0 && <hr class="border-primary-dark my-7" />}
+
 							<div class="flex w-full items-center justify-between gap-4">
 								<h3 class="font-serif text-3xl font-bold">{price.title}</h3>
 								<div class="flex items-center gap-3">
@@ -76,18 +82,18 @@ import markdown from '@/build/markdown';
 							<p class="desc-base my-4" set:html={await markdown.parseInline(price.desc)} />
 
 							{price.materials.map((s: string) => (
-								<div class="mt-2 flex gap-3 align-top">
+								<div class="mt-2 flex items-center gap-3">
 									<Icon
 										aria-hidden={true}
 										name="ph:star-four-fill"
-										class="text-gold h-auto w-4 sm:w-5"
+										class="text-gold size-4 sm:size-5"
 										aria-hidden="true"
 										is:inline
 									/>
 									<span class="desc-sm">{s}</span>
 								</div>
 							))}
-						</div>
+						</>
 					);
 				})
 			}

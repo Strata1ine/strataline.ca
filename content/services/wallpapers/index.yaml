@@ -8,14 +8,3 @@ image:
   src: ./cover.jpg
   alt: |-
     A cozy bedroom featuring elegant patterned wallpaper, complementing soft tones and natural light for a serene atmosphere.
-sections:
-  - type: Faq
-    title: Have any questions?
-    content:
-      - title: How long does a staircase renovation take?
-        desc: |-
-          Our projects typically take a week, depending on the complexity.
-
-      - title: Can you work within my budget?
-        desc: |-
-          Absolutely. We offer tailored solutions to suit various budgets without compromising quality.
