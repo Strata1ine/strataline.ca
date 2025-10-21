@@ -45,7 +45,7 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 									{card.media.type === 'yt-video' && <YoutubeVideo id={card.media.id} />}
 								</div>
 
-								<div class="w-full sm:my-10">
+								<div class="sm:my-10">
 									<h3 class="heading-4xl mb-2">{card.title}</h3>
 									<p class="desc-base">{card.desc}</p>
 

@@ -20,10 +20,7 @@ import Island from './Gallery';
 
 <Layout.Divider>
 	<Layout.Title title={meta.title} pos={meta.pos} />
-	<Layout.Container
-		variant="outer"
-		class="px-4"
-	>
+	<Layout.Container variant="outer" class="px-4">
 		<Island client:visible content={meta.content} />
 	</Layout.Container>
 </Layout.Divider>

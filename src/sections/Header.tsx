@@ -13,6 +13,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 						document.body.scrollTop = document.documentElement.scrollTop = 1;
 					}
 				});
+
 				return (
 					<>
 						<Dialog.Trigger
@@ -25,7 +26,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 						<Dialog.Content
 							class={cn(
 								'data-open:animate-in data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out sm:data-open:zoom-in-80% sm:data-closed:zoom-out-80%',
-								'border-primary-dark fixed top-20 right-0 bottom-0 left-0 z-2 flex flex-col justify-center gap-7 bg-white p-9 sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:translate-y-4 sm:rounded-xl sm:border-2',
+								'border-primary-dark fixed top-20 right-0 bottom-0 left-0 z-2 flex flex-col justify-center gap-7 bg-white p-9 sm:absolute sm:inset-auto sm:top-full sm:right-0 sm:translate-y-4 sm:rounded-xl sm:border-2',
 							)}
 						>
 							<ul class="contents">

@@ -16,7 +16,7 @@ function DialogForm(props: {
 		<>
 			<Dialog.Overlay class="data-open:animate-in data-open:fade-in-0% data-closed:animate-out data-closed:fade-out-0% fixed inset-0 z-2 bg-white/40 backdrop-blur-2xl" />
 			<Dialog.Content class="data-open:animate-in data-open:zoom-in-98% data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out data-closed:zoom-out-98% fixed inset-0 z-2 overflow-y-scroll">
-				<div class="relative mx-auto w-full max-w-120 bg-white p-10 sm:my-10 sm:rounded-lg">
+				<div class="relative mx-auto max-w-120 bg-white p-10 sm:my-10 sm:rounded-lg">
 					<div class="flex items-center gap-3">
 						<Dialog.Label class="flex-1 font-serif text-5xl font-bold sm:text-6xl">
 							{props.title}
@@ -24,7 +24,7 @@ function DialogForm(props: {
 
 						<Dialog.Close
 							type="button"
-							class="bg-gray-100 cursor-pointer rounded-[50%] p-2"
+							class="cursor-pointer rounded-[50%] bg-gray-100 p-2"
 							tabIndex={0}
 						>
 							<X class="size-10 rounded-[50%] lg:w-11" />

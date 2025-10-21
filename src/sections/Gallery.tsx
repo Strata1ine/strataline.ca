@@ -34,7 +34,7 @@ export default function Gallery(props: { content: GalleryMeta['content'] }) {
 					'margin-bottom': `${data.margin()}px`,
 				}}
 			>
-				<Image widths={[400, 700, 1440]} image={data.source} class="absolute" />
+				<Image widths={[400, 800, 1000]} image={data.source} class="absolute" />
 			</div>
 		),
 	});

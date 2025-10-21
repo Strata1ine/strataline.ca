@@ -134,7 +134,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-gray-100 size-20 cursor-pointer" />
+					<CaretCircleLeftFill class="size-20 cursor-pointer text-gray-100" />
 				</button>
 
 				<button
@@ -150,7 +150,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 					tabIndex={0}
 				>
 					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="text-gray-100 size-20 rotate-180 cursor-pointer" />
+					<CaretCircleLeftFill class="size-20 rotate-180 cursor-pointer text-gray-100" />
 				</button>
 			</div>
 		</>
