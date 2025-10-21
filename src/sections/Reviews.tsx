@@ -1,6 +1,6 @@
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 import type { Props as ReviewsProps } from './Reviews.astro';
-import { useQueryDevice } from '@/frontend/mobile';
+import { createMediaQuery } from '@solid-primitives/media';
 import createPersistent from 'solid-persistent';
 
 import business from '#/business.json';
@@ -12,8 +12,8 @@ import Dialog from 'corvu/dialog';
 import Feather from '~icons/ph/feather-fill';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
-	const phone = useQueryDevice();
-	const power = createMemo(() => (phone.isMobile() ? 0 : 1));
+	const isMobile = createMediaQuery('(max-width: 650px)');
+	const power = createMemo(() => (isMobile() ? 0 : 1));
 
 	const [idx, _setIdx] = createSignal(0);
 	const [pos, setPos] = createSignal(0);
@@ -47,7 +47,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	createEffect(() => {
-		phone.isMobile;
+		isMobile.isMobile;
 		setIdx(idx());
 	});
 
@@ -77,7 +77,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		return (
 			<button
 				aria-label="Review scroller"
-				class="bg-primary absolute inset-0 cursor-grab rounded-md"
+				class="bg-primary-dark absolute inset-0 cursor-grab rounded-md"
 				style={{
 					width: `${100 / reviewCount()}%`,
 					translate: `${pos() * 100}% 0 0`,
@@ -158,7 +158,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 			</div>
 
 			<Show when={reviewCount() > 1}>
-				<div class="relative m-auto mt-20 flex h-5 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint bg-gray-100">
+				<div class="relative m-auto mt-20 flex h-5 w-[60vw] max-w-100 touch-pan-y rounded-md bg-slate-100 contain-paint">
 					<Thumb />
 					<For
 						each={Array.from({ length: reviewCount() })}

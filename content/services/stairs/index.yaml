@@ -9,8 +9,35 @@ image:
     A beautifully renovated open space featuring elegant hardwood floors, decorative iron railings, and bright natural light highlighting the cozy living area and stylish decor.
 
 sections:
-  - type: ImageCarousel
-    speed: 4.0
+  - type: Benefits
+    title: Why should we replace your stairs?
+    content:
+      - title: Meticulous. Beautiful. Precise.
+        desc: |-
+          Our dedication to perfect fit and finish means every project is executed with exceptional care. If you appreciate fine craftsmanship, you’ll love the results.
+
+      - title: High quality materials
+        desc: |-
+          We use premium materials from trusted suppliers to guarantee lasting beauty and durability. With us, you can expect the best results that stand the test of time.
+
+      - title: Expert Installation
+        desc: |-
+          Nothing replaces experience. We’ve mastered the art of renovation, bringing proven expertise and confidence to every project. Excellence is our standard.
+
+      - title: Increase property value
+        desc: |-
+          By combining high-quality materials with modern safety features, we enhance both functionality and market value.
+
+  - type: TextCarousel
+    text:
+      - Stairs that impress every guest
+      - Step into elegance with ease
+      - Crafted with care for beauty
+      - Style on every step you take
+      - Quality in every tread you climb
+
+  - type: Gallery
+    title: View our work
     content:
       - src: ./photos/10.jpg
         alt: A carpeted staircase with wooden handrails and black balusters, accented by framed artwork on neutral walls.
@@ -31,25 +58,6 @@ sections:
       - src: ./photos/09.jpg
         alt: A staircase with glass railings and a stainless steel handrail, opening into a bright space with wood floors and a stone accent wall.
 
-  - type: Benefits
-    title: Why should we replace your stairs?
-    content:
-      - title: Meticulous. Beautiful. Precise.
-        desc: |-
-          Our dedication to perfect fit and finish means every project is executed with exceptional care. If you appreciate fine craftsmanship, you’ll love the results.
-
-      - title: High quality materials
-        desc: |-
-          We use premium materials from trusted suppliers to guarantee lasting beauty and durability. With us, you can expect the best results that stand the test of time.
-
-      - title: Expert Installation
-        desc: |-
-          Nothing replaces experience. We’ve mastered the art of renovation, bringing proven expertise and confidence to every project. Excellence is our standard.
-
-      - title: Increase property value
-        desc: |-
-          By combining high-quality materials with modern safety features, we enhance both functionality and market value.
-
   - type: Reviews
     title: What our clients say
     content:
@@ -64,14 +72,6 @@ sections:
         stars: 5
         desc: |-
           Incredible craftsmanship and attention to detail. We couldn’t be happier.
-
-  - type: TextCarousel
-    text:
-      - Stairs that impress every guest
-      - Step into elegance with ease
-      - Crafted with care for beauty
-      - Style on every step you take
-      - Quality in every tread you climb
 
   - type: Faq
     title: Have any questions?

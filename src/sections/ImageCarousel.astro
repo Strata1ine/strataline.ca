@@ -5,7 +5,6 @@ import { image } from '@/schemas';
 
 export const schema = createSchema('ImageCarousel', (c: SchemaContext) => ({
 	id: z.string().optional(),
-	speed: z.number().optional().default(1.0),
 	content: z.array(z.object(image(c))),
 }));
 

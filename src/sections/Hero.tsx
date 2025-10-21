@@ -3,7 +3,6 @@ import SlideNav from '@/components/SlideNav';
 import Image from '@/components/Image';
 import { slideshow } from '@/frontend/slideshow';
 import type { Props as HeroMeta } from './Hero.astro';
-import { cn } from '@/frontend/utils';
 
 export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 	const [idx, setIdx] = createSignal(0);
@@ -16,7 +15,7 @@ export default function ImageCarousel(props: { content: HeroMeta['content'] }) {
 
 	return (
 		<>
-			<div class={cn('relative h-80 max-h-180 min-h-50 w-full sm:h-[60vh] sm:min-h-120')}>
+			<div class="relative h-80 max-h-180 min-h-50 w-full sm:h-[60vh] sm:min-h-120">
 				<For each={props.content.images}>
 					{(image, i) => (
 						<Image
