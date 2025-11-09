@@ -1,20 +1,61 @@
-title: Doors & windows
+title: Doors & Windows
 desc: |-
-  A custom-built walk-in closet with sleek wood finishes, ample shelving, pull-down rods, and integrated lighting for a modern, organized space.
+  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Enjoy comfort, savings, and modern curb appeal all year long.
 seo: |-
-  tomatoes
-draft: true
+  vinyl windows, double glazing, triple glass, window replacement, vinyl doors, energy-efficient home upgrades, cost savings, home comfort
+draft: false
 image:
   src: ./cover.jpg
-  alt: tomatoes
-sections:
-  - type: Faq
-    title: Have any questions?
-    content:
-      - title: How long does a staircase renovation take?
-        desc: |-
-          Our projects typically take a week, depending on the complexity.
+  alt: Modern vinyl windows and doors with energy-efficient glass
 
-      - title: Can you work within my budget?
+sections:
+  - type: Hero
+    title: Transform Your Home with Vinyl Windows & Doors
+    desc: |-
+      Replace outdated windows and doors with modern vinyl double- and triple-glazed designs. Enjoy lower energy bills, a quieter home, and a beautiful new look that lasts for years.
+    content:
+      images:
+        - src: ./cover.jpg
+          alt: Vinyl window and door installation
+
+  - type: Benefits
+    title: Why Upgrade Your Windows and Doors?
+    desc: |-
+      Modern vinyl windows and doors are designed to improve your home’s comfort, efficiency, and appearance.
+    content:
+      - title: Energy Efficiency
         desc: |-
-          Absolutely. We offer tailored solutions to suit various budgets without compromising quality.
+          Double and triple glass panels with insulated frames reduce drafts, keeping your home warm in winter and cool in summer.
+      - title: Lower Energy Bills
+        desc: |-
+          Better insulation means your heating and cooling systems work less — saving you money month after month.
+      - title: Modern Design
+        desc: |-
+          Sleek frames and clean lines instantly refresh your home’s exterior and interior appearance.
+      - title: Noise Reduction
+        desc: |-
+          Multi-pane glass helps block outdoor noise for a more peaceful home.
+      - title: Durability & Low Maintenance
+        desc: |-
+          Vinyl doesn’t warp, peel, or fade — it looks great and performs for decades with minimal care.
+      - title: Higher Property Value
+        desc: |-
+          Quality window and door upgrades add long-term value and appeal to your home.
+
+  - type: ZigZag
+    title: Upgrade Your Doors Too
+    desc: |-
+      Your doors are just as important for comfort, security, and style.
+    content:
+      - image:
+          src: ./door.jpg
+          alt: Modern front door
+        title: Improved Energy Efficiency
+        desc: |-
+          New insulated doors prevent air leaks, keeping temperatures stable and energy costs low.
+      - image:
+          src: ./patio-door.jpg
+          alt: Vinyl patio door
+        title: Enhanced Security & Curb Appeal
+        desc: |-
+          Reinforced frames, modern lock
