@@ -96,6 +96,6 @@ import Island from './Cardshow';
 	<Layout.Title title={meta.title} pos={meta.pos} />
 
 	<Layout.Container variant="outer" class="flex flex-col 2xl:flex-row">
-		<Island client:visible meta={meta.content} speed={meta.speed} />
+		<Island client:load meta={meta.content} speed={meta.speed} />
 	</Layout.Container>
 </Layout.Divider>

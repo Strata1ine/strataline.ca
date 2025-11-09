@@ -6,7 +6,7 @@ import Dialog from '@corvu/dialog';
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	return (
-		<Dialog>
+		<Dialog preventScrollbarShift={false}>
 			{(popover) => {
 				createEffect(() => {
 					if (popover.open) {
