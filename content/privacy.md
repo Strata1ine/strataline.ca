@@ -3,13 +3,13 @@ title: Privacy policy
 desc: How we collect, use, store, and delete your personal information.
 ---
 
-**Last updated:** August 7, 2025
+**Last updated:** October 19, 2025
 
 _\*This policy applies to users in Canada. If outside of Canada, this service is not applicable._
 
 ### Information collection
 
-We use Netlify to collect and process your information, which may include:
+We use Formspark to collect and process your information, which may include:
 
 - Email address
 - Phone number
@@ -36,7 +36,7 @@ We may update this policy from time to time. If we do, we’ll update the "Last 
 
 #### Analytics
 
-We use Ahrefs and Netlify for website analytics to understand how our site is performing, so we can reach more people.
+We use Ahrefs and Formspark for website analytics to understand how our site is performing, so we can reach more people.
 
 #### Contact information
 

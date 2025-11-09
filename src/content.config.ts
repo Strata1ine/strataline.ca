@@ -32,9 +32,19 @@ export const collections = {
 				seo: z.string(),
 				image: z.object(image(c)),
 				draft: z.boolean().optional(),
-				sections: parseBlocks(c),
+				sections: parseBlocks(c).optional(),
 			}),
 	}),
+	// auto-import gallery--for ref, not planning to impl at least yet
+	// import { VALID_INPUT_FORMATS } from 'node_modules/astro/dist/assets/consts';
+	// gallery: defineCollection({
+	// 	loader: glob({
+	// 		pattern: `**/*.{${VALID_INPUT_FORMATS.join(',')}}`,
+	// 		base: './content/gallery',
+	// 	}),
+	// 	schema: (c: SchemaContext) => z.object({
+	// 	}),
+	// }),
 };
 
 export type Id = keyof typeof collections;

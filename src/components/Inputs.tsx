@@ -65,7 +65,7 @@ function FieldRoot(props: FieldProps) {
 						for={id}
 					>
 						<span class="text-md font-serif leading-none font-bold">{props.name}</span>
-						{props.required ? <Asterick class="text-error size-3" /> : null}
+						{props.required ? <Asterick class="text-secondary size-3" /> : null}
 					</label>
 				</Show>
 
@@ -84,7 +84,7 @@ function FieldBody(props: ComponentProps<'input'>) {
 			id={context.id}
 			name={context.name}
 			required={context.required}
-			class="w-full outline-none"
+			class="flex-1 outline-none placeholder:text-gray-400"
 			{...props}
 		/>
 	);
@@ -121,7 +121,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 	let textarea: HTMLTextAreaElement | undefined;
 	const minheight = local.minheight ?? 100;
 
-	const [height, setHeight] = createSignal(local.height ?? 100);
+	const [height, setHeight] = createSignal(local.height ?? 150);
 
 	let offset = 0;
 	return (
@@ -135,14 +135,15 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 							required={context?.required}
 							name={context?.name}
 							ref={textarea}
-							class="w-full resize-none outline-none"
+							class="relative flex-1 resize-none outline-none"
 							style={{
 								height: `${height()}px`,
 							}}
 							{...input}
-						/>
+						></textarea>
+
 						<div
-							class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
+							class="absolute right-0 bottom-0 -translate-5 cursor-ns-resize touch-none"
 							onPointerDown={(e) => {
 								offset =
 									e.clientY -
@@ -161,7 +162,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 								e.currentTarget.releasePointerCapture(e.pointerId);
 							}}
 						>
-							<Resize class="size-5 -translate-5" />
+							<Resize class="size-5" />
 						</div>
 					</>
 				);
@@ -407,7 +408,7 @@ export function Search(props: SelectProps) {
 
 	return (
 		<Field open={open()} top={open()} {...props}>
-			<Field.Head children={<MagnifyingGlass class="size-12" />} />
+			<Field.Head children={<MagnifyingGlass class="size-9" />} />
 
 			<Field.Body
 				placeholder={props.placeholder}
@@ -439,7 +440,7 @@ export function Search(props: SelectProps) {
 						onClick={() => {
 							setValue('');
 						}}
-						class="cursor-pointer"
+						class="contents"
 						aria-label="Cancel search"
 						aria-hidden={value().length === 0}
 						disabled={value().length === 0}
@@ -448,7 +449,7 @@ export function Search(props: SelectProps) {
 						<X
 							class={cn(
 								'size-4 transition-opacity duration-200',
-								value().length !== 0 ? 'opacity-100' : 'opacity-0',
+								value().length !== 0 ? 'cursor-pointer opacity-100' : 'opacity-0',
 							)}
 							aria-hidden="true"
 						/>
@@ -546,7 +547,7 @@ function StarSlider() {
 }
 
 export const menuVariants = cva(
-	'border-accent overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70',
+	'border-primary-dark overflow-hidden overflow-y-scroll transition-[border-radius] select-none duration-400 bg-white outline-none max-h-70 border',
 	{
 		variants: {
 			top: {
@@ -558,8 +559,8 @@ export const menuVariants = cva(
 				false: 'animate-out fade-out-0%',
 			},
 			variant: {
-				md: 'border',
-				xl: 'border-2',
+				md: '',
+				xl: '',
 			},
 		},
 		compoundVariants: [
@@ -610,10 +611,10 @@ export const menuVariants = cva(
 	},
 );
 
-const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-tone', {
+const menuItemVariants = cva('block cursor-pointer px-5 py-2 hover:bg-gray-100', {
 	variants: {
 		active: {
-			true: 'bg-tone',
+			true: 'bg-gray-100',
 			false: '',
 		},
 	},
@@ -623,12 +624,12 @@ const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-ton
 });
 
 export const fieldVariants = cva(
-	'border-accent block select-none transition-[border-radius] duration-400 gap-4 flex items-center overflow-hidden',
+	'border-primary-dark block select-none transition-[border-radius] duration-400 gap-4 flex items-center overflow-hidden border',
 	{
 		variants: {
 			variant: {
-				md: 'p-5 border',
-				xl: 'px-5 py-3 border-2',
+				md: 'p-5',
+				xl: 'px-6 py-4',
 			},
 			open: {
 				true: '',
@@ -671,7 +672,7 @@ function ValidityIcon(props: { valid?: boolean }) {
 		<div class="relative size-6" aria-live="polite">
 			<Check
 				class={cn(
-					'text-success absolute size-full duration-250',
+					'absolute size-full text-emerald-600 duration-250',
 					!props.valid && '-translate-y-full opacity-0',
 				)}
 				aria-hidden={!props.valid}
@@ -680,7 +681,7 @@ function ValidityIcon(props: { valid?: boolean }) {
 
 			<X
 				class={cn(
-					'text-error size-full duration-250',
+					'size-full text-red-400 duration-250',
 					props.valid && '-translate-y-full opacity-0',
 				)}
 				aria-hidden={props.valid}
@@ -703,13 +704,13 @@ function SwapText(props: {
 				aria-hidden="true"
 				class={cn('flex-1 transition-transform duration-200', !props.swap && 'translate-y-full')}
 			>
-				<span class={cn('desc-sm transition-opacity duration-300', !props.swap && 'opacity-0')}>
+				<span class={cn('transition-opacity duration-300', !props.swap && 'opacity-0')}>
 					{props.swap ? props.current : props.prev}
 				</span>
 
 				<span
 					class={cn(
-						'desc-sm absolute bottom-full left-0 transition-opacity duration-300',
+						'absolute bottom-full left-0 transition-opacity duration-300',
 						props.swap && 'opacity-0',
 					)}
 				>

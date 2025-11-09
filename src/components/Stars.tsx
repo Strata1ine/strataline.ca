@@ -9,11 +9,11 @@ export default function Stars(props: { length: number; class?: string; children?
 					{i + 0.5 < props.length ? (
 						<Star class="text-gold size-full" />
 					) : i + 0.5 > props.length ? (
-						<Star class="text-tone size-full" />
+						<Star class="size-full text-slate-100" />
 					) : (
 						<div class="relative size-full">
 							<Star class="text-gold absolute size-full [clip-path:inset(0_50%_0_0)]" />
-							<Star class="text-tone absolute size-full [clip-path:inset(0_0_0_50%)]" />
+							<Star class="absolute size-full text-slate-100 [clip-path:inset(0_0_0_50%)]" />
 						</div>
 					)}
 				</div>

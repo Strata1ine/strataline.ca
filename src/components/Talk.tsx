@@ -1,6 +1,5 @@
 import { createSignal, onMount, onCleanup, type ComponentProps } from 'solid-js';
 import createPersistent from 'solid-persistent';
-import { useQueryDevice } from '@/frontend/mobile';
 import { cn } from '@/frontend/utils';
 
 import Dialog from '@corvu/dialog';
@@ -10,6 +9,7 @@ import Menus from './Menus';
 import Inputs from './Inputs';
 
 import business from '#/business.json';
+import { createMediaQuery } from '@solid-primitives/media';
 
 function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	const [open, setOpen] = createSignal(false);
@@ -34,8 +34,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 				<Inputs.Email required />
 				<Inputs.PhoneNumber validate />
 				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea required minlength="14" name="Messege" />
-				<Inputs.Photos />
+				<Inputs.TextArea required name="Messege" />
 				<Actions.Button value="submit" variant="fill">
 					Submit
 				</Actions.Button>
@@ -50,7 +49,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 				<Menus.DialogForm
 					title="Let's talk"
 					desc="Feel free to ask a question and a quote."
-					name="contact"
+					id="jReRE2JLR"
 					action="/submissions/talk"
 				>
 					{persistedContent()}
@@ -65,8 +64,8 @@ export default function Talk() {
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
 	const [hydrated, setHydrated] = createSignal(false);
-	const queryMobile = useQueryDevice(800);
-	const inset = () => (queryMobile.isMobile() ? 25 : 70);
+	const isMobile = createMediaQuery('(max-width: 800px)');
+	const inset = () => (isMobile() ? 25 : 70);
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
@@ -118,7 +117,7 @@ export default function Talk() {
 						: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
 				)}
 				style={{
-					translate: style() ?? undefined,
+					translate: style(),
 					'transition-property': 'width, height, border-radius, translate, background-color',
 					'will-change': 'width, height, border-radius, translate, background-color',
 				}}

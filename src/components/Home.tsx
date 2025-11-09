@@ -17,8 +17,8 @@ export default function Home(
 			{...rest}
 			href={slug ? `/#${slug}` : `/`}
 		>
-			<House aria-hidden={true} class="text-accent-dark size-8 translate-y-[7%] xl:size-12" />
-			<span class="desc-base text-accent-dark leading-none font-semibold">{desc}</span>
+			<House aria-hidden={true} class="text-secondary size-8 translate-y-[7%] xl:size-12" />
+			<span class="desc-base text-secondary leading-none font-semibold">{desc}</span>
 		</a>
 	);
 }

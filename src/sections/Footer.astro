@@ -14,13 +14,13 @@ import type { SchemaContext } from 'astro:content';
 <Layout.Divider as="footer">
 	<Layout.Container
 		variant="inner"
-		class="border-accent relative z-2 border-t-1 bg-gradient-to-b from-transparent via-white/90 to-white py-12 backdrop-blur-xs"
+		class="border-primary relative z-2 border-t bg-linear-to-b from-transparent via-white/90 to-white py-12 backdrop-blur-xs"
 	>
 		<div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
 			<ul class="flex gap-3">
 				{
 					socials.map((social) => (
-						<li class="inline-flex">
+						<li class="contents">
 							<a
 								target="_blank"
 								href={social.url}
@@ -48,12 +48,12 @@ import type { SchemaContext } from 'astro:content';
 			/>
 		</div>
 
-		<div class="mt-9 flex flex-col items-center gap-2 text-center sm:flex-row">
+		<div class="mt-9 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between">
 			<span class="desc-base"><b>© Strataline. 2025.</b> All rights reserved.</span>
 
-			<ul class="flex gap-6 sm:ml-auto sm:gap-12">
+			<ul class="flex gap-6 sm:gap-12">
 				<li>
-					<a class="desc-base text-url hover:underline" data-astro-prefetch href="/privacy"
+					<a class="desc-base text-cyan-800 hover:underline" data-astro-prefetch href="/privacy"
 						>Privacy policy</a
 					>
 				</li>

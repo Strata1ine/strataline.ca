@@ -1,6 +1,6 @@
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 import type { Props as ReviewsProps } from './Reviews.astro';
-import { useQueryDevice } from '@/frontend/mobile';
+import { createMediaQuery } from '@solid-primitives/media';
 import createPersistent from 'solid-persistent';
 
 import business from '#/business.json';
@@ -12,8 +12,8 @@ import Dialog from 'corvu/dialog';
 import Feather from '~icons/ph/feather-fill';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
-	const phone = useQueryDevice();
-	const power = createMemo(() => (phone.isMobile() ? 0 : 1));
+	const isMobile = createMediaQuery('(max-width: 650px)');
+	const power = createMemo(() => (isMobile() ? 0 : 1));
 
 	const [idx, _setIdx] = createSignal(0);
 	const [pos, setPos] = createSignal(0);
@@ -47,7 +47,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	createEffect(() => {
-		phone.isMobile;
+		isMobile.isMobile;
 		setIdx(idx());
 	});
 
@@ -77,7 +77,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		return (
 			<button
 				aria-label="Review scroller"
-				class="bg-accent absolute inset-0 cursor-grab rounded-md"
+				class="bg-primary-dark absolute inset-0 cursor-grab rounded-md"
 				style={{
 					width: `${100 / reviewCount()}%`,
 					translate: `${pos() * 100}% 0 0`,
@@ -144,7 +144,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</div>
 
 				<button
-					class="bg-accent absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					class="bg-primary absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
 					onPointerDown={(e) => {
 						e.stopPropagation();
 					}}
@@ -158,7 +158,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 			</div>
 
 			<Show when={reviewCount() > 1}>
-				<div class="bg-tone relative m-auto mt-20 flex h-4 w-[60vw] max-w-100 touch-pan-y rounded-md contain-paint">
+				<div class="relative m-auto mt-20 flex h-5 w-[60vw] max-w-100 touch-pan-y rounded-md bg-slate-100 contain-paint">
 					<Thumb />
 					<For
 						each={Array.from({ length: reviewCount() })}
@@ -182,8 +182,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 const Review = (review: ReviewsProps['content'][number]) => {
 	return (
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
-			<div class="border-accent mb-7 h-full rounded-md border p-7 md:p-10">
-				<div class="bg-accent absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
+			<div class="border-primary-dark mb-7 h-full rounded-md border p-7 md:p-10">
+				<div class="bg-primary absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
 					<span class="text-base font-semibold">{review.location}</span>
 				</div>
 
@@ -218,7 +218,7 @@ function WriteReview() {
 
 					<Inputs.Email required />
 					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-					<Inputs.TextArea required minlength="20" name="Review" />
+					<Inputs.TextArea required name="Review" />
 					<Actions.Button value="submit" variant="fill">
 						Submit
 					</Actions.Button>
@@ -236,7 +236,7 @@ function WriteReview() {
 					<Menus.DialogForm
 						title="Review"
 						desc="We will verify your submission via email."
-						name="review"
+						id="0fqNd4cJ0"
 						action="/submissions/review"
 					>
 						{persistedContent()}

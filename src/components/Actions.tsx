@@ -8,9 +8,9 @@ export const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				fill: 'bg-accent w-full text-center',
+				fill: 'bg-primary w-full text-center',
 				outline: 'border-black border bg-white',
-				accent: 'bg-accent-dark text-white',
+				accent: 'bg-primary-dark text-white',
 			},
 		},
 		defaultVariants: {
@@ -59,7 +59,7 @@ export const fabVariants = cva('touch-manipulation cursor-pointer select-none', 
 		},
 		background: {
 			outline: 'border-black border bg-white',
-			accent: 'bg-accent/60 border border-black backdrop-blur-md',
+			accent: 'bg-primary/60 border border-black backdrop-blur-md',
 		},
 	},
 	defaultVariants: {
