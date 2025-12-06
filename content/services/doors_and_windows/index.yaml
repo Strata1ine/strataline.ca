@@ -1,61 +1,89 @@
 title: Doors & Windows
-desc: |-
-  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Enjoy comfort, savings, and modern curb appeal all year long.
 seo: |-
   vinyl windows, double glazing, triple glass, window replacement, vinyl doors, energy-efficient home upgrades, cost savings, home comfort
-draft: false
+desc: |-
+  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Enjoy comfort, savings, and modern curb appeal all year long.
 image:
   src: ./cover.jpg
   alt: Modern vinyl windows and doors with energy-efficient glass
 
 sections:
-  - type: Hero
-    title: Transform Your Home with Vinyl Windows & Doors
-    desc: |-
-      Replace outdated windows and doors with modern vinyl double- and triple-glazed designs. Enjoy lower energy bills, a quieter home, and a beautiful new look that lasts for years.
+  - type: ImageCarousel
     content:
-      images:
-        - src: ./cover.jpg
-          alt: Vinyl window and door installation
+      - src: ./photos/dw17.jpg
+        alt: Modern vinyl double-glazed window installed in a bright living room.
+      - src: ./photos/38.jpg
+        alt: Triple-pane vinyl window providing improved insulation and noise reduction.
+      - src: ./photos/dw21.jpg
+        alt: Energy-efficient modern entry door with insulated frame.
+      - src: ./photos/dw22.jpg
+        alt: Vinyl patio door with large glass panels for natural light.
+      - src: ./photos/dw05.jpg
+        alt: Clean white vinyl frames with upgraded low-E glass.
+      - src: ./photos/dw18.jpg
+        alt: Contemporary front door installed with decorative glass insert.
+      - src: ./photos/dw24.jpg
+        alt: Replacement windows improving both energy efficiency and home aesthetics.
 
   - type: Benefits
-    title: Why Upgrade Your Windows and Doors?
-    desc: |-
-      Modern vinyl windows and doors are designed to improve your home’s comfort, efficiency, and appearance.
+    title: Why upgrade your windows & doors?
     content:
       - title: Energy Efficiency
         desc: |-
-          Double and triple glass panels with insulated frames reduce drafts, keeping your home warm in winter and cool in summer.
+          Double- and triple-glazed panels with insulated frames significantly reduce heat loss and improve comfort in every season.
       - title: Lower Energy Bills
         desc: |-
-          Better insulation means your heating and cooling systems work less — saving you money month after month.
+          Upgraded insulation means your heating and cooling systems run less — saving you money every month.
       - title: Modern Design
         desc: |-
-          Sleek frames and clean lines instantly refresh your home’s exterior and interior appearance.
+          Sleek, stylish vinyl frames instantly refresh the interior and exterior of your home.
       - title: Noise Reduction
         desc: |-
-          Multi-pane glass helps block outdoor noise for a more peaceful home.
+          Multi-pane glass dramatically cuts down outdoor noise, creating a quieter home environment.
       - title: Durability & Low Maintenance
         desc: |-
-          Vinyl doesn’t warp, peel, or fade — it looks great and performs for decades with minimal care.
-      - title: Higher Property Value
+          Vinyl never warps, peels, or fades — offering long-lasting performance without the upkeep.
+      - title: Increased Property Value
         desc: |-
-          Quality window and door upgrades add long-term value and appeal to your home.
+          Quality window and door upgrades boost market value and curb appeal.
 
-  - type: ZigZag
-    title: Upgrade Your Doors Too
-    desc: |-
-      Your doors are just as important for comfort, security, and style.
+  - type: TextCarousel
+    text:
+      - Stay warmer in winter, cooler in summer
+      - Modern looks that lift your home
+      - Energy savings that pay back
+      - Quiet, comfortable living
+      - Built to last for decades
+      - Style that matches any home
+
+  - type: Reviews
+    title: What our clients say
     content:
-      - image:
-          src: ./door.jpg
-          alt: Modern front door
-        title: Improved Energy Efficiency
+      - title: Olga S.
+        location: Toronto
+        stars: 5
         desc: |-
-          New insulated doors prevent air leaks, keeping temperatures stable and energy costs low.
-      - image:
-          src: ./patio-door.jpg
-          alt: Vinyl patio door
-        title: Enhanced Security & Curb Appeal
+          The new vinyl windows made our home feel warmer right away. The installation was fast and clean!
+      - title: Carlos M.
+        location: Aurora
+        stars: 5
         desc: |-
-          Reinforced frames, modern lock
+          We replaced all the doors and windows. The difference in noise reduction and comfort is huge. Highly recommended!
+
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does it take to replace windows and doors?
+        desc: |-
+          Most projects take 1–2 days depending on how many units are being replaced. We ensure minimal disruption and a clean work area.
+      - title: Do vinyl windows require maintenance?
+        desc: |-
+          Very little. Vinyl frames don’t need painting and resist warping, moisture, and fading.
+      - title: Are triple-pane windows worth it?
+        desc: |-
+          Absolutely — especially in Canadian climates. They improve insulation, reduce noise, and help lower energy bills.
+
+  - type: Services
+    exclude:
+      - windows
+      - doors
