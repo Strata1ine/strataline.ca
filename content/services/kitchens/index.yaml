@@ -1,108 +1,95 @@
 title: Kitchens
-startPos: left
-desc: |-
-  We create modern, comfortable and functional kitchens.
 seo: |-
-  Modern kitchen renovations with custom cabinetry, quartz countertops, and energy-efficient appliances. Expert design for functionality and style, tailored to your budget.
+  Expert kitchen renovations with premium cabinetry, modern layouts, high-end finishes, and dust-free installation. Transform your home with a functional, elegant, and beautifully crafted kitchen.
+desc: |
+  Transform your kitchen into a modern, functional, and inviting space with custom cabinetry, smart layouts, and high-quality finishes.
 image:
   src: ./cover.jpg
   alt: |-
-    A bright, modern kitchen with sleek white cabinetry, marble countertops, stainless steel appliances, and a large window bringing in natural light.
+    A beautifully renovated kitchen featuring modern cabinetry, quartz countertops, pendant lighting, and a functional island layout with warm natural tones.
 
 sections:
-  - type: ZigZag
-    title: No compromise solutions
+  - type: ImageCarousel
     content:
-      - title: Ample space
-        image:
-          src: ./space.jpg
-          alt: A spacious, dust-free kitchen renovation with abundant white cabinetry offering ample storage, marble countertops, and a modern gas stove, designed for quality and transformation.
+      - src: ./cover.jpg
+        alt: A bright kitchen with white shaker cabinets, quartz counters, and stainless steel appliances.
+      - src: ./photos/quality.jpg
+        alt: A modern kitchen featuring a large island, pendant lights, and sleek flat-panel cabinets.
+      - src: ./photos/space.jpg
+        alt: A warm wood-accent kitchen with stone backsplash and integrated lighting.
+      - src: ./photos/space.jpg
+        alt: A contemporary kitchen with dark cabinets, under-cabinet lighting, and built-in appliances.
+      - src: ./photos/space.jpg
+        alt: A two-tone kitchen with white uppers, navy lowers, and gold hardware for a luxury finish.
+      - src: ./photos/space.jpg
+        alt: A kitchen renovation featuring a waterfall island and matte black fixtures.
+      - src: ./photos/space.jpg
+        alt: A cozy kitchen with open shelving, natural wood finishes, and soft lighting.
+      - src: ./photos/space.jpg
+        alt: A classic kitchen with detailed crown molding, granite counters, and tiled backsplash.
+      - src: ./photos/space.jpg
+        alt: A spacious kitchen with full-height pantry cabinets and a stylish tile accent wall.
+
+  - type: Benefits
+    title: Why renovate your kitchen?
+    content:
+      - title: Better layout & functionality
         desc: |-
-          Cabinets, pull-out drawers, and pantry space keep the kitchen organized, efficient and clutter-free.
-      - title: Quality & low-maintenance
-        image:
-          src: ./quality.jpg
-          alt: A modern kitchen featuring durable white countertops, sturdy cabinetry with black hardware, and high-quality stainless steel appliances, complemented by a sleek island and a stylish backsplash.
+          A well-planned kitchen makes cooking easier and more enjoyable, with optimized workflow and storage.
+
+      - title: Premium materials
         desc: |-
-          Durable countertops, sturdy cabinetry, and reliable appliances withstand daily use and maintain aesthetic appeal.
+          From custom cabinetry to quartz and stone countertops, every material is chosen for durability and beauty.
+
+      - title: Expert Installation
+        desc: |-
+          With years of hands-on experience, we deliver precise craftsmanship and smooth, dust-controlled renovations.
+
+      - title: Modern design options
+        desc: |-
+          Choose from contemporary, classic, minimalist, or warm natural styles that fit your vision and lifestyle.
+
+      - title: Energy-efficient upgrades
+        desc: |-
+          Improve efficiency with new lighting, appliances, and better layout planning.
+
+      - title: Increase property value
+        desc: |-
+          A beautifully renovated kitchen is one of the strongest investments you can make in your home.
 
   - type: TextCarousel
     text:
-      - Modern kitchen vibes await
-      - Sizzle in style every day
-      - Cook with flair and ease
-      - Sleek style upgrades shine
-      - Flavorful designs for all
-      - Fresh looks for cooking
+      - Designed for cooking and living
+      - Beautiful finishes that last
+      - A kitchen you’ll love every day
+      - Transforming spaces with detail
+      - Smart layouts for real-life use
 
-  - type: Prices
-    title: What's the cost?
+  - type: Reviews
+    title: What our clients say
     content:
-      - title: Basic
-        min: 15000
-        max: 25000
-        materials:
-          - Laminate countertops
-          - Stock cabinetry
-          - Standard appliances
+      - title: Mirela
+        location: North York
+        stars: 5
         desc: |-
-          Cosmetic updates such as repainting, replacing cabinet doors, upgrading light fixtures, and installing new countertops.
-      - title: Mid-range
-        min: 25000
-        max: 50000
-        materials:
-          - Quartz or granite countertops
-          - Semi-custom cabinets
-          - Energy-efficient appliances
+          Our kitchen feels brand new. The quality is incredible and the space is finally functional.
+
+      - title: Sanjay & Rupa
+        location: Mississauga
+        stars: 5
         desc: |-
-          Replacing cabinets, adding an island, upgrading appliances, installing new flooring, and improving lighting.
-      - title: High-end
-        min: 50000
-        max: 100000
-        materials:
-          - Marble countertops
-          - Custom cabinetry
-          - Premium hardwood or tile flooring
-          - Designer fixtures
-        desc: |-
-          Complete redesign, structural changes, custom cabinetry, luxury appliances, high-end finishes, and smart home features.
+          Excellent craftsmanship. Everything was done on time and the design exceeded our expectations.
 
   - type: Faq
     title: Have any questions?
     content:
-      - title: How long does the process take?
+      - title: How long does a kitchen renovation take?
         desc: |-
-          A kitchen renovation can often be completed in just 4-8 weeks, depending on the scope.
-          With proper planning, timely ordering of materials, and an organized approach, even larger projects can move smoothly.
+          Most kitchen renovations take 2–4 weeks once all materials are on-site. Larger or custom kitchens may take longer.
 
-          Minor updates like new countertops or a fresh backsplash may take just a few weeks, while more extensive remodels with new cabinets and appliances might take a couple of months.
-
-          Good preparation and clear communication can ensure your dream kitchen comes to life quickly and efficiently!
-      - title: What are the most important upgrades to prioritize?
+      - title: Can you work with my budget?
         desc: |-
-          When renovating a kitchen, focus on upgrades that enhance functionality, style, and convenience. Start with high-quality cabinets with smart storage solutions and durable countertops like quartz or granite.
-
-          - Upgrade to energy-efficient appliances, and improve the space with layered lighting, including task, ambient, and under-cabinet options.
-          - Add a stylish backsplash for protection and flair, and complete the look with a modern sink, a high-quality faucet with a pull-down sprayer, a hot water dispenser, and a water filtration system. Including a garbage disposal adds practicality for easier cleanup.
-
-          These thoughtful upgrades create a beautiful and highly functional kitchen you'll enjoy for years.
-      - title: What is the best countertop material?
-        desc: |-
-          The best countertop material depends on your needs:
-          1. **Quartz** is a top choice for durability, low maintenance, and style.
-          2. **Granite** offers natural beauty and heat resistance but needs sealing.
-          3. **Marble** is elegant but prone to staining.
-          4. **Butcher** block adds warmth but requires upkeep.
-
-          For a modern look, consider stainless steel or concrete. Quartz is the best all-around option for most kitchens.
-      - title: I am planning to install Wolf and Sub-Zero appliances
-        desc: |-
-          To ensure a smooth installation process, please order appliances at least six months in advance.
-
-          Once the models are selected, we will adjust the kitchen layout to accommodate their larger sizes and specific requirements. Wolf ranges require detailed planning for electrical, gas, and ventilation systems, while Sub-Zero refrigerators demand precise plumbing and electrical connections.
-      - title: Can I live at home during the renovation?
-        desc: |-
-          Yes, but it might be inconvenient. Setting up a temporary kitchen and minimizing disruptions can make it manageable.
+          Yes — we offer flexible solutions, from economical upgrades to fully custom luxury kitchens.
 
   - type: Services
     exclude:
