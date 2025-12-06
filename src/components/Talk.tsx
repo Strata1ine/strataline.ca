@@ -1,6 +1,5 @@
 import { createSignal, onMount, onCleanup, type ComponentProps } from 'solid-js';
 import createPersistent from 'solid-persistent';
-import { useQueryDevice } from '@/frontend/mobile';
 import { cn } from '@/frontend/utils';
 
 import Dialog from '@corvu/dialog';
@@ -10,6 +9,7 @@ import Menus from './Menus';
 import Inputs from './Inputs';
 
 import business from '#/business.json';
+import { createMediaQuery } from '@solid-primitives/media';
 
 function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	const [open, setOpen] = createSignal(false);
@@ -64,8 +64,8 @@ export default function Talk() {
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
 	const [hydrated, setHydrated] = createSignal(false);
-	const queryMobile = useQueryDevice(800);
-	const inset = () => (queryMobile.isMobile() ? 25 : 70);
+	const isMobile = createMediaQuery('(max-width: 800px)');
+	const inset = () => (isMobile() ? 25 : 70);
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
@@ -117,7 +117,7 @@ export default function Talk() {
 						: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
 				)}
 				style={{
-					translate: style() ?? undefined,
+					translate: style(),
 					'transition-property': 'width, height, border-radius, translate, background-color',
 					'will-change': 'width, height, border-radius, translate, background-color',
 				}}

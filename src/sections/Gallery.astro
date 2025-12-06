@@ -1,0 +1,26 @@
+---
+import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
+import { type SchemaContext, z } from 'astro:content';
+import { DefaultPos } from '@/schemas';
+import { image } from '@/schemas';
+
+export const schema = createSchema('Gallery', (c: SchemaContext) => ({
+	id: z.string().optional(),
+	title: z.string(),
+	pos: DefaultPos,
+	content: z.array(z.object(image(c))),
+}));
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props as Props;
+
+import * as Layout from '@/components/Layout';
+import Island from './Gallery';
+---
+
+<Layout.Divider>
+	<Layout.Title title={meta.title} pos={meta.pos} />
+	<Layout.Container variant="outer" class="px-4">
+		<Island client:visible content={meta.content} />
+	</Layout.Container>
+</Layout.Divider>

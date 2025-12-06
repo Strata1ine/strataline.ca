@@ -84,7 +84,7 @@ function FieldBody(props: ComponentProps<'input'>) {
 			id={context.id}
 			name={context.name}
 			required={context.required}
-			class="w-full outline-none placeholder:text-gray-400"
+			class="flex-1 outline-none placeholder:text-gray-400"
 			{...props}
 		/>
 	);
@@ -135,14 +135,15 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 							required={context?.required}
 							name={context?.name}
 							ref={textarea}
-							class="w-full resize-none outline-none"
+							class="relative flex-1 resize-none outline-none"
 							style={{
 								height: `${height()}px`,
 							}}
 							{...input}
-						/>
+						></textarea>
+
 						<div
-							class="absolute right-0 bottom-0 cursor-ns-resize touch-none"
+							class="absolute right-0 bottom-0 -translate-5 cursor-ns-resize touch-none"
 							onPointerDown={(e) => {
 								offset =
 									e.clientY -
@@ -161,7 +162,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 								e.currentTarget.releasePointerCapture(e.pointerId);
 							}}
 						>
-							<Resize class="size-5 -translate-5" />
+							<Resize class="size-5" />
 						</div>
 					</>
 				);
@@ -407,7 +408,7 @@ export function Search(props: SelectProps) {
 
 	return (
 		<Field open={open()} top={open()} {...props}>
-			<Field.Head children={<MagnifyingGlass class="size-12" />} />
+			<Field.Head children={<MagnifyingGlass class="size-9" />} />
 
 			<Field.Body
 				placeholder={props.placeholder}
@@ -439,7 +440,7 @@ export function Search(props: SelectProps) {
 						onClick={() => {
 							setValue('');
 						}}
-						class="cursor-pointer"
+						class="contents"
 						aria-label="Cancel search"
 						aria-hidden={value().length === 0}
 						disabled={value().length === 0}
@@ -448,7 +449,7 @@ export function Search(props: SelectProps) {
 						<X
 							class={cn(
 								'size-4 transition-opacity duration-200',
-								value().length !== 0 ? 'opacity-100' : 'opacity-0',
+								value().length !== 0 ? 'cursor-pointer opacity-100' : 'opacity-0',
 							)}
 							aria-hidden="true"
 						/>
@@ -610,7 +611,7 @@ export const menuVariants = cva(
 	},
 );
 
-const menuItemVariants = cva('block w-full cursor-pointer px-5 py-2 hover:bg-gray-100', {
+const menuItemVariants = cva('block cursor-pointer px-5 py-2 hover:bg-gray-100', {
 	variants: {
 		active: {
 			true: 'bg-gray-100',
@@ -628,7 +629,7 @@ export const fieldVariants = cva(
 		variants: {
 			variant: {
 				md: 'p-5',
-				xl: 'px-5 py-3',
+				xl: 'px-6 py-4',
 			},
 			open: {
 				true: '',

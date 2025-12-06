@@ -13,7 +13,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 						let trigger: HTMLButtonElement | undefined;
 						return (
 							<div
-								class="border-primary-dark border-t py-8 first:border-t-0"
+								class="border-primary-dark cursor-pointer border-t py-8 first:border-t-0"
 								onClick={(e) => {
 									if (e.target !== e.currentTarget) return;
 									trigger?.click();
