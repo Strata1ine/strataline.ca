@@ -1,10 +1,33 @@
-title: Wallpapers
-desc: |-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-seo: |-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-draft: true
+title: Wallpaper Installation
+desc: Professional wallpaper installation for homes and businesses, offering flawless seams, durable finishes, and design upgrades that transform any room instantly.
+seo: Expert wallpaper installation service that enhances interiors with modern designs, perfect seams, and long-lasting quality.
+draft: false
+
 image:
   src: ./cover.jpg
-  alt: |-
-    A cozy bedroom featuring elegant patterned wallpaper, complementing soft tones and natural light for a serene atmosphere.
+  alt: wallpaper installation
+
+sections:
+  - type: Hero
+    id: wallpaper-hero
+    title: Transform Your Space With Professional Wallpaper Installation
+    content:
+      images:
+        - src: ./hero1.jpg
+          alt: grey wallpaper
+        - src: ./hero2.jpg
+      speed: 5
+
+  - type: Benefits
+    id: wallpaper-benefits
+    pos: left
+    title: Why Choose Professional Wallpaper Installation?
+    content:
+      - title: Perfectly Aligned Patterns
+        desc: Professionally installed wallpaper ensures straight lines, matched patterns, and flawless seams.
+      - title: Fast & Mess-Free Installation
+        desc: Our installation process is efficient, clean, and minimizes disruption to your home.
+      - title: Long-Lasting Durability
+        desc: Proper adhesives and surface preparation ensure your wallpaper stays secure for years.
+      - title: Wide Variety
+        desc: Choose from thousands of designs, textures, and materials to create a unique look that fits your space and style.
