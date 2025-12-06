@@ -11,11 +11,13 @@ sections:
   - type: Hero
     id: wallpaper-hero
     title: Transform Your Space With Professional Wallpaper Installation
+    desc: Achieve a perfectly finished look with expertly aligned patterns, smooth seams, and long-lasting adhesion.
     content:
       images:
         - src: ./hero1.jpg
           alt: grey wallpaper
         - src: ./hero2.jpg
+          alt: installed wallpaper
       speed: 5
 
   - type: Benefits
