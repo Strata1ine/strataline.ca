@@ -1,66 +1,50 @@
 title: Bathrooms
-startPos: left
-desc: |-
-  Create your personal sanctuary, beautifully designed and customized to your exact preferences.
 seo: |-
   Stylish bathroom remodels with bespoke vanities, premium stone tiles, and sleek fixtures. Expert craftsmanship for comfort and elegance, customized to your budget.
+desc: |-
+  Create your personal sanctuary, beautifully designed and customized to your exact preferences.
 image:
   src: ./cover.jpg
   alt: |-
     A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.
 
 sections:
-  - type: Prices
-    title: What's the cost?
+  - type: ImageCarousel
     content:
-      - title: Basic
-        min: 5000
-        max: 15000
-        materials:
-          - Basic tiles
-          - Laminate countertops
-          - Standard fixtures
-        desc: |-
-          Cosmetic updates like painting, new fixtures, and minor changes such as replacing the toilet or sink.
+      - src: ./photos/spa.jpg
+        alt: A luxurious renovated bathroom with a freestanding soaking tub, glass-enclosed shower with marble walls, and a built-in bench.
+      - src: ./photos/57.jpg
+        alt: A renovated bathroom with a double vanity, light wood cabinets, white countertops, and modern lighting for a personalized and functional space.
+      - src: ./photos/58.jpg
+        alt: A modern bathroom featuring a floating vanity, LED lighting, and textured wall tile.
+      - src: ./photos/61.jpg
+        alt: A bathroom with marble countertops, brushed gold fixtures, and a glass walk-in shower.
+      - src: ./photos/63.jpg
+        alt: A contemporary bathroom with large-format tiles, walk-in shower, and seamless glass panels.
+      - src: ./photos/65.jpg
+        alt: A stylish bathroom with a freestanding tub, wall-mounted faucet, and large windows for natural light.
+      - src: ./photos/66.jpg
+        alt: A renovated bathroom with a modern vanity, round mirror, and sleek fixtures.
+      - src: ./photos/69.jpg
+        alt: A bathroom featuring a walk-in shower with glass doors, built-in shelving, and a floating vanity with vessel sinks.
+      - src: ./photos/72.jpg
+        alt: A bathroom with a large soaking tub, marble tile, and a modern vanity with ample storage.
 
-      - title: Mid-range
-        min: 15000
-        max: 30000
-        materials:
-          - Premium tiles
-          - Granite or quartz countertops
-          - Modern fixtures
-        desc: |-
-          Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
-
-      - title: High-end
-        min: 30000
-        max: 60000
-        materials:
-          - High-end stone or marble tiles
-          - Custom cabinetry
-          - Designer fixtures
-        desc: |-
-          Full renovation with structural changes, moving plumbing, adding a steam shower, custom cabinetry, and luxury finishes.
-
-  - type: ZigZag
-    title: There's no price
+  - type: Benefits
+    title: Why choose us for your bathroom remodel?
     content:
-      - title: Durable & optimized
+      - title: Built for comfort & relaxation
         desc: |-
-          Freestanding tub, glass shower, and marble finishes in a layout designed for durability and flow.
-        image:
-          src: ./spa.jpg
-          alt: |-
-            A luxurious renovated bathroom with a freestanding soaking tub, glass-enclosed shower with marble walls, and a built-in bench.
-
-      - title: Customized to your heart's content
+          From warm floors to steam showers and spa-like lighting, we design every detail to enhance comfort and daily enjoyment.
+      - title: Premium materials for long life
         desc: |-
-          Double vanities, storage, and lighting designed to fit your style and needs for a personalized space.
-        image:
-          src: ./customization.jpg
-          alt: |-
-            A renovated bathroom with a double vanity, light wood cabinets, white countertops, and modern lighting, tailored for functionality.
+          We source tile, fixtures, and vanities from trusted suppliers to ensure durability and long-lasting beauty.
+      - title: Expert installation
+        desc: |-
+          With years of renovation experience, we deliver precision workmanship and efficient project timelines.
+      - title: Designed to your lifestyle
+        desc: |-
+          Whether minimalist, luxury, family-friendly, or space-saving, every design is tailored to your needs.
 
   - type: TextCarousel
     text:
@@ -72,15 +56,29 @@ sections:
       - Elegance in every detail
       - Fresh designs to unwind
 
+  - type: Reviews
+    title: What our clients say
+    content:
+      - title: D. Romano
+        location: Vaughan
+        stars: 5
+        desc: |-
+          Our bathroom looks like a spa now. The heated floor and glass shower made a huge difference!
+      - title: Lina K.
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          Beautiful work and very clean during the renovation. Everything was done exactly the way we wanted.
+
   - type: Faq
     title: Have any questions?
     content:
       - title: How long does bathroom renovation take?
         desc: |-
-          Once all materials are delivered, the renovation may take from one week to two weeks, depending on the complexity of the project. We always insist on having all the materials delivered prior to starting the project so that everything is at hand once the work begins.
+          Once all materials are delivered, the renovation typically takes 1–2 weeks depending on the complexity. We always require materials to be onsite before starting to avoid delays.
       - title: Will my house remain clean during the renovation?
         desc: |-
-          Yes! Throughout the entire project, we will ensure your home remains clean. All dirt, dust, and debris will be contained, and once the work is complete, we will thoroughly clean the bathroom, leaving it ready for use.
+          Yes. All dust and debris are contained, and after completion we thoroughly clean the bathroom so it’s ready to use immediately.
 
   - type: Services
     exclude:
