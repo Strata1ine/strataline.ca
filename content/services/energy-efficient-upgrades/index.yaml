@@ -1,0 +1,129 @@
+title: "Energy-Efficient Upgrades"
+
+seo: |-
+  Energy-efficient home upgrades, insulation improvements, smart thermostat installation,
+  energy-saving windows, Toronto energy renovations.
+
+desc: |-
+  Enhance comfort, reduce utility costs, and modernize your home with professionally
+  installed energy-efficient upgrades tailored to your home.
+
+image:
+  src: ./cover.jpg
+  alt: Energy-efficient home upgrades
+
+sections:
+  - type: Header
+    title: Enhance Your Home with Energy-Efficient Solutions
+    desc: |-
+      Energy-efficient upgrades reduce your monthly utility bills, increase comfort,
+      and extend the life of your home. Whether you're looking to modernize outdated
+      components or eliminate energy loss, we provide customized solutions tailored
+      to your home’s needs.
+    image:
+      src: ./cover.jpg
+      alt: Energy-efficient home improvements
+    content: []  # REQUIRED BY SCHEMA
+
+  - type: Benefits
+    title: Benefits of Energy Efficiency
+    content:
+      - title: Lower Monthly Utility Bills
+        desc: Improve insulation, windows, and mechanical systems to significantly reduce heating and cooling costs.
+
+      - title: Enhanced Comfort
+        desc: Eliminate drafts, maintain steady indoor temperatures, and improve your home’s climate balance.
+
+      - title: Government Rebates
+        desc: Many efficiency upgrades qualify for rebates and incentives that help you save even more.
+
+      - title: Increased Home Value
+        desc: Energy-efficient improvements add long-term value and appeal to future buyers.
+
+  - type: ZigZag
+    title: Types of Upgrades We Offer
+    content:
+      - title: High-Efficiency Windows & Doors
+        desc: |-
+          ENERGY STAR® certified installations that minimize heat loss and improve
+          year-round comfort.
+        image:
+          src: ./photos/windows.jpg
+          alt: High-efficiency window installation.
+
+      - title: Improved Insulation
+        desc: |-
+          Attic, wall, and basement insulation upgrades eliminate heat escape, reduce
+          HVAC strain, and stabilize indoor temperatures.
+        image:
+          src: ./photos/insulation.jpg
+          alt: Attic insulation upgrade.
+
+  - type: ZigZag
+    title: More Smart Efficiency Upgrades
+    content:
+      - title: Smart Thermostats
+        desc: |-
+          Programmable and learning thermostats optimize heating and cooling based on
+          your daily routine—saving energy automatically.
+        image:
+          src: ./photos/thermostat.webp
+          alt: Smart thermostat installation.
+
+      - title: Air Sealing & LED Lighting
+        desc: |-
+          We professionally seal gaps and cracks to eliminate drafts and install
+          high-efficiency LED lighting to reduce energy usage.
+        image:
+          src: ./photos/airsealing.jpg
+          alt: Air sealing and draft prevention.
+
+  - type: Gallery
+    title: Recent Energy-Efficient Projects
+    content:
+      - src: ./photos/energy1.jpg
+        alt: Window upgrade project.
+      - src: ./photos/energy2.jpg
+        alt: Attic insulation installation.
+      - src: ./photos/energy3.jpg
+        alt: Smart thermostat setup.
+
+  - type: Reviews
+    title: Case Studies & Client Results
+    content:
+      - title: Sarah P.
+        location: Toronto
+        stars: 5
+        desc: |-
+          Our heating bill dropped nearly 30% after upgrading insulation and replacing two
+          windows. The house feels warmer than ever.
+
+      - title: Daniel K.
+        location: Vaughan
+        stars: 5
+        desc: |-
+          Smart thermostat installation was a game changer. Very professional and clean work.
+
+      - title: Maria L.
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          We noticed an immediate difference—no more drafts! Highly recommend their
+          energy-efficiency services.
+
+  - type: Faq
+    title: Have Questions About Energy Efficiency?
+    content:
+      - title: Which upgrades offer the best savings?
+        desc: |-
+          Insulation improvements, air sealing, and high-efficiency windows typically offer
+          the highest return on investment.
+
+      - title: Do these upgrades qualify for rebates?
+        desc: |-
+          Many energy-efficient installations qualify for government rebates. We can help
+          verify eligibility and guide you through the process.
+
+  - type: Services
+    exclude:
+      - energy-efficient-upgrades
