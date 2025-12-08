@@ -11,47 +11,11 @@ desc: |-
   installed energy-efficient upgrades tailored to your home. We also install high-efficiency
   tankless on-demand water heaters for endless hot water with lower energy consumption.
 
-og:
-  title: "Energy-Efficient Upgrades | Reduce Energy Bills & Improve Comfort"
-  description: "Expert energy-saving home upgrades including insulation, air sealing, smart thermostats, LED lighting, HVAC optimization, tankless water heaters, and high-efficiency windows."
-  image: "./cover.jpg"
-  type: "website"
-  url: "https://yourwebsite.com/energy-efficient-upgrades"
-  locale: "en_CA"
-
-schema: |-
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Energy-Efficient Home Upgrades",
-    "description": "Professional home energy upgrades including insulation improvements, air sealing, smart thermostat installation, tankless water heater installation, high-efficiency windows, HVAC optimization, and LED lighting upgrades.",
-    "serviceType": "Energy Efficiency Renovation",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "TrueForm Contracting",
-      "areaServed": {
-        "@type": "Place",
-        "name": "Toronto, Vaughan, Richmond Hill, Markham, GTA"
-      }
-    }
-  }
-
 image:
   src: ./cover.jpg
   alt: Energy-efficient home upgrades
 
 sections:
-  - type: Header
-    title: Enhance Your Home with Energy-Efficient Solutions
-    desc: |-
-      Reduce energy waste, lower your monthly utility bills, and make your home more
-      comfortable year-round. Our energy-efficient upgrades are designed to modernize
-      outdated components, eliminate drafts, and improve your home’s overall performance.
-    image:
-      src: ./cover.jpg
-      alt: Energy-efficient home improvements
-    content: []  # REQUIRED BY SCHEMA
-
   - type: Benefits
     title: Benefits of Energy Efficiency
     content:

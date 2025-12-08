@@ -22,8 +22,8 @@ sections:
         alt: Clean white vinyl frames with upgraded low-E glass.
       - src: ./photos/dw18.jpg
         alt: Contemporary front door installed with decorative glass insert.
-      - src: ./photos/dw24.jpg
-        alt: Replacement windows improving both energy efficiency and home aesthetics.
+      # - src: ./photos/dw24.jpg
+      #   alt: Replacement windows improving both energy efficiency and home aesthetics.
 
   - type: Benefits
     title: Why upgrade your windows & doors?
