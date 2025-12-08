@@ -1,21 +1,186 @@
-title: Painting
-desc: |-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+title: Luxury Interior Painting & Architectural Finishes
+
 seo: |-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-draft: true
+  High-end interior painting, fine finishing, and designer wall treatments across Toronto, Vaughan, Richmond Hill, Markham, North York, and the GTA.
+  We specialize in luxury repaints, premium wall preparation, and architect-level finishes for sophisticated homes and discerning homeowners.
+
+twitter:
+  card: "summary_large_image"
+  title: "Luxury Home Painting & Architectural Finishes"
+  description: "Exquisite interior painting, flawless wall finishes, and refined detailing — designed for Toronto’s most elevated homes."
+  image: "./cover.jpg"
+
+og:
+  title: "Luxury Interior Painting Services in the GTA"
+  description: "Premium painting, fine finishes, designer colour selections, and white-glove service for upscale homes across the GTA."
+  image: "./cover.jpg"
+  type: "website"
+  url: "https://yourwebsite.com/services/painting"
+  locale: "en_CA"
+
+desc: |-
+  Elevate your home with flawless interior painting, precision wall preparation, and architectural-grade finishes.
+  We create smooth, refined surfaces using premium paints, advanced techniques, and meticulous craftsmanship — ideal for luxury homes, high-end remodels, and design-driven interiors across the GTA.
+
 image:
   src: ./cover.jpg
-  alt: |-
-    A freshly painted hallway with crisp white walls, dark doors for contrast, and a polished railing enhancing the elegant design.
-sections:
-  - type: Faq
-    title: Have any questions?
-    content:
-      - title: How long does a staircase renovation take?
-        desc: |-
-          Our projects typically take a week, depending on the complexity.
+  alt: Luxurious living room with perfectly painted walls, smooth trims, and refined interior detailing.
 
-      - title: Can you work within my budget?
+sections:
+  - type: ImageCarousel
+    content:
+      - src: ./photos/01-luxury-interior-painting-toronto.jpg
+        alt: Designer living room with velvety smooth painted surfaces and modern trim profiles.
+      - src: ./photos/02-smooth-wall-finish-level-5.jpg
+        alt: Luxury interior hallway with perfect Level-5 wall finishing and a premium colour palette.
+      - src: ./photos/03-popcorn-ceiling-removal-gta.png
+        alt: Popcorn ceiling removal and smoothing in a high-end Toronto home.
+      - src: ./photos/04-high-end-wainscoting-painting-spray-finish.png
+        alt: High-end wainscoting and millwork spraying with a flawless luxury finish.
+      - src: ./photos/05-designer-colour-consultation..jpg
+        alt: Designer colour selection and palette consultation for an upscale home.
+      - src: ./photos/06-modern-kitchen-repaint-satin.jpg
+        alt: Premium kitchen repaint with crisp lines, satin cabinetry, and modern detailing.
+      - src: ./photos/07-high-end-trim-painting-spray-finish.png
+        alt: High-end trim spraying with immaculate lines and a professional finish.
+
+  - type: Benefits
+    title: Why choose luxury painting?
+    content:
+      - title: Architectural-level wall preparation
         desc: |-
-          Absolutely. We offer tailored solutions to suit various budgets without compromising quality.
+          We invest extensive time in sanding, skim coating, patching, and surface correction to create walls that look flawless under any lighting condition.
+
+      - title: Premium designer paints
+        desc: |-
+          We use elite-grade coatings such as Benjamin Moore Aura, Regal Select, and Sherwin Williams Emerald — ensuring depth, richness, and long-lasting colour fidelity.
+
+      - title: Precision lines & craftsmanship
+        desc: |-
+          Our skilled painters create crisp edges, smooth trims, and seamless colour transitions that stand out in high-end interiors.
+
+      - title: Luxury-friendly workflow
+        desc: |-
+          We work clean, quiet, and efficiently. Furniture protection, dust control, and immaculate cleanup are standard — not upgrades.
+
+  - type: TextCarousel
+    text:
+      - Architectural wall finishing
+      - Luxury interior repainting
+      - Designer colour consulting
+      - Smooth ceilings & refinishing
+      - Precision trim & millwork painting
+
+  # -------------------------------
+  # PREMIUM INTERIOR PAINTING
+  # -------------------------------
+  - type: ZigZag
+    title: Interior Painting (Luxury Homes)
+    content:
+      - title: Designer Colour Selection
+        desc: >-
+          We help you choose the perfect palette—rich neutrals, soft whites, warm tones, or bold accents—ensuring your home feels cohesive and luxurious.
+        image:
+          src: ./photos/05-designer-colour-consultation..jpg
+          alt: Designer colour palette selection for a luxury home.
+      - title: Flawless Wall Application
+        desc: >-
+          Using premium rollers and fine-spray techniques, we achieve buttery-smooth finishes without streaks, patches, or roller texture.
+        image:
+          src: ./photos/01-luxury-interior-painting-toronto.jpg
+          alt: Smooth wall painting using high-end paint and expert technique.
+
+  # -------------------------------
+  # CEILING FINISHES
+  # -------------------------------
+  - type: ZigZag
+    title: Smooth Ceilings & Refinishing
+    content:
+      - title: Popcorn Ceiling Removal
+        desc: >-
+          We eliminate outdated popcorn texture and apply a perfectly smooth finish — ideal for modern, upscale interiors.
+        image:
+          src: ./photos/03-popcorn-ceiling-removal-gta.png
+          alt: Popcorn ceiling removal and luxury smoothing treatment.
+      - title: Level-5 Finishing
+        desc: >-
+          For high-end homes with critical lighting, we provide a Level 5 skim coat for a perfectly uniform, ultra-smooth surface.
+        image:
+          src: ./photos/02-smooth-wall-finish-level-5.jpg
+          alt: Level-5 wall finishing in a premium home.
+
+  # -------------------------------
+  # TRIM, DOORS & MILLWORK
+  # -------------------------------
+  - type: ZigZag
+    title: Trim, Doors & Millwork Painting
+    content:
+      - title: Crisp, Sharp Lines
+        desc: >-
+          We create razor-sharp edges on baseboards, casings, doors, and crown mouldings using precision taping and fine-finish techniques.
+        image:
+          src: ./photos/07-high-end-trim-painting-spray-finish.png
+          alt: Perfectly painted trim, doors, and mouldings in an upscale home.
+      - title: High-End Sprayed Finishes
+        desc: >-
+          For cabinetry, built-ins, railings, and millwork, we offer lacquer-smooth spraying done in controlled conditions for a factory-grade finish.
+        image:
+          src: ./photos/04-high-end-wainscoting-painting-spray-finish.png
+          alt: Professional spraying on millwork for a smooth, modern luxury finish.
+
+  # -------------------------------
+  # DAMAGE REPAIR & RESTORATION
+  # -------------------------------
+  - type: ZigZag
+    title: Wall Repair & Surface Restoration
+    content:
+      - title: Expert Repair Work
+        desc: >-
+          We repair settlement cracks, dents, holes, uneven drywall, and surface imperfections using professional-grade patching and leveling.
+        image:
+          src: ./photos/08-level-5-skim-coating-wall-repair.jpg
+          alt: Wall repair and repaint in a high-end modern kitchen.
+      - title: Invisible Results
+        desc: >-
+          Repairs blend seamlessly into the surrounding surfaces — ensuring nothing distracts from the beauty of the final finish.
+        image:
+          src: ./photos/02-smooth-wall-finish-level-5.jpg
+          alt: Smooth wall surface with invisible repair work.
+
+  - type: Reviews
+    title: What our clients say
+    content:
+      - title: Marissa L.
+        location: Forest Hill
+        stars: 5
+        desc: |-
+          The finish is flawless. Every wall is perfect. This is the best painting work we’ve seen — it completely elevated the home.
+
+      - title: Daniel R.
+        location: Vaughan
+        stars: 5
+        desc: |-
+          Their preparation is on another level. The surfaces are immaculate, and the clean-up was impeccable. True luxury service.
+
+  - type: Faq
+    title: Have questions about luxury painting?
+    content:
+      - title: What paints do you use for high-end homes?
+        desc: |-
+          We primarily use premium lines like Benjamin Moore Aura/Regal Select and Sherwin Williams Emerald — chosen for durability, richness, and refined finish quality.
+
+      - title: How long does a luxury repaint take?
+        desc: |-
+          A typical repaint takes several days to a week, depending on preparation, room size, and the level of finishing required.
+
+      - title: Do you handle wall repairs?
+        desc: |-
+          Yes — all holes, dents, scratches, settlement cracks, and imperfections are professionally repaired before painting.
+
+      - title: Can you match designer colours?
+        desc: |-
+          Absolutely. We match Farrow & Ball, Benjamin Moore, Sherwin Williams, and other curated palettes with perfect accuracy.
+
+  - type: Services
+    exclude:
+      - painting

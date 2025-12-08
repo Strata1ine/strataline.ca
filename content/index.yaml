@@ -1,128 +1,128 @@
 title: Dust-Free Renovation
-desc: Transform your home with dust-free, quality renovations. Trusted experts in comprehensive home transformations across the GTA and beyond.
+desc: Transform your home with sophisticated, dust-free renovations. Trusted by discerning homeowners across the GTA for elevated, detail-driven transformations.
 popular:
   - popcorn-removal
   - stairs
+
 sections:
   - type: Header
     content:
       - id: popular
-        name: Popular
+        name: Signature Services
       - id: explore
-        name: Explore
+        name: Our Expertise
       - id: accomplishments
         name: Accomplishments
       - id: reviews
-        name: Reviews
+        name: Client Reviews
 
   - type: Hero
     title: |-
-      Renovations designed to transform your space
+      Luxury Renovations Designed to Elevate Your Home
     desc: |-
-      We have been transforming spaces dust-free for decades.
+      For decades, we’ve been transforming interiors with a dust-free, precision-engineered approach tailored to upscale homes.
     content:
       images:
         - src: ./photos/slideshow/kitchen.jpg
           alt: |-
-            A large renovated kitchen showcasing a generous countertop with ample workspace and seating, alongside a cozy dining table for gatherings.
+            A refined luxury kitchen featuring expansive stone counters, warm designer lighting, and elegant custom finishes.
         - src: ./photos/slideshow/dining_room.jpg
           alt: |-
-            A spacious dining room, beautifully renovated, featuring a long table surrounded by numerous chairs and a vibrant plant centerpiece that adds warmth.
+            A beautifully curated dining space with a grand table, elegant seating, and natural greenery that enhances the sophisticated ambiance.
         - src: ./photos/slideshow/living_room.jpg
           alt: |-
-            A renovated updated living room with a charming fireplace, featuring an L-shaped couch, a small side table for decor, and an additional compact couch for extra seating.
+            A serene, expertly renovated living room with a modern fireplace, plush seating, and elevated architectural detailing.
         - src: ./photos/slideshow/bathroom.jpg
           alt: |-
-            A renovated washroom with a bathtub and shower, bathed in soft natural light and adorned with stylish decor.
+            A spa-inspired bathroom retreat featuring premium materials, soft natural lighting, and refined decorative accents.
 
   - type: Popular
-    title: Popular services
+    title: Signature Services
     id: popular
 
   - type: Services
     id: explore
     content:
       text:
-        - Made with care
-        - No mess
-        - No dust
-        - Absolute precision
-        - Expert execution
+        - Crafted with meticulous care
+        - Immaculate, disruption-free execution
+        - Truly dust-free from start to finish
+        - Architectural-level precision
+        - Expert craftsmanship for elevated spaces
 
   - type: Cardshow
-    title: Our accomplishments
+    title: Our Accomplishments
     id: accomplishments
     content:
       - title: Featured on CityTV
         desc: |-
-          Strataline is invited to CityLine and Scott McGillivray reveals the best way to get rid of popcorn ceilings.
+          Strataline was invited to CityLine, where Scott McGillivray showcased our premier dust-free ceiling refinishing method as the gold standard for modern renovations.
         media:
           type: video
           uploadDate: Jan 1, 2020
           image:
             src: ./photos/awards/citytv.jpg
-            alt: wasd
+            alt: Exclusive CityTV segment featuring Strataline’s refined dust-free process.
           url: /videos/cityline.mp4
 
       - title: Featured in The Star
         desc: |-
-          The Star's sensational report on our Dust-Free approach
-          to renovation.
+          The Star highlights our innovative dust-free approach—celebrated for its cleanliness, precision, and luxury-focused execution across GTA homes.
         media:
           type: image
           image:
             src: ./photos/awards/star.jpg
             alt: |-
-              A newspaper article featuring Strataline's dust-free popcorn ceiling removal process, highlighting a professional using a vacuum-fitted sander.
+              A feature in The Star showcasing Strataline’s advanced dust-free ceiling refinement process.
         link:
           name: Read the article
-          url: |-
+          url: |
             https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
 
       - title: Featured in House & Home
         desc: |-
-          House & Home seeks our expertise on chevron hardwood floor installation.
+          House & Home consults Strataline for expert insight into luxury chevron hardwood installation and high-end interior refinement.
         media:
           type: image
           image:
             y: top
             src: ./photos/awards/houseandhome.webp
             alt: |-
-              A stylish interior featuring chevron hardwood floors, a vintage wooden console table, and a cozy velvet armchair, highlighted in a House & Home feature.
+              A premium interior featuring chevron hardwood and curated furnishings, showcased in House & Home.
         link:
           name: Read the article
-          url: |-
+          url: |
             https://houseandhome.com/gallery/luxe-for-less-design
 
       - title: "Featured on HGTV's Love It or List It"
         desc: |-
-          Mother-in-Law’s 1980s house needs an overhaul.
+          A dated 1980s home undergoes a dramatic, magazine-worthy transformation—crafted with Strataline’s signature precision.
         media:
           type: yt-video
           id: MqmEVTErkI0
         link:
           name: Tour the place
-          url: |-
+          url: |
             https://my.matterport.com/show/?m=S9RBB2SkPRT
 
   - type: Reviews
-    title: What our customers have to say
+    title: What Our Clients Are Saying
     id: reviews
     content:
       - title: Maggie and Scott
         location: Mississauga
         stars: 5
         desc: |-
-          My husband and I are unbelievably happy with the work that Max and his team did on our ceilings in the house. The **professionalism** of this team is incredible.
+          We are absolutely thrilled with our ceiling transformation. Max and his team deliver exceptional professionalism and an impressively clean, dust-free renovation experience.
 
       - title: Jefferson Grove
         location: Burlington
         stars: 5
         desc: |-
-          The whole process from beginning to end was an absolute pleasure. Max is a great **communicator** and was always quick to reply to texts or emails. We highly recommend Strataline!
+          From the first consultation to the final walkthrough, the process was seamless. Max’s communication and attention to detail are unmatched. Highly recommended.
 
       - title: Lyn Litvack
         location: Markham
         stars: 5
         desc: |-
-          Max is the ultimate professional, immaculate, contentious and polite. He is **punctual** and follows up on things quickly. The work to our stairs is transforming and with his **guidance** we are thrilled with the finished product.
+          Max is the definition of a true professional—punctual, meticulous, and incredibly knowledgeable. Our staircase renovation is stunning, and his expert guidance made all the difference.
