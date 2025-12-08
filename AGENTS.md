@@ -1,4 +1,4 @@
-# Copilot Instructions for Strataline.ca
+# Cursor Instructions for Strataline.ca
 
 ## Critical Restriction
 
