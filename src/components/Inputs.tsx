@@ -174,7 +174,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 function PhoneNumber(props: FieldProps) {
 	const [valid, setValid] = createSignal(!props.required);
 	return (
-		<Field name={props.name ?? 'Phone number'} {...props}>
+		<Field name={props.name ?? 'Phone Number'} {...props}>
 			<Field.Body
 				inputmode="tel"
 				autocomplete="tel"

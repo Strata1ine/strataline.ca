@@ -1,0 +1,136 @@
+---
+export interface Props {
+  title?: string;
+  id?: string;
+  content: {
+    items: {
+      image?: {
+        src: string;
+        alt: string;
+      };
+      title: string;
+      desc: string;
+      link?: {
+        name: string;
+        url: string;
+      };
+    }[];
+  };
+}
+
+const { title, id, content } = Astro.props;
+---
+
+<section id={id} class="media-list-section">
+  {title && <h2 class="section-title">{title}</h2>}
+
+  <div class="media-list">
+    {content.items.map((item) => (
+      <div class="media-item">
+        <div class="media-thumb">
+          {item.image && (
+            <img src={item.image.src} alt={item.image.alt} loading="lazy" />
+          )}
+        </div>
+
+        <div class="media-info">
+          <h3>{item.title}</h3>
+
+          <p class="desc">{item.desc}</p>
+
+          {item.link && (
+            <a href={item.link.url} class="media-link" target="_blank">
+              {item.link.name}
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .media-list-section {
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .media-item {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .media-thumb {
+    flex: 1 1 300px;
+    max-width: 380px;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .media-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .media-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .media-info {
+    flex: 1 1 360px;
+  }
+
+  .media-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .media-info .desc {
+    opacity: 0.85;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .media-link {
+    display: inline-block;
+    margin-top: 0.6rem;
+    background: var(--accent, #2a62ff);
+    color: #fff;
+    padding: 0.6rem 1.1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease;
+  }
+
+  .media-link:hover {
+    background: #1b49cc;
+  }
+
+  @media (max-width: 700px) {
+    .media-item {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

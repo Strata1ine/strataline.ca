@@ -1,0 +1,204 @@
+title: "Energy-Efficient Upgrades"
+
+seo: |-
+  Energy-efficient home upgrades, insulation improvements, smart thermostat installation,
+  energy-saving windows, air sealing services, HVAC optimization, LED lighting upgrades,
+  tankless water heater installation, on-demand water heaters,
+  Toronto energy renovations, Vaughan home efficiency upgrades.
+
+desc: |-
+  Enhance comfort, reduce utility costs, and modernize your home with professionally
+  installed energy-efficient upgrades tailored to your home. We also install high-efficiency
+  tankless on-demand water heaters for endless hot water with lower energy consumption.
+
+image:
+  src: ./cover.jpg
+  alt: Energy-efficient home upgrades
+
+sections:
+  - type: Benefits
+    title: Benefits of Energy Efficiency
+    content:
+      - title: Lower Monthly Utility Bills
+        desc: Improve insulation, windows, and mechanical systems to significantly reduce heating and cooling costs.
+
+      - title: Enhanced Comfort
+        desc: Eliminate drafts, maintain steady indoor temperatures, and improve your home’s climate balance.
+
+      - title: Government Rebates
+        desc: Many efficiency upgrades qualify for rebates and incentives that help you save even more.
+
+      - title: Increased Home Value
+        desc: Energy-efficient improvements add long-term value and appeal to future buyers.
+
+  - type: ZigZag
+    title: Types of Upgrades We Offer
+    content:
+      - title: High-Efficiency Windows & Doors
+        desc: |-
+          ENERGY STAR® certified installations that minimize heat loss and improve
+          year-round comfort.
+        image:
+          src: ./photos/windows.jpg
+          alt: High-efficiency window installation.
+
+      - title: Improved Insulation
+        desc: |-
+          Attic, wall, and basement insulation upgrades eliminate heat escape, reduce
+          HVAC strain, and stabilize indoor temperatures.
+        image:
+          src: ./photos/insulation.jpg
+          alt: Attic insulation upgrade.
+
+  - type: ZigZag
+    title: Smart Efficiency Upgrades
+    content:
+      - title: Smart Thermostats
+        desc: |-
+          Programmable and learning thermostats optimize heating and cooling based on
+          your routine—saving energy automatically.
+        image:
+          src: ./photos/thermostat.webp
+          alt: Smart thermostat installation.
+
+      - title: Air Sealing
+        desc: |-
+          Air sealing is one of the most effective and affordable ways to improve your
+          home's efficiency. We locate and seal hidden gaps, cracks, and draft points
+          around windows, doors, attics, basements, and utility penetrations. This reduces
+          heat loss, stabilizes indoor temperatures, improves air quality, and lowers
+          your monthly utility bills.
+        image:
+          src: ./photos/airsealing.jpg
+          alt: Air sealing and draft prevention.
+
+      - title: On-Demand Tankless Water Heaters
+        desc: |-
+          High-efficiency tankless water heaters provide endless hot water while reducing
+          energy consumption. These systems heat water only when needed, lowering utility
+          costs and eliminating standby heat loss. We install modern on-demand units with
+          proper venting, gas line upgrades, and optional smart home integration.
+        image:
+          src: ./photos/tankless.jpg
+          alt: Tankless water heater installation.
+
+  - type: ZigZag
+    title: Additional Energy-Saving Upgrades
+    content:
+      - title: HVAC System Optimization
+        desc: |-
+          Improve your furnace and AC efficiency with system balancing, duct sealing,
+          and high-performance equipment upgrades. A well-optimized HVAC system reduces
+          energy waste and extends equipment lifespan.
+        image:
+          src: ./photos/hvac.jpg
+          alt: HVAC system optimization.
+
+      - title: LED Lighting Upgrades
+        desc: |-
+          Modern LED lighting reduces electricity consumption by up to 80% while
+          providing cleaner, brighter illumination. We upgrade outdated fixtures to
+          long-lasting, high-efficiency LEDs.
+        image:
+          src: ./photos/led.jpg
+          alt: LED lighting upgrade.
+
+      - title: Weather-Stripping & Draft-Proofing
+        desc: |-
+          Proper weather-stripping around doors and windows eliminates drafts and reduces
+          heat loss—one of the highest-value upgrades for the cost.
+        image:
+          src: ./photos/weatherstrip.jpg
+          alt: Weather stripping installation.
+
+      - title: HRV/ERV Ventilation & Indoor Air Quality
+        desc: |-
+          Balanced ventilation, HRV/ERV systems, and air-quality improvements keep your
+          home healthier while reducing heating and cooling strain.
+        image:
+          src: ./photos/ventilation.jpg
+          alt: Ventilation and air quality upgrade.
+
+
+
+  - type: Reviews
+    title: Client Results
+    content:
+      - title: Sarah P.
+        location: Toronto
+        stars: 5
+        desc: |-
+          Our heating bill dropped nearly 30% after upgrading insulation and replacing two
+          windows. The house feels warmer than ever.
+
+      - title: Daniel K.
+        location: Vaughan
+        stars: 5
+        desc: |-
+          Installing a smart thermostat made a noticeable difference right away. The work
+          was done neatly, professionally, and with great attention to detail. Highly recommend!
+
+      - title: Maria L.
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          We noticed an immediate difference—no more drafts! Highly recommend their
+          energy-efficiency services.
+
+  - type: Faq
+    title: Have Questions About Energy Efficiency?
+    content:
+    - title: Which upgrades offer the best savings?
+      desc: >
+        Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
+        return on investment by significantly reducing heating and cooling losses.
+
+    - title: Do these upgrades qualify for rebates?
+      desc: >
+        Many upgrades qualify for federal and provincial rebates. Eligibility depends on
+        your home’s energy audit results and which upgrades you choose. We assist with
+        the entire rebate process.
+
+    - title: How long does an energy-efficient upgrade take?
+      desc: >
+        Most upgrades—such as insulation, air sealing, thermostat installation, or lighting—can be
+        completed in one day. Larger installations like windows or tankless heaters typically
+        take 1–2 days.
+
+    - title: Do I need an energy audit first?
+      desc: >
+        Yes. A pre-upgrade energy assessment is required for most rebates. We help schedule
+        the audit with a certified energy advisor.
+
+    - title: What areas of the Greater Toronto Area do you serve?
+      desc: >
+        We serve all of the GTA, including Toronto, Mississauga, Brampton, Vaughan,
+        Richmond Hill, Markham, Oakville, Pickering, Ajax, Whitby, and Oshawa.
+
+    - title: How much can I expect to save on energy bills?
+      desc: >
+        Savings vary by home, but typical improvements reduce heating and cooling consumption
+        by 15–30%. Some upgrades, like air sealing, have immediate impact.
+
+    - title: Are tankless water heaters more efficient?
+      desc: >
+        Yes—tankless systems only heat water when needed. This reduces standby energy loss
+        and provides unlimited hot water with lower operating costs.
+
+    - title: Can you help me choose the most cost-effective upgrades?
+      desc: >
+        Absolutely. We assess your home's energy usage and recommend upgrades that offer
+        the best combination of comfort, savings, and rebate value.
+
+    - title: Do you handle installation and cleanup?
+      desc: >
+        Yes. All upgrades include full installation, jobsite protection, cleanup, and
+        disposal of old materials where needed.
+
+    - title: How soon can you start after the audit?
+      desc: >
+        Most projects can begin within a few days of the audit report being released.
+
+  - type: Services
+    exclude:
+      - energy-efficient-upgrades

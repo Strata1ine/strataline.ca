@@ -41,7 +41,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 											}}
 										>
 											<a
-												class={cn(styles.link, 'font-serif text-3xl font-semibold')}
+												class={cn(styles.link, 'font-serif text-3xl text-nowrap font-semibold')}
 												href={`#${item.id}`}
 												tabindex="0"
 												onClick={() => popover.setOpen(false)}

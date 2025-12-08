@@ -1,82 +1,129 @@
-title: Popcorn ceiling removal
+title: Popcorn Ceiling Removal
 startPos: right
 
 seo: |-
-  Eliminate outdated popcorn ceilings with a dust-free process. Modernize your home, increase value, and ensure safety across the GTA and beyond.
+  Expert dust-free popcorn ceiling removal in Toronto, Vaughan, Mississauga, Richmond Hill, and the GTA. We use Festool Planex HEPA extraction to deliver clean, smooth, modern ceilings with no mess and superior air quality.
 
 desc: |-
-  Once valued for hiding imperfections, popcorn ceilings are now considered outdated and hard to maintain.
+  Transform your home with professional, dust-free popcorn ceiling removal. We smooth outdated textured ceilings using advanced Festool Planex extraction technology that keeps your home spotless while producing flawless, modern results.
 
 image:
   src: ./cover.jpg
-  alt: |-
-    A freshly renovated room with smooth, dust-free ceilings, large windows letting in natural light, and furniture carefully covered for protection during the process.
+  alt: Smooth modern ceiling after professional dust-free popcorn ceiling removal in a renovated GTA home.
 
 sections:
+  - type: ImageCarousel
+    title: Before & After Gallery
+    content:
+      - src: ./images/popcorn-ceiling-removal/downtown_toronto/dustless_popcorn_removal_downtown_toronto_condo_painting_pot_light_installation.jpg
+        alt: Dust-free popcorn ceiling removal in a downtown Toronto condo using Festool Planex HEPA extraction for smooth ceiling results.
+
+      - src: ./images/popcorn-ceiling-removal/mississauga/dustless_popcorn_removal_mississauga_painting_and_pot_light_installation.jpg
+        alt: Popcorn ceiling removal in Mississauga completed with full surface protection and advanced dust-extraction equipment.
+
+      - src: ./images/popcorn-ceiling-removal/newmarket/dustless_popcorn_removal_newmarket_painting_pot_light_installation.jpg
+        alt: Smooth finished ceiling in Newmarket following complete popcorn ceiling removal and skim coating.
+
+      - src: ./images/popcorn-ceiling-removal/richmond-hill/smooth-ceiling-after-removal-richmond-hill-03.jpg
+        alt: Richmond Hill home with a newly smoothed, modern ceiling after dust-free popcorn texture removal.
+
+      - src: ./images/popcorn-ceiling-removal/toronto/dust-free-popcorn-ceiling-removal-toronto-condo-01.jpg
+        alt: Before and after transformation of popcorn ceiling removal in a Toronto condo using professional resurfacing techniques.
+
+      - src: ./images/popcorn-ceiling-removal/vaughan/festool-planex-popcorn-removal-vaughan-02.jpg
+        alt: Vaughan home showcasing dust-free popcorn ceiling removal performed with Festool Planex sanding and HEPA filtration.
+
   - type: Benefits
     title: Why remove popcorn ceilings?
     content:
-      - title: Aesthetic upgrade
+      - title: Modern, updated look
         desc: |-
-          Modern homes have smooth ceilings, because it makes your room feel more spacious and beautiful.
-      - title: Increased home value
+          Removing popcorn texture immediately modernizes your home, creating cleaner lines and brighter, more open living spaces.
+
+      - title: Increase home value
         desc: |-
-          Updating your ceiling improves your home’s marketability. All imperfections removed.
-      - title: Easier maintenance
+          Smooth ceilings are highly desirable to buyers and boost the overall resale value and visual appeal of your property.
+
+      - title: Clean and dust-free process
         desc: |-
-          Smooth ceilings are much easier to clean and maintain than textured ones.
-      - title: Potential asbestos issues
+          Our Festool Planex HEPA extraction system captures dust at the source, ensuring a spotless result with no cleanup required.
+
+      - title: Healthier indoor air
         desc: |-
-          If your popcorn ceiling was installed before the 1980s, it likely has asbestos, requiring professional removal for safety.
+          Popcorn ceilings trap dust, allergens, and contaminants. Removing them improves air quality and makes your home easier to maintain.
 
   - type: TextCarousel
     text:
-      - Expert popcorn removal
-      - Kernels of design wisdom
-      - No scrape of popcorn left
-      - Ceiling texture worth savoring
+      - Dust-Free Removal
+      - Smooth Modern Ceilings
+      - Zero Cleanup Needed
+      - Professional Results
+      - Advanced HEPA Equipment
+      - Licensed & Insured
+      - Free Estimates
 
   - type: ImagePanel
-    title: Our process
+    title: Our Process
     content:
-      - title: Inspection
+      - title: Inspection & Prep
         image:
           src: ./before.jpg
-          alt: |-
-            A living room with a textured popcorn ceiling, ready for a modern update or smooth refinishing.
-      - title: Removal
+          alt: Pre-removal ceiling inspection and full room preparation before popcorn ceiling removal in a GTA home.
+
+      - title: Dust-Free Removal
         image:
           src: ./removal.jpg
-          alt: |-
-            A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
-      - title: Cleanup
+          alt: Festool Planex dust-free popcorn ceiling removal in progress with complete surface protection and HEPA dust extraction.
+
+      - title: Smooth Finish
         image:
           src: ./cleanup.jpg
-          alt: |-
-            A protected room prepared for ceiling refinishing, with furniture and fixtures carefully covered to ensure a dust-free renovation process.
+          alt: Smooth, newly resurfaced ceiling after professional popcorn ceiling removal and skim coating in Toronto.
 
   - type: Faq
-    title: Have any questions?
+    title: Have questions?
     content:
       - title: How much does popcorn ceiling removal cost?
         desc: |-
-          The cost varies depending on the size of the area and the complexity of the removal. Contact us for a free estimate!
-      - title: How long does the process take?
+          Pricing depends on the size and condition of your ceilings. Contact us for a fast, accurate quote.
+
+      - title: How long does removal take?
         desc: |-
-          Typically, the process can take anywhere from a few hours to a couple of days, depending on the size of the job.
-      - title: Can I do it myself?
+          Most projects are completed within a few hours to two days depending on ceiling size and finishing requirements.
+
+      - title: What makes your service dust-free?
         desc: |-
-          While DIY removal is possible, it can be messy and hazardous, especially if asbestos is present. We recommend hiring professionals for the best results.
+          We use industry-leading Festool Planex sanders paired with HEPA-certified extraction to eliminate airborne dust during the entire process.
+
+      - title: Do you handle asbestos testing?
+        desc: |-
+          Yes. We arrange asbestos testing through accredited laboratories. If asbestos is detected, licensed abatement professionals can complete removal.
+
+      - title: Will the ceiling be ready for paint?
+        desc: |-
+          Absolutely. After removal, we skim coat and finish your ceiling to a smooth, paint-ready surface. We can also handle the painting for you.
 
   - type: Reviews
     title: What our customers have to say
     id: reviews
     content:
-      - title: 'Olivia'
-        location: 'Toronto'
+      - title: Olivia
+        location: Toronto
         stars: 5
         desc: |-
-          _Extremely **clean and tidy**! Removed popcorn in my 700 soft condo in four days and when they were done there was nothing to clean up. Best decision I ever made!_
+          _Extremely clean work! My 700 sqft condo was completed in four days with absolutely no mess. The smooth ceilings look amazing._
+
+      - title: Ethan
+        location: Vaughan
+        stars: 5
+        desc: |-
+          _Professional, fast, and truly dust-free. My living room ceiling looks brand new. Highly recommended!_
+
+      - title: Sophia
+        location: Toronto
+        stars: 5
+        desc: |-
+          _Fantastic results and zero dust. My condo was spotless after the job. Couldn't be happier!_
 
   - type: Services
     exclude:

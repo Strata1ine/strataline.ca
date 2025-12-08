@@ -1,0 +1,96 @@
+title: Garage Doors
+seo: |-
+  Garage door experts specializing in installation, replacement, maintenance, and premium insulated overhead doors for your home.
+desc: |
+  Upgrade your garage with modern, insulated, secure, and stylish garage doors designed to enhance curb appeal and improve home efficiency.
+image:
+  src: ./cover.jpg
+  alt: |-
+    A modern insulated garage door installed on a contemporary home, featuring clean lines, durable panels, and a quiet, smooth operating opener system.
+
+sections:
+  - type: ImageCarousel
+    content:
+      - src: ./photos/02.jpg
+        alt: A modern insulated garage door in sleek white panels on a suburban home.
+      - src: ./photos/03.jpg
+        alt: A wood-look steel garage door offering a warm, natural appearance with low maintenance.
+      - src: ./photos/04.png
+        alt: A black full-view glass garage door creating a contemporary, high-end look.
+      - src: ./photos/05.png
+        alt: A pair of carriage-style garage doors with decorative hardware and elegant details.
+      - src: ./photos/06.jpg
+        alt: An insulated garage door with frosted glass windows, blending privacy and style.
+      - src: ./photos/07.jpg
+        alt: A large double garage with durable ribbed steel doors and smooth operation.
+      - src: ./photos/08.png
+        alt: A custom garage door with horizontal lines and minimalist modern design.
+      - src: ./photos/09.jpg
+        alt: A full aluminum and glass garage door opening to a bright, spacious garage interior.
+      - src: ./photos/10.jpg
+        alt: A textured-panel garage door in dark brown, complementing brick and stone exteriors.
+
+  - type: Benefits
+    title: Why upgrade your garage door?
+    content:
+      - title: Enhanced Security & Safety
+        desc: |-
+          Modern doors feature reinforced panels, improved locking systems, and motion-sensing openers for maximum protection.
+
+      - title: Energy Efficiency
+        desc: |-
+          Insulated garage doors minimize heat loss, helping maintain stable indoor temperatures and lowering energy costs.
+
+      - title: Smooth & Quiet Operation
+        desc: |-
+          Advanced tracks, rollers, and belt-drive openers ensure whisper-quiet performance.
+
+      - title: Curb Appeal Boost
+        desc: |-
+          A new door can instantly refresh your home's exterior, adding style and sophistication.
+
+      - title: Durable Materials
+        desc: |-
+          Steel, composite, and aluminum doors are resistant to rust, dents, and warping — built to last decades.
+
+      - title: Increased Property Value
+        desc: |-
+          Garage door replacements consistently offer one of the highest returns on investment for home upgrades.
+
+  - type: TextCarousel
+    text:
+      - A garage door that transforms your home's look
+      - Smooth, quiet, and built to last
+      - Security and style in one upgrade
+      - Precision installation you can trust
+      - Insulated comfort for every season
+
+  - type: Reviews
+    title: What our clients say
+    content:
+      - title: Amrit
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          The new garage door looks incredible and works silently. Total game changer for the house.
+
+      - title: Michael S.
+        location: Vaughan
+        stars: 5
+        desc: |-
+          Fast installation, great service, and outstanding quality. Highly recommended.
+
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does a garage door installation take?
+        desc: |-
+          Most installations take just a few hours, depending on door size and opener setup.
+
+      - title: Do you offer insulated and custom garage doors?
+        desc: |-
+          Yes — we provide insulated, custom-sized, wood-look, glass, modern, and carriage-style options.
+
+  - type: Services
+    exclude:
+      - garage-doors

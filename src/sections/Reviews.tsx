@@ -47,7 +47,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	createEffect(() => {
-		isMobile.isMobile;
+		isMobile;
 		setIdx(idx());
 	});
 
@@ -184,7 +184,7 @@ const Review = (review: ReviewsProps['content'][number]) => {
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
 			<div class="border-primary-dark mb-7 h-full rounded-md border p-7 md:p-10">
 				<div class="bg-primary absolute top-0 -translate-y-1/2 rounded-md px-4 py-2">
-					<span class="text-base font-semibold">{review.location}</span>
+					<span class="text-base font-semibold text-nowrap">{review.location}</span>
 				</div>
 
 				<h3 class="font-serif text-2xl text-balance xl:text-3xl">{review.title}</h3>

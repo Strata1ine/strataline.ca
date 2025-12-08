@@ -1,0 +1,86 @@
+title: Wallpaper Installation
+seo: |-
+  Expert wallpaper installation service that enhances interiors with modern designs, perfect seams, and long-lasting quality.
+desc: |
+  Professional wallpaper installation for homes and businesses, offering flawless seams, durable finishes, and design upgrades that transform any room instantly.
+draft: false
+
+image:
+  src: ./cover.jpg
+  alt: |-
+    Professionally installed wallpaper featuring seamless pattern alignment, clean corners, and a modern interior finish.
+
+sections:
+  - type: ImageCarousel
+    content:
+      - src: ./photos/hero1.jpg
+        alt: Grey textured wallpaper installed in a modern bedroom.
+      - src: ./photos/hero2.jpg
+        alt: Feature wall with patterned wallpaper professionally aligned.
+      - src: ./photos/hero3.jpg
+        alt: A vibrant wallpaper accent wall in a contemporary living room.
+      - src: ./photos/hero4.jpg
+        alt: Smooth floral wallpaper applied in a dining area.
+      - src: ./photos/hero5.jpg
+        alt: Geometric patterned wallpaper in a stylish office space.
+      - src: ./photos/hero6.jpg
+        alt: Perfectly matched wallpaper seams.
+      - src: ./photos/hero7.jpg
+        alt: Modern hallway with professionally installed wallpaper.
+
+  - type: Benefits
+    title: Why choose professional wallpaper installation?
+    content:
+      - title: Perfectly Aligned Patterns
+        desc: |-
+          Professional installation guarantees straight lines, matched seams, and flawless pattern continuation across walls.
+
+      - title: Fast & Mess-Free Installation
+        desc: |-
+          Our efficient process ensures minimal disruption with clean, organized installation from start to finish.
+
+      - title: Long-Lasting Durability
+        desc: |-
+          With proper adhesives and surface preparation, your wallpaper stays securely in place for many years.
+
+      - title: Huge Selection
+        desc: |-
+          Choose from thousands of textures, materials, colours, and designs to perfectly suit your space.
+
+  - type: TextCarousel
+    text:
+      - Instantly transform any room
+      - Patterns installed with precision
+      - Smooth, flawless results every time
+      - Beautiful designs that last
+      - Upgrade your space in a single day
+
+  - type: Reviews
+    title: What our clients say
+    content:
+      - title: Amanda
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          Beautiful work! The seams are invisible and the room looks brand new.
+
+      - title: L. Bernard
+        location: Toronto
+        stars: 5
+        desc: |-
+          Amazing precision. They matched a very complex pattern perfectly.
+
+  - type: Faq
+    title: Have any questions?
+    content:
+      - title: How long does wallpaper installation take?
+        desc: |-
+          Most installations take a few hours to a day depending on wall size and complexity.
+
+      - title: Can wallpaper be installed on textured walls?
+        desc: |-
+          Yes — we prepare and smooth the surface first to ensure perfect adhesion and finish.
+
+  - type: Services
+    exclude:
+      - wallpapers
