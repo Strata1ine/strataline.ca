@@ -22,6 +22,39 @@ export const schema = createSchema('Reviews', (_: SchemaContext) => ({
 }));
 
 export const seo = async (Astro: Astro, reviews: Props[]) => {
+	const reviewArray = await Promise.all(
+		reviews.flatMap((review) =>
+			review.content.map(async (content) => ({
+				'@type': 'Review',
+				author: {
+					'@type': 'Person',
+					name: content.title,
+				},
+				itemReviewed: {
+					'@type': business['@type'],
+					'@id': `${Astro.url.origin}#company`,
+				},
+				contentLocation: {
+					'@type': 'Place',
+					name: content.location,
+				},
+				reviewRating: {
+					'@type': 'Rating',
+					ratingValue: content.stars,
+					bestRating: 5,
+				},
+				reviewBody: await markdown.parseInline(content.desc),
+				...(content.date && { datePublished: content.date.toISOString() }),
+				...(content.url && {
+					associatedMedia: {
+						'@type': 'MediaObject',
+						associatedArticle: content.url,
+					},
+				}),
+			})),
+		),
+	);
+
 	return {
 		aggregateRating: {
 			'@type': 'AggregateRating',
@@ -41,38 +74,7 @@ export const seo = async (Astro: Astro, reviews: Props[]) => {
 				'@id': `${Astro.url.origin}#company`,
 			},
 		},
-		review: await Promise.all(
-			reviews.flatMap((review) =>
-				review.content.map(async (content) => ({
-					'@type': 'Review',
-					author: {
-						'@type': 'Person',
-						name: content.title,
-					},
-					itemReviewed: {
-						'@type': business['@type'],
-						'@id': `${Astro.url.origin}#company`,
-					},
-					contentLocation: {
-						'@type': 'Place',
-						name: content.location,
-					},
-					reviewRating: {
-						'@type': 'Rating',
-						ratingValue: content.stars,
-						bestRating: 5,
-					},
-					reviewBody: await markdown.parseInline(content.desc),
-					...(content.date && { datePublished: content.date.toISOString() }),
-					...(content.url && {
-						associatedMedia: {
-							'@type': 'MediaObject',
-							associatedArticle: content.url,
-						},
-					}),
-				})),
-			),
-		),
+		review: reviewArray,
 	};
 };
 

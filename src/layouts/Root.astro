@@ -41,7 +41,8 @@ const schema = {
 
 const reviews = queryBlocks(blocks, reviewSchemas);
 if (reviews.length > 0) {
-	schemas.push(await seoReviews(Astro, reviews));
+	const reviewData = await seoReviews(Astro, reviews);
+	schemas.push(reviewData.aggregateRating, ...reviewData.review);
 }
 
 const faqs = queryBlocks(blocks, faqSchemas);
