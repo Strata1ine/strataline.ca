@@ -4,6 +4,7 @@ import Island from './Header';
 
 import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
 import { type SchemaContext, z } from 'astro:content';
+import business from '#/business.json';
 
 export const schema = createSchema('Header', (_: SchemaContext) => ({
 	content: z.array(z.object({ id: z.string(), name: z.string() })),
@@ -22,7 +23,9 @@ const meta = Astro.props as Props;
 			class="text-secondary h-auto w-34 sm:w-40 xl:w-50"
 			is:inline
 		/>
-		<div class="relative inline-flex">
+
+		<div class="relative inline-flex gap-7">
+			<span class="text-md my-auto font-sans">+1 {business.telephone}</span>
 			<Island client:visible content={meta.content} />
 		</div>
 	</Layout.Container>
