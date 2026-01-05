@@ -20,12 +20,14 @@ const meta = Astro.props as Props;
 		<Icon
 			aria-label="Strataline"
 			name="logo"
-			class="text-secondary h-auto w-34 sm:w-40 xl:w-50"
+			class="text-secondary h-auto w-30 sm:w-40 xl:w-50"
 			is:inline
 		/>
 
-		<div class="relative inline-flex gap-7">
-			<span class="text-md my-auto font-sans">+1 {business.telephone}</span>
+		<div class="relative inline-flex gap-4 md:gap-10">
+			<span class="md:text-md my-auto font-sans text-base leading-none pt-2"
+				>+1 {business.telephone}</span
+			>
 			<Island client:visible content={meta.content} />
 		</div>
 	</Layout.Container>

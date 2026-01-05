@@ -65,6 +65,38 @@ sections:
       - Transforming spaces with detail
       - Smart layouts for real-life use
 
+  - type: Prices
+    title: What's the cost?
+    content:
+      - title: Basic
+        min: 15000
+        max: 25000
+        materials:
+          - Laminate countertops
+          - Stock cabinetry
+          - Standard appliances
+        desc: |-
+          Cosmetic updates such as repainting, replacing cabinet doors, upgrading light fixtures, and installing new countertops.
+      - title: Mid-range
+        min: 25000
+        max: 50000
+        materials:
+          - Quartz or granite countertops
+          - Semi-custom cabinets
+          - Energy-efficient appliances
+        desc: |-
+          Replacing cabinets, adding an island, upgrading appliances, installing new flooring, and improving lighting.
+      - title: High-end
+        min: 50000
+        max: 100000
+        materials:
+          - Marble countertops
+          - Custom cabinetry
+          - Premium hardwood or tile flooring
+          - Designer fixtures
+        desc: |-
+          Complete redesign, structural changes, custom cabinetry, luxury appliances, high-end finishes, and smart home features.
+
   - type: Reviews
     title: What our clients say
     content:

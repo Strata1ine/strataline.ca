@@ -9,6 +9,39 @@ image:
     A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.
 
 sections:
+  - type: Prices
+    title: What's the cost?
+    content:
+      - title: Basic
+        min: 5000
+        max: 15000
+        materials:
+          - Basic tiles
+          - Laminate countertops
+          - Standard fixtures
+        desc: |-
+          Cosmetic updates like painting, new fixtures, and minor changes such as replacing the toilet or sink.
+
+      - title: Mid-range
+        min: 15000
+        max: 30000
+        materials:
+          - Premium tiles
+          - Granite or quartz countertops
+          - Modern fixtures
+        desc: |-
+          Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
+
+      - title: High-end
+        min: 30000
+        max: 60000
+        materials:
+          - High-end stone or marble tiles
+          - Custom cabinetry
+          - Designer fixtures
+        desc: |-
+          Full renovation with structural changes, moving plumbing, adding a steam shower, custom cabinetry, and luxury finishes.
+
   - type: ImageCarousel
     content:
       - src: ./photos/spa.jpg
