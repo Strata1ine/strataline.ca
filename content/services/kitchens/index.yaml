@@ -11,24 +11,20 @@ image:
 sections:
   - type: ImageCarousel
     content:
-      - src: ./cover.jpg
+      - src: ./photos/centre_island_pendant_lighting_king_city.jpg
         alt: A bright kitchen with white shaker cabinets, quartz counters, and stainless steel appliances.
-      - src: ./photos/quality.jpg
+      - src: ./photos/kitchen_island_seating_ideas_aurora.jpg
         alt: A modern kitchen featuring a large island, pendant lights, and sleek flat-panel cabinets.
-      - src: ./photos/space.jpg
+      - src: ./photos/new_kitchen_cabinet_doors_drawers_refacing_newmarket.jpg
         alt: A warm wood-accent kitchen with stone backsplash and integrated lighting.
-      - src: ./photos/space.jpg
+      - src: ./photos/shaker_style_kitchen_cabinets_herring_bone_backsplash_wolf_stainless_steel_appliances_georgetown.jpg
         alt: A contemporary kitchen with dark cabinets, under-cabinet lighting, and built-in appliances.
-      - src: ./photos/space.jpg
+      - src: ./photos/stainless_steel_sink_and_faucet_vaughan.jpg
         alt: A two-tone kitchen with white uppers, navy lowers, and gold hardware for a luxury finish.
-      - src: ./photos/space.jpg
+      - src: ./photos/white_kitchen_cabinets_quartz_countertop_grey_vein_toronto.jpg
         alt: A kitchen renovation featuring a waterfall island and matte black fixtures.
-      - src: ./photos/space.jpg
+      - src: ./cover.jpg
         alt: A cozy kitchen with open shelving, natural wood finishes, and soft lighting.
-      - src: ./photos/space.jpg
-        alt: A classic kitchen with detailed crown molding, granite counters, and tiled backsplash.
-      - src: ./photos/space.jpg
-        alt: A spacious kitchen with full-height pantry cabinets and a stylish tile accent wall.
 
   - type: Benefits
     title: Why renovate your kitchen?
