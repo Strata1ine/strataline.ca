@@ -7,7 +7,7 @@ import { schema as textCarousel } from './TextCarousel.astro';
 export const schema = createSchema('Services', (c: SchemaContext) => ({
 	id: z.string().optional(),
 	pos: DefaultPos,
-	title: z.string().default("There's More To Explore"),
+	title: z.string().default("There's more to explore"),
 	exclude: z.array(z.string()).optional(),
 	content: z.object(textCarousel(c)).optional(),
 }));
@@ -56,7 +56,7 @@ import Island from './TextCarousel';
 							draggable={false}
 						>
 							<Image
-								class="aspect-16/10 w-1/2 rounded-sm sm:w-full max-h-58 shadow-md"
+								class="aspect-16/10 w-1/2 rounded-sm sm:w-full max-h-58"
 								anim="hover"
 								image={service.data.image}
 								widths={[200, 400, 600, 800]}

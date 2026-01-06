@@ -96,7 +96,7 @@
 
 	.heading-7xl,
 	.prose h1 {
-		@apply font-serif text-4xl font-bold text-pretty sm:text-5xl xl:text-6xl;
+		@apply font-serif font-bold text-pretty text-5xl xl:text-6xl;
 	}
 
 	.heading-5xl,
@@ -212,7 +212,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
 	-webkit-box-shadow: 0 0 0 1000px var(--color-white) inset;
 	box-shadow: 0 0 0 1000px var(--color-white) inset;
-	/* -webkit-text-fill-color: var(--color-text-primary); */
 }
 
 @layer base {
@@ -225,14 +224,3 @@ input:-webkit-autofill:focus {
 		display: inline-block;
 	}
 }
-
-/* @supports (-webkit-appearance: none) { */
-/* 	.w3c-focus:has(:focus-visible) { */
-/* 		outline: -webkit-focus-ring-color auto; */
-/* 	} */
-/* } */
-/* @supports (-moz-appearance: none) { */
-/* 	.w3c-focus:has(:focus-visible) { */
-/* 		outline: Highlight auto; */
-/* 	} */
-/* } */

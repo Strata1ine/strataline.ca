@@ -1,136 +1,111 @@
-title: Staircase Renovation & Bespoke Architectural Railings
+title: Staircase renovation & custom railings
 
 seo: |-
-  Luxury staircase renovation, custom railings, and architectural stair design across Toronto, Vaughan, Richmond Hill, Markham, and the GTA. 
-  We specialize in high-end refinishing, hardwood stair capping, modern railing systems, and complete staircase transformations with premium craftsmanship and design-forward detailing.
-
-twitter:
-  card: "summary_large_image"
-  title: "Luxury Staircase Renovation & Custom Architectural Railings"
-  description: "Exquisite staircase transformations, bespoke railings, and premium hardwood refinishing for GTA luxury homes."
-  image: "./cover.jpg"
-
-og:
-  title: "Ultra-Luxury Staircase Renovation & Architectural Railings in the GTA"
-  description: "Custom railings, hardwood stair capping, refinishing, and design-focused staircase renovation for Toronto and the GTA’s most elevated homes."
-  image: "./cover.jpg"
-  type: "website"
-  url: "https://yourwebsite.com/services/staircase-renovation"
-  locale: "en_CA"
+  Staircase renovation & custom railings in the GTA. Hardwood stair capping, stair refinishing, and custom railing installation. Expert contractors.
 
 desc: |-
-  Transform your home with a staircase that feels custom-built, architecturally refined, and exquisitely crafted. 
-  We specialize in high-end staircase renovation, premium refinishing, and bespoke railing installations designed to elevate modern and luxury homes across the GTA.
+  Staircase renovation, hardwood stair capping, stair refinishing, staircase repair, and custom railings (iron, glass, stainless).
 
 image:
   src: ./cover.jpg
-  alt: Luxury hardwood staircase with bespoke architectural railings in a modern Toronto home.
+  alt: Curved interior staircase with oak treads, white risers, custom railings, iron stair railings, and handrail installation.
 
 sections:
-  - type: ImageCarousel
-    content:
-      - src: ./photos/10.jpg
-        alt: Luxury staircase refinished with rich hardwood treads and designer black railings.
-      - src: ./photos/00.jpg
-        alt: Grand curved staircase with custom wrought iron railings in an upscale Toronto home.
-      - src: ./photos/07.jpg
-        alt: Minimalist staircase with pale hardwood treads and slim metal balusters, perfect for modern interior design.
-      - src: ./photos/05.jpg
-        alt: Contemporary spiral staircase renovation with dark hardwood steps and sculptural railings.
-      - src: ./photos/03.jpg
-        alt: Curved staircase featuring premium hardwood treads and vertical iron balusters for a refined modern look.
-      - src: ./photos/01.jpg
-        alt: Newly renovated staircase with white risers, hardwood treads, and decorative custom railings.
-      - src: ./photos/02.jpg
-        alt: Hardwood staircase with stainless steel balusters and a modern handrail, blending luxury and simplicity.
-      - src: ./photos/11.jpg
-        alt: Elegant curved staircase refinished with deep-toned hardwood and premium black iron balusters.
-      - src: ./photos/09.jpg
-        alt: Staircase upgraded with frameless glass railings and a sleek stainless-steel handrail.
-
   - type: Benefits
     title: Why upgrade your staircase?
     content:
-      - title: Architectural-grade craftsmanship
+      - title: Craftsmanship that is custom-built
         desc: |-
-          Your staircase becomes a centerpiece of the home. Our work showcases precise joinery, flawless finishing, and meticulous installation for a truly elevated result.
+          A custom staircase design turns your stairs into a focal point. Tight fit, clean lines, and a durable finish with careful staircase installation.
 
-      - title: Premium, enduring materials
+      - title: Premium materials that last
         desc: |-
-          From solid oak and maple to wrought iron, glass, and stainless steel — every component is selected for beauty, longevity, and timeless sophistication.
+          Choose solid oak stair components and railings in wrought iron, stainless steel, glass, or hardwood.
 
-      - title: Design-first aesthetics
+      - title: Design that matches your interior
         desc: |-
-          Whether minimalist, transitional, or traditional, we create staircase designs that harmonize perfectly with luxury interiors.
+          Staircase design that matches your style. Your tread finish and railing style match your interior staircase.
 
-      - title: Increased home value
+      - title: Stronger resale appeal
         desc: |-
-          A premium staircase renovation dramatically enhances your home's visual appeal and boosts resale value in Toronto’s competitive real estate market.
+          A premium staircase renovation enhances your home's visual appeal and boosts resale value in Toronto's competitive real estate market.
+
+  - type: ImageCarousel
+    content:
+      - src: ./photos/carpeted-stairs-black-metal-balusters-hardwood-handrail.jpg
+        alt: Custom railings with hardwood handrail and iron stair railings.
+      - src: ./photos/curved-staircase-renovation-wrought-iron-railings-hardwood-treads.jpg
+        alt: Stair refinishing with wrought iron railings and oak treads.
+      - src: ./photos/staircase-renovation-stainless-steel-balusters-oak-treads.jpg
+        alt: Stair railing installation with stainless steel railings, handrail installation, and oak treads.
+      - src: ./photos/staircase-renovation-dark-hardwood-treads-white-risers-stainless-steel-balusters.jpg
+        alt: Staircase installation with stainless steel railings and treads and risers.
+      - src: ./photos/curved-staircase-renovation-dark-hardwood-wrought-iron-balusters.jpg
+        alt: Staircase remodel with wrought iron railings and iron stair railings.
+      - src: ./photos/staircase-renovation-white-risers-hardwood-treads-custom-railing.jpg
+        alt: Interior staircase with white risers and custom railings.
+      - src: ./photos/stair-railing-installation-stainless-steel-balusters-modern-handrail.jpg
+        alt: Stair railing installation with stainless steel railings and handrail installation.
+      - src: ./photos/restored-hardwood-stairs-dark-stain-black-iron-balusters.jpg
+        alt: Staircase refinishing with iron stair railings.
+      - src: ./photos/frameless-glass-railings-stainless-steel-handrail-modern-stairwell.jpg
+        alt: Frameless glass railings with stainless steel railings and glass stair railings installation.
+
+  - type: ZigZag
+    title: Our expertise applies to every aspect
+    content:
+      - title: Dust-free stair sanding
+        desc: |-
+          We use professional stair sanding to protect your home and create a smooth surface for a clean, durable finish.
+        image:
+          src: ./photos/carpeted-stairs-black-metal-balusters-hardwood-handrail.jpg
+          alt: Stair sanding with hardwood handrail installation.
+
+      - title: Custom stain matching & colour finishes
+        desc: |-
+          From natural tones to deep espresso, we match your flooring colour using premium stains and topcoats for durability and a refined look.
+        image:
+          src: ./photos/staircase-renovation-stainless-steel-balusters-oak-treads.jpg
+          alt: Stair railing installation with stainless steel railings, handrail installation, and oak treads.
+      - title: Stair remodel with hardwood
+        desc: |-
+          Replace outdated carpet with hardwood stair capping. We install solid oak treads and risers for a clean, modern stair upgrade.
+        image:
+          src: ./photos/staircase-renovation-dark-hardwood-treads-white-risers-stainless-steel-balusters.jpg
+          alt: Hardwood stair capping with stainless steel railings and treads and risers.
+
+      - title: Modern & classic stair finishes
+        desc: |-
+          Choose from curated stair colours and finishes, or request a custom match that blends seamlessly with your home's floors and trim. We create custom staircases.
+        image:
+          src: ./photos/curved-staircase-renovation-dark-hardwood-wrought-iron-balusters.jpg
+          alt: Staircase design with wrought iron railings.
 
   - type: TextCarousel
     text:
-      - Bespoke staircase design
-      - Premium railing craftsmanship
-      - Hardwood capping & refinishing
-      - Designer glass & iron railings
-      - Built for luxury interiors
+      - Custom staircase renovation
+      - Dust-free stair refinishing
+      - Premium custom railings
+      - Hardwood capping & restoration
+      - Designer iron & glass railings
+      - Expert handrail installation
 
-  # -------------------------------
-  # STAIRCASE REFINISHING
-  # -------------------------------
   - type: ZigZag
-    title: Luxury Staircase Refinishing
+    title: Stair repair & restoration
     content:
-      - title: Dust-Free Professional Sanding
-        desc: >-
-          We use advanced dust-free systems that protect your home while allowing for a smooth, flawless hardwood finish worthy of luxury interiors.
+      - title: Stair repair before refinishing
+        desc: |-
+          We handle staircase repair including scratches, dents, water damage, squeaks, and loose components. We provide railing replacement when needed.
         image:
-          src: ./photos/10.jpg
-          alt: Dust-free sanding performed on premium hardwood stair treads.
-      - title: Custom Colour & Stain Matching
-        desc: >-
-          From deep espresso to modern natural tones, we match any flooring colour with high-end, low-VOC stains designed for durability and elegance.
-        image:
-          src: ./photos/07.jpg
-          alt: Custom hardwood stain matching for staircase treads.
+          src: ./photos/frameless-glass-railings-stainless-steel-handrail-modern-stairwell.jpg
+          alt: Frameless glass railings with stainless steel railings and glass stair railings.
 
-  # -------------------------------
-  # STAIR CAPPING
-  # -------------------------------
-  - type: ZigZag
-    title: Hardwood Stair Capping (Carpet-to-Wood Transformation)
-    content:
-      - title: Elevate Carpeted Stairs
-        desc: >-
-          Replace outdated carpet with premium hardwood caps. We install solid oak or maple treads and risers for a clean, modern, and upscale finish.
+      - title: Restored like-new finish
+        desc: |-
+          After repair and refinishing, your staircase looks new again with an updated colour, smooth finish, and crisp detailing.
         image:
-          src: ./photos/05.jpg
-          alt: Premium hardwood stair capping replacing carpeted steps.
-      - title: Modern, Classic & Signature Finishes
-        desc: >-
-          Choose from our curated selection of designer colours and finishes, or request a fully custom match that blends seamlessly with your home.
-        image:
-          src: ./photos/03.jpg
-          alt: Custom-finished hardwood stair capping in a luxury home.
-
-  # -------------------------------
-  # DAMAGE REPAIR
-  # -------------------------------
-  - type: ZigZag
-    title: Stair Damage & Restoration
-    content:
-      - title: Precision Repairs
-        desc: >-
-          We professionally repair scratches, dents, water damage, and structural imperfections using restoration techniques that preserve your staircase’s integrity.
-        image:
-          src: ./photos/09.jpg
-          alt: Staircase showing signs of wear before luxury refinishing.
-      - title: Revived Like-New Appearance
-        desc: >-
-          After restoration and refinishing, your staircase looks brand new — enhanced, modernized, and perfectly finished.
-        image:
-          src: ./photos/11.jpg
-          alt: Newly restored staircase with high-end finishing.
+          src: ./photos/restored-hardwood-stairs-dark-stain-black-iron-balusters.jpg
+          alt: Staircase repair with wrought iron railings and iron stair railings.
 
   - type: Reviews
     title: What our clients say
@@ -145,26 +120,26 @@ sections:
         location: Toronto
         stars: 5
         desc: |-
-          Impeccable attention to detail. The craftsmanship is on another level — truly transformative work.
+          Impeccable attention to detail. The craftsmanship is on another level, truly transformative work.
 
   - type: Faq
-    title: Have Questions About Luxury Staircase Renovation?
+    title: Have any questions?
     content:
       - title: How long does a staircase renovation take?
         desc: |-
-          Most projects are completed in about one week, depending on complexity and material selections. Larger custom railing designs may require additional fabrication time.
+          Most projects are completed in about one week, depending on stair condition, scope, and material selections. Custom railings may add fabrication time. We work within your budgets and timelines.
 
-      - title: Can you help with design ideas?
+      - title: Can you help with staircase design ideas?
         desc: |-
-          Absolutely. We guide you through finish options, railing styles, and architectural design elements to ensure your staircase complements your home’s aesthetic.
+          Yes. We guide you through staircase design, stain colours, stair finishes, and railing styles so the renovation suits your home.
 
       - title: Do you work with luxury homes and custom builds?
         desc: |-
-          Yes — we frequently collaborate with designers, builders, and architects to deliver high-end staircase projects across the GTA.
+          Yes, we work with homeowners, designers, builders, and architects on high-end staircase projects. Our staircase contractors handle house builds, commercial development, and properties with competitive prices and timelines that work with your budgets.
 
       - title: What railing materials do you offer?
         desc: |-
-          We build custom railings in solid hardwood, wrought iron, black metal, stainless steel, and frameless glass.
+          We build and install railings in hardwood, wrought iron, stainless steel, and frameless glass. We offer modern railing systems with handrail configurations.
 
   - type: Services
     exclude:

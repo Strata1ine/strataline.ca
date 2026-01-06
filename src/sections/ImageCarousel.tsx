@@ -114,7 +114,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 								children={(image) => (
 									<Image
 										widths={[400, 600, 800]}
-										class="mx-3 w-90 max-w-svw shadow-2xl"
+										class="mx-3 w-90 max-w-svw"
 										image={image}
 									/>
 								)}

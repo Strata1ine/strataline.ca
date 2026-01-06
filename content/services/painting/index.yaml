@@ -1,22 +1,8 @@
-title: Luxury Interior Painting & Architectural Finishes
+title: Interior painting & architectural finishes
 
 seo: |-
   High-end interior painting, fine finishing, and designer wall treatments across Toronto, Vaughan, Richmond Hill, Markham, North York, and the GTA.
   We specialize in luxury repaints, premium wall preparation, and architect-level finishes for sophisticated homes and discerning homeowners.
-
-twitter:
-  card: "summary_large_image"
-  title: "Luxury Home Painting & Architectural Finishes"
-  description: "Exquisite interior painting, flawless wall finishes, and refined detailing — designed for Toronto’s most elevated homes."
-  image: "./cover.jpg"
-
-og:
-  title: "Luxury Interior Painting Services in the GTA"
-  description: "Premium painting, fine finishes, designer colour selections, and white-glove service for upscale homes across the GTA."
-  image: "./cover.jpg"
-  type: "website"
-  url: "https://yourwebsite.com/services/painting"
-  locale: "en_CA"
 
 desc: |-
   Elevate your home with flawless interior painting, precision wall preparation, and architectural-grade finishes.
@@ -29,19 +15,19 @@ image:
 sections:
   - type: ImageCarousel
     content:
-      - src: ./photos/01-luxury-interior-painting-toronto.jpg
+      - src: ./photos/luxury-interior-painting-toronto.jpg
         alt: Designer living room with velvety smooth painted surfaces and modern trim profiles.
-      - src: ./photos/02-smooth-wall-finish-level-5.jpg
+      - src: ./photos/smooth-wall-finish-level-5.jpg
         alt: Luxury interior hallway with perfect Level-5 wall finishing and a premium colour palette.
-      - src: ./photos/03-popcorn-ceiling-removal-gta.png
+      - src: ./photos/popcorn-ceiling-removal-gta.png
         alt: Popcorn ceiling removal and smoothing in a high-end Toronto home.
-      - src: ./photos/04-high-end-wainscoting-painting-spray-finish.png
+      - src: ./photos/high-end-wainscoting-painting-spray-finish.png
         alt: High-end wainscoting and millwork spraying with a flawless luxury finish.
-      - src: ./photos/05-designer-colour-consultation..jpg
+      - src: ./photos/designer-colour-consultation..jpg
         alt: Designer colour selection and palette consultation for an upscale home.
-      - src: ./photos/06-modern-kitchen-repaint-satin.jpg
+      - src: ./photos/modern-kitchen-repaint-satin.jpg
         alt: Premium kitchen repaint with crisp lines, satin cabinetry, and modern detailing.
-      - src: ./photos/07-high-end-trim-painting-spray-finish.png
+      - src: ./photos/high-end-trim-painting-spray-finish.png
         alt: High-end trim spraying with immaculate lines and a professional finish.
 
   - type: Benefits
@@ -81,13 +67,13 @@ sections:
         desc: >-
           We help you choose the perfect palette—rich neutrals, soft whites, warm tones, or bold accents—ensuring your home feels cohesive and luxurious.
         image:
-          src: ./photos/05-designer-colour-consultation..jpg
+          src: ./photos/designer-colour-consultation..jpg
           alt: Designer colour palette selection for a luxury home.
       - title: Flawless Wall Application
         desc: >-
           Using premium rollers and fine-spray techniques, we achieve buttery-smooth finishes without streaks, patches, or roller texture.
         image:
-          src: ./photos/01-luxury-interior-painting-toronto.jpg
+          src: ./photos/luxury-interior-painting-toronto.jpg
           alt: Smooth wall painting using high-end paint and expert technique.
 
   # -------------------------------
@@ -100,13 +86,13 @@ sections:
         desc: >-
           We eliminate outdated popcorn texture and apply a perfectly smooth finish — ideal for modern, upscale interiors.
         image:
-          src: ./photos/03-popcorn-ceiling-removal-gta.png
+          src: ./photos/popcorn-ceiling-removal-gta.png
           alt: Popcorn ceiling removal and luxury smoothing treatment.
       - title: Level-5 Finishing
         desc: >-
           For high-end homes with critical lighting, we provide a Level 5 skim coat for a perfectly uniform, ultra-smooth surface.
         image:
-          src: ./photos/02-smooth-wall-finish-level-5.jpg
+          src: ./photos/smooth-wall-finish-level-5.jpg
           alt: Level-5 wall finishing in a premium home.
 
   # -------------------------------
@@ -119,13 +105,13 @@ sections:
         desc: >-
           We create razor-sharp edges on baseboards, casings, doors, and crown mouldings using precision taping and fine-finish techniques.
         image:
-          src: ./photos/07-high-end-trim-painting-spray-finish.png
+          src: ./photos/high-end-trim-painting-spray-finish.png
           alt: Perfectly painted trim, doors, and mouldings in an upscale home.
       - title: High-End Sprayed Finishes
         desc: >-
           For cabinetry, built-ins, railings, and millwork, we offer lacquer-smooth spraying done in controlled conditions for a factory-grade finish.
         image:
-          src: ./photos/04-high-end-wainscoting-painting-spray-finish.png
+          src: ./photos/high-end-wainscoting-painting-spray-finish.png
           alt: Professional spraying on millwork for a smooth, modern luxury finish.
 
   # -------------------------------
@@ -138,13 +124,13 @@ sections:
         desc: >-
           We repair settlement cracks, dents, holes, uneven drywall, and surface imperfections using professional-grade patching and leveling.
         image:
-          src: ./photos/08-level-5-skim-coating-wall-repair.jpg
+          src: ./photos/level-5-skim-coating-wall-repair.jpg
           alt: Wall repair and repaint in a high-end modern kitchen.
       - title: Invisible Results
         desc: >-
           Repairs blend seamlessly into the surrounding surfaces — ensuring nothing distracts from the beauty of the final finish.
         image:
-          src: ./photos/02-smooth-wall-finish-level-5.jpg
+          src: ./photos/smooth-wall-finish-level-5.jpg
           alt: Smooth wall surface with invisible repair work.
 
   - type: Reviews

@@ -3,7 +3,6 @@ import type { Props as HeaderMeta } from './Header.astro';
 import styles from './Header.module.scss';
 import { cn } from '@/frontend/utils';
 import Dialog from '@corvu/dialog';
-import business from '#/business.json';
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	return (

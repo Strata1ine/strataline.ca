@@ -13,7 +13,7 @@ import { parseBlocks } from 'astro-frontmatter-components/integration';
 
 export const collections = {
 	index: defineCollection({
-		loader: glob({ pattern: '*.yaml', base: './content' }),
+		loader: glob({ pattern: 'index.yaml', base: './content' }),
 		schema: (c: SchemaContext) =>
 			z.object({
 				title: z.string(),
@@ -23,7 +23,7 @@ export const collections = {
 			}),
 	}),
 	services: defineCollection({
-		loader: glob({ pattern: '**/*.yaml', base: './content/services' }),
+		loader: glob({ pattern: '**/index.yaml', base: './content/services' }),
 		schema: (c: SchemaContext) =>
 			z.object({
 				startPos: ZPos.optional(),

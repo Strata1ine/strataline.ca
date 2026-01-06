@@ -1,5 +1,5 @@
 ---
-title: Privacy Policy
+title: Privacy policy
 desc: How we collect, use, store, and delete your personal information.
 ---
 

@@ -25,9 +25,6 @@ const meta = Astro.props as Props;
 		/>
 
 		<div class="relative inline-flex gap-4 md:gap-10">
-			<span class="md:text-md my-auto font-sans text-base leading-none pt-2"
-				>+1 {business.telephone}</span
-			>
 			<Island client:visible content={meta.content} />
 		</div>
 	</Layout.Container>

@@ -1,5 +1,5 @@
 title: Dust-Free Renovation
-desc: Transform your home with sophisticated, dust-free renovations. Trusted by discerning homeowners across the GTA for elevated, detail-driven transformations.
+desc: Dust-free renovations with precision craftsmanship. Clean process, quality results, and professional service across the GTA.
 popular:
   - popcorn-removal
   - stairs
@@ -8,72 +8,72 @@ sections:
   - type: Header
     content:
       - id: popular
-        name: Signature Services
+        name: Signature services
       - id: explore
-        name: Our Expertise
+        name: Our expertise
       - id: accomplishments
         name: Accomplishments
       - id: reviews
-        name: Client Reviews
+        name: Client reviews
 
   - type: Hero
     title: |-
-      Luxury Renovations Designed to Elevate Your Home
+      Your dream home, delivered without stress
     desc: |-
-      For decades, we’ve been transforming interiors with a dust-free, precision-engineered approach tailored to upscale homes.
+      Dust-free renovations with precision craftsmanship. Clean process, quality results, and professional service across the GTA.
     content:
       images:
         - src: ./photos/slideshow/kitchen.jpg
           alt: |-
-            A refined luxury kitchen featuring expansive stone counters, warm designer lighting, and elegant custom finishes.
+            Luxury kitchen with stone counters and custom finishes.
         - src: ./photos/slideshow/dining_room.jpg
           alt: |-
-            A beautifully curated dining space with a grand table, elegant seating, and natural greenery that enhances the sophisticated ambiance.
+            Dining room with elegant seating and natural lighting.
         - src: ./photos/slideshow/living_room.jpg
           alt: |-
-            A serene, expertly renovated living room with a modern fireplace, plush seating, and elevated architectural detailing.
+            Renovated living room with modern fireplace and architectural details.
         - src: ./photos/slideshow/bathroom.jpg
           alt: |-
-            A spa-inspired bathroom retreat featuring premium materials, soft natural lighting, and refined decorative accents.
+            Spa-inspired bathroom with premium materials and natural lighting.
 
   - type: Popular
-    title: Signature Services
+    title: Signature services
     id: popular
 
   - type: Services
     id: explore
     content:
       text:
-        - Crafted with meticulous care
-        - Immaculate, disruption-free execution
-        - Truly dust-free from start to finish
-        - Architectural-level precision
-        - Expert craftsmanship for elevated spaces
+        - Meticulous craftsmanship
+        - Disruption-free execution
+        - Dust-free from start to finish
+        - Architectural precision
+        - Expert results
 
   - type: Cardshow
-    title: Our Accomplishments
+    title: Our accomplishments
     id: accomplishments
     content:
       - title: Featured on CityTV
         desc: |-
-          Strataline was invited to CityLine, where Scott McGillivray showcased our premier dust-free ceiling refinishing method as the gold standard for modern renovations.
+          Scott McGillivray showcased our dust-free ceiling refinishing method on CityLine as the gold standard for modern renovations.
         media:
           type: video
           uploadDate: Jan 1, 2020
           image:
             src: ./photos/awards/citytv.jpg
-            alt: Exclusive CityTV segment featuring Strataline’s refined dust-free process.
+            alt: CityTV segment featuring Strataline's dust-free process.
           url: /videos/cityline.mp4
 
       - title: Featured in The Star
         desc: |-
-          The Star highlights our innovative dust-free approach—celebrated for its cleanliness, precision, and luxury-focused execution across GTA homes.
+          The Star highlighted our dust-free approach for its cleanliness, precision, and luxury execution across GTA homes.
         media:
           type: image
           image:
             src: ./photos/awards/star.jpg
             alt: |-
-              A feature in The Star showcasing Strataline’s advanced dust-free ceiling refinement process.
+              The Star feature showcasing Strataline's dust-free ceiling refinement process.
         link:
           name: Read the article
           url: |
@@ -81,14 +81,14 @@ sections:
 
       - title: Featured in House & Home
         desc: |-
-          House & Home consults Strataline for expert insight into luxury chevron hardwood installation and high-end interior refinement.
+          House & Home consulted Strataline for expert insight on luxury chevron hardwood installation and high-end interior refinement.
         media:
           type: image
           image:
             y: top
             src: ./photos/awards/houseandhome.webp
             alt: |-
-              A premium interior featuring chevron hardwood and curated furnishings, showcased in House & Home.
+              Premium interior with chevron hardwood and curated furnishings, featured in House & Home.
         link:
           name: Read the article
           url: |
@@ -96,7 +96,7 @@ sections:
 
       - title: "Featured on HGTV's Love It or List It"
         desc: |-
-          A dated 1980s home undergoes a dramatic, magazine-worthy transformation—crafted with Strataline’s signature precision.
+          A dated 1980s home transformed with Strataline's precision craftsmanship.
         media:
           type: yt-video
           id: MqmEVTErkI0
@@ -106,7 +106,7 @@ sections:
             https://my.matterport.com/show/?m=S9RBB2SkPRT
 
   - type: Reviews
-    title: What Our Clients Are Saying
+    title: What our clients are saying
     id: reviews
     content:
       - title: Maggie and Scott
