@@ -96,7 +96,7 @@
 
 	.heading-7xl,
 	.prose h1 {
-		@apply font-serif font-bold text-pretty text-5xl xl:text-6xl;
+		@apply font-serif text-5xl font-bold text-pretty xl:text-6xl;
 	}
 
 	.heading-5xl,

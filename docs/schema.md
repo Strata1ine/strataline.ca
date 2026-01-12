@@ -82,6 +82,7 @@ sections:
 All sections support an optional `id` field for anchor navigation. Most sections also support an optional `pos` field (`"left"` or `"right"`, default: `"left"`) for layout positioning.
 
 **Available Section Types:**
+
 - `Header` - Navigation menu
 - `Hero` - Hero section with image slideshow
 - `Popular` - Displays popular services
@@ -102,6 +103,7 @@ All sections support an optional `id` field for anchor navigation. Most sections
 Navigation header with menu items.
 
 **Required Fields:**
+
 - `content` (array): Array of menu item objects
   - `id` (string): Anchor ID for navigation
   - `name` (string): Menu item label
@@ -120,18 +122,20 @@ Navigation header with menu items.
 Hero section with image slideshow.
 
 **Required Fields:**
+
 - `title` (string): Hero title
 - `desc` (string): Hero description
 - `content` (object): Content object
   - `images` (array): Array of image objects (see Image Schema)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `content.speed` (number): Slideshow speed in seconds (default: 5.0)
 
 ```yaml
 - type: Hero
-  id: hero  # Optional
+  id: hero # Optional
   title: |-
     Renovations designed to transform your space
   desc: |-
@@ -141,7 +145,7 @@ Hero section with image slideshow.
       - src: ./photos/slideshow/kitchen.jpg
         alt: |-
           A large renovated kitchen showcasing a generous countertop.
-    speed: 5.0  # Optional: default is 5.0
+    speed: 5.0 # Optional: default is 5.0
 ```
 
 ### Popular
@@ -149,9 +153,11 @@ Hero section with image slideshow.
 Displays popular services (uses `popular` array from index.yaml).
 
 **Required Fields:**
+
 - `title` (string): Section title
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
@@ -167,9 +173,11 @@ Displays popular services (uses `popular` array from index.yaml).
 Grid of service cards.
 
 **Required Fields:**
+
 - `title` (string): Section title (default: "There's more to explore" if not provided)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 - `exclude` (array): Array of service slugs to exclude from display
@@ -180,17 +188,17 @@ Grid of service cards.
 
 ```yaml
 - type: Services
-  id: explore  # Optional: anchor ID
-  pos: left    # Optional: default is "left"
-  title: Explore our services  # Optional: defaults to "There's more to explore" (note: only first word capitalized)
-  exclude:     # Optional: array of service slugs to exclude
+  id: explore # Optional: anchor ID
+  pos: left # Optional: default is "left"
+  title: Explore our services # Optional: defaults to "There's more to explore" (note: only first word capitalized)
+  exclude: # Optional: array of service slugs to exclude
     - kitchens
-  content:     # Optional: text carousel content
+  content: # Optional: text carousel content
     text:
       - Made with care
       - No mess
       - No dust
-    speed: 0.1  # Optional: carousel speed
+    speed: 0.1 # Optional: carousel speed
 ```
 
 ### Prices
@@ -198,6 +206,7 @@ Grid of service cards.
 Pricing tiers with materials list.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of price tier objects
   - `title` (string): Tier name (e.g., "Basic", "Mid-range")
@@ -207,13 +216,14 @@ Pricing tiers with materials list.
   - `desc` (string): Description of what's included
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: Prices
-  id: pricing  # Optional: anchor ID
-  pos: left    # Optional: default is "left"
+  id: pricing # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: What's the cost?
   content:
     - title: Basic
@@ -240,6 +250,7 @@ Pricing tiers with materials list.
 Alternating image and text layout.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of zigzag items
   - `title` (string): Item title
@@ -247,13 +258,14 @@ Alternating image and text layout.
   - `image` (object): Image object (see Image Schema)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: ZigZag
-  id: features  # Optional: anchor ID
-  pos: left      # Optional: default is "left"
+  id: features # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: No compromise solutions
   content:
     - title: Ample space
@@ -275,16 +287,18 @@ Alternating image and text layout.
 Rotating text carousel.
 
 **Required Fields:**
+
 - `text` (array): Array of text strings to display
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `speed` (number): Carousel rotation speed (default: 0.1)
 
 ```yaml
 - type: TextCarousel
-  id: taglines  # Optional: anchor ID
-  speed: 0.1    # Optional: default is 0.1
+  id: taglines # Optional: anchor ID
+  speed: 0.1 # Optional: default is 0.1
   text:
     - Modern kitchen vibes await
     - Sizzle in style every day
@@ -297,14 +311,16 @@ Rotating text carousel.
 Image carousel/gallery.
 
 **Required Fields:**
+
 - `content` (array): Array of image objects (see Image Schema)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 
 ```yaml
 - type: ImageCarousel
-  id: gallery  # Optional: anchor ID
+  id: gallery # Optional: anchor ID
   content:
     - src: ./photos/10.jpg
       alt: A carpeted staircase with wooden handrails.
@@ -317,17 +333,19 @@ Image carousel/gallery.
 Image gallery grid.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of image objects (see Image Schema)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: Gallery
-  id: gallery  # Optional: anchor ID
-  pos: left    # Optional: default is "left"
+  id: gallery # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: View our work
   content:
     - src: ./photos/10.jpg
@@ -341,19 +359,21 @@ Image gallery grid.
 Grid of images with titles.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of panel items
   - `title` (string): Panel item title
   - `image` (object): Image object (see Image Schema)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: ImagePanel
-  id: process  # Optional: anchor ID
-  pos: left    # Optional: default is "left"
+  id: process # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: Our process
   content:
     - title: Inspection
@@ -373,19 +393,21 @@ Grid of images with titles.
 Grid of benefit cards.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of benefit items
   - `title` (string): Benefit title
   - `desc` (string): Benefit description
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: Benefits
-  id: benefits  # Optional: anchor ID
-  pos: left     # Optional: default is "left"
+  id: benefits # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: Why remove popcorn ceilings?
   content:
     - title: Aesthetic upgrade
@@ -401,19 +423,21 @@ Grid of benefit cards.
 Frequently asked questions.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of FAQ items
   - `title` (string): Question text
   - `desc` (string): Answer text (supports markdown)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 
 ```yaml
 - type: Faq
-  id: faq      # Optional: anchor ID
-  pos: left    # Optional: default is "left"
+  id: faq # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: Have any questions?
   content:
     - title: How long does bathroom renovation take?
@@ -429,6 +453,7 @@ Frequently asked questions.
 Customer testimonials.
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of review objects
   - `title` (string): Reviewer name
@@ -437,6 +462,7 @@ Customer testimonials.
   - `desc` (string): Review text (supports markdown)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 - `content[].date` (date): Review date (coerced to date)
@@ -445,15 +471,15 @@ Customer testimonials.
 
 ```yaml
 - type: Reviews
-  id: reviews  # Optional: anchor ID
-  pos: left    # Optional: default is "left"
+  id: reviews # Optional: anchor ID
+  pos: left # Optional: default is "left"
   title: What our customers have to say
   content:
     - title: Maggie and Scott
       location: Mississauga
       stars: 5
-      date: 2024-01-15  # Optional: review date
-      url: https://example.com/review  # Optional: link to review
+      date: 2024-01-15 # Optional: review date
+      url: https://example.com/review # Optional: link to review
       desc: |-
         My husband and I are unbelievably happy with the work that Max and his team did.
 ```
@@ -463,6 +489,7 @@ Customer testimonials.
 Featured media cards (videos, articles, etc.).
 
 **Required Fields:**
+
 - `title` (string): Section title
 - `content` (array): Array of card objects
   - `title` (string): Card title
@@ -470,6 +497,7 @@ Featured media cards (videos, articles, etc.).
   - `media` (object): Media object (see Media Types below)
 
 **Optional Fields:**
+
 - `id` (string): Anchor ID for navigation
 - `pos` (string): Layout position - `"left"` or `"right"` (default: `"left"`)
 - `speed` (number): Carousel speed in seconds (default: 5.0)
@@ -480,9 +508,9 @@ Featured media cards (videos, articles, etc.).
 
 ```yaml
 - type: Cardshow
-  id: accomplishments  # Optional: anchor ID
-  pos: left            # Optional: default is "left"
-  speed: 5.0           # Optional: default is 5.0
+  id: accomplishments # Optional: anchor ID
+  pos: left # Optional: default is "left"
+  speed: 5.0 # Optional: default is 5.0
   title: Our accomplishments
   content:
     - title: Featured on CityTV
@@ -521,6 +549,7 @@ Featured media cards (videos, articles, etc.).
 ```
 
 **Media Types:**
+
 - `image`: Requires `image` object with `src` and `alt`
 - `video`: Requires `image` object, `uploadDate` (date string, coerced to date), and `url` (string)
 - `yt-video`: Requires `id` (string, YouTube video ID)
@@ -534,8 +563,8 @@ image:
   src: ./cover.jpg
   alt: |-
     Description of the image.
-  x: left    # Optional: "left" or "right"
-  y: top     # Optional: "top" or "bottom"
+  x: left # Optional: "left" or "right"
+  y: top # Optional: "top" or "bottom"
 ```
 
 ## Formatting Conventions
@@ -625,4 +654,3 @@ sections:
     exclude:
       - current-service-slug
 ```
-

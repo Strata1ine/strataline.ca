@@ -1,3 +1,6 @@
 {
-	"editor.formatOnSave": true
+	"yaml.schemas": {
+		"./.astro/collections/index.schema.json": ["content/index.yaml"],
+		"./.astro/collections/services.schema.json": ["content/services/**/index.yaml"]
+	}
 }

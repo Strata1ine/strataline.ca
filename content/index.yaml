@@ -23,16 +23,16 @@ sections:
       Dust-free renovations with precision craftsmanship. Clean process, quality results, and professional service across the GTA.
     content:
       images:
-        - src: ./photos/slideshow/kitchen.jpg
+        - src: ./slideshow/kitchen.jpg
           alt: |-
             Luxury kitchen with stone counters and custom finishes.
-        - src: ./photos/slideshow/dining_room.jpg
+        - src: ./slideshow/dining_room.jpg
           alt: |-
             Dining room with elegant seating and natural lighting.
-        - src: ./photos/slideshow/living_room.jpg
+        - src: ./slideshow/living_room.jpg
           alt: |-
             Renovated living room with modern fireplace and architectural details.
-        - src: ./photos/slideshow/bathroom.jpg
+        - src: ./slideshow/bathroom.jpg
           alt: |-
             Spa-inspired bathroom with premium materials and natural lighting.
 
@@ -61,7 +61,7 @@ sections:
           type: video
           uploadDate: Jan 1, 2020
           image:
-            src: ./photos/awards/citytv.jpg
+            src: ./awards/citytv.jpg
             alt: CityTV segment featuring Strataline's dust-free process.
           url: /videos/cityline.mp4
 
@@ -71,7 +71,7 @@ sections:
         media:
           type: image
           image:
-            src: ./photos/awards/star.jpg
+            src: ./awards/star.jpg
             alt: |-
               The Star feature showcasing Strataline's dust-free ceiling refinement process.
         link:
@@ -86,7 +86,7 @@ sections:
           type: image
           image:
             y: top
-            src: ./photos/awards/houseandhome.webp
+            src: ./awards/houseandhome.webp
             alt: |-
               Premium interior with chevron hardwood and curated furnishings, featured in House & Home.
         link:

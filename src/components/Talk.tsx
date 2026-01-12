@@ -47,7 +47,7 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 			<Dialog.Trigger {...props} />
 			<Dialog.Portal>
 				<Menus.DialogForm
-					title="Let's Talk"
+					title="Let's talk"
 					desc="Feel free to ask a question and a quote."
 					id="jReRE2JLR"
 					action="/submissions/talk"

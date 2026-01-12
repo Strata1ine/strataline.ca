@@ -1,4 +1,4 @@
-title: "Energy-Efficient Upgrades"
+title: 'Energy-Efficient Upgrades'
 
 seo: |-
   Energy-efficient home upgrades, insulation improvements, smart thermostat installation,
@@ -119,8 +119,6 @@ sections:
           src: ./photos/ventilation.jpg
           alt: Ventilation and air quality upgrade.
 
-
-
   - type: Reviews
     title: Client Results
     content:
@@ -148,56 +146,56 @@ sections:
   - type: Faq
     title: Have Questions About Energy Efficiency?
     content:
-    - title: Which upgrades offer the best savings?
-      desc: >
-        Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
-        return on investment by significantly reducing heating and cooling losses.
+      - title: Which upgrades offer the best savings?
+        desc: >
+          Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
+          return on investment by significantly reducing heating and cooling losses.
 
-    - title: Do these upgrades qualify for rebates?
-      desc: >
-        Many upgrades qualify for federal and provincial rebates. Eligibility depends on
-        your home’s energy audit results and which upgrades you choose. We assist with
-        the entire rebate process.
+      - title: Do these upgrades qualify for rebates?
+        desc: >
+          Many upgrades qualify for federal and provincial rebates. Eligibility depends on
+          your home’s energy audit results and which upgrades you choose. We assist with
+          the entire rebate process.
 
-    - title: How long does an energy-efficient upgrade take?
-      desc: >
-        Most upgrades—such as insulation, air sealing, thermostat installation, or lighting—can be
-        completed in one day. Larger installations like windows or tankless heaters typically
-        take 1–2 days.
+      - title: How long does an energy-efficient upgrade take?
+        desc: >
+          Most upgrades—such as insulation, air sealing, thermostat installation, or lighting—can be
+          completed in one day. Larger installations like windows or tankless heaters typically
+          take 1–2 days.
 
-    - title: Do I need an energy audit first?
-      desc: >
-        Yes. A pre-upgrade energy assessment is required for most rebates. We help schedule
-        the audit with a certified energy advisor.
+      - title: Do I need an energy audit first?
+        desc: >
+          Yes. A pre-upgrade energy assessment is required for most rebates. We help schedule
+          the audit with a certified energy advisor.
 
-    - title: What areas of the Greater Toronto Area do you serve?
-      desc: >
-        We serve all of the GTA, including Toronto, Mississauga, Brampton, Vaughan,
-        Richmond Hill, Markham, Oakville, Pickering, Ajax, Whitby, and Oshawa.
+      - title: What areas of the Greater Toronto Area do you serve?
+        desc: >
+          We serve all of the GTA, including Toronto, Mississauga, Brampton, Vaughan,
+          Richmond Hill, Markham, Oakville, Pickering, Ajax, Whitby, and Oshawa.
 
-    - title: How much can I expect to save on energy bills?
-      desc: >
-        Savings vary by home, but typical improvements reduce heating and cooling consumption
-        by 15–30%. Some upgrades, like air sealing, have immediate impact.
+      - title: How much can I expect to save on energy bills?
+        desc: >
+          Savings vary by home, but typical improvements reduce heating and cooling consumption
+          by 15–30%. Some upgrades, like air sealing, have immediate impact.
 
-    - title: Are tankless water heaters more efficient?
-      desc: >
-        Yes—tankless systems only heat water when needed. This reduces standby energy loss
-        and provides unlimited hot water with lower operating costs.
+      - title: Are tankless water heaters more efficient?
+        desc: >
+          Yes—tankless systems only heat water when needed. This reduces standby energy loss
+          and provides unlimited hot water with lower operating costs.
 
-    - title: Can you help me choose the most cost-effective upgrades?
-      desc: >
-        Absolutely. We assess your home's energy usage and recommend upgrades that offer
-        the best combination of comfort, savings, and rebate value.
+      - title: Can you help me choose the most cost-effective upgrades?
+        desc: >
+          Absolutely. We assess your home's energy usage and recommend upgrades that offer
+          the best combination of comfort, savings, and rebate value.
 
-    - title: Do you handle installation and cleanup?
-      desc: >
-        Yes. All upgrades include full installation, jobsite protection, cleanup, and
-        disposal of old materials where needed.
+      - title: Do you handle installation and cleanup?
+        desc: >
+          Yes. All upgrades include full installation, jobsite protection, cleanup, and
+          disposal of old materials where needed.
 
-    - title: How soon can you start after the audit?
-      desc: >
-        Most projects can begin within a few days of the audit report being released.
+      - title: How soon can you start after the audit?
+        desc: >
+          Most projects can begin within a few days of the audit report being released.
 
   - type: Services
     exclude:

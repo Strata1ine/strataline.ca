@@ -2,9 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import Island from './Header';
 
-import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
 import { type SchemaContext, z } from 'astro:content';
-import business from '#/business.json';
 
 export const schema = createSchema('Header', (_: SchemaContext) => ({
 	content: z.array(z.object({ id: z.string(), name: z.string() })),

@@ -5,10 +5,12 @@
 **NEVER modify any code outside of the `/content` directory.**
 
 You are ONLY allowed to:
+
 - Create, modify, or delete files within `/content` and its subdirectories
 - Work with YAML files (`.yaml`) and media files (images, videos) in the content directory
 
 You are NOT allowed to:
+
 - Modify any files in `/src`, `/public`, `/lib`, or any other directory outside of `/content`
 - Change configuration files (`.config.js`, `.config.mjs`, `package.json`, etc.)
 - Modify TypeScript/JavaScript/Astro component files
@@ -93,6 +95,7 @@ When working with photos:
 ## Schema Reference
 
 See `docs/schema.md` for detailed documentation on:
+
 - Service page structure
 - Index page structure
 - Available section types

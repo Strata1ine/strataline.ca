@@ -12,7 +12,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 import solidJs from '@astrojs/solid-js';
 
-import { frontmatterComponents, glob } from 'astro-frontmatter-components/integration';
+import { frontmatterComponents, glob } from 'astro-frontmatter-cms/integration';
 
 import compressor from 'astro-compressor';
 

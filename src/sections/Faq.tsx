@@ -15,8 +15,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 							<div
 								class="border-primary-dark cursor-pointer border-t py-8 first:border-t-0"
 								onClick={(e) => {
-									if (e.target !== e.currentTarget) return;
-									trigger?.click();
+									if (e.target === e.currentTarget) trigger?.click();
 								}}
 							>
 								<Accordion.Item>

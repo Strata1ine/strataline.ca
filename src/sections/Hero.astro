@@ -1,5 +1,5 @@
 ---
-import { type SchemaOf, createSchema } from 'astro-frontmatter-components';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
 import { type SchemaContext, z } from 'astro:content';
 import { image } from '@/schemas/image';
 
@@ -31,7 +31,7 @@ import Talk from '@/components/Talk';
 		variant="outer"
 		class="relative flex flex-col gap-5 sm:flex-row sm:gap-8 xl:gap-13"
 	>
-		<div class="order-2 flex sm:w-1/2 sm:shrink-0 sm:flex-col 2xl:flex-row-reverse ">
+		<div class="order-2 flex sm:w-1/2 sm:shrink-0 sm:flex-col 2xl:flex-row-reverse">
 			<Island client:visible content={meta.content} />
 		</div>
 
