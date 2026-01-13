@@ -140,7 +140,7 @@ function TextArea(props: FieldProps & TextAreaProps & ComponentProps<'textarea'>
 								height: `${height()}px`,
 							}}
 							{...input}
-						></textarea>
+						/>
 
 						<div
 							class="absolute right-0 bottom-0 -translate-5 cursor-ns-resize touch-none"

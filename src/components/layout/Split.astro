@@ -12,13 +12,29 @@ const meta = Astro.props;
 <Container
 	variant="inner"
 	class={[
-		'flex md:flex-row gap-6 md:gap-8 xl:gap-11',
+		'flex lg:flex-row gap-6 md:gap-10 xl:gap-18',
 		meta.pos == 'right' ? 'flex-col-reverse' : 'flex-col',
 	]}
 >
-	{meta.pos == 'left' && <slot name="title" />}
+	{
+		meta.pos == 'left' && (
+			<>
+				<div>
+					<slot name="title" />
+				</div>
+			</>
+		)
+	}
 
 	<slot />
 
-	{meta.pos == 'right' && <slot name="title" />}
+	{
+		meta.pos == 'right' && (
+			<>
+				<div>
+					<slot name="title" />
+				</div>
+			</>
+		)
+	}
 </Container>

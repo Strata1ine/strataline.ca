@@ -52,16 +52,12 @@ import { cn } from '@/frontend/utils';
 
 <Layout.Divider id={meta.id}>
 	<Layout.Split pos={meta.pos}>
-		<div slot="title" class="flex-2">
-			<h2
-				class={cn(
-					'top-0 font-serif text-4xl font-bold sm:sticky xl:text-5xl 2xl:text-6xl',
-					meta.pos == 'right' ? 'md:text-right' : '',
-				)}
-			>
-				{meta.title}
-			</h2>
-		</div>
+		<h2
+			slot="title"
+			class={cn('top-0 sm:sticky heading-5xl', meta.pos == 'right' ? 'md:text-right' : '')}
+		>
+			{meta.title}
+		</h2>
 
 		<div class="flex-3">
 			{
