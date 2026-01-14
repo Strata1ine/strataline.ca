@@ -3,9 +3,10 @@ import { Icon } from 'astro-icon/components';
 import Island from './Header';
 
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 
-export const schema = createSchema('Header', (_: SchemaContext) => ({
+export const schema = createSchema('Header', (_: SchemaContext) => z.object({
 	content: z.array(z.object({ id: z.string(), name: z.string() })),
 }));
 

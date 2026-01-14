@@ -4,7 +4,8 @@ import * as Layout from '@/components/Layout';
 import Inputs from '@/components/Inputs';
 
 import { createSchema } from 'astro-frontmatter-cms';
-export const schema = createSchema('Footer', (c: SchemaContext) => ({}));
+import { z } from 'astro:schema';
+export const schema = createSchema('Footer', (c: SchemaContext) => z.object({}));
 
 import socials from '#/socials.json';
 import business from '#/business.json';

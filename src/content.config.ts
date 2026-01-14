@@ -30,7 +30,7 @@ export const collections = {
 				title: z.string(),
 				desc: z.string(),
 				seo: z.string(),
-				image: z.object(image(c)),
+				image: image(c),
 				draft: z.boolean().optional(),
 				sections: parseBlocks(c).optional(),
 			}),

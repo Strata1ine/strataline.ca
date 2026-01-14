@@ -1,10 +1,11 @@
 ---
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
 import business from '#/business.json';
 
-export const schema = createSchema('Faq', (_: SchemaContext) => ({
+export const schema = createSchema('Faq', (_: SchemaContext) => z.object({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),

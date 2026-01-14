@@ -78,9 +78,7 @@ export default defineConfig({
 		],
 	},
 	integrations: [
-		frontmatterComponents({
-			paths: glob('./src/sections/**/*.astro'),
-		}),
+		frontmatterComponents(),
 		sitemap({
 			filter: (page) => !page.includes('/submissions/'),
 		}),

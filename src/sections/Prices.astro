@@ -1,9 +1,10 @@
 ---
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
 
-export const schema = createSchema('Prices', (_: SchemaContext) => ({
+export const schema = createSchema('Prices', (_: SchemaContext) => z.object({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
@@ -45,8 +46,8 @@ const meta = Astro.props as Props;
 
 import * as Layout from '@/components/Layout';
 
-import { Icon } from 'astro-icon/components';
 import markdown from '@/build/markdown';
+import { Icon } from 'astro-icon/components';
 import { cn } from '@/frontend/utils';
 ---
 

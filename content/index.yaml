@@ -1,5 +1,5 @@
 title: Dust-Free Renovation
-desc: Dust-free renovations with precision craftsmanship. Clean process, quality results, and professional service across the GTA.
+desc: Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
 popular:
   - popcorn-removal
   - stairs
@@ -20,7 +20,7 @@ sections:
     title: |-
       Your dream home, delivered without stress
     desc: |-
-      Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA.
+      Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
     content:
       images:
         - src: ./slideshow/kitchen.jpg
@@ -59,7 +59,7 @@ sections:
           Scott McGillivray showcased our dust-free ceiling refinishing method on CityLine as the gold standard for modern renovations.
         media:
           type: video
-          uploadDate: Jan 1, 2020
+          uploadDate: 2020-01-01
           image:
             src: ./awards/citytv.jpg
             alt: CityTV segment featuring Strataline's dust-free process.

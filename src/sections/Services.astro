@@ -1,21 +1,23 @@
 ---
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
-
 import { schema as textCarousel } from './TextCarousel.astro';
-export const schema = createSchema('Services', (c: SchemaContext) => ({
-	id: z.string().optional(),
-	pos: DefaultPos,
-	title: z.string().default(`There's more to see`),
-	exclude: z.array(z.string()).optional(),
-	content: z.object(textCarousel(c)).optional(),
-}));
+export const schema = createSchema('Services', (c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string().default(`There's more to see`),
+		exclude: z.array(z.string()).optional(),
+		content: textCarousel(c).optional(),
+	}),
+);
 
 import { getEntry, getCollection } from '@/content.config';
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 
 let exclude: string[];
 if (meta.exclude == undefined) {
@@ -56,7 +58,7 @@ import Island from './TextCarousel';
 								draggable={false}
 							>
 								<Image
-									class="aspect-16/10 max-w-1/2 lg:max-w-1/3"
+									class="aspect-16/10 max-w-1/2 sm:max-w-1/3"
 									anim="hover"
 									image={service.data.image}
 									widths={[200, 400, 600, 800]}

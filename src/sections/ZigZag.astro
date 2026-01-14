@@ -1,20 +1,23 @@
 ---
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 import { image, DefaultPos, swapPos } from '@/schemas';
 
-export const schema = createSchema('ZigZag', (c: SchemaContext) => ({
-	id: z.string().optional(),
-	pos: DefaultPos,
-	title: z.string(),
-	content: z.array(
-		z.object({
-			title: z.string(),
-			desc: z.string(),
-			image: z.object(image(c)),
-		}),
-	),
-}));
+export const schema = createSchema('ZigZag', (c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string(),
+		content: z.array(
+			z.object({
+				title: z.string(),
+				desc: z.string(),
+				image: image(c),
+			}),
+		),
+	}),
+);
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;

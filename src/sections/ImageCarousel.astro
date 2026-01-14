@@ -1,12 +1,15 @@
 ---
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
-import { type SchemaContext, z } from 'astro:content';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
 import { image } from '@/schemas';
 
-export const schema = createSchema('ImageCarousel', (c: SchemaContext) => ({
-	id: z.string().optional(),
-	content: z.array(z.object(image(c))),
-}));
+export const schema = createSchema('ImageCarousel', (c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		content: z.array(image(c)),
+	}),
+);
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
