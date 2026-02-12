@@ -106,7 +106,7 @@ export default function Talk() {
 	});
 
 	return (
-		<div class="relative mt-9 h-14 xl:h-16" ref={(el) => (sensor = el!)}>
+		<div class="relative mt-9 flex h-14 items-center gap-5 sm:gap-6 xl:h-16" ref={(el) => (sensor = el!)}>
 			<LetsTalk
 				aria-label="Let's talk (Ctrl+/)"
 				class={cn(
@@ -141,6 +141,8 @@ export default function Talk() {
 					)}
 				/>
 			</LetsTalk>
+			<div class={cn(buttonVariants(), 'invisible h-14 w-34 xl:h-16 xl:w-42')} aria-hidden="true" />
+			<span class="font-sans text-lg xl:text-xl font-sem">{business.telephone}</span>
 		</div>
 	);
 }
