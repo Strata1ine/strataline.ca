@@ -3,7 +3,7 @@ title: Terms & Conditions of Service
 desc: Terms and conditions governing all work performed by Strataline Inc.
 ---
 
-**Last updated:** January 2026
+**Last updated:** 12 February, 2026
 
 _\*These terms apply to services performed in the Province of Ontario, Canada._
 
