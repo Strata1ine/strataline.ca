@@ -10,7 +10,11 @@ export const schema = createSchema('Services', (c: SchemaContext) =>
 		pos: DefaultPos,
 		title: z.string().default(`There's more to see`),
 		exclude: z.array(z.string()).optional(),
-		content: textCarousel(c).optional(),
+		content: z.object({
+			id: z.string().optional(),
+			speed: z.number().optional().default(0.1),
+			text: z.array(z.string()),
+		}).optional(),
 	}),
 );
 
