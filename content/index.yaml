@@ -25,16 +25,16 @@ sections:
       images:
         - src: ./slideshow/kitchen.jpg
           alt: |-
-            Luxury kitchen renovation with stone counters.
+            Luxury kitchen renovation with stone counters in Toronto.
         - src: ./slideshow/dining_room.jpg
           alt: |-
-            Dining room with elegant seating and natural light.
+            Renovated dining room with elegant seating and natural light.
         - src: ./slideshow/living_room.jpg
           alt: |-
-            Modern living room with fireplace and architectural details.
+            Modern living room renovation with fireplace and built-ins.
         - src: ./slideshow/bathroom.jpg
           alt: |-
-            Spa-inspired bathroom with premium finishes.
+            Spa-inspired bathroom renovation with premium tile finishes.
 
   - type: Popular
     title: Signature services

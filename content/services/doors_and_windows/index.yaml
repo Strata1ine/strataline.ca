@@ -2,10 +2,10 @@ title: Window replacement & door installation in Toronto
 seo: |-
   Window replacement in Toronto and the GTA. Energy-efficient vinyl windows with triple pane and Low-E glass options. Ask about the Ontario 2026 window rebate to save on your upgrade.
 desc: |-
-  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Triple pane and Low-E glass options deliver lasting comfort and savings - and Ontario's 2026 window rebate can help offset the cost.
+  Upgrade your home with energy-efficient vinyl windows and doors. Triple pane and Low-E glass options deliver lasting comfort and savings - ask about Ontario's 2026 window rebate.
 image:
   src: ./cover.jpg
-  alt: Energy-efficient vinyl windows and doors installed.
+  alt: Energy-efficient vinyl window replacement on a Toronto home.
 
 sections:
   - type: ImageCarousel
@@ -73,19 +73,18 @@ sections:
   - type: Faq
     title: Have any questions?
     content:
+      - title: How much does window replacement cost in Toronto?
+        desc: |-
+          Window replacement cost in Toronto depends on size, glass type, and frame material. Energy-efficient vinyl windows with triple pane glass are a popular mid-range option. Contact us for a detailed quote.
       - title: How long does it take to replace windows and doors?
         desc: |-
           Most projects take 1-2 days depending on how many units are being replaced. We ensure minimal disruption and a clean work area.
       - title: Do vinyl windows require maintenance?
         desc: |-
           Very little. Vinyl frames don’t need painting and resist warping, moisture, and fading.
-      - title: Are triple-pane windows worth it?
+      - title: Are triple-pane windows worth it in Canada?
         desc: |-
           Absolutely - especially in Canadian climates. Triple pane windows with Low-E glass improve insulation, reduce noise, and help lower energy bills.
-
-      - title: How much does window replacement cost in Toronto?
-        desc: |-
-          Window replacement cost in Toronto depends on size, glass type, and frame material. Energy-efficient vinyl windows with triple pane glass are a popular mid-range option. Contact us for a detailed quote.
 
   - type: Services
     exclude:

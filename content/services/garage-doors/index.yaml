@@ -1,8 +1,8 @@
 title: Garage door installation & repair in Vaughan
 seo: |-
   Garage door installation, replacement, and repair in Vaughan, Toronto, and the GTA. Insulated garage doors from a trusted local garage door company serving the GTA.
-desc: |
-  Upgrade your garage with modern, insulated, secure, and stylish garage doors designed to enhance curb appeal and improve home efficiency. We also handle garage door repair, maintenance, and opener replacement.
+desc: |-
+  Upgrade your garage with modern, insulated, and stylish garage doors. We handle installation, garage door repair, opener replacement, and maintenance across Vaughan and the GTA.
 image:
   src: ./cover.jpg
   alt: |-
@@ -83,11 +83,15 @@ sections:
   - type: Faq
     title: Have any questions?
     content:
+      - title: How much does garage door installation cost in Vaughan?
+        desc: |-
+          Garage door installation cost depends on door size, material, insulation, and opener type. Contact us for a detailed quote for your home.
+
       - title: How long does a garage door installation take?
         desc: |-
           Most installations take just a few hours, depending on door size and opener setup.
 
-      - title: Do you offer garage door repair?
+      - title: Do you offer garage door repair in the GTA?
         desc: |-
           Yes - we handle garage door repair including panel replacement, spring repair, opener troubleshooting, and track realignment across Vaughan and the GTA.
 

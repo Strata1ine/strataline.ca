@@ -8,7 +8,7 @@ desc: |-
 
 image:
   src: ./cover.jpg
-  alt: Energy-efficient home upgrade installation.
+  alt: Home insulation and energy-efficient upgrade in progress.
 
 sections:
   - type: Benefits
@@ -35,7 +35,7 @@ sections:
           year-round comfort.
         image:
           src: ./photos/windows.jpg
-          alt: High-efficiency window installation.
+          alt: High-efficiency window installed in a Toronto home.
 
       - title: Home insulation upgrades
         desc: |-
@@ -44,7 +44,7 @@ sections:
           varies by scope - contact us for a detailed quote.
         image:
           src: ./photos/insulation.jpg
-          alt: Attic insulation upgrade.
+          alt: Attic insulation upgrade for energy savings.
 
   - type: ZigZag
     title: Smart efficiency upgrades
@@ -55,7 +55,7 @@ sections:
           your routine - saving energy automatically.
         image:
           src: ./photos/thermostat.webp
-          alt: Smart thermostat installation.
+          alt: Smart thermostat mounted on a living room wall.
 
       - title: Air sealing
         desc: |-
@@ -66,7 +66,7 @@ sections:
           your monthly utility bills.
         image:
           src: ./photos/airsealing.jpg
-          alt: Air sealing and draft prevention.
+          alt: Air sealing around a window frame to prevent drafts.
 
       - title: On-demand tankless water heaters
         desc: |-
@@ -76,7 +76,7 @@ sections:
           proper venting, gas line upgrades, and optional smart home integration.
         image:
           src: ./photos/tankless.jpg
-          alt: Tankless water heater installation.
+          alt: On-demand tankless water heater installed on a wall.
 
   - type: ZigZag
     title: Additional energy-saving upgrades
@@ -88,7 +88,7 @@ sections:
           a significant portion of the cost.
         image:
           src: ./photos/hvac.jpg
-          alt: HVAC system optimization.
+          alt: Heat pump and HVAC system professionally installed.
 
       - title: LED lighting upgrades
         desc: |-
@@ -97,7 +97,7 @@ sections:
           long-lasting, high-efficiency LEDs.
         image:
           src: ./photos/led.jpg
-          alt: LED lighting upgrade.
+          alt: Modern LED lighting fixtures in a renovated room.
 
       - title: Weather-stripping & draft-proofing
         desc: |-
@@ -105,7 +105,7 @@ sections:
           heat loss - one of the highest-value upgrades for the cost.
         image:
           src: ./photos/weatherstrip.jpg
-          alt: Weather stripping installation.
+          alt: Weather stripping applied around an exterior door frame.
 
       - title: HRV/ERV ventilation & indoor air quality
         desc: |-
@@ -113,7 +113,7 @@ sections:
           home healthier while reducing heating and cooling strain.
         image:
           src: ./photos/ventilation.jpg
-          alt: Ventilation and air quality upgrade.
+          alt: HRV ventilation system installed for indoor air quality.
 
   - type: Reviews
     title: Client results
@@ -142,7 +142,7 @@ sections:
   - type: Faq
     title: Have questions about energy efficiency?
     content:
-      - title: Which upgrades offer the best savings?
+      - title: Which energy-efficient upgrades save the most money?
         desc: >
           Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
           return on investment by significantly reducing heating and cooling losses.
@@ -153,7 +153,7 @@ sections:
           the HELP loan for financing upgrades, and heat pump rebates through federal and provincial programs.
           Eligibility depends on your energy audit results. We assist with the entire rebate process.
 
-      - title: How long does an energy-efficient upgrade take?
+      - title: How long do energy-efficient home upgrades take?
         desc: >
           Most upgrades - such as insulation, air sealing, thermostat installation, or lighting - can be
           completed in one day. Larger installations like windows or tankless heaters typically

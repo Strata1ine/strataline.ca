@@ -1,8 +1,8 @@
-title: Wallpaper installation & removal in Toronto
+title: Wallpaper installation & removal in Toronto & Vaughan
 seo: |-
-  Professional wallpaper installation and wallpaper removal in Toronto, Vaughan, and the GTA. Accent wall design, flawless seams, and long-lasting quality for homes and businesses.
-desc: |
-  Professional wallpaper installation and removal for homes and businesses. From accent wall wallpaper to full-room coverage, we deliver flawless seams, durable finishes, and design upgrades that transform any room.
+  Professional wallpaper installation and removal in Toronto, Vaughan, and the GTA. Accent walls, flawless seam alignment, and dust-free surface prep for homes and businesses.
+desc: |-
+  Dust-free wallpaper installation and removal across Toronto and the GTA. From accent walls to full-room coverage, we deliver flawless seams, proper surface prep, and lasting results.
 draft: false
 image:
   src: ./cover.jpg
@@ -34,9 +34,9 @@ sections:
         desc: |-
           Professional installation guarantees straight lines, matched seams, and flawless pattern continuation across walls.
 
-      - title: Fast & mess-free installation
+      - title: Dust-free surface preparation
         desc: |-
-          Our efficient process ensures minimal disruption with clean, organized installation from start to finish.
+          We prep walls cleanly and efficiently, ensuring minimal disruption and a spotless workspace from start to finish.
 
       - title: Long-lasting durability
         desc: |-
@@ -72,17 +72,21 @@ sections:
   - type: Faq
     title: Have any questions?
     content:
+      - title: How much does wallpaper installation cost in Toronto?
+        desc: |-
+          Wallpaper installation cost in Toronto depends on wall size, material type, and surface prep required. Contact us for a detailed quote tailored to your project.
+
       - title: How long does wallpaper installation take?
         desc: |-
-          Most installations take a few hours to a day depending on wall size and complexity.
+          Most installations take a few hours to a full day depending on wall size, pattern complexity, and surface condition.
 
-      - title: Do you offer wallpaper removal?
+      - title: Do you offer wallpaper removal in the GTA?
         desc: |-
-          Yes - we handle full wallpaper removal in Toronto, including surface prep, adhesive cleanup, and wall repair so the surface is ready for new wallpaper or paint.
+          Yes - we handle full wallpaper removal in Toronto and the GTA, including surface prep, adhesive cleanup, and wall repair so the surface is ready for new wallpaper or paint.
 
       - title: Can wallpaper be installed on textured walls?
         desc: |-
-          Yes - we prepare and smooth the surface first to ensure perfect adhesion and finish.
+          Yes - we prepare and smooth the surface first to ensure perfect adhesion and a flawless finish.
 
       - title: Can you create an accent wall with wallpaper?
         desc: |-
