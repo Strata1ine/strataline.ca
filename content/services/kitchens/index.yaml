@@ -1,30 +1,30 @@
-title: Kitchens
+title: Kitchen renovation contractor in Toronto & the GTA
 seo: |-
-  Expert kitchen renovations with premium cabinetry, modern layouts, high-end finishes, and dust-free installation. Transform your home with a functional, elegant, and beautifully crafted kitchen.
+  Dust-free kitchen renovation in Toronto and the GTA. Custom kitchen cabinets, modern layouts, and high-end finishes from an experienced kitchen renovation contractor.
 desc: |
-  Transform your kitchen into a modern, functional, and inviting space with custom cabinetry, smart layouts, and high-quality finishes.
+  Transform your kitchen into a modern, functional, and inviting space with dust-free installation, custom kitchen cabinets, smart layouts, and high-quality finishes. Get a clear understanding of kitchen renovation cost before we start.
 image:
   src: ./cover.jpg
   alt: |-
-    A beautifully renovated kitchen featuring modern cabinetry, quartz countertops, pendant lighting, and a functional island layout with warm natural tones.
+    Renovated kitchen with quartz countertops and island layout.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/centre_island_pendant_lighting_king_city.jpg
-        alt: A bright kitchen with white shaker cabinets, quartz counters, and stainless steel appliances.
+        alt: White shaker cabinets with quartz counters.
       - src: ./photos/kitchen_island_seating_ideas_aurora.jpg
-        alt: A modern kitchen featuring a large island, pendant lights, and sleek flat-panel cabinets.
+        alt: Kitchen island with pendant lights and flat-panel cabinets.
       - src: ./photos/new_kitchen_cabinet_doors_drawers_refacing_newmarket.jpg
-        alt: A warm wood-accent kitchen with stone backsplash and integrated lighting.
+        alt: Wood-accent kitchen with stone backsplash.
       - src: ./photos/shaker_style_kitchen_cabinets_herring_bone_backsplash_wolf_stainless_steel_appliances_georgetown.jpg
-        alt: A contemporary kitchen with dark cabinets, under-cabinet lighting, and built-in appliances.
+        alt: Dark cabinets with under-cabinet lighting.
       - src: ./photos/stainless_steel_sink_and_faucet_vaughan.jpg
-        alt: A two-tone kitchen with white uppers, navy lowers, and gold hardware for a luxury finish.
+        alt: Two-tone kitchen with gold hardware.
       - src: ./photos/white_kitchen_cabinets_quartz_countertop_grey_vein_toronto.jpg
-        alt: A kitchen renovation featuring a waterfall island and matte black fixtures.
+        alt: Waterfall island with matte black fixtures.
       - src: ./cover.jpg
-        alt: A cozy kitchen with open shelving, natural wood finishes, and soft lighting.
+        alt: Kitchen with open shelving and natural wood finishes.
 
   - type: Benefits
     title: Why renovate your kitchen?
@@ -37,9 +37,9 @@ sections:
         desc: |-
           From custom cabinetry to quartz and stone countertops, every material is chosen for durability and beauty.
 
-      - title: Expert installation
+      - title: Dust-free expert installation
         desc: |-
-          With years of hands-on experience, we deliver precise craftsmanship and smooth, dust-controlled renovations.
+          With years of hands-on experience, we deliver precise craftsmanship and dust-free renovations that keep your home clean throughout the project.
 
       - title: Modern design options
         desc: |-
@@ -113,11 +113,15 @@ sections:
     content:
       - title: How long does a kitchen renovation take?
         desc: |-
-          Most kitchen renovations take 2–4 weeks once all materials are on-site. Larger or custom kitchens may take longer.
+          Most kitchen renovations take 2-4 weeks once all materials are on-site. Larger or custom kitchens may take longer.
+
+      - title: How much does a kitchen renovation cost in Toronto?
+        desc: |-
+          Kitchen renovation cost in Toronto ranges from $15,000 for cosmetic updates to $100,000+ for a full custom redesign. We provide detailed quotes so you know exactly what to expect.
 
       - title: Can you work with my budget?
         desc: |-
-          Yes — we offer flexible solutions, from economical upgrades to fully custom luxury kitchens.
+          Yes - we offer flexible solutions, from economical upgrades to fully custom luxury kitchens.
 
   - type: Services
     exclude:

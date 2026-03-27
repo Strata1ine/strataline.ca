@@ -1,49 +1,49 @@
-title: Doors & windows
+title: Window replacement & door installation in Toronto
 seo: |-
-  vinyl windows, double glazing, triple glass, window replacement, vinyl doors, energy-efficient home upgrades, cost savings, home comfort
+  Window replacement in Toronto and the GTA. Energy-efficient vinyl windows with triple pane and Low-E glass options. Ask about the Ontario 2026 window rebate to save on your upgrade.
 desc: |-
-  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Enjoy comfort, savings, and modern curb appeal all year long.
+  Upgrade your home with stylish, energy-efficient vinyl windows and doors. Triple pane and Low-E glass options deliver lasting comfort and savings - and Ontario's 2026 window rebate can help offset the cost.
 image:
   src: ./cover.jpg
-  alt: Modern vinyl windows and doors with energy-efficient glass
+  alt: Energy-efficient vinyl windows and doors installed.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/dw17.jpg
-        alt: Modern vinyl double-glazed window installed in a bright living room.
+        alt: Double-glazed vinyl window in a bright living room.
       - src: ./photos/38.jpg
-        alt: Triple-pane vinyl window providing improved insulation and noise reduction.
+        alt: Triple-pane vinyl window for insulation and noise reduction.
       - src: ./photos/dw21.jpg
-        alt: Energy-efficient modern entry door with insulated frame.
+        alt: Energy-efficient entry door with insulated frame.
       - src: ./photos/dw22.jpg
-        alt: Vinyl patio door with large glass panels for natural light.
+        alt: Vinyl patio door with large glass panels.
       - src: ./photos/dw05.jpg
-        alt: Clean white vinyl frames with upgraded low-E glass.
+        alt: White vinyl frames with low-E glass.
       - src: ./photos/dw18.jpg
-        alt: Contemporary front door installed with decorative glass insert.
+        alt: Front door with decorative glass insert.
       - src: ./photos/dw24.jpg
-        alt: Replacement windows improving both energy efficiency and home aesthetics.
+        alt: Replacement windows for energy efficiency and curb appeal.
 
   - type: Benefits
     title: Why upgrade your windows & doors?
     content:
-      - title: Energy Efficiency
+      - title: Energy efficiency
         desc: |-
           Double- and triple-glazed panels with insulated frames significantly reduce heat loss and improve comfort in every season.
-      - title: Lower Energy Bills
+      - title: Lower energy bills
         desc: |-
-          Upgraded insulation means your heating and cooling systems run less — saving you money every month.
-      - title: Modern Design
+          Upgraded insulation means your heating and cooling systems run less - saving you money every month.
+      - title: Modern design
         desc: |-
           Sleek, stylish vinyl frames instantly refresh the interior and exterior of your home.
-      - title: Noise Reduction
+      - title: Noise reduction
         desc: |-
           Multi-pane glass dramatically cuts down outdoor noise, creating a quieter home environment.
-      - title: Durability & Low Maintenance
+      - title: Durability & low maintenance
         desc: |-
-          Vinyl never warps, peels, or fades — offering long-lasting performance without the upkeep.
-      - title: Increased Property Value
+          Vinyl never warps, peels, or fades - offering long-lasting performance without the upkeep.
+      - title: Increased property value
         desc: |-
           Quality window and door upgrades boost market value and curb appeal.
 
@@ -75,13 +75,17 @@ sections:
     content:
       - title: How long does it take to replace windows and doors?
         desc: |-
-          Most projects take 1–2 days depending on how many units are being replaced. We ensure minimal disruption and a clean work area.
+          Most projects take 1-2 days depending on how many units are being replaced. We ensure minimal disruption and a clean work area.
       - title: Do vinyl windows require maintenance?
         desc: |-
           Very little. Vinyl frames don’t need painting and resist warping, moisture, and fading.
       - title: Are triple-pane windows worth it?
         desc: |-
-          Absolutely — especially in Canadian climates. They improve insulation, reduce noise, and help lower energy bills.
+          Absolutely - especially in Canadian climates. Triple pane windows with Low-E glass improve insulation, reduce noise, and help lower energy bills.
+
+      - title: How much does window replacement cost in Toronto?
+        desc: |-
+          Window replacement cost in Toronto depends on size, glass type, and frame material. Energy-efficient vinyl windows with triple pane glass are a popular mid-range option. Contact us for a detailed quote.
 
   - type: Services
     exclude:

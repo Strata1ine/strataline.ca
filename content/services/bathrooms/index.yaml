@@ -1,12 +1,12 @@
-title: Bathrooms
+title: Bathroom renovation in Toronto & Vaughan
 seo: |-
-  Stylish bathroom remodels with bespoke vanities, premium stone tiles, and sleek fixtures. Expert craftsmanship for comfort and elegance, customized to your budget.
+  Dust-free bathroom renovation in Toronto and Vaughan. From tub to shower conversions to full remodels with premium tiles and fixtures, all customized to your budget.
 desc: |-
-  Create your personal sanctuary, beautifully designed and customized to your exact preferences.
+  Create your personal sanctuary with a dust-free bathroom renovation, beautifully designed and customized to your exact preferences. We handle everything from tub to shower conversions to complete walk-in shower builds.
 image:
   src: ./cover.jpg
   alt: |-
-    A modern bathroom featuring a sleek glass shower with marble tile, a bold vanity with gold hardware, and a round mirror, blending luxury and functionality for a relaxing space.
+    Modern bathroom with glass shower and marble tile.
 
 sections:
   - type: Prices
@@ -30,7 +30,7 @@ sections:
           - Granite or quartz countertops
           - Modern fixtures
         desc: |-
-          Upgraded materials, replacing the bathtub, installing a new shower or vanity, and adding features like a heated floor.
+          Upgraded materials, tub to shower conversion, installing a walk-in shower or new vanity, and adding features like a heated floor.
 
       - title: High-end
         min: 30000
@@ -45,28 +45,28 @@ sections:
   - type: ImageCarousel
     content:
       - src: ./photos/spa.jpg
-        alt: A luxurious renovated bathroom with a freestanding soaking tub, glass-enclosed shower with marble walls, and a built-in bench.
+        alt: Freestanding soaking tub with marble shower walls.
       - src: ./photos/57.jpg
-        alt: A renovated bathroom with a double vanity, light wood cabinets, white countertops, and modern lighting for a personalized and functional space.
+        alt: Double vanity bathroom with light wood cabinets.
       - src: ./photos/58.jpg
-        alt: A modern bathroom featuring a floating vanity, LED lighting, and textured wall tile.
+        alt: Floating vanity with LED lighting and textured tile.
       - src: ./photos/61.jpg
-        alt: A bathroom with marble countertops, brushed gold fixtures, and a glass walk-in shower.
+        alt: Marble countertops with brushed gold fixtures.
       - src: ./photos/63.jpg
-        alt: A contemporary bathroom with large-format tiles, walk-in shower, and seamless glass panels.
+        alt: Walk-in shower with large-format tiles and glass panels.
       - src: ./photos/65.jpg
-        alt: A stylish bathroom with a freestanding tub, wall-mounted faucet, and large windows for natural light.
+        alt: Freestanding tub with wall-mounted faucet.
       - src: ./photos/66.jpg
-        alt: A renovated bathroom with a modern vanity, round mirror, and sleek fixtures.
+        alt: Modern vanity with round mirror and sleek fixtures.
       - src: ./photos/69.jpg
-        alt: A bathroom featuring a walk-in shower with glass doors, built-in shelving, and a floating vanity with vessel sinks.
+        alt: Walk-in shower with glass doors and floating vanity.
       - src: ./photos/72.jpg
-        alt: A bathroom with a large soaking tub, marble tile, and a modern vanity with ample storage.
+        alt: Soaking tub with marble tile and modern vanity.
 
   - type: Benefits
     title: Why choose us for your bathroom remodel?
     content:
-      - title: Built for comfort & relaxation
+      - title: Built for comfort and relaxation
         desc: |-
           From warm floors to steam showers and spa-like lighting, we design every detail to enhance comfort and daily enjoyment.
       - title: Premium materials for long life
@@ -108,7 +108,10 @@ sections:
     content:
       - title: How long does bathroom renovation take?
         desc: |-
-          Once all materials are delivered, the renovation typically takes 1–2 weeks depending on the complexity. We always require materials to be onsite before starting to avoid delays.
+          Once all materials are delivered, the renovation typically takes 1-2 weeks depending on the complexity. We always require materials to be onsite before starting to avoid delays.
+      - title: How much does a bathroom renovation cost in Toronto?
+        desc: |-
+          Bathroom renovation cost in Toronto ranges from $5,000 for cosmetic updates to $60,000+ for a full luxury remodel. We provide transparent pricing so you know what to expect before work begins.
       - title: Will my house remain clean during the renovation?
         desc: |-
           Yes. All dust and debris are contained, and after completion we thoroughly clean the bathroom so it’s ready to use immediately.

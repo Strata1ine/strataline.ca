@@ -1,5 +1,5 @@
-title: Dust-Free Renovation
-desc: Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
+title: Dust-free general contractor in Toronto & the GTA
+desc: Toronto's dust-free renovation contractor delivering precision renovations. Clean process, quality results, and good value across Vaughan, the GTA, and beyond.
 popular:
   - popcorn-removal
   - stairs
@@ -20,21 +20,21 @@ sections:
     title: |-
       Your dream home, delivered without stress
     desc: |-
-      Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
+      Toronto's dust-free renovation contractor and general contractor serving the GTA. Clean process, quality results, and good value across Vaughan, Mississauga, and beyond.
     content:
       images:
         - src: ./slideshow/kitchen.jpg
           alt: |-
-            Luxury kitchen with stone counters and custom finishes.
+            Luxury kitchen renovation with stone counters.
         - src: ./slideshow/dining_room.jpg
           alt: |-
-            Dining room with elegant seating and natural lighting.
+            Dining room with elegant seating and natural light.
         - src: ./slideshow/living_room.jpg
           alt: |-
-            Renovated living room with modern fireplace and architectural details.
+            Modern living room with fireplace and architectural details.
         - src: ./slideshow/bathroom.jpg
           alt: |-
-            Spa-inspired bathroom with premium materials and natural lighting.
+            Spa-inspired bathroom with premium finishes.
 
   - type: Popular
     title: Signature services
@@ -125,4 +125,4 @@ sections:
         location: Markham
         stars: 5
         desc: |-
-          Max is the definition of a true professional—punctual, meticulous, and incredibly knowledgeable. Our staircase renovation is stunning, and his expert guidance made all the difference.
+          Max is the definition of a true professional - punctual, meticulous, and incredibly knowledgeable. Our staircase renovation is stunning, and his expert guidance made all the difference.

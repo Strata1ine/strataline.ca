@@ -1,40 +1,35 @@
-title: Energy-efficient upgrades
+title: Energy-efficient home upgrades in Toronto & Vaughan
 
 seo: |-
-  Energy-efficient home upgrades, insulation improvements, smart thermostat installation,
-  energy-saving windows, air sealing services, HVAC optimization, LED lighting upgrades,
-  tankless water heater installation, on-demand water heaters,
-  Toronto energy renovations, Vaughan home efficiency upgrades.
+  Home insulation, heat pumps, and energy-efficient upgrades in Toronto and Vaughan. Take advantage of Ontario energy rebates in 2026 including Enbridge and HELP loan programs.
 
 desc: |-
-  Enhance comfort, reduce utility costs, and modernize your home with professionally
-  installed energy-efficient upgrades tailored to your home. We also install high-efficiency
-  tankless on-demand water heaters for endless hot water with lower energy consumption.
+  Boost comfort and cut utility costs with professionally installed energy-efficient upgrades. From home insulation to heat pump installation, we help you access Ontario energy rebates through programs like Enbridge and the HELP loan.
 
 image:
   src: ./cover.jpg
-  alt: Energy-efficient home upgrades
+  alt: Energy-efficient home upgrade installation.
 
 sections:
   - type: Benefits
-    title: Benefits of Energy Efficiency
+    title: Benefits of energy efficiency
     content:
-      - title: Lower Monthly Utility Bills
+      - title: Lower monthly utility bills
         desc: Improve insulation, windows, and mechanical systems to significantly reduce heating and cooling costs.
 
-      - title: Enhanced Comfort
+      - title: Enhanced comfort
         desc: Eliminate drafts, maintain steady indoor temperatures, and improve your home’s climate balance.
 
-      - title: Government Rebates
-        desc: Many efficiency upgrades qualify for rebates and incentives that help you save even more.
+      - title: Ontario energy rebates in 2026
+        desc: Many upgrades qualify for rebates through Enbridge, the HELP loan, and other provincial incentives that significantly reduce your upfront cost.
 
-      - title: Increased Home Value
+      - title: Increased home value
         desc: Energy-efficient improvements add long-term value and appeal to future buyers.
 
   - type: ZigZag
-    title: Types of Upgrades We Offer
+    title: Types of upgrades we offer
     content:
-      - title: High-Efficiency Windows & Doors
+      - title: High-efficiency windows & doors
         desc: |-
           ENERGY STAR® certified installations that minimize heat loss and improve
           year-round comfort.
@@ -42,26 +37,27 @@ sections:
           src: ./photos/windows.jpg
           alt: High-efficiency window installation.
 
-      - title: Improved Insulation
+      - title: Home insulation upgrades
         desc: |-
           Attic, wall, and basement insulation upgrades eliminate heat escape, reduce
-          HVAC strain, and stabilize indoor temperatures.
+          HVAC strain, and stabilize indoor temperatures. Home insulation cost in Toronto
+          varies by scope - contact us for a detailed quote.
         image:
           src: ./photos/insulation.jpg
           alt: Attic insulation upgrade.
 
   - type: ZigZag
-    title: Smart Efficiency Upgrades
+    title: Smart efficiency upgrades
     content:
-      - title: Smart Thermostats
+      - title: Smart thermostats
         desc: |-
           Programmable and learning thermostats optimize heating and cooling based on
-          your routine—saving energy automatically.
+          your routine - saving energy automatically.
         image:
           src: ./photos/thermostat.webp
           alt: Smart thermostat installation.
 
-      - title: Air Sealing
+      - title: Air sealing
         desc: |-
           Air sealing is one of the most effective and affordable ways to improve your
           home's efficiency. We locate and seal hidden gaps, cracks, and draft points
@@ -72,7 +68,7 @@ sections:
           src: ./photos/airsealing.jpg
           alt: Air sealing and draft prevention.
 
-      - title: On-Demand Tankless Water Heaters
+      - title: On-demand tankless water heaters
         desc: |-
           High-efficiency tankless water heaters provide endless hot water while reducing
           energy consumption. These systems heat water only when needed, lowering utility
@@ -83,18 +79,18 @@ sections:
           alt: Tankless water heater installation.
 
   - type: ZigZag
-    title: Additional Energy-Saving Upgrades
+    title: Additional energy-saving upgrades
     content:
-      - title: HVAC System Optimization
+      - title: Heat pumps & HVAC optimization
         desc: |-
-          Improve your furnace and AC efficiency with system balancing, duct sealing,
-          and high-performance equipment upgrades. A well-optimized HVAC system reduces
-          energy waste and extends equipment lifespan.
+          Improve efficiency with heat pump installation, system balancing, duct sealing,
+          and high-performance equipment upgrades. Heat pump rebates in Ontario can offset
+          a significant portion of the cost.
         image:
           src: ./photos/hvac.jpg
           alt: HVAC system optimization.
 
-      - title: LED Lighting Upgrades
+      - title: LED lighting upgrades
         desc: |-
           Modern LED lighting reduces electricity consumption by up to 80% while
           providing cleaner, brighter illumination. We upgrade outdated fixtures to
@@ -103,15 +99,15 @@ sections:
           src: ./photos/led.jpg
           alt: LED lighting upgrade.
 
-      - title: Weather-Stripping & Draft-Proofing
+      - title: Weather-stripping & draft-proofing
         desc: |-
           Proper weather-stripping around doors and windows eliminates drafts and reduces
-          heat loss—one of the highest-value upgrades for the cost.
+          heat loss - one of the highest-value upgrades for the cost.
         image:
           src: ./photos/weatherstrip.jpg
           alt: Weather stripping installation.
 
-      - title: HRV/ERV Ventilation & Indoor Air Quality
+      - title: HRV/ERV ventilation & indoor air quality
         desc: |-
           Balanced ventilation, HRV/ERV systems, and air-quality improvements keep your
           home healthier while reducing heating and cooling strain.
@@ -120,7 +116,7 @@ sections:
           alt: Ventilation and air quality upgrade.
 
   - type: Reviews
-    title: Client Results
+    title: Client results
     content:
       - title: Sarah P.
         location: Toronto
@@ -140,28 +136,28 @@ sections:
         location: Richmond Hill
         stars: 5
         desc: |-
-          We noticed an immediate difference—no more drafts! Highly recommend their
+          We noticed an immediate difference - no more drafts! Highly recommend their
           energy-efficiency services.
 
   - type: Faq
-    title: Have Questions About Energy Efficiency?
+    title: Have questions about energy efficiency?
     content:
       - title: Which upgrades offer the best savings?
         desc: >
           Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
           return on investment by significantly reducing heating and cooling losses.
 
-      - title: Do these upgrades qualify for rebates?
+      - title: What rebate programs are available in Ontario?
         desc: >
-          Many upgrades qualify for federal and provincial rebates. Eligibility depends on
-          your home’s energy audit results and which upgrades you choose. We assist with
-          the entire rebate process.
+          Ontario offers several energy rebate programs in 2026, including Enbridge home efficiency rebates,
+          the HELP loan for financing upgrades, and heat pump rebates through federal and provincial programs.
+          Eligibility depends on your energy audit results. We assist with the entire rebate process.
 
       - title: How long does an energy-efficient upgrade take?
         desc: >
-          Most upgrades—such as insulation, air sealing, thermostat installation, or lighting—can be
+          Most upgrades - such as insulation, air sealing, thermostat installation, or lighting - can be
           completed in one day. Larger installations like windows or tankless heaters typically
-          take 1–2 days.
+          take 1-2 days.
 
       - title: Do I need an energy audit first?
         desc: >
@@ -176,11 +172,11 @@ sections:
       - title: How much can I expect to save on energy bills?
         desc: >
           Savings vary by home, but typical improvements reduce heating and cooling consumption
-          by 15–30%. Some upgrades, like air sealing, have immediate impact.
+          by 15-30%. Some upgrades, like air sealing, have immediate impact.
 
       - title: Are tankless water heaters more efficient?
         desc: >
-          Yes—tankless systems only heat water when needed. This reduces standby energy loss
+          Yes - tankless systems only heat water when needed. This reduces standby energy loss
           and provides unlimited hot water with lower operating costs.
 
       - title: Can you help me choose the most cost-effective upgrades?
