@@ -1,0 +1,5 @@
+- [project_seo_baseline.md](./project_seo_baseline.md) - Initial SEO audit: competitors, keyword gaps, demographic profile for strataline.ca
+- [project_keyword_research_2026.md](./project_keyword_research_2026.md) - Full competitive keyword research by service page (March 2026): extracted from 15+ competitor sites with primary, long-tail, question keywords and content gaps
+- [project_competitor_raw_data_2026.md](./project_competitor_raw_data_2026.md) - Raw SEO data from 12 competitor sites in popcorn ceiling/painting vertical (March 2026)
+- [project_competitor_stairs_windows_2026.md](./project_competitor_stairs_windows_2026.md) - Raw SEO data from 20+ competitor sites across stairs, windows, wallpaper, garage doors, energy rebates verticals (March 2026)
+- [project_scored_keywords_2026.md](./project_scored_keywords_2026.md) - Scored keyword tables for all 9 service pages with volume, competition, relevance, intent, and composite scores (March 2026)

@@ -1,58 +1,59 @@
-title: Wallpaper installation & removal in Toronto & Vaughan
+title: Wallpaper installation and removal
 seo: |-
-  Professional wallpaper installation and removal in Toronto, Vaughan, and the GTA. Accent walls, flawless seam alignment, and dust-free surface prep for homes and businesses.
+  Wallpaper installation and removal with Roman PRO-880 adhesive and Zinsser Shieldz primer. Vinyl, grasscloth, non-woven, and mural applications with precision seam matching.
 desc: |-
-  Dust-free wallpaper installation and removal across Toronto and the GTA. From accent walls to full-room coverage, we deliver flawless seams, proper surface prep, and lasting results.
+  Professional wallpaper hanging and stripping for accent walls and full rooms. York, Cole & Son, and Phillip Jeffries materials with same-day accent wall turnaround.
 draft: false
 image:
   src: ./cover.jpg
   alt: |-
-    Wallpaper with seamless pattern alignment and clean corners.
+    Non-woven wallpaper with matched seams on a dining room accent wall.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/hero1.jpg
-        alt: Grey textured wallpaper installed in a modern bedroom.
+        alt: Grey textured grasscloth wallpaper in a modern bedroom.
       - src: ./photos/hero2.jpg
-        alt: Feature wall with patterned wallpaper professionally aligned.
+        alt: Patterned non-woven wallpaper with precision seam alignment.
       - src: ./photos/hero3.jpg
-        alt: A vibrant wallpaper accent wall in a contemporary living room.
+        alt: Bold mural wallpaper accent wall in a contemporary living room.
       - src: ./photos/hero4.jpg
-        alt: Smooth floral wallpaper applied in a dining area.
+        alt: Floral vinyl wallpaper applied in a dining room.
       - src: ./photos/hero5.jpg
-        alt: Geometric patterned wallpaper in a stylish office space.
+        alt: Geometric patterned wallpaper in a home office.
       - src: ./photos/hero6.jpg
-        alt: Perfectly matched wallpaper seams.
+        alt: Invisible seam match on a repeat pattern wallpaper.
       - src: ./photos/hero7.jpg
-        alt: Modern hallway with professionally installed wallpaper.
+        alt: Non-woven wallpaper installed in a modern hallway.
 
   - type: Benefits
-    title: Why choose professional wallpaper installation?
+    title: What you get with professional wallpaper installation
     content:
-      - title: Perfectly aligned patterns
+      - title: Seam-matched pattern alignment
         desc: |-
-          Professional installation guarantees straight lines, matched seams, and flawless pattern continuation across walls.
+          Laser-level layout lines and dry-hung test strips before pasting. Every pattern repeat lands within 1/16" across walls, corners, and obstacles.
 
-      - title: Dust-free surface preparation
+      - title: Proper wall priming and sizing
         desc: |-
-          We prep walls cleanly and efficiently, ensuring minimal disruption and a spotless workspace from start to finish.
+          Zinsser Shieldz primer on every surface before hanging. This seals the drywall, improves adhesion, and makes future removal clean and damage-free.
 
-      - title: Long-lasting durability
+      - title: Adhesive matched to your material
         desc: |-
-          With proper adhesives and surface preparation, your wallpaper stays securely in place for many years.
+          Roman PRO-880 for standard vinyl and non-woven. Roman GH-34 wheat paste for delicate grasscloth and natural fibre wallcoverings that stain with synthetic adhesives.
 
-      - title: Huge selection
+      - title: Accent wall to full room coverage
         desc: |-
-          Choose from thousands of textures, materials, colours, and designs to perfectly suit your space.
+          Single accent walls finished in 3-4 hours. Full rooms with pattern matching across 4+ walls typically completed in one day.
 
   - type: TextCarousel
     text:
-      - Instantly transform any room
-      - Patterns installed with precision
-      - Smooth, flawless results every time
-      - Beautiful designs that last
-      - Upgrade your space in a single day
+      - Goodbye blank walls
+      - York grasscloth textures
+      - One wall changes everything
+      - Roman PRO-880 adhesive
+      - Pattern-matched to perfection
+      - Peel it, prime it, start fresh
 
   - type: Reviews
     title: What our clients say
@@ -70,27 +71,27 @@ sections:
           Amazing precision. They matched a very complex pattern perfectly.
 
   - type: Faq
-    title: Have any questions?
+    title: Wallpaper installation cost, timeline & materials
     content:
-      - title: How much does wallpaper installation cost in Toronto?
+      - title: How much does wallpaper installation cost per square foot?
         desc: |-
-          Wallpaper installation cost in Toronto depends on wall size, material type, and surface prep required. Contact us for a detailed quote tailored to your project.
+          Labour runs $3-$8 per square foot depending on material type and pattern complexity. A single accent wall (roughly 80-100 sq ft) typically costs $400-$800 installed, not including the wallpaper itself.
 
-      - title: How long does wallpaper installation take?
+      - title: How long does it take to wallpaper a room?
         desc: |-
-          Most installations take a few hours to a full day depending on wall size, pattern complexity, and surface condition.
+          A single accent wall takes 3-4 hours. A full room with 4 walls and pattern matching takes 1 full day. Rooms needing old wallpaper removal first add half a day for stripping, scraping, and re-priming.
 
-      - title: Do you offer wallpaper removal in the GTA?
+      - title: How much does wallpaper removal cost?
         desc: |-
-          Yes - we handle full wallpaper removal in Toronto and the GTA, including surface prep, adhesive cleanup, and wall repair so the surface is ready for new wallpaper or paint.
+          Removal runs $1-$5 per square foot depending on the number of layers and adhesive type. Vinyl peels cleanly in most cases. Older paper-backed wallpaper with dried paste requires steaming and scraping, which takes longer.
 
-      - title: Can wallpaper be installed on textured walls?
+      - title: Can wallpaper go on textured or painted walls?
         desc: |-
-          Yes - we prepare and smooth the surface first to ensure perfect adhesion and a flawless finish.
+          Painted walls work fine after priming with Zinsser Shieldz. Textured walls need skim coating first to create a flat surface - otherwise the texture telegraphs through the wallpaper, especially on thinner non-woven materials.
 
-      - title: Can you create an accent wall with wallpaper?
+      - title: What type of wallpaper works in bathrooms and kitchens?
         desc: |-
-          Absolutely. Accent wall wallpaper is one of our most popular requests - it adds texture, colour, and personality to any room without covering every surface.
+          Solid vinyl or vinyl-coated wallpaper handles humidity and splashes. Avoid natural grasscloth or untreated paper in wet areas - they absorb moisture and can develop mould in Ontario's humid summers.
 
   - type: Services
     exclude:

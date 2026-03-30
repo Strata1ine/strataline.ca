@@ -1,0 +1,138 @@
+[
+  {
+    "keyword": "stair capping Toronto",
+    "value": 91,
+    "volume": "170",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "title, H1"
+  },
+  {
+    "keyword": "carpet to hardwood stairs Toronto",
+    "value": 89,
+    "volume": "140",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "stair refinishing Toronto",
+    "value": 86,
+    "volume": "260",
+    "intent": "commercial",
+    "competitors": 4,
+    "placement": "title, H2"
+  },
+  {
+    "keyword": "stair capping cost per step Toronto",
+    "value": 84,
+    "volume": "90",
+    "intent": "transactional",
+    "competitors": 2,
+    "placement": "H2, body, FAQ"
+  },
+  {
+    "keyword": "stair tread replacement Toronto",
+    "value": 82,
+    "volume": "70",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "oak stair treads GTA",
+    "value": 80,
+    "volume": "110",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "stair sanding and staining Toronto",
+    "value": 78,
+    "volume": "70",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "wrought iron spindles Toronto",
+    "value": 76,
+    "volume": "90",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "staircase renovation cost Toronto",
+    "value": 74,
+    "volume": "110",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "glass railing installation stairs Toronto",
+    "value": 72,
+    "volume": "140",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "newel post installation Toronto",
+    "value": 70,
+    "volume": "40",
+    "intent": "transactional",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "hardwood stair capping Mississauga",
+    "value": 68,
+    "volume": "50",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "remove carpet from stairs and refinish",
+    "value": 66,
+    "volume": "90",
+    "intent": "transactional",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "how much does stair capping cost per step in Toronto",
+    "value": 58,
+    "volume": "90",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "how much does it cost to refinish hardwood stairs in Toronto",
+    "value": 54,
+    "volume": "70",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "is stair capping worth it vs full replacement",
+    "value": 50,
+    "volume": "50",
+    "intent": "informational",
+    "competitors": 1,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "how long does a staircase renovation take",
+    "value": 46,
+    "volume": "70",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  }
+]

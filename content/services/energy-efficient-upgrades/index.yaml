@@ -1,119 +1,105 @@
-title: Energy-efficient home upgrades in Toronto & Vaughan
+title: Energy efficient home upgrades
 
 seo: |-
-  Home insulation, heat pumps, and energy-efficient upgrades in Toronto and Vaughan. Take advantage of Ontario energy rebates in 2026 including Enbridge and HELP loan programs.
+  Spray foam insulation, heat pump installation, air sealing, and HRV systems with up to $12,000 in Ontario energy rebates through the Home Renovation Savings Program.
 
 desc: |-
-  Boost comfort and cut utility costs with professionally installed energy-efficient upgrades. From home insulation to heat pump installation, we help you access Ontario energy rebates through programs like Enbridge and the HELP loan.
+  Cut heating costs 15-30% with insulation, heat pumps, and air sealing. We handle the EnerGuide audit, rebate paperwork, and installation.
 
 image:
   src: ./cover.jpg
-  alt: Home insulation and energy-efficient upgrade in progress.
+  alt: Closed-cell spray foam insulation applied to attic rafters.
 
 sections:
   - type: Benefits
-    title: Benefits of energy efficiency
+    title: What energy efficient upgrades get you
     content:
-      - title: Lower monthly utility bills
-        desc: Improve insulation, windows, and mechanical systems to significantly reduce heating and cooling costs.
+      - title: Up to $12,000 back in Ontario rebates
+        desc: Heat pumps, insulation, and air sealing qualify under the Home Renovation Savings Program through Enbridge and Save on Energy.
 
-      - title: Enhanced comfort
-        desc: Eliminate drafts, maintain steady indoor temperatures, and improve your home’s climate balance.
+      - title: 15-30% lower heating and cooling bills
+        desc: Spray foam insulation and air sealing stop heat loss at the source. Most homeowners see the difference on their first utility bill.
 
-      - title: Ontario energy rebates in 2026
-        desc: Many upgrades qualify for rebates through Enbridge, the HELP loan, and other provincial incentives that significantly reduce your upfront cost.
+      - title: Warmer winters, cooler summers
+        desc: Proper insulation to R-60 and sealed air gaps eliminate cold spots, drafts, and temperature swings between floors.
 
-      - title: Increased home value
-        desc: Energy-efficient improvements add long-term value and appeal to future buyers.
+      - title: 70-80% cost recovery at resale
+        desc: Energy upgrades are among the highest-ROI renovations in the Ontario housing market according to cost-vs-value benchmarks.
 
   - type: ZigZag
-    title: Types of upgrades we offer
+    title: Home insulation cost and options
     content:
-      - title: High-efficiency windows & doors
+      - title: Spray foam insulation
         desc: |-
-          ENERGY STAR® certified installations that minimize heat loss and improve
-          year-round comfort.
-        image:
-          src: ./photos/windows.jpg
-          alt: High-efficiency window installed in a Toronto home.
-
-      - title: Home insulation upgrades
-        desc: |-
-          Attic, wall, and basement insulation upgrades eliminate heat escape, reduce
-          HVAC strain, and stabilize indoor temperatures. Home insulation cost in Toronto
-          varies by scope - contact us for a detailed quote.
+          Closed-cell spray foam delivers R-6.5 per inch and doubles as a moisture barrier - ideal for basements and exterior walls. Open-cell foam at R-3.7 per inch works well for interior walls and sound control. Installed cost runs $1.50-$5.00 per square foot depending on type and area.
         image:
           src: ./photos/insulation.jpg
-          alt: Attic insulation upgrade for energy savings.
+          alt: Closed-cell spray foam insulation in basement wall cavities.
+
+      - title: Attic insulation to R-60
+        desc: |-
+          Ontario Building Code (SB-12) requires R-60 in attics - about 24 inches of blown-in cellulose or fibreglass. Most older GTA homes sit at R-20 to R-30. Topping up an attic runs $1,500-$3,500 for a typical 1,000 sq ft space.
+        image:
+          src: ./photos/windows.jpg
+          alt: Blown-in cellulose insulation filling an attic floor.
 
   - type: ZigZag
-    title: Smart efficiency upgrades
+    title: Heat pump rebate Ontario 2026
     content:
-      - title: Smart thermostats
+      - title: Cold-climate heat pump installation
         desc: |-
-          Programmable and learning thermostats optimize heating and cooling based on
-          your routine - saving energy automatically.
-        image:
-          src: ./photos/thermostat.webp
-          alt: Smart thermostat mounted on a living room wall.
-
-      - title: Air sealing
-        desc: |-
-          Air sealing is one of the most effective and affordable ways to improve your
-          home's efficiency. We locate and seal hidden gaps, cracks, and draft points
-          around windows, doors, attics, basements, and utility penetrations. This reduces
-          heat loss, stabilizes indoor temperatures, improves air quality, and lowers
-          your monthly utility bills.
-        image:
-          src: ./photos/airsealing.jpg
-          alt: Air sealing around a window frame to prevent drafts.
-
-      - title: On-demand tankless water heaters
-        desc: |-
-          High-efficiency tankless water heaters provide endless hot water while reducing
-          energy consumption. These systems heat water only when needed, lowering utility
-          costs and eliminating standby heat loss. We install modern on-demand units with
-          proper venting, gas line upgrades, and optional smart home integration.
-        image:
-          src: ./photos/tankless.jpg
-          alt: On-demand tankless water heater installed on a wall.
-
-  - type: ZigZag
-    title: Additional energy-saving upgrades
-    content:
-      - title: Heat pumps & HVAC optimization
-        desc: |-
-          Improve efficiency with heat pump installation, system balancing, duct sealing,
-          and high-performance equipment upgrades. Heat pump rebates in Ontario can offset
-          a significant portion of the cost.
+          Air-source heat pumps on the NRCan approved product list qualify for up to $7,500 back through the Home Renovation Savings Program. Geothermal systems qualify for up to $12,000. No energy audit required for single-upgrade rebates in 2026.
         image:
           src: ./photos/hvac.jpg
-          alt: Heat pump and HVAC system professionally installed.
+          alt: Cold-climate air-source heat pump installed beside a home.
 
-      - title: LED lighting upgrades
+      - title: Tankless water heater installation
         desc: |-
-          Modern LED lighting reduces electricity consumption by up to 80% while
-          providing cleaner, brighter illumination. We upgrade outdated fixtures to
-          long-lasting, high-efficiency LEDs.
+          Navien NPE and Rinnai condensing units heat water on demand and eliminate standby energy loss. Installed cost in Ontario runs $2,500-$4,500 for natural gas models. We handle venting, gas line upgrades, and permit coordination.
         image:
-          src: ./photos/led.jpg
-          alt: Modern LED lighting fixtures in a renovated room.
+          src: ./photos/tankless.jpg
+          alt: Navien tankless water heater mounted on a utility wall.
 
-      - title: Weather-stripping & draft-proofing
+  - type: ZigZag
+    title: Air sealing and weatherization
+    content:
+      - title: Air sealing and draft-proofing
         desc: |-
-          Proper weather-stripping around doors and windows eliminates drafts and reduces
-          heat loss - one of the highest-value upgrades for the cost.
+          We trace and seal gaps around penetrations, sill plates, attic hatches, and ductwork using caulking and expanding foam. Air sealing is the single highest-ROI energy upgrade - most homes lose 25-40% of heated air through hidden leaks. Enbridge offers up to $1,300 in rebates for draft-proofing.
+        image:
+          src: ./photos/airsealing.jpg
+          alt: Expanding foam applied around plumbing penetrations in a basement.
+
+      - title: Weather-stripping doors and windows
+        desc: |-
+          Compression and V-strip weather-stripping around doors and operable windows stops drafts immediately. One of the lowest-cost, highest-impact improvements for Ontario's freeze-thaw climate.
         image:
           src: ./photos/weatherstrip.jpg
-          alt: Weather stripping applied around an exterior door frame.
+          alt: Compression weather-stripping installed on an exterior door frame.
 
-      - title: HRV/ERV ventilation & indoor air quality
+  - type: ZigZag
+    title: Smart controls and ventilation
+    content:
+      - title: Ecobee and Nest smart thermostats
         desc: |-
-          Balanced ventilation, HRV/ERV systems, and air-quality improvements keep your
-          home healthier while reducing heating and cooling strain.
+          Learning thermostats adjust heating and cooling based on your schedule and occupancy patterns. Typical energy savings of 10-15% on HVAC costs. Rebates of up to $100 available through Save on Energy.
+        image:
+          src: ./photos/thermostat.webp
+          alt: Ecobee smart thermostat displaying energy usage on a wall.
+
+      - title: HRV and ERV ventilation systems
+        desc: |-
+          Heat recovery ventilators exchange stale indoor air for fresh outdoor air while recapturing 70-80% of the heat. Required under Ontario Building Code for tightly sealed homes. ERV units also manage humidity - important for GTA summers.
         image:
           src: ./photos/ventilation.jpg
-          alt: HRV ventilation system installed for indoor air quality.
+          alt: HRV unit with ducting installed in a basement mechanical room.
+
+      - title: LED lighting conversion
+        desc: |-
+          LED fixtures use up to 80% less electricity than incandescent bulbs and last 25,000+ hours. We replace outdated pot lights, fixtures, and panels in a single visit.
+        image:
+          src: ./photos/led.jpg
+          alt: Recessed LED pot lights installed in a renovated kitchen ceiling.
 
   - type: Reviews
     title: Client results
@@ -140,58 +126,47 @@ sections:
           energy-efficiency services.
 
   - type: Faq
-    title: Have questions about energy efficiency?
+    title: Energy rebates Ontario 2026 and common questions
     content:
-      - title: Which energy-efficient upgrades save the most money?
+      - title: What energy rebates are available in Ontario in 2026?
         desc: >
-          Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
-          return on investment by significantly reducing heating and cooling losses.
+          The Home Renovation Savings Program through Enbridge and Save on Energy offers up to $12,000 for bundled upgrades. Heat pumps qualify for $2,000-$7,500, insulation up to $7,700, and air sealing up to $1,300. The HELP loan lets Toronto homeowners borrow up to $125,000 repaid through property taxes.
 
-      - title: What rebate programs are available in Ontario?
+      - title: How much does spray foam insulation cost?
         desc: >
-          Ontario offers several energy rebate programs in 2026, including Enbridge home efficiency rebates,
-          the HELP loan for financing upgrades, and heat pump rebates through federal and provincial programs.
-          Eligibility depends on your energy audit results. We assist with the entire rebate process.
+          Open-cell spray foam runs $1.50-$2.50 per square foot installed. Closed-cell runs $3.00-$5.00 per square foot. A 1,000 sq ft attic typically costs $1,500-$5,000 depending on foam type and target R-value.
 
-      - title: How long do energy-efficient home upgrades take?
+      - title: Do I need an energy audit for Ontario rebates?
         desc: >
-          Most upgrades - such as insulation, air sealing, thermostat installation, or lighting - can be
-          completed in one day. Larger installations like windows or tankless heaters typically
-          take 1-2 days.
+          For bundled rebates (two or more upgrades), yes - a pre-retrofit EnerGuide evaluation is required. Cost is $500-$700, but most programs reimburse up to $600. Single-upgrade rebates like heat pumps do not require an audit in 2026.
 
-      - title: Do I need an energy audit first?
+      - title: How much can I save with a heat pump in Ontario?
         desc: >
-          Yes. A pre-upgrade energy assessment is required for most rebates. We help schedule
-          the audit with a certified energy advisor.
+          Most homeowners switching from electric baseboard heat save 30-50% on heating costs. Switching from natural gas saves 10-20% depending on electricity rates. The $2,000-$7,500 rebate shortens the payback period to 5-8 years.
 
-      - title: What areas of the Greater Toronto Area do you serve?
+      - title: How long do energy efficient home upgrades take?
         desc: >
-          We serve all of the GTA, including Toronto, Mississauga, Brampton, Vaughan,
-          Richmond Hill, Markham, Oakville, Pickering, Ajax, Whitby, and Oshawa.
+          Air sealing, thermostat install, and weather-stripping take half a day. Attic insulation and tankless water heater installation are one-day jobs. Heat pump installation takes 1-2 days depending on ductwork modifications.
 
-      - title: How much can I expect to save on energy bills?
+      - title: What is the HELP loan and how does it work?
         desc: >
-          Savings vary by home, but typical improvements reduce heating and cooling consumption
-          by 15-30%. Some upgrades, like air sealing, have immediate impact.
+          The Home Energy Loan Program lets Toronto homeowners borrow up to $125,000 for energy upgrades at low interest, repaid through property taxes over up to 20 years. The loan stays with the property if you sell.
 
-      - title: Are tankless water heaters more efficient?
+      - title: What R-value does my attic need in Ontario?
         desc: >
-          Yes - tankless systems only heat water when needed. This reduces standby energy loss
-          and provides unlimited hot water with lower operating costs.
+          Ontario Building Code (SB-12) requires R-60 for attics - roughly 24 inches of blown-in insulation. Most older homes have R-20 to R-30. Topping up is one of the fastest-payback upgrades available.
 
-      - title: Can you help me choose the most cost-effective upgrades?
+      - title: Are tankless water heaters worth the cost?
         desc: >
-          Absolutely. We assess your home's energy usage and recommend upgrades that offer
-          the best combination of comfort, savings, and rebate value.
+          Navien and Rinnai condensing units run $2,500-$4,500 installed. They eliminate standby heat loss from a tank, last 20+ years, and cut water heating costs by 20-30%. Gas line and venting upgrades may add $500-$1,000.
 
-      - title: Do you handle installation and cleanup?
+      - title: Can I combine multiple rebate programs?
         desc: >
-          Yes. All upgrades include full installation, jobsite protection, cleanup, and
-          disposal of old materials where needed.
+          Yes. The HELP loan, Enbridge Home Efficiency Rebate, and Home Renovation Savings Program can be stacked. Bundling two or more upgrades with an EnerGuide audit unlocks the highest combined rebate amounts.
 
-      - title: How soon can you start after the audit?
+      - title: What areas of the GTA do you serve?
         desc: >
-          Most projects can begin within a few days of the audit report being released.
+          We serve the entire Greater Toronto Area including Toronto, Vaughan, Mississauga, Brampton, Richmond Hill, Markham, Oakville, Whitby, and surrounding communities.
 
   - type: Services
     exclude:

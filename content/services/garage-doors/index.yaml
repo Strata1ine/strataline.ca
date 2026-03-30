@@ -1,69 +1,70 @@
-title: Garage door installation & repair in Vaughan
+title: Garage door installation and replacement
 seo: |-
-  Garage door installation, replacement, and repair in Vaughan, Toronto, and the GTA. Insulated garage doors from a trusted local garage door company serving the GTA.
+  Garage door installation and replacement with Clopay and Amarr insulated steel doors, LiftMaster belt-drive openers, and R-16 polyurethane core insulation.
 desc: |-
-  Upgrade your garage with modern, insulated, and stylish garage doors. We handle installation, garage door repair, opener replacement, and maintenance across Vaughan and the GTA.
+  New garage door installation in half a day. Insulated steel, aluminum, and full-view glass options from Clopay and Amarr with LiftMaster smart openers.
 image:
   src: ./cover.jpg
   alt: |-
-    Modern insulated garage door on a contemporary home.
+    Insulated Clopay steel garage door with polyurethane core.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/02.jpg
-        alt: Insulated garage door in sleek white panels.
+        alt: White R-16 insulated steel garage door panels.
       - src: ./photos/03.jpg
-        alt: Wood-look steel garage door with natural finish.
+        alt: Clopay Canyon Ridge wood-look steel garage door.
       - src: ./photos/04.png
-        alt: Black full-view glass garage door.
+        alt: Full-view aluminum and glass garage door in black.
       - src: ./photos/05.png
-        alt: Carriage-style garage doors with decorative hardware.
+        alt: Carriage-style garage doors with wrought iron hardware.
       - src: ./photos/06.jpg
-        alt: Insulated garage door with frosted glass windows.
+        alt: Insulated garage door with frosted glass window inserts.
       - src: ./photos/07.jpg
-        alt: Double garage with ribbed steel doors.
+        alt: Double-wide ribbed steel garage doors on brick home.
       - src: ./photos/08.png
-        alt: Custom garage door with minimalist horizontal lines.
+        alt: Flush-panel garage door with horizontal grooves.
       - src: ./photos/09.jpg
-        alt: Aluminum and glass garage door installation.
+        alt: Amarr Vista full-view aluminum garage door.
       - src: ./photos/10.jpg
-        alt: Textured-panel garage door complementing brick exterior.
+        alt: Textured steel garage door on red brick exterior.
 
   - type: Benefits
-    title: Why upgrade your garage door?
+    title: What a garage door replacement gets you
     content:
-      - title: Enhanced security & safety
+      - title: R-16 polyurethane insulation
         desc: |-
-          Modern doors feature reinforced panels, improved locking systems, and motion-sensing openers for maximum protection.
+          Clopay Intellicore and Amarr polyurethane-injected cores hit R-16 or higher - critical for attached garages in Ontario winters.
 
-      - title: Energy efficiency
+      - title: LiftMaster belt-drive openers
         desc: |-
-          Insulated garage doors minimize heat loss, helping maintain stable indoor temperatures and lowering energy costs.
+          LiftMaster 8550W with Chamberlain myQ smart control. Open, close, and monitor your door from your phone.
 
-      - title: Smooth & quiet operation
+      - title: Steel, aluminum, or full-view glass
         desc: |-
-          Advanced tracks, rollers, and belt-drive openers ensure whisper-quiet performance.
+          25-gauge steel for durability, aluminum frames for modern glass panels, or composite overlays for a wood-grain look without the upkeep.
 
-      - title: Curb appeal boost
+      - title: Curb appeal with real ROI
         desc: |-
-          A new door can instantly refresh your home's exterior, adding style and sophistication.
+          A new garage door recoups roughly 100% of its cost at resale according to Remodeling Magazine's Cost vs. Value report.
 
-      - title: Durable materials
+      - title: Weatherstripping and threshold seals
         desc: |-
-          Steel, composite, and aluminum doors are resistant to rust, dents, and warping - built to last decades.
+          Bottom rubber seals, side weatherstripping, and header seals block drafts, rain, and road salt from Ontario freeze-thaw cycles.
 
-      - title: Increased property value
+      - title: Torsion spring and track systems
         desc: |-
-          Garage door replacements consistently offer one of the highest returns on investment for home upgrades.
+          Galvanized torsion springs rated for 10,000+ cycles. Nylon rollers on steel tracks for quiet, smooth travel.
 
   - type: TextCarousel
     text:
-      - A garage door that transforms your home's look
-      - Smooth, quiet, and built to last
-      - Security and style in one upgrade
-      - Precision installation you can trust
-      - Insulated comfort for every season
+      - Goodbye old door, hello curb appeal
+      - Clopay Intellicore insulation
+      - Open it from your phone
+      - LiftMaster belt-drive quiet
+      - Built for Ontario winters
+      - Carriage, modern, or full-view glass
 
   - type: Reviews
     title: What our clients say
@@ -81,23 +82,27 @@ sections:
           Fast installation, great service, and outstanding quality. Highly recommended.
 
   - type: Faq
-    title: Have any questions?
+    title: Garage door cost, timing, and specs
     content:
-      - title: How much does garage door installation cost in Vaughan?
+      - title: How much does a new garage door cost installed?
         desc: |-
-          Garage door installation cost depends on door size, material, insulation, and opener type. Contact us for a detailed quote for your home.
+          A single insulated steel door with opener runs $1,800 to $3,500 installed. Full-view aluminum and glass doors start around $4,000. Custom carriage styles run $3,500 to $6,000+.
 
-      - title: How long does a garage door installation take?
+      - title: Are insulated garage doors worth it in Ontario?
         desc: |-
-          Most installations take just a few hours, depending on door size and opener setup.
+          Yes - if your garage is attached to the house. An R-16 polyurethane door keeps the garage 10-15 degrees warmer in winter, reducing heat loss through the shared wall and lowering heating bills.
 
-      - title: Do you offer garage door repair in the GTA?
+      - title: How long does garage door installation take?
         desc: |-
-          Yes - we handle garage door repair including panel replacement, spring repair, opener troubleshooting, and track realignment across Vaughan and the GTA.
+          Most single-door installs take 3 to 4 hours. A double door with a new opener and track system is typically done in half a day. We remove and dispose of the old door.
 
-      - title: Do you offer insulated and custom garage doors?
+      - title: What R-value garage door do I need in Canada?
         desc: |-
-          Yes - we provide insulated garage doors in custom sizes, wood-look, glass, modern, and carriage-style options.
+          R-12 minimum for attached garages. R-16 or higher is better for Ontario's climate - look for polyurethane-injected cores (Clopay Intellicore or Amarr equivalent), not polystyrene panels.
+
+      - title: Does a new garage door increase home value?
+        desc: |-
+          Consistently one of the top ROI home improvements. The 2024 Cost vs. Value report shows garage door replacement recouping around 100% of project cost at resale - more than kitchens or bathrooms.
 
   - type: Services
     exclude:

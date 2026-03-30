@@ -1,0 +1,3 @@
+- [seo_audit_baseline.md](./seo_audit_baseline.md) - First full-site SEO keyword audit findings covering all content files, March 2026
+- [seo_score_march2026.md](./seo_score_march2026.md) - Scored all 10 pages before/after optimization: 45% to 77% (+32 points). Remaining gaps listed.
+- [seo_second_pass_march2026.md](./seo_second_pass_march2026.md) - Second-pass fixes: alt text, desc balance, dust-free USP, FAQ quality, keyword stuffing cleanup.

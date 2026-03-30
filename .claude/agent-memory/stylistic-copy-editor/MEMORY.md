@@ -1,0 +1,1 @@
+- [project_style_conventions.md](./project_style_conventions.md) - Sentence case rules, dash conventions, description length targets, and proper nouns for strataline.ca

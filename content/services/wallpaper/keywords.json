@@ -1,0 +1,146 @@
+[
+  {
+    "keyword": "wallpaper installation Toronto",
+    "value": 90,
+    "volume": "210",
+    "intent": "transactional",
+    "competitors": 4,
+    "placement": "title, H1"
+  },
+  {
+    "keyword": "wallpaper removal Toronto",
+    "value": 89,
+    "volume": "170",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "H2, meta description"
+  },
+  {
+    "keyword": "accent wall wallpaper Toronto",
+    "value": 86,
+    "volume": "90",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "wallpaper installation cost Toronto",
+    "value": 84,
+    "volume": "110",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "professional wallpaper hanger Toronto",
+    "value": 82,
+    "volume": "70",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "wallpaper removal cost Toronto",
+    "value": 80,
+    "volume": "70",
+    "intent": "transactional",
+    "competitors": 2,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "grasscloth wallpaper installation Toronto",
+    "value": 78,
+    "volume": "30",
+    "intent": "commercial",
+    "competitors": 1,
+    "placement": "body"
+  },
+  {
+    "keyword": "mural wallpaper installation Toronto",
+    "value": 76,
+    "volume": "40",
+    "intent": "commercial",
+    "competitors": 1,
+    "placement": "body"
+  },
+  {
+    "keyword": "feature wall installation Toronto",
+    "value": 74,
+    "volume": "50",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "commercial wallpaper installation GTA",
+    "value": 72,
+    "volume": "40",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "wallpaper vs paint cost",
+    "value": 65,
+    "volume": "110",
+    "intent": "informational",
+    "competitors": 3,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "peel and stick wallpaper installation",
+    "value": 60,
+    "volume": "90",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "wallpaper removal cost per square foot",
+    "value": 58,
+    "volume": "70",
+    "intent": "transactional",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "how much does wallpaper installation cost in Toronto",
+    "value": 54,
+    "volume": "110",
+    "intent": "informational",
+    "competitors": 3,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "how much does wallpaper removal cost",
+    "value": 52,
+    "volume": "90",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "can you wallpaper over existing wallpaper",
+    "value": 46,
+    "volume": "110",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "what type of wallpaper is best for bathrooms",
+    "value": 44,
+    "volume": "90",
+    "intent": "informational",
+    "competitors": 1,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "is peel and stick wallpaper worth it vs traditional",
+    "value": 42,
+    "volume": "70",
+    "intent": "informational",
+    "competitors": 1,
+    "placement": "FAQ"
+  }
+]

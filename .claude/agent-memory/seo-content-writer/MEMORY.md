@@ -1,0 +1,2 @@
+- [project_keyword_territories.md](project_keyword_territories.md) - Which service pages own which primary keywords to prevent cannibalization
+- [project_painting_page_keywords.md](project_painting_page_keywords.md) - Keywords owned by painting page and boundaries with popcorn, wallpaper, kitchen pages

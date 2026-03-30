@@ -1,68 +1,33 @@
-title: Kitchen renovation contractor in Toronto & the GTA
+title: Kitchen renovation cost, timeline & process
 seo: |-
-  Dust-free kitchen renovation in Toronto and the GTA. Custom kitchen cabinets, modern layouts, and high-end finishes from an experienced kitchen renovation contractor.
+  Full kitchen renovation with Caesarstone and Silestone quartz countertops, Blum soft-close cabinetry, and dust-free demolition. Semi-custom and fully custom options.
 desc: |-
-  Dust-free kitchen renovation with custom cabinets, smart layouts, and high-quality finishes. Get a clear understanding of kitchen renovation cost before we start.
+  Kitchen renovation with custom cabinetry, quartz countertops, island builds, and open concept layouts. Transparent pricing from $15K to $100K+.
 image:
   src: ./cover.jpg
   alt: |-
-    Renovated kitchen with quartz countertops and island layout.
+    Renovated kitchen with quartz waterfall island and shaker cabinets.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/centre_island_pendant_lighting_king_city.jpg
-        alt: White shaker cabinets with quartz counters.
+        alt: White shaker cabinets with Caesarstone quartz countertop.
       - src: ./photos/kitchen_island_seating_ideas_aurora.jpg
-        alt: Kitchen island with pendant lights and flat-panel cabinets.
+        alt: Kitchen island with pendant lighting and flat-panel cabinets.
       - src: ./photos/new_kitchen_cabinet_doors_drawers_refacing_newmarket.jpg
-        alt: Wood-accent kitchen with stone backsplash.
+        alt: Refaced kitchen cabinets with stone backsplash tile.
       - src: ./photos/shaker_style_kitchen_cabinets_herring_bone_backsplash_wolf_stainless_steel_appliances_georgetown.jpg
-        alt: Dark cabinets with under-cabinet lighting.
+        alt: Dark shaker cabinets with herringbone backsplash and Wolf appliances.
       - src: ./photos/stainless_steel_sink_and_faucet_vaughan.jpg
-        alt: Two-tone kitchen with gold hardware.
+        alt: Two-tone cabinets with brushed gold hardware and undermount sink.
       - src: ./photos/white_kitchen_cabinets_quartz_countertop_grey_vein_toronto.jpg
-        alt: Waterfall island with matte black fixtures.
+        alt: Waterfall island with grey-vein quartz and matte black fixtures.
       - src: ./cover.jpg
-        alt: Kitchen with open shelving and natural wood finishes.
-
-  - type: Benefits
-    title: Why renovate your kitchen?
-    content:
-      - title: Better layout & functionality
-        desc: |-
-          A well-planned kitchen makes cooking easier and more enjoyable, with optimized workflow and storage.
-
-      - title: Premium materials
-        desc: |-
-          From custom cabinetry to quartz and stone countertops, every material is chosen for durability and beauty.
-
-      - title: Dust-free expert installation
-        desc: |-
-          With years of hands-on experience, we deliver precise craftsmanship and dust-free renovations that keep your home clean throughout the project.
-
-      - title: Modern design options
-        desc: |-
-          Choose from contemporary, classic, minimalist, or warm natural styles that fit your vision and lifestyle.
-
-      - title: Energy-efficient upgrades
-        desc: |-
-          Improve efficiency with new lighting, appliances, and better layout planning.
-
-      - title: Increase property value
-        desc: |-
-          A beautifully renovated kitchen is one of the strongest investments you can make in your home.
-
-  - type: TextCarousel
-    text:
-      - Designed for cooking and living
-      - Beautiful finishes that last
-      - A kitchen you’ll love every day
-      - Transforming spaces with detail
-      - Smart layouts for real-life use
+        alt: Open concept kitchen with natural wood and open shelving.
 
   - type: Prices
-    title: What's the cost?
+    title: Kitchen renovation cost breakdown
     content:
       - title: Basic
         min: 15000
@@ -72,26 +37,61 @@ sections:
           - Stock cabinetry
           - Standard appliances
         desc: |-
-          Cosmetic updates such as repainting, replacing cabinet doors, upgrading light fixtures, and installing new countertops.
+          Cosmetic refresh - repaint existing cabinets, swap hardware, upgrade light fixtures, and install new laminate countertops. Keeps existing layout intact.
       - title: Mid-range
         min: 25000
         max: 50000
         materials:
           - Quartz or granite countertops
-          - Semi-custom cabinets
+          - Semi-custom cabinets with Blum hardware
           - Energy-efficient appliances
         desc: |-
-          Replacing cabinets, adding an island, upgrading appliances, installing new flooring, and improving lighting.
+          New semi-custom cabinetry with Blum soft-close hardware, quartz countertops, island or peninsula build, updated backsplash, and pot light installation.
       - title: High-end
         min: 50000
         max: 100000
         materials:
-          - Marble countertops
-          - Custom cabinetry
-          - Premium hardwood or tile flooring
+          - Caesarstone or Cambria quartz
+          - Fully custom cabinetry
+          - Premium hardwood or large-format tile flooring
           - Designer fixtures
         desc: |-
-          Complete redesign, structural changes, custom cabinetry, luxury appliances, high-end finishes, and smart home features.
+          Full redesign with structural changes - open up walls, custom cabinetry, waterfall island, luxury appliances, and smart home integration.
+
+  - type: Benefits
+    title: What you get with a kitchen renovation
+    content:
+      - title: Open concept layouts that work
+        desc: |-
+          Remove walls to connect kitchen, dining, and living areas. Structural beam installation included where needed per Ontario Building Code.
+
+      - title: Custom cabinetry with Blum hardware
+        desc: |-
+          Shaker, flat-panel, or slab door styles. Blum Tandem soft-close drawer slides and Blumotion hinges on every door and drawer.
+
+      - title: Quartz countertops by Caesarstone & Silestone
+        desc: |-
+          Non-porous, heat-resistant surfaces in 50+ colours. Templated on-site, fabricated to 1/16" tolerance, installed with colour-matched seams.
+
+      - title: Dust-free demolition
+        desc: |-
+          Festool HEPA extraction during cutting and sanding. Containment barriers seal the work area so dust stays out of the rest of your home.
+
+      - title: Backsplash & tile installation
+        desc: |-
+          Subway, herringbone, large-format, or natural stone backsplash. Schluter DITRA underlayment on all tile installations for crack prevention.
+
+      - title: Stronger resale value
+        desc: |-
+          Kitchen renovations return 75-100% of cost at resale in the GTA market. The single highest-ROI renovation you can make.
+
+  - type: TextCarousel
+    text:
+      - Goodbye laminate, hello quartz
+      - Blum soft-close everything
+      - Open up the floor plan
+      - Waterfall island goals
+      - Herringbone backsplash vibes
 
   - type: Reviews
     title: What our clients say
@@ -109,19 +109,27 @@ sections:
           Excellent craftsmanship. Everything was done on time and the design exceeded our expectations.
 
   - type: Faq
-    title: Have any questions?
+    title: Kitchen renovation questions
     content:
-      - title: How long does a kitchen renovation take?
+      - title: How much does a kitchen renovation cost per square foot in Ontario?
         desc: |-
-          Most kitchen renovations take 2-4 weeks once all materials are on-site. Larger or custom kitchens may take longer.
+          Expect $75-$150 per square foot for a mid-range kitchen renovation and $150-$300+ for high-end custom work. Countertop material, cabinetry type, and structural changes are the biggest cost drivers.
 
-      - title: How much does a kitchen renovation cost in Toronto?
+      - title: How long does a kitchen renovation take from start to finish?
         desc: |-
-          Kitchen renovation cost in Toronto ranges from $15,000 for cosmetic updates to $100,000+ for a full custom redesign. We provide detailed quotes so you know exactly what to expect.
+          Plan for 3-6 weeks once materials arrive on-site. A cosmetic refresh takes 1-2 weeks. Full gut renovations with structural changes and custom cabinetry run 5-8 weeks including inspections.
 
-      - title: Can you work with my budget?
+      - title: Is cabinet refacing worth it compared to full replacement?
         desc: |-
-          Yes - we offer flexible solutions, from economical upgrades to fully custom luxury kitchens.
+          Refacing saves 40-50% over new cabinets and takes about a week. It works well when your cabinet boxes are solid but the doors and finish look dated. Full replacement makes sense for layout changes.
+
+      - title: Can a kitchen renovation increase my home's value?
+        desc: |-
+          Yes - kitchen renovations consistently deliver 75-100% return on investment in the GTA. Even a mid-range renovation ($25K-$50K) can add significant resale value according to industry data.
+
+      - title: Do you handle plumbing and electrical during the renovation?
+        desc: |-
+          Yes. Licensed plumbing and electrical work is included - island rough-ins, pot light wiring, dedicated appliance circuits, and sink relocation. All work is ESA-inspected where required.
 
   - type: Services
     exclude:

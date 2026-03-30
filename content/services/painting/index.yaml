@@ -1,135 +1,136 @@
-title: Interior painting in Toronto & the GTA
+title: Interior painting
 
 seo: |-
-  Professional house painters in Toronto, Vaughan, and the GTA. Interior painting with Level 5 wall finishing, premium paints, and architect-grade craftsmanship for sophisticated homes.
+  Interior painting with Level 5 wall finishing, HVLP spray trim work, and Benjamin Moore Aura and Sherwin Williams Emerald coatings. Dust-free prep, real colour consultation.
 
 desc: |-
-  Dust-free interior painting with Level 5 wall finishing and premium paints. Smooth, refined surfaces for luxury homes and design-driven interiors across Toronto and the GTA.
+  Walls, ceilings, trim, and cabinets painted with premium coatings. Full drywall repair, skim coating, and colour matching included - from single rooms to whole homes.
 
 image:
   src: ./cover.jpg
-  alt: Living room with smooth painted walls and refined trims.
+  alt: Living room with smooth Level 5 painted walls and white baseboards.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/luxury-interior-painting-toronto.jpg
-        alt: Smooth painted surfaces with modern trim profiles.
+        alt: Smooth painted walls with Benjamin Moore eggshell finish.
       - src: ./photos/smooth-wall-finish-level-5.jpg
-        alt: Level-5 wall finishing in a luxury hallway.
+        alt: Level 5 skim-coated hallway under critical lighting.
       - src: ./photos/popcorn-ceiling-removal-gta.png
-        alt: Popcorn ceiling removal and smoothing.
+        alt: Ceiling after texture removal and smooth skim coat.
       - src: ./photos/high-end-wainscoting-painting-spray-finish.png
-        alt: Wainscoting and millwork with sprayed finish.
+        alt: HVLP sprayed wainscoting with satin lacquer finish.
       - src: ./photos/designer-colour-consultation..jpg
-        alt: Designer colour palette consultation.
+        alt: Benjamin Moore colour fan deck during consultation.
       - src: ./photos/modern-kitchen-repaint-satin.jpg
-        alt: Kitchen repaint with satin cabinetry finish.
+        alt: Kitchen cabinet doors with sprayed satin enamel finish.
       - src: ./photos/high-end-trim-painting-spray-finish.png
-        alt: Trim spraying with crisp professional lines.
+        alt: Baseboard and casing trim with crisp spray-painted edges.
 
   - type: Benefits
-    title: Why choose luxury painting?
+    title: What goes into a professional paint job
     content:
-      - title: Architectural-level wall preparation
+      - title: Full surface prep before any paint
         desc: |-
-          We invest extensive time in sanding, skim coating, patching, and surface correction to create walls that look flawless under any lighting condition.
+          Durabond 90 setting compound for cracks and joints. Zinsser BIN shellac primer on stains and knots. Every surface sanded between coats with 150 and 220 grit.
 
-      - title: Premium designer paints
+      - title: Benjamin Moore and Sherwin Williams coatings
         desc: |-
-          We use elite-grade coatings such as Benjamin Moore Aura, Regal Select, and Sherwin Williams Emerald - ensuring depth, richness, and long-lasting colour fidelity.
+          Benjamin Moore Aura ($90/gal, 45% volume solids) or Sherwin Williams Emerald for walls. Regal Select for ceilings. One-coat coverage on most colours.
 
-      - title: Precision lines & craftsmanship
+      - title: HVLP sprayed trim and cabinetry
         desc: |-
-          Our skilled painters create crisp edges, smooth trims, and seamless colour transitions that stand out in high-end interiors.
+          Graco FinishPro HVLP sprayer on all trim, doors, and cabinets. 85-95% transfer efficiency means a factory-smooth finish with minimal overspray.
 
-      - title: Luxury-friendly workflow
+      - title: Dust-free, furniture-safe workflow
         desc: |-
-          We work clean, quiet, and efficiently. Furniture protection, dust control, and immaculate cleanup are standard - not upgrades.
+          Festool HEPA extraction during sanding. Plastic containment barriers on doorways. All furniture masked with 3M painter's film before prep begins.
 
   - type: TextCarousel
     text:
-      - Architectural wall finishing
-      - Luxury interior repainting
-      - Designer colour consulting
-      - Smooth ceilings & refinishing
-      - Precision trim & millwork painting
+      - Goodbye roller texture
+      - Benjamin Moore Aura walls
+      - Every edge razor-sharp
+      - Smooth ceilings, finally
+      - Graco FinishPro trim
+      - Colour you actually love
 
   # -------------------------------
-  # PREMIUM INTERIOR PAINTING
+  # PAINTING COST PER SQUARE FOOT
   # -------------------------------
   - type: ZigZag
-    title: Interior painting (luxury homes)
+    title: Painting cost per square foot
     content:
-      - title: Designer colour selection
+      - title: Transparent pricing, no surprises
         desc: >-
-          We help you choose the perfect palette - rich neutrals, soft whites, warm tones, or bold accents - ensuring your home feels cohesive and luxurious.
+          Interior painting runs $2.50 to $4.50 per square foot for walls. Add ceilings, trim, and baseboards and expect $4 to $6 per sq ft. Ontario HST is always included in our quotes.
         image:
           src: ./photos/designer-colour-consultation..jpg
-          alt: Designer colour palette selection for a luxury home.
-      - title: Flawless wall application
+          alt: Paint colour consultation with Benjamin Moore fan decks.
+      - title: What drives the final price
         desc: >-
-          Using premium rollers and fine-spray techniques, we achieve buttery-smooth finishes without streaks, patches, or roller texture.
+          Wall condition, ceiling height, number of colours, and prep work affect cost. Homes needing drywall repair or skim coating before paint cost more than a straightforward repaint.
         image:
           src: ./photos/luxury-interior-painting-toronto.jpg
-          alt: Smooth wall painting using high-end paint and expert technique.
+          alt: Freshly painted living room walls with smooth eggshell finish.
 
   # -------------------------------
-  # CEILING FINISHES
+  # LEVEL 5 WALL FINISHING
   # -------------------------------
   - type: ZigZag
-    title: Smooth ceilings & refinishing
+    title: Level 5 wall finishing
     content:
-      - title: Popcorn ceiling removal
+      - title: When smooth walls really matter
         desc: >-
-          We eliminate outdated popcorn texture and apply a perfectly smooth finish - ideal for modern, upscale interiors.
+          Rooms with large windows, pot lights, or low-angle light expose every imperfection. A Level 5 skim coat covers the entire surface - not just joints - so nothing shows through flat or eggshell paint.
+        image:
+          src: ./photos/smooth-wall-finish-level-5.jpg
+          alt: Level 5 skim-coated wall under low-angle window light.
+      - title: Ceiling painting and texture removal
+        desc: >-
+          Textured or stippled ceilings get scraped, skim-coated with Durabond, and sanded flat before two coats of ceiling paint. Already have popcorn ceilings? See our popcorn ceiling removal page.
         image:
           src: ./photos/popcorn-ceiling-removal-gta.png
-          alt: Popcorn ceiling removal and luxury smoothing treatment.
-      - title: Level-5 finishing
-        desc: >-
-          For high-end homes with critical lighting, we provide a Level 5 skim coat for a perfectly uniform, ultra-smooth surface.
-        image:
-          src: ./photos/smooth-wall-finish-level-5.jpg
-          alt: Level-5 wall finishing in a premium home.
+          alt: Smooth ceiling after texture removal and skim coating.
 
   # -------------------------------
-  # TRIM, DOORS & MILLWORK
+  # TRIM, BASEBOARD & CABINET PAINTING
   # -------------------------------
   - type: ZigZag
-    title: Trim, doors & millwork painting
+    title: Trim, baseboard & cabinet painting
     content:
-      - title: Crisp, sharp lines
+      - title: Baseboard and casing painting
         desc: >-
-          We create razor-sharp edges on baseboards, casings, doors, and crown mouldings using precision taping and fine-finish techniques.
+          All baseboards, door casings, and crown moulding get lightly sanded, spot-primed with Zinsser BIN, and sprayed with two coats of Benjamin Moore Advance for a hard, smooth shell.
         image:
           src: ./photos/high-end-trim-painting-spray-finish.png
-          alt: Perfectly painted trim, doors, and mouldings in an upscale home.
-      - title: High-end sprayed finishes
+          alt: White baseboard trim with HVLP sprayed semi-gloss finish.
+      - title: Cabinet painting with HVLP spray
         desc: >-
-          For cabinetry, built-ins, railings, and millwork, we offer lacquer-smooth spraying done in controlled conditions for a factory-grade finish.
+          Kitchen and bathroom cabinets sprayed off-site or in a contained area using Graco FinishPro HVLP. Doors get 2-3 coats of waterborne alkyd enamel for a factory-grade result that resists chipping.
         image:
           src: ./photos/high-end-wainscoting-painting-spray-finish.png
-          alt: Professional spraying on millwork for a smooth, modern luxury finish.
+          alt: Wainscoting panel with smooth HVLP sprayed satin finish.
 
   # -------------------------------
-  # DAMAGE REPAIR & RESTORATION
+  # DRYWALL REPAIR AND PAINTING
   # -------------------------------
   - type: ZigZag
-    title: Wall repair & surface restoration
+    title: Drywall repair and painting
     content:
-      - title: Expert repair work
+      - title: Crack, hole, and dent repair
         desc: >-
-          We repair settlement cracks, dents, holes, uneven drywall, and surface imperfections using professional-grade patching and leveling.
+          Settlement cracks filled with fibreglass mesh tape and Durabond 90. Nail pops reset and skimmed. Holes patched with California patches - no metal clips that telegraph through paint.
         image:
           src: ./photos/level-5-skim-coating-wall-repair.jpg
-          alt: Wall repair and repaint in a high-end modern kitchen.
-      - title: Invisible results
+          alt: Drywall repair with Durabond setting compound and mesh tape.
+      - title: Matched texture and invisible blending
         desc: >-
-          Repairs blend seamlessly into the surrounding surfaces - ensuring nothing distracts from the beauty of the final finish.
+          Repaired areas get feathered out 12-18 inches beyond the patch, primed with Zinsser BIN, and painted to match the surrounding wall. Under normal lighting, repairs disappear completely.
         image:
           src: ./photos/smooth-wall-finish-level-5.jpg
-          alt: Smooth wall surface with invisible repair work.
+          alt: Smooth wall surface after invisible drywall repair.
 
   - type: Reviews
     title: What our clients say
@@ -138,7 +139,7 @@ sections:
         location: Forest Hill
         stars: 5
         desc: |-
-          The finish is flawless. Every wall is perfect. This is the best painting work we’ve seen - it completely elevated the home.
+          The finish is flawless. Every wall is perfect. This is the best painting work we've seen - it completely elevated the home.
 
       - title: Daniel R.
         location: Vaughan
@@ -147,27 +148,27 @@ sections:
           Their preparation is on another level. The surfaces are immaculate, and the clean-up was impeccable. True luxury service.
 
   - type: Faq
-    title: Have questions about luxury painting?
+    title: Interior painting cost & timeline
     content:
-      - title: What paints do you use for high-end homes?
+      - title: How much does interior painting cost per square foot?
         desc: |-
-          We primarily use premium lines like Benjamin Moore Aura/Regal Select and Sherwin Williams Emerald - chosen for durability, richness, and refined finish quality.
+          Walls only run $2.50 to $4.50 per sq ft. Walls plus ceilings, trim, and baseboards run $4 to $6 per sq ft. A typical 1,500 sq ft home costs $6,000 to $10,000 including prep, materials, and HST.
 
-      - title: How much does interior painting cost in Toronto?
+      - title: How long does it take to paint a house interior?
         desc: |-
-          Painting cost per sqft varies based on wall condition, prep work, and finish quality. Contact us for a detailed quote tailored to your space.
+          A single room takes 1 to 2 days. A full home - 3 to 4 bedrooms with trim and ceilings - takes 5 to 8 days depending on wall condition, drywall repair, and how many colours are involved.
 
-      - title: How long does a luxury repaint take?
+      - title: What is a Level 5 drywall finish and do I need one?
         desc: |-
-          A typical repaint takes several days to a week, depending on preparation, room size, and the level of finishing required.
+          Level 5 means a full skim coat over the entire wall surface, not just joints and screw holes. You need it in rooms with flat paint, large windows, or recessed pot lights where low-angle light shows every imperfection.
 
-      - title: Do you handle wall repairs?
+      - title: Should I spray or roll kitchen cabinets?
         desc: |-
-          Yes - all holes, dents, scratches, settlement cracks, and imperfections are professionally repaired before painting.
+          Spraying with an HVLP system like Graco FinishPro gives a smoother, harder finish than brush or roller. We spray all cabinet doors with 2-3 coats of waterborne alkyd enamel - Benjamin Moore Advance or Sherwin Williams Emerald Urethane.
 
-      - title: Can you match designer colours?
+      - title: Do painters fix drywall before painting?
         desc: |-
-          Absolutely. We match Farrow & Ball, Benjamin Moore, Sherwin Williams, and other curated palettes with perfect accuracy.
+          We do. Cracks, nail pops, dents, and holes get patched with Durabond 90, sanded smooth, and spot-primed with Zinsser BIN before any paint goes on. Drywall repair is included in every painting quote.
 
   - type: Services
     exclude:

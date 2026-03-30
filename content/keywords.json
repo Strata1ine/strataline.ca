@@ -1,0 +1,114 @@
+[
+  {
+    "keyword": "home renovation contractor",
+    "value": 82,
+    "volume": "1100",
+    "intent": "commercial",
+    "competitors": 5,
+    "placement": "title, H1, meta description"
+  },
+  {
+    "keyword": "renovation company near me",
+    "value": 74,
+    "volume": "720",
+    "intent": "commercial",
+    "competitors": 4,
+    "placement": "body, meta description"
+  },
+  {
+    "keyword": "residential renovation contractor",
+    "value": 70,
+    "volume": "320",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "full home renovation GTA",
+    "value": 68,
+    "volume": "260",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "design build renovation",
+    "value": 65,
+    "volume": "210",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "body, service list"
+  },
+  {
+    "keyword": "home renovation cost Toronto 2026",
+    "value": 64,
+    "volume": "390",
+    "intent": "transactional",
+    "competitors": 4,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "licensed renovation contractor Ontario",
+    "value": 62,
+    "volume": "170",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "body, trust signals"
+  },
+  {
+    "keyword": "dust-free home renovation",
+    "value": 58,
+    "volume": "50",
+    "intent": "commercial",
+    "competitors": 1,
+    "placement": "body, USP section"
+  },
+  {
+    "keyword": "kitchen and bathroom renovation contractor",
+    "value": 57,
+    "volume": "140",
+    "intent": "commercial",
+    "competitors": 3,
+    "placement": "body, service list"
+  },
+  {
+    "keyword": "home remodeling contractor GTA",
+    "value": 55,
+    "volume": "170",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body, alt text"
+  },
+  {
+    "keyword": "how much does a full home renovation cost in Toronto",
+    "value": 52,
+    "volume": "210",
+    "intent": "informational",
+    "competitors": 3,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "do I need a permit for renovations in Toronto",
+    "value": 45,
+    "volume": "110",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "how do I find a good renovation contractor",
+    "value": 43,
+    "volume": "170",
+    "intent": "informational",
+    "competitors": 3,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "free estimate",
+    "value": 40,
+    "volume": "n/a",
+    "intent": "transactional",
+    "competitors": 5,
+    "placement": "CTA, body"
+  }
+]

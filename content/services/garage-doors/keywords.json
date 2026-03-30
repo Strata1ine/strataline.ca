@@ -1,0 +1,162 @@
+[
+  {
+    "keyword": "garage door replacement Toronto",
+    "value": 86,
+    "volume": "320",
+    "intent": "transactional",
+    "competitors": 4,
+    "placement": "H2, meta description"
+  },
+  {
+    "keyword": "insulated garage door installation GTA",
+    "value": 84,
+    "volume": "70",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "H2, body"
+  },
+  {
+    "keyword": "garage door cost Toronto",
+    "value": 82,
+    "volume": "210",
+    "intent": "transactional",
+    "competitors": 4,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "garage door installation Vaughan",
+    "value": 81,
+    "volume": "170",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "garage door installation Toronto",
+    "value": 78,
+    "volume": "390",
+    "intent": "transactional",
+    "competitors": 5,
+    "placement": "title, H1"
+  },
+  {
+    "keyword": "garage door installation cost Ontario",
+    "value": 76,
+    "volume": "170",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "modern glass garage door Toronto",
+    "value": 74,
+    "volume": "50",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "garage door opener installation Vaughan",
+    "value": 72,
+    "volume": "90",
+    "intent": "transactional",
+    "competitors": 3,
+    "placement": "body"
+  },
+  {
+    "keyword": "best garage door company Vaughan",
+    "value": 71,
+    "volume": "50",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "custom garage door Vaughan",
+    "value": 68,
+    "volume": "30",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "carriage style garage door GTA",
+    "value": 66,
+    "volume": "40",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "R-16 insulated garage door",
+    "value": 64,
+    "volume": "30",
+    "intent": "commercial",
+    "competitors": 1,
+    "placement": "body"
+  },
+  {
+    "keyword": "smart garage door opener Toronto",
+    "value": 62,
+    "volume": "30",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "steel vs aluminum garage door Canada",
+    "value": 58,
+    "volume": "40",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "body, FAQ"
+  },
+  {
+    "keyword": "garage door with windows Toronto",
+    "value": 56,
+    "volume": "40",
+    "intent": "commercial",
+    "competitors": 2,
+    "placement": "body"
+  },
+  {
+    "keyword": "garage door ROI home value",
+    "value": 54,
+    "volume": "40",
+    "intent": "informational",
+    "competitors": 1,
+    "placement": "body"
+  },
+  {
+    "keyword": "how much does garage door installation cost in Toronto",
+    "value": 52,
+    "volume": "210",
+    "intent": "informational",
+    "competitors": 4,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "are insulated garage doors worth it in Ontario",
+    "value": 48,
+    "volume": "90",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "what R-value garage door do I need in Canada",
+    "value": 45,
+    "volume": "50",
+    "intent": "informational",
+    "competitors": 1,
+    "placement": "FAQ"
+  },
+  {
+    "keyword": "does a new garage door increase home value",
+    "value": 44,
+    "volume": "70",
+    "intent": "informational",
+    "competitors": 2,
+    "placement": "FAQ"
+  }
+]
