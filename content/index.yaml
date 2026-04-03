@@ -23,18 +23,21 @@ sections:
       Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
     content:
       images:
-        - src: ./slideshow/kitchen.jpg
+        - src: ./slideshow/kitchen-renovation-toronto-modern.jpg
           alt: |-
-            Luxury kitchen with stone counters and custom finishes.
-        - src: ./slideshow/dining_room.jpg
+            Modern kitchen renovation in Toronto with custom finishes.
+        - src: ./slideshow/living-room-renovation-toronto.jpg
           alt: |-
-            Dining room with elegant seating and natural lighting.
-        - src: ./slideshow/living_room.jpg
+            Living room renovation in Toronto with fireplace and refined detailing.
+        - src: ./slideshow/bathroom-renovation-toronto-marble.jpg
           alt: |-
-            Renovated living room with modern fireplace and architectural details.
-        - src: ./slideshow/bathroom.jpg
+            Marble bathroom renovation in Toronto with a bright luxury finish.
+        - src: ./slideshow/hardwood-floor-installation-toronto-herringbone.jpg
           alt: |-
-            Spa-inspired bathroom with premium materials and natural lighting.
+            Herringbone hardwood floor installation in Toronto.
+        - src: ./slideshow/staircase-renovation-toronto-hardwood-iron-railing.jpg
+          alt: |-
+            Staircase renovation in Toronto with hardwood treads and iron railing.
 
   - type: Popular
     title: Signature services
@@ -50,6 +53,49 @@ sections:
         - Architectural precision
         - Expert results
 
+  - type: ImageCarousel
+    content:
+      - src: ./slideshow/kitchen-renovation-toronto-modern.jpg
+        alt: Modern kitchen renovation in Toronto.
+      - src: ./slideshow/kitchen-renovation-toronto-dark-island.jpg
+        alt: Kitchen renovation in Toronto with dark island.
+      - src: ./slideshow/kitchen-renovation-toronto-white-marble.jpg
+        alt: White marble kitchen renovation in Toronto.
+      - src: ./slideshow/kitchen-renovation-toronto-white-cabinets.jpg
+        alt: Toronto kitchen renovation with white cabinets.
+      - src: ./slideshow/kitchen-renovation-toronto-featured-tv.jpg
+        alt: Featured Toronto kitchen renovation.
+      - src: ./slideshow/interior-renovation-toronto-dining-room.jpg
+        alt: Dining room renovation in Toronto.
+      - src: ./slideshow/interior-renovation-toronto-feature-wall.jpg
+        alt: Interior renovation in Toronto with feature wall.
+      - src: ./slideshow/living-room-renovation-toronto.jpg
+        alt: Living room renovation in Toronto.
+      - src: ./slideshow/living-room-renovation-toronto-modern.jpg
+        alt: Modern living room renovation in Toronto.
+      - src: ./slideshow/bathroom-renovation-toronto-marble.jpg
+        alt: Marble bathroom renovation in Toronto.
+      - src: ./slideshow/bathroom-renovation-toronto-modern-double-vanity.jpg
+        alt: Bathroom renovation in Toronto with double vanity.
+      - src: ./slideshow/bathroom-renovation-toronto-modern-shower.jpg
+        alt: Modern shower renovation in Toronto.
+      - src: ./slideshow/bathroom-vanity-renovation-toronto.jpg
+        alt: Bathroom vanity renovation in Toronto.
+      - src: ./slideshow/hardwood-floor-installation-toronto-herringbone.jpg
+        alt: Herringbone hardwood floor installation in Toronto.
+      - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
+        alt: Open riser staircase renovation in Toronto.
+      - src: ./slideshow/staircase-renovation-toronto-spiral-iron-railing.jpg
+        alt: Spiral staircase renovation in Toronto with iron railing.
+      - src: ./slideshow/staircase-renovation-toronto-hardwood-iron-railing.jpg
+        alt: Hardwood staircase renovation in Toronto with iron railing.
+      - src: ./slideshow/staircase-renovation-toronto-open-concept.jpg
+        alt: Open concept staircase renovation in Toronto.
+      - src: ./slideshow/staircase-renovation-toronto-modern-iron-railing.jpg
+        alt: Modern iron railing staircase renovation in Toronto.
+      - src: ./slideshow/staircase-refinishing-mississauga-hardwood.jpg
+        alt: Hardwood staircase refinishing in Mississauga.
+
   - type: Cardshow
     title: Our accomplishments
     id: accomplishments
@@ -61,7 +107,7 @@ sections:
           type: video
           uploadDate: 2020-01-01
           image:
-            src: ./awards/citytv.jpg
+            src: ./awards/strataline-cityline-tv-feature-popcorn-ceiling.jpg
             alt: CityTV segment featuring Strataline's dust-free process.
           url: /videos/cityline.mp4
 
@@ -71,7 +117,7 @@ sections:
         media:
           type: image
           image:
-            src: ./awards/star.jpg
+            src: ./awards/strataline-toronto-star-popcorn-ceiling-removal-article.jpg
             alt: |-
               The Star feature showcasing Strataline's dust-free ceiling refinement process.
         link:
@@ -86,7 +132,7 @@ sections:
           type: image
           image:
             y: top
-            src: ./awards/houseandhome.webp
+            src: ./awards/strataline-house-and-home-chevron-hardwood-floors.webp
             alt: |-
               Premium interior with chevron hardwood and curated furnishings, featured in House & Home.
         link:
@@ -109,20 +155,39 @@ sections:
     title: What our clients are saying
     id: reviews
     content:
+      - title: John Seigel
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          The Popcorn removal was excellent and a very clean process. They also transformed our stairs from boring oak to a much more modern look. They handled repainting of the whole house and replacement of old tile floors with a beautiful new one. There were many additional small tasks which they handled very well. They have design skills if you need them. The house looks great. Very talented and reliable people. I should also say they are very professional providing detailed quotations and billing.
+
+      - title: Virginia Coppola
+        location: Newmarket
+        stars: 5
+        desc: |-
+          Maxim at Strataline did a very professional job in removing our hallway popcorn/stucco ceiling. The end result was a completely smooth surface and not only that, they totally sealed off the area so absolutely not dust penetrated other areas of the house.
+          Maxim also installed wainscoting and trim work throughout the hallway, stairwell and landing. We would highly recommend their workmanship with very little disruption to the home.
+
+      - title: D Kruger
+        location: Thornhill
+        stars: 5
+        desc: |-
+          Max of Strataline Inc. did an exceptional job creating 1) a custom inside railing for a winding grand staircase and 2) installing outdoor railings. He even used a 3D printer to create a custom handle for an outdoor railing that had to be installed on a slight diagonal. Max is punctual, neat and very professional. We will be hiring him for additional projects.
+
       - title: Maggie and Scott
         location: Mississauga
         stars: 5
         desc: |-
-          We are absolutely thrilled with our ceiling transformation. Max and his team deliver exceptional professionalism and an impressively clean, dust-free renovation experience.
+          We’re really happy with how everything turned out. The ceilings look completely smooth now, and the whole process was much cleaner than we expected. Max and his team were professional, showed up when they said they would, and paid attention to the details. It made a big difference in how the house feels.
 
       - title: Jefferson Grove
         location: Burlington
         stars: 5
         desc: |-
-          From the first consultation to the final walkthrough, the process was seamless. Max’s communication and attention to detail are unmatched. Highly recommended.
+          The stair renovation experience was straightforward from start to finish. Communication was clear, the work was done on schedule, and there were no surprises. You can tell Max cares about doing things properly. The finished result speaks for itself, very clean, very sharp.
 
       - title: Lyn Litvack
         location: Markham
         stars: 5
         desc: |-
-          Max is the definition of a true professional—punctual, meticulous, and incredibly knowledgeable. Our staircase renovation is stunning, and his expert guidance made all the difference.
+          Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase. The end result looks fantastic and fits the space perfectly. You can tell the work was done with care.
