@@ -146,23 +146,42 @@ sections:
   - type: Reviews
     title: What our clients say
     content:
+      - title: John Seigel
+        location: Richmond Hill
+        stars: 5
+        desc: |-
+          The Popcorn removal was excellent and a very clean process. They also transformed our stairs from boring oak to a much more modern look. They handled repainting of the whole house and replacement of old tile floors with a beautiful new one. There were many additional small tasks which they handled very well. They have design skills if you need them. The house looks great. Very talented and reliable people. I should also say they are very professional providing detailed quotations and billing.
+
+      - title: Virginia Coppola
+        location: Newmarket
+        stars: 5
+        desc: |-
+          Maxim at Strataline did a very professional job in removing our hallway popcorn/stucco ceiling. The end result was a completely smooth surface and not only that, they totally sealed off the area so absolutely no dust penetrated other areas of the house.
+          Maxim also installed wainscoting and trim work throughout the hallway, stairwell and landing. We would highly recommend their workmanship with very little disruption to the home.
+
+      - title: D Kruger
+        location: Thornhill
+        stars: 5
+        desc: |-
+          Max of Strataline Inc. did an exceptional job creating 1) a custom inside railing for a winding grand staircase and 2) installing outdoor railings. He even used a 3D printer to create a custom handle for an outdoor railing that had to be installed on a slight diagonal. Max is punctual, neat and very professional. We will be hiring him for additional projects.
+
+      - title: Maggie and Scott
+        location: Mississauga
+        stars: 5
+        desc: |-
+          We’re really happy with how everything turned out. The ceilings look completely smooth now, and the whole process was much cleaner than we expected. Max and his team were professional, showed up when they said they would, and paid attention to the details. It made a big difference in how the house feels.
+
+      - title: Jefferson Grove
+        location: Burlington
+        stars: 5
+        desc: |-
+          The stair renovation experience was straightforward from start to finish. Communication was clear, the work was done on schedule, and there were no surprises. You can tell Max cares about doing things properly. The finished result speaks for itself, very clean, very sharp.
+
       - title: Lyn Litvack
         location: Markham
         stars: 5
         desc: |-
-          Max is the definition of a true professional — punctual, meticulous, and incredibly knowledgeable. Our staircase renovation is stunning, and his expert guidance made all the difference.
-
-      - title: Violet
-        location: Markham
-        stars: 5
-        desc: |-
-          Our staircase looks stunning. Like a luxury home upgrade.
-
-      - title: H. Archibald
-        location: Toronto
-        stars: 5
-        desc: |-
-          Incredible craftsmanship. Completely transformed the space.
+          Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase. The end result looks fantastic and fits the space perfectly. You can tell the work was done with care.
 
   - type: Faq
     title: Frequently asked questions
