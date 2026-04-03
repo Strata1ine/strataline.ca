@@ -23,21 +23,21 @@ sections:
       Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
     content:
       images:
-        - src: ./slideshow/kitchen-renovation-toronto-modern.jpg
+        - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
           alt: |-
-            Modern kitchen renovation in Toronto with custom finishes.
-        - src: ./slideshow/living-room-renovation-toronto.jpg
+            Open-riser staircase renovation in Toronto with custom railing and hardwood finishes.
+        - src: ./slideshow/popcorn-removal-toronto.jpg
           alt: |-
-            Living room renovation in Toronto with fireplace and refined detailing.
-        - src: ./slideshow/bathroom-renovation-toronto-marble.jpg
+            Dust-free popcorn ceiling removal in Toronto with a smooth modern finish.
+        - src: ./slideshow/interior-painting-woodbridge.jpg
           alt: |-
-            Marble bathroom renovation in Toronto with a bright luxury finish.
-        - src: ./slideshow/hardwood-floor-installation-toronto-herringbone.jpg
+            Interior painting project in Woodbridge with refined ceilings and clean modern finishes.
+        - src: ./slideshow/bathroom-renovation-toronto-modern-double-vanity.jpg
           alt: |-
-            Herringbone hardwood floor installation in Toronto.
-        - src: ./slideshow/staircase-renovation-toronto-hardwood-iron-railing.jpg
+            Modern bathroom renovation in Toronto with double vanity and bright clean finishes.
+        - src: ./slideshow/kitchen-renovation-toronto-white-cabinets.jpg
           alt: |-
-            Staircase renovation in Toronto with hardwood treads and iron railing.
+            Kitchen renovation in Toronto with white cabinets and a bright modern layout.
 
   - type: Popular
     title: Signature services
@@ -55,45 +55,45 @@ sections:
 
   - type: ImageCarousel
     content:
-      - src: ./slideshow/kitchen-renovation-toronto-modern.jpg
+      - src: ./project-gallery/kitchen-renovation-toronto-modern.jpg
         alt: Modern kitchen renovation in Toronto.
-      - src: ./slideshow/kitchen-renovation-toronto-dark-island.jpg
+      - src: ./project-gallery/kitchen-renovation-toronto-dark-island.jpg
         alt: Kitchen renovation in Toronto with dark island.
-      - src: ./slideshow/kitchen-renovation-toronto-white-marble.jpg
+      - src: ./project-gallery/kitchen-renovation-toronto-white-marble.jpg
         alt: White marble kitchen renovation in Toronto.
-      - src: ./slideshow/kitchen-renovation-toronto-white-cabinets.jpg
+      - src: ./project-gallery/kitchen-renovation-toronto-white-cabinets.jpg
         alt: Toronto kitchen renovation with white cabinets.
-      - src: ./slideshow/kitchen-renovation-toronto-featured-tv.jpg
+      - src: ./project-gallery/kitchen-renovation-toronto-featured-tv.jpg
         alt: Featured Toronto kitchen renovation.
-      - src: ./slideshow/interior-renovation-toronto-dining-room.jpg
+      - src: ./project-gallery/interior-renovation-toronto-dining-room.jpg
         alt: Dining room renovation in Toronto.
-      - src: ./slideshow/interior-renovation-toronto-feature-wall.jpg
+      - src: ./project-gallery/interior-renovation-toronto-feature-wall.jpg
         alt: Interior renovation in Toronto with feature wall.
-      - src: ./slideshow/living-room-renovation-toronto.jpg
+      - src: ./project-gallery/living-room-renovation-toronto.jpg
         alt: Living room renovation in Toronto.
-      - src: ./slideshow/living-room-renovation-toronto-modern.jpg
+      - src: ./project-gallery/living-room-renovation-toronto-modern.jpg
         alt: Modern living room renovation in Toronto.
-      - src: ./slideshow/bathroom-renovation-toronto-marble.jpg
+      - src: ./project-gallery/bathroom-renovation-toronto-marble.jpg
         alt: Marble bathroom renovation in Toronto.
-      - src: ./slideshow/bathroom-renovation-toronto-modern-double-vanity.jpg
+      - src: ./project-gallery/bathroom-renovation-toronto-modern-double-vanity.jpg
         alt: Bathroom renovation in Toronto with double vanity.
-      - src: ./slideshow/bathroom-renovation-toronto-modern-shower.jpg
+      - src: ./project-gallery/bathroom-renovation-toronto-modern-shower.jpg
         alt: Modern shower renovation in Toronto.
-      - src: ./slideshow/bathroom-vanity-renovation-toronto.jpg
+      - src: ./project-gallery/bathroom-vanity-renovation-toronto.jpg
         alt: Bathroom vanity renovation in Toronto.
-      - src: ./slideshow/hardwood-floor-installation-toronto-herringbone.jpg
+      - src: ./project-gallery/hardwood-floor-installation-toronto-herringbone.jpg
         alt: Herringbone hardwood floor installation in Toronto.
-      - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
+      - src: ./project-gallery/staircase-renovation-toronto-open-riser.jpg
         alt: Open riser staircase renovation in Toronto.
-      - src: ./slideshow/staircase-renovation-toronto-spiral-iron-railing.jpg
+      - src: ./project-gallery/staircase-renovation-toronto-spiral-iron-railing.jpg
         alt: Spiral staircase renovation in Toronto with iron railing.
-      - src: ./slideshow/staircase-renovation-toronto-hardwood-iron-railing.jpg
+      - src: ./project-gallery/staircase-renovation-toronto-hardwood-iron-railing.jpg
         alt: Hardwood staircase renovation in Toronto with iron railing.
-      - src: ./slideshow/staircase-renovation-toronto-open-concept.jpg
+      - src: ./project-gallery/staircase-renovation-toronto-open-concept.jpg
         alt: Open concept staircase renovation in Toronto.
-      - src: ./slideshow/staircase-renovation-toronto-modern-iron-railing.jpg
+      - src: ./project-gallery/staircase-renovation-toronto-modern-iron-railing.jpg
         alt: Modern iron railing staircase renovation in Toronto.
-      - src: ./slideshow/staircase-refinishing-mississauga-hardwood.jpg
+      - src: ./project-gallery/staircase-refinishing-mississauga-hardwood.jpg
         alt: Hardwood staircase refinishing in Mississauga.
 
   - type: Cardshow

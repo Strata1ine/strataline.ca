@@ -32,29 +32,29 @@ sections:
 
   - type: ImageCarousel
     content:
-      - src: ./photos/grand-staircase-renovation-toronto-curved-iron-railing.jpg
+      - src: ./staircase-renovation-gallery/grand-staircase-renovation-toronto-curved-iron-railing.jpg
         alt: Grand curved staircase renovation in Toronto with custom iron railing and hardwood treads by Strataline.
-      - src: ./photos/curved-staircase-refinishing-toronto-dark-treads-iron-railing.jpg
+      - src: ./staircase-renovation-gallery/curved-staircase-refinishing-toronto-dark-treads-iron-railing.jpg
         alt: Curved staircase refinishing in Toronto with dark treads and iron railing.
-      - src: ./photos/staircase-refinishing-vaughan-dark-treads-white-risers-modern.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-dark-treads-white-risers-modern.jpg
         alt: Staircase refinishing in Vaughan with dark treads, white risers, and modern finish.
-      - src: ./photos/staircase-refinishing-vaughan-white-risers-hardwood-treads.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-white-risers-hardwood-treads.jpg
         alt: Staircase refinishing in Vaughan with white risers and hardwood treads.
-      - src: ./photos/staircase-refinishing-vaughan-black-iron-balusters.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-black-iron-balusters.jpg
         alt: Staircase refinishing in Vaughan with black iron balusters.
-      - src: ./photos/staircase-refinishing-woodbridge-dark-wood-iron-balusters.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-woodbridge-dark-wood-iron-balusters.jpg
         alt: Staircase refinishing in Woodbridge with dark wood and iron balusters.
-      - src: ./photos/staircase-refinishing-woodbridge-dark-oak-curved.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-woodbridge-dark-oak-curved.jpg
         alt: Curved staircase refinishing in Woodbridge with dark oak finish.
-      - src: ./photos/staircase-refinishing-woodbridge-dark-wood-classic.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-woodbridge-dark-wood-classic.jpg
         alt: Classic dark wood staircase refinishing in Woodbridge.
-      - src: ./photos/staircase-refinishing-kleinburg-oak-modern.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-kleinburg-oak-modern.jpg
         alt: Modern oak staircase refinishing in Kleinburg.
-      - src: ./photos/staircase-refinishing-iron-railing-dark-treads-toronto.jpg
+      - src: ./staircase-renovation-gallery/staircase-refinishing-iron-railing-dark-treads-toronto.jpg
         alt: Staircase refinishing in Toronto with iron railing and dark treads.
-      - src: ./photos/staircase-renovation-featured-tv-modern-oak-toronto.jpg
+      - src: ./staircase-renovation-gallery/staircase-renovation-featured-tv-modern-oak-toronto.jpg
         alt: Modern oak staircase renovation in Toronto featured on TV.
-      - src: ./photos/staircase-renovation-aurora.jpg
+      - src: ./staircase-renovation-gallery/staircase-renovation-aurora.jpg
         alt: Staircase renovation in Aurora with custom railings and hardwood treads.
 
   - type: ZigZag
@@ -64,42 +64,42 @@ sections:
         desc: |-
           Sand, stain, and seal your existing hardwood stairs with a dust-free process that produces a smooth, durable finish. We strip old coatings down to bare wood, repair surface damage, and apply premium stains and polyurethane topcoats — custom matched to your floors. Most refinishing projects are completed in 3–5 days.
         image:
-          src: ./photos/staircase-refinishing-vaughan-wood-treads-iron-balusters.jpg
+          src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-wood-treads-iron-balusters.jpg
           alt: Staircase refinishing in Vaughan with wood treads and iron balusters.
 
       - title: Hardwood stair capping
         desc: |-
           Replace carpet or damaged treads with solid oak stair caps installed directly over your existing structure. No demolition required. Clean edges, tight fit, and a finish that matches your new or existing hardwood floors. A cost-effective way to get the look of a brand-new staircase.
         image:
-          src: ./photos/stair-tread-caps-installation-toronto-oak-modern.jpg
+          src: ./staircase-renovation-gallery/stair-tread-caps-installation-toronto-oak-modern.jpg
           alt: Hardwood stair tread cap installation in Toronto with oak and modern finish.
 
       - title: Custom railing installation
         desc: |-
           Upgrade to wrought iron, stainless steel, glass, or hardwood railing systems. We replace balusters, newel posts, and handrails — or install a complete custom railing from scratch. Iron and glass railings are consistently the highest-impact visual upgrade on any staircase.
         image:
-          src: ./photos/stair-railing-installation-vaughan-stainless-steel-modern.jpg
+          src: ./staircase-renovation-gallery/stair-railing-installation-vaughan-stainless-steel-modern.jpg
           alt: Custom stainless steel railing installation in Vaughan by Strataline.
 
       - title: Curved & open-riser staircases
         desc: |-
           We work on complex curved staircases, open-riser designs, and grand double-flight entries. If your staircase is a design feature, we treat it like one — with precision fitting, custom components, and finishes that complement the architecture.
         image:
-          src: ./photos/grand-staircase-renovation-toronto-curved-iron-railing.jpg
+          src: ./staircase-renovation-gallery/grand-staircase-renovation-toronto-curved-iron-railing.jpg
           alt: Grand curved staircase renovation in Toronto with iron railing by Strataline.
 
       - title: Custom stain matching
         desc: |-
           We mix stain on site to match your floors, trim, or millwork. Whether you're going lighter, darker, or matching an existing finish exactly, we test and confirm the colour before committing to the full staircase.
         image:
-          src: ./photos/staircase-renovation-stainless-steel-balusters-oak-treads.jpg
+          src: ./staircase-renovation-gallery/staircase-renovation-stainless-steel-balusters-oak-treads.jpg
           alt: Staircase renovation with custom stain-matched oak treads and stainless steel balusters.
 
       - title: Modern & classic finishes
         desc: |-
           From dark espresso with white risers and black iron spindles to natural oak with warm stain and wood railings — we've done them all. We help you choose a direction that works with your home's architecture, lighting, and existing floors.
         image:
-          src: ./photos/staircase-renovation-vaughan-oak-treads-modern.jpg
+          src: ./staircase-renovation-gallery/staircase-renovation-vaughan-oak-treads-modern.jpg
           alt: Modern staircase renovation in Vaughan with oak treads and updated finishes.
 
   - type: TextCarousel
@@ -119,28 +119,28 @@ sections:
         desc: |-
           We fix loose treads, squeaky risers, damaged stringers, and unstable posts before refinishing. Structural issues addressed first — cosmetic finish applied on top of a solid base.
         image:
-          src: ./photos/stair-railing-repair-richmond-hill-wood-iron.jpg
+          src: ./staircase-renovation-gallery/stair-railing-repair-richmond-hill-wood-iron.jpg
           alt: Stair railing repair in Richmond Hill with wood and iron components.
 
       - title: Full staircase restoration
         desc: |-
           Worn, damaged, or heavily used staircases restored to like-new condition. We strip, repair, and refinish all components — treads, risers, handrails, newel posts, and balusters — for a cohesive, premium result.
         image:
-          src: ./photos/staircase-restoration-vaughan-wrought-iron-hardwood.jpg
+          src: ./staircase-renovation-gallery/staircase-restoration-vaughan-wrought-iron-hardwood.jpg
           alt: Full staircase restoration in Vaughan with wrought iron railing and hardwood treads.
 
       - title: Surface damage repair
         desc: |-
           Deep scratches, dents, gouges, and worn finish areas repaired and blended before staining. The result looks uniform — no patching lines, no colour mismatches.
         image:
-          src: ./photos/restored-hardwood-stairs-dark-stain-black-iron-balusters.jpg
+          src: ./staircase-renovation-gallery/restored-hardwood-stairs-dark-stain-black-iron-balusters.jpg
           alt: Restored hardwood stairs with dark stain and black iron balusters.
 
       - title: Outdated staircase modernization
         desc: |-
           80s oak and brass? Carpeted treads with painted spindles? We update the look completely — new stain direction, new railing style, new risers — without rebuilding the structure.
         image:
-          src: ./photos/staircase-renovation-vaughan-modern-wood-black-railing.jpg
+          src: ./staircase-renovation-gallery/staircase-renovation-vaughan-modern-wood-black-railing.jpg
           alt: Modernized staircase renovation in Vaughan with dark wood finish and black railing.
 
   - type: Reviews
