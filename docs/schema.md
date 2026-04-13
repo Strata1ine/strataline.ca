@@ -522,7 +522,7 @@ Featured media cards (videos, articles, etc.).
         image:
           src: ./photos/awards/citytv.jpg
           alt: wasd
-        url: /videos/cityline.mp4
+        url: /videos/cityline-featuring-strataline-popcorn-removal.mp4
     - title: Featured in The Star
       desc: |-
         The Star's sensational report on our Dust-Free approach.
