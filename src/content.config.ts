@@ -32,6 +32,7 @@ export const collections = {
 				seo: z.string(),
 				image: image(c),
 				draft: z.boolean().optional(),
+				hidden: z.boolean().optional(),
 				sections: parseBlocks(c).optional(),
 			}),
 	}),
