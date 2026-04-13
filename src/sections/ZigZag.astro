@@ -12,8 +12,10 @@ export const schema = createSchema('ZigZag', (c: SchemaContext) =>
 		content: z.array(
 			z.object({
 				title: z.string(),
+				link: z.string().optional(),
 				desc: z.string(),
 				image: image(c),
+				videoSrc: z.string().optional(),
 			}),
 		),
 	}),
@@ -31,9 +33,26 @@ import * as Layout from '@/components/Layout';
 
 	<Layout.Container variant="outer" class="space-y-20 sm:space-y-35">
 		{
-			meta.content.map((zig, _) => {
+			meta.content.map((zig) => {
 				next = swapPos(next);
-				return <Layout.Card image={zig.image} title={zig.title} desc={zig.desc} pos={next} />;
+
+				const card = (
+					<Layout.Card
+						image={zig.image}
+						videoSrc={zig.videoSrc}
+						title={zig.title}
+						desc={zig.desc}
+						pos={next}
+					/>
+				);
+
+				return zig.link ? (
+					<a href={zig.link} class="group block cursor-pointer">
+						{card}
+					</a>
+				) : (
+					card
+				);
 			})
 		}
 	</Layout.Container>

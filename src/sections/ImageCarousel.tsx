@@ -33,7 +33,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 	};
 
 	const animate = (currentTime: number = 0) => {
-		const friction = 0.9;
+		const friction = 0.92;
 		const dt = currentTime - lastFrame;
 		lastFrame = currentTime;
 
@@ -65,7 +65,7 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 		<>
 			<div
 				ref={container}
-				class="flex h-120 cursor-grab touch-pan-y will-change-transform"
+				class="flex cursor-grab touch-pan-y will-change-transform"
 				onPointerDown={(e) => {
 					if (e.button !== 0) return;
 					reset();
@@ -105,19 +105,23 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 				role="region"
 				aria-label="Image carousel"
 			>
-				<For
-					each={[0, 1]}
-					children={() => (
+				<For each={[0, 1]}>
+					{() => (
 						<div class="flex flex-none">
-							<For
-								each={props.meta.content}
-								children={(image) => (
-									<Image widths={[400, 600, 800]} class="mx-3 w-90 max-w-svw" image={image} />
+							<For each={props.meta.content}>
+								{(image) => (
+									<div class="mx-3 aspect-square w-72 flex-none overflow-hidden rounded-md transition-transform duration-300 hover:scale-[1.02] md:w-80">
+										<Image
+											widths={[400, 600, 800]}
+											class="h-full w-full object-cover"
+											image={image}
+										/>
+									</div>
 								)}
-							/>
+							</For>
 						</div>
 					)}
-				/>
+				</For>
 			</div>
 
 			<div class="max-w-inner mt-9 flex justify-end gap-1 px-4 md:mx-auto">
@@ -126,15 +130,13 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 						reset();
 						lastFrame = performance.now();
 						currentVelocity = -(scrollMultiplier(container) * 40);
-						const id = requestAnimationFrame(animate);
-						setAnimationId(id);
+						setAnimationId(requestAnimationFrame(animate));
 					}}
 					aria-label="Scroll carousel left"
 					class="relative"
-					tabIndex={0}
 				>
-					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="size-20 cursor-pointer text-gray-100" />
+					<span class="absolute inset-4 z-[-1] rounded-full bg-black" />
+					<CaretCircleLeftFill class="size-20 text-gray-100" />
 				</button>
 
 				<button
@@ -142,15 +144,13 @@ export default function ImageCarousel(props: { meta: ImageCarouselMeta }) {
 						reset();
 						lastFrame = performance.now();
 						currentVelocity = scrollMultiplier(container) * 40;
-						const id = requestAnimationFrame(animate);
-						setAnimationId(id);
+						setAnimationId(requestAnimationFrame(animate));
 					}}
 					aria-label="Scroll carousel right"
 					class="relative"
-					tabIndex={0}
 				>
-					<span class="absolute inset-4 z-[-1] rounded-[50%] bg-black" />
-					<CaretCircleLeftFill class="size-20 rotate-180 cursor-pointer text-gray-100" />
+					<span class="absolute inset-4 z-[-1] rounded-full bg-black" />
+					<CaretCircleLeftFill class="size-20 rotate-180 text-gray-100" />
 				</button>
 			</div>
 		</>
