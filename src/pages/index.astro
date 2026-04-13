@@ -4,7 +4,7 @@ import { getEntry, getCollection } from '@/content.config';
 
 const data = (await getEntry('index', 'index')).data;
 const services = await getCollection('services');
-import { seo } from '@/pages/services/[slug].astro';
+import { seo } from '@/pages/services/[...slug].astro';
 ---
 
 <Root

@@ -1,0 +1,286 @@
+---
+type GalleryImageModule = {
+	default: {
+		src: string;
+		width: number;
+		height: number;
+		format?: string;
+	};
+};
+
+const imageModules = import.meta.glob<GalleryImageModule>(
+	'../../content/services/stairs/railing-installation/railing-installation-gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+	{ eager: true },
+);
+
+const priorityCities = [
+	'toronto',
+	'vaughan',
+	'richmond-hill',
+	'markham',
+	'oakville',
+	'mississauga',
+	'north-york',
+	'etobicoke',
+	'king-city',
+	'aurora',
+	'newmarket',
+];
+
+function getFileName(path: string) {
+	return path.split('/').pop() ?? path;
+}
+
+function cityRank(name: string) {
+	const index = priorityCities.findIndex((city) => name.includes(city));
+	return index === -1 ? 999 : index;
+}
+
+function niceAlt(fileName: string) {
+	return fileName
+		.replace(/\.[^.]+$/, '')
+		.replace(/^stair-railing-/, '')
+		.replace(/-\d+$/, '')
+		.replace(/-/g, ' ')
+		.replace(/\btoronto\b/g, 'Toronto')
+		.replace(/\bvaughan\b/g, 'Vaughan')
+		.replace(/\brichmond hill\b/g, 'Richmond Hill')
+		.replace(/\bmarkham\b/g, 'Markham')
+		.replace(/\boakville\b/g, 'Oakville')
+		.replace(/\bmississauga\b/g, 'Mississauga')
+		.replace(/\bnorth york\b/g, 'North York')
+		.replace(/\betobicoke\b/g, 'Etobicoke')
+		.replace(/\bking city\b/g, 'King City')
+		.replace(/\baurora\b/g, 'Aurora')
+		.replace(/\bnewmarket\b/g, 'Newmarket')
+		.replace(/\bblack balusters\b/g, 'black balusters')
+		.replace(/\bwood handrail\b/g, 'wood handrail')
+		.replace(/\bupper landing\b/g, 'upper landing')
+		.replace(/\bmodern\b/g, 'modern')
+		.replace(/\bcustom\b/g, 'custom')
+		.replace(/\s+/g, ' ')
+		.trim();
+}
+
+const images = Object.entries(imageModules)
+	.map(([path, mod]) => {
+		const fileName = getFileName(path);
+		return {
+			path,
+			fileName,
+			src: mod.default.src,
+			width: mod.default.width,
+			height: mod.default.height,
+			alt: `Stair railing installation ${niceAlt(fileName)}`,
+		};
+	})
+	.sort((a, b) => {
+		const cityDiff = cityRank(a.fileName) - cityRank(b.fileName);
+		if (cityDiff !== 0) return cityDiff;
+		return a.fileName.localeCompare(b.fileName);
+	});
+
+const heroImage = images.find((img) => img.fileName.includes('toronto-modern-10')) ?? images[0];
+const featured = images.slice(0, 8);
+const gallery = images.slice(8);
+---
+
+<section class="rail-gallery rail-gallery--hero">
+	<div class="rail-gallery__intro">
+		<p class="rail-gallery__eyebrow">Stair Railing Installation</p>
+		<h2>Modern stair railing upgrades across Toronto and the GTA</h2>
+		<p>
+			Real projects featuring black balusters, wood handrails, upper landing railings, and full
+			stair railing upgrades in finished homes.
+		</p>
+	</div>
+
+	{
+		heroImage && (
+			<figure class="rail-gallery__hero-card">
+				<img
+					src={heroImage.src}
+					alt={heroImage.alt}
+					width={heroImage.width}
+					height={heroImage.height}
+					loading="eager"
+				/>
+			</figure>
+		)
+	}
+</section>
+
+<section class="rail-gallery rail-gallery--featured">
+	<div class="rail-gallery__grid rail-gallery__grid--featured">
+		{
+			featured.map((image) => (
+				<figure class="rail-gallery__card">
+					<img
+						src={image.src}
+						alt={image.alt}
+						width={image.width}
+						height={image.height}
+						loading="lazy"
+					/>
+				</figure>
+			))
+		}
+	</div>
+</section>
+
+<section class="rail-gallery rail-gallery--full">
+	<div class="rail-gallery__head">
+		<h3>Project gallery</h3>
+		<p>Installed railings, upper landings, curved stairs, and modern black baluster upgrades.</p>
+	</div>
+
+	<div class="rail-gallery__grid rail-gallery__grid--full">
+		{
+			gallery.map((image) => (
+				<figure class="rail-gallery__card">
+					<img
+						src={image.src}
+						alt={image.alt}
+						width={image.width}
+						height={image.height}
+						loading="lazy"
+					/>
+				</figure>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.rail-gallery {
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	.rail-gallery--hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+		gap: 2rem;
+		align-items: center;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	.rail-gallery__intro h2 {
+		font-size: clamp(2rem, 4vw, 3.75rem);
+		line-height: 0.95;
+		margin: 0 0 1rem;
+	}
+
+	.rail-gallery__intro p {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin: 0;
+		max-width: 58ch;
+	}
+
+	.rail-gallery__eyebrow {
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		opacity: 0.7;
+		margin-bottom: 0.9rem !important;
+	}
+
+	.rail-gallery__hero-card,
+	.rail-gallery__card {
+		margin: 0;
+		overflow: hidden;
+		border-radius: 6px;
+		background: #f3f3f3;
+	}
+
+	.rail-gallery__hero-card img {
+		display: block;
+		width: 100%;
+		height: min(760px, 72vh);
+		object-fit: cover;
+		transition: transform 0.35s ease;
+	}
+
+	.rail-gallery__grid {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.rail-gallery__grid--featured {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		padding-bottom: 1rem;
+	}
+
+	.rail-gallery__grid--full {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		padding-top: 1rem;
+		padding-bottom: 3rem;
+	}
+
+	.rail-gallery__card img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		height: auto;
+		object-fit: cover;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.rail-gallery__hero-card:hover img,
+	.rail-gallery__card:hover img {
+		transform: scale(1.025);
+	}
+
+	.rail-gallery__head {
+		padding-top: 2.5rem;
+	}
+
+	.rail-gallery__head h3 {
+		font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+		margin: 0 0 0.65rem;
+	}
+
+	.rail-gallery__head p {
+		margin: 0;
+		font-size: 1.02rem;
+		line-height: 1.65;
+		max-width: 60ch;
+	}
+
+	@media (max-width: 1100px) {
+		.rail-gallery--hero {
+			grid-template-columns: 1fr;
+		}
+
+		.rail-gallery__grid--featured,
+		.rail-gallery__grid--full {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 780px) {
+		.rail-gallery__grid--featured,
+		.rail-gallery__grid--full {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.rail-gallery {
+			padding: 0 1rem;
+		}
+
+		.rail-gallery__hero-card img {
+			height: auto;
+			aspect-ratio: 4 / 5;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.rail-gallery__grid--featured,
+		.rail-gallery__grid--full {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
