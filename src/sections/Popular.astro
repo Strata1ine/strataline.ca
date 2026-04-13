@@ -4,23 +4,26 @@ import { type SchemaContext } from 'astro:content';
 import { z } from 'astro:schema';
 import { swapPos, DefaultPos } from '@/schemas';
 
-export const schema = createSchema('Popular', (_: SchemaContext) => z.object({
-	id: z.string().optional(),
-	pos: DefaultPos,
-	title: z.string(),
-}));
+export const schema = createSchema('Popular', (_: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string(),
+	}),
+);
 
 import { getEntry, getCollection } from '@/content.config';
 
 const index = await getEntry('index', 'index');
 const services = (await getCollection('services'))
+	.filter((service) => !service.data.hidden)
 	.filter((service) =>
 		index.data.popular.some((pattern: string) => service.id.split('/')[0].includes(pattern)),
 	)
 	.sort((a, b) => index.data.popular.indexOf(a.id) - index.data.popular.indexOf(b.id));
 
 export type Props = SchemaOf<typeof schema>;
-const meta = Astro.props;
+const meta = Astro.props as Props;
 let next = swapPos(meta.pos);
 
 import Actions from '@/components/Actions';
@@ -32,7 +35,7 @@ import * as Layout from '@/components/Layout';
 
 	<Layout.Container variant="outer" class="space-y-20 sm:space-y-35">
 		{
-			services.map((service, _) => {
+			services.map((service) => {
 				const slug = service.id.split('/')[0];
 				next = swapPos(next);
 
