@@ -1,5 +1,6 @@
 title: Dust-Free Renovation
-desc: Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
+desc: Dust-free renovations with precision craftsmanship across Vaughan, Toronto, and the GTA. Clean process, quality results, and high-end finishes for finished homes.
+
 popular:
   - popcorn-removal
   - stairs
@@ -9,18 +10,18 @@ sections:
     content:
       - id: popular
         name: Signature services
+      - id: accomplishments
+        name: As seen on TV
       - id: explore
         name: Our expertise
-      - id: accomplishments
-        name: Accomplishments
       - id: reviews
         name: Client reviews
 
   - type: Hero
     title: |-
-      Your dream home, delivered without stress
+      Clean renovation work, done properly
     desc: |-
-      Dust-free renovations with precision craftsmanship. Clean process, quality results, and good value across the GTA and beyond.
+      Dust-free renovations with precision craftsmanship across Vaughan, Toronto, and the GTA. We specialize in finished homes, controlled execution, and results that feel intentional from the first step to the final detail.
     content:
       images:
         - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
@@ -43,15 +44,66 @@ sections:
     title: Signature services
     id: popular
 
+  - type: TextCarousel
+    text:
+      - AS SEEN ON CITYTV
+      - FEATURED IN THE TORONTO STAR
+      - FEATURED IN HOUSE & HOME
+      - FEATURED ON HGTV
+
+  - type: ZigZag
+    id: accomplishments
+    title: As Seen on TV & Featured Across the GTA
+    content:
+      - title: Featured on CityTV
+        desc: |-
+          Scott McGillivray showcased our dust-free ceiling refinishing method on CityLine as a modern standard for renovation work in finished homes.
+
+          Trusted for clean, precise execution without the disruption of a traditional construction site.
+        image:
+          src: ./awards/strataline-cityline-tv-feature-popcorn-ceiling.jpg
+          alt: CityTV segment featuring Strataline's dust-free renovation process.
+        videoSrc: /videos/cityline-featuring-strataline-popcorn-removal.mp4
+
+      - title: Featured on HGTV
+        desc: |-
+          Selected for transformation work on a major renovation project, delivering clean execution and a complete visual upgrade.
+
+          Built to hold up over time, not just look good on reveal day.
+        image:
+          src: ./awards/strataline-hgtv-love-it-or-list-it.jpg
+          alt: HGTV Love It or List It renovation featuring Strataline.
+        videoSrc: /videos/love-it-or-list-it-featuring-strataline-dust-free-renovation.mp4
+
+      - title: Featured in The Toronto Star
+        desc: |-
+          Recognized for a dust-free approach focused on cleanliness, detail, and high-end execution across GTA homes.
+
+          Work that looks intentional, not patched or pieced together.
+        image:
+          src: ./awards/strataline-toronto-star-popcorn-ceiling-removal-article.jpg
+          alt: Toronto Star feature on Strataline's dust-free ceiling refinishing.
+        link: https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
+
+      - title: Featured in House & Home
+        desc: |-
+          Consulted for expert insight on premium hardwood installation and refined interior finishing.
+
+          Precision craftsmanship that fits seamlessly into high-end spaces.
+        image:
+          src: ./awards/strataline-house-and-home-chevron-hardwood-floors.webp
+          alt: Chevron hardwood flooring featured in House & Home.
+        link: https://houseandhome.com/gallery/luxe-for-less-design
+
   - type: Services
     id: explore
     content:
       text:
-        - Meticulous craftsmanship
-        - Disruption-free execution
         - Dust-free from start to finish
+        - Clean work in finished homes
+        - Meticulous craftsmanship
         - Architectural precision
-        - Expert results
+        - Long-lasting results
 
   - type: ImageCarousel
     content:
@@ -96,61 +148,6 @@ sections:
       - src: ./project-gallery/staircase-refinishing-mississauga-hardwood.jpg
         alt: Hardwood staircase refinishing in Mississauga.
 
-  - type: Cardshow
-    title: Our accomplishments
-    id: accomplishments
-    content:
-      - title: Featured on CityTV
-        desc: |-
-          Scott McGillivray showcased our dust-free ceiling refinishing method on CityLine as the gold standard for modern renovations.
-        media:
-          type: video
-          uploadDate: 2020-01-01
-          image:
-            src: ./awards/strataline-cityline-tv-feature-popcorn-ceiling.jpg
-            alt: CityTV segment featuring Strataline's dust-free process.
-          url: /videos/cityline.mp4
-
-      - title: Featured in The Star
-        desc: |-
-          The Star highlighted our dust-free approach for its cleanliness, precision, and luxury execution across GTA homes.
-        media:
-          type: image
-          image:
-            src: ./awards/strataline-toronto-star-popcorn-ceiling-removal-article.jpg
-            alt: |-
-              The Star feature showcasing Strataline's dust-free ceiling refinement process.
-        link:
-          name: Read the article
-          url: |
-            https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html
-
-      - title: Featured in House & Home
-        desc: |-
-          House & Home consulted Strataline for expert insight on luxury chevron hardwood installation and high-end interior refinement.
-        media:
-          type: image
-          image:
-            y: top
-            src: ./awards/strataline-house-and-home-chevron-hardwood-floors.webp
-            alt: |-
-              Premium interior with chevron hardwood and curated furnishings, featured in House & Home.
-        link:
-          name: Read the article
-          url: |
-            https://houseandhome.com/gallery/luxe-for-less-design
-
-      - title: Featured on HGTV's Love It or List It
-        desc: |-
-          A dated 1980s home transformed with Strataline's precision craftsmanship.
-        media:
-          type: yt-video
-          id: MqmEVTErkI0
-        link:
-          name: Tour the place
-          url: |
-            https://my.matterport.com/show/?m=S9RBB2SkPRT
-
   - type: Reviews
     title: What our clients are saying
     id: reviews
@@ -191,3 +188,43 @@ sections:
         stars: 5
         desc: |-
           Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase. The end result looks fantastic and fits the space perfectly. You can tell the work was done with care.
+
+  - type: TextCarousel
+    text:
+      - home renovation contractor Vaughan
+      - trusted renovation contractor Toronto
+      - dust-free renovation services
+      - clean renovation process
+      - finished home renovation specialists
+      - staircase renovation Vaughan
+      - stair refinishing contractor GTA
+      - stair tread caps installation
+      - stair railing installation Toronto
+      - no construction-site mess left behind
+      - results that actually match your home
+      - installed properly the first time
+      - built for long-term durability
+      - precise sanding and stain matching
+      - professional finish, not patchwork
+      - staircase refinishing Toronto
+      - convert carpeted stairs to wood
+      - stair railing Vaughan
+      - modern staircase upgrades
+      - popcorn ceiling removal contractor
+      - drywall repair and skim coating
+      - interior painting and finishing
+      - clean, controlled renovation process
+      - high-end home renovation services
+      - staircase transformation before after
+      - home renovation contractor Vaughan
+      - Woodbridge renovation contractor
+      - Richmond Hill renovation contractor
+      - Markham renovation contractor
+      - North York renovation contractor
+      - Etobicoke renovation contractor
+      - Mississauga renovation contractor
+      - Oakville renovation contractor
+      - Aurora renovation contractor
+      - King City renovation contractor
+      - Newmarket renovation contractor
+      - renovation contractor GTA
