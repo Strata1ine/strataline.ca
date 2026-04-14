@@ -41,12 +41,20 @@ type Props = {
 };
 
 const { title, intro, content = [] } = Astro.props as Props;
+
+const num = (n: number) => String(n).padStart(2, '0');
 ---
 
 <section class="before-after-section">
 	<div class="before-after-wrap">
-		{title && <h2 class="before-after-title">{title}</h2>}
-		{intro && <p class="before-after-intro">{intro}</p>}
+		{
+			title && (
+				<div class="before-after-header">
+					<h2 class="before-after-title">{title}</h2>
+					{intro && <p class="desc-base before-after-intro">{intro}</p>}
+				</div>
+			)
+		}
 
 		<div class="before-after-grid">
 			{
@@ -54,8 +62,14 @@ const { title, intro, content = [] } = Astro.props as Props;
 					return (
 						<article class="before-after-card">
 							<div class="before-after-copy">
-								<h3>{item.title}</h3>
-								{item.desc && <p>{item.desc}</p>}
+								<div class="before-after-kicker">
+									<div class="text-secondary heading-7xl before-after-num">{num(index + 1)}</div>
+									<h3 class="before-after-card-title font-serif text-3xl font-bold xl:text-4xl">
+										{item.title}
+									</h3>
+								</div>
+
+								{item.desc && <p class="desc-base before-after-card-desc">{item.desc}</p>}
 							</div>
 
 							<div class="ba-slider" data-ba-slider>
@@ -204,7 +218,6 @@ const { title, intro, content = [] } = Astro.props as Props;
 <style is:global>
 	.before-after-section {
 		padding: 4rem 0;
-		margin-top: 2rem;
 	}
 
 	.before-after-wrap {
@@ -212,58 +225,82 @@ const { title, intro, content = [] } = Astro.props as Props;
 		margin: 0 auto;
 	}
 
-	.before-after-title {
-		margin: 0 0 0.75rem;
+	.before-after-header {
+		margin: 0 auto 2.25rem;
+		max-width: 980px;
 		text-align: center;
+	}
+
+	.before-after-title {
+		margin: 0 0 0.85rem;
+		font-family: inherit;
 		font-size: clamp(2rem, 4vw, 3rem);
-		line-height: 1.1;
-		max-width: 900px;
-		margin-inline: auto;
+		font-weight: 700;
+		line-height: 1.08;
+		letter-spacing: -0.02em;
 	}
 
 	.before-after-intro {
-		max-width: 780px;
-		margin: 0 auto 2.25rem;
-		text-align: center;
-		font-size: 1.05rem;
-		line-height: 1.65;
-		color: rgba(17, 24, 39, 0.78);
+		margin: 0 auto;
+		max-width: 48rem;
+	}
+
+	.before-after-grid {
+		display: grid;
+		gap: 2.75rem;
+	}
+
+	.before-after-card {
+		border: 1px solid rgba(17, 24, 39, 0.08);
+		border-radius: 1.5rem;
+		overflow: hidden;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+		padding: 1.1rem;
 	}
 
 	.before-after-copy {
-		padding: 0 0 0.9rem;
+		margin: 0 auto 0.95rem;
+		max-width: 60rem;
 		text-align: center;
-		max-width: 900px;
-		margin: 0 auto;
 	}
 
-	.before-after-copy h3 {
-		margin: 0 0 0.35rem;
-		font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-		line-height: 1.25;
-		font-weight: 700;
-		color: #111827;
+	.before-after-kicker {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 0.35rem;
+		flex-wrap: wrap;
 	}
 
-	.before-after-copy p {
+	.before-after-num {
+		line-height: 0.9;
+	}
+
+	.before-after-card-title {
 		margin: 0;
-		font-size: 0.98rem;
-		line-height: 1.6;
-		color: rgba(17, 24, 39, 0.72);
+		line-height: 1.12;
+		letter-spacing: -0.02em;
+	}
+
+	.before-after-card-desc {
+		margin: 0 auto;
+		max-width: 42rem;
 	}
 
 	.ba-slider {
 		padding: 0;
-		margin-top: 1rem;
+		margin-top: 0.9rem;
 	}
 
 	.ba-stage {
 		position: relative;
 		width: 100%;
 		height: 0;
-		padding-bottom: 62%; /* ← slightly taller than 16:9, feels more “room” than widescreen */
+		padding-bottom: 62%;
 		overflow: hidden;
-		border-radius: 18px;
+		border-radius: 1.25rem;
 		background: #f3f4f6;
 		cursor: ew-resize;
 		touch-action: none;
@@ -285,9 +322,9 @@ const { title, intro, content = [] } = Astro.props as Props;
 		will-change: transform;
 	}
 
-	.ba-stage:hover .ba-handle,
-	.ba-stage:focus-within .ba-handle {
-		transform: translate(-50%, -50%) scale(1.06);
+	.ba-stage:hover .ba-image,
+	.ba-stage:focus-within .ba-image {
+		transform: scale(1.04);
 	}
 
 	.ba-overlay {
@@ -363,8 +400,8 @@ const { title, intro, content = [] } = Astro.props as Props;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 60px;
-		height: 60px;
+		width: 50px;
+		height: 50px;
 		border-radius: 999px;
 		background: #fff;
 		border: 1px solid rgba(0, 0, 0, 0.15);
@@ -372,6 +409,11 @@ const { title, intro, content = [] } = Astro.props as Props;
 		display: grid;
 		place-items: center;
 		transition: transform 120ms ease;
+	}
+
+	.ba-stage:hover .ba-handle,
+	.ba-stage:focus-within .ba-handle {
+		transform: translate(-50%, -50%) scale(1.06);
 	}
 
 	.ba-divider.is-dragging .ba-handle {
@@ -408,17 +450,26 @@ const { title, intro, content = [] } = Astro.props as Props;
 	}
 
 	@media (max-width: 640px) {
-		.ba-stage {
-			height: clamp(280px, 75vw, 420px);
+		.before-after-card {
+			padding: 0.9rem;
 		}
 
-		.before-after-copy {
-			padding: 0 0 0.5rem;
+		.before-after-kicker {
+			gap: 0.65rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.before-after-card-title {
+			font-size: 1.55rem;
+		}
+
+		.ba-stage {
+			padding-bottom: 75%;
 		}
 
 		.ba-handle {
-			width: 50px;
-			height: 50px;
+			width: 44px;
+			height: 44px;
 		}
 	}
 </style>
