@@ -1,0 +1,424 @@
+---
+import { createSchema } from 'astro-frontmatter-cms';
+import { z } from 'astro:schema';
+import type { SchemaContext } from 'astro:content';
+
+export const schema = createSchema('BeforeAfter', (c: SchemaContext) =>
+	z.object({
+		title: z.string().optional(),
+		intro: z.string().optional(),
+		content: z
+			.array(
+				z.object({
+					title: z.string(),
+					desc: z.string().optional(),
+					before: c.image(),
+					after: c.image(),
+				}),
+			)
+			.default([]),
+	}),
+);
+
+type ImageRef = {
+	src: string;
+	width?: number;
+	height?: number;
+	format?: string;
+};
+
+type Item = {
+	title: string;
+	desc?: string;
+	before: ImageRef;
+	after: ImageRef;
+};
+
+type Props = {
+	title?: string;
+	intro?: string;
+	content?: Item[];
+};
+
+const { title, intro, content = [] } = Astro.props as Props;
+---
+
+<section class="before-after-section">
+	<div class="before-after-wrap">
+		{title && <h2 class="before-after-title">{title}</h2>}
+		{intro && <p class="before-after-intro">{intro}</p>}
+
+		<div class="before-after-grid">
+			{
+				content.map((item, index) => {
+					return (
+						<article class="before-after-card">
+							<div class="before-after-copy">
+								<h3>{item.title}</h3>
+								{item.desc && <p>{item.desc}</p>}
+							</div>
+
+							<div class="ba-slider" data-ba-slider>
+								<div
+									class="ba-stage"
+									data-stage
+									role="group"
+									aria-label={`Before and after comparison for ${item.title}`}
+								>
+									<img
+										class="ba-image ba-image--before"
+										src={item.before.src}
+										alt={`${item.title} before`}
+										loading="lazy"
+										draggable="false"
+									/>
+
+									<div class="ba-overlay" data-overlay style="clip-path: inset(0 0 0 50%);">
+										<img
+											class="ba-image ba-image--after"
+											src={item.after.src}
+											alt={`${item.title} after`}
+											loading="lazy"
+											draggable="false"
+										/>
+									</div>
+
+									<div class="ba-label ba-label--left">Before</div>
+									<div class="ba-label ba-label--right">After</div>
+
+									<div
+										class="ba-divider"
+										data-divider
+										style="left: 50%;"
+										role="slider"
+										tabindex="0"
+										aria-label={`Drag to compare before and after for ${item.title}`}
+										aria-valuemin="0"
+										aria-valuemax="100"
+										aria-valuenow="50"
+									>
+										<div class="ba-handle">
+											<span />
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	const sliders = document.querySelectorAll('[data-ba-slider]');
+
+	for (const slider of sliders) {
+		const stage = slider.querySelector('[data-stage]');
+		const overlay = slider.querySelector('[data-overlay]');
+		const divider = slider.querySelector('[data-divider]');
+
+		if (
+			!(stage instanceof HTMLElement) ||
+			!(overlay instanceof HTMLElement) ||
+			!(divider instanceof HTMLElement)
+		) {
+			continue;
+		}
+
+		let isDragging = false;
+		let value = 50;
+
+		const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+		const setValue = (nextValue) => {
+			value = clamp(Number(nextValue), 0, 100);
+			const percent = `${value}%`;
+
+			overlay.style.clipPath = `inset(0 0 0 ${percent})`;
+			divider.style.left = percent;
+			divider.setAttribute('aria-valuenow', String(value));
+		};
+
+		const setValueFromPointer = (clientX) => {
+			const rect = stage.getBoundingClientRect();
+			const x = clamp(clientX - rect.left, 0, rect.width);
+			const nextValue = Math.round((x / rect.width) * 100);
+			setValue(nextValue);
+		};
+
+		const onPointerMove = (event) => {
+			if (!isDragging) return;
+			setValueFromPointer(event.clientX);
+		};
+
+		const stopDragging = () => {
+			isDragging = false;
+			divider.classList.remove('is-dragging');
+		};
+
+		const startDragging = (event) => {
+			isDragging = true;
+			divider.classList.add('is-dragging');
+			setValueFromPointer(event.clientX);
+		};
+
+		stage.addEventListener('pointerdown', (event) => {
+			event.preventDefault();
+			startDragging(event);
+			stage.setPointerCapture?.(event.pointerId);
+		});
+
+		divider.addEventListener('pointerdown', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			startDragging(event);
+			divider.setPointerCapture?.(event.pointerId);
+		});
+
+		window.addEventListener('pointermove', onPointerMove);
+		window.addEventListener('pointerup', stopDragging);
+		window.addEventListener('pointercancel', stopDragging);
+
+		divider.addEventListener('keydown', (event) => {
+			if (event.key === 'ArrowLeft') {
+				event.preventDefault();
+				setValue(value - 2);
+			} else if (event.key === 'ArrowRight') {
+				event.preventDefault();
+				setValue(value + 2);
+			} else if (event.key === 'Home') {
+				event.preventDefault();
+				setValue(0);
+			} else if (event.key === 'End') {
+				event.preventDefault();
+				setValue(100);
+			}
+		});
+
+		setValue(value);
+	}
+</script>
+
+<style is:global>
+	.before-after-section {
+		padding: 4rem 0;
+		margin-top: 2rem;
+	}
+
+	.before-after-wrap {
+		width: min(1200px, calc(100% - 2rem));
+		margin: 0 auto;
+	}
+
+	.before-after-title {
+		margin: 0 0 0.75rem;
+		text-align: center;
+		font-size: clamp(2rem, 4vw, 3rem);
+		line-height: 1.1;
+		max-width: 900px;
+		margin-inline: auto;
+	}
+
+	.before-after-intro {
+		max-width: 780px;
+		margin: 0 auto 2.25rem;
+		text-align: center;
+		font-size: 1.05rem;
+		line-height: 1.65;
+		color: rgba(17, 24, 39, 0.78);
+	}
+
+	.before-after-copy {
+		padding: 0 0 0.9rem;
+		text-align: center;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.before-after-copy h3 {
+		margin: 0 0 0.35rem;
+		font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+		line-height: 1.25;
+		font-weight: 700;
+		color: #111827;
+	}
+
+	.before-after-copy p {
+		margin: 0;
+		font-size: 0.98rem;
+		line-height: 1.6;
+		color: rgba(17, 24, 39, 0.72);
+	}
+
+	.ba-slider {
+		padding: 0;
+		margin-top: 1rem;
+	}
+
+	.ba-stage {
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding-bottom: 62%; /* ← slightly taller than 16:9, feels more “room” than widescreen */
+		overflow: hidden;
+		border-radius: 18px;
+		background: #f3f4f6;
+		cursor: ew-resize;
+		touch-action: none;
+	}
+
+	.ba-image {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+		max-width: none !important;
+		object-fit: cover;
+		display: block;
+		pointer-events: none;
+		transform: scale(1);
+		transform-origin: center center;
+		transition: transform 260ms ease;
+		will-change: transform;
+	}
+
+	.ba-stage:hover .ba-handle,
+	.ba-stage:focus-within .ba-handle {
+		transform: translate(-50%, -50%) scale(1.06);
+	}
+
+	.ba-overlay {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.ba-overlay .ba-image {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+		max-width: none !important;
+		object-fit: cover;
+	}
+
+	.ba-overlay::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to right, transparent 60%, rgba(0, 0, 0, 0.18));
+		pointer-events: none;
+	}
+
+	.ba-label {
+		position: absolute;
+		top: 0.8rem;
+		z-index: 3;
+		padding: 0.38rem 0.72rem;
+		border-radius: 999px;
+		font-size: 0.78rem;
+		font-weight: 700;
+		background: rgba(31, 41, 55, 0.92);
+		color: #fff;
+		pointer-events: none;
+	}
+
+	.ba-label--left {
+		left: 1.2rem;
+	}
+
+	.ba-label--right {
+		right: 1.2rem;
+	}
+
+	.ba-divider {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 0;
+		transform: translateX(-1px);
+		z-index: 5;
+		pointer-events: all;
+		cursor: ew-resize;
+	}
+
+	.ba-divider::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -1px;
+		width: 2px;
+		background: #fff;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+	}
+
+	.ba-handle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 60px;
+		height: 60px;
+		border-radius: 999px;
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+		display: grid;
+		place-items: center;
+		transition: transform 120ms ease;
+	}
+
+	.ba-divider.is-dragging .ba-handle {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	.ba-handle span {
+		position: relative;
+		display: block;
+		width: 14px;
+		height: 14px;
+	}
+
+	.ba-handle span::before,
+	.ba-handle span::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		width: 0;
+		height: 0;
+		transform: translateY(-50%);
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+	}
+
+	.ba-handle span::before {
+		left: -2px;
+		border-right: 6px solid #111;
+	}
+
+	.ba-handle span::after {
+		right: -2px;
+		border-left: 6px solid #111;
+	}
+
+	@media (max-width: 640px) {
+		.ba-stage {
+			height: clamp(280px, 75vw, 420px);
+		}
+
+		.before-after-copy {
+			padding: 0 0 0.5rem;
+		}
+
+		.ba-handle {
+			width: 50px;
+			height: 50px;
+		}
+	}
+</style>
