@@ -6,7 +6,8 @@
 		"dev": "astro dev --host",
 		"build": "astro build",
 		"preview": "astro preview --host",
-		"astro": "astro"
+		"astro": "astro",
+		"generate:wallpaper": "node generate-wallpaper-pages.mjs"
 	},
 	"dependencies": {
 		"@astrojs/netlify": "^6.6.4",
