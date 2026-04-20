@@ -34,9 +34,25 @@ if (meta.exclude == undefined) {
 	exclude = meta.exclude;
 }
 
-const services = (await getCollection('services')).filter(
-	(service) => !exclude.some((pattern: string) => service.id.includes(pattern)),
-);
+function normalizeServiceId(id: string) {
+	return id.replace(/\/index$/, '').replace(/^\/+|\/+$/g, '');
+}
+
+function isRootService(id: string) {
+	const normalized = normalizeServiceId(id);
+	return normalized.split('/').length === 1;
+}
+
+function isExcluded(id: string, excludeList: string[]) {
+	const normalized = normalizeServiceId(id);
+	return excludeList.some((pattern) => normalizeServiceId(pattern) === normalized);
+}
+
+const allServices = await getCollection('services');
+
+const services = allServices
+	.filter((service) => isRootService(service.id))
+	.filter((service) => !isExcluded(service.id, exclude));
 
 import { Icon } from 'astro-icon/components';
 import { Image } from '@/components/Image';
@@ -48,16 +64,14 @@ import Island from './TextCarousel';
 <Layout.Divider id={meta.id}>
 	<div class="bg-primary py-12 md:py-22">
 		<Layout.Split pos={meta.pos}>
-			{/* TITLE */}
 			<h2 slot="title" class="heading-5xl top-0 sm:sticky">
 				{meta.title}
 			</h2>
 
-			{/* CARDS */}
 			<div class="flex-2 space-y-6 md:space-y-10 xl:gap-10">
 				{
 					services.map((service) => {
-						const slug = service.id.replace(/\/index$/, '');
+						const slug = normalizeServiceId(service.id);
 						const href = `/services/${slug}`;
 						const cardId = slug.replaceAll('/', '-');
 
@@ -69,7 +83,6 @@ import Island from './TextCarousel';
 								tabindex="0"
 								draggable={false}
 							>
-								{/* IMAGE */}
 								<div class="relative overflow-hidden rounded-xl">
 									<Image
 										class="aspect-[16/10] w-full transition-transform duration-500 group-hover:scale-105"
@@ -81,7 +94,6 @@ import Island from './TextCarousel';
 									<div class="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent opacity-80" />
 								</div>
 
-								{/* CONTENT */}
 								<div class="flex min-w-0 flex-col justify-center gap-4 px-1 py-1 md:px-2">
 									<div class="space-y-2">
 										<h3 class="text-2xl leading-tight text-balance underline-offset-4 group-hover:underline sm:text-2xl xl:text-3xl">
@@ -95,7 +107,6 @@ import Island from './TextCarousel';
 										)}
 									</div>
 
-									{/* CTA */}
 									<div class="flex items-center gap-3 pt-2">
 										<span class="inline-flex items-center rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-black/80 transition-all duration-200 group-hover:bg-black group-hover:text-white">
 											View service
