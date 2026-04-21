@@ -31,6 +31,7 @@ export const collections = {
 				desc: z.string(),
 				seo: z.string(),
 				image: image(c),
+				position: z.coerce.number().optional(),
 				draft: z.boolean().optional(),
 				hidden: z.boolean().optional(),
 				sections: parseBlocks(c).optional(),
