@@ -52,7 +52,9 @@ const allServices = await getCollection('services');
 
 const services = allServices
 	.filter((service) => isRootService(service.id))
-	.filter((service) => !isExcluded(service.id, exclude));
+	.filter((service) => !isExcluded(service.id, exclude))
+	.filter((service) => service.data.hidden !== true)
+	.sort((a, b) => (a.data.position ?? 999) - (b.data.position ?? 999));
 
 import { Icon } from 'astro-icon/components';
 import { Image } from '@/components/Image';
