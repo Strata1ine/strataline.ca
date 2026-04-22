@@ -1,0 +1,125 @@
+---
+import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
+
+import * as Layout from '@/components/Layout';
+import Actions from '@/components/Actions';
+import { getCollection } from '@/content.config';
+
+export const schema = createSchema('ServiceAreas', (_c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		title: z.string(),
+		service: z.string(),
+	}),
+);
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props as Props;
+
+// Example:
+// /services/wallpaper/toronto/ -> ['services', 'wallpaper', 'toronto']
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const currentService = segments[1] ?? '';
+const currentArea = segments[2] ?? '';
+const currentId = currentArea ? `${currentService}/${currentArea}` : currentService;
+
+const allPages = await getCollection('services');
+
+const toLabel = (id: string) => {
+	const parts = id.split('/');
+	const area = parts[1] ?? parts[0] ?? '';
+
+	return area
+		.replace(/[_-]/g, ' ')
+		.replace(/\b\w/g, (m) => m.toUpperCase());
+};
+
+const areaOrder = [
+	'toronto',
+	'vaughan',
+	'richmond-hill',
+	'markham',
+	'aurora',
+	'king_city',
+	'kleinburg',
+	'stouffville',
+	'woodbridge',
+];
+
+const hubPage = allPages.find((entry) => entry.id === meta.service);
+
+const areaPages = allPages
+	.filter((entry) => entry.id.startsWith(`${meta.service}/`))
+	.filter((entry) => entry.id !== currentId)
+	.sort((a, b) => {
+		const aArea = a.id.split('/')[1] ?? '';
+		const bArea = b.id.split('/')[1] ?? '';
+
+		const aIndex = areaOrder.indexOf(aArea);
+		const bIndex = areaOrder.indexOf(bArea);
+
+		const aRank = aIndex === -1 ? 999 : aIndex;
+		const bRank = bIndex === -1 ? 999 : bIndex;
+
+		if (aRank !== bRank) return aRank - bRank;
+		return a.data.title.localeCompare(b.data.title);
+	});
+---
+
+<Layout.Divider id={meta.id}>
+	<Layout.Title title={meta.title} pos="left" />
+
+	<Layout.Container variant="inner">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				hubPage && hubPage.id !== currentId && (
+					<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+						<h3 class="mb-2 font-serif text-2xl font-semibold">
+							Toronto & GTA Wallpaper Hub
+						</h3>
+
+						<p class="desc-base mb-4">
+							See our full wallpaper installation coverage across Toronto and the GTA, including
+							feature walls, murals, bedrooms, bathrooms, and full-room applications.
+						</p>
+
+						<Actions.Link
+							href={`/services/${hubPage.id}/`}
+							rel="noopener noreferrer"
+							data-astro-prefetch=""
+						>
+							View all wallpaper service areas
+						</Actions.Link>
+					</div>
+				)
+			}
+
+			{
+				areaPages.map((page) => {
+					const label = toLabel(page.id);
+
+					return (
+						<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+							<h3 class="mb-2 font-serif text-2xl font-semibold">{label}</h3>
+
+							<p class="desc-base mb-4">
+								See wallpaper installation services in {label}, including feature walls,
+								murals, bedrooms, bathrooms, and full-room applications.
+							</p>
+
+							<Actions.Link
+								href={`/services/${page.id}/`}
+								rel="noopener noreferrer"
+								data-astro-prefetch=""
+							>
+								Wallpaper installation in {label}
+							</Actions.Link>
+						</div>
+					);
+				})
+			}
+		</div>
+	</Layout.Container>
+</Layout.Divider>
