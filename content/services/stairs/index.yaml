@@ -64,7 +64,6 @@ sections:
         link: /services/stairs/refinishing
         desc: |-
           Sand, stain, and seal your existing hardwood stairs with a dust-free process that produces a smooth, durable finish. We strip old coatings down to bare wood, repair surface damage, and apply premium stains and polyurethane topcoats — custom matched to your floors. Most refinishing projects are completed in 3–5 days.
-
         image:
           src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-wood-treads-iron-balusters.jpg
           alt: Staircase refinishing in Vaughan with wood treads and iron balusters.
@@ -240,6 +239,428 @@ sections:
       - title: What railing options are available?
         desc: |-
           We install wrought iron, stainless steel, glass, and wood railing systems. We can replace just the balusters, just the handrail, or do a complete railing replacement including newel posts. Iron and glass are the most requested upgrades right now.
+
+  - type: ZigZag
+    title: Staircase renovation projects by city
+    content:
+      - title: Staircase renovation Ajax
+        desc: |-
+          Real staircase refinishing and black baluster upgrades completed in Ajax.
+        image:
+          src: ./photos/ajax/ajax-staircase-after-dark-hardwood-treads-white-risers.jpg
+          alt: Staircase renovation Ajax
+        link: /services/stairs/ajax
+
+      - title: Staircase renovation Aurora
+        desc: |-
+          Curved staircase refinishing and luxury HGTV-featured staircase projects in Aurora.
+        image:
+          src: ./photos/aurora/aurora-hgtv-staircase-open-concept-luxury-home-01.jpg
+          alt: Staircase renovation Aurora
+        link: /services/stairs/aurora
+
+      - title: Staircase renovation Bolton
+        desc: |-
+          Curved staircase refinishing and railing upgrades completed in Bolton.
+        image:
+          src: ./photos/bolton/bolton-curved-staircase-refinishing-white-risers-dark-treads.jpg
+          alt: Staircase renovation Bolton
+        link: /services/stairs/bolton
+
+      - title: Staircase renovation Bradford
+        desc: |-
+          Before-and-after staircase transformations and railing upgrades in Bradford.
+        image:
+          src: ./photos/bradford/bradford-staircase-after-full-run-modern-finish.jpg
+          alt: Staircase renovation Bradford
+        link: /services/stairs/bradford
+
+      - title: Staircase renovation Burlington
+        desc: |-
+          Curved staircase refinishing and open-concept stair projects in Burlington.
+        image:
+          src: ./photos/burlington/burlington-curved-staircase-full-view-luxury-entry.jpg
+          alt: Staircase renovation Burlington
+        link: /services/stairs/burlington
+
+      - title: Staircase renovation Caledon
+        desc: |-
+          Straight-run staircase refinishing and black baluster upgrades in Caledon.
+        image:
+          src: ./photos/caledon/caledon-staircase-refinishing-modern-upgrade-main.jpg
+          alt: Staircase renovation Caledon
+        link: /services/stairs/caledon
+
+      - title: Staircase renovation Etobicoke
+        desc: |-
+          Builder-grade to modern staircase transformations completed in Etobicoke.
+        image:
+          src: ./photos/etobicoke/etobicoke-staircase-complete-transformation-after.jpg
+          alt: Staircase renovation Etobicoke
+        link: /services/stairs/etobicoke
+
+      - title: Staircase renovation Forest Hill
+        desc: |-
+          High-end curved staircase refinishing and luxury foyer upgrades in Forest Hill.
+        image:
+          src: ./photos/forest-hill/forest-hill-curved-staircase-open-foyer-luxury-overview.jpg
+          alt: Staircase renovation Forest Hill
+        link: /services/stairs/forest-hill
+
+      - title: Staircase renovation Innisfil
+        desc: |-
+          Clean modern staircase refinishing and railing work in Innisfil.
+        image:
+          src: ./photos/innisfil/innisfil-staircase-overview-dark-treads-white-risers.jpg
+          alt: Staircase renovation Innisfil
+        link: /services/stairs/innisfil
+
+      - title: Staircase renovation King City
+        desc: |-
+          Premium curved staircase refinishing and open-concept stair upgrades in King City.
+        image:
+          src: ./photos/king-city/king-city-curved-staircase-open-concept-modern-overview.jpg
+          alt: Staircase renovation King City
+        link: /services/stairs/king-city
+
+      - title: Staircase renovation Kleinburg
+        desc: |-
+          Builder-grade to modern staircase transformations completed in Kleinburg.
+        image:
+          src: ./photos/kleinburg/kleinburg-staircase-complete-modern-transformation.jpg
+          alt: Staircase renovation Kleinburg
+        link: /services/stairs/kleinburg
+
+      - title: Staircase renovation Leaside / Sunnybrook
+        desc: |-
+          Heritage and institutional stair restoration work including Sunnybrook Hospital projects.
+        image:
+          src: ./photos/leaside/sunnybrook-hospital-heritage-staircase-restoration-overview.jpg
+          alt: Staircase renovation Leaside
+        link: /services/stairs/leaside
+
+      - title: Staircase renovation Markham
+        desc: |-
+          Curved staircase refinishing, open-concept railings, and modern stair upgrades in Markham.
+        image:
+          src: ./photos/markham/markham-curved-staircase-full-run-modern.jpg
+          alt: Staircase renovation Markham
+        link: /services/stairs/markham
+
+      - title: Staircase renovation Mississauga
+        desc: |-
+          Carpet-to-hardwood staircase conversions and modern railing upgrades in Mississauga.
+        image:
+          src: ./photos/mississauga/mississauga-staircase-complete-transformation-after.jpg
+          alt: Staircase renovation Mississauga
+        link: /services/stairs/mississauga
+
+      - title: Staircase renovation Newmarket
+        desc: |-
+          Curved staircase refinishing and oak tread upgrades in Newmarket.
+        image:
+          src: ./photos/newmarket/newmarket-curved-staircase-top-view-hardwood-treads.jpg
+          alt: Staircase renovation Newmarket
+        link: /services/stairs/newmarket
+
+      - title: Staircase renovation Oakville
+        desc: |-
+          High-end open-concept staircase refinishing and luxury stair upgrades in Oakville.
+        image:
+          src: ./photos/oakville/oakville-open-concept-staircase-double-height-design.jpg
+          alt: Staircase renovation Oakville
+        link: /services/stairs/oakville
+
+      - title: Staircase renovation Oshawa
+        desc: |-
+          Builder-grade to modern staircase upgrades and light oak finishes in Oshawa.
+        image:
+          src: ./photos/oshawa/oshawa-staircase-full-run-after-modern-upgrade.jpg
+          alt: Staircase renovation Oshawa
+        link: /services/stairs/oshawa
+
+      - title: Staircase renovation Pickering
+        desc: |-
+          Full-process staircase renovation projects and curved stair upgrades in Pickering.
+        image:
+          src: ./photos/pickering/pickering-staircase-full-run-modern-upgrade.jpg
+          alt: Staircase renovation Pickering
+        link: /services/stairs/pickering
+
+      - title: Staircase renovation Richmond Hill
+        desc: |-
+          Modern black-and-white staircase renovations and curved stair upgrades in Richmond Hill.
+        image:
+          src: ./photos/richmond-hill/staircase-after-modern-black-white-design.jpg
+          alt: Staircase renovation Richmond Hill
+        link: /services/stairs/richmond-hill
+
+      - title: Staircase renovation Rosedale
+        desc: |-
+          Premium staircase refinishing and handrail craftsmanship in Rosedale.
+        image:
+          src: ./photos/rosedale/rosedale-staircase-main-view-luxury-home.jpg
+          alt: Staircase renovation Rosedale
+        link: /services/stairs/rosedale
+
+      - title: Staircase renovation Stouffville
+        desc: |-
+          Curved staircase refinishing and modern hardwood stair upgrades in Stouffville.
+        image:
+          src: ./photos/stouffville/stouffville-curved-staircase-full-run-modern.jpg
+          alt: Staircase renovation Stouffville
+        link: /services/stairs/stouffville
+
+      - title: Staircase renovation The Beaches
+        desc: |-
+          Compact-home staircase upgrades and modern railing work in The Beaches.
+        image:
+          src: ./photos/the-beaches/beaches-toronto-staircase-full-view-compact-home.jpg
+          alt: Staircase renovation The Beaches
+        link: /services/stairs/the-beaches
+
+      - title: Staircase renovation Toronto
+        desc: |-
+          Luxury curved staircase renovations and custom railing work in Toronto.
+        image:
+          src: ./photos/toronto/toronto-curved-staircase-main-run-luxury.jpg
+          alt: Staircase renovation Toronto
+        link: /services/stairs/toronto
+
+      - title: Staircase renovation Vaughan
+        desc: |-
+          Modern staircase refinishing, tread upgrades, and black baluster installs in Vaughan.
+        image:
+          src: ./photos/vaughan/vaughan-curved-staircase-full-view-traditional-modern-upgrade.jpg
+          alt: Staircase renovation Vaughan
+        link: /services/stairs/vaughan
+
+      - title: Staircase renovation Whitby
+        desc: |-
+          Before-and-after staircase upgrades and carpet-to-hardwood transformations in Whitby.
+        image:
+          src: ./photos/whitby/whitby-staircase-after-hardwood-light-oak-upgrade.jpg
+          alt: Staircase renovation Whitby
+        link: /services/stairs/whitby
+
+      - title: Staircase renovation Woodbridge
+        desc: |-
+          Modern staircase refinishing and black spindle upgrades in Woodbridge.
+        image:
+          src: ./photos/woodbridge/project-2/woodbridge-staircase-modern-dark-treads-white-risers-full-view.jpg
+          alt: Staircase renovation Woodbridge
+        link: /services/stairs/woodbridge
+
+  - type: ZigZag
+    title: Stair railing installation projects by city
+    content:
+      - title: Stair railing installation Ajax
+        desc: |-
+          Real stair railing upgrades and baluster installations completed in Ajax.
+        image:
+          src: ./photos/ajax/ajax-staircase-black-iron-balusters-installation-01.jpg
+          alt: Stair railing installation Ajax
+        link: /services/stairs/ajax
+
+      - title: Stair railing installation Aurora
+        desc: |-
+          Curved staircase railing upgrades and luxury stair projects completed in Aurora.
+        image:
+          src: ./photos/aurora/aurora-curved-staircase-open-concept-modern-after.jpg
+          alt: Stair railing installation Aurora
+        link: /services/stairs/aurora
+
+      - title: Stair railing installation Bolton
+        desc: |-
+          Stair railing upgrades and curved stair refinishing completed in Bolton.
+        image:
+          src: ./photos/bolton/bolton-staircase-modern-dark-wood-railing-installation.jpg
+          alt: Stair railing installation Bolton
+        link: /services/stairs/bolton
+
+      - title: Stair railing installation Bradford
+        desc: |-
+          Black baluster upgrades and staircase railing modernization in Bradford.
+        image:
+          src: ./photos/bradford/bradford-staircase-railing-upgrade-black-balusters.jpg
+          alt: Stair railing installation Bradford
+        link: /services/stairs/bradford
+
+      - title: Stair railing installation Burlington
+        desc: |-
+          Open-concept stair railing upgrades and modern staircase projects in Burlington.
+        image:
+          src: ./photos/burlington/burlington-open-concept-staircase-railing-overview.jpg
+          alt: Stair railing installation Burlington
+        link: /services/stairs/burlington
+
+      - title: Stair railing installation Caledon
+        desc: |-
+          Black baluster and modern railing upgrades completed in Caledon.
+        image:
+          src: ./photos/caledon/caledon-staircase-railing-profile-black-iron.jpg
+          alt: Stair railing installation Caledon
+        link: /services/stairs/caledon
+
+      - title: Stair railing installation Etobicoke
+        desc: |-
+          Builder-grade to modern stair railing transformations in Etobicoke.
+        image:
+          src: ./photos/etobicoke/etobicoke-staircase-railing-modern-black-iron.jpg
+          alt: Stair railing installation Etobicoke
+        link: /services/stairs/etobicoke
+
+      - title: Stair railing installation Forest Hill
+        desc: |-
+          High-end curved stair railing and luxury foyer projects in Forest Hill.
+        image:
+          src: ./photos/forest-hill/forest-hill-curved-staircase-modern-black-balusters.jpg
+          alt: Stair railing installation Forest Hill
+        link: /services/stairs/forest-hill
+
+      - title: Stair railing installation Innisfil
+        desc: |-
+          Clean modern stair railing upgrades completed in Innisfil.
+        image:
+          src: ./photos/innisfil/innisfil-staircase-side-view-modern-railing.jpg
+          alt: Stair railing installation Innisfil
+        link: /services/stairs/innisfil
+
+      - title: Stair railing installation King City
+        desc: |-
+          Premium curved staircase railing upgrades in King City.
+        image:
+          src: ./photos/king-city/king-city-staircase-full-view-modern-railing-system.jpg
+          alt: Stair railing installation King City
+        link: /services/stairs/king-city
+
+      - title: Stair railing installation Kleinburg
+        desc: |-
+          Modern black baluster and railing transformations in Kleinburg.
+        image:
+          src: ./photos/kleinburg/kleinburg-staircase-railing-black-iron-detail.jpg
+          alt: Stair railing installation Kleinburg
+          link: /services/stairs/kleinburg
+
+      - title: Stair railing installation Leaside / Sunnybrook
+        desc: |-
+          Heritage and institutional stair railing restoration including Sunnybrook Hospital work.
+        image:
+          src: ./photos/leaside/sunnybrook-heritage-staircase-wood-balustrade-detail.jpg
+          alt: Stair railing installation Leaside
+        link: /services/stairs/leaside
+
+      - title: Stair railing installation Markham
+        desc: |-
+          Curved staircase railings, black balusters, and modern stair upgrades in Markham.
+        image:
+          src: ./photos/markham/markham-curved-staircase-modern-black-balusters.jpg
+          alt: Stair railing installation Markham
+        link: /services/stairs/markham
+
+      - title: Stair railing installation Mississauga
+        desc: |-
+          Black baluster installations and modern railing upgrades in Mississauga.
+        image:
+          src: ./photos/mississauga/mississauga-staircase-railing-install-black-balusters.jpg
+          alt: Stair railing installation Mississauga
+        link: /services/stairs/mississauga
+
+      - title: Stair railing installation Newmarket
+        desc: |-
+          Classic and curved stair railing upgrades completed in Newmarket.
+        image:
+          src: ./photos/newmarket/newmarket-curved-staircase-side-view-classic-railing.jpg
+          alt: Stair railing installation Newmarket
+        link: /services/stairs/newmarket
+
+      - title: Stair railing installation Oakville
+        desc: |-
+          Luxury open-concept stair railing projects in Oakville.
+        image:
+          src: ./photos/oakville/oakville-curved-staircase-railing-modern-black-balusters.jpg
+          alt: Stair railing installation Oakville
+        link: /services/stairs/oakville
+
+      - title: Stair railing installation Oshawa
+        desc: |-
+          Black spindle and modern stair railing upgrades completed in Oshawa.
+        image:
+          src: ./photos/oshawa/oshawa-staircase-black-metal-spindles-install-detail.jpg
+          alt: Stair railing installation Oshawa
+        link: /services/stairs/oshawa
+
+      - title: Stair railing installation Pickering
+        desc: |-
+          Modern railing systems and staircase upgrades in Pickering.
+        image:
+          src: ./photos/pickering/pickering-staircase-railing-modern-black-balusters.jpg
+          alt: Stair railing installation Pickering
+        link: /services/stairs/pickering
+
+      - title: Stair railing installation Richmond Hill
+        desc: |-
+          Modern black railing and glass-panel staircase upgrades in Richmond Hill.
+        image:
+          src: ./photos/richmond-hill/richmond-hill-staircase-glass-panel-railing-modern.jpg
+          alt: Stair railing installation Richmond Hill
+        link: /services/stairs/richmond-hill
+
+      - title: Stair railing installation Rosedale
+        desc: |-
+          Premium stair railing craftsmanship and handrail detailing in Rosedale.
+        image:
+          src: ./photos/rosedale/rosedale-staircase-railing-detail-black-spindles.jpg
+          alt: Stair railing installation Rosedale
+        link: /services/stairs/rosedale
+
+      - title: Stair railing installation Stouffville
+        desc: |-
+          Curved staircase railing upgrades and black baluster installations in Stouffville.
+        image:
+          src: ./photos/stouffville/stouffville-staircase-railing-clean-install.jpg
+          alt: Stair railing installation Stouffville
+        link: /services/stairs/stouffville
+
+      - title: Stair railing installation The Beaches
+        desc: |-
+          Compact-home stair railing and staircase upgrades in The Beaches.
+        image:
+          src: ./photos/the-beaches/beaches-toronto-staircase-modern-oak-black-railing.jpg
+          alt: Stair railing installation The Beaches
+        link: /services/stairs/the-beaches
+
+      - title: Stair railing installation Toronto
+        desc: |-
+          Luxury curved stair railing, iron balusters, and architectural stair projects in Toronto.
+        image:
+          src: ./photos/toronto/toronto-curved-staircase-modern-black-railing.jpg
+          alt: Stair railing installation Toronto
+        link: /services/stairs/toronto
+
+      - title: Stair railing installation Vaughan
+        desc: |-
+          Stair railing installation, black metal balusters, and modern staircase upgrades in Vaughan.
+        image:
+          src: ./photos/vaughan/vaughan-staircase-modern-railing-black-metal-spindles.jpg
+          alt: Stair railing installation Vaughan
+        link: /services/stairs/vaughan
+
+      - title: Stair railing installation Whitby
+        desc: |-
+          White spindle and black metal railing upgrades completed in Whitby.
+        image:
+          src: ./photos/whitby/whitby-staircase-railing-white-spindles-modern.jpg
+          alt: Stair railing installation Whitby
+        link: /services/stairs/whitby
+
+      - title: Stair railing installation Woodbridge
+        desc: |-
+          Modern black spindle and stair railing upgrades in Woodbridge.
+        image:
+          src: ./photos/woodbridge/project-2/woodbridge-staircase-side-view-black-metal-spindles.jpg
+          alt: Stair railing installation Woodbridge
+        link: /services/stairs/woodbridge
 
   - type: Services
     exclude:
