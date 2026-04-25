@@ -1,0 +1,79 @@
+---
+import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
+import { image, DefaultPos } from '@/schemas';
+
+export const schema = createSchema('QuoteCta', (c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string(),
+		desc: z.string(),
+		phone: z.string(),
+		phoneHref: z.string(),
+		image: image(c),
+		steps: z.array(
+			z.object({
+				title: z.string(),
+				desc: z.string(),
+			}),
+		),
+	}),
+);
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props as Props;
+
+import Image from '@/components/Image';
+import * as Layout from '@/components/Layout';
+---
+
+<Layout.Divider id={meta.id}>
+	<Layout.Container variant="outer" class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+		<div class="overflow-hidden rounded-2xl">
+			<Image class="aspect-[4/3] w-full object-cover" image={meta.image} widths={[420, 760, 1100]} />
+		</div>
+
+		<div class="rounded-2xl bg-neutral-950 p-7 text-white shadow-xl md:p-10">
+			<p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/65">
+				Fast photo estimate
+			</p>
+
+			<h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+				{meta.title}
+			</h2>
+
+			<p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+				{meta.desc}
+			</p>
+
+			<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+				<a
+					href={meta.phoneHref}
+					class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-bold text-neutral-950 transition hover:scale-[1.02]"
+				>
+					Text photos to {meta.phone}
+				</a>
+
+				<a
+					href="/contact"
+					class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+				>
+					Request estimate
+				</a>
+			</div>
+
+			<div class="mt-8 grid gap-4 sm:grid-cols-3">
+				{
+					meta.steps.map((step) => (
+						<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+							<h3 class="text-base font-semibold">{step.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-white/70">{step.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</Layout.Container>
+</Layout.Divider>
