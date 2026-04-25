@@ -9,6 +9,7 @@ interface Props {
 	desc: string;
 	pos: Pos;
 	link?: string;
+	textLink?: string;
 }
 
 const meta = Astro.props as Props;
@@ -102,9 +103,27 @@ const mediaHoverClass =
 			)}
 
 			<div class="flex flex-col gap-3 sm:flex-1">
-				<h3 class="heading-4xl order-1">{meta.title}</h3>
+				{
+					meta.textLink ? (
+						<a
+							href={meta.textLink}
+							class="group/text order-1 block rounded-md py-2 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+						>
+							<h3 class="heading-4xl underline-offset-5 group-hover/text:underline">{meta.title}</h3>
 
-				<p class="desc-base order-3" set:html={await markdown.parseInline(meta.desc)} />
+							<p
+								class="desc-base mt-3 transition-colors group-hover/text:text-black"
+								set:html={await markdown.parseInline(meta.desc)}
+							/>
+						</a>
+					) : (
+						<>
+							<h3 class="heading-4xl order-1">{meta.title}</h3>
+
+							<p class="desc-base order-3" set:html={await markdown.parseInline(meta.desc)} />
+						</>
+					)
+				}
 
 				<div class="order-4 mt-4">
 					<slot />

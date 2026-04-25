@@ -8,8 +8,8 @@
 	--color-gold: oklch(0.924 0.0505 70.99);
 	--color-black: var(--color-stone-950);
 
-	--font-serif: var(--font-cormorant);
-	--font-sans: var(--font-dm-sans);
+	--font-serif: var(--font-cormorant-garamond);
+	--font-sans: var(--font-inter);
 	--font-mono: initial;
 
 	--breakpoint-xl: 75rem;
@@ -90,6 +90,64 @@
 }
 
 @layer components {
+	.contact-bar {
+		background-color: rgb(18 18 18 / 0.65);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		transition:
+			background-color 420ms ease,
+			box-shadow 420ms ease;
+	}
+
+	:root[data-contact-bar-state='scrolling'] .contact-bar {
+		background-color: rgb(18 18 18 / 0.5);
+		box-shadow: none;
+	}
+
+	.contact-bar:hover,
+	:root[data-contact-bar-state='settled'] .contact-bar:hover {
+		background-color: rgb(18 18 18 / 1);
+	}
+
+	.mini-logo-link {
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(0.45rem) scale(0.42) rotate(-12deg);
+		transform-origin: center;
+		transition:
+			opacity 420ms ease,
+			transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+
+	.main-logo-link {
+		transform-origin: left center;
+		transition:
+			clip-path 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+			filter 420ms ease,
+			opacity 360ms ease,
+			transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+
+	:root[data-logo-docked] .mini-logo-link {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0) scale(1) rotate(0deg);
+	}
+
+	:root[data-logo-docked] .main-logo-link {
+		clip-path: circle(18% at 14% 50%);
+		filter: blur(2px);
+		opacity: 0;
+		transform: translateY(-1.15rem) scale(0.38) rotate(-8deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.mini-logo-link,
+		.main-logo-link {
+			transition-duration: 1ms;
+		}
+	}
+
 	.heading-9xl {
 		@apply font-serif text-5xl font-bold text-balance sm:text-9xl;
 	}
@@ -203,7 +261,7 @@
 }
 
 [id] {
-	scroll-margin-top: 50px;
+	scroll-margin-top: 80px;
 }
 
 /* sleepy W3C */

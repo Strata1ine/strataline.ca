@@ -11,8 +11,16 @@ import Inputs from './Inputs';
 import business from '#/business.json';
 import { createMediaQuery } from '@solid-primitives/media';
 
-function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
+const digits = business.telephone.replace(/\D/g, '');
+const phoneHref = `tel:${digits.length === 10 ? `+1${digits}` : `+${digits}`}`;
+
+export function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	const [open, setOpen] = createSignal(false);
+	const handleClick: ComponentProps<typeof Dialog.Trigger>['onClick'] = (event) => {
+		event.preventDefault();
+		setOpen((current) => !current);
+	};
+
 	onMount(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (e.ctrlKey && e.key == '/') {
@@ -43,8 +51,13 @@ function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 	});
 
 	return (
-		<Dialog open={open()} onOpenChange={setOpen}>
-			<Dialog.Trigger {...props} />
+		<Dialog
+			open={open()}
+			onOpenChange={setOpen}
+			closeOnOutsidePointer={false}
+			noOutsidePointerEvents={false}
+		>
+			<Dialog.Trigger {...props} onClick={handleClick} />
 			<Dialog.Portal>
 				<Menus.DialogForm
 					title="Let's talk"
@@ -142,7 +155,13 @@ export default function Talk() {
 				/>
 			</LetsTalk>
 			<div class={cn(buttonVariants(), 'invisible h-14 w-34 xl:h-16 xl:w-42')} aria-hidden="true" />
-			<span class="font-sans text-lg xl:text-xl font-sem">{business.telephone}</span>
+			<a
+				class="font-sans text-xl leading-none font-semibold text-black/85 transition hover:text-secondary sm:text-2xl xl:text-3xl"
+				href={phoneHref}
+				aria-label={`Call Strataline at ${business.telephone}`}
+			>
+				{business.telephone}
+			</a>
 		</div>
 	);
 }

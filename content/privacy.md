@@ -40,4 +40,4 @@ We use Ahrefs and Formspark for website analytics to understand how our site is 
 
 #### Contact information
 
-If you have questions or want your data removed, please contact us at: [max@strataline.ca](mailto:max@strataline.ca)
+If you have questions or want your data removed, please contact us at: [info@strataline.ca](mailto:info@strataline.ca)
