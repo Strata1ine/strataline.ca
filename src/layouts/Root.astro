@@ -7,6 +7,7 @@ import { type Pos, isPos, swapPos } from '@/schemas';
 
 import { Frontmatter } from 'astro-frontmatter-cms';
 import Footer from '@/sections/Footer.astro';
+import Header, { schema as headerSchemas } from '@/sections/Header.astro';
 
 import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-cms';
 import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
@@ -30,6 +31,14 @@ const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons
 const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
+const [header] = queryBlocks(blocks, headerSchemas);
+const frontmatterBlocks = blocks?.filter((block) => block.type !== 'Header');
+const headerContent = header?.content ?? [
+	{ id: 'popular', name: 'Signature services' },
+	{ id: 'accomplishments', name: 'As seen on TV' },
+	{ id: 'explore', name: 'Our expertise' },
+	{ id: 'reviews', name: 'Client reviews' },
+];
 
 const schema = {
 	'@id': `${Astro.url.origin}#company`,
@@ -72,8 +81,8 @@ if (cardshow.length > 0) {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="stylesheet" href={globalStyles} />
-		<Font cssVariable="--font-cormorant" />
-		<Font cssVariable="--font-dm-sans" />
+		<Font cssVariable="--font-cormorant-garamond" />
+		<Font cssVariable="--font-inter" />
 
 		<script src="@/frontend/index.ts"></script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -125,6 +134,7 @@ if (cardshow.length > 0) {
 		}
 	</head>
 	<body>
+		<Header content={headerContent} />
 		<slot />
 		<Frontmatter
 			callback={(data, i) => {
@@ -141,7 +151,7 @@ if (cardshow.length > 0) {
 					}
 				}
 			}}
-			{blocks}
+			blocks={frontmatterBlocks}
 		/>
 		<Footer />
 	</body>

@@ -41,16 +41,16 @@ export default defineConfig({
 		contentIntellisense: true,
 		fonts: [
 			{
-				name: 'Cormorant',
-				cssVariable: '--font-cormorant',
+				name: 'Cormorant Garamond',
+				cssVariable: '--font-cormorant-garamond',
 				provider: fontProviders.fontsource(),
 				weights: [500, 700],
 				styles: ['normal'],
 				subsets: ['latin'],
 			},
 			{
-				name: 'DM Sans',
-				cssVariable: '--font-dm-sans',
+				name: 'Inter',
+				cssVariable: '--font-inter',
 				provider: fontProviders.fontsource(),
 				weights: [400, 600],
 				styles: ['normal'],
