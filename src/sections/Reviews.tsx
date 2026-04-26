@@ -10,6 +10,8 @@ import Stars from '@/components/Stars';
 import Actions from '@/components/Actions';
 import Dialog from 'corvu/dialog';
 import Feather from '~icons/ph/feather-fill';
+import CaretLeft from '~icons/ph/caret-left-bold';
+import CaretRight from '~icons/ph/caret-right-bold';
 
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const isMobile = createMediaQuery('(max-width: 650px)');
@@ -72,6 +74,8 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	};
 
 	const reviewCount = createMemo(() => Math.max(0, props.meta.length - power()));
+	const canGoPrev = createMemo(() => idx() > 0);
+	const canGoNext = createMemo(() => idx() < reviewCount() - 1);
 
 	const Thumb = () => {
 		return (
@@ -134,6 +138,34 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					}
 				}}
 			>
+				<Show when={reviewCount() > 1}>
+					<div class="mb-5 flex items-center justify-between gap-4 px-2 sm:px-4">
+						<p class="font-sans text-sm font-semibold tracking-wide text-black/55 uppercase">
+							Drag or use arrows for more reviews
+						</p>
+						<div class="flex items-center gap-2">
+							<button
+								aria-label="Previous reviews"
+								class="border-primary-dark bg-primary hover:bg-primary-dark disabled:opacity-35 flex size-11 items-center justify-center rounded-full border transition disabled:cursor-default"
+								disabled={!canGoPrev()}
+								onPointerDown={(e) => e.stopPropagation()}
+								onClick={() => setIdx(idx() - 1)}
+							>
+								<CaretLeft class="size-5" />
+							</button>
+							<button
+								aria-label="More reviews"
+								class="border-secondary bg-secondary flex size-11 items-center justify-center rounded-full border text-white shadow-lg shadow-black/10 transition hover:border-black hover:bg-black"
+								disabled={!canGoNext()}
+								onPointerDown={(e) => e.stopPropagation()}
+								onClick={() => setIdx(idx() + 1)}
+							>
+								<CaretRight class="size-5" />
+							</button>
+						</div>
+					</div>
+				</Show>
+
 				<div
 					class="flex will-change-transform"
 					style={{
@@ -142,6 +174,33 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				>
 					<For each={props.meta}>{(review) => <Review {...review} />}</For>
 				</div>
+
+				<Show when={canGoNext()}>
+					<div
+						class="pointer-events-none absolute top-20 right-0 bottom-8 z-10 w-24 bg-gradient-to-l from-[rgb(252_245_248)] to-transparent"
+						aria-hidden="true"
+					/>
+				</Show>
+				<Show when={canGoNext()}>
+					<button
+						aria-label="More reviews"
+						class="bg-secondary absolute top-1/2 right-2 z-20 flex size-13 -translate-y-1/2 items-center justify-center rounded-full text-white shadow-xl shadow-black/20 transition hover:bg-black sm:right-4"
+						onPointerDown={(e) => e.stopPropagation()}
+						onClick={() => setIdx(idx() + 1)}
+					>
+						<CaretRight class="size-6" />
+					</button>
+				</Show>
+				<Show when={canGoPrev()}>
+					<button
+						aria-label="Previous reviews"
+						class="bg-primary border-primary-dark absolute top-1/2 left-2 z-20 flex size-13 -translate-y-1/2 items-center justify-center rounded-full border shadow-xl shadow-black/10 transition hover:bg-white sm:left-4"
+						onPointerDown={(e) => e.stopPropagation()}
+						onClick={() => setIdx(idx() - 1)}
+					>
+						<CaretLeft class="size-6" />
+					</button>
+				</Show>
 
 				<button
 					class="bg-primary absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
