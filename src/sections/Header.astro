@@ -23,7 +23,7 @@ const meta = Astro.props as Props;
 		>
 			<a
 				href="/"
-				class="mini-logo-link flex shrink-0 items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+				class="mini-logo-link hidden shrink-0 items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary sm:flex"
 				aria-label="Strataline home"
 			>
 				<img
@@ -35,7 +35,7 @@ const meta = Astro.props as Props;
 				/>
 			</a>
 
-			<div class="relative inline-flex min-w-0 items-center">
+			<div class="relative inline-flex min-w-0 flex-1 items-center justify-end">
 				<Island client:visible content={meta.content} />
 			</div>
 		</Layout.Container>

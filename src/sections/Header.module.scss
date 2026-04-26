@@ -21,40 +21,52 @@
 
 .burger {
 	position: relative;
+	color: #fff;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: calc(100% - 8px) 3px;
+	filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.45));
+	transition: background-size 250ms ease;
 
 	&::after,
 	&::before {
 		content: '';
 		position: absolute;
 		top: 50%;
-		left: 0;
-		right: 0;
+		left: 4px;
+		right: 4px;
 		background-color: currentColor;
-		height: 2.5px;
+		height: 3px;
 		border-radius: 5px;
 		transform-origin: center;
 		transition:
 			transform 250ms ease,
-			left 250ms ease;
+			left 250ms ease,
+			right 250ms ease;
 	}
 
 	&::before {
-		transform: translateY(-7px);
+		transform: translateY(calc(-50% - 8px));
 	}
 
 	&::after {
-		transform: translateY(7px);
-		left: 30%;
+		transform: translateY(calc(-50% + 8px));
 	}
 
 	&[data-open] {
+		background-size: 0 3px;
+
 		&::after {
-			transform: rotate(45deg);
+			transform: translateY(-50%) rotate(45deg);
 			left: 0;
+			right: 0;
 		}
 
 		&::before {
-			transform: rotate(-45deg);
+			transform: translateY(-50%) rotate(-45deg);
+			left: 0;
+			right: 0;
 		}
 	}
 }
