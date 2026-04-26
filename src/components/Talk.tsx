@@ -3,7 +3,7 @@ import createPersistent from 'solid-persistent';
 import { cn } from '@/frontend/utils';
 
 import Dialog from '@corvu/dialog';
-import Mailbox from '~icons/ph/mailbox-fill';
+import ChatCircle from '~icons/ph/chat-circle-bold';
 import Actions, { buttonVariants, fabVariants, fabSize } from '@/components/Actions';
 import Menus from './Menus';
 import Inputs from './Inputs';
@@ -13,6 +13,7 @@ import { createMediaQuery } from '@solid-primitives/media';
 
 const digits = business.telephone.replace(/\D/g, '');
 const phoneHref = `tel:${digits.length === 10 ? `+1${digits}` : `+${digits}`}`;
+const displayTelephone = business.telephone.replace(/(\(\d{3}\))\s*(\d{3})\s*(\d{4})/, '$1 $2-$3');
 
 const talkDialogs = new Set<{ isOpen: () => boolean; close: () => void }>();
 const anyTalkDialogOpen = () => [...talkDialogs].some((dialog) => dialog.isOpen());
@@ -95,13 +96,26 @@ export function LetsTalk(props: ComponentProps<'button'>) {
 	const persistedContent = createPersistent(() => {
 		return (
 			<div class="mt-12 space-y-11">
-				<Inputs.Email required />
-				<Inputs.PhoneNumber validate />
-				<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-				<Inputs.TextArea required name="Messege" />
+				<Inputs.Email required name="Email" />
+				<Inputs.PhoneNumber validate name="Phone" />
+				<Inputs.Field name="Project Location">
+					<Inputs.Field.Body
+						name="Project Location"
+						autocomplete="address-level2"
+						placeholder="City or postal code (e.g. Vaughan, L4L...)"
+					/>
+				</Inputs.Field>
+				<Inputs.TextArea
+					required
+					name="Project Details"
+					placeholder="Briefly describe your project (stairs, popcorn removal, doors, etc.)"
+				/>
 				<Actions.Button value="submit" variant="fill">
-					Submit
+					Get My Quote
 				</Actions.Button>
+				<p class="font-sans text-center text-sm leading-tight text-black/60">
+					No spam. Usually responds within minutes.
+				</p>
 			</div>
 		);
 	});
@@ -125,8 +139,8 @@ export function LetsTalk(props: ComponentProps<'button'>) {
 			</button>
 			<Dialog.Portal>
 				<Menus.DialogForm
-					title="Let's talk"
-					desc="Feel free to ask a question and a quote."
+					title="Get Your Quote"
+					desc="Fast response • Dust-free service • Serving the GTA"
 					id="jReRE2JLR"
 					action="/submissions/talk"
 					contact
@@ -185,49 +199,57 @@ export default function Talk() {
 	});
 
 	return (
-		<div class="relative mt-9 flex h-14 items-center gap-5 sm:gap-6 xl:h-16" ref={(el) => (sensor = el!)}>
-			<LetsTalk
-				aria-label="Let's talk (Ctrl+/)"
-				class={cn(
-					'z-1',
-					hydrated() && 'duration-1000',
-					above()
-						? cn(buttonVariants(), 'absolute h-14 w-34 xl:h-16 xl:w-42')
-						: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
-				)}
-				style={{
-					translate: style(),
-					'transition-property': 'width, height, border-radius, translate, background-color',
-					'will-change': 'width, height, border-radius, translate, background-color',
-				}}
-			>
-				<span
-					aria-hidden="true"
+		<div class="relative mt-7 flex max-w-full flex-col items-start gap-3" ref={(el) => (sensor = el!)}>
+			<div class="relative h-12 w-full max-w-80 xl:h-14">
+				<LetsTalk
+					aria-label="Request a consultation (Ctrl+/)"
 					class={cn(
-						'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap',
-						hydrated() && 'transition-opacity duration-750',
-						above() ? 'opacity-100' : 'opacity-0',
+						'z-1',
+						hydrated() && 'duration-1000',
+						above()
+							? cn(
+									buttonVariants(),
+									'absolute h-12 w-full px-4 text-xl xl:h-14 xl:text-2xl',
+								)
+							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
 					)}
+					style={{
+						translate: style(),
+						'transition-property': 'width, height, border-radius, translate, background-color',
+						'will-change': 'width, height, border-radius, translate, background-color',
+					}}
 				>
-					Let's Talk
-				</span>
+					<span
+						aria-hidden="true"
+						class={cn(
+							'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap',
+							hydrated() && 'transition-opacity duration-750',
+							above() ? 'opacity-100' : 'opacity-0',
+						)}
+					>
+						Request a Consultation
+					</span>
 
-				<Mailbox
-					class={cn(
-						'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
-						hydrated() && 'transition-opacity duration-750',
-						above() ? 'opacity-0' : 'opacity-100',
-					)}
-				/>
-			</LetsTalk>
-			<div class={cn(buttonVariants(), 'invisible h-14 w-34 xl:h-16 xl:w-42')} aria-hidden="true" />
+					<ChatCircle
+						class={cn(
+							'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
+							hydrated() && 'transition-opacity duration-750',
+							above() ? 'opacity-0' : 'opacity-100',
+						)}
+					/>
+				</LetsTalk>
+				<div class={cn(buttonVariants(), 'invisible h-12 w-full px-4 text-xl xl:h-14 xl:text-2xl')} aria-hidden="true" />
+			</div>
 			<a
-				class="font-sans text-xl leading-none font-semibold text-black/85 transition hover:text-secondary sm:text-2xl xl:text-3xl"
+				class="font-sans text-lg leading-tight font-semibold text-black/85 transition hover:text-secondary sm:text-xl xl:text-2xl"
 				href={phoneHref}
-				aria-label={`Call Strataline at ${business.telephone}`}
+				aria-label={`Call Strataline at ${displayTelephone}`}
 			>
-				{business.telephone}
+				Call {displayTelephone}
 			</a>
+			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
+				By appointment {'\u2022'} Fully contained {'\u2022'} Respect for your home
+			</p>
 		</div>
 	);
 }

@@ -41,8 +41,6 @@ type Props = {
 };
 
 const { title, intro, content = [] } = Astro.props as Props;
-
-const num = (n: number) => String(n).padStart(2, '0');
 ---
 
 <section class="before-after-section">
@@ -63,10 +61,7 @@ const num = (n: number) => String(n).padStart(2, '0');
 						<article class="before-after-card">
 							<div class="before-after-copy">
 								<div class="before-after-kicker">
-									<div class="text-secondary heading-7xl before-after-num">{num(index + 1)}</div>
-									<h3 class="before-after-card-title font-serif text-3xl font-bold xl:text-4xl">
-										{item.title}
-									</h3>
+									<h3 class="before-after-card-title">{item.title}</h3>
 								</div>
 
 								{item.desc && <p class="desc-base before-after-card-desc">{item.desc}</p>}
@@ -233,11 +228,11 @@ const num = (n: number) => String(n).padStart(2, '0');
 
 	.before-after-title {
 		margin: 0 0 0.85rem;
-		font-family: inherit;
-		font-size: clamp(2rem, 4vw, 3rem);
+		font-family: var(--font-serif);
+		font-size: clamp(2.75rem, 5.4vw, 5rem);
 		font-weight: 700;
-		line-height: 1.08;
-		letter-spacing: -0.02em;
+		line-height: 0.96;
+		letter-spacing: 0;
 	}
 
 	.before-after-intro {
@@ -266,27 +261,26 @@ const num = (n: number) => String(n).padStart(2, '0');
 	}
 
 	.before-after-kicker {
-		display: flex;
-		align-items: baseline;
-		justify-content: center;
-		gap: 1rem;
+		display: block;
 		margin-bottom: 0.35rem;
-		flex-wrap: wrap;
-	}
-
-	.before-after-num {
-		line-height: 0.9;
 	}
 
 	.before-after-card-title {
 		margin: 0;
-		line-height: 1.12;
-		letter-spacing: -0.02em;
+		font-family: var(--font-serif);
+		font-size: clamp(2rem, 3.7vw, 3.5rem);
+		font-weight: 700;
+		line-height: 1.02;
+		letter-spacing: 0;
 	}
 
 	.before-after-card-desc {
 		margin: 0 auto;
 		max-width: 42rem;
+		font-family: var(--font-sans);
+		font-size: clamp(1rem, 1.45vw, 1.25rem);
+		line-height: 1.72;
+		color: rgba(15, 23, 42, 0.78);
 	}
 
 	.ba-slider {
@@ -297,8 +291,8 @@ const num = (n: number) => String(n).padStart(2, '0');
 	.ba-stage {
 		position: relative;
 		width: 100%;
-		height: 0;
-		padding-bottom: 62%;
+		aspect-ratio: 16 / 9;
+		height: auto;
 		overflow: hidden;
 		border-radius: 1.25rem;
 		background: #f3f4f6;
@@ -316,15 +310,7 @@ const num = (n: number) => String(n).padStart(2, '0');
 		object-fit: cover;
 		display: block;
 		pointer-events: none;
-		transform: scale(1);
 		transform-origin: center center;
-		transition: transform 260ms ease;
-		will-change: transform;
-	}
-
-	.ba-stage:hover .ba-image,
-	.ba-stage:focus-within .ba-image {
-		transform: scale(1.04);
 	}
 
 	.ba-overlay {
@@ -455,16 +441,15 @@ const num = (n: number) => String(n).padStart(2, '0');
 		}
 
 		.before-after-kicker {
-			gap: 0.65rem;
 			margin-bottom: 0.25rem;
 		}
 
 		.before-after-card-title {
-			font-size: 1.55rem;
+			font-size: 2rem;
 		}
 
 		.ba-stage {
-			padding-bottom: 75%;
+			aspect-ratio: 4 / 3;
 		}
 
 		.ba-handle {
