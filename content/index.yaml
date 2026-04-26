@@ -10,14 +10,18 @@ popular:
 sections:
   - type: Header
     content:
-      - id: popular
-        name: Signature services
-      - id: accomplishments
-        name: As seen on TV
-      - id: explore
-        name: Our expertise
-      - id: reviews
-        name: Client reviews
+      - id: https://strataline.ca/services/popcorn-removal
+        href: https://strataline.ca/services/popcorn-removal
+        name: Popcorn Removal
+      - id: https://strataline.ca/services/stairs
+        href: https://strataline.ca/services/stairs
+        name: Stairs & Railing
+      - id: https://strataline.ca/services/doors_and_windows
+        href: https://strataline.ca/services/doors_and_windows
+        name: Doors & Windows
+      - id: https://strataline.ca/services/painting
+        href: https://strataline.ca/services/painting
+        name: Painting
 
   - type: Hero
     title: |-
