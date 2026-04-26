@@ -10,12 +10,16 @@ function DialogForm(props: {
 	id: string;
 	desc?: string;
 	action?: string;
+	contact?: boolean;
 	children?: JSX.Element;
 }) {
 	return (
 		<>
-			<Dialog.Overlay class="data-open:animate-in data-open:fade-in-0% data-closed:animate-out data-closed:fade-out-0% fixed inset-0 z-2 bg-white/40 backdrop-blur-2xl" />
-			<Dialog.Content class="data-open:animate-in data-open:zoom-in-98% data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out data-closed:zoom-out-98% fixed inset-0 z-2 overflow-y-scroll">
+			<Dialog.Overlay class="data-open:animate-in data-open:fade-in-0% data-closed:animate-out data-closed:fade-out-0% fixed top-16 right-0 bottom-0 left-0 z-2 bg-white/40 backdrop-blur-2xl" />
+			<Dialog.Content
+				data-contact-dialog={props.contact || undefined}
+				class="data-open:animate-in data-open:zoom-in-98% data-closed:fade-out-0% data-open:fade-in-0% data-closed:animate-out data-closed:zoom-out-98% fixed top-16 right-0 bottom-0 left-0 z-2 overflow-y-scroll"
+			>
 				<div class="relative mx-auto max-w-120 bg-white p-10 sm:my-10 sm:rounded-lg">
 					<div class="flex items-center gap-3">
 						<Dialog.Label class="flex-1 font-serif text-5xl font-bold sm:text-6xl">

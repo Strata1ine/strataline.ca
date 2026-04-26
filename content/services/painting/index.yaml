@@ -1,11 +1,11 @@
-title: Interior painting & architectural finishes
+title: Interior Painting & Architectural Finishes
 position: 4
 seo: |-
   High-end interior painting, fine finishing, and designer wall treatments across Toronto, Vaughan, Richmond Hill, Markham, North York, and the GTA.
   We specialize in luxury repaints, premium wall preparation, and architect-level finishes for sophisticated homes and discerning homeowners.
 
 desc: |-
-  Elevate your home with flawless interior painting, precision wall preparation, and architectural-grade finishes.
+  Flawless interior painting, precision wall preparation, and architectural-grade finishes.
   We create smooth, refined surfaces using premium paints, advanced techniques, and meticulous craftsmanship — ideal for luxury homes, high-end remodels, and design-driven interiors across the GTA.
 
 image:
@@ -31,7 +31,7 @@ sections:
         alt: High-end trim spraying with immaculate lines and a professional finish.
 
   - type: Benefits
-    title: Why choose luxury painting?
+    title: Quality without compromise
     content:
       - title: Architectural-level wall preparation
         desc: |-
@@ -61,7 +61,7 @@ sections:
   # PREMIUM INTERIOR PAINTING
   # -------------------------------
   - type: ZigZag
-    title: Interior Painting (Luxury Homes)
+    title: Interior Painting
     content:
       - title: Designer Colour Selection
         desc: >-
@@ -88,6 +88,7 @@ sections:
         image:
           src: ./photos/popcorn-ceiling-removal-gta.png
           alt: Popcorn ceiling removal and luxury smoothing treatment.
+          link: /services/popcorn-removal
       - title: Level-5 Finishing
         desc: >-
           For high-end homes with critical lighting, we provide a Level 5 skim coat for a perfectly uniform, ultra-smooth surface.

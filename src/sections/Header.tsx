@@ -19,11 +19,11 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 			>
 				Contact
 			</LetsTalk>
-			<a class="hover:text-primary" href={phoneHref} aria-label={`Call Strataline at ${business.telephone}`}>
-				{business.telephone}
-			</a>
 			<a class="hover:text-primary" href={emailHref} aria-label={`Email Strataline at ${business.email}`}>
 				{business.email}
+			</a>
+			<a class="hover:text-primary" href={phoneHref} aria-label={`Call Strataline at ${business.telephone}`}>
+				{business.telephone}
 			</a>
 			<Dialog preventScrollbarShift={false}>
 				{(popover) => {

@@ -91,6 +91,7 @@
 
 @layer components {
 	.contact-bar {
+		z-index: 1000;
 		background-color: rgb(18 18 18 / 0.65);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);

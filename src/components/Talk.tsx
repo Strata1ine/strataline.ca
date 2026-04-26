@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, type ComponentProps } from 'solid-js';
+import { createSignal, onMount, onCleanup, splitProps, type ComponentProps } from 'solid-js';
 import createPersistent from 'solid-persistent';
 import { cn } from '@/frontend/utils';
 
@@ -14,25 +14,81 @@ import { createMediaQuery } from '@solid-primitives/media';
 const digits = business.telephone.replace(/\D/g, '');
 const phoneHref = `tel:${digits.length === 10 ? `+1${digits}` : `+${digits}`}`;
 
-export function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
+const talkDialogs = new Set<{ isOpen: () => boolean; close: () => void }>();
+const anyTalkDialogOpen = () => [...talkDialogs].some((dialog) => dialog.isOpen());
+const closeTalkDialogs = () => {
+	for (const dialog of talkDialogs) dialog.close();
+};
+const contactDialogInDom = () =>
+	typeof document != 'undefined' && document.querySelector('[data-contact-dialog]') != null;
+const anyContactDialogOpen = () => anyTalkDialogOpen() || contactDialogInDom();
+
+export function LetsTalk(props: ComponentProps<'button'>) {
+	let trigger: HTMLButtonElement | undefined;
+	let suppressNextClick = false;
+	const [local, rest] = splitProps(props, ['children', 'onClick', 'onPointerDown', 'type']);
 	const [open, setOpen] = createSignal(false);
-	const handleClick: ComponentProps<typeof Dialog.Trigger>['onClick'] = (event) => {
+	const closeFromTrigger = (event: Event) => {
+		suppressNextClick = true;
 		event.preventDefault();
-		setOpen((current) => !current);
+		event.stopPropagation();
+		closeTalkDialogs();
+	};
+	const handlePointerDown: ComponentProps<'button'>['onPointerDown'] = (event) => {
+		local.onPointerDown?.(event);
+		if (event.defaultPrevented || !anyContactDialogOpen()) return;
+		closeFromTrigger(event);
+	};
+	const handleClick: ComponentProps<'button'>['onClick'] = (event) => {
+		local.onClick?.(event);
+		event.preventDefault();
+		event.stopPropagation();
+		if (suppressNextClick) {
+			suppressNextClick = false;
+			return;
+		}
+		const shouldOpen = !anyContactDialogOpen();
+		closeTalkDialogs();
+		setOpen(shouldOpen);
 	};
 
 	onMount(() => {
+		const controller = {
+			isOpen: open,
+			close: () => setOpen(false),
+		};
+
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (e.ctrlKey && e.key == '/') {
 				e.preventDefault();
+				closeTalkDialogs();
 				setOpen(true);
 			}
 		};
 
+		const handlePointerDown = (event: PointerEvent) => {
+			if (!open() || !trigger) return;
+			if (trigger.contains(event.target as Node)) return;
+
+			const rect = trigger.getBoundingClientRect();
+			const landsOnTrigger =
+				event.clientX >= rect.left &&
+				event.clientX <= rect.right &&
+				event.clientY >= rect.top &&
+				event.clientY <= rect.bottom;
+
+			if (!landsOnTrigger) return;
+			closeFromTrigger(event);
+		};
+
+		talkDialogs.add(controller);
 		window.addEventListener('keydown', handleKeyDown);
+		document.addEventListener('pointerdown', handlePointerDown, true);
 
 		onCleanup(() => {
+			talkDialogs.delete(controller);
 			window.removeEventListener('keydown', handleKeyDown);
+			document.removeEventListener('pointerdown', handlePointerDown, true);
 		});
 	});
 
@@ -57,13 +113,23 @@ export function LetsTalk(props: ComponentProps<typeof Dialog.Trigger>) {
 			closeOnOutsidePointer={false}
 			noOutsidePointerEvents={false}
 		>
-			<Dialog.Trigger {...props} onClick={handleClick} />
+			<button
+				{...rest}
+				ref={(el) => (trigger = el)}
+				type={local.type ?? 'button'}
+				aria-expanded={open()}
+				onPointerDown={handlePointerDown}
+				onClick={handleClick}
+			>
+				{local.children}
+			</button>
 			<Dialog.Portal>
 				<Menus.DialogForm
 					title="Let's talk"
 					desc="Feel free to ask a question and a quote."
 					id="jReRE2JLR"
 					action="/submissions/talk"
+					contact
 				>
 					{persistedContent()}
 				</Menus.DialogForm>

@@ -105,17 +105,18 @@ const mediaHoverClass =
 			<div class="flex flex-col gap-3 sm:flex-1">
 				{
 					meta.textLink ? (
-						<a
-							href={meta.textLink}
-							class="group/text order-1 block rounded-md py-2 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
-						>
-							<h3 class="heading-4xl underline-offset-5 group-hover/text:underline">{meta.title}</h3>
-
+						<>
+							<a
+								href={meta.textLink}
+								class="group/text order-1 block rounded-md transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+							>
+								<h3 class="heading-4xl underline-offset-5 group-hover/text:underline">{meta.title}</h3>
+							</a>
 							<p
-								class="desc-base mt-3 transition-colors group-hover/text:text-black"
+								class="desc-base order-3"
 								set:html={await markdown.parseInline(meta.desc)}
 							/>
-						</a>
+						</>
 					) : (
 						<>
 							<h3 class="heading-4xl order-1">{meta.title}</h3>
