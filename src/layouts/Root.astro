@@ -34,10 +34,10 @@ let pos = startPos ?? 'right';
 const [header] = queryBlocks(blocks, headerSchemas);
 const frontmatterBlocks = blocks?.filter((block) => block.type !== 'Header');
 const headerContent = header?.content ?? [
-	{ id: 'popular', name: 'Signature services' },
-	{ id: 'accomplishments', name: 'As seen on TV' },
-	{ id: 'explore', name: 'Our expertise' },
-	{ id: 'reviews', name: 'Client reviews' },
+	{ href: 'https://strataline.ca/services/popcorn-removal', name: 'Popcorn Removal' },
+	{ href: 'https://strataline.ca/services/stairs', name: 'Stairs & Railing' },
+	{ href: 'https://strataline.ca/services/doors_and_windows', name: 'Doors & Windows' },
+	{ href: 'https://strataline.ca/services/painting', name: 'Painting' },
 ];
 
 const schema = {
