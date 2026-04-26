@@ -71,17 +71,19 @@ sections:
       - title: Hardwood stair capping
         link: /services/stairs/tread-caps
         desc: |-
-          Replace carpet or damaged treads with solid oak stair caps installed directly over your existing structure. No demolition required. Clean edges, tight fit, and a finish that matches your new or existing hardwood floors. A cost-effective way to get the look of a brand-new staircase.
+          Transform carpeted or worn stairs into a modern hardwood staircase — without demolition.
+          We install solid oak caps over your existing structure with precision cuts and a perfect finish.
+          Dust-controlled work ensures a clean process, while the result delivers a seamless, built-in look at a fraction of full replacement cost.
         image:
           src: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-oak-modern.jpg
           alt: Hardwood stair tread cap installation in Toronto with oak and modern finish.
 
   - type: BeforeAfter
-    title: Stair Capping example
+    title: Stair capping before & after
     content:
-      - title: See the effect of stair capping
+      - title: Carpeted stairs → modern hardwood upgrade
         desc: |-
-          The carpet on these stairs had to go. Solid oak tread caps were installed together with a new railing to give this home a completely new look.
+          Outdated carpet was removed and replaced with solid oak tread caps, paired with white risers and a fully updated railing system. The result is a clean, durable staircase that matches the surrounding hardwood and elevates the entire space.
         before: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-before.jpg
         after: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-after.jpg
 
