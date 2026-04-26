@@ -39,9 +39,13 @@ import Talk from '@/components/Talk';
 		</div>
 
 		<div class="contents flex-col gap-2 sm:order-2 sm:flex sm:justify-center sm:gap-4">
-			<h1 class="heading-7xl max-w-[11ch] leading-[0.95]">{meta.title}</h1>
+			<h1
+				class="heading-7xl max-w-[12ch] whitespace-pre-line leading-[0.98] sm:text-[clamp(2.4rem,4.6vw,4.6rem)]"
+			>
+				{meta.title}
+			</h1>
 			<div class="order-3">
-				<p class="desc-base max-w-[34rem]">{meta.desc}</p>
+				<p class="desc-base max-w-[32rem] leading-relaxed">{meta.desc}</p>
 				<Talk client:load />
 			</div>
 		</div>

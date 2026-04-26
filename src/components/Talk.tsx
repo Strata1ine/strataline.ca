@@ -113,7 +113,7 @@ export function LetsTalk(props: ComponentProps<'button'>) {
 				<Actions.Button value="submit" variant="fill">
 					Get My Quote
 				</Actions.Button>
-				<p class="font-sans text-center text-sm leading-tight text-black/60">
+				<p class="text-center font-sans text-sm leading-tight text-black/60">
 					No spam. Usually responds within minutes.
 				</p>
 			</div>
@@ -199,17 +199,20 @@ export default function Talk() {
 	});
 
 	return (
-		<div class="relative mt-7 flex max-w-full flex-col items-start gap-3" ref={(el) => (sensor = el!)}>
-			<div class="relative h-12 w-full max-w-80 xl:h-14">
+		<div
+			class="relative mt-7 flex max-w-full flex-col items-start gap-2.5"
+			ref={(el) => (sensor = el!)}
+		>
+			<div class="relative h-11 w-full max-w-[19rem] xl:h-12">
 				<LetsTalk
-					aria-label="Request a consultation (Ctrl+/)"
+					aria-label="Start your project (Ctrl+/)"
 					class={cn(
 						'z-1',
 						hydrated() && 'duration-1000',
 						above()
 							? cn(
 									buttonVariants(),
-									'absolute h-12 w-full px-4 text-xl xl:h-14 xl:text-2xl',
+									'absolute h-11 w-full !border-[#e2556e] !bg-[#e2556e] px-4 text-base !text-white shadow-lg shadow-[#e2556e]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e2556e] xl:h-12 xl:text-lg',
 								)
 							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
 					)}
@@ -222,12 +225,12 @@ export default function Talk() {
 					<span
 						aria-hidden="true"
 						class={cn(
-							'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap',
+							'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap text-white',
 							hydrated() && 'transition-opacity duration-750',
 							above() ? 'opacity-100' : 'opacity-0',
 						)}
 					>
-						Request a Consultation
+						Start Your Project →
 					</span>
 
 					<ChatCircle
@@ -238,17 +241,21 @@ export default function Talk() {
 						)}
 					/>
 				</LetsTalk>
-				<div class={cn(buttonVariants(), 'invisible h-12 w-full px-4 text-xl xl:h-14 xl:text-2xl')} aria-hidden="true" />
+				<div
+					class={cn(buttonVariants(), 'invisible h-11 w-full px-4 text-base xl:h-12 xl:text-lg')}
+					aria-hidden="true"
+				/>
 			</div>
 			<a
-				class="font-sans text-lg leading-tight font-semibold text-black/85 transition hover:text-secondary sm:text-xl xl:text-2xl"
+				class="hover:text-secondary font-sans text-base leading-snug font-semibold text-black/90 transition sm:text-lg xl:text-xl"
 				href={phoneHref}
 				aria-label={`Call Strataline at ${displayTelephone}`}
 			>
-				Call {displayTelephone}
+				Speak with a Project Specialist: {displayTelephone}
 			</a>
 			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
-				By appointment {'\u2022'} Fully contained {'\u2022'} Respect for your home
+				By appointment {'\u2022'} Fully contained <br />
+				Designed for larger-scale projects
 			</p>
 		</div>
 	);
