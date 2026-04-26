@@ -25,9 +25,11 @@ sections:
 
   - type: Hero
     title: |-
-      Renovations Without the Disruption
+      Renovations
+      Without the
+      Disruption
     desc: |-
-      We specialize in working within finished homes — delivering precise, dust-controlled renovations with minimal intrusion and exacting detail.
+      Dust-controlled renovations in finished homes — precise execution with minimal intrusion and uncompromising detail.
     content:
       images:
         - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
