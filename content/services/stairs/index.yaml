@@ -73,10 +73,22 @@ sections:
         desc: |-
           Replace carpet or damaged treads with solid oak stair caps installed directly over your existing structure. No demolition required. Clean edges, tight fit, and a finish that matches your new or existing hardwood floors. A cost-effective way to get the look of a brand-new staircase.
         image:
-          src: ./staircase-renovation-gallery/stair-tread-caps-installation-toronto-oak-modern.jpg
+          src: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-oak-modern.jpg
           alt: Hardwood stair tread cap installation in Toronto with oak and modern finish.
 
-      - title: Custom railing installation
+  - type: BeforeAfter
+    title: Stair Capping example
+    content:
+      - title: See the effect of stair capping
+        desc: |-
+          The carpet on these stairs had to go. Solid oak tread caps were installed together with a new railing to give this home a completely new look.
+        before: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-before.jpg
+        after: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-after.jpg
+
+  - type: ZigZag
+    title: Custom railing installation
+    content:
+      - title: The perfect complement to your home
         link: /services/stairs/railing-installation
         desc: |-
           Upgrade to wrought iron, stainless steel, glass, or hardwood railing systems. We replace balusters, newel posts, and handrails — or install a complete custom railing from scratch. Iron and glass railings are consistently the highest-impact visual upgrade on any staircase.
