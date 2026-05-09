@@ -28,6 +28,8 @@ interface Props {
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
 
 const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/$/, '');
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
 
@@ -44,32 +46,39 @@ const headerContent = header?.content ?? [
 const schema = {
 	'@id': `${Astro.url.origin}#company`,
 	'@context': 'https://schema.org',
-	url: `${Astro.url.origin}${Astro.url.pathname.replace(/\.html$/, '')}`,
+	url: `${Astro.url.origin}${pathname || '/'}`,
 	...business,
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
-const pathname = Astro.url.pathname.replace(/\/$/, '');
-
 const disableReviewSchema =
-	pathname === '/services/stairs/tread-caps' ||
-	pathname.endsWith('/services/stairs/tread-caps');
+	pathname.includes('/services/stairs/tread-caps') ||
+	title?.toLowerCase().includes('tread caps');
 
 const reviews = queryBlocks(blocks, reviewSchemas);
+
 if (!disableReviewSchema && reviews.length > 0) {
 	const reviewData = await seoReviews(Astro, reviews);
-	schemas.push(reviewData.aggregateRating, ...reviewData.review);
+
+	if (reviewData.aggregateRating) {
+		schemas.push(reviewData.aggregateRating);
+	}
+
+	if (Array.isArray(reviewData.review)) {
+		schemas.push(...reviewData.review);
+	}
 }
 
 const faqs = queryBlocks(blocks, faqSchemas);
+
 if (faqs.length > 0) {
 	schemas.push(await seoFaqs(Astro, faqs));
 }
 
 const cardshow = queryBlocks(blocks, cardshowSchemas);
+
 if (cardshow.length > 0) {
-	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefully
-	// it can easily leak here.
+	// WARNING: Keep this server-side only. Do not move this into client code.
 	schemas.push(...(await seoCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow)));
 }
 ---
@@ -92,9 +101,9 @@ if (cardshow.length > 0) {
 		<Font cssVariable="--font-inter" />
 
 		<script src="@/frontend/index.ts"></script>
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
 		<link rel="manifest" href="/manifest.json" />
 
 		{
@@ -123,20 +132,23 @@ if (cardshow.length > 0) {
 
 		{
 			isProd && (
-				<script
-					is:inline
-					src="https://analytics.ahrefs.com/analytics.js"
-					data-key="HvLQm3PHR0ElL+Vu8t6KBg"
-					async
-				/>
+				<>
+					<script
+						is:inline
+						src="https://analytics.ahrefs.com/analytics.js"
+						data-key="HvLQm3PHR0ElL+Vu8t6KBg"
+						async
+					/>
 
-				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P421REBVZG"></script>
-				<script is:inline>
-					window.dataLayer = window.dataLayer || [];
-					function gtag(){dataLayer.push(arguments);}
-					gtag('js', new Date());
-					gtag('config', 'G-P421REBVZG');
-				</script>
+					<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P421REBVZG"></script>
+
+					<script is:inline>
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-P421REBVZG');
+					</script>
+				</>
 			)
 		}
 	</head>
@@ -152,7 +164,7 @@ if (cardshow.length > 0) {
 					pos = swapPos(pos);
 				}
 
-				if (i == 0) {
+				if (i === 0) {
 					if (data.id !== undefined) {
 						data.id = `${data.id} intro`;
 					} else {
