@@ -25,14 +25,15 @@ interface Props {
 	noIndex?: boolean;
 }
 
-// DYNAMIC IMPORTS AT BOTTOM
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
 
 const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
+
 const [header] = queryBlocks(blocks, headerSchemas);
 const frontmatterBlocks = blocks?.filter((block) => block.type !== 'Header');
+
 const headerContent = header?.content ?? [
 	{ href: 'https://strataline.ca/services/popcorn-removal', name: 'Popcorn Removal' },
 	{ href: 'https://strataline.ca/services/stairs', name: 'Stairs & Railing' },
@@ -48,8 +49,14 @@ const schema = {
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
+const pathname = Astro.url.pathname.replace(/\/$/, '');
+
+const disableReviewSchema =
+	pathname === '/services/stairs/tread-caps' ||
+	pathname.endsWith('/services/stairs/tread-caps');
+
 const reviews = queryBlocks(blocks, reviewSchemas);
-if (reviews.length > 0) {
+if (!disableReviewSchema && reviews.length > 0) {
 	const reviewData = await seoReviews(Astro, reviews);
 	schemas.push(reviewData.aggregateRating, ...reviewData.review);
 }
@@ -61,8 +68,8 @@ if (faqs.length > 0) {
 
 const cardshow = queryBlocks(blocks, cardshowSchemas);
 if (cardshow.length > 0) {
-	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefuly
-	// it can easily leak here, this is kinda stupid
+	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefully
+	// it can easily leak here.
 	schemas.push(...(await seoCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow)));
 }
 ---
@@ -133,9 +140,11 @@ if (cardshow.length > 0) {
 			)
 		}
 	</head>
+
 	<body>
 		<Header content={headerContent} />
 		<slot />
+
 		<Frontmatter
 			callback={(data, i) => {
 				if (isPos(data.pos)) {
@@ -153,6 +162,7 @@ if (cardshow.length > 0) {
 			}}
 			blocks={frontmatterBlocks}
 		/>
+
 		<Footer />
 	</body>
 </html>
