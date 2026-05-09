@@ -3,24 +3,25 @@ import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
 import { type SchemaContext } from 'astro:content';
 import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
-import business from '#/business.json';
 
-export const schema = createSchema('Reviews', (_: SchemaContext) => z.object({
-	id: z.string().optional(),
-	pos: DefaultPos,
-	title: z.string(),
-	content: z.array(
-		z.object({
-			title: z.string(),
-			desc: z.string(),
-			date: z.coerce.date().optional(),
-			url: z.string().optional(),
-			location: z.string(),
-			stars: z.number(),
-			id: z.string().optional(),
-		}),
-	),
-}));
+export const schema = createSchema('Reviews', (_: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string(),
+		content: z.array(
+			z.object({
+				title: z.string(),
+				desc: z.string(),
+				date: z.coerce.date().optional(),
+				url: z.string().optional(),
+				location: z.string(),
+				stars: z.number(),
+				id: z.string().optional(),
+			}),
+		),
+	}),
+);
 
 export const seo = async (Astro: Astro, reviews: Props[]) => {
 	const reviewArray = await Promise.all(
@@ -30,10 +31,6 @@ export const seo = async (Astro: Astro, reviews: Props[]) => {
 				author: {
 					'@type': 'Person',
 					name: content.title,
-				},
-				itemReviewed: {
-					'@type': business['@type'],
-					'@id': `${Astro.url.origin}#company`,
 				},
 				contentLocation: {
 					'@type': 'Place',
@@ -69,11 +66,7 @@ export const seo = async (Astro: Astro, reviews: Props[]) => {
 			),
 			reviewCount: reviews.flatMap((review) => review.content).length,
 			bestRating: 5,
-			worstRating: 0,
-			itemReviewed: {
-				'@type': business['@type'],
-				'@id': `${Astro.url.origin}#company`,
-			},
+			worstRating: 1,
 		},
 		review: reviewArray,
 	};
