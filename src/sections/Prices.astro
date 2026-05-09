@@ -4,41 +4,27 @@ import { type SchemaContext } from 'astro:content';
 import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
 
-export const schema = createSchema('Prices', (_: SchemaContext) => z.object({
-	id: z.string().optional(),
-	pos: DefaultPos,
-	title: z.string(),
-	content: z.array(
-		z.object({
-			title: z.string(),
-			min: z.number().min(0),
-			max: z.number().min(0),
-			materials: z.array(z.string()),
-			desc: z.string(),
-		}),
-	),
-}));
-
-import business from '#/business.json';
-export const seo = (prices: Props[]) => {
-	return {
-		offers: prices.flatMap((prices) =>
-			prices.content.map((content) => ({
-				'@type': 'Offer',
-				name: content.title,
-				description: content.desc,
-				price: content.min,
-				priceCurrency: business['currenciesAccepted'],
-				priceSpecification: {
-					'@type': 'PriceSpecification',
-					minPrice: content.min,
-					maxPrice: content.max,
-					priceCurrency: business['currenciesAccepted'],
-				},
-				availability: 'https://schema.org/InStock',
-			})),
+export const schema = createSchema('Prices', (_: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		pos: DefaultPos,
+		title: z.string(),
+		content: z.array(
+			z.object({
+				title: z.string(),
+				min: z.number().min(0),
+				max: z.number().min(0),
+				materials: z.array(z.string()),
+				desc: z.string(),
+			}),
 		),
-	};
+	}),
+);
+
+// Disable structured data output for pricing blocks.
+// Google was interpreting Offer objects as Product rich results.
+export const seo = (_prices: Props[]) => {
+	return {};
 };
 
 export type Props = SchemaOf<typeof schema>;
@@ -69,9 +55,12 @@ import { cn } from '@/frontend/utils';
 
 							<div class="flex items-center justify-between gap-4">
 								<h3 class="font-serif text-3xl font-bold">{price.title}</h3>
+
 								<div class="flex items-center gap-3">
 									<span class="text-green-800">${price.min.toLocaleString()}</span>
+
 									<span class="desc-base">-</span>
+
 									<span class="text-green-800">${price.max.toLocaleString()}</span>
 								</div>
 							</div>
@@ -84,9 +73,9 @@ import { cn } from '@/frontend/utils';
 										aria-hidden={true}
 										name="ph:star-four-fill"
 										class="text-gold size-4 sm:size-5"
-										aria-hidden="true"
 										is:inline
 									/>
+
 									<span class="desc-sm">{s}</span>
 								</div>
 							))}
