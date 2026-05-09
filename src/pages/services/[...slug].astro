@@ -8,7 +8,6 @@ import Image from '@/components/Image';
 
 import { queryBlocks } from 'astro-frontmatter-cms';
 import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
-import { schema as pricesSchemas, seo as seoPrices } from '@/sections/Prices.astro';
 import { type CollectionEntry } from 'astro:content';
 import { getCollection } from '@/content.config';
 
@@ -16,25 +15,41 @@ export const prerender = true;
 
 export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services'>) => {
 	const reviews = queryBlocks(service.data.sections ?? [], reviewSchemas);
-	const prices = queryBlocks(service.data.sections ?? [], pricesSchemas);
 	const servicePath = service.id.replace(/\/index$/, '');
+	const pageUrl = `${Astro.url.origin}/services/${servicePath}`;
 
 	return {
-		'@type': 'Product',
+		'@type': 'Service',
+		'@id': `${pageUrl}#service`,
 		name: service.data.title,
+		serviceType: service.data.title,
 		description: service.data.desc,
-		url: `${Astro.url.origin}/services/${servicePath}`,
-		brand: {
-			'@type': 'LocalBusiness',
-			'@id': `${Astro.url.origin}#company`,
+		url: pageUrl,
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': pageUrl,
 		},
-		...(reviews.length > 0 && (await seoReviews(Astro, reviews))),
-		...(prices.length > 0 && seoPrices(prices)),
+		provider: {
+			'@type': 'GeneralContractor',
+			'@id': `${Astro.url.origin}#company`,
+			name: 'Strataline',
+			url: Astro.url.origin,
+		},
+		areaServed: [
+			{ '@type': 'City', name: 'Toronto' },
+			{ '@type': 'City', name: 'Vaughan' },
+			{ '@type': 'City', name: 'Richmond Hill' },
+			{ '@type': 'City', name: 'Markham' },
+			{ '@type': 'City', name: 'Mississauga' },
+			{ '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+		],
+		category: 'Home renovation service',
 		image: {
 			'@type': 'ImageObject',
 			url: `${Astro.url.origin}${service.data.image.src.src}`,
 			description: service.data.image.alt,
 		},
+		...(reviews.length > 0 && (await seoReviews(Astro, reviews))),
 	};
 };
 
