@@ -18,6 +18,10 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 	const servicePath = service.id.replace(/\/index$/, '');
 	const pageUrl = `${Astro.url.origin}/services/${servicePath}`;
 
+	// Google flags self-serving review schema on this page specifically.
+	// Keep visual reviews, disable only review schema injection.
+	const disableReviewSchema = servicePath === 'stairs/tread-caps';
+
 	return {
 		'@type': 'Service',
 		'@id': `${pageUrl}#service`,
@@ -25,16 +29,19 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 		serviceType: service.data.title,
 		description: service.data.desc,
 		url: pageUrl,
+
 		mainEntityOfPage: {
 			'@type': 'WebPage',
 			'@id': pageUrl,
 		},
+
 		provider: {
 			'@type': 'GeneralContractor',
 			'@id': `${Astro.url.origin}#company`,
 			name: 'Strataline',
 			url: Astro.url.origin,
 		},
+
 		areaServed: [
 			{ '@type': 'City', name: 'Toronto' },
 			{ '@type': 'City', name: 'Vaughan' },
@@ -43,13 +50,16 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 			{ '@type': 'City', name: 'Mississauga' },
 			{ '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
 		],
+
 		category: 'Home renovation service',
+
 		image: {
 			'@type': 'ImageObject',
 			url: `${Astro.url.origin}${service.data.image.src.src}`,
 			description: service.data.image.alt,
 		},
-		...(reviews.length > 0 && (await seoReviews(Astro, reviews))),
+
+		...(!disableReviewSchema && reviews.length > 0 && (await seoReviews(Astro, reviews))),
 	};
 };
 
@@ -95,6 +105,7 @@ const servicePath = service.id.replace(/\/index$/, '');
 			<div class="contents flex-1 flex-col gap-3 sm:flex sm:justify-center">
 				<div>
 					<Home desc="Go back" class="mb-2" slug={servicePath} />
+
 					<h1 class="heading-5xl">
 						{service.data.title}
 					</h1>
