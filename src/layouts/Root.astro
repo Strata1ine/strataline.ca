@@ -49,8 +49,11 @@ const schema = {
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
+const pathname = Astro.url.pathname.replace(/\/$/, '');
+
 const disableReviewSchema =
-	Astro.url.pathname.replace(/\/$/, '') === '/services/stairs/tread-caps';
+	pathname === '/services/stairs/tread-caps' ||
+	pathname.endsWith('/services/stairs/tread-caps');
 
 const reviews = queryBlocks(blocks, reviewSchemas);
 if (!disableReviewSchema && reviews.length > 0) {
@@ -65,6 +68,8 @@ if (faqs.length > 0) {
 
 const cardshow = queryBlocks(blocks, cardshowSchemas);
 if (cardshow.length > 0) {
+	// WARNING: DO NOT move import.meta.env.YOUTUBE_API_KEY without thinking carefully
+	// it can easily leak here.
 	schemas.push(...(await seoCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow)));
 }
 ---
