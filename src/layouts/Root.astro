@@ -10,7 +10,7 @@ import Footer from '@/sections/Footer.astro';
 import Header, { schema as headerSchemas } from '@/sections/Header.astro';
 
 import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-cms';
-import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
+import { schema as reviewSchemas } from '@/sections/Reviews.astro';
 import { schema as faqSchemas, seo as seoFaqs } from '@/sections/Faq.astro';
 import { schema as cardshowSchemas, seo as seoCardshows } from '@/sections/Cardshow.astro';
 
@@ -51,23 +51,9 @@ const schema = {
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
-const disableReviewSchema =
-	pathname.includes('/services/stairs/tread-caps') ||
-	title?.toLowerCase().includes('tread caps');
-
+// Keep reviews visible on-page, but do not output Review/AggregateRating JSON-LD.
+// Google restricts self-serving review snippets on LocalBusiness/Service pages.
 const reviews = queryBlocks(blocks, reviewSchemas);
-
-if (!disableReviewSchema && reviews.length > 0) {
-	const reviewData = await seoReviews(Astro, reviews);
-
-	if (reviewData.aggregateRating) {
-		schemas.push(reviewData.aggregateRating);
-	}
-
-	if (Array.isArray(reviewData.review)) {
-		schemas.push(...reviewData.review);
-	}
-}
 
 const faqs = queryBlocks(blocks, faqSchemas);
 
