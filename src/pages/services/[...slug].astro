@@ -6,21 +6,14 @@ import Home from '@/components/Home';
 import Talk from '@/components/Talk';
 import Image from '@/components/Image';
 
-import { queryBlocks } from 'astro-frontmatter-cms';
-import { schema as reviewSchemas, seo as seoReviews } from '@/sections/Reviews.astro';
 import { type CollectionEntry } from 'astro:content';
 import { getCollection } from '@/content.config';
 
 export const prerender = true;
 
 export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services'>) => {
-	const reviews = queryBlocks(service.data.sections ?? [], reviewSchemas);
 	const servicePath = service.id.replace(/\/index$/, '');
 	const pageUrl = `${Astro.url.origin}/services/${servicePath}`;
-
-	// Google flags self-serving review schema on this page specifically.
-	// Keep visual reviews, disable only review schema injection.
-	const disableReviewSchema = servicePath === 'stairs/tread-caps';
 
 	return {
 		'@type': 'Service',
@@ -58,8 +51,6 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 			url: `${Astro.url.origin}${service.data.image.src.src}`,
 			description: service.data.image.alt,
 		},
-
-		...(!disableReviewSchema && reviews.length > 0 && (await seoReviews(Astro, reviews))),
 	};
 };
 
