@@ -48,6 +48,14 @@ const schema = {
 	'@context': 'https://schema.org',
 	url: `${Astro.url.origin}${pathname || '/'}`,
 	...business,
+
+	image: {
+		'@type': 'ImageObject',
+		url: `${Astro.url.origin}/strataline-og.jpg`,
+		width: 1200,
+		height: 630,
+	},
+
 	sameAs: [...business.sameAs, ...socials.map((social) => social.url)],
 };
 
@@ -101,7 +109,11 @@ if (cardshow.length > 0) {
 			))
 		}
 
-		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+		<script
+			is:inline
+			type="application/ld+json"
+			set:html={JSON.stringify(schema)}
+		/>
 
 		{
 			schemas.map((schema) => (
@@ -126,11 +138,19 @@ if (cardshow.length > 0) {
 						async
 					/>
 
-					<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P421REBVZG"></script>
+					<script
+						is:inline
+						async
+						src="https://www.googletagmanager.com/gtag/js?id=G-P421REBVZG"
+					></script>
 
 					<script is:inline>
 						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
+
+						function gtag() {
+							dataLayer.push(arguments);
+						}
+
 						gtag('js', new Date());
 						gtag('config', 'G-P421REBVZG');
 					</script>
@@ -141,6 +161,7 @@ if (cardshow.length > 0) {
 
 	<body>
 		<Header content={headerContent} />
+
 		<slot />
 
 		<Frontmatter
