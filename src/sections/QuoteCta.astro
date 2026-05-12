@@ -25,51 +25,48 @@ export const schema = createSchema('QuoteCta', (c: SchemaContext) =>
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 
-import Image from '@/components/Image';
 import * as Layout from '@/components/Layout';
+import { LetsTalk } from '@/components/Talk';
 ---
 
 <Layout.Divider id={meta.id}>
-	<Layout.Container variant="outer" class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-		<div class="overflow-hidden rounded-2xl">
-			<Image class="aspect-[4/3] w-full object-cover" image={meta.image} widths={[420, 760, 1100]} />
-		</div>
-
+	<Layout.Container variant="outer" class="max-w-5xl">
 		<div class="rounded-2xl bg-neutral-950 p-7 text-white shadow-xl md:p-10">
-			<p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/65">
+			<p class="mb-4 font-sans text-sm font-semibold uppercase tracking-[0.16em] text-white/65">
 				Fast photo estimate
 			</p>
 
-			<h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+			<h2 class="max-w-3xl font-serif text-4xl font-bold leading-[1.02] text-balance md:text-6xl">
 				{meta.title}
 			</h2>
 
-			<p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+			<p class="mt-5 max-w-2xl font-sans text-base leading-relaxed text-white/75 md:text-lg">
 				{meta.desc}
 			</p>
 
 			<div class="mt-7 flex flex-col gap-3 sm:flex-row">
 				<a
 					href={meta.phoneHref}
-					class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-bold text-neutral-950 transition hover:scale-[1.02]"
+					class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-serif text-xl font-bold leading-none text-neutral-950 transition hover:scale-[1.02]"
 				>
-					Text photos to {meta.phone}
+					Text photos to <span class="ml-1 font-sans text-lg font-semibold">{meta.phone}</span>
 				</a>
 
-				<a
-					href="/contact"
-					class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+				<LetsTalk
+					client:load
+					aria-label="Open contact form"
+					class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 font-serif text-xl font-bold leading-none text-white transition hover:bg-white/10"
 				>
 					Request estimate
-				</a>
+				</LetsTalk>
 			</div>
 
 			<div class="mt-8 grid gap-4 sm:grid-cols-3">
 				{
 					meta.steps.map((step) => (
 						<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<h3 class="text-base font-semibold">{step.title}</h3>
-							<p class="mt-2 text-sm leading-relaxed text-white/70">{step.desc}</p>
+							<h3 class="font-sans text-base font-semibold">{step.title}</h3>
+							<p class="mt-2 font-sans text-sm leading-relaxed text-white/70">{step.desc}</p>
 						</div>
 					))
 				}
