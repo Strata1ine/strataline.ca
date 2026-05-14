@@ -212,7 +212,7 @@ const { title, intro, content = [] } = Astro.props as Props;
 
 <style is:global>
 	.before-after-section {
-		padding: 4rem 0;
+		padding: 3.25rem 0;
 	}
 
 	.before-after-wrap {
@@ -221,17 +221,17 @@ const { title, intro, content = [] } = Astro.props as Props;
 	}
 
 	.before-after-header {
-		margin: 0 auto 2.25rem;
-		max-width: 980px;
+		margin: 0 auto 1.65rem;
+		max-width: 780px;
 		text-align: center;
 	}
 
 	.before-after-title {
 		margin: 0 0 0.85rem;
 		font-family: var(--font-serif);
-		font-size: clamp(2.75rem, 5.4vw, 5rem);
+		font-size: clamp(2.15rem, 3.5vw, 3.25rem);
 		font-weight: 700;
-		line-height: 0.96;
+		line-height: 1.06;
 		letter-spacing: 0;
 	}
 
@@ -242,21 +242,21 @@ const { title, intro, content = [] } = Astro.props as Props;
 
 	.before-after-grid {
 		display: grid;
-		gap: 2.75rem;
+		gap: 2rem;
 	}
 
 	.before-after-card {
 		border: 1px solid rgba(17, 24, 39, 0.08);
-		border-radius: 1.5rem;
+		border-radius: 1rem;
 		overflow: hidden;
 		background: #fff;
-		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-		padding: 1.1rem;
+		box-shadow: 0 12px 36px rgba(15, 23, 42, 0.07);
+		padding: 1rem;
 	}
 
 	.before-after-copy {
-		margin: 0 auto 0.95rem;
-		max-width: 60rem;
+		margin: 0 auto 0.85rem;
+		max-width: 48rem;
 		text-align: center;
 	}
 
@@ -268,18 +268,18 @@ const { title, intro, content = [] } = Astro.props as Props;
 	.before-after-card-title {
 		margin: 0;
 		font-family: var(--font-serif);
-		font-size: clamp(2rem, 3.7vw, 3.5rem);
+		font-size: clamp(1.45rem, 2vw, 2rem);
 		font-weight: 700;
-		line-height: 1.02;
+		line-height: 1.12;
 		letter-spacing: 0;
 	}
 
 	.before-after-card-desc {
 		margin: 0 auto;
-		max-width: 42rem;
+		max-width: 39rem;
 		font-family: var(--font-sans);
-		font-size: clamp(1rem, 1.45vw, 1.25rem);
-		line-height: 1.72;
+		font-size: 1rem;
+		line-height: 1.65;
 		color: rgba(15, 23, 42, 0.78);
 	}
 
@@ -294,7 +294,7 @@ const { title, intro, content = [] } = Astro.props as Props;
 		aspect-ratio: 16 / 9;
 		height: auto;
 		overflow: hidden;
-		border-radius: 1.25rem;
+		border-radius: 0.85rem;
 		background: #f3f4f6;
 		cursor: ew-resize;
 		touch-action: none;

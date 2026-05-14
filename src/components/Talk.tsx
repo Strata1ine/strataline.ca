@@ -203,7 +203,7 @@ export default function Talk() {
 			class="relative mt-7 flex max-w-full flex-col items-start gap-2.5"
 			ref={(el) => (sensor = el!)}
 		>
-			<div class="relative h-11 w-full max-w-[19rem] xl:h-12">
+			<div class="relative h-12 w-full max-w-[21rem] xl:h-[3.25rem]">
 				<LetsTalk
 					aria-label="Start your project (Ctrl+/)"
 					class={cn(
@@ -212,7 +212,7 @@ export default function Talk() {
 						above()
 							? cn(
 									buttonVariants(),
-									'absolute h-11 w-full !border-[#e2556e] !bg-[#e2556e] px-4 text-base !text-white shadow-lg shadow-[#e2556e]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e2556e] xl:h-12 xl:text-lg',
+									'absolute h-12 w-full !border-[#e2556e] !bg-[#e2556e] px-5 !text-white shadow-lg shadow-[#e2556e]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e2556e] xl:h-[3.25rem]',
 								)
 							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
 					)}
@@ -242,7 +242,7 @@ export default function Talk() {
 					/>
 				</LetsTalk>
 				<div
-					class={cn(buttonVariants(), 'invisible h-11 w-full px-4 text-base xl:h-12 xl:text-lg')}
+					class={cn(buttonVariants(), 'invisible h-12 w-full px-5 xl:h-[3.25rem]')}
 					aria-hidden="true"
 				/>
 			</div>
@@ -254,8 +254,8 @@ export default function Talk() {
 				Speak with a Project Specialist: {displayTelephone}
 			</a>
 			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
-				By appointment {'\u2022'} Fully contained <br />
-				Designed for larger-scale projects
+				Photo estimates available {'\u2022'} Fully contained <br />
+				For homes, condos, and occupied spaces
 			</p>
 		</div>
 	);

@@ -13,22 +13,45 @@ image:
   alt: Smooth modern ceiling after professional dust-free popcorn ceiling removal in a renovated GTA home.
 
 sections:
-  - type: Benefits
-    title: Get a clear price for your ceiling
+  - type: BeforeAfter
     content:
-      - title: Send photos. Get a real number.
+      - title: Experience perfectly smooth ceiling
+
+        before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-1.jpg
+        after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-1.jpg
+
+  - type: QuoteCta
+    title: Get a clear popcorn ceiling removal quote from photos
+    desc: Send a few ceiling photos and rough room sizes. We will reply with a realistic price range, timing, and what finishing is needed before you book anything.
+    phone: (416) 471-5999
+    phoneHref: sms:+14164715999
+    image:
+      src: ./images/popcorn-ceiling-removal/richmond-hill/smooth-ceiling-after-removal-richmond-hill-03.jpg
+      alt: Smooth finished ceiling after dust-free popcorn ceiling removal in Richmond Hill.
+    steps:
+      - title: Send photos
+        desc: Ceiling photos and rough dimensions are enough to start.
+      - title: Get scope
+        desc: We explain removal, skim coating, sanding, and painting needs.
+      - title: Book clean work
+        desc: Finished homes stay protected with containment and HEPA extraction.
+
+  - type: Benefits
+    title: Why homeowners choose Strataline
+    content:
+      - title: Clear pricing before the visit
         desc: |-
           Send 2 to 3 photos of your ceilings along with rough room sizes and we will give you a clear, realistic price range for popcorn ceiling removal — no guessing, no vague estimates.
 
-      - title: No site visit required to start
+      - title: Built for occupied homes
         desc: |-
           Most popcorn ceiling removal quotes across Toronto and the GTA can be completed remotely. If needed, we follow up with a quick on-site visit to confirm details before scheduling.
 
-      - title: Know the full scope before you commit
+      - title: Smooth ceilings, not stripped ceilings
         desc: |-
           We outline exactly what is involved — removal method, skim coating, surface correction, and finishing — so you understand the full process before any work begins.
 
-      - title: Fast turnaround on quotes
+      - title: Same-day quote review
         desc: |-
           Most requests are reviewed the same day. You will not be waiting days just to get a number on your popcorn ceiling removal project.
 
@@ -37,7 +60,7 @@ sections:
           We perform popcorn ceiling removal across Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Newmarket, Burlington, Thornhill, Etobicoke, and surrounding areas.
 
   - type: ImagePanel
-    title: Our Process
+    title: Clean process, premium finish
     content:
       - title: Inspection & Prep
         desc: |-
@@ -61,7 +84,7 @@ sections:
           alt: Smooth, newly resurfaced ceiling after professional popcorn ceiling removal and skim coating in Toronto.
 
   - type: Benefits
-    title: Why remove popcorn ceilings?
+    title: What changes after popcorn removal
     content:
       - title: Modern, updated look
         desc: |-
@@ -71,7 +94,7 @@ sections:
         desc: |-
           Smooth ceilings are one of the first things buyers notice. Popcorn ceiling removal is one of the highest-ROI cosmetic upgrades before listing — improving photography, perception, and sale price.
 
-      - title: Genuinely clean, dust-free process
+      - title: Cleaner renovation experience
         desc: |-
           Our Festool Planex system with HEPA extraction captures dust at the source. Work is done in finished, lived-in homes with full containment — no dust cloud, no cleanup left behind.
 
@@ -198,54 +221,45 @@ sections:
           alt: Smooth finished ceiling in Newmarket after popcorn ceiling removal and skim coating.
 
   - type: BeforeAfter
-    title: Heavy popcorn texture removed for a cleaner, brighter ceiling
+    title: Natural light cleanup
     content:
-      - title: Toronto popcorn ceiling before and after
-        desc: |-
-          This ceiling had heavy texture that made the room feel darker and dated. After removal and skim coating, the surface looks cleaner, smoother, and far more modern — with noticeably better light reflection throughout the space.
-        before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-1.jpg
-        after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-1.jpg
-
-  - type: BeforeAfter
-    title: Bay window area transformed with smooth ceiling finishing
-    content:
-      - title: Popcorn ceiling removal around natural light
+      - title: Bay window ceiling
         desc: |-
           Textured ceilings are most noticeable in bright, naturally lit spaces. This before and after shows how a smooth finish cleans up the entire room — the ceiling no longer competes with the light coming through the windows.
         before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-2.jpg
         after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-2.jpg
 
   - type: BeforeAfter
-    title: Close-up ceiling correction around columns and trim
+    title: Detail correction
     content:
-      - title: Detailed popcorn ceiling removal and finishing
+      - title: Columns and trim
         desc: |-
           Areas around columns, crown moulding, and ceiling transitions require careful correction after removal. This comparison shows the precision difference between raw popcorn texture and a properly finished, paint-ready surface.
         before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-3.jpg
         after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-3.jpg
 
   - type: BeforeAfter
-    title: Bulkhead and edge detail cleaned up properly
+    title: Clean edge finishing
     content:
-      - title: Smooth ceiling finish at edges and angles
+      - title: Bulkheads and angles
         desc: |-
           Ceiling edges, bulkheads, and transitions reveal poor finishing immediately. This before and after shows how proper popcorn removal and edge refinishing sharpens every detail line and makes the entire ceiling look intentional.
         before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-4.jpg
         after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-4.jpg
 
   - type: BeforeAfter
-    title: Darker textured ceiling upgraded to a smoother modern finish
+    title: Room-wide smoothing
     content:
-      - title: Room-wide popcorn ceiling transformation
+      - title: Open living area
         desc: |-
           In larger rooms, popcorn texture makes ceilings feel heavy, low, and outdated. A smooth finish opens the space visually, improves light distribution, and gives the entire room a cleaner, more current appearance.
         before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-5.jpg
         after: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-5.jpg
 
   - type: BeforeAfter
-    title: Full room ceiling transformation from dated to modern
+    title: Finished room result
     content:
-      - title: Finished room after popcorn ceiling removal
+      - title: Smooth, brighter ceiling
         desc: |-
           This full-room before and after captures the complete effect of proper popcorn ceiling removal. The finished ceiling makes the entire room feel cleaner, brighter, and more current — and reflects how buyers and designers expect a renovated home to look.
         before: ./images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-6.jpg
@@ -387,7 +401,7 @@ sections:
           A properly finished ceiling appears completely smooth, flat, and uniform with no visible seams or texture. It reflects light evenly and gives the room a clean, modern appearance.
 
   - type: ImagePanel
-    title: Get a Quote for Popcorn Ceiling Removal
+    title: Start with photos
     content:
       - title: Send photos. Get a clear price.
         desc: |-
