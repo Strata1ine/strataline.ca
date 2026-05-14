@@ -898,39 +898,28 @@ function injectHubSection(cities) {
 
 	const existing = fs.readFileSync(hubPath, 'utf8');
 
-	const start = '# AUTO-GENERATED POPCORN CITY LINKS START';
-	const end = '# AUTO-GENERATED POPCORN CITY LINKS END';
-
-	const citySection = `${start}
-  - type: ZigZag
+	const citySection = `  - type: ZigZag
     title: Popcorn ceiling removal by city
     content:
 ${cityLinks(cities, null, 'hub')}
 
-${end}`;
+`;
 
-	let updated = existing;
+	// Remove old generated city section if it exists.
+	let updated = existing.replace(
+		/\n\s*-\s*type:\s*ZigZag\s*\n\s*title:\s*Popcorn ceiling removal by city\s*\n\s*content:\s*\n[\s\S]*?(?=\n\s*-\s*type:\s*Services|\s*$)/m,
+		'\n',
+	);
 
-	const markerRegex = new RegExp(`\\n?${start}[\\s\\S]*?${end}`, 'm');
-
-	if (markerRegex.test(updated)) {
-		updated = updated.replace(markerRegex, `\n${citySection}`);
+	// Insert before the final Services block if present.
+	if (/\n\s*-\s*type:\s*Services\b/m.test(updated)) {
+		updated = updated.replace(/\n(\s*-\s*type:\s*Services\b[\s\S]*)$/m, `\n${citySection}$1`);
 	} else {
-		const servicesMatch = updated.match(/\n  - type: Services\b/);
-
-		if (!servicesMatch || servicesMatch.index === undefined) {
-			throw new Error(
-				`Could not find final Services block in ${hubPath}. Add markers manually once.`,
-			);
-		}
-
-		updated =
-			updated.slice(0, servicesMatch.index) +
-			`\n${citySection}\n` +
-			updated.slice(servicesMatch.index);
+		// Fallback: append to sections if no Services block found.
+		updated = `${updated.trimEnd()}\n${citySection}`;
 	}
 
-	fs.writeFileSync(hubPath, yamlText(updated), 'utf8');
+	fs.writeFileSync(hubPath, updated, 'utf8');
 
 	console.log(`Injected ${cities.length} city links into ${hubPath}`);
 }
