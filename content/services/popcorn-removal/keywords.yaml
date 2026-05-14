@@ -1,54 +1,47 @@
-# Primary services
-- popcorn ceiling removal
-- remove popcorn ceiling
-- ceiling refinishing
-- smooth ceiling finish
+primary:
+  - popcorn ceiling removal toronto
+  - popcorn ceiling removal gta
+  - dust-free popcorn ceiling removal
 
-# Dust-free (THIS IS YOUR EDGE)
-- dust free popcorn ceiling removal
-- dustless ceiling removal
-- clean popcorn ceiling removal
-- no mess popcorn ceiling removal
+secondary:
+  - smooth ceiling finishing
+  - ceiling skim coating
+  - remove popcorn ceiling
+  - painted popcorn ceiling removal
+  - Festool Planex HEPA ceiling sanding
 
-# Supporting services
-- ceiling sanding
-- ceiling skim coating
-- ceiling repair and refinishing
-- ceiling painting after popcorn removal
+long_tail:
+  - how much does popcorn ceiling removal cost
+  - remove popcorn ceiling without dust
+  - best popcorn ceiling removal contractor toronto
+  - ceiling skim coating after popcorn removal
+  - dust-free popcorn ceiling removal near me
+  - popcorn ceiling removal before and after
 
-# Problem-based (high conversion)
-- outdated popcorn ceiling fix
-- popcorn ceiling removal cost
-- messy ceiling removal alternatives
-- ceiling looks outdated what to do
-- textured ceiling removal options
+local:
+  - Ajax
+  - Aurora
+  - Bolton
+  - Burlington
+  - Caledon
+  - Etobicoke
+  - Forest Hill
+  - King City
+  - Kleinburg
+  - Leaside
+  - Markham
+  - Newmarket
+  - Richmond Hill
+  - Rosedale
+  - Stouffville
+  - The Beaches
+  - Toronto
+  - Vaughan
+  - Woodbridge
 
-# High-end positioning
-- smooth ceiling level 5 finish
-- modern ceiling finish
-- luxury ceiling refinishing
-
-# Health / lifestyle angle (VERY strong)
-- improve indoor air quality renovation
-- dust free renovation safe for kids
-- low dust home renovation
-
-# Location
-- popcorn ceiling removal vaughan
-- popcorn ceiling removal toronto
-- ceiling refinishing woodbridge
-- remove popcorn ceiling gta
-
-# Contractor intent
-- popcorn ceiling removal company
-- ceiling specialists near me
-
-# Near me (local high-intent searches)
-- popcorn ceiling removal near me
-- ceiling refinishing near me
-- ceiling repair near me
-- drywall ceiling repair near me
-
-# Quote intent
-- popcorn ceiling removal quote
-- ceiling refinishing cost
+ai_prompts:
+  - who removes popcorn ceilings in toronto
+  - how much does popcorn ceiling removal cost
+  - can popcorn ceilings be removed without dust
+  - do ceilings need skim coating after popcorn removal
+  - is popcorn ceiling removal worth it before selling
