@@ -4,11 +4,15 @@ import Accordion from '@corvu/accordion';
 import styles from './Faq.module.scss';
 import { cn } from '@/frontend/utils';
 
-export default function Faq(props: { content: FaqMeta['content'] }) {
+export default function Faq(props: {
+	content: FaqMeta['content'];
+	showMoreLabel?: FaqMeta['showMoreLabel'];
+}) {
 	const [expanded, setExpanded] = createSignal(false);
 	const [jsEnabled, setJsEnabled] = createSignal(false);
 	const initialItems = () => props.content.slice(0, 4);
 	const extraItems = () => props.content.slice(4);
+	const showMoreLabel = () => props.showMoreLabel ?? 'View more questions';
 
 	onMount(() => {
 		setJsEnabled(true);
@@ -63,7 +67,7 @@ export default function Faq(props: { content: FaqMeta['content'] }) {
 						class="bg-primary-dark border-primary-dark text-background hover:bg-primary-dark/90 focus-visible:ring-primary-dark rounded-[8px] border px-8 py-3 font-serif text-xl leading-none transition-colors focus-visible:outline-none focus-visible:ring-2"
 						onClick={() => setExpanded(true)}
 					>
-						View more popcorn ceiling questions
+						{showMoreLabel()}
 					</button>
 				</div>
 			</Show>

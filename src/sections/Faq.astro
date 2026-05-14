@@ -9,6 +9,7 @@ export const schema = createSchema('Faq', (_: SchemaContext) => z.object({
 	id: z.string().optional(),
 	pos: DefaultPos,
 	title: z.string(),
+	showMoreLabel: z.string().optional(),
 	content: z.array(
 		z.object({
 			title: z.string(),
@@ -55,6 +56,6 @@ import Island from './Faq';
 	<Layout.Title title={meta.title} pos={meta.pos} />
 
 	<Layout.Container variant="inner">
-		<Island client:load content={meta.content} />
+		<Island client:load content={meta.content} showMoreLabel={meta.showMoreLabel} />
 	</Layout.Container>
 </Layout.Divider>

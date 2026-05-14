@@ -1,172 +1,321 @@
-title: Interior Painting & Architectural Finishes
+title: Interior painting & wall finishing
 position: 4
 seo: |-
-  High-end interior painting, fine finishing, and designer wall treatments across Toronto, Vaughan, Richmond Hill, Markham, North York, and the GTA.
-  We specialize in luxury repaints, premium wall preparation, and architect-level finishes for sophisticated homes and discerning homeowners.
+  Interior painting, drywall repair, skim coating, ceiling painting, trim painting, and clean house painting services in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and the GTA.
+  Strataline prepares walls properly, controls dust, and delivers smooth premium paint finishes for finished homes.
 
 desc: |-
-  Flawless interior painting, precision wall preparation, and architectural-grade finishes.
-  We create smooth, refined surfaces using premium paints, advanced techniques, and meticulous craftsmanship — ideal for luxury homes, high-end remodels, and design-driven interiors across the GTA.
+  Professional interior painting for homes that need more than a quick repaint.
+  We repair cracked walls, skim coat uneven surfaces, paint ceilings, spray trim and millwork, and deliver clean, smooth finishes across Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and the GTA.
 
 image:
   src: ./cover.jpg
-  alt: Luxurious living room with perfectly painted walls, smooth trims, and refined interior detailing.
+  alt: Professional interior painting with smooth walls, crisp trim, and a clean premium finish in a GTA home.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/luxury-interior-painting-toronto.jpg
-        alt: Designer living room with velvety smooth painted surfaces and modern trim profiles.
+        alt: Interior painting in Toronto with smooth walls, clean cut lines, and a refined matte paint finish.
       - src: ./photos/smooth-wall-finish-level-5.jpg
-        alt: Luxury interior hallway with perfect Level-5 wall finishing and a premium colour palette.
+        alt: Level 5 drywall finish and skim coating for smooth wall painting in a high-end home.
       - src: ./photos/popcorn-ceiling-removal-gta.png
-        alt: Popcorn ceiling removal and smoothing in a high-end Toronto home.
+        alt: Ceiling painting and popcorn ceiling removal for a smooth modern ceiling in the GTA.
       - src: ./photos/high-end-wainscoting-painting-spray-finish.png
-        alt: High-end wainscoting and millwork spraying with a flawless luxury finish.
+        alt: Spray painting wainscoting and millwork with a smooth satin finish.
       - src: ./photos/designer-colour-consultation..jpg
-        alt: Designer colour selection and palette consultation for an upscale home.
+        alt: Interior paint colour consultation with premium paint samples for a Toronto home.
       - src: ./photos/modern-kitchen-repaint-satin.jpg
-        alt: Premium kitchen repaint with crisp lines, satin cabinetry, and modern detailing.
+        alt: Kitchen repaint with satin cabinetry, crisp trim, and smooth wall painting.
       - src: ./photos/high-end-trim-painting-spray-finish.png
-        alt: High-end trim spraying with immaculate lines and a professional finish.
+        alt: Trim and baseboard painting with a sprayed finish and sharp professional lines.
+
+  - type: QuoteCta
+    title: Get a clear painting quote from photos
+    desc: Send room photos, rough dimensions, and any wall damage you want fixed. We will reply with a realistic painting estimate, surface prep notes, and timing before you book.
+    phone: (416) 471-5999
+    phoneHref: sms:+14164715999
+    image:
+      src: ./photos/luxury-interior-painting-toronto.jpg
+      alt: Finished interior painting project with smooth walls and clean trim in Toronto.
+    steps:
+      - title: Send photos
+        desc: Show the walls, ceilings, trim, rooms, and problem areas.
+      - title: Get scope
+        desc: We outline drywall repair, skim coating, priming, paint, and timeline.
+      - title: Book clean work
+        desc: Floors, furniture, and finished rooms are protected before painting starts.
 
   - type: Benefits
-    title: Quality without compromise
+    title: Why homeowners choose Strataline
     content:
-      - title: Architectural-level wall preparation
+      - title: Walls prepared before paint
         desc: |-
-          We invest extensive time in sanding, skim coating, patching, and surface correction to create walls that look flawless under any lighting condition.
+          Good painting starts with the surface. We repair holes, cracked walls, peeling paint, visible seams, uneven drywall, and water damage before primer or finish paint goes on.
 
-      - title: Premium designer paints
+      - title: Clean work in finished homes
         desc: |-
-          We use elite-grade coatings such as Benjamin Moore Aura, Regal Select, and Sherwin Williams Emerald — ensuring depth, richness, and long-lasting colour fidelity.
+          We protect floors, stairs, furniture, built-ins, and nearby rooms. Sanding, patching, and painting are planned for low mess, clear access, and tidy daily cleanup.
 
-      - title: Precision lines & craftsmanship
+      - title: Smooth premium finishes
         desc: |-
-          Our skilled painters create crisp edges, smooth trims, and seamless colour transitions that stand out in high-end interiors.
+          We use premium interior paint, proper primers, fine rollers, spray finishing where needed, and careful sanding between coats for smooth matte, eggshell, or satin finishes.
 
-      - title: Luxury-friendly workflow
+      - title: Local GTA painting crew
         desc: |-
-          We work clean, quiet, and efficiently. Furniture protection, dust control, and immaculate cleanup are standard — not upgrades.
+          We provide house painting services in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Thornhill, Etobicoke, Forest Hill, Rosedale, and nearby GTA communities.
 
   - type: TextCarousel
     text:
-      - Architectural wall finishing
-      - Luxury interior repainting
-      - Designer colour consulting
-      - Smooth ceilings & refinishing
-      - Precision trim & millwork painting
+      - Interior painting
+      - House painting services
+      - Drywall repair and painting
+      - Skim coating walls
+      - Level 5 drywall finish
+      - Ceiling painting
+      - Trim and baseboard painting
+      - Dust controlled painting
 
-  # -------------------------------
-  # PREMIUM INTERIOR PAINTING
-  # -------------------------------
-  - type: ZigZag
-    title: Interior Painting
+  - type: ImagePanel
+    title: Clean process, better finish
     content:
-      - title: Designer Colour Selection
-        desc: >-
-          We help you choose the perfect palette—rich neutrals, soft whites, warm tones, or bold accents—ensuring your home feels cohesive and luxurious.
+      - title: Inspect & protect
+        desc: |-
+          We check wall condition, lighting, previous paint, nail pops, cracks, and peeling areas, then protect floors, furniture, stairs, cabinetry, and trim.
         image:
           src: ./photos/designer-colour-consultation..jpg
-          alt: Designer colour palette selection for a luxury home.
-      - title: Flawless Wall Application
-        desc: >-
-          Using premium rollers and fine-spray techniques, we achieve buttery-smooth finishes without streaks, patches, or roller texture.
-        image:
-          src: ./photos/luxury-interior-painting-toronto.jpg
-          alt: Smooth wall painting using high-end paint and expert technique.
+          alt: Interior painting inspection and colour planning before a house painting project in the GTA.
 
-  # -------------------------------
-  # CEILING FINISHES
-  # -------------------------------
-  - type: ZigZag
-    title: Smooth Ceilings & Refinishing
-    content:
-      - title: Popcorn Ceiling Removal
-        desc: >-
-          We eliminate outdated popcorn texture and apply a perfectly smooth finish — ideal for modern, upscale interiors.
-        image:
-          src: ./photos/popcorn-ceiling-removal-gta.png
-          alt: Popcorn ceiling removal and luxury smoothing treatment.
-          link: /services/popcorn-removal
-      - title: Level-5 Finishing
-        desc: >-
-          For high-end homes with critical lighting, we provide a Level 5 skim coat for a perfectly uniform, ultra-smooth surface.
-        image:
-          src: ./photos/smooth-wall-finish-level-5.jpg
-          alt: Level-5 wall finishing in a premium home.
-
-  # -------------------------------
-  # TRIM, DOORS & MILLWORK
-  # -------------------------------
-  - type: ZigZag
-    title: Trim, Doors & Millwork Painting
-    content:
-      - title: Crisp, Sharp Lines
-        desc: >-
-          We create razor-sharp edges on baseboards, casings, doors, and crown mouldings using precision taping and fine-finish techniques.
-        image:
-          src: ./photos/high-end-trim-painting-spray-finish.png
-          alt: Perfectly painted trim, doors, and mouldings in an upscale home.
-      - title: High-End Sprayed Finishes
-        desc: >-
-          For cabinetry, built-ins, railings, and millwork, we offer lacquer-smooth spraying done in controlled conditions for a factory-grade finish.
-        image:
-          src: ./photos/high-end-wainscoting-painting-spray-finish.png
-          alt: Professional spraying on millwork for a smooth, modern luxury finish.
-
-  # -------------------------------
-  # DAMAGE REPAIR & RESTORATION
-  # -------------------------------
-  - type: ZigZag
-    title: Wall Repair & Surface Restoration
-    content:
-      - title: Expert Repair Work
-        desc: >-
-          We repair settlement cracks, dents, holes, uneven drywall, and surface imperfections using professional-grade patching and leveling.
+      - title: Repair & sand
+        desc: |-
+          Holes, cracks, dents, visible drywall seams, and rough patches are repaired, skim coated when needed, sanded smooth, and spot primed before painting.
         image:
           src: ./photos/level-5-skim-coating-wall-repair.jpg
-          alt: Wall repair and repaint in a high-end modern kitchen.
-      - title: Invisible Results
-        desc: >-
-          Repairs blend seamlessly into the surrounding surfaces — ensuring nothing distracts from the beauty of the final finish.
+          alt: Drywall repair and skim coating before professional wall painting.
+
+      - title: Paint & finish
+        desc: |-
+          Walls, ceilings, doors, trim, baseboards, crown moulding, and millwork are painted with the right product, sheen, and application method for the room.
+        image:
+          src: ./photos/high-end-trim-painting-spray-finish.png
+          alt: Trim and baseboard painting with a smooth sprayed finish.
+
+  - type: ZigZag
+    title: Interior painting services
+    content:
+      - title: Walls, rooms & full homes
+        desc: |-
+          We paint bedrooms, living rooms, kitchens, dining rooms, hallways, stairwells, basements, condos, and full homes. Every interior painting project starts with surface prep, masking, priming where required, and clean finish coats.
+        image:
+          src: ./photos/luxury-interior-painting-toronto.jpg
+          alt: Professional interior wall painting in a Toronto home with smooth matte paint and crisp trim.
+
+      - title: Colour matching & paint selection
+        desc: |-
+          We help match Benjamin Moore, Sherwin Williams, Farrow & Ball, and designer colours. We can guide matte vs satin walls, low VOC paint, washable finishes, and durable paint for busy family spaces.
+        image:
+          src: ./photos/designer-colour-consultation..jpg
+          alt: Premium interior paint colour samples for house painting in Toronto and Vaughan.
+
+  - type: ZigZag
+    title: Drywall repair before painting
+    content:
+      - title: Cracks, dents & peeling paint
+        desc: |-
+          Paint does not hide bad drywall. We fix cracked walls, nail pops, dents, bad drywall finish, visible seams, paint peeling, and water damage wall repair before applying primer and finish coats.
+        image:
+          src: ./photos/level-5-skim-coating-wall-repair.jpg
+          alt: Cracked wall repair, patching, skim coating, and painting preparation.
+
+      - title: Skim coating & Level 5 finish
+        desc: |-
+          For homes with critical lighting, large smooth walls, stairwells, or modern minimal trim, we offer skim coating and Level 5 drywall finish so the final paint looks even from every angle.
         image:
           src: ./photos/smooth-wall-finish-level-5.jpg
-          alt: Smooth wall surface with invisible repair work.
+          alt: Level 5 drywall finish and skim coating walls before smooth interior painting.
+
+  - type: ZigZag
+    title: Ceilings, trim & millwork
+    content:
+      - title: Ceiling painting
+        desc: |-
+          We paint flat ceilings, smooth ceilings, repaired ceilings, and ceilings after popcorn removal. Proper prep helps avoid flashing, roller marks, and uneven sheen under natural light.
+        image:
+          src: ./photos/popcorn-ceiling-removal-gta.png
+          alt: Smooth ceiling painting after popcorn ceiling removal in the GTA.
+          link: /services/popcorn-removal
+
+      - title: Trim, doors & baseboards
+        desc: |-
+          Trim and baseboard painting needs a steady hand and the right finish. We paint casings, doors, crown moulding, wainscoting, railings, built-ins, and millwork with crisp lines and durable satin finishes.
+        image:
+          src: ./photos/high-end-wainscoting-painting-spray-finish.png
+          alt: Wainscoting, doors, trim, and baseboard painting with a sprayed satin finish.
 
   - type: Reviews
-    title: What our clients say
+    title: What our customers have to say
+    id: reviews
     content:
-      - title: Marissa L.
-        location: Forest Hill
+      - title: John Seigel
+        location: Richmond Hill
         stars: 5
         desc: |-
-          The finish is flawless. Every wall is perfect. This is the best painting work we’ve seen — it completely elevated the home.
+          The Popcorn removal was excellent and a very clean process. They also transformed our stairs from boring oak to a much more modern look. They handled repainting of the whole house and replacement of old tile floors with a beautiful new one. There were many additional small tasks which they handled very well. They have design skills if you need them. The house looks great. Very talented and reliable people. I should also say they are very professional providing detailed quotations and billing.
 
-      - title: Daniel R.
-        location: Vaughan
+      - title: Virginia Coppola
+        location: Newmarket
         stars: 5
         desc: |-
-          Their preparation is on another level. The surfaces are immaculate, and the clean-up was impeccable. True luxury service.
+          Maxim at Strataline did a very professional job in removing our hallway popcorn/stucco ceiling. The end result was a completely smooth surface and not only that, they totally sealed off the area so absolutely not dust penetrated other areas of the house.
+          Maxim also installed wainscoting and trim work throughout the hallway, stairwell and landing. We would highly recommend their workmanship with very little disruption to the home.
 
   - type: Faq
-    title: Have questions about luxury painting?
+    title: Have questions about painting?
+    showMoreLabel: View more painting questions
     content:
-      - title: What paints do you use for high-end homes?
+      - title: How much does interior painting cost in Toronto?
         desc: |-
-          We primarily use premium lines like Benjamin Moore Aura/Regal Select and Sherwin Williams Emerald — chosen for durability, richness, and refined finish quality.
+          Interior painting cost depends on room size, ceiling height, wall condition, trim detail, number of colours, paint choice, and how much drywall repair or skim coating is needed. Send photos and rough dimensions for a clear painting quote.
 
-      - title: How long does a luxury repaint take?
+      - title: Do you repair drywall before painting?
         desc: |-
-          A typical repaint takes several days to a week, depending on preparation, room size, and the level of finishing required.
+          Yes. We handle drywall repair and painting together, including holes, cracks, dents, visible seams, uneven walls, water damage wall repair, peeling paint, nail pops, and bad drywall finish correction.
 
-      - title: Do you handle wall repairs?
+      - title: Do I need skim coating or Level 5 drywall finish?
         desc: |-
-          Yes — all holes, dents, scratches, settlement cracks, and imperfections are professionally repaired before painting.
+          You may need skim coating or a Level 5 drywall finish if walls look wavy, seams show in side lighting, old texture is visible, or you want smooth gallery finish walls. We inspect the surface before recommending it.
 
-      - title: Can you match designer colours?
+      - title: What paint brands do you use?
         desc: |-
-          Absolutely. We match Farrow & Ball, Benjamin Moore, Sherwin Williams, and other curated palettes with perfect accuracy.
+          We commonly work with premium interior paint from Benjamin Moore and Sherwin Williams, including durable low VOC options. The right product depends on the room, surface, colour, and finish.
+
+      - title: What sheen is best for walls?
+        desc: |-
+          Matte wall paint gives a soft refined look and hides minor texture. Eggshell and satin are easier to clean in busy rooms. We help choose the right sheen for walls, ceilings, trim, and doors.
+
+      - title: Do you paint ceilings and trim?
+        desc: |-
+          Yes. We paint ceilings, smooth ceilings, doors, baseboards, casings, crown moulding, wainscoting, built-ins, railings, and other millwork.
+
+      - title: Can you work in a furnished home?
+        desc: |-
+          Yes. We protect floors, furniture, stairs, cabinetry, counters, and nearby rooms. Our process is built for occupied homes where cleanliness matters.
+
+      - title: Where do you provide painting services?
+        desc: |-
+          We provide interior painting, drywall repair, skim coating, ceiling painting, and trim painting in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Thornhill, Etobicoke, Forest Hill, Rosedale, and across the GTA.
+
+      - title: Do you provide interior painting in Vaughan?
+        desc: |-
+          Yes. We provide interior painting in Vaughan, including Maple, Woodbridge, Kleinburg, Thornhill, and nearby York Region neighbourhoods. We handle wall painting, ceiling painting, trim painting, drywall repair, and skim coating.
+
+      - title: Do you provide house painting in Woodbridge?
+        desc: |-
+          Yes. We provide house painting services in Woodbridge for finished homes, townhomes, condos, and renovation projects. We can repaint rooms, repair damaged drywall, paint ceilings, and refresh trim, doors, baseboards, and wainscoting.
+
+      - title: Do you provide interior painting in Toronto?
+        desc: |-
+          Yes. We provide interior painting in Toronto, including North York, Etobicoke, Forest Hill, Rosedale, Yorkville, Leaside, The Beaches, and nearby areas. We focus on clean preparation, smooth finishes, and careful protection in occupied homes.
+
+      - title: Do you provide painting services in Richmond Hill and Markham?
+        desc: |-
+          Yes. We provide painting services in Richmond Hill and Markham, including wall painting, ceiling painting, trim painting, drywall repair, skim coating, and Level 5 drywall finish for smooth modern interiors.
+
+      - title: Can you fix visible drywall seams before painting?
+        desc: |-
+          Yes. Visible drywall seams are repaired with proper taping, compound, sanding, priming, and skim coating when needed. This helps the final paint finish look smooth under natural light and pot lights.
+
+      - title: Can you repair cracked walls and paint them?
+        desc: |-
+          Yes. We repair cracked walls before painting by opening loose material, reinforcing the repair where needed, applying compound, sanding, priming, and repainting the surface for a clean blend.
+
+      - title: Can you fix peeling paint before repainting?
+        desc: |-
+          Yes. Peeling paint must be scraped, sanded, sealed, patched, primed, and repainted with the correct product. We identify the cause before coating over the problem.
+
+      - title: Can you repair water damage on walls before painting?
+        desc: |-
+          Yes. We repair water damage wall areas after the source of the leak is fixed. Stains, soft drywall, peeling paint, damaged compound, and uneven surfaces are repaired and primed before finish paint.
+
+      - title: What is a Level 5 drywall finish?
+        desc: |-
+          A Level 5 drywall finish is a full skim coat over the wall or ceiling surface, followed by sanding and priming. It helps reduce visible seams, texture differences, and flashing in rooms with strong lighting.
+
+      - title: Is skim coating worth it before painting?
+        desc: |-
+          Skim coating is worth it when walls are uneven, patched, textured, damaged, or exposed to side lighting. It creates a smoother base so interior paint looks more even and refined.
+
+      - title: Can you make old walls look smooth?
+        desc: |-
+          Yes. Old walls can often be improved with patching, sanding, skim coating, priming, and careful paint application. We inspect the wall condition first so the scope matches the surface.
+
+      - title: Why do wall defects show after painting?
+        desc: |-
+          Paint can reveal defects when drywall seams, dents, ridges, sanding marks, or texture changes were not corrected first. Light, sheen, and dark colours can make those imperfections more visible.
+
+      - title: Do you paint smooth ceilings?
+        desc: |-
+          Yes. We paint smooth ceilings and repaired ceilings using proper prep, flat ceiling paint, clean roller technique, and careful lighting checks to reduce flashing and lap marks.
+
+      - title: Can you paint after popcorn ceiling removal?
+        desc: |-
+          Yes. After popcorn ceiling removal, we can skim coat, sand, prime, and paint the ceiling so it looks smooth and modern. Ceiling painting after removal is different from simply coating old texture.
+
+      - title: Do you paint baseboards, doors, and casings?
+        desc: |-
+          Yes. We paint baseboards, doors, casings, crown moulding, wainscoting, railings, and other trim. These areas are sanded, caulked where needed, primed, and painted with durable trim paint.
+
+      - title: Do you spray paint trim and millwork?
+        desc: |-
+          Yes. We can spray paint trim, wainscoting, built-ins, doors, and millwork when the project calls for a smoother finish. We also brush and roll when site conditions make that the better choice.
+
+      - title: Can I get a painting quote from photos?
+        desc: |-
+          Yes. Send photos of each room, ceiling height, trim, wall damage, and rough dimensions. We can usually provide a realistic painting quote range and explain what prep is included.
+
+      - title: What affects the cost to paint a house interior?
+        desc: |-
+          The cost to paint a house interior depends on square footage, wall condition, ceiling height, trim detail, number of rooms, number of colours, paint quality, furniture protection, and drywall repair.
+
+      - title: Is drywall repair included in a painting estimate?
+        desc: |-
+          Small nail holes and minor touch-ups can be included, but larger drywall repair, skim coating, water damage repair, visible seam correction, or Level 5 finishing should be priced clearly in the scope.
+
+      - title: How long does interior painting take?
+        desc: |-
+          A single room may take one to two days depending on prep. A full house repaint can take several days or longer when ceilings, trim, drywall repair, skim coating, or multiple colours are included.
+
+      - title: Do you use low VOC paint?
+        desc: |-
+          Yes. We can use low VOC paint and low odour products for bedrooms, nurseries, condos, and occupied homes. Product choice depends on durability needs, colour, sheen, and surface condition.
+
+      - title: What is the best paint for high-traffic rooms?
+        desc: |-
+          High-traffic rooms usually need durable washable paint in matte, eggshell, or satin, depending on the look and cleaning needs. Hallways, stairwells, kitchens, and family rooms often need stronger coatings.
+
+      - title: Can you match an existing wall colour?
+        desc: |-
+          Yes. We can help match existing wall colours from a sample, paint code, fan deck, or matched product. Exact matching depends on age, sheen, fading, lighting, and previous paint quality.
+
+      - title: Should walls be matte, eggshell, or satin?
+        desc: |-
+          Matte walls look soft and hide minor texture. Eggshell is more washable. Satin is durable but can reveal surface defects. We recommend sheen based on room use, lighting, and wall condition.
+
+      - title: Do you paint condos in Toronto and Vaughan?
+        desc: |-
+          Yes. We paint condos in Toronto, Vaughan, North York, Markham, Richmond Hill, and the GTA. We plan around elevator access, building rules, protection, low odour paint, and clean daily cleanup.
+
+      - title: Do you paint stairwells and high walls?
+        desc: |-
+          Yes. We paint stairwells, tall foyer walls, high ceilings, and hard-to-reach areas. We protect stairs, railings, floors, and nearby finishes before painting.
+
+      - title: Do you paint kitchens and bathrooms?
+        desc: |-
+          Yes. We paint kitchens and bathrooms using the right primer, paint, and sheen for moisture, cleaning, and daily use. We can also repair walls, ceilings, trim, and patches before painting.
+
+      - title: Do you paint before or after renovations?
+        desc: |-
+          Painting is usually one of the last steps after dusty work, drywall repair, trim installation, flooring protection, and major renovation tasks. We can also repaint after smaller repairs or room updates.
 
   - type: Services
     exclude:
