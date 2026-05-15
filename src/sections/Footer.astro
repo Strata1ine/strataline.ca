@@ -2,7 +2,6 @@
 import { Icon } from 'astro-icon/components';
 import * as Layout from '@/components/Layout';
 import Inputs from '@/components/Inputs';
-import Feather from '~icons/ph/feather-fill';
 
 import { createSchema } from 'astro-frontmatter-cms';
 import { z } from 'astro:schema';
@@ -66,13 +65,11 @@ import type { SchemaContext } from 'astro:content';
 				</li>
 				<li>
 					<a
-						class="bg-primary border-primary-dark inline-flex items-center gap-2 rounded-full border px-4 py-2 font-sans text-sm font-semibold text-black shadow-lg shadow-black/5 transition hover:-translate-y-0.5 hover:border-black hover:bg-black hover:text-white sm:text-base"
-						href="https://g.page/r/CVMFoUd4wK3bEBE/review"
-						target="_blank"
-						rel="noopener noreferrer"
+						class="desc-base text-cyan-800 hover:underline"
+						data-astro-prefetch
+						href="/reviews"
 					>
-						<Feather class="size-5" />
-						<span class="text-nowrap">Write a review</span>
+						Leave a Review
 					</a>
 				</li>
 			</ul>

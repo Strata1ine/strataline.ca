@@ -22,9 +22,9 @@ sections:
       - id: https://strataline.ca/services/painting
         href: https://strataline.ca/services/painting
         name: Painting
-      - id: https://g.page/r/CVMFoUd4wK3bEBE/review
-        href: https://g.page/r/CVMFoUd4wK3bEBE/review
-        name: Write a Review
+      - id: /reviews
+        href: /reviews
+        name: ★★★★★ Reviews
 
   - type: Hero
     title: |-

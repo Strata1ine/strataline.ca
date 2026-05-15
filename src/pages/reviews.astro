@@ -1,0 +1,189 @@
+---
+import Root from '@/layouts/Root.astro';
+import * as Layout from '@/components/Layout';
+import { getEntry } from '@/content.config';
+
+const googleReviewUrl = 'https://g.page/r/CVMFoUd4wK3bEBE/review';
+const houzzUrl = 'https://www.houzz.com/writeProReview/cmd=r/n=maxim-sologub';
+const facebookReviewUrl = 'https://www.facebook.com/stratalineinc/reviews';
+
+const homepage = await getEntry('index', 'index');
+const homepageReviews = homepage.data.sections.find((section: any) => section.type === 'Reviews') as
+	| { content?: { title: string; location?: string; stars?: number; desc: string }[] }
+	| undefined;
+const clientReviews = homepageReviews?.content ?? [];
+const rotateReviews = (offset: number) => clientReviews.slice(offset).concat(clientReviews.slice(0, offset));
+
+const proofCards = [
+	{
+		title: 'Google Reviews',
+		kicker: 'Your words help neighbours choose well',
+		reviews: rotateReviews(0),
+	},
+	{
+		title: 'Houzz Reviews',
+		kicker: 'Share the details homeowners care about',
+		reviews: rotateReviews(2),
+	},
+	{
+		title: 'Facebook Recommendations',
+		kicker: 'Recommend us to local families',
+		reviews: rotateReviews(4),
+	},
+];
+---
+
+<Root
+	title="Reviews & Client Feedback"
+	desc="Leave a review for Strataline or read client feedback from homeowners across the GTA."
+>
+	<main class="bg-white">
+		<Layout.Divider class="pt-12 pb-14 sm:pt-18 sm:pb-20">
+			<Layout.Container variant="inner" class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
+				<div>
+					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+						Client feedback
+					</p>
+					<h1 class="mt-4 max-w-4xl font-serif text-5xl leading-[0.95] font-semibold text-black sm:text-7xl lg:text-8xl">
+						Reviews & Client Feedback
+					</h1>
+					<p class="desc-base mt-6 max-w-2xl">
+						Thank you for trusting Strataline with your home. We truly appreciate your feedback and support.
+					</p>
+				</div>
+
+				<section class="border-primary-dark rounded-2xl border bg-primary/35 p-5 shadow-xl shadow-black/5 sm:p-7">
+					<h2 class="font-serif text-4xl leading-none font-semibold">Leave a Review</h2>
+					<p class="desc-base mt-3">Choose the platform that is easiest for you.</p>
+
+					<div class="mt-6 grid gap-3">
+						<a
+							href={googleReviewUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="bg-secondary border-secondary inline-flex items-center justify-center rounded-full border px-6 py-4 font-sans text-base font-bold text-white shadow-xl shadow-secondary/25 transition hover:-translate-y-0.5 hover:bg-black"
+						>
+							Review us on Google &rarr;
+						</a>
+						<a
+							href={houzzUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="border-primary-dark inline-flex items-center justify-center rounded-full border bg-white px-6 py-4 font-sans text-base font-semibold text-black transition hover:-translate-y-0.5 hover:border-black"
+						>
+							Review us on Houzz &rarr;
+						</a>
+						<a
+							href={facebookReviewUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="border-primary-dark inline-flex items-center justify-center rounded-full border bg-white px-6 py-4 font-sans text-base font-semibold text-black transition hover:-translate-y-0.5 hover:border-black"
+						>
+							Review us on Facebook &rarr;
+						</a>
+					</div>
+				</section>
+			</Layout.Container>
+		</Layout.Divider>
+
+		<Layout.Divider class="bg-primary/25 py-14 sm:py-18">
+			<Layout.Container variant="inner" class="grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-center">
+				<div>
+					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+						Review inspiration
+					</p>
+					<h2 class="mt-3 font-serif text-4xl leading-none font-semibold sm:text-6xl">
+						Not sure what to write?
+					</h2>
+				</div>
+
+				<blockquote class="border-primary-dark rounded-2xl border bg-white p-6 shadow-lg shadow-black/5 sm:p-8">
+					<p class="desc-base">
+						&ldquo;Strataline completed work in our home and the experience was professional, clean, and well-managed from start to finish.&rdquo;
+					</p>
+				</blockquote>
+			</Layout.Container>
+		</Layout.Divider>
+
+		<Layout.Divider class="py-14 sm:py-20">
+			<Layout.Container variant="inner">
+				<div class="max-w-3xl">
+					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+						Social proof
+					</p>
+					<h2 class="mt-3 font-serif text-4xl leading-none font-semibold sm:text-6xl">
+						What Clients Say
+					</h2>
+				</div>
+
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					{proofCards.map((card) => (
+						<article class="border-primary-dark relative min-h-88 overflow-hidden rounded-2xl border bg-white p-6 shadow-sm shadow-black/5">
+							<p class="font-sans text-2xl font-bold tracking-[0.12em] text-secondary" aria-label="5 stars">
+								&#9733;&#9733;&#9733;&#9733;&#9733;
+							</p>
+							<h3 class="mt-4 font-serif text-3xl leading-none font-semibold">{card.title}</h3>
+							<p class="mt-2 font-sans text-sm font-semibold tracking-[0.14em] text-black/50 uppercase">
+								{card.kicker}
+							</p>
+
+							<div class="review-rotator relative mt-6 h-42" data-review-rotator>
+								{card.reviews.map((review, index) => (
+									<div class="review-slide absolute inset-0" data-active={index === 0 ? 'true' : 'false'}>
+										<p class="desc-base line-clamp-3">{review.desc}</p>
+										<p class="mt-4 font-sans text-sm font-bold text-secondary">
+											{review.title}{review.location ? `, ${review.location}` : ''}
+										</p>
+									</div>
+								))}
+							</div>
+						</article>
+					))}
+				</div>
+			</Layout.Container>
+		</Layout.Divider>
+	</main>
+</Root>
+
+<script>
+	const reviewRotators = document.querySelectorAll<HTMLElement>('[data-review-rotator]');
+
+	reviewRotators.forEach((rotator) => {
+		const slides = [...rotator.querySelectorAll<HTMLElement>('.review-slide')];
+		if (slides.length <= 1) return;
+
+		let activeIndex = 0;
+
+		window.setInterval(() => {
+			slides[activeIndex].dataset.active = 'false';
+			activeIndex = (activeIndex + 1) % slides.length;
+			slides[activeIndex].dataset.active = 'true';
+		}, 5600);
+	});
+</script>
+
+<style>
+	.review-rotator {
+		-webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 86%, transparent);
+		mask-image: linear-gradient(to bottom, transparent, black 8%, black 86%, transparent);
+	}
+
+	.review-slide {
+		opacity: 0;
+		transform: translateY(0.8rem);
+		transition:
+			opacity 420ms ease,
+			transform 420ms ease;
+	}
+
+	.review-slide[data-active='true'] {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.review-slide {
+			transition: none;
+		}
+	}
+</style>

@@ -12,6 +12,8 @@ import { getCollection } from '@/content.config';
 export const prerender = true;
 
 export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services'>) => {
+	if (!service?.id) return null;
+
 	const servicePath = service.id.replace(/\/index$/, '');
 	const pageUrl = `${Astro.url.origin}/services/${servicePath}`;
 

@@ -3,7 +3,7 @@ import Root from '@/layouts/Root.astro';
 import { getEntry, getCollection } from '@/content.config';
 
 const data = (await getEntry('index', 'index')).data;
-const services = await getCollection('services');
+const services = (await getCollection('services')).filter((service) => service?.id);
 import { seo } from '@/pages/services/[...slug].astro';
 ---
 
@@ -14,6 +14,6 @@ import { seo } from '@/pages/services/[...slug].astro';
 	schemas={{
 		'@type': 'ItemList',
 		numberOfItems: services.length,
-		itemListElement: await Promise.all(services.map(async (service) => await seo(Astro, service))),
+		itemListElement: (await Promise.all(services.map(async (service) => await seo(Astro, service)))).filter(Boolean),
 	}}
 />
