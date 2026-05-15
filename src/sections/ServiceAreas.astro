@@ -19,8 +19,8 @@ export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 
 // Examples:
-// /services/wallpaper/toronto/ -> ['wallpaper', 'toronto']
-// /services/stairs/refinishing/toronto/ -> ['stairs', 'refinishing', 'toronto']
+// /services/wallpaper/toronto -> ['wallpaper', 'toronto']
+// /services/stairs/refinishing/toronto -> ['stairs', 'refinishing', 'toronto']
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const serviceSegments = segments[0] === 'services' ? segments.slice(1) : segments;
 const currentId = serviceSegments.join('/');
@@ -105,7 +105,7 @@ const areaPages = allPages
 						</p>
 
 						<Actions.Link
-							href={`/services/${hubPage.id}/`}
+							href={`/services/${hubPage.id}`}
 							rel="noopener noreferrer"
 							data-astro-prefetch=""
 						>
@@ -129,7 +129,7 @@ const areaPages = allPages
 							</p>
 
 							<Actions.Link
-								href={`/services/${page.id}/`}
+								href={`/services/${page.id}`}
 								rel="noopener noreferrer"
 								data-astro-prefetch=""
 							>
