@@ -251,7 +251,8 @@ export default function Talk() {
 				href={phoneHref}
 				aria-label={`Call Strataline at ${displayTelephone}`}
 			>
-				Speak with a Project Specialist: {displayTelephone}
+				Speak with a Project Specialist:{' '}
+				<span class="whitespace-nowrap">{displayTelephone}</span>
 			</a>
 			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
 				Photo estimates available {'\u2022'} Fully contained <br />

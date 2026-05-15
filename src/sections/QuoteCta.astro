@@ -47,9 +47,10 @@ import { LetsTalk } from '@/components/Talk';
 			<div class="mt-7 flex flex-col gap-3 sm:flex-row">
 				<a
 					href={meta.phoneHref}
-					class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-serif text-xl font-bold leading-none text-neutral-950 transition hover:scale-[1.02]"
+					class="inline-flex flex-col items-center justify-center gap-1 rounded-full bg-white px-6 py-3 text-center font-serif text-xl font-bold leading-none text-neutral-950 transition hover:scale-[1.02]"
 				>
-					Text photos to <span class="ml-1 font-sans text-lg font-semibold">{meta.phone}</span>
+					<span>Text photos to</span>
+					<span class="whitespace-nowrap font-sans text-lg font-semibold">{meta.phone}</span>
 				</a>
 
 				<LetsTalk
