@@ -9,17 +9,71 @@ desc: |-
 
 image:
   src: ./cover.jpg
-  alt: Exterior painting with black window trim on a clean white stucco home in the GTA.
+  alt: Exterior house painting in Toronto with white stucco, black trim, black garage doors, and updated curb appeal.
 
 sections:
   - type: ImageCarousel
     content:
-      - src: ./photos/exterior-window-trim-painting.jpg
-        alt: Exterior window trim painting on a white stucco home with black trim.
-      - src: ./photos/garage-door-exterior-painting.jpg
-        alt: Exterior garage door painting with black doors and protected masonry.
-      - src: ./photos/exterior-door-trim-painting.jpg
-        alt: Exterior door and trim painting with black finish on siding.
+      - src: ./photos/exterior-house-painting-toronto-after.webp
+        alt: Exterior house painting in Toronto with white stucco, black trim, black garage doors, and modern exterior lighting.
+      - src: ./photos/exterior-house-painting-vaughan-after.webp
+        alt: Exterior house painting in Vaughan with refreshed stucco, black soffits, dark trim, and updated front landscaping.
+      - src: ./photos/exterior-house-painting-woodbridge-after.webp
+        alt: Exterior house painting in Woodbridge with painted brick, black windows, black garage doors, and clean exterior trim.
+      - src: ./photos/exterior-house-painting-gta-after.webp
+        alt: GTA exterior house painting with refreshed stucco, black trim, painted garage doors, and updated curb appeal.
+      - src: ./photos/exterior-gate-fence-painting-toronto-after.webp
+        alt: Toronto exterior gate and fence painting with a clean black finish on outdoor metal.
+
+  - type: BeforeAfter
+    title: Exterior painting before and after
+    intro: |-
+      See how exterior paint changes the whole house: stucco, brick, trim, windows, garage doors, soffits, and front elevations.
+    content:
+      - title: Toronto exterior house painting
+        desc: |-
+          White stucco, black trim, black garage doors, painted exterior details, and updated lighting gave the front elevation a sharper modern look.
+        before: ./photos/exterior-house-painting-toronto-before.webp
+        after: ./photos/exterior-house-painting-toronto-after.webp
+
+      - title: Vaughan exterior house painting
+        desc: |-
+          The exterior was refinished with a cleaner stucco field, dark fascia and trim, black windows, refreshed soffits, and a more cohesive curb appeal.
+        before: ./photos/exterior-house-painting-vaughan-before.webp
+        after: ./photos/exterior-house-painting-vaughan-after.webp
+
+      - title: Woodbridge exterior house painting
+        desc: |-
+          Painted brick, black trim, black garage doors, updated exterior accents, and landscape-ready finishes changed the home from dated to crisp.
+        before: ./photos/exterior-house-painting-woodbridge-before.webp
+        after: ./photos/exterior-house-painting-woodbridge-after.webp
+
+      - title: GTA exterior house painting
+        desc: |-
+          A refreshed exterior palette, cleaner stucco, dark trim, updated garage doors, and careful masking created a more finished GTA home exterior.
+        before: ./photos/exterior-house-painting-gta-before.webp
+        after: ./photos/exterior-house-painting-gta-after.webp
+
+      - title: Toronto gate and fence painting
+        desc: |-
+          Outdoor metal gates and fence sections were cleaned, prepped, and repainted with a sharper black finish for better curb appeal and weather resistance.
+        before: ./photos/exterior-gate-fence-painting-toronto-before.webp
+        after: ./photos/exterior-gate-fence-painting-toronto-after.webp
+
+  - type: Cardshow
+    title: Exterior painting video
+    content:
+      - title: Exterior roof painting in Woodbridge
+        desc: |-
+          A close look at exterior roofline painting and prep work on the Woodbridge home shown in the before and after gallery, with careful masking, surface protection, and weather-ready exterior coating.
+        media:
+          type: video
+          uploadDate: May 14, 2026
+          orientation: portrait
+          image:
+            src: ./photos/exterior-house-painting-woodbridge-after.webp
+            alt: Exterior roofline painting video poster showing the finished Woodbridge house with painted brick, black trim, and black garage doors.
+          url: /videos/exterior-roof-painting-woodbridge.mp4
 
   - type: Benefits
     title: Why exterior paint matters
@@ -43,11 +97,196 @@ sections:
   - type: TextCarousel
     text:
       - Exterior painting
+      - Exterior painting Toronto
+      - Exterior painting Vaughan
+      - Exterior painting Woodbridge
+      - Exterior painting Richmond Hill
+      - Exterior painting Markham
+      - Exterior painting North York
+      - Exterior painting Etobicoke
+      - Exterior painting Mississauga
+      - Exterior painting Oakville
+      - Exterior painting Burlington
+      - Exterior painting Aurora
+      - Exterior painting Newmarket
+      - Exterior painting King City
+      - Exterior painting Kleinburg
+      - Exterior painting Stouffville
+      - Exterior painting Pickering
+      - Exterior painting Ajax
+      - Exterior painting Whitby
+      - Exterior painting Oshawa
+      - Exterior painting GTA
+      - Exterior painters Toronto
+      - Exterior painters Vaughan
+      - Exterior painters Woodbridge
+      - Exterior painters Richmond Hill
+      - Exterior painters Markham
+      - Exterior painters North York
+      - Exterior painters GTA
+      - House exterior painting
+      - House exterior painting Toronto
+      - House exterior painting Vaughan
+      - House exterior painting Woodbridge
+      - Residential exterior painting
+      - Residential exterior painting Toronto
+      - Residential exterior painting Vaughan
+      - Residential exterior painting Woodbridge
+      - Home exterior painting
+      - Home exterior painting Toronto
+      - Home exterior painting GTA
+      - Exterior house painters
+      - Exterior house painters Toronto
+      - Exterior house painters Vaughan
+      - Exterior house painters Woodbridge
+      - Exterior house painters GTA
       - Commercial exterior painting
+      - Commercial exterior painting Toronto
+      - Commercial exterior painting Vaughan
+      - Commercial exterior painting Woodbridge
+      - Commercial exterior painting GTA
+      - Commercial painters Toronto
+      - Commercial painters Vaughan
+      - Commercial painters Woodbridge
+      - Commercial painters GTA
+      - Commercial building painting
+      - Commercial building painting Toronto
+      - Storefront painting
+      - Storefront painting Toronto
+      - Storefront painting Vaughan
+      - Storefront painting Woodbridge
+      - Retail exterior painting
+      - Office exterior painting
+      - Plaza exterior painting
+      - Property management painting
+      - Condo exterior painting
+      - Multi unit exterior painting
+      - Light industrial painting
       - Exterior trim painting
+      - Exterior trim painting Toronto
+      - Exterior trim painting Vaughan
+      - Exterior trim painting Woodbridge
+      - Black exterior trim painting
+      - Window trim painting
+      - Exterior window trim painting
+      - Exterior door trim painting
+      - Fascia painting
+      - Soffit painting
+      - Eaves painting
+      - Shutter painting
+      - Column painting
+      - Porch trim painting
+      - Railing painting
+      - Metal railing painting
+      - Exterior metal painting
+      - Exterior metal coating
       - Door and garage door painting
+      - Exterior door painting
+      - Front door painting
+      - Entry door painting
+      - Garage door painting
+      - Garage door painting Toronto
+      - Garage door painting Vaughan
+      - Garage door painting Woodbridge
+      - Black garage door painting
+      - Steel garage door painting
+      - Aluminum garage door painting
+      - Fiberglass door painting
+      - Metal door painting
+      - Service door painting
+      - Loading door painting
+      - Overhead door painting
       - Stucco and masonry coatings
+      - Stucco painting
+      - Stucco painting Toronto
+      - Stucco painting Vaughan
+      - Stucco painting Woodbridge
+      - EIFS painting
+      - Exterior stucco coating
+      - Stucco crack repair and painting
+      - Masonry painting
+      - Masonry coatings
+      - Brick painting
+      - Brick painting Toronto
+      - Brick painting Vaughan
+      - Brick painting Woodbridge
+      - Painted brick exterior
+      - Limewash brick alternative
+      - Brick stain consultation
+      - Concrete block painting
+      - Parging painting
+      - Foundation painting
+      - Stone adjacent trim painting
       - Siding painting
+      - Siding painting Toronto
+      - Siding painting Vaughan
+      - Siding painting Woodbridge
+      - Aluminum siding painting
+      - Vinyl siding painting
+      - Vinyl safe exterior paint
+      - Fibre cement siding painting
+      - Wood siding painting
+      - Cedar siding staining
+      - Composite siding painting
+      - Board and batten painting
+      - Exterior cladding painting
+      - Exterior panel painting
+      - Aluminum storefront painting
+      - Storefront frame painting
+      - Metal panel painting
+      - Composite panel painting
+      - Exterior canopy painting
+      - Awning frame painting
+      - Gate painting
+      - Fence painting
+      - Fence staining
+      - Exterior fence painting Toronto
+      - Metal gate painting Toronto
+      - Outdoor railing painting
+      - Porch painting
+      - Balcony painting
+      - Deck staining
+      - Pergola staining
+      - Gazebo painting
+      - Exterior wood staining
+      - Exterior wood painting
+      - Exterior spray painting
+      - Exterior brush and roll painting
+      - Exterior paint prep
+      - Exterior surface preparation
+      - Exterior power washing
+      - Exterior sanding
+      - Exterior scraping
+      - Exterior caulking
+      - Exterior priming
+      - Exterior paint repair
+      - Peeling paint repair
+      - Chalking paint repair
+      - Rust treatment
+      - Rust primer exterior
+      - Weatherproof exterior paint
+      - UV resistant exterior paint
+      - Freeze thaw exterior coating
+      - Moisture resistant exterior paint
+      - Breathable masonry coating
+      - Elastomeric stucco coating
+      - Exterior paint colour consultation
+      - Modern black trim exterior
+      - White stucco black trim
+      - Black window exterior painting
+      - Black soffit and fascia painting
+      - Curb appeal painting
+      - Front elevation painting
+      - Exterior repaint
+      - Full exterior repaint
+      - Partial exterior repaint
+      - Exterior painting estimate
+      - Exterior painting quote
+      - Exterior painting cost Toronto
+      - Exterior painting cost GTA
+      - Insured exterior painters
+      - WSIB exterior painters
+      - 5M liability exterior painters
       - Weather-ready finishes
 
   - type: ImagePanel
@@ -57,22 +296,22 @@ sections:
         desc: |-
           Exterior doors, frames, garage doors, window trim, casings, fascia, and detail trim are prepped and painted with durable exterior products.
         image:
-          src: ./photos/exterior-window-trim-painting.jpg
-          alt: Exterior window and trim painting with clean black lines on a white exterior.
+          src: ./photos/exterior-house-painting-toronto-after.webp
+          alt: Exterior window and trim painting with black lines, white stucco, and painted garage doors.
 
       - title: Garage doors and railings
         desc: |-
           Garage doors, railings, posts, and exterior metal details need cleaning, sanding, primer where needed, and coatings suited to outdoor exposure.
         image:
-          src: ./photos/garage-door-exterior-painting.jpg
-          alt: Black exterior garage doors painted on a light masonry home.
+          src: ./photos/exterior-house-painting-woodbridge-after.webp
+          alt: Exterior house painting with black garage doors, painted brick, black trim, and exterior railings.
 
       - title: Commercial exteriors
         desc: |-
           Storefront trim, office entries, exterior doors, common areas, and small commercial buildings are scheduled around access, business hours, and weather.
         image:
-          src: ./photos/exterior-door-trim-painting.jpg
-          alt: Exterior door and trim painting with protected glass and siding.
+          src: ./photos/exterior-house-painting-vaughan-after.webp
+          alt: Exterior painting with clean stucco, black trim, dark soffits, and a finished front elevation.
 
   - type: ZigZag
     title: Exterior painting services
@@ -81,15 +320,103 @@ sections:
         desc: |-
           We paint exterior doors, trim, siding, stucco, masonry, railings, garage doors, fascia, and small exterior details for homes in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and nearby GTA areas.
         image:
-          src: ./photos/exterior-window-trim-painting.jpg
-          alt: Exterior home painting with white stucco and black window trim.
+          src: ./photos/exterior-house-painting-toronto-after.webp
+          alt: Exterior home painting in Toronto with white stucco, black trim, and black garage doors.
 
       - title: Commercial interiors and exteriors
         desc: |-
           We paint commercial spaces inside and outside, including offices, retail spaces, storefront details, entry doors, trim, common areas, and small commercial exteriors.
         image:
-          src: ./photos/exterior-door-trim-painting.jpg
-          alt: Commercial exterior door and trim painting with black finish.
+          src: ./photos/exterior-house-painting-vaughan-after.webp
+          alt: Exterior painting with clean stucco, dark trim, black windows, and professional exterior finish.
+
+
+  - type: Benefits
+    title: Exterior painting scope
+    content:
+      - title: Full exterior repaints
+        desc: |-
+          We paint full home exteriors, front elevations, stucco, brick, siding, garage doors, exterior trim, fascia, soffits, railings, columns, porches, and exterior doors.
+
+      - title: Targeted curb appeal updates
+        desc: |-
+          If the whole house does not need paint, we can focus on the highest-impact areas: front doors, garage doors, black trim, fascia, shutters, window frames, and front elevations.
+
+      - title: Commercial exteriors
+        desc: |-
+          Offices, storefronts, retail entries, plazas, loading doors, common areas, railings, exterior doors, metal frames, and light industrial surfaces can be painted with phased scheduling.
+
+      - title: Written scope and insurance
+        desc: |-
+          Exterior painting estimates can include WSIB, 5M liability insurance details, surface prep, access notes, coating system, number of coats, exclusions, and timing.
+
+  - type: ZigZag
+    title: Built for Toronto weather
+    content:
+      - title: Freeze-thaw and moisture control
+        desc: |-
+          Toronto exteriors move through rain, humidity, snow, ice, and freeze-thaw cycles. We review surface dryness, failed caulking, cracks, peeling paint, moisture stains, and drainage issues before coating.
+        image:
+          src: ./photos/exterior-house-painting-woodbridge-after.webp
+          alt: Exterior painting in Woodbridge with painted brick, black windows, black garage doors, and weather-ready coatings.
+
+      - title: UV, colour fade and dark trim
+        desc: |-
+          Dark exterior colours, black trim, black garage doors, and modern white stucco palettes need the right products because sun exposure affects fading, heat, adhesion, and long-term appearance.
+        image:
+          src: ./photos/exterior-house-painting-toronto-after.webp
+          alt: Toronto exterior painting with black trim, white stucco, and black garage doors designed for curb appeal.
+
+  - type: Benefits
+    title: Surface-specific prep
+    content:
+      - title: Stucco and EIFS
+        desc: |-
+          Stucco painting needs crack review, stain cleaning, compatible primer, breathable coatings, and careful attention to water paths around windows, rooflines, and eavestroughs.
+
+      - title: Brick and masonry
+        desc: |-
+          Brick, concrete block, parging, and masonry surfaces need cleaning, mortar review, moisture checks, primer or mineral-compatible coatings, and the right choice between paint and stain.
+
+      - title: Aluminum and vinyl siding
+        desc: |-
+          Aluminum siding often has chalking and oxidation. Vinyl siding needs vinyl-safe colours and products. Both require cleaning and coating choices that respect heat movement.
+
+      - title: Wood, trim and fascia
+        desc: |-
+          Wood siding, fascia, soffits, doors, porch columns, and trim need scraping, sanding, caulking, rot review, primer on bare areas, and durable exterior finish coats.
+
+      - title: Metal and railings
+        desc: |-
+          Railings, doors, frames, bollards, gates, and commercial metal surfaces need rust treatment, sanding, primer, and coatings suited to weather and hand contact.
+
+      - title: Garage doors and entries
+        desc: |-
+          Garage doors, front doors, side doors, service doors, sidelights, and frames are high-impact curb appeal surfaces that need careful masking, drying, and product selection.
+
+  - type: ImagePanel
+    title: Better than a basic repaint
+    content:
+      - title: Quote clarity
+        desc: |-
+          Exterior quotes should explain prep, primer, repairs, coats, surfaces, access equipment, warranty limits, cleanup, and what is not included.
+        image:
+          src: ./photos/exterior-house-painting-vaughan-after.webp
+          alt: Vaughan exterior painting with clean stucco, dark trim, black windows, and professional finish.
+
+      - title: Paint or stain decisions
+        desc: |-
+          Brick, cedar, fences, decks, and some masonry surfaces may need stain instead of paint. The right choice depends on porosity, moisture, appearance, and maintenance goals.
+        image:
+          src: ./photos/exterior-house-painting-woodbridge-after.webp
+          alt: Woodbridge exterior painting with painted brick, black trim, and refreshed curb appeal.
+
+      - title: Commercial scheduling
+        desc: |-
+          Commercial painting can be phased around customers, tenants, staff, deliveries, signs, entries, parking, and property management rules.
+        image:
+          src: ./photos/exterior-gate-fence-painting-toronto-after.webp
+          alt: Exterior gate and fence painting in Toronto for commercial or residential exterior details.
 
   - type: Faq
     title: Have questions about exterior painting?
@@ -97,51 +424,2023 @@ sections:
     content:
       - title: Do you paint exterior surfaces?
         desc: |-
-          Yes. We paint exterior doors, trim, siding, stucco, masonry, railings, garage doors, fascia, storefront details, and small commercial exteriors.
+          Yes. We paint exterior doors, trim, siding, stucco, masonry, railings, garage doors, fascia, soffits, storefront details, and small commercial exteriors.
 
       - title: Do you paint commercial exteriors?
         desc: |-
-          Yes. We paint commercial interiors and exteriors, including offices, retail spaces, storefront details, entry doors, trim, common areas, and small commercial buildings.
+          Yes. We paint commercial interiors and exteriors, including offices, retail spaces, storefront details, entry doors, trim, common areas, light industrial areas, and small commercial buildings.
 
       - title: Are you insured for exterior painting?
         desc: |-
-          Yes. Strataline carries WSIB coverage and 5M liability insurance for painting and renovation projects. Insurance details can be provided when required.
+          Yes. Strataline carries WSIB coverage and 5M liability insurance for painting and renovation projects. Insurance details can be provided when condos, commercial spaces, property managers, or larger scopes require them.
 
-      - title: What exterior surfaces can be painted?
+      - title: How much does exterior painting cost in Toronto?
         desc: |-
-          Exterior paint can be used on properly prepared wood, metal, fiberglass, masonry, stucco, siding, garage doors, trim, doors, railings, and some composite materials.
+          Exterior painting cost in Toronto depends on house size, height, access, surface material, prep, repairs, primer, number of colours, paint system, and weather windows. Photos are enough to start a realistic scope.
 
-      - title: What affects the cost of exterior painting?
+      - title: How much does it cost to paint a two-storey house exterior?
         desc: |-
-          Exterior painting cost depends on surface condition, access, height, prep, repairs, primer, paint system, number of coats, weather windows, and how much masking is needed.
+          A two-storey exterior repaint usually costs more than a bungalow because ladders, staging, fascia, soffits, trim, dormers, and upper windows add setup and labour time.
 
-      - title: Do you scrape and sand before exterior painting?
+      - title: How much does it cost to paint a bungalow exterior?
         desc: |-
-          Yes. Loose paint is scraped, rough edges are sanded, dirty surfaces are cleaned, gaps are caulked where appropriate, and bare areas are primed before finish paint.
+          Bungalow exterior painting is usually simpler than taller homes, but pricing still depends on siding, brick, stucco, trim, peeling paint, repairs, colour change, and access around the property.
 
-      - title: Do exterior surfaces need primer?
+      - title: How much does it cost to paint a large detached house exterior?
         desc: |-
-          Bare wood, metal, masonry repairs, stained areas, old glossy paint, and problem surfaces often need primer. Primer helps adhesion, coverage, and durability.
+          Large detached homes cost more because of paintable area, rooflines, trim detail, garage doors, elevation changes, landscaping protection, access equipment, and the time needed for prep.
 
-      - title: Can you paint exterior doors?
+      - title: How much does it cost to paint exterior trim only?
         desc: |-
-          Yes. Exterior doors are cleaned, sanded, masked, primed where needed, and painted with exterior products suited to sun, moisture, and daily use.
+          Exterior trim painting depends on linear footage, height, window count, fascia, soffits, caulking, peeling paint, wood condition, primer, and whether multiple trim colours are used.
 
-      - title: Can you paint garage doors?
+      - title: How much does garage door painting cost?
         desc: |-
-          Yes. Garage doors can be painted after cleaning, sanding, masking, and primer where needed. Product choice depends on whether the door is steel, aluminum, fiberglass, or wood.
+          Garage door painting cost depends on the number of doors, door material, texture, existing finish, colour change, masking, primer, and whether the doors are sprayed or brushed and rolled.
 
-      - title: Can you paint stucco or masonry?
+      - title: How much does exterior door painting cost?
         desc: |-
-          Yes, when the surface is sound, dry, clean, and compatible with the coating. Cracks, moisture issues, and loose material should be addressed before paint.
+          Exterior door painting depends on door material, panels, glass, hardware, sidelights, weather stripping, colour, primer, and whether the door can stay in place while painted.
 
-      - title: When is the best season for exterior painting in Ontario?
+      - title: How much does stucco painting cost?
         desc: |-
-          Exterior painting is usually best in dry, mild weather. Temperature, humidity, rain, direct sun, and overnight conditions all affect scheduling and cure time.
+          Stucco painting cost depends on texture, cracks, staining, height, coating system, repairs, porosity, primer, and whether the surface needs elastomeric or masonry-compatible products.
 
-      - title: Do you also paint interiors?
+      - title: How much does brick painting cost?
         desc: |-
-          Yes. See our [interior painting and wall finishing](/services/painting) page for walls, ceilings, trim, drywall repair, skim coating, and interior repainting.
+          Brick painting cost depends on brick condition, porosity, mortar, cleaning, repairs, primer, coating choice, and whether the project is full brick, accents, or a front elevation only.
+
+      - title: How much does siding painting cost?
+        desc: |-
+          Siding painting cost depends on vinyl, aluminum, wood, fibre cement, or composite material, plus chalking, fading, repairs, height, primer, and colour change.
+
+      - title: How much does commercial exterior painting cost?
+        desc: |-
+          Commercial exterior painting depends on building size, surface type, access, business hours, lifts, safety planning, coatings, phasing, signage protection, and whether work is interior, exterior, or both.
+
+      - title: Why do exterior painting quotes vary so much?
+        desc: |-
+          Quotes vary because contractors include different levels of prep, repairs, primer, paint quality, access equipment, insurance, warranty, cleanup, crew size, and number of coats.
+
+      - title: What should an exterior painting estimate include?
+        desc: |-
+          A good estimate should list surfaces, prep, repairs, primer, paint system, number of coats, access needs, exclusions, schedule, cleanup, warranty, WSIB, liability insurance, and price.
+
+      - title: Can I get an exterior painting quote from photos?
+        desc: |-
+          Yes. Wide exterior photos, close-ups of damage, surface material, access conditions, and rough dimensions are enough to start a quote before an on-site visit is needed.
+
+      - title: What photos should I send for an exterior painting quote?
+        desc: |-
+          Send each elevation, garage doors, trim, fascia, soffits, peeling areas, cracks, stains, rot, siding, stucco, masonry, railings, decks, fences, and access around the home.
+
+      - title: Do you provide written exterior painting estimates?
+        desc: |-
+          Yes. We provide written estimates that explain surfaces, prep, repairs, paint, coating system, timing, exclusions, and pricing so the scope is clear before work starts.
+
+      - title: Can you quote exterior painting without visiting?
+        desc: |-
+          Often, yes. Straightforward projects can start with photos. Complex stucco, masonry, high access, commercial spaces, or major repairs may need a site visit.
+
+      - title: Do you offer same-day exterior painting quotes?
+        desc: |-
+          Many exterior painting quote requests can be reviewed the same day from photos and scope details. Larger projects may need more time for access, repairs, or coating decisions.
+
+      - title: Should I choose the cheapest exterior painting quote?
+        desc: |-
+          The cheapest quote may skip washing, scraping, primer, caulking, repairs, safety, enough coats, or proper paint. Compare scope first, then price.
+
+      - title: How do I compare exterior painting contractors?
+        desc: |-
+          Compare prep details, substrate knowledge, paint system, warranty, WSIB, liability insurance, reviews, communication, access planning, cleanup, and whether the estimate is specific.
+
+      - title: What makes exterior painting last longer?
+        desc: |-
+          Exterior paint lasts longer when surfaces are dry, clean, sound, properly scraped, sanded, caulked, primed, coated with the right product, and maintained after the job.
+
+      - title: How long does exterior painting last in Toronto?
+        desc: |-
+          Exterior paint can last many years when prep and products are right, but lifespan depends on surface material, exposure, moisture, colour, sun, maintenance, and previous coating condition.
+
+      - title: When is the best time of year for exterior painting in Toronto?
+        desc: |-
+          Late spring through fall is usually best. Exterior paint needs suitable temperature, dry surfaces, low rain risk, and enough curing time before cold or wet weather.
+
+      - title: Can exterior painting be done in spring?
+        desc: |-
+          Yes, if surfaces are dry and temperatures stay within product requirements. Spring work needs close attention to rain, overnight lows, pollen, and damp shaded areas.
+
+      - title: Can exterior painting be done in summer?
+        desc: |-
+          Yes. Summer is common, but direct sun, heat, humidity, and fast drying can affect application. Work is planned around shade, exposure, and product limits.
+
+      - title: Can exterior painting be done in fall?
+        desc: |-
+          Yes. Fall can be excellent for exterior painting when temperatures are mild and surfaces stay dry, but shorter days and overnight lows affect scheduling.
+
+      - title: Can you paint exterior surfaces in winter?
+        desc: |-
+          Most exterior painting should wait until temperatures and surface conditions meet product requirements. Some protected commercial or specialty coating work may be reviewed separately.
+
+      - title: How long does exterior painting take?
+        desc: |-
+          Exterior painting can take a few days to several weeks depending on house size, prep, repairs, weather, access, number of colours, surface type, and drying time.
+
+      - title: How long does paint take to cure outside?
+        desc: |-
+          Dry time and cure time depend on product, temperature, humidity, sun, airflow, and surface type. Paint may feel dry before it reaches full durability.
+
+      - title: Can rain ruin fresh exterior paint?
+        desc: |-
+          Rain can damage fresh paint if it arrives before the coating has dried or cured enough. We schedule around forecasts and product dry-time requirements.
+
+      - title: How do you handle weather delays?
+        desc: |-
+          We monitor weather and adjust exterior schedules when rain, damp surfaces, high humidity, wind, or temperature swings could affect adhesion or finish quality.
+
+      - title: Do you paint in direct sunlight?
+        desc: |-
+          We avoid painting surfaces when direct sun or heat could cause poor flow, lap marks, flashing, fast drying, or adhesion problems. Work is staged by exposure when needed.
+
+      - title: What temperature is best for exterior painting?
+        desc: |-
+          The right temperature depends on the coating, but mild, dry conditions are usually best. Surface temperature matters as much as air temperature.
+
+      - title: Does humidity affect exterior painting?
+        desc: |-
+          Yes. High humidity slows drying, can trap moisture, and may affect adhesion or curing. We plan exterior painting around humidity and dew point.
+
+      - title: Does dew affect exterior painting?
+        desc: |-
+          Yes. Morning dew or overnight moisture can leave surfaces too damp for paint. We wait until surfaces are dry before priming or painting.
+
+      - title: Does wind affect exterior painting?
+        desc: |-
+          Yes. Wind can carry dust, overspray, leaves, and debris into wet paint. It also affects spraying, masking, ladder safety, and drying.
+
+      - title: Do you power wash before exterior painting?
+        desc: |-
+          Surfaces are washed when needed to remove dirt, chalk, mildew, pollen, loose residue, and contaminants. Clean surfaces help primer and paint bond.
+
+      - title: Do you scrape peeling paint before repainting?
+        desc: |-
+          Yes. Loose and peeling paint must be scraped back to a sound edge before sanding, primer, and finish paint. Painting over loose paint leads to early failure.
+
+      - title: Do you sand exterior surfaces?
+        desc: |-
+          Yes. Sanding smooths rough edges, dulls glossy paint, improves adhesion, and helps repairs blend. The amount depends on the surface and existing coating.
+
+      - title: Do you caulk before exterior painting?
+        desc: |-
+          Yes. Failed or missing caulking around trim, windows, doors, joints, and gaps is addressed where appropriate before painting. Proper caulking helps manage water entry.
+
+      - title: Do you prime before exterior painting?
+        desc: |-
+          Primer is used on bare wood, metal, masonry repairs, stains, chalky surfaces, glossy surfaces, patches, and colour changes where needed for adhesion and coverage.
+
+      - title: Do exterior surfaces need two coats?
+        desc: |-
+          Most exterior repaints need two finish coats for colour depth, film thickness, durability, and consistent coverage. Some spot repairs also need primer first.
+
+      - title: Can one coat be enough outside?
+        desc: |-
+          One coat may be enough only for very limited maintenance touch-ups in the same colour and product. Full repaints usually perform better with two coats.
+
+      - title: Do you spray or brush exterior paint?
+        desc: |-
+          We use the method that fits the surface. Spraying can be efficient for large areas, while brushing and rolling help work paint into trim, rough siding, brick, or detailed surfaces.
+
+      - title: Is spray painting better for exteriors?
+        desc: |-
+          Spraying is useful on siding, stucco, brick, garage doors, and large surfaces when masking and conditions are right. Back-rolling or brushing may still be needed.
+
+      - title: What is back-rolling?
+        desc: |-
+          Back-rolling means rolling over sprayed paint to push coating into the surface and improve adhesion, coverage, and texture consistency on porous or rough exteriors.
+
+      - title: Do you protect landscaping before painting?
+        desc: |-
+          Yes. Plants, shrubs, walkways, patios, lighting, vehicles, windows, doors, stone, and nearby surfaces are protected before washing, scraping, spraying, or painting.
+
+      - title: Do I need to trim shrubs before exterior painting?
+        desc: |-
+          It helps if shrubs and branches are trimmed away from walls, trim, and siding. Clear access improves prep, safety, masking, and finish quality.
+
+      - title: Do I need to move patio furniture before painters arrive?
+        desc: |-
+          Move outdoor furniture, planters, grills, and decor away from paint areas if possible. We can help stage protection as part of the project setup.
+
+      - title: Do I need to remove shutters before painting?
+        desc: |-
+          Shutters may be removed or masked depending on the scope, condition, and desired finish. Removal often gives cleaner prep and coating around edges.
+
+      - title: Do I need to remove downspouts before painting?
+        desc: |-
+          Downspouts can be masked or temporarily removed depending on the surface behind them and the level of finish needed. We review this during scope.
+
+      - title: Do you paint around exterior lights?
+        desc: |-
+          Yes. Exterior lights are protected or temporarily adjusted when appropriate. Painting around fixtures requires masking and careful edge work.
+
+      - title: Do you paint around security cameras?
+        desc: |-
+          Yes. Cameras, wires, sensors, and doorbells are protected during exterior painting. We confirm what can be moved and what must stay active.
+
+      - title: Do you protect windows during exterior painting?
+        desc: |-
+          Yes. Windows and glass are masked or protected before spraying, scraping, sanding, or painting nearby trim and siding.
+
+      - title: Do you protect brick if only trim is painted?
+        desc: |-
+          Yes. Brick, stone, stucco, siding, windows, and roofing are protected when only trim, doors, fascia, or garage doors are painted.
+
+      - title: Do you clean up after exterior painting?
+        desc: |-
+          Yes. Cleanup includes removing masking, collecting paint chips where practical, checking protection, cleaning work areas, and walking through the finished scope.
+
+      - title: Can you paint while we live in the home?
+        desc: |-
+          Yes. Exterior painting is usually less disruptive than interior work, but we coordinate access, doors, windows, pets, vehicles, and noise expectations.
+
+      - title: Can pets be outside during exterior painting?
+        desc: |-
+          Pets should be kept safely away from work areas, ladders, wet paint, masking, and open gates. We can plan work zones around pet access.
+
+      - title: Can children be outside during exterior painting?
+        desc: |-
+          Children should stay away from ladders, tools, wet paint, masking, and active work areas. We keep the site organized, but clear boundaries help.
+
+      - title: Do you need access to water or power?
+        desc: |-
+          Exterior projects may need water for washing and power for tools. We confirm access needs before the project starts.
+
+      - title: Do you need driveway access?
+        desc: |-
+          Driveway access helps with ladders, materials, lifts, washing, masking, and cleanup. Vehicles may need to be moved away from work areas.
+
+      - title: Do you use ladders, lifts, or scaffolding?
+        desc: |-
+          Access depends on height and site conditions. We may use ladders, planks, scaffolding, or lifts where appropriate for safety and reach.
+
+      - title: Do tall homes cost more to paint?
+        desc: |-
+          Yes. Tall homes take more time because of access equipment, ladder work, safety planning, upper trim, dormers, soffits, fascia, and staging.
+
+      - title: Can you paint three-storey homes?
+        desc: |-
+          Yes, if access and safety conditions allow. Three-storey exterior painting needs careful planning for ladders, lifts, protection, and weather.
+
+      - title: Can you paint Victorian or heritage homes?
+        desc: |-
+          Yes. Older and heritage-style homes often need more scraping, sanding, carpentry review, detailed trim prep, colour planning, and careful application.
+
+      - title: Do heritage homes take longer to paint?
+        desc: |-
+          Usually, yes. Detailed trim, old paint, wood repair, access, multi-colour schemes, and delicate surfaces can take much longer than standard exterior repainting.
+
+      - title: Can you help with exterior colour selection?
+        desc: |-
+          Yes. We can help narrow exterior colours based on brick, stone, roof colour, windows, trim, garage doors, landscaping, neighbourhood context, and sunlight.
+
+      - title: Can you match existing exterior colours?
+        desc: |-
+          Yes. Existing exterior colours can often be matched, but sun fading, chalking, sheen loss, and surface age may affect how the new paint looks.
+
+      - title: Can you paint a modern black and white exterior?
+        desc: |-
+          Yes. Black and white exterior painting is common for stucco, brick, trim, garage doors, windows, and fascia. Deep colours need the right products and prep.
+
+      - title: Do dark exterior colours fade faster?
+        desc: |-
+          Dark colours can show fading, heat absorption, and surface movement more than lighter colours. Product choice matters for colour retention and durability.
+
+      - title: Can dark colours damage vinyl siding?
+        desc: |-
+          Dark colours can absorb heat and may warp vinyl if the wrong product or colour is used. Vinyl-safe colours and coatings are important.
+
+      - title: Can you paint exterior brick white?
+        desc: |-
+          Yes, if the brick is suitable and properly prepared. Brick painting is a permanent-style change and should use breathable masonry-compatible products.
+
+      - title: Can you paint red brick?
+        desc: |-
+          Yes. Red brick can be painted after cleaning, repairs, and primer where needed. The brick and mortar condition should be reviewed first.
+
+      - title: Can you stain brick instead of painting it?
+        desc: |-
+          Brick staining may be a better option when you want a mineral look and breathable finish. Painting gives more opacity but changes maintenance expectations.
+
+      - title: Is brick paint or brick stain better?
+        desc: |-
+          It depends on the brick, look, budget, and maintenance goals. Stain keeps more masonry texture; paint gives stronger colour coverage and a more uniform finish.
+
+      - title: Can painted brick peel?
+        desc: |-
+          Painted brick can peel if moisture, wrong products, dirty surfaces, poor prep, or trapped water are present. Breathable systems and surface review matter.
+
+      - title: Do you paint masonry?
+        desc: |-
+          Yes. Masonry can be painted when clean, dry, sound, and compatible with the coating. Mortar repairs and moisture issues should be addressed first.
+
+      - title: Can you paint concrete block?
+        desc: |-
+          Yes. Concrete block can be painted with suitable masonry coatings after cleaning, repair, primer where needed, and moisture review.
+
+      - title: Can you paint foundation walls?
+        desc: |-
+          Foundation painting depends on moisture, surface condition, coating compatibility, and whether the wall needs masonry paint, parging repair, or another solution.
+
+      - title: Can you paint stucco?
+        desc: |-
+          Yes. Stucco can be painted with the right cleaning, crack repair, primer, and coating. Texture, staining, and moisture must be reviewed before painting.
+
+      - title: Can you paint EIFS?
+        desc: |-
+          EIFS requires careful product selection and moisture review. The coating must be compatible and breathable, and damaged areas should be repaired first.
+
+      - title: Can you repair stucco cracks before painting?
+        desc: |-
+          Small stucco cracks can often be repaired before coating. Larger cracks, delamination, or moisture problems may need stucco repair before painting.
+
+      - title: Can you paint stained stucco?
+        desc: |-
+          Yes, but the cause of staining should be checked first. Water runoff, eavestrough issues, algae, dirt, or rust stains may need cleaning or primer.
+
+      - title: Can you paint aluminum siding?
+        desc: |-
+          Yes. Aluminum siding can be painted after washing chalking residue, dulling glossy areas, priming where needed, and using exterior coatings suited to metal.
+
+      - title: What is chalking on aluminum siding?
+        desc: |-
+          Chalking is a powdery residue from weathered paint. It must be washed and stabilized before repainting or new paint may not bond properly.
+
+      - title: Can you paint faded aluminum siding?
+        desc: |-
+          Yes. Faded aluminum siding can often be repainted instead of replaced when the panels are sound and properly washed, primed where needed, and coated.
+
+      - title: Can you paint vinyl siding?
+        desc: |-
+          Yes, with vinyl-safe colours and products. Vinyl siding must be clean, sound, and painted with colours that will not create damaging heat absorption.
+
+      - title: Can you paint wood siding?
+        desc: |-
+          Yes. Wood siding needs washing, scraping, sanding, caulking, primer on bare areas, repairs where needed, and exterior paint or stain suited to exposure.
+
+      - title: Can you paint cedar siding?
+        desc: |-
+          Yes. Cedar needs careful prep because tannins, weathering, and previous stains can affect adhesion and colour. Product choice is important.
+
+      - title: Can you stain cedar instead of painting it?
+        desc: |-
+          Yes. Cedar can be stained when the surface condition and desired look support it. Stain often needs different prep and maintenance than paint.
+
+      - title: Can you paint fibre cement siding?
+        desc: |-
+          Yes. Fibre cement siding can be painted with suitable exterior products after cleaning, repair, caulking, and primer where needed.
+
+      - title: Can you paint composite siding?
+        desc: |-
+          Composite siding may be paintable depending on manufacturer guidance, condition, and coating compatibility. We review the material before recommending paint.
+
+      - title: Can you paint metal siding?
+        desc: |-
+          Yes. Metal siding needs cleaning, rust treatment where needed, primer on bare or problem areas, and coatings suited to metal expansion and weather.
+
+      - title: Can you paint steel doors?
+        desc: |-
+          Yes. Steel doors need cleaning, sanding, rust treatment if present, primer where needed, and durable exterior paint. Weather stripping and hardware are protected.
+
+      - title: Can you paint fiberglass doors?
+        desc: |-
+          Yes. Fiberglass doors can be painted with proper cleaning, sanding, primer where required, and exterior-grade coatings suited to the existing finish.
+
+      - title: Can you paint wood doors?
+        desc: |-
+          Yes. Wood doors need sanding, repair, primer or stain system, and protection from moisture and sun. The bottom edge and panel joints matter.
+
+      - title: Can you paint front doors?
+        desc: |-
+          Yes. Front door painting can update curb appeal quickly. We prep panels, edges, sidelights, glass, hardware, and weather stripping for a clean finish.
+
+      - title: Can you paint patio doors?
+        desc: |-
+          Yes. Patio doors and frames can be painted depending on material, condition, and coating compatibility. Glass and tracks are protected.
+
+      - title: Can you paint garage doors black?
+        desc: |-
+          Yes, when the door material and exposure allow it. Black garage doors need careful product selection because dark colours absorb heat.
+
+      - title: Can you paint metal garage doors?
+        desc: |-
+          Yes. Metal garage doors need cleaning, scuffing, spot primer where needed, and exterior paint suited to metal and movement.
+
+      - title: Can you paint wood garage doors?
+        desc: |-
+          Yes. Wood garage doors need sanding, repairs, primer, and durable exterior paint or stain depending on the desired finish.
+
+      - title: Can you spray garage doors?
+        desc: |-
+          Yes. Spraying can create a smooth garage door finish when masking, wind, and site conditions are right. Brushing or rolling may be used where better.
+
+      - title: Can you paint exterior window frames?
+        desc: |-
+          Yes. Exterior window frames can be painted depending on material. Wood and some metal frames are common; vinyl needs product-specific review.
+
+      - title: Can you paint vinyl windows?
+        desc: |-
+          Vinyl window painting may be possible with proper products and colours, but heat absorption, adhesion, and manufacturer warranty should be considered first.
+
+      - title: Can you paint exterior shutters?
+        desc: |-
+          Yes. Shutters can be painted or sprayed after cleaning, sanding, primer where needed, and colour/product selection based on material.
+
+      - title: Can you paint fascia?
+        desc: |-
+          Yes. Fascia boards are commonly painted. We check for peeling paint, wood rot, open joints, eavestrough stains, and primer needs before coating.
+
+      - title: Can you paint soffits?
+        desc: |-
+          Yes. Soffits can be painted depending on material and ventilation. Aluminum, wood, and vented soffits each need different prep.
+
+      - title: Can you paint eavestroughs?
+        desc: |-
+          Eavestrough painting depends on material, condition, oxidation, adhesion, and access. Some gutters can be painted after cleaning and proper primer.
+
+      - title: Can you paint downspouts?
+        desc: |-
+          Yes. Downspouts can be painted or matched to trim when cleaned, scuffed, primed where needed, and coated with compatible paint.
+
+      - title: Can you paint railings?
+        desc: |-
+          Yes. Exterior railings need cleaning, sanding, rust treatment for metal, primer where needed, and durable paint suited to hand contact and weather.
+
+      - title: Can you paint wrought iron railings?
+        desc: |-
+          Yes. Wrought iron railings need rust removal, sanding, metal primer, and exterior metal paint. Heavy rust may require more preparation.
+
+      - title: Can you paint aluminum railings?
+        desc: |-
+          Aluminum railings can often be painted after cleaning, dulling glossy surfaces, and using the right bonding primer and topcoat.
+
+      - title: Can you paint fences?
+        desc: |-
+          Yes. Fences can be painted or stained depending on material, age, moisture, and desired look. New pressure-treated wood usually needs time before coating.
+
+      - title: Can you stain decks?
+        desc: |-
+          Deck staining depends on wood type, age, moisture, previous coating, cleaning, sanding, and product choice. We review deck condition before recommending.
+
+      - title: Can you paint decks?
+        desc: |-
+          Decks can be painted, but stain is often better for horizontal wood because it handles wear differently. The right choice depends on condition and expectations.
+
+      - title: Can you paint pergolas?
+        desc: |-
+          Yes. Pergolas can be painted or stained after cleaning, sanding, repairs, primer, and protection for nearby surfaces and landscaping.
+
+      - title: Can you paint exterior ceilings?
+        desc: |-
+          Yes. Porch ceilings, covered entry ceilings, exterior soffit ceilings, and commercial exterior ceilings can be painted with products suited to exposure.
+
+      - title: Can you paint porch columns?
+        desc: |-
+          Yes. Porch columns can be painted after cleaning, sanding, caulking, primer, and repairs. Wood, fiberglass, metal, and PVC columns need different prep.
+
+      - title: Can you paint PVC trim?
+        desc: |-
+          PVC trim can often be painted with compatible products. Colour choice matters because dark colours can create heat movement.
+
+      - title: Can you paint exterior wood trim white?
+        desc: |-
+          Yes. Exterior wood trim can be painted white after scraping, sanding, caulking, primer, and repair of any rot or failing joints.
+
+      - title: Can you paint exterior trim black?
+        desc: |-
+          Yes. Black exterior trim needs careful product choice because dark colours show defects and absorb heat. Prep and clean lines matter.
+
+      - title: Can you paint exterior stone?
+        desc: |-
+          Some stone can be coated, but many stone surfaces are better left natural. We review moisture, porosity, and desired look before recommending paint.
+
+      - title: Can you paint brick arches?
+        desc: |-
+          Yes. Brick arches can be painted or stained when the masonry is sound and the coating is suitable. Masking and edge detail are important.
+
+      - title: Can you paint chimney exteriors?
+        desc: |-
+          Chimney painting depends on masonry condition, moisture, height, flashing, and coating compatibility. Repairs may be needed before paint.
+
+      - title: Can you paint exterior stairs?
+        desc: |-
+          Exterior stairs can be painted or stained depending on material and foot traffic. Slip resistance and durability should be considered.
+
+      - title: Can you paint concrete porches?
+        desc: |-
+          Concrete porches need cleaning, repair, moisture review, and suitable coatings. Horizontal concrete requires products made for foot traffic.
+
+      - title: Can you paint commercial storefronts?
+        desc: |-
+          Yes. Storefront trim, doors, frames, exterior panels, signage surrounds, and entries can be painted with scheduling that limits disruption.
+
+      - title: Can you paint office building exteriors?
+        desc: |-
+          Yes. Office building exterior painting can include doors, trim, masonry, metal panels, railings, common entries, and exterior details.
+
+      - title: Can you paint retail plazas?
+        desc: |-
+          Yes. Retail plaza painting needs phasing, signage protection, customer access planning, safety, and after-hours or off-hours scheduling when required.
+
+      - title: Can you paint restaurants or cafes?
+        desc: |-
+          Yes. Restaurants and cafes may need off-hours scheduling, entry protection, patio coordination, odour planning, and quick turnaround exterior touch-ups.
+
+      - title: Can you paint warehouse exteriors?
+        desc: |-
+          Small warehouse and light industrial exterior painting can be reviewed based on access, surface type, safety needs, metal siding, doors, and coatings.
+
+      - title: Can you paint loading doors?
+        desc: |-
+          Yes. Loading doors, overhead doors, frames, bollards, and nearby metal details can be painted with proper prep and access planning.
+
+      - title: Can you paint exterior metal frames?
+        desc: |-
+          Yes. Exterior metal frames need cleaning, sanding, rust treatment, primer, and durable coating suited to weather and use.
+
+      - title: Can you paint commercial railings?
+        desc: |-
+          Yes. Commercial railings need safe access, rust review, primer, durable coatings, and scheduling to keep entrances or walkways usable.
+
+      - title: Can you paint concrete block commercial buildings?
+        desc: |-
+          Yes. Concrete block can be painted with masonry coatings after cleaning, repairs, moisture review, and primer where needed.
+
+      - title: Can you paint tilt-up concrete?
+        desc: |-
+          Tilt-up concrete can be painted with compatible commercial coatings after cleaning, crack repair, moisture review, and access planning.
+
+      - title: Do commercial exterior projects need lifts?
+        desc: |-
+          Some commercial exterior projects need lifts, scaffolding, or staging for safe access. We review height, ground conditions, traffic, and business operations.
+
+      - title: Can you work after hours for commercial painting?
+        desc: |-
+          Commercial painting can often be phased around business hours, weekends, tenant access, customer traffic, or property management requirements.
+
+      - title: Can you provide insurance for property managers?
+        desc: |-
+          Yes. We can provide WSIB and liability insurance details when property managers, condo boards, or commercial clients need documentation.
+
+      - title: Do you coordinate with property managers?
+        desc: |-
+          Yes. We can coordinate exterior painting scope, access, insurance, timing, tenant notices, and walkthroughs with property managers or building representatives.
+
+      - title: Do you paint condo townhouse exteriors?
+        desc: |-
+          Yes. Condo townhouse exterior painting may require property manager approval, colour rules, insurance, work-hour limits, and common area protection.
+
+      - title: Do you paint strata or condo common areas?
+        desc: |-
+          We can review exterior common area painting such as doors, trim, railings, entries, garage doors, and small building details depending on scope.
+
+      - title: Can you paint rental property exteriors?
+        desc: |-
+          Yes. Rental property exterior painting often focuses on curb appeal, durability, fast scheduling, safety, and clear scope before tenant turnover or listing.
+
+      - title: Can you paint before selling a house?
+        desc: |-
+          Yes. Exterior painting before listing can improve curb appeal, listing photos, buyer confidence, and perceived maintenance. Focus areas often include trim, doors, garage doors, and front elevations.
+
+      - title: Does exterior painting increase home value?
+        desc: |-
+          Exterior painting can improve curb appeal and buyer perception, especially when dated brick, faded siding, peeling trim, or old garage doors make the home look neglected.
+
+      - title: Can exterior painting help with curb appeal?
+        desc: |-
+          Yes. A coordinated exterior colour plan for stucco, brick, trim, doors, garage doors, railings, and lighting can make the whole property feel newer.
+
+      - title: Do you help choose black trim colours?
+        desc: |-
+          Yes. Black trim choices should be matched to window colour, roof, brick, stone, stucco, garage doors, and sunlight exposure.
+
+      - title: Do you paint exterior accents?
+        desc: |-
+          Yes. Exterior accents such as doors, shutters, trim, garage doors, fascia, railings, porch ceilings, and columns can change curb appeal without repainting everything.
+
+      - title: Can you paint only the front elevation?
+        desc: |-
+          Yes. Some homeowners paint only the front elevation, entry, garage doors, trim, or visible exterior surfaces. We can scope targeted exterior upgrades.
+
+      - title: Can you paint only garage doors and trim?
+        desc: |-
+          Yes. Garage doors and trim are common targeted projects when the main exterior is still in good condition but curb appeal needs a refresh.
+
+      - title: Can you paint only exterior doors?
+        desc: |-
+          Yes. Front doors, side doors, service doors, patio doors, and garage man doors can be painted as smaller exterior projects.
+
+      - title: Can you touch up exterior paint?
+        desc: |-
+          Touch-ups are possible, but exterior fading and weathering can make colour matching difficult. Larger blended areas may look better than small spot touch-ups.
+
+      - title: Why do exterior touch-ups show?
+        desc: |-
+          Exterior touch-ups can show because of UV fading, dirt, sheen change, weathering, different paint batches, and texture differences.
+
+      - title: Can you fix peeling exterior paint?
+        desc: |-
+          Yes. Peeling paint must be scraped, sanded, primed, and repainted. The underlying cause, such as moisture or poor adhesion, should be addressed first.
+
+      - title: What causes exterior paint peeling?
+        desc: |-
+          Peeling can come from moisture, dirty surfaces, old failing paint, wrong primer, trapped water, painting damp surfaces, poor prep, or incompatible coatings.
+
+      - title: What causes exterior paint bubbling?
+        desc: |-
+          Bubbling can come from moisture, heat, direct sun, trapped vapour, painting over contamination, or applying paint before the surface is ready.
+
+      - title: What causes exterior paint cracking?
+        desc: |-
+          Cracking can come from age, low-quality paint, thick old paint layers, movement, UV exposure, moisture, or applying rigid coatings on moving surfaces.
+
+      - title: What causes exterior paint fading?
+        desc: |-
+          Fading is caused by UV exposure, colour choice, product quality, weather, and surface exposure. Dark and bright colours can fade more noticeably.
+
+      - title: What causes exterior paint chalking?
+        desc: |-
+          Chalking is powdery paint breakdown from weather and UV exposure. It must be washed and stabilized before repainting.
+
+      - title: What causes exterior paint mildew?
+        desc: |-
+          Mildew grows where moisture, shade, dirt, and organic residue remain. Cleaning, ventilation, drainage, and suitable coatings help reduce recurrence.
+
+      - title: What causes rust stains on exterior paint?
+        desc: |-
+          Rust stains may come from exposed metal, fasteners, railings, fixtures, or runoff. Rust must be treated before repainting or it can bleed through.
+
+      - title: Can you paint over rust?
+        desc: |-
+          Rust should be removed or treated before primer and paint. Painting directly over rust can lead to bleed-through and early failure.
+
+      - title: Can you paint over mildew?
+        desc: |-
+          Mildew should be cleaned and the cause reviewed before painting. Painting over mildew can lead to staining, poor adhesion, and recurring marks.
+
+      - title: Can you paint over dirt or pollen?
+        desc: |-
+          No. Dirt, pollen, chalk, and dust interfere with adhesion. Exterior surfaces should be cleaned and dry before primer or paint.
+
+      - title: Can you paint over old oil-based exterior paint?
+        desc: |-
+          Old oil-based paint may need sanding, cleaning, bonding primer, and compatible topcoats. Surface testing helps determine the best prep.
+
+      - title: Can you paint over glossy exterior paint?
+        desc: |-
+          Glossy paint should be cleaned, dulled by sanding or deglossing, and primed where needed for adhesion.
+
+      - title: Can you paint over stain?
+        desc: |-
+          Some stained surfaces can be painted after cleaning, sanding, primer, and compatibility review. Transparent or oil stains may need special prep.
+
+      - title: Can you paint pressure-treated wood?
+        desc: |-
+          Pressure-treated wood usually needs to dry before coating. Moisture content and age should be checked before paint or stain.
+
+      - title: Can you paint new wood outside?
+        desc: |-
+          Yes, once dry and ready. New exterior wood needs primer on all exposed surfaces where possible, including edges, cuts, and end grain.
+
+      - title: Can you paint rotted wood?
+        desc: |-
+          Rotted wood should be repaired or replaced before painting. Paint will not stabilize rotten trim, fascia, siding, or door frames.
+
+      - title: Do you repair wood rot before painting?
+        desc: |-
+          Light repairs can be reviewed as part of prep. Significant rot may need carpentry before painting so the coating has a solid surface.
+
+      - title: Do you replace caulking before painting?
+        desc: |-
+          Failed caulking is removed and replaced where appropriate. Not every joint should be sealed, so we follow the surface and drainage needs.
+
+      - title: Do you seal gaps before painting?
+        desc: |-
+          Gaps around windows, doors, trim, and joints may be sealed with exterior caulking where appropriate. Drainage paths and material movement are considered.
+
+      - title: Do you fill nail holes outside?
+        desc: |-
+          Yes. Nail holes and small defects in trim can be filled with suitable exterior filler, sanded, primed where needed, and painted.
+
+      - title: Do you patch masonry before painting?
+        desc: |-
+          Small masonry repairs can be reviewed, but loose mortar, major cracks, spalling, or water issues may need masonry repair before coating.
+
+      - title: Do you fix mortar before painting brick?
+        desc: |-
+          Mortar problems should be addressed before painting or staining brick. Loose or deteriorated mortar can let moisture behind coatings.
+
+      - title: Can you paint spalling brick?
+        desc: |-
+          Spalling brick should be repaired or reviewed before painting. Paint can hide damage but does not solve moisture or masonry failure.
+
+      - title: Can you paint wet brick?
+        desc: |-
+          No. Brick should be dry before coating. Moisture in masonry can cause adhesion issues, blistering, peeling, or trapped water problems.
+
+      - title: Can you paint damp wood?
+        desc: |-
+          No. Damp wood should dry before primer and paint. Painting damp wood can trap moisture and lead to peeling or rot.
+
+      - title: Do you check surface moisture?
+        desc: |-
+          We review surface dryness before painting. Moisture concerns are especially important for wood, stucco, masonry, shaded elevations, and recent washing.
+
+      - title: Do you use elastomeric paint?
+        desc: |-
+          Elastomeric coatings may be considered for some stucco or masonry surfaces, but they are not right for every exterior. Compatibility and breathability matter.
+
+      - title: Do you use acrylic exterior paint?
+        desc: |-
+          High-quality acrylic exterior paint is common for many surfaces because it offers flexibility, adhesion, and weather resistance when used correctly.
+
+      - title: Do you use oil-based exterior paint?
+        desc: |-
+          Oil-based products are used only when appropriate. Many exterior projects use modern acrylic systems, but primer and surface needs guide the choice.
+
+      - title: What paint brands do you use for exterior painting?
+        desc: |-
+          We commonly work with premium exterior paint systems from Benjamin Moore and Sherwin Williams. Product choice depends on surface, exposure, colour, and coating needs.
+
+      - title: What sheen is best for exterior paint?
+        desc: |-
+          Exterior sheen depends on surface and desired look. Lower sheens can hide texture; satin or semi-gloss may be used for trim, doors, and details.
+
+      - title: Should exterior trim be satin or semi-gloss?
+        desc: |-
+          Satin and semi-gloss are common for trim because they are durable and easier to clean. The best choice depends on surface condition and style.
+
+      - title: Should stucco be flat or low sheen?
+        desc: |-
+          Stucco often looks best in lower sheens because texture and surface variation are less obvious. The coating system matters more than sheen alone.
+
+      - title: Should brick be painted matte?
+        desc: |-
+          Painted brick often looks better in lower sheen masonry coatings. Sheen choice depends on product, desired look, and how much texture you want to show.
+
+      - title: What exterior colours are popular in Toronto?
+        desc: |-
+          White, warm off-white, black trim, charcoal, greige, taupe, soft grey, deep green, and natural stone-inspired palettes are common for GTA homes.
+
+      - title: Can you match paint to stone or roof colour?
+        desc: |-
+          Yes. Exterior colours should work with fixed elements like stone, brick, roof shingles, windows, driveway, landscaping, and neighbouring homes.
+
+      - title: Can you paint soffits black?
+        desc: |-
+          Yes, if the material and conditions allow it. Black soffits can modernize a home but require careful product selection and clean edge work.
+
+      - title: Can you paint fascia black?
+        desc: |-
+          Yes. Black fascia is common on modern exterior updates. It needs good prep because dark finishes show defects and absorb heat.
+
+      - title: Can you paint gutters black?
+        desc: |-
+          Some gutters can be painted black with proper cleaning, scuffing, primer, and compatible coating. Heat and expansion are considered.
+
+      - title: Can you paint exterior lights?
+        desc: |-
+          Exterior lights are usually protected rather than painted. Metal fixtures may be paintable as a separate specialty item if properly prepared.
+
+      - title: Can you coordinate painting with exterior renovations?
+        desc: |-
+          Yes. Painting can be coordinated with windows, doors, roofing, eavestroughs, masonry, landscaping, lighting, and carpentry. Proper sequencing avoids damage.
+
+      - title: Should exterior painting happen before new windows?
+        desc: |-
+          Usually new windows should be installed before final exterior painting and caulking, but the right order depends on trim, siding, and project scope.
+
+      - title: Should exterior painting happen before landscaping?
+        desc: |-
+          Painting is often easier before delicate landscaping is installed. If landscaping is already finished, we plan protection and access carefully.
+
+      - title: Should exterior painting happen before eavestrough replacement?
+        desc: |-
+          If eavestroughs are being replaced, painting fascia and trim may be easier after removal and before new gutters are installed.
+
+      - title: Should exterior painting happen before new lighting?
+        desc: |-
+          Often, yes. Painting before final exterior lighting installation gives cleaner surfaces, but wiring and fixture placement should be coordinated.
+
+      - title: Can you paint around new pot lights or soffit lights?
+        desc: |-
+          Yes. Soffit lights and exterior fixtures are protected or worked around carefully. Fresh lighting can reveal paint lines and surface defects.
+
+      - title: Can you paint a house with solar panels?
+        desc: |-
+          Solar panels may affect access and safety. We review rooflines, wiring, mounting, and work areas before confirming exterior painting scope.
+
+      - title: Can you paint near pools?
+        desc: |-
+          Yes, with protection and scheduling. Pool decks, water, equipment, and furniture need care during washing, masking, and painting.
+
+      - title: Can you paint near cars in the driveway?
+        desc: |-
+          Vehicles should be moved away from work areas, especially for washing, scraping, sanding, or spraying. This helps protect finishes and access.
+
+      - title: Can you paint near neighbours’ property?
+        desc: |-
+          Close lot lines need careful masking, wind planning, communication, and access review so neighbouring surfaces stay protected.
+
+      - title: Can you paint semi-detached houses?
+        desc: |-
+          Yes. Semi-detached exterior painting may need clean transitions at property lines, neighbour coordination, shared trim review, and careful colour planning.
+
+      - title: Can you paint townhouses?
+        desc: |-
+          Yes. Townhouse exterior painting may involve property management rules, shared elevations, common trim, access limits, and colour approvals.
+
+      - title: Can you paint laneway homes?
+        desc: |-
+          Yes. Laneway homes can be painted depending on access, height, siding, trim, doors, and proximity to neighbouring structures.
+
+      - title: Can you paint detached garages?
+        desc: |-
+          Yes. Detached garage painting can include siding, trim, service doors, fascia, soffits, garage doors, and masonry or wood repairs.
+
+      - title: Can you paint sheds?
+        desc: |-
+          Yes. Sheds can be painted or stained after cleaning, repair, sanding, primer, and product selection based on material.
+
+      - title: Can you paint exterior basement walkouts?
+        desc: |-
+          Yes. Walkout walls, doors, railings, trim, and concrete or masonry surfaces can be painted with proper access and moisture review.
+
+      - title: Can you paint walkout railings?
+        desc: |-
+          Yes. Walkout railings need cleaning, rust treatment where required, primer, and durable exterior metal paint.
+
+      - title: Can you paint exterior stairs and handrails together?
+        desc: |-
+          Yes. Stairs and handrails can be coordinated, but walking surfaces need the right product and enough drying time before use.
+
+      - title: Do you paint homes in Toronto?
+        desc: |-
+          Yes. We provide exterior painting in Toronto, including North York, Etobicoke, Forest Hill, Rosedale, Leaside, The Beaches, Yorkville, and nearby neighbourhoods.
+
+      - title: Do you paint homes in Vaughan?
+        desc: |-
+          Yes. We provide exterior painting in Vaughan, including Maple, Woodbridge, Kleinburg, Thornhill, and nearby York Region communities.
+
+      - title: Do you paint homes in Woodbridge?
+        desc: |-
+          Yes. We provide exterior house painting in Woodbridge for stucco, brick, trim, garage doors, siding, railings, doors, and full exterior updates.
+
+      - title: Do you paint homes in Richmond Hill?
+        desc: |-
+          Yes. We provide exterior painting in Richmond Hill for detached homes, townhomes, trim, doors, stucco, masonry, and garage doors.
+
+      - title: Do you paint homes in Markham?
+        desc: |-
+          Yes. We provide exterior painting in Markham for homes, townhomes, storefronts, trim, siding, stucco, brick, doors, and garage doors.
+
+      - title: Do you paint homes in North York?
+        desc: |-
+          Yes. We paint North York exteriors, including older homes, stucco, trim, brick, wood details, doors, garages, and commercial storefronts.
+
+      - title: Do you paint homes in Thornhill?
+        desc: |-
+          Yes. We provide exterior painting in Thornhill for stucco, trim, brick, garage doors, railings, doors, siding, and small commercial exteriors.
+
+      - title: Do you paint homes in Etobicoke?
+        desc: |-
+          Yes. We paint Etobicoke homes, including older wood trim, brick, stucco, garage doors, fascia, soffits, railings, and exterior doors.
+
+      - title: Do you paint homes in Forest Hill?
+        desc: |-
+          Yes. We paint Forest Hill homes with careful protection for stone, brick, landscaping, heritage-style trim, high elevations, and detailed exteriors.
+
+      - title: Do you paint homes in Rosedale?
+        desc: |-
+          Yes. We provide exterior painting in Rosedale for heritage-style homes, masonry, trim, fascia, doors, railings, and high-detail front elevations.
+
+      - title: Do you paint homes in Yorkville?
+        desc: |-
+          Yes. We paint Yorkville exterior details, storefronts, entries, trim, doors, railings, and townhouse or commercial-facing surfaces.
+
+      - title: Do you paint homes in Kleinburg?
+        desc: |-
+          Yes. We paint Kleinburg homes, including large exterior elevations, stucco, stone-adjacent trim, garage doors, railings, fascia, and soffits.
+
+      - title: Do you paint homes in Maple?
+        desc: |-
+          Yes. We provide exterior painting in Maple for stucco, brick, trim, garage doors, doors, railings, and full curb appeal updates.
+
+      - title: Do you paint homes in Aurora?
+        desc: |-
+          Yes. We can review exterior painting in Aurora for homes, townhomes, trim, garage doors, stucco, siding, and masonry surfaces.
+
+      - title: Do you paint homes in Newmarket?
+        desc: |-
+          Yes. We can review exterior painting in Newmarket for homes, garages, trim, siding, brick, doors, railings, and commercial spaces.
+
+      - title: Do you paint homes in Mississauga?
+        desc: |-
+          Yes. We can review exterior painting in Mississauga for residential and commercial projects depending on scope, schedule, and access.
+
+      - title: Do you paint homes in Oakville?
+        desc: |-
+          Yes. We can review exterior painting in Oakville for homes, townhomes, trim, stucco, garage doors, doors, and commercial exteriors.
+
+      - title: Do you paint homes across the GTA?
+        desc: |-
+          Yes. We provide exterior painting across Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Thornhill, Etobicoke, and nearby GTA communities.
+
+      - title: Can you paint older Toronto homes?
+        desc: |-
+          Yes. Older Toronto homes often need scraping, sanding, wood repair, caulking, primer, detailed trim work, lead-safe planning, and careful colour decisions.
+
+      - title: Can you paint newer subdivision homes?
+        desc: |-
+          Yes. Newer homes often need doors, garage doors, trim, shutters, porch columns, railings, and accent colour updates rather than full exterior repainting.
+
+      - title: Can you paint luxury home exteriors?
+        desc: |-
+          Yes. Large or high-end homes require careful colour planning, clean masking, surface-specific coatings, protection for stone and landscaping, and detailed finish checks.
+
+      - title: Can you paint custom home exteriors?
+        desc: |-
+          Yes. Custom homes often combine stucco, brick, stone, metal, wood, and composite trim. Each surface needs the right prep and coating system.
+
+      - title: Can you paint exterior surfaces after renovation?
+        desc: |-
+          Yes. Exterior painting can finish renovations after new doors, windows, trim, masonry repairs, lighting, garage doors, or landscaping are completed.
+
+      - title: Can you repaint a bad exterior paint job?
+        desc: |-
+          Often, yes. Bad exterior work may need washing, scraping, sanding, repair, primer, and full recoating to correct adhesion, coverage, sheen, or colour issues.
+
+      - title: Can you fix overspray from another painter?
+        desc: |-
+          Overspray correction depends on surface and severity. We can review glass, brick, siding, trim, stone, or metal affected by previous painting.
+
+      - title: Can you fix exterior lap marks?
+        desc: |-
+          Lap marks can be corrected depending on surface and product. Causes include heat, sun, poor technique, fast drying, and inconsistent coverage.
+
+      - title: Can you fix uneven exterior sheen?
+        desc: |-
+          Uneven sheen may come from different porosity, primer gaps, application issues, touch-ups, or product mismatch. The fix depends on the surface.
+
+      - title: Can you fix exterior colour mismatch?
+        desc: |-
+          Colour mismatch can come from fading, batch differences, wrong sheen, or lighting. Larger repaint areas may blend better than small touch-ups.
+
+      - title: Can you paint over graffiti?
+        desc: |-
+          Graffiti may need cleaning, stain-blocking primer, and suitable topcoats. Some commercial projects may benefit from anti-graffiti coating.
+
+      - title: Do you offer anti-graffiti coatings?
+        desc: |-
+          Anti-graffiti coatings can be reviewed for commercial storefronts, exterior walls, doors, and high-risk surfaces depending on substrate and expectations.
+
+      - title: Do you offer rust-resistant coatings?
+        desc: |-
+          Rust-resistant primers and coatings can be used on metal railings, doors, frames, and commercial metal surfaces after rust preparation.
+
+      - title: Do you offer elastomeric coatings for stucco?
+        desc: |-
+          Elastomeric coatings may help some stucco surfaces bridge small hairline cracks, but moisture, breathability, and compatibility must be reviewed.
+
+      - title: Do you offer masonry coatings?
+        desc: |-
+          Yes. Masonry-compatible coatings may be used on brick, concrete block, stucco, parging, and masonry surfaces when conditions support coating.
+
+      - title: Do you paint high-traffic commercial doors?
+        desc: |-
+          Yes. High-traffic doors need cleaning, sanding, durable primer and topcoat, drying time planning, and sometimes after-hours scheduling.
+
+      - title: Can you paint exterior handrails at businesses?
+        desc: |-
+          Yes. Business handrails can be painted with proper metal prep, rust treatment, primer, and scheduling to keep entrances safe.
+
+      - title: Can you paint bollards?
+        desc: |-
+          Bollards can be painted with suitable metal prep and durable coatings. Safety colours or black finishes can be reviewed based on the property.
+
+      - title: Can you paint exterior signage surrounds?
+        desc: |-
+          Yes. Signage surrounds, frames, and storefront details can be painted while protecting signs, lighting, glass, and customer-facing areas.
+
+      - title: Can you paint doors without removing them?
+        desc: |-
+          Often, yes. Doors can be painted in place when weather, access, security, and drying time allow. Some doors may finish better if removed.
+
+      - title: How long before I can close a freshly painted door?
+        desc: |-
+          Dry time depends on paint, temperature, humidity, and film thickness. Doors may need to stay open or lightly closed until safe.
+
+      - title: Can freshly painted garage doors stick?
+        desc: |-
+          Yes, if closed too soon or painted too heavily at contact points. We plan drying and edge work to reduce sticking.
+
+      - title: Can exterior paint smell bother neighbours?
+        desc: |-
+          Most modern exterior paints have manageable odour, but commercial or specialty coatings may need scheduling and ventilation planning.
+
+      - title: Do you use low VOC exterior paint?
+        desc: |-
+          Low VOC exterior options may be available depending on product line and surface needs. Durability and compatibility come first for exterior exposure.
+
+      - title: Is exterior painting messy?
+        desc: |-
+          Exterior painting can involve washing, scraping, sanding, masking, and spraying. We protect surfaces and clean up daily to keep the site controlled.
+
+      - title: Do you collect paint chips?
+        desc: |-
+          We collect paint chips where practical and use protection to reduce debris, especially during scraping and sanding. Older paint may need special precautions.
+
+      - title: What if my home has old lead paint?
+        desc: |-
+          Older homes may have lead paint. If suspected, safe work practices, testing, containment, and specialized handling may be needed before prep.
+
+      - title: Can you paint homes with asbestos siding?
+        desc: |-
+          Asbestos siding requires caution and should not be disturbed aggressively. Painting may be possible only with proper review and safe handling.
+
+      - title: Can you paint over lead paint?
+        desc: |-
+          Lead paint requires special precautions. We review age, condition, and disturbance risk before recommending a safe prep and coating approach.
+
+      - title: Do you warranty exterior painting?
+        desc: |-
+          Warranty depends on scope, surface condition, product, repairs, moisture, and exclusions. We explain warranty expectations in the estimate.
+
+      - title: What is not covered by exterior paint warranty?
+        desc: |-
+          Warranty usually excludes moisture problems, structural movement, rot, failing substrates, physical damage, leaks, owner changes, and areas outside the agreed scope.
+
+      - title: How do I maintain exterior paint?
+        desc: |-
+          Wash gently, keep gutters working, trim vegetation, fix leaks, address caulking failure, clean mildew, and touch up damage before it spreads.
+
+      - title: Should I wash my exterior after painting?
+        desc: |-
+          Gentle washing after the paint has fully cured can help maintain appearance. Avoid harsh pressure or chemicals that damage coatings.
+
+      - title: How often should exterior paint be inspected?
+        desc: |-
+          Inspect exterior paint at least once a year, especially after winter. Look for cracks, peeling, open caulking, stains, mildew, and water damage.
+
+      - title: How often should exterior caulking be checked?
+        desc: |-
+          Check exterior caulking yearly around windows, doors, trim, fascia, and joints. Failed caulking can allow water behind paint.
+
+      - title: How often should I repaint exterior trim?
+        desc: |-
+          Exterior trim often needs attention before siding or masonry because it takes sun, moisture, movement, and edge wear. Timing depends on exposure and condition.
+
+      - title: How often should I repaint stucco?
+        desc: |-
+          Stucco repaint timing depends on coating system, exposure, moisture, cracks, staining, and product quality. Regular inspection helps catch issues early.
+
+      - title: How often should I repaint siding?
+        desc: |-
+          Siding repaint timing depends on material, colour, sun exposure, previous coating, maintenance, and whether chalking or fading has started.
+
+      - title: How often should I repaint garage doors?
+        desc: |-
+          Garage doors may need repainting when fading, chalking, scratches, rust, or colour changes make them look worn. Exposure and colour matter.
+
+      - title: Can exterior painting reduce maintenance?
+        desc: |-
+          A proper exterior coating system can reduce maintenance by protecting vulnerable surfaces, sealing sound joints, and slowing weather damage.
+
+      - title: Can exterior painting stop leaks?
+        desc: |-
+          Paint is not a waterproofing repair for active leaks. Leaks, flashing issues, roof problems, or failed drainage should be fixed before painting.
+
+      - title: Can paint waterproof stucco?
+        desc: |-
+          Paint can shed water, but stucco still needs proper drainage, repairs, and compatible breathable coatings. Paint should not be used to hide active moisture problems.
+
+      - title: Can paint waterproof brick?
+        desc: |-
+          Paint is not a substitute for masonry repair or waterproofing design. Brick needs breathable coatings and moisture problems should be solved first.
+
+      - title: Can you paint after pressure washing the same day?
+        desc: |-
+          Only if the surface is dry enough and conditions allow. Many surfaces need drying time after washing before primer or paint.
+
+      - title: How soon after rain can you paint?
+        desc: |-
+          It depends on material, sun, airflow, humidity, and temperature. Wood, stucco, and masonry may need more drying time than smooth nonporous surfaces.
+
+      - title: How many colours can I use outside?
+        desc: |-
+          You can use body, trim, accent, door, garage door, soffit, and railing colours, but more colours increase masking, cutting, planning, and labour.
+
+      - title: Can you create a full exterior colour plan?
+        desc: |-
+          Yes. We can help plan body colour, trim, garage doors, front door, fascia, soffits, railings, and accents based on the home architecture.
+
+      - title: Can exterior paint make a house look modern?
+        desc: |-
+          Yes. Updating brick, stucco, trim, garage doors, windows, fascia, lighting, and entry colours can dramatically modernize a dated exterior.
+
+      - title: Can you paint a Tudor-style exterior?
+        desc: |-
+          Yes. Tudor-style exteriors need careful planning for stucco fields, dark trim, window grids, fascia, garage doors, and multi-surface protection.
+
+      - title: Can you paint arched windows and trim?
+        desc: |-
+          Yes. Arched windows and detailed trim require careful masking, sanding, primer, and steady finish work.
+
+      - title: Can you paint exterior decorative moulding?
+        desc: |-
+          Yes. Exterior moulding, trim bands, panels, columns, and detail work can be painted with careful prep and masking.
+
+      - title: Can you paint exterior brick and leave stone natural?
+        desc: |-
+          Yes. Brick can be painted while stone is protected and left natural. Masking and colour planning are important for a clean transition.
+
+      - title: Can you paint stucco and leave brick natural?
+        desc: |-
+          Yes. Stucco can be painted while brick stays natural. We protect masonry and plan colour transitions around trim, windows, and rooflines.
+
+      - title: Can you paint garage doors to match windows?
+        desc: |-
+          Yes. Matching garage doors to black or dark window frames is a common modern exterior update. Product choice depends on door material.
+
+      - title: Can you paint trim to match soffits?
+        desc: |-
+          Yes. Trim, soffits, fascia, and eaves can be coordinated for a cleaner exterior palette. Material differences may need different products.
+
+      - title: Can you paint exterior walls behind bushes?
+        desc: |-
+          Yes, if there is enough access. Bushes may need trimming or tying back so surfaces can be cleaned, prepped, and painted properly.
+
+      - title: Can you paint narrow side yards?
+        desc: |-
+          Yes, if access is safe. Narrow side yards may limit ladder placement, spraying, protection, and equipment choices.
+
+      - title: Can you paint above sloped roofs?
+        desc: |-
+          Yes, but roof access requires safety planning. Some areas may need ladders, planks, or lifts rather than walking on roof surfaces.
+
+      - title: Can you paint around electrical meters?
+        desc: |-
+          Yes. Electrical meters and conduits are protected. Painting near utilities requires care and access planning.
+
+      - title: Can you paint gas meters?
+        desc: |-
+          Gas meters are usually protected rather than painted unless rules and material allow it. We do not block labels, vents, or service access.
+
+      - title: Can you paint vents?
+        desc: |-
+          Some vents can be painted if material and function allow it, but openings should not be clogged and ventilation must remain clear.
+
+      - title: Can you paint exterior pipes?
+        desc: |-
+          Some exterior pipes can be painted with suitable prep and coating. Utility markings, safety, heat, and function are considered.
+
+      - title: Can you paint exterior AC covers or screens?
+        desc: |-
+          AC screens and covers may be paintable depending on material, airflow, and access. Mechanical equipment itself usually needs special consideration.
+
+      - title: Can you paint around exterior outlets?
+        desc: |-
+          Yes. Outlets and covers are protected or removed when appropriate, and electrical safety is considered during prep and painting.
+
+      - title: Can you paint mailbox posts?
+        desc: |-
+          Yes. Mailbox posts, address plaques, small exterior details, and posts can be painted as part of an exterior refresh.
+
+      - title: Can you paint exterior planters?
+        desc: |-
+          Some exterior planters can be painted depending on material and moisture exposure. Product choice matters for durability.
+
+      - title: Can you paint exterior shutters a different colour?
+        desc: |-
+          Yes. Shutters can be repainted in a new accent colour after cleaning, sanding, primer where needed, and material-compatible paint.
+
+      - title: Can you paint exterior doors a bold colour?
+        desc: |-
+          Yes. Front doors can be painted black, red, green, blue, charcoal, or another accent colour. Sun exposure and product choice matter.
+
+      - title: Can you paint exterior walls white?
+        desc: |-
+          Yes. White exterior paint can modernize brick, stucco, or siding, but dirt, shade, texture, and nearby landscaping should be considered.
+
+      - title: Can you paint exterior walls black?
+        desc: |-
+          Some exterior surfaces can be painted black, but heat absorption, substrate movement, colour fading, and product limitations must be reviewed first.
+
+      - title: Can you paint brick a limewash look?
+        desc: |-
+          A limewash-style look may be possible with the right product and surface, but it is different from standard paint and should be scoped separately.
+
+      - title: Can you paint masonry with mineral paint?
+        desc: |-
+          Mineral paint may be an option for some masonry surfaces. Compatibility, breathability, colour, and surface condition guide the recommendation.
+
+      - title: Can you paint exterior surfaces after stucco repair?
+        desc: |-
+          Yes, after repaired stucco has cured and is ready. Primer and coating should be compatible with the repair material and existing finish.
+
+      - title: Can you paint after new parging?
+        desc: |-
+          Parging needs proper curing and dryness before coating. Painting too early can trap moisture or affect adhesion.
+
+      - title: Can you paint after masonry repair?
+        desc: |-
+          Yes, once masonry repairs are cured, dry, and compatible with the coating system. Timing depends on repair material and weather.
+
+      - title: Can you paint after carpentry repairs?
+        desc: |-
+          Yes. New exterior wood or trim should be primed and painted after installation, caulking, filling, sanding, and moisture review.
+
+      - title: Can you paint exterior PVC after installation?
+        desc: |-
+          Yes, when the product allows it. PVC trim needs compatible paint and colour choices that account for heat movement.
+
+      - title: Can you paint exterior surfaces before a party or event?
+        desc: |-
+          Yes, if weather and timing allow. Exterior painting for events should be booked early so surfaces dry, cure, and cleanup is complete.
+
+      - title: Can you paint exterior surfaces before winter?
+        desc: |-
+          Yes, if temperatures and dry time are suitable. Late-season work needs careful scheduling around cold nights, dew, rain, and curing time.
+
+      - title: Can you paint exterior surfaces after winter damage?
+        desc: |-
+          Yes. Winter damage such as peeling, cracks, open caulking, stains, and wood rot should be repaired before painting.
+
+      - title: Can you paint exterior surfaces damaged by ice dams?
+        desc: |-
+          Yes, after the cause is fixed and surfaces are dry. Ice dam damage may need trim, fascia, soffit, or masonry repair before painting.
+
+      - title: Can you paint surfaces with water stains?
+        desc: |-
+          Yes, after the water source is fixed. Stains may need cleaning, stain-blocking primer, repairs, and appropriate exterior paint.
+
+      - title: Can you paint surfaces with tannin bleed?
+        desc: |-
+          Tannin bleed from wood such as cedar needs proper primer and product selection before exterior paint. Otherwise stains can return.
+
+      - title: Can you paint knots in exterior wood?
+        desc: |-
+          Knots may need sealing or stain-blocking primer before paint. Resin and tannins can bleed through if not treated properly.
+
+      - title: Can you paint exterior surfaces with sap?
+        desc: |-
+          Sap should be cleaned, scraped, or sealed as needed before paint. Active resin can affect adhesion and appearance.
+
+      - title: Can you paint exterior plywood?
+        desc: |-
+          Exterior plywood can be painted when sound, dry, sealed, primed, and protected on edges. Exposure and product choice matter.
+
+      - title: Can you paint exterior MDF?
+        desc: |-
+          MDF is usually not ideal for exterior exposure unless specifically rated and sealed. We review the material before recommending paint.
+
+      - title: Can you paint exterior Hardie board?
+        desc: |-
+          Yes. Fibre cement or Hardie board can be repainted with suitable exterior paint after cleaning, caulking review, and primer where needed.
+
+      - title: Can you paint board and batten siding?
+        desc: |-
+          Yes. Board and batten needs cleaning, caulking review, careful edge work, primer where needed, and paint suited to the material.
+
+      - title: Can you paint shingle siding?
+        desc: |-
+          Yes. Wood shingle siding can be painted or stained depending on condition, previous coating, moisture, and desired look.
+
+      - title: Can you paint exterior panel siding?
+        desc: |-
+          Yes. Panel siding can be painted when sound and properly prepared. Grooves, joints, fasteners, and edges need careful prep.
+
+      - title: Can you paint exterior stucco mouldings?
+        desc: |-
+          Yes. Stucco mouldings, bands, columns, and decorative trim can be painted with compatible coatings and careful masking around adjacent surfaces.
+
+      - title: Can you paint exterior foam trim?
+        desc: |-
+          Foam trim or EIFS details need compatible coatings and gentle prep. Damaged areas should be repaired before painting.
+
+      - title: Can you paint exterior vents and louvers?
+        desc: |-
+          Vents and louvers may be painted if function is not blocked and the material supports coating. Openings must remain clear.
+
+      - title: Can you paint exterior shutters on brick?
+        desc: |-
+          Yes. Shutters on brick can be removed or masked, cleaned, prepped, and painted while brick is protected.
+
+      - title: Can you paint exterior shutters on vinyl siding?
+        desc: |-
+          Yes. Shutters can be painted while vinyl siding is protected. Colour, material, and heat exposure should be reviewed.
+
+      - title: Can you paint a commercial awning frame?
+        desc: |-
+          Awning frames may be painted if material, access, and coating compatibility allow it. Fabric awnings are a different scope.
+
+      - title: Can you paint exterior balcony railings?
+        desc: |-
+          Yes. Balcony railings need access planning, rust treatment where needed, primer, and durable exterior coating. Condo rules may apply.
+
+      - title: Can you paint balcony floors?
+        desc: |-
+          Balcony floors require traffic-rated or specialty coatings and are not the same as standard exterior wall paint. We review material and drainage first.
+
+      - title: Can you paint exterior fire escapes?
+        desc: |-
+          Fire escapes require careful rust prep, safety planning, access, and appropriate metal coatings. Scope depends on building rules and condition.
+
+      - title: Can you paint exterior stair stringers?
+        desc: |-
+          Yes. Exterior stair stringers can be painted after cleaning, rust or wood repair, primer, and durable coating.
+
+      - title: Can you paint exterior deck railings?
+        desc: |-
+          Yes. Deck railings can be painted or stained depending on material and exposure. Hand contact and moisture require durable prep.
+
+      - title: Can you paint porch railings black?
+        desc: |-
+          Yes. Black porch railings are common, but metal or wood must be prepared properly and coated with exterior products.
+
+      - title: Can you paint exterior gates?
+        desc: |-
+          Yes. Exterior gates can be painted after cleaning, sanding, rust treatment or wood repair, primer, and durable coating.
+
+      - title: Can you paint fences black?
+        desc: |-
+          Yes. Fence painting or staining in black can create a modern look, but product choice, wood moisture, and maintenance should be considered.
+
+      - title: Can you stain fences instead of painting?
+        desc: |-
+          Yes. Fence staining is often better for wood because it allows a different maintenance cycle than film-forming paint.
+
+      - title: Can you paint exterior brick fireplaces?
+        desc: |-
+          Exterior fireplaces or chimneys need heat, masonry, moisture, and coating compatibility review before paint.
+
+      - title: Can you paint outdoor kitchens?
+        desc: |-
+          Outdoor kitchen surfaces vary widely. Masonry, metal, wood, and cabinets need product-specific review before painting.
+
+      - title: Can you paint exterior cabinets?
+        desc: |-
+          Exterior cabinets need coatings suited to moisture, UV, heat, and use. Material and exposure determine whether painting is suitable.
+
+      - title: Can you paint pool cabanas?
+        desc: |-
+          Yes. Pool cabanas can be painted or stained depending on siding, trim, doors, moisture, and sun exposure.
+
+      - title: Can you paint garden sheds to match the house?
+        desc: |-
+          Yes. Shed colours can be matched or coordinated with the home exterior, trim, doors, garage doors, and landscaping.
+
+      - title: Can you paint exterior commercial doors after hours?
+        desc: |-
+          Yes. Commercial doors can often be painted after hours so drying time does not interfere with customer or staff access.
+
+      - title: Can you paint tenant entrances?
+        desc: |-
+          Yes. Tenant entrances can be painted with phasing, notices, safety cones, drying time, and access planning.
+
+      - title: Can you paint multi-unit building exteriors?
+        desc: |-
+          Small multi-unit exterior scopes can be reviewed. Larger scopes need phasing, access, insurance, tenant notices, and property manager coordination.
+
+      - title: Can you paint apartment building common exteriors?
+        desc: |-
+          Yes, depending on scope. Doors, railings, entries, masonry, trim, and common exterior details can be reviewed with property management.
+
+      - title: Can you paint school or institutional exteriors?
+        desc: |-
+          Small institutional exterior scopes can be reviewed depending on schedule, insurance, access, safety, coatings, and surface type.
+
+      - title: Can you paint medical office exteriors?
+        desc: |-
+          Yes. Medical office exterior painting can be scheduled around patients, entries, signage, parking, and accessibility needs.
+
+      - title: Can you paint church exteriors?
+        desc: |-
+          Church exterior painting can be reviewed for trim, doors, masonry, railings, entries, and detail work. Heritage or height issues may affect scope.
+
+      - title: Can you paint exterior doors for property managers?
+        desc: |-
+          Yes. Multi-door exterior painting programs can be phased for property managers, including doors, frames, railings, and common entries.
+
+      - title: Can you paint multiple garage doors at once?
+        desc: |-
+          Yes. Multiple garage doors can be painted together for consistent colour and finish, especially on large homes, townhouses, or commercial properties.
+
+      - title: Can you paint exterior trim on multiple homes?
+        desc: |-
+          Yes. Multi-home or townhouse trim painting can be reviewed for consistent colour, phasing, access, and property management requirements.
+
+      - title: Can you paint exterior surfaces in occupied commercial spaces?
+        desc: |-
+          Yes. We can phase work around customers, tenants, staff, deliveries, entrances, and business hours to reduce disruption.
+
+      - title: Can you paint around signs and branding?
+        desc: |-
+          Yes. Signs, logos, brand colours, and storefront details are protected or coordinated so the exterior looks consistent with the business.
+
+      - title: Can you match commercial brand colours?
+        desc: |-
+          Yes. We can work with brand colour direction and paint matches, while still considering exterior durability, sheen, substrate, and sun exposure.
+
+      - title: Can you paint restaurant patios?
+        desc: |-
+          Patio structures, railings, fences, planters, and trim can be painted or stained depending on material and schedule. Customer access must be planned.
+
+      - title: Can you paint exterior ceilings in commercial walkways?
+        desc: |-
+          Yes. Covered walkway ceilings, soffits, entries, and canopy undersides can be painted with proper access, masking, and coating selection.
+
+      - title: Can you paint exterior steel columns?
+        desc: |-
+          Yes. Steel columns need rust prep, cleaning, primer, and durable coatings. Access and safety are reviewed before work.
+
+      - title: Can you paint exterior pipes and conduits on commercial buildings?
+        desc: |-
+          Yes, if allowed and safe. Pipes and conduits need material-compatible prep and must not block labels, access, vents, or function.
+
+      - title: Can you paint exterior ductwork?
+        desc: |-
+          Exterior ductwork can be painted with suitable metal prep and coatings, depending on heat, function, corrosion, and access.
+
+      - title: Can you paint rooftop equipment screens?
+        desc: |-
+          Equipment screens can be painted when access and safety allow. Material, wind, height, and coating compatibility matter.
+
+      - title: Can you paint rooftop doors or hatches?
+        desc: |-
+          Rooftop doors and hatches can be painted with metal prep, rust treatment, primer, and safe roof access planning.
+
+      - title: Can you paint metal roofs?
+        desc: |-
+          Metal roof coating is a specialty scope and may be reviewed separately. It requires safety planning, surface prep, and roof-compatible coatings.
+
+      - title: Can you paint flat roofs?
+        desc: |-
+          Flat roof coatings are specialty waterproofing or roof coating systems, not standard exterior paint. We review scope before recommending.
+
+      - title: Can you paint exterior loading areas?
+        desc: |-
+          Loading areas can be painted if surfaces, safety, traffic, and coating durability are reviewed. Bollards, doors, frames, and walls are common.
+
+      - title: Can you paint exterior warehouse doors?
+        desc: |-
+          Yes. Warehouse doors, frames, loading doors, and metal panels can be painted with proper prep, primer, and durable coatings.
+
+      - title: Can you paint exterior masonry at businesses?
+        desc: |-
+          Yes. Business masonry can be painted or coated after cleaning, repairs, moisture review, and product selection based on brick, block, concrete, or stucco.
+
+      - title: Can you paint exterior wood at businesses?
+        desc: |-
+          Yes. Exterior wood trim, doors, fences, railings, and details at commercial spaces can be painted or stained with proper prep.
+
+      - title: Can you paint exterior aluminum at businesses?
+        desc: |-
+          Yes. Aluminum doors, frames, siding, panels, and trim can be painted after cleaning, deoxidizing, primer where needed, and compatible coating.
+
+      - title: Can you paint exterior vinyl at businesses?
+        desc: |-
+          Some vinyl commercial surfaces can be painted with vinyl-safe coatings and colours. Material and heat exposure must be reviewed.
+
+      - title: Can you paint exterior signage poles?
+        desc: |-
+          Signage poles can be painted after cleaning, rust treatment, primer, and safety review. Sign faces and electrical components are protected.
+
+      - title: Can you paint parking lot bollards?
+        desc: |-
+          Yes. Bollards can be repainted for safety, visibility, or a cleaner property appearance with durable metal coatings.
+
+      - title: Can you paint exterior fences for commercial properties?
+        desc: |-
+          Yes. Commercial fences can be painted or stained depending on material, access, rust, wood condition, and schedule.
+
+      - title: Can you paint exterior gates for commercial properties?
+        desc: |-
+          Yes. Gates can be painted with rust treatment, primer, durable finish, and phasing so property access remains manageable.
+
+      - title: Can you paint exterior handrails for accessibility ramps?
+        desc: |-
+          Yes. Accessibility ramp handrails need careful scheduling, durable coatings, and safety planning so access remains safe.
+
+      - title: Can you paint exterior ramps?
+        desc: |-
+          Ramp surfaces need traffic-rated and slip-conscious coatings, not standard wall paint. We review material and safety needs.
+
+      - title: Can you paint exterior concrete steps?
+        desc: |-
+          Concrete steps need cleaning, repair, moisture review, and traffic-rated coatings. Slip resistance and drying time are important.
+
+      - title: Can you paint exterior metal stairs?
+        desc: |-
+          Exterior metal stairs need rust removal, primer, durable coating, and safe scheduling so stairs are not used before ready.
+
+      - title: Can you paint exterior wood stairs?
+        desc: |-
+          Exterior wood stairs can be painted or stained, but walking surfaces need durability, traction, and maintenance planning.
+
+      - title: Can you paint exterior retaining walls?
+        desc: |-
+          Retaining walls can be coated only after moisture and drainage are reviewed. Paint is not a fix for water pressure behind a wall.
+
+      - title: Can you paint garden walls?
+        desc: |-
+          Garden walls can be painted or coated if masonry is sound, dry, clean, and compatible with the coating. Moisture and soil contact matter.
+
+      - title: Can you paint exterior privacy screens?
+        desc: |-
+          Yes. Wood, metal, composite, or PVC privacy screens can be painted or stained depending on material and exposure.
+
+      - title: Can you paint exterior pergola beams?
+        desc: |-
+          Yes. Pergola beams can be painted or stained after cleaning, sanding, repair, primer, and protection for surrounding surfaces.
+
+      - title: Can you paint exterior columns black?
+        desc: |-
+          Yes. Black exterior columns can modernize an entrance. Material, heat, primer, and coating choice are reviewed first.
+
+      - title: Can you paint exterior columns white?
+        desc: |-
+          Yes. White columns need clean prep, stain-blocking where needed, and durable exterior paint to resist dirt and weather.
+
+      - title: Can you paint exterior brick columns?
+        desc: |-
+          Brick columns can be painted or stained if masonry is sound and moisture concerns are handled. Adjacent caps and metal are protected.
+
+      - title: Can you paint exterior stone columns?
+        desc: |-
+          Some stone columns can be coated, but natural stone may not be ideal for paint. We review porosity, moisture, and aesthetics first.
+
+      - title: Can you paint exterior stucco columns?
+        desc: |-
+          Yes. Stucco columns can be painted with compatible coatings after cleaning, crack repair, and primer where needed.
+
+      - title: Can you paint exterior mailbox surrounds?
+        desc: |-
+          Yes. Mailbox surrounds, posts, and small exterior details can be painted to match trim or accent colours.
+
+      - title: Can you paint exterior address numbers?
+        desc: |-
+          Address numbers are usually protected or removed and reinstalled. Some metal numbers can be painted separately if needed.
+
+      - title: Can you paint exterior decorative vents?
+        desc: |-
+          Decorative vents can be painted if function is not blocked. Openings must remain clear for ventilation.
+
+      - title: Can you paint exterior garage trim?
+        desc: |-
+          Yes. Garage trim, frames, jambs, weatherstripping-adjacent edges, and surrounding fascia can be painted with careful masking.
+
+      - title: Can you paint exterior door frames?
+        desc: |-
+          Yes. Exterior door frames often need sanding, caulking, primer, and durable paint because they take sun, moisture, and hand contact.
+
+      - title: Can you paint exterior thresholds?
+        desc: |-
+          Thresholds may need specialty products or replacement rather than standard paint due to foot traffic and weather exposure.
+
+      - title: Can you paint exterior kick plates?
+        desc: |-
+          Metal kick plates can be painted only with proper metal prep and compatible coatings, though replacement is sometimes cleaner.
+
+      - title: Can you paint exterior hardware?
+        desc: |-
+          Hardware is usually removed or masked. Some hardware can be painted separately with metal prep, but replacement may perform better.
+
+      - title: Can you paint exterior house numbers black?
+        desc: |-
+          House numbers can be painted or replaced to match a black trim package if material and condition support coating.
+
+      - title: Can you paint exterior vents black?
+        desc: |-
+          Some vents can be painted black if they remain functional and the material supports paint. Heat and airflow are considered.
+
+      - title: Can you paint exterior meter boxes?
+        desc: |-
+          Meter boxes may be paintable depending on utility rules, material, and access. Labels, seals, and function must not be blocked.
+
+      - title: Can you paint exterior utility covers?
+        desc: |-
+          Some utility covers can be painted if safe and allowed. Service access, labels, vents, and heat must remain unobstructed.
+
+      - title: Can you paint exterior shutters and garage doors the same colour?
+        desc: |-
+          Yes. Matching shutters and garage doors can create a cohesive exterior palette when it suits brick, stucco, stone, roof, and windows.
+
+      - title: Can you paint trim and front door different colours?
+        desc: |-
+          Yes. Exterior trim and front door colours can be different for contrast. The palette should still work with fixed materials and roof colour.
+
+      - title: Can you paint garage doors and front door different colours?
+        desc: |-
+          Yes. Garage doors can match trim while the front door becomes an accent, or all doors can be coordinated in one colour.
+
+      - title: Can you paint brick and stucco on the same home?
+        desc: |-
+          Yes. Mixed brick and stucco homes need separate prep and coating choices for each material. Colour planning keeps the exterior cohesive.
+
+      - title: Can you paint siding and brick together?
+        desc: |-
+          Yes. Siding and brick can be painted in one project, but each surface needs its own preparation and product system.
+
+      - title: Can you paint stucco and siding together?
+        desc: |-
+          Yes. Stucco and siding can be painted together with separate prep, primer decisions, and coating systems for each surface.
+
+      - title: Can you paint windows and doors together?
+        desc: |-
+          Yes. Windows, doors, frames, sidelights, garage doors, and trim can be coordinated for a consistent exterior finish.
+
+      - title: Can you paint exterior trim without painting siding?
+        desc: |-
+          Yes. Trim-only exterior painting is common when siding or brick is still in good shape but trim, fascia, windows, or doors look worn.
+
+      - title: Can you paint siding without painting trim?
+        desc: |-
+          Yes. Siding can be painted while trim stays existing, but colour, masking, and edge transitions need planning.
+
+      - title: Can you paint just the second storey?
+        desc: |-
+          Yes, if access is safe and the scope makes sense. Colour matching and visible transitions should be considered.
+
+      - title: Can you paint just dormers?
+        desc: |-
+          Yes. Dormers, peaks, gables, and upper trim can be painted as targeted exterior projects, though access may drive cost.
+
+      - title: Can you paint gables?
+        desc: |-
+          Yes. Gables often need ladders or lifts, careful masking, trim prep, siding or stucco prep, and weather planning.
+
+      - title: Can you paint peaks?
+        desc: |-
+          Yes. Peaks and high trim can be painted with safe access and careful prep. Height and rooflines affect cost and schedule.
+
+      - title: Can you paint exterior dormer windows?
+        desc: |-
+          Yes. Dormer windows, trim, siding, fascia, and surrounding details can be painted with careful access planning.
+
+      - title: Can you paint exterior bay windows?
+        desc: |-
+          Yes. Bay windows often include trim, panels, rooflets, frames, and detail work that need careful prep and masking.
+
+      - title: Can you paint exterior bow windows?
+        desc: |-
+          Yes. Bow windows require careful masking around glass and trim, plus product selection based on frame material.
+
+      - title: Can you paint exterior skylight trim?
+        desc: |-
+          Exterior skylight trim can be reviewed depending on roof access, flashing, material, and safety.
+
+      - title: Can you paint exterior roof trim?
+        desc: |-
+          Roof trim, bargeboard, fascia, and gable trim can be painted when access is safe and surfaces are sound.
+
+      - title: Can you paint exterior soffit vents?
+        desc: |-
+          Soffit vents can be painted only if ventilation remains open. Paint should not clog perforations or restrict airflow.
+
+      - title: Can you paint exterior shutters on second-storey windows?
+        desc: |-
+          Yes. Second-storey shutters can be painted with safe access and careful removal or masking.
+
+      - title: Can you paint exterior window grids?
+        desc: |-
+          Window grids can be painted if material and access allow it. Detailed grids need careful prep and masking.
+
+      - title: Can you paint exterior mullions?
+        desc: |-
+          Yes. Exterior mullions need precise masking, surface prep, primer where needed, and durable paint suited to the material.
+
+      - title: Can you paint storefront mullions?
+        desc: |-
+          Yes. Storefront mullions can be painted with commercial-grade prep, metal primer where needed, and off-hours scheduling if required.
+
+      - title: Can you paint aluminum storefront frames?
+        desc: |-
+          Yes. Aluminum storefront frames need cleaning, scuffing, bonding primer where needed, and durable coating for hand contact and weather.
+
+      - title: Can you paint exterior glass frames?
+        desc: |-
+          Frames around glass can be painted while the glass is protected. The frame material determines prep and coating.
+
+      - title: Can you paint exterior commercial metal panels?
+        desc: |-
+          Yes. Metal panels need cleaning, oxidation or rust treatment, primer, and coatings suited to sun, weather, and expansion.
+
+      - title: Can you paint exterior composite panels?
+        desc: |-
+          Composite panels may be paintable depending on manufacturer guidance, existing finish, and coating compatibility.
+
+      - title: Can you paint exterior signs?
+        desc: |-
+          Some sign cabinets or frames can be painted, but sign faces, vinyl graphics, lighting, and electrical components need special care.
+
+      - title: Can you paint exterior awnings?
+        desc: |-
+          Metal awnings may be paintable; fabric awnings usually are not standard paint projects. Material determines the approach.
+
+      - title: Can you paint exterior canopies?
+        desc: |-
+          Canopies can be painted if material, access, safety, and coating compatibility allow it. Commercial canopies may need phasing.
+
+      - title: Can you paint exterior entry vestibules?
+        desc: |-
+          Yes. Entry vestibules can be painted inside and outside with careful scheduling, masking, and access control.
+
+      - title: Can you paint exterior vestibule doors?
+        desc: |-
+          Yes. Vestibule doors and frames can be painted after cleaning, sanding, primer, and coordination around entry access.
+
+      - title: Can you paint exterior garage man doors?
+        desc: |-
+          Yes. Garage man doors, frames, thresholds, and trim can be painted with durable exterior products.
+
+      - title: Can you paint exterior service doors?
+        desc: |-
+          Yes. Service doors at homes or businesses can be painted with proper prep and scheduling so access remains manageable.
+
+      - title: Can you paint exterior fire doors?
+        desc: |-
+          Fire doors may have code, label, hardware, and product considerations. We review requirements before painting.
+
+      - title: Can you paint exterior emergency exits?
+        desc: |-
+          Emergency exits require careful scheduling, code awareness, label protection, and keeping required access available.
+
+      - title: Can you paint exterior accessibility doors?
+        desc: |-
+          Yes. Accessibility doors can be painted with phasing so access, clearances, and safety remain intact.
+
+      - title: Can you paint exterior door jambs?
+        desc: |-
+          Yes. Exterior jambs need cleaning, sanding, caulking, primer where needed, and durable paint because edges take weather and use.
+
+      - title: Can you paint exterior weather stripping?
+        desc: |-
+          Weather stripping is usually protected or avoided. Painting it can cause sticking or reduce function.
+
+      - title: Can you paint exterior hinges?
+        desc: |-
+          Hinges are usually protected, removed, or avoided. Painted hinges can bind or chip unless properly prepared as a separate item.
+
+      - title: Can you paint exterior thresholds black?
+        desc: |-
+          Thresholds are high-wear surfaces and may need specialty coatings or replacement rather than standard exterior paint.
+
+      - title: Can you paint exterior trim around stone?
+        desc: |-
+          Yes. Stone is protected while nearby trim is scraped, sanded, primed, and painted. Masking is important to avoid staining stone.
+
+      - title: Can you paint exterior trim around brick?
+        desc: |-
+          Yes. Brick is protected while trim is prepared and painted. Clean edges around textured brick take time.
+
+      - title: Can you paint exterior trim around stucco?
+        desc: |-
+          Yes. Stucco is protected while trim is painted, or stucco and trim can be painted together with planned colour transitions.
+
+      - title: Can you paint exterior trim around siding?
+        desc: |-
+          Yes. Siding is protected or painted separately depending on scope. Joints, caulking, and colour transitions are reviewed.
+
+      - title: Can you paint exterior trim around windows black?
+        desc: |-
+          Yes. Black window trim is a common modern upgrade, but product compatibility and heat exposure should be reviewed.
+
+      - title: Can you paint exterior trim around garage doors?
+        desc: |-
+          Yes. Garage door trim can be painted to match the door, fascia, soffits, or window trim for a cohesive exterior.
+
+      - title: Can you paint exterior trim around front doors?
+        desc: |-
+          Yes. Front door trim can be painted with the door or as a separate trim colour. Hardware, glass, and sidelights are protected.
+
+      - title: Can you paint exterior trim around patio doors?
+        desc: |-
+          Yes. Patio door trim can be painted with careful masking around glass, tracks, screens, and adjacent siding or brick.
+
+      - title: Can you paint exterior trim around basement windows?
+        desc: |-
+          Yes. Basement window trim can be painted if access, moisture, wells, and surface condition allow it.
+
+      - title: Can you paint exterior trim around shutters?
+        desc: |-
+          Yes. Trim around shutters can be painted when shutters are removed or carefully masked.
+
+      - title: Can you paint exterior trim around arched openings?
+        desc: |-
+          Yes. Arched openings need careful masking and brushwork, especially around brick, stone, or stucco.
+
+      - title: Can you paint exterior trim around columns?
+        desc: |-
+          Yes. Column trim, capitals, bases, and nearby mouldings can be painted with detail prep.
+
+      - title: Can you paint exterior trim around porches?
+        desc: |-
+          Yes. Porch trim, railings, columns, ceilings, steps, fascia, and decorative details can be painted or stained depending on material.
+
+      - title: Can you paint exterior trim around decks?
+        desc: |-
+          Yes. Deck-adjacent trim can be painted, but deck surfaces and railings may need separate stain or coating systems.
+
+      - title: Can you paint exterior trim around balconies?
+        desc: |-
+          Yes. Balcony trim, railings, doors, and frames can be painted with safety planning and condo or property rules if applicable.
+
+      - title: Can you paint exterior trim around commercial entries?
+        desc: |-
+          Yes. Commercial entries can be painted with off-hours scheduling, signage protection, durable products, and access planning.
+
+      - title: Can you paint exterior trim around storefront glass?
+        desc: |-
+          Yes. Storefront glass is masked while metal or wood trim and frames are prepped and painted.
+
+      - title: Can you paint exterior trim around loading bays?
+        desc: |-
+          Yes. Loading bay trim, frames, doors, bollards, and nearby walls can be painted with operational phasing.
+
+      - title: Can you paint exterior trim around overhead doors?
+        desc: |-
+          Yes. Overhead door trim and frames can be painted with protection for door tracks, seals, hardware, and adjacent walls.
+
+      - title: Can you paint exterior trim around signs?
+        desc: |-
+          Yes. Sign surrounds and trim can be painted while sign faces, lighting, and graphics are protected.
+
+      - title: Can you paint exterior trim around awnings?
+        desc: |-
+          Yes. Awnings may need removal, masking, or separate handling depending on material and access.
+
+      - title: Can you paint exterior trim around canopies?
+        desc: |-
+          Yes. Canopy trim and supports can be painted with access, safety, and coating compatibility planning.
+
+      - title: Can you paint exterior trim around rooflines?
+        desc: |-
+          Yes. Roofline trim, fascia, soffits, gables, and rake boards can be painted with safe access and protection for shingles.
+
+      - title: Can you paint exterior trim around gutters?
+        desc: |-
+          Yes. Gutters may be protected, painted, or temporarily adjusted depending on scope and condition.
+
+      - title: Can you paint exterior trim around downspouts?
+        desc: |-
+          Yes. Downspouts can be protected, painted, or removed and reinstalled depending on scope and access.
+
+      - title: Can you paint exterior trim around meters?
+        desc: |-
+          Yes. Meter areas can be painted carefully while labels, seals, vents, and service access are protected.
+
+      - title: Can you paint exterior trim around utility boxes?
+        desc: |-
+          Yes. Utility boxes are handled carefully so function, access, labels, and safety are not affected.
+
+      - title: Can you paint exterior trim around vents?
+        desc: |-
+          Yes. Vent trim can be painted while openings remain clear and functional.
+
+      - title: Can you paint exterior trim around pipes?
+        desc: |-
+          Yes. Pipe-adjacent trim can be painted with masking and access planning. Pipes themselves may need separate coating review.
+
+      - title: Can you paint exterior trim around AC lines?
+        desc: |-
+          Yes. AC lines and covers are protected while nearby trim or wall surfaces are painted.
+
+      - title: Can you paint exterior trim around hose bibs?
+        desc: |-
+          Yes. Hose bibs are protected while adjacent wall, trim, or siding is painted.
+
+      - title: Can you paint exterior trim around outdoor kitchens?
+        desc: |-
+          Yes. Outdoor kitchen-adjacent trim can be painted with protection for counters, appliances, stone, and fixtures.
+
+      - title: Can you paint exterior trim around pool equipment?
+        desc: |-
+          Yes. Pool equipment is protected while nearby exterior surfaces are painted. Access and moisture are considered.
+
+      - title: Can you paint exterior trim around landscape lighting?
+        desc: |-
+          Yes. Landscape lighting and wiring are protected while nearby walls, trim, posts, and columns are painted.
+
+      - title: Can you paint exterior trim around irrigation systems?
+        desc: |-
+          Yes. Irrigation heads, lines, and controls are protected, and watering schedules may need to pause during prep and painting.
+
+      - title: Can you paint exterior trim around fences?
+        desc: |-
+          Yes. Fence-adjacent trim can be painted with protection for fence material, plants, and nearby surfaces.
+
+      - title: Can you paint exterior trim around gates?
+        desc: |-
+          Yes. Gate-adjacent trim and posts can be painted, and gate hardware is protected or removed if needed.
+
+      - title: Can you paint exterior trim around retaining walls?
+        desc: |-
+          Yes. Retaining wall-adjacent trim can be painted, but moisture and drainage behind walls should be considered.
+
+      - title: Can you paint exterior trim around garden beds?
+        desc: |-
+          Yes. Garden beds are protected where possible. Plants may need trimming or covering to provide safe access.
+
+      - title: Can you paint exterior trim around trees?
+        desc: |-
+          Yes. Tree branches may need trimming or tying back so surfaces can be reached without damaging the tree or finish.
+
+      - title: Can you paint exterior trim around vines?
+        desc: |-
+          Vines should usually be removed or cut back before painting. Vines trap moisture and block proper prep and coating.
+
+      - title: Can you paint exterior trim around ivy?
+        desc: |-
+          Ivy should be removed before painting because it leaves residue, traps moisture, and prevents proper adhesion.
+
+      - title: Can you paint exterior trim around climbing plants?
+        desc: |-
+          Climbing plants should be moved, cut back, or removed from paint areas before washing, scraping, and painting.
+
+      - title: Can you paint exterior trim around shrubs?
+        desc: |-
+          Shrubs should be trimmed back enough for access. We protect landscaping, but paint needs clear contact with the surface.
+
+      - title: Can you paint exterior trim around flower boxes?
+        desc: |-
+          Flower boxes may need removal or protection so trim behind them can be cleaned, repaired, primed, and painted.
+
+      - title: Can you paint exterior trim around planters?
+        desc: |-
+          Planters should be moved away from painting areas where possible. Heavy planters can be protected or worked around if access allows.
+
+      - title: Can you paint exterior trim around patios?
+        desc: |-
+          Yes. Patio surfaces, furniture, stone, pavers, and railings are protected while nearby trim or walls are painted.
+
+      - title: Can you paint exterior trim around interlock?
+        desc: |-
+          Yes. Interlock and pavers are protected during washing, scraping, sanding, spraying, and painting.
+
+      - title: Can you paint exterior trim around driveways?
+        desc: |-
+          Yes. Driveways are protected and vehicles should be moved away from work zones when washing, spraying, or painting.
+
+      - title: Can you paint exterior trim around walkways?
+        desc: |-
+          Yes. Walkways are protected and kept safe where possible during exterior prep and painting.
+
+      - title: Can you paint exterior trim around front steps?
+        desc: |-
+          Yes. Front step trim, railings, columns, doors, and adjacent walls can be painted with access planning.
+
+      - title: Can you paint exterior trim around porches with furniture?
+        desc: |-
+          Furniture should be moved or protected so porch trim, railings, columns, and ceilings can be reached safely.
+
+      - title: Can you paint exterior trim around balconies with furniture?
+        desc: |-
+          Balcony furniture should be moved or protected before painting rails, doors, frames, walls, or ceilings.
+
+      - title: Can you paint exterior trim around rooftop patios?
+        desc: |-
+          Rooftop patio painting can be reviewed for access, wind, safety, surfaces, furniture, and building rules.
+
+      - title: Can you paint exterior trim around basement walkouts?
+        desc: |-
+          Yes. Basement walkout trim, doors, railings, walls, and stairs can be painted with moisture and access review.
+
+      - title: Can you paint exterior trim around side entrances?
+        desc: |-
+          Yes. Side entrance doors, trim, steps, railings, and nearby walls can be painted as part of an exterior refresh.
+
+      - title: Can you paint exterior trim around mudroom entrances?
+        desc: |-
+          Yes. Mudroom entrances often need durable coatings because they take hand contact, moisture, bags, shoes, and daily wear.
+
+      - title: Can you paint exterior trim around garage entries?
+        desc: |-
+          Yes. Garage entry trim and service doors can be painted with durable exterior products and clean masking around hardware.
+
+      - title: Can you paint exterior trim around rear doors?
+        desc: |-
+          Yes. Rear doors, patio doors, frames, trim, steps, and railings can be painted as part of the exterior scope.
+
+      - title: Can you paint exterior trim around side gates?
+        desc: |-
+          Yes. Side gate areas can be painted with careful access and protection for fences, hardware, and neighbouring surfaces.
+
+      - title: Can you paint exterior trim around garbage enclosures?
+        desc: |-
+          Yes. Garbage enclosures, gates, screens, and nearby trim can be painted or stained depending on material and condition.
+
+      - title: Can you paint exterior trim around utility screens?
+        desc: |-
+          Yes. Utility screens can be painted or stained if material and access allow it. Equipment ventilation must remain clear.
 
   - type: Services
     exclude:

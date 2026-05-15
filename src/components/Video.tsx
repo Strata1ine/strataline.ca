@@ -1,7 +1,8 @@
 import { onMount, onCleanup, createEffect } from 'solid-js';
 import { videoPlaying, setVideoPlaying } from '@/frontend/stores';
+import { cn } from '@/frontend/utils';
 
-export default function Video(props: { poster: string; url: string }) {
+export default function Video(props: { poster: string; url: string; fit?: 'cover' | 'contain' }) {
 	let node: HTMLVideoElement | undefined;
 
 	createEffect(() => {
@@ -30,7 +31,10 @@ export default function Video(props: { poster: string; url: string }) {
 			ref={node}
 			poster={props.poster}
 			preload="none"
-			class="absolute size-full cursor-pointer object-cover"
+			class={cn(
+				'absolute size-full cursor-pointer',
+				props.fit === 'contain' ? 'bg-black object-contain' : 'object-cover',
+			)}
 			controls
 			onPlay={() => setVideoPlaying(true)}
 			onPause={() => setVideoPlaying(false)}

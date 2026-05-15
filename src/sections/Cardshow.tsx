@@ -26,6 +26,8 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 				<For each={props.meta}>
 					{(card, i) => {
 						const isActive = () => i() === idx();
+						const isPortraitVideo = () =>
+							card.media.type === 'video' && card.media.orientation === 'portrait';
 						return (
 							<div
 								class={cn(
@@ -35,12 +37,23 @@ export default function Cardshow(props: { meta: CardshowMeta['content']; speed: 
 								inert={!isActive()}
 								style={{ translate: `-${i() * 100}% 0` }}
 							>
-								<div class="relative aspect-video w-full shrink-0 rounded-sm contain-content sm:h-full sm:w-1/2 sm:rounded-none">
+								<div
+									class={cn(
+										'relative w-full shrink-0 rounded-sm contain-content sm:rounded-none',
+										isPortraitVideo()
+											? 'aspect-[9/16] max-h-[78vh] max-w-[26rem] sm:h-auto sm:w-[34%] sm:max-w-[24rem]'
+											: 'aspect-video sm:h-full sm:w-1/2',
+									)}
+								>
 									{card.media.type === 'image' && (
 										<Image pos={null} image={card.media.image} widths={[400, 650, 1300]} />
 									)}
 									{card.media.type === 'video' && (
-										<Video poster={optImage(card.media.image.src.src).src} url={card.media.url} />
+										<Video
+											poster={optImage(card.media.image.src.src).src}
+											url={card.media.url}
+											fit={card.media.orientation === 'portrait' ? 'contain' : 'cover'}
+										/>
 									)}
 									{card.media.type === 'yt-video' && <YoutubeVideo id={card.media.id} />}
 								</div>

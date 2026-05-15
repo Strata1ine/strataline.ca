@@ -12,6 +12,7 @@ export const media = (c: SchemaContext) => {
 			image: image(c),
 			uploadDate: z.coerce.date(),
 			url: z.string(),
+			orientation: z.enum(['landscape', 'portrait']).default('landscape'),
 		}),
 		z.object({
 			type: z.literal('yt-video'),
