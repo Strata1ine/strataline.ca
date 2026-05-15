@@ -8,10 +8,21 @@ export default function Faq(props: {
 	content: FaqMeta['content'];
 	showMoreLabel?: FaqMeta['showMoreLabel'];
 }) {
-	const [expanded, setExpanded] = createSignal(false);
+	const [revealStage, setRevealStage] = createSignal(0);
 	const [jsEnabled, setJsEnabled] = createSignal(false);
-	const initialItems = () => props.content.slice(0, 4);
-	const extraItems = () => props.content.slice(4);
+	const initialCount = 4;
+	const revealStages = 4;
+	const hiddenCount = () => Math.max(0, props.content.length - initialCount);
+	const revealSize = () => Math.max(1, Math.ceil(hiddenCount() / revealStages));
+	const visibleCount = () =>
+		jsEnabled()
+			? Math.min(
+					props.content.length,
+					initialCount + revealStage() * revealSize(),
+				)
+			: props.content.length;
+	const visibleItems = () => props.content.slice(0, visibleCount());
+	const hiddenItems = () => props.content.slice(visibleCount());
 	const showMoreLabel = () => props.showMoreLabel ?? 'View more questions';
 
 	onMount(() => {
@@ -55,17 +66,19 @@ export default function Faq(props: {
 	return (
 		<div class="-mt-6">
 			<Accordion collapseBehavior="hide">
-				<For each={initialItems()}>{(faq) => renderItem(faq)}</For>
-				<div classList={{ hidden: jsEnabled() && !expanded() }}>
-					<For each={extraItems()}>{(faq) => renderItem(faq)}</For>
+				<For each={visibleItems()}>{(faq) => renderItem(faq)}</For>
+				<div classList={{ hidden: jsEnabled() && hiddenItems().length > 0 }}>
+					<For each={hiddenItems()}>{(faq) => renderItem(faq)}</For>
 				</div>
 			</Accordion>
-			<Show when={jsEnabled() && !expanded() && extraItems().length > 0}>
+			<Show when={jsEnabled() && hiddenItems().length > 0}>
 				<div class="mt-8 flex justify-center">
 					<button
 						type="button"
 						class="bg-primary-dark border-primary-dark text-background hover:bg-primary-dark/90 focus-visible:ring-primary-dark rounded-[8px] border px-8 py-3 font-serif text-xl leading-none transition-colors focus-visible:outline-none focus-visible:ring-2"
-						onClick={() => setExpanded(true)}
+						onClick={() =>
+							setRevealStage((stage) => Math.min(revealStages, stage + 1))
+						}
 					>
 						{showMoreLabel()}
 					</button>

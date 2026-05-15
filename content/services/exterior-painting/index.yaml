@@ -1,0 +1,148 @@
+title: Exterior painting
+position: 5
+seo: |-
+  Exterior painting services for homes and commercial spaces in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and the GTA.
+  Strataline paints exterior doors, trim, siding, stucco, masonry, garage doors, railings, storefront details, and commercial exteriors with proper prep and weather-ready coatings.
+desc: |-
+  Exterior painting for homes, storefronts, offices, and small commercial buildings across the GTA.
+  We clean, sand, scrape, prime, protect, and paint exterior surfaces so doors, trim, siding, stucco, masonry, railings, and garage doors look sharp and hold up to Ontario weather.
+
+image:
+  src: ./cover.jpg
+  alt: Exterior painting with black window trim on a clean white stucco home in the GTA.
+
+sections:
+  - type: ImageCarousel
+    content:
+      - src: ./photos/exterior-window-trim-painting.jpg
+        alt: Exterior window trim painting on a white stucco home with black trim.
+      - src: ./photos/garage-door-exterior-painting.jpg
+        alt: Exterior garage door painting with black doors and protected masonry.
+      - src: ./photos/exterior-door-trim-painting.jpg
+        alt: Exterior door and trim painting with black finish on siding.
+
+  - type: Benefits
+    title: Why exterior paint matters
+    content:
+      - title: Weather protection
+        desc: |-
+          Exterior paint protects wood, trim, doors, siding, stucco, masonry, and metal from sun, rain, freeze-thaw cycles, and daily wear.
+
+      - title: Better curb appeal
+        desc: |-
+          Fresh exterior paint can change the look of a home or commercial space quickly, especially on doors, garage doors, window trim, railings, and storefront details.
+
+      - title: Proper surface prep
+        desc: |-
+          We clean, scrape, sand, caulk, patch, prime, and mask before painting. Good prep is what helps exterior coatings adhere and last.
+
+      - title: Residential and commercial
+        desc: |-
+          We paint homes, condos, offices, retail spaces, storefront details, common areas, and small commercial exteriors with WSIB coverage and 5M liability insurance.
+
+  - type: TextCarousel
+    text:
+      - Exterior painting
+      - Commercial exterior painting
+      - Exterior trim painting
+      - Door and garage door painting
+      - Stucco and masonry coatings
+      - Siding painting
+      - Weather-ready finishes
+
+  - type: ImagePanel
+    title: Exterior surfaces we paint
+    content:
+      - title: Doors, trim and windows
+        desc: |-
+          Exterior doors, frames, garage doors, window trim, casings, fascia, and detail trim are prepped and painted with durable exterior products.
+        image:
+          src: ./photos/exterior-window-trim-painting.jpg
+          alt: Exterior window and trim painting with clean black lines on a white exterior.
+
+      - title: Garage doors and railings
+        desc: |-
+          Garage doors, railings, posts, and exterior metal details need cleaning, sanding, primer where needed, and coatings suited to outdoor exposure.
+        image:
+          src: ./photos/garage-door-exterior-painting.jpg
+          alt: Black exterior garage doors painted on a light masonry home.
+
+      - title: Commercial exteriors
+        desc: |-
+          Storefront trim, office entries, exterior doors, common areas, and small commercial buildings are scheduled around access, business hours, and weather.
+        image:
+          src: ./photos/exterior-door-trim-painting.jpg
+          alt: Exterior door and trim painting with protected glass and siding.
+
+  - type: ZigZag
+    title: Exterior painting services
+    content:
+      - title: Homes and curb appeal
+        desc: |-
+          We paint exterior doors, trim, siding, stucco, masonry, railings, garage doors, fascia, and small exterior details for homes in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and nearby GTA areas.
+        image:
+          src: ./photos/exterior-window-trim-painting.jpg
+          alt: Exterior home painting with white stucco and black window trim.
+
+      - title: Commercial interiors and exteriors
+        desc: |-
+          We paint commercial spaces inside and outside, including offices, retail spaces, storefront details, entry doors, trim, common areas, and small commercial exteriors.
+        image:
+          src: ./photos/exterior-door-trim-painting.jpg
+          alt: Commercial exterior door and trim painting with black finish.
+
+  - type: Faq
+    title: Have questions about exterior painting?
+    showMoreLabel: View more exterior painting questions
+    content:
+      - title: Do you paint exterior surfaces?
+        desc: |-
+          Yes. We paint exterior doors, trim, siding, stucco, masonry, railings, garage doors, fascia, storefront details, and small commercial exteriors.
+
+      - title: Do you paint commercial exteriors?
+        desc: |-
+          Yes. We paint commercial interiors and exteriors, including offices, retail spaces, storefront details, entry doors, trim, common areas, and small commercial buildings.
+
+      - title: Are you insured for exterior painting?
+        desc: |-
+          Yes. Strataline carries WSIB coverage and 5M liability insurance for painting and renovation projects. Insurance details can be provided when required.
+
+      - title: What exterior surfaces can be painted?
+        desc: |-
+          Exterior paint can be used on properly prepared wood, metal, fiberglass, masonry, stucco, siding, garage doors, trim, doors, railings, and some composite materials.
+
+      - title: What affects the cost of exterior painting?
+        desc: |-
+          Exterior painting cost depends on surface condition, access, height, prep, repairs, primer, paint system, number of coats, weather windows, and how much masking is needed.
+
+      - title: Do you scrape and sand before exterior painting?
+        desc: |-
+          Yes. Loose paint is scraped, rough edges are sanded, dirty surfaces are cleaned, gaps are caulked where appropriate, and bare areas are primed before finish paint.
+
+      - title: Do exterior surfaces need primer?
+        desc: |-
+          Bare wood, metal, masonry repairs, stained areas, old glossy paint, and problem surfaces often need primer. Primer helps adhesion, coverage, and durability.
+
+      - title: Can you paint exterior doors?
+        desc: |-
+          Yes. Exterior doors are cleaned, sanded, masked, primed where needed, and painted with exterior products suited to sun, moisture, and daily use.
+
+      - title: Can you paint garage doors?
+        desc: |-
+          Yes. Garage doors can be painted after cleaning, sanding, masking, and primer where needed. Product choice depends on whether the door is steel, aluminum, fiberglass, or wood.
+
+      - title: Can you paint stucco or masonry?
+        desc: |-
+          Yes, when the surface is sound, dry, clean, and compatible with the coating. Cracks, moisture issues, and loose material should be addressed before paint.
+
+      - title: When is the best season for exterior painting in Ontario?
+        desc: |-
+          Exterior painting is usually best in dry, mild weather. Temperature, humidity, rain, direct sun, and overnight conditions all affect scheduling and cure time.
+
+      - title: Do you also paint interiors?
+        desc: |-
+          Yes. See our [interior painting and wall finishing](/services/painting) page for walls, ceilings, trim, drywall repair, skim coating, and interior repainting.
+
+  - type: Services
+    exclude:
+      - exterior-painting
