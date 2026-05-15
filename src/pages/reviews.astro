@@ -5,7 +5,7 @@ import { getEntry } from '@/content.config';
 
 const googleReviewUrl = 'https://g.page/r/CVMFoUd4wK3bEBE/review';
 const houzzUrl = 'https://www.houzz.com/writeProReview/cmd=r/n=maxim-sologub';
-const facebookReviewUrl = 'https://www.facebook.com/stratalineinc/reviews';
+const facebookUrl = 'https://www.facebook.com/stratalineinc';
 
 const homepage = await getEntry('index', 'index');
 const homepageReviews = homepage.data.sections.find((section: any) => section.type === 'Reviews') as
@@ -93,7 +93,7 @@ const proofCards = [
 							</span>
 						</a>
 						<a
-							href={facebookReviewUrl}
+							href={facebookUrl}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="review-platform-link"
@@ -105,8 +105,8 @@ const proofCards = [
 								</svg>
 							</span>
 							<span>
-								<span class="review-platform-title">Review us on Facebook &rarr;</span>
-								<span class="review-platform-desc">Recommend us to your friends and family.</span>
+								<span class="review-platform-title">Visit us on Facebook &rarr;</span>
+								<span class="review-platform-desc">Follow our work and share a kind word with friends.</span>
 							</span>
 						</a>
 					</div>
