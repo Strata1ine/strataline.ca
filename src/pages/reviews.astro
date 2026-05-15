@@ -56,30 +56,58 @@ const proofCards = [
 					<h2 class="font-serif text-4xl leading-none font-semibold">Leave a Review</h2>
 					<p class="desc-base mt-3">Choose the platform that is easiest for you.</p>
 
-					<div class="mt-6 grid gap-3">
+					<div class="mt-7 grid gap-4">
 						<a
 							href={googleReviewUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-secondary border-secondary inline-flex items-center justify-center rounded-full border px-6 py-4 font-sans text-base font-bold text-white shadow-xl shadow-secondary/25 transition hover:-translate-y-0.5 hover:bg-black"
+							class="review-platform-link review-platform-link--google"
 						>
-							Review us on Google &rarr;
+							<span class="review-platform-icon review-platform-icon--google" aria-hidden="true">
+								<svg viewBox="0 0 48 48" role="img" focusable="false">
+									<path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.6 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5Z" />
+									<path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.2 4 9.5 8.5 6.3 14.7Z" />
+									<path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.3 39.5 16.1 44 24 44Z" />
+									<path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C36.9 39.3 44 34 44 24c0-1.3-.1-2.4-.4-3.5Z" />
+								</svg>
+							</span>
+							<span>
+								<span class="review-platform-title">Review us on Google &rarr;</span>
+								<span class="review-platform-desc">It only takes a minute and helps the most.</span>
+							</span>
 						</a>
 						<a
 							href={houzzUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="border-primary-dark inline-flex items-center justify-center rounded-full border bg-white px-6 py-4 font-sans text-base font-semibold text-black transition hover:-translate-y-0.5 hover:border-black"
+							class="review-platform-link"
 						>
-							Review us on Houzz &rarr;
+							<span class="review-platform-icon review-platform-icon--houzz" aria-hidden="true">
+								<svg viewBox="0 0 48 48" role="img" focusable="false">
+									<path fill="#4DBC15" d="M6 4v40h14V29h8v15h14V19L24 8v13h-4V4H6Z" />
+								</svg>
+							</span>
+							<span>
+								<span class="review-platform-title">Review us on Houzz &rarr;</span>
+								<span class="review-platform-desc">Share the details homeowners care about.</span>
+							</span>
 						</a>
 						<a
 							href={facebookReviewUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="border-primary-dark inline-flex items-center justify-center rounded-full border bg-white px-6 py-4 font-sans text-base font-semibold text-black transition hover:-translate-y-0.5 hover:border-black"
+							class="review-platform-link"
 						>
-							Review us on Facebook &rarr;
+							<span class="review-platform-icon review-platform-icon--facebook" aria-hidden="true">
+								<svg viewBox="0 0 48 48" role="img" focusable="false">
+									<circle cx="24" cy="24" r="22" fill="#1877F2" />
+									<path fill="#fff" d="M30.8 30.4 31.8 24h-6.1v-4.1c0-1.8.9-3.5 3.6-3.5h2.8V11s-2.5-.4-4.9-.4c-5 0-8.3 3-8.3 8.6V24h-5.6v6.4h5.6V46c1.1.2 2.3.3 3.4.3 1.2 0 2.3-.1 3.4-.3V30.4h5.1Z" />
+								</svg>
+							</span>
+							<span>
+								<span class="review-platform-title">Review us on Facebook &rarr;</span>
+								<span class="review-platform-desc">Recommend us to your friends and family.</span>
+							</span>
 						</a>
 					</div>
 				</section>
@@ -163,9 +191,98 @@ const proofCards = [
 </script>
 
 <style>
+	.review-platform-link {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		border: 1px solid rgb(255 82 124 / 0.22);
+		border-radius: 999px;
+		background: white;
+		padding: 1rem 1.25rem;
+		font-family: var(--font-sans);
+		color: black;
+		box-shadow: 0 1.25rem 2.75rem rgb(0 0 0 / 0.04);
+		transition:
+			transform 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease;
+	}
+
+	.review-platform-link:hover {
+		transform: translateY(-0.125rem);
+		border-color: rgb(255 82 124 / 0.55);
+		box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.08);
+	}
+
+	.review-platform-link--google {
+		border-color: var(--color-secondary);
+		background: linear-gradient(135deg, var(--color-secondary), #ff3f7b);
+		color: white;
+		box-shadow: 0 1.5rem 3.5rem rgb(255 82 124 / 0.28);
+	}
+
+	.review-platform-icon {
+		display: grid;
+		width: 3.75rem;
+		height: 3.75rem;
+		flex: none;
+		place-items: center;
+		border-radius: 999px;
+	}
+
+	.review-platform-icon--google {
+		background: white;
+	}
+
+	.review-platform-icon svg {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.review-platform-title,
+	.review-platform-desc {
+		display: block;
+	}
+
+	.review-platform-title {
+		font-size: 1.1rem;
+		font-weight: 800;
+		line-height: 1.2;
+	}
+
+	.review-platform-desc {
+		margin-top: 0.35rem;
+		font-size: 0.92rem;
+		font-weight: 600;
+		line-height: 1.35;
+		opacity: 0.78;
+	}
+
 	.review-rotator {
 		-webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 86%, transparent);
 		mask-image: linear-gradient(to bottom, transparent, black 8%, black 86%, transparent);
+	}
+
+	@media (max-width: 480px) {
+		.review-platform-link {
+			gap: 0.9rem;
+			padding: 0.9rem 1rem;
+		}
+
+		.review-platform-icon {
+			width: 3.1rem;
+			height: 3.1rem;
+			font-size: 2.25rem;
+		}
+
+		.review-platform-title {
+			font-size: 1rem;
+		}
+
+		.review-platform-desc {
+			font-size: 0.82rem;
+		}
 	}
 
 	.review-slide {
