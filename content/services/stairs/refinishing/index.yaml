@@ -206,108 +206,80 @@ sections:
           Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase. The end result looks fantastic and fits the space perfectly. You can tell the work was done with care.
 
   - type: Faq
-    title: Staircase refinishing FAQ
+    title: Stair refinishing FAQ
+    showMoreLabel: View more stair refinishing questions
     content:
-      - title: How long does staircase refinishing take?
+      - title: What stair refinishing services do you provide?
         desc: |-
-          Most projects are completed in 3 to 5 days depending on staircase size, condition, and drying time between coats.
+          We sand, stain, refinish, repair, and paint stair components including treads, risers, stringers, handrails, posts, and related trim. We also coordinate carpet removal, squeak reduction, railing updates, and colour matching.
 
-      - title: Is the process messy?
+      - title: When can stairs be refinished instead of replaced?
         desc: |-
-          No. We use dust-controlled sanding systems and protect surrounding finishes so the project is suitable for lived-in homes.
+          Stairs can often be refinished when the existing treads are solid hardwood, thick enough to sand, structurally sound, and not too damaged by carpet staples, deep stains, pet damage, water, or previous sanding.
 
-      - title: Can you match my floors?
+      - title: Can carpeted stairs be refinished?
         desc: |-
-          Yes. Stain is adjusted on site so the staircase works with your existing flooring and interior finish direction.
+          Sometimes. After carpet removal, we inspect the wood underneath. Some carpeted stairs have good hardwood treads; others are construction-grade and need tread caps or replacement instead.
 
-      - title: When is refinishing not the best option?
+      - title: How much does stair refinishing cost?
         desc: |-
-          If the stairs are carpeted, heavily damaged, or need a more complete rebuild in appearance, stair caps or broader upgrades may be the better solution.
+          Cost depends on tread count, landings, carpet removal, staple removal, stain change, railing work, riser painting, repairs, dust control, finish system, and whether stairs must stay usable during the project.
 
-      - title: Do you work on curved staircases?
+      - title: How long does stair refinishing take?
         desc: |-
-          Yes. Curved staircases, feature foyers, and more complex layouts are part of the work we do regularly.
+          A typical staircase can take several days because sanding, stain approval, drying, finish coats, riser painting, and cleanup all need time. Dark stains and detailed railings can extend the schedule.
 
-  - type: ZigZag
-    title: Explore our stair services
-    content:
-      - title: Stair Renovation — Full staircase upgrades
-        link: /services/stairs
+      - title: Can you match the stair stain to my floors?
         desc: |-
-          Explore complete staircase renovation options, from structural updates and layout improvements to full visual modernization. This is the best fit when the staircase needs more than a surface-level change.
-        image:
-          src: ../staircase-renovation-gallery/staircase-refinishing-vaughan-dark-treads-white-risers-modern.jpg
-          alt: Full staircase renovation with dark treads and white risers in Vaughan.
+          Usually close. Matching depends on wood species, age, previous finish, floor colour, lighting, and wear. We prefer sample testing before final stain decisions.
 
-      - title: Tread Caps — Cover outdated or carpeted stairs
-        link: /services/stairs/tread-caps
+      - title: Can stairs be stained darker?
         desc: |-
-          Tread caps are ideal when the staircase structure is solid but the surfaces are outdated, carpeted, or difficult to refinish. They provide a clean, durable finish and pair well with new railings for a complete upgrade.
-        image:
-          src: ../tread-caps/stair-tread-caps-gallery/oak-stair-tread-caps-toronto-finished-1-closeup.jpg
-          alt: Oak stair tread caps installation in Toronto showing finished hardwood stair upgrade.
+          Usually yes, if the wood accepts stain evenly after sanding. Very dark stains can show dust, scratches, and uneven sanding, so prep quality matters.
 
-      - title: Railing Installation — Upgrade balusters, posts, and handrails
-        link: /services/stairs/railing-installation
+      - title: Can orange oak stairs be modernized?
         desc: |-
-          Replace dated balusters, handrails, and posts with a cleaner, more modern railing system. This upgrade improves both safety and appearance without full staircase replacement.
-        image:
-          src: ../railing-installation/railing-installation-gallery/stair-railing-etobicoke-modern-17.jpg
-          alt: Modern stair railing installation in Etobicoke with black balusters and wood handrail.
+          Yes. Orange oak can often be sanded and restained, paired with white risers, black balusters, updated handrails, or refinished to better match modern floors.
 
-  - type: TextCarousel
-    text:
-      - staircase refinishing Vaughan
-      - staircase refinishing Toronto
-      - staircase refinishing Woodbridge
-      - staircase refinishing GTA
-      - stair refinishing Vaughan
-      - stair refinishing Toronto
-      - stair refinishing Woodbridge
-      - stair refinishing GTA
-      - stair refinishing contractor
-      - staircase refinishing contractor
-      - stair refinishing company
-      - hardwood stair refinishing
-      - hardwood staircase refinishing
-      - dust-free stair sanding
-      - dust controlled stair sanding
-      - stair sanding and staining
-      - stair stain matching
-      - stair staining contractor
-      - refinish hardwood stairs
-      - refinish oak staircase
-      - staircase restoration
-      - interior stair refinishing
-      - wood stair restoration
-      - staircase refinishing cost
-      - stair refinishing cost Toronto
-      - refinish stairs without replacing
-      - staircase refinishing before after
-      - curved staircase refinishing
-      - spiral staircase refinishing
-      - oak stair refinishing
-      - stair refinishing near me
-      - staircase refinishing near me
-      - Vaughan stair refinishing contractor
-      - Toronto stair refinishing contractor
-      - Woodbridge stair refinishing
-      - Richmond Hill stair refinishing
-      - Markham stair refinishing
-      - Newmarket stair refinishing
-      - Aurora stair refinishing
-      - North York stair refinishing
-      - Etobicoke stair refinishing
-      - Mississauga stair refinishing
-      - Oakville stair refinishing
-      - Burlington stair refinishing
-      - stair railing and refinishing
-      - stair upgrade without replacement
-      - modern staircase refinishing
-      - finished home stair refinishing
-      - clean stair refinishing process
-      - professional stair refinishing
+      - title: Is stair refinishing dusty?
+        desc: |-
+          Sanding creates dust, but containment, extraction, protection, and cleanup reduce spread. Stairs connect floors, so dust control around halls and nearby rooms is important.
 
+      - title: Will stair refinishing smell?
+        desc: |-
+          Some stains and finishes have odour. Product choice, ventilation, drying time, and household sensitivity should be discussed before work starts.
+
+      - title: Can we walk on stairs during refinishing?
+        desc: |-
+          Access may be limited during sanding, staining, and finish coats. Sometimes work can be staged, but fresh finish needs protected drying and curing time.
+
+      - title: What finish is best for stairs?
+        desc: |-
+          A durable floor-grade finish is best. Sheen, ambering, odour, dry time, traffic level, and maintenance expectations all affect the right choice.
+
+      - title: Can you paint risers during refinishing?
+        desc: |-
+          Yes. Painted risers need filling, sanding, caulking where appropriate, primer, and durable paint. Riser work should be sequenced with tread staining and finish coats.
+
+      - title: Can you refinish handrails too?
+        desc: |-
+          Yes. Handrails and posts can be sanded and stained or painted to coordinate with the treads. Detailed profiles and old coatings take extra time.
+
+      - title: Can you fix damaged treads before refinishing?
+        desc: |-
+          Often. Dents, staple holes, cracks, chips, gaps, stains, and loose treads can be repaired to a point, but severe damage may make tread caps or replacement the better choice.
+
+      - title: What should a stair refinishing quote include?
+        desc: |-
+          It should include tread count, landings, sanding, stain samples, finish coats, riser painting, railing work, repairs, carpet removal, protection, dust control, drying time, exclusions, and warranty.
+
+      - title: Do you refinish stairs across the GTA?
+        desc: |-
+          Yes. We refinish stairs in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
+
+  - type: ServiceAreas
+    title: Stair refinishing service areas
+    service: stairs/refinishing
   - type: Services
     exclude:
       - stairs

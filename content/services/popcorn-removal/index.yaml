@@ -291,285 +291,95 @@ sections:
 
   - type: Faq
     title: Popcorn ceiling removal FAQ
+    showMoreLabel: View more popcorn ceiling questions
     content:
+      - title: What popcorn ceiling services do you provide?
+        desc: |-
+          We remove popcorn ceilings, smooth textured ceilings, skim coat ceilings, sand and prime, paint ceilings, repair ceiling cracks, handle painted popcorn where practical, protect occupied homes, and coordinate testing or specialty handling when asbestos is a concern.
+
       - title: How much does popcorn ceiling removal cost in Toronto and the GTA?
         desc: |-
-          Popcorn ceiling removal in Toronto and the GTA typically ranges from $4 to $9 per square foot. The final cost depends on ceiling size, height, accessibility, whether the texture has been painted over, and how much skim coating and surface correction is required. Painted ceilings and higher finish levels fall toward the upper end of that range. The fastest way to get an accurate number is to send a few photos or request a site visit.
+          Cost depends on square footage, ceiling height, whether the texture has been painted, ceiling condition, furniture protection, dust control, skim coat needs, primer, paint, condo access, and asbestos testing or abatement requirements.
 
-      - title: Is dust-free popcorn ceiling removal actually possible?
+      - title: Is asbestos a concern with popcorn ceilings?
         desc: |-
-          Truly dust-free removal means controlling dust at the source — not eliminating it entirely. We use Festool Planex sanding systems paired with HEPA extraction, air filtration units, and full room containment to keep the process extremely clean. This allows popcorn ceiling removal to be performed safely in finished, occupied homes without dust spreading through the house.
+          Yes, especially in older homes and condos. If the ceiling may contain asbestos, testing should happen before disturbance. Confirmed asbestos requires proper abatement or another safe strategy before standard removal work.
 
-      - title: Do you scrape popcorn ceilings or sand them off?
+      - title: Should I test my popcorn ceiling for asbestos before removal?
         desc: |-
-          Both methods are used depending on the ceiling condition. Unpainted popcorn texture can often be removed cleanly with wet scraping, which is faster and produces less dust. Painted or stubborn textures require sanding. We assess each ceiling before starting and select the method that produces the best finish with the least disruption to your home.
+          If the home or ceiling finish is old enough to raise concern, yes. Testing is the responsible step before scraping, sanding, drilling, or cutting textured ceiling material.
 
-      - title: Do all ceilings need skim coating after popcorn removal?
+      - title: Can you remove painted popcorn ceilings?
         desc: |-
-          In most homes, yes. Once popcorn texture is removed, underlying imperfections — drywall joints, patches, trowel marks, and uneven areas — become visible. Skim coating corrects the surface and is what creates a truly smooth, modern ceiling instead of a rough or inconsistent one.
+          Often yes, but painted popcorn is harder to scrape because paint seals the texture. It usually needs more labour, more sanding, and more skim coating than unpainted texture.
 
-      - title: What happens if my popcorn ceiling has been painted before?
+      - title: Can popcorn ceilings be skim coated instead of removed?
         desc: |-
-          Painted popcorn ceilings are significantly harder to remove and cannot be wet-scraped cleanly. The paint film seals the texture and requires sanding followed by skim coating to achieve a smooth finish. This adds time and labour but results in a noticeably better final surface than leaving the texture in place.
+          Sometimes, but it depends on texture condition, paint, adhesion, asbestos risk, ceiling height, and desired finish. Skim coating over unstable texture can fail, so the ceiling must be assessed first.
 
-      - title: Will removing popcorn ceilings expose cracks or bad drywall work?
+      - title: Is drywall over popcorn ceiling a good option?
         desc: |-
-          Yes, it often does. Popcorn texture was frequently applied to hide seams, patches, and uneven drywall. Once removed, those imperfections become visible. They are identified and corrected during the skim coating stage to produce a uniform, finished surface.
+          Drywall overlay can be an option when texture should not be disturbed or the ceiling is badly damaged. It changes ceiling height, fixture boxes, transitions, trim, and cost, so it needs careful planning.
 
-      - title: Will my ceiling be ready for painting after removal?
+      - title: What does dustless popcorn ceiling removal mean?
         desc: |-
-          Yes. After popcorn ceiling removal and skim coating, we prepare the surface to a smooth, paint-ready finish. We can leave it primed and ready for your painter, or complete the ceiling painting as part of the same project.
+          Dustless means dust is controlled with containment, tools, sanding systems, vacuums, sealing, and cleanup. It does not mean there is literally no dust, especially during sanding and skim coating.
+
+      - title: Do you protect furniture and floors?
+        desc: |-
+          Yes. Protection can include floor covering, plastic containment, sealed openings, furniture covering or relocation, careful disposal, and cleanup. Occupied homes need a stronger protection plan than empty homes.
+
+      - title: What is the usual popcorn ceiling removal process?
+        desc: |-
+          The process can include testing if needed, protection, wetting or controlled scraping, damage repair, skim coating, sanding, priming, touch-up, ceiling paint, cleanup, and inspection under light.
+
+      - title: Why does the ceiling need skim coating after popcorn removal?
+        desc: |-
+          Popcorn texture often hides seams, waves, dents, bad drywall finishing, and scraper marks. Skim coating creates the smooth surface needed before primer and paint.
+
+      - title: What finish level should a smooth ceiling have?
+        desc: |-
+          A smooth ceiling should be flat enough for the lighting conditions. Rooms with big windows, pot lights, or low-angle light may need more skim work because defects are more visible.
+
+      - title: Can you remove popcorn ceilings in condos?
+        desc: |-
+          Yes. Condo work may require board approval, elevator booking, work-hour limits, insurance documents, concrete ceiling review, sprinkler or detector protection, and careful disposal.
+
+      - title: Are condo popcorn ceilings different from house ceilings?
+        desc: |-
+          Often yes. Condos may have concrete ceilings, harder textures, building rules, limited working hours, and stricter disposal or protection requirements. Finish methods can differ from drywall ceilings.
 
       - title: How long does popcorn ceiling removal take?
         desc: |-
-          Most projects take between one and several days depending on scope. Smaller areas may be done in a single day. Larger spaces, vaulted ceilings, painted textures, skim coating, and drying time can extend the timeline. You will receive a clear schedule before work begins so there are no surprises.
+          Small rooms can be faster, while full homes take longer. Painted texture, high ceilings, bad drywall, heavy furniture, condos, and multiple skim coats can extend the timeline.
 
-      - title: How soon after removal can the ceiling be painted?
+      - title: Can we live in the home during popcorn ceiling removal?
         desc: |-
-          After skim coating, ceilings typically need 24 to 48 hours of drying time before priming and painting. We factor drying time into the project schedule so your painter — or our team, if painting is included — can proceed without delay.
+          Often yes, if the work is phased and contained. It is still disruptive because ceilings, furniture protection, sanding, and drying time affect room access.
 
-      - title: Can popcorn ceilings be removed in occupied homes?
+      - title: Should popcorn ceilings be removed before painting walls?
         desc: |-
-          Yes — this is specifically what our process is designed for. With Festool HEPA extraction, full containment, and proper surface protection, popcorn ceiling removal can be completed in a lived-in home without dust spreading through the space or turning your home into a construction site.
+          Yes. Ceiling removal and sanding should happen before final wall painting because dust and repairs can affect adjacent walls, trim, and corners.
 
-      - title: Do I need to remove furniture, pictures, or curtains?
+      - title: Can you repair ceiling cracks at the same time?
         desc: |-
-          In most cases, no. Furniture can stay in place and will be fully protected with drop covers. Walls and adjacent surfaces are also masked. For fragile, irreplaceable, or high-value items, we recommend moving them as a precaution.
+          Yes. Ceiling cracks can be repaired during the smoothing process, but recurring cracks may need broader repair, tape reinforcement, or review of movement before final finishing.
 
-      - title: Will popcorn ceiling removal damage hardwood floors or carpet?
+      - title: Will popcorn ceiling removal increase home value?
         desc: |-
-          No. All flooring is protected before work begins. Hardwood, tile, and carpet are fully covered throughout the process and remain clean and undamaged.
+          Smooth ceilings can improve buyer perception and make a home feel more current, especially in Toronto and GTA resale markets. Value depends on finish quality and overall home condition.
 
-      - title: Do I need asbestos testing before removing popcorn ceilings?
+      - title: What should a popcorn ceiling quote include?
         desc: |-
-          If the home was built before the late 1980s, asbestos testing is strongly recommended before any removal work begins. Popcorn texture applied in that era sometimes contained asbestos as a binder. We can coordinate testing through an accredited laboratory and schedule work accordingly once results are confirmed.
+          It should include protection, removal method, asbestos assumptions, skim coating, sanding, primer, paint, ceiling height, furniture handling, disposal, cleanup, exclusions, timeline, and finish expectations.
 
-      - title: Can you install pot lights after popcorn ceiling removal?
+      - title: Do you remove popcorn ceilings across the GTA?
         desc: |-
-          Yes, and popcorn ceiling removal is the ideal time to do it. We can coordinate pot light installation, drywall patching, and full ceiling finishing in one mobilization — so the ceiling looks clean and intentional rather than patched after the fact.
+          Yes. We remove popcorn ceilings in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
-      - title: Can you remove popcorn ceilings without repainting the walls?
-        desc: |-
-          Yes. With proper masking and containment, popcorn ceiling removal can be done without repainting walls in most homes. Walls, trim, and finishes are fully protected. Minor touch-ups at ceiling-to-wall transitions may occasionally be needed, but full wall repainting is not typically required.
-
-      - title: What areas do you serve for popcorn ceiling removal?
-        desc: |-
-          We provide popcorn ceiling removal across Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, Mississauga, Newmarket, Burlington, Thornhill, Etobicoke, North York, and surrounding GTA areas.
-
-      - title: Is removing popcorn ceilings worth it before selling a home?
-        desc: |-
-          Yes — it is one of the highest-impact cosmetic upgrades before listing. Smooth ceilings improve how a home photographs, how it shows during viewings, and how move-in-ready it feels to buyers. The return on popcorn ceiling removal is consistently strong relative to the cost.
-
-      - title: Can I get a quote for popcorn ceiling removal without an in-person visit?
-        desc: |-
-          Yes. In most cases we can provide a reliable price range based on photos, ceiling dimensions, and a few details about the surface condition. This gives you a clear idea of cost and scope without scheduling a visit first — which makes it easy to plan and compare before committing.
-
-      - title: What is the biggest mistake homeowners make with popcorn ceiling removal?
-        desc: |-
-          Focusing only on getting the texture off rather than the quality of the finished surface. Without proper skim coating, sanding, and surface correction, the ceiling will still look rough, uneven, or visibly repaired. The finish work after removal is what determines whether the ceiling looks truly modern or just stripped.
-
-      - title: Who offers dust-free popcorn ceiling removal near me in Toronto?
-        desc: |-
-          Strataline provides dust-controlled popcorn ceiling removal across Toronto, Vaughan, Richmond Hill, Mississauga, and the GTA. Using Festool Planex sanding systems with HEPA extraction, ceilings are refinished cleanly in occupied homes without spreading dust.
-
-      - title: What is the best way to remove popcorn ceilings without making a mess?
-        desc: |-
-          The most effective method is controlled sanding using HEPA dust extraction combined with full containment. This approach captures dust at the source and allows popcorn ceilings to be removed cleanly in finished homes.
-
-      - title: How do professionals smooth ceilings after popcorn removal?
-        desc: |-
-          After removing the texture, professionals skim coat the ceiling to correct imperfections, then sand it to a uniform surface. This step is critical to achieving a smooth, modern, paint-ready finish.
-
-      - title: Is it worth removing popcorn ceilings before selling a home in the GTA?
-        desc: |-
-          Yes. Popcorn ceiling removal is one of the highest-impact upgrades before listing a home. Smooth ceilings improve lighting, photography, and buyer perception, making the property feel more modern and move-in ready.
-
-      - title: Can popcorn ceilings be removed in a condo without dust spreading?
-        desc: |-
-          Yes. With proper containment and HEPA extraction systems, popcorn ceiling removal can be safely completed in condos without affecting neighboring units or spreading dust.
-
-      - title: How much does it cost to remove popcorn ceilings in Toronto per square foot?
-        desc: |-
-          Most projects fall between $4 and $9 per square foot depending on ceiling condition, height, and finish level. Painted ceilings and detailed finishing increase the cost.
-
-      - title: What is the difference between scraping and sanding popcorn ceilings?
-        desc: |-
-          Scraping is used for unpainted ceilings and is faster with less dust. Sanding is required for painted or stubborn textures and allows for better surface control when paired with HEPA extraction.
-
-      - title: What do ceilings look like after popcorn removal and skim coating?
-        desc: |-
-          A properly finished ceiling appears completely smooth, flat, and uniform with no visible seams or texture. It reflects light evenly and gives the room a clean, modern appearance.
-
-  - type: ImagePanel
-    title: Start with photos
-    content:
-      - title: Send photos. Get a clear price.
-        desc: |-
-          The fastest way to get an accurate quote is to send a few photos of your ceilings along with rough room dimensions. We can usually provide a clear price range the same day — including what is involved and how long it will take.
-
-          Most homeowners across Toronto and the GTA do not need an in-person visit just to get started. If your ceilings are painted, vaulted, or part of a larger renovation, we will outline exactly what to expect so there are no surprises when work begins.
-        image:
-          src: ./images/popcorn-ceiling-removal/toronto/dust-free-popcorn-ceiling-removal-toronto-condo-01.jpg
-          alt: Smooth ceiling after popcorn removal in Toronto ready for painting.
-
-      - title: Clean work in finished, occupied homes
-        desc: |-
-          We specialize in popcorn ceiling removal in lived-in homes without turning them into a construction site. Furniture stays protected, surfaces stay clean, and the process is controlled from setup to final cleanup.
-
-          Most projects are completed within a few days, with a clear schedule confirmed before work begins.
-        image:
-          src: ./images/popcorn-ceiling-removal/vaughan/festool-planex-popcorn-removal-vaughan-02.jpg
-          alt: Dust-free popcorn ceiling removal process in Vaughan home with full containment and protection.
-
-      - title: Ready when you are
-        desc: |-
-          When you are ready to move forward, we can lock in a timeline that works around your schedule. Many homeowners reach out after seeing how dramatically a room changes once the popcorn texture is gone.
-
-          Send photos or get in touch to get your quote started — no obligation, fast response.
-        image:
-          src: ./images/popcorn-ceiling-removal/richmond-hill/smooth-ceiling-after-removal-richmond-hill-03.jpg
-          alt: Smooth modern ceiling after popcorn removal in Richmond Hill home.
-
-# AUTO-GENERATED POPCORN CITY LINKS START
-  - type: ZigZag
-    title: Popcorn ceiling removal by city
-    content:
-      - title: Popcorn ceiling removal Ajax
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Ajax with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./ajax/project-1/after/popcorn-ceiling-removal-ajax-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Ajax with smooth ceiling finish.
-        link: /services/popcorn-removal/ajax
-      - title: Popcorn ceiling removal Aurora
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Aurora with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./aurora/project-1/after/popcorn-ceiling-removal-aurora-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Aurora with smooth ceiling finish.
-        link: /services/popcorn-removal/aurora
-      - title: Popcorn ceiling removal Bolton
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Bolton with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./bolton/project-1/after/popcorn-ceiling-removal-bolton-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Bolton with smooth ceiling finish.
-        link: /services/popcorn-removal/bolton
-      - title: Popcorn ceiling removal Burlington
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Burlington with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./burlington/project-1/after/popcorn-ceiling-removal-burlington-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Burlington with smooth ceiling finish.
-        link: /services/popcorn-removal/burlington
-      - title: Popcorn ceiling removal Caledon
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Caledon with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./caledon/project-1/after/popcorn-ceiling-removal-caledon-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Caledon with smooth ceiling finish.
-        link: /services/popcorn-removal/caledon
-      - title: Popcorn ceiling removal Etobicoke
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Etobicoke with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./etobicoke/project-1/after/popcorn-ceiling-removal-etobicoke-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Etobicoke with smooth ceiling finish.
-        link: /services/popcorn-removal/etobicoke
-      - title: Popcorn ceiling removal Forest Hill
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Forest Hill with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./forest-hill/project-1/after/popcorn-ceiling-removal-forest-hill-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Forest Hill with smooth ceiling finish.
-        link: /services/popcorn-removal/forest-hill
-      - title: Popcorn ceiling removal King City
-        desc: |-
-          Professional dust-free popcorn ceiling removal in King City with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./king-city/project-1/after/popcorn-ceiling-removal-king-city-project-1-after-01.webp
-          alt: Popcorn ceiling removal in King City with smooth ceiling finish.
-        link: /services/popcorn-removal/king-city
-      - title: Popcorn ceiling removal Kleinburg
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Kleinburg with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./kleinburg/project-1/after/popcorn-ceiling-removal-kleinburg-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Kleinburg with smooth ceiling finish.
-        link: /services/popcorn-removal/kleinburg
-      - title: Popcorn ceiling removal Leaside
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Leaside with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./leaside/project-1/after/popcorn-ceiling-removal-leaside-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Leaside with smooth ceiling finish.
-        link: /services/popcorn-removal/leaside
-      - title: Popcorn ceiling removal Markham
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Markham with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./markham/project-1/after/popcorn-ceiling-removal-markham-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Markham with smooth ceiling finish.
-        link: /services/popcorn-removal/markham
-      - title: Popcorn ceiling removal Newmarket
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Newmarket with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./newmarket/project-1/after/popcorn-ceiling-removal-newmarket-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Newmarket with smooth ceiling finish.
-        link: /services/popcorn-removal/newmarket
-      - title: Popcorn ceiling removal Richmond Hill
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Richmond Hill with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./richmond-hill/project-1/after/popcorn-ceiling-removal-richmond-hill-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Richmond Hill with smooth ceiling finish.
-        link: /services/popcorn-removal/richmond-hill
-      - title: Popcorn ceiling removal Rosedale
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Rosedale with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./rosedale/project-1/after/popcorn-ceiling-removal-rosedale-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Rosedale with smooth ceiling finish.
-        link: /services/popcorn-removal/rosedale
-      - title: Popcorn ceiling removal Stouffville
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Stouffville with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./stouffville/project-1/after/popcorn-ceiling-removal-stouffville-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Stouffville with smooth ceiling finish.
-        link: /services/popcorn-removal/stouffville
-      - title: Popcorn ceiling removal The Beaches
-        desc: |-
-          Professional dust-free popcorn ceiling removal in The Beaches with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./the-beaches/project-1/after/popcorn-ceiling-removal-the-beaches-project-1-after-01.webp
-          alt: Popcorn ceiling removal in The Beaches with smooth ceiling finish.
-        link: /services/popcorn-removal/the-beaches
-      - title: Popcorn ceiling removal Toronto
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Toronto with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./toronto/project-1/after/popcorn-ceiling-removal-toronto-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Toronto with smooth ceiling finish.
-        link: /services/popcorn-removal/toronto
-      - title: Popcorn ceiling removal Vaughan
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Vaughan with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./vaughan/project-1/after/popcorn-ceiling-removal-vaughan-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Vaughan with smooth ceiling finish.
-        link: /services/popcorn-removal/vaughan
-      - title: Popcorn ceiling removal Woodbridge
-        desc: |-
-          Professional dust-free popcorn ceiling removal in Woodbridge with HEPA extraction, skim coating, ceiling smoothing, and a clean modern finish for finished and occupied homes.
-        image:
-          src: ./woodbridge/project-1/after/popcorn-ceiling-removal-woodbridge-project-1-after-01.webp
-          alt: Popcorn ceiling removal in Woodbridge with smooth ceiling finish.
-        link: /services/popcorn-removal/woodbridge
-
-# AUTO-GENERATED POPCORN CITY LINKS END
-
+  - type: ServiceAreas
+    title: Popcorn ceiling removal service areas
+    service: popcorn-removal
   - type: Services
     exclude:
       - popcorn-removal

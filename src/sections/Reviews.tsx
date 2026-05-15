@@ -199,11 +199,12 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 				</Show>
 
 				<a
-					class="bg-primary absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
-					href="https://g.page/r/CVMFoUd4wK3bEBE/review"
-					target="_blank"
-					rel="noopener noreferrer"
+					class="bg-primary absolute bottom-0 left-8 z-30 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					href="/reviews"
 					onPointerDown={(e) => {
+						e.stopPropagation();
+					}}
+					onClick={(e) => {
 						e.stopPropagation();
 					}}
 				>

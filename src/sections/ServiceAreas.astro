@@ -18,18 +18,17 @@ export const schema = createSchema('ServiceAreas', (_c: SchemaContext) =>
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 
-// Example:
-// /services/wallpaper/toronto/ -> ['services', 'wallpaper', 'toronto']
+// Examples:
+// /services/wallpaper/toronto/ -> ['wallpaper', 'toronto']
+// /services/stairs/refinishing/toronto/ -> ['stairs', 'refinishing', 'toronto']
 const segments = Astro.url.pathname.split('/').filter(Boolean);
-const currentService = segments[1] ?? '';
-const currentArea = segments[2] ?? '';
-const currentId = currentArea ? `${currentService}/${currentArea}` : currentService;
+const serviceSegments = segments[0] === 'services' ? segments.slice(1) : segments;
+const currentId = serviceSegments.join('/');
 
 const allPages = await getCollection('services');
 
 const toLabel = (id: string) => {
-	const parts = id.split('/');
-	const area = parts[1] ?? parts[0] ?? '';
+	const area = id.replace(`${meta.service}/`, '');
 
 	return area
 		.replace(/[_-]/g, ' ')
@@ -42,20 +41,41 @@ const areaOrder = [
 	'richmond-hill',
 	'markham',
 	'aurora',
-	'king_city',
+	'king-city',
 	'kleinburg',
 	'stouffville',
 	'woodbridge',
+	'mississauga',
+	'oakville',
+	'burlington',
+	'etobicoke',
+	'ajax',
+	'pickering',
+	'whitby',
+	'oshawa',
+	'newmarket',
+	'bradford',
+	'innisfil',
+	'caledon',
+	'bolton',
+	'forest-hill',
+	'rosedale',
+	'leaside',
+	'the-beaches',
 ];
 
 const hubPage = allPages.find((entry) => entry.id === meta.service);
+const serviceTitle = hubPage?.data.title ?? meta.title;
+const serviceLabel =
+	meta.title.replace(/\s+service areas$/i, '') ||
+	serviceTitle.replace(/\s+-\s+.*$/, '').replace(/\s+in\s+.*$/i, '');
 
 const areaPages = allPages
 	.filter((entry) => entry.id.startsWith(`${meta.service}/`))
 	.filter((entry) => entry.id !== currentId)
 	.sort((a, b) => {
-		const aArea = a.id.split('/')[1] ?? '';
-		const bArea = b.id.split('/')[1] ?? '';
+		const aArea = a.id.replace(`${meta.service}/`, '');
+		const bArea = b.id.replace(`${meta.service}/`, '');
 
 		const aIndex = areaOrder.indexOf(aArea);
 		const bIndex = areaOrder.indexOf(bArea);
@@ -77,12 +97,11 @@ const areaPages = allPages
 				hubPage && hubPage.id !== currentId && (
 					<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
 						<h3 class="mb-2 font-serif text-2xl font-semibold">
-							Toronto & GTA Wallpaper Hub
+							{serviceLabel} hub
 						</h3>
 
 						<p class="desc-base mb-4">
-							See our full wallpaper installation coverage across Toronto and the GTA, including
-							feature walls, murals, bedrooms, bathrooms, and full-room applications.
+							See our full {serviceLabel.toLowerCase()} coverage across Toronto and the GTA.
 						</p>
 
 						<Actions.Link
@@ -90,7 +109,7 @@ const areaPages = allPages
 							rel="noopener noreferrer"
 							data-astro-prefetch=""
 						>
-							View all wallpaper service areas
+							View all service areas
 						</Actions.Link>
 					</div>
 				)
@@ -105,8 +124,8 @@ const areaPages = allPages
 							<h3 class="mb-2 font-serif text-2xl font-semibold">{label}</h3>
 
 							<p class="desc-base mb-4">
-								See wallpaper installation services in {label}, including feature walls,
-								murals, bedrooms, bathrooms, and full-room applications.
+								See {serviceLabel.toLowerCase()} services in {label}, with local project planning,
+								FAQs, and quote information.
 							</p>
 
 							<Actions.Link
@@ -114,7 +133,7 @@ const areaPages = allPages
 								rel="noopener noreferrer"
 								data-astro-prefetch=""
 							>
-								Wallpaper installation in {label}
+								{serviceLabel} in {label}
 							</Actions.Link>
 						</div>
 					);

@@ -1,70 +1,153 @@
-title: Garage doors
+title: Garage door installation and repair
 position: 9
 seo: |-
-  Garage door experts specializing in installation, replacement, maintenance, and premium insulated overhead doors for your home.
-desc: |
-  Upgrade your garage with modern, insulated, secure, and stylish garage doors designed to enhance curb appeal and improve home efficiency.
+  Garage door installation, replacement, repair, openers, springs, cables, weatherstripping, insulated garage doors, custom garage doors, and quiet overhead door service in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and the GTA.
+desc: |-
+  Upgrade, repair, or replace your garage door with a clean, careful installation built for daily use. We install insulated steel doors, modern glass garage doors, carriage-style doors, wood-look garage doors, quiet openers, new tracks, springs, cables, rollers, seals, and smart garage door systems across Toronto and the GTA.
 image:
   src: ./cover.jpg
   alt: |-
-    A modern insulated garage door installed on a contemporary home, featuring clean lines, durable panels, and a quiet, smooth operating opener system.
+    Modern insulated garage door installation with clean panels, durable hardware, and a quiet opener system on a GTA home.
 
 sections:
   - type: ImageCarousel
     content:
       - src: ./photos/02.jpg
-        alt: A modern insulated garage door in sleek white panels on a suburban home.
+        alt: Modern insulated garage door installation with sleek white panels on a suburban home.
       - src: ./photos/03.jpg
-        alt: A wood-look steel garage door offering a warm, natural appearance with low maintenance.
+        alt: Wood-look steel garage door replacement with warm natural styling and low maintenance panels.
       - src: ./photos/04.png
-        alt: A black full-view glass garage door creating a contemporary, high-end look.
+        alt: Black full-view glass garage door for a contemporary exterior renovation.
       - src: ./photos/05.png
-        alt: A pair of carriage-style garage doors with decorative hardware and elegant details.
+        alt: Carriage-style garage doors with decorative hardware and classic curb appeal.
       - src: ./photos/06.jpg
-        alt: An insulated garage door with frosted glass windows, blending privacy and style.
+        alt: Insulated garage door with frosted glass windows for privacy and natural light.
       - src: ./photos/07.jpg
-        alt: A large double garage with durable ribbed steel doors and smooth operation.
+        alt: Double garage door replacement with ribbed steel doors and smooth overhead operation.
       - src: ./photos/08.png
-        alt: A custom garage door with horizontal lines and minimalist modern design.
+        alt: Custom garage door with horizontal modern panels and minimalist exterior design.
       - src: ./photos/09.jpg
-        alt: A full aluminum and glass garage door opening to a bright, spacious garage interior.
+        alt: Aluminum and glass garage door opening to a bright finished garage interior.
       - src: ./photos/10.jpg
-        alt: A textured-panel garage door in dark brown, complementing brick and stone exteriors.
+        alt: Dark textured garage door panels paired with brick and stone exterior finishes.
 
   - type: Benefits
-    title: Why upgrade your garage door?
+    title: Garage door services for finished homes
     content:
-      - title: Enhanced Security & Safety
+      - title: Garage door installation
         desc: |-
-          Modern doors feature reinforced panels, improved locking systems, and motion-sensing openers for maximum protection.
+          New garage door installation with proper measuring, track setup, spring balancing, opener coordination, trim review, and clean disposal of the old door.
 
-      - title: Energy Efficiency
+      - title: Garage door replacement
         desc: |-
-          Insulated garage doors minimize heat loss, helping maintain stable indoor temperatures and lowering energy costs.
+          Replace a dented, rusted, noisy, poorly insulated, or outdated overhead door with a better-fitting insulated garage door matched to the home.
 
-      - title: Smooth & Quiet Operation
+      - title: Garage door repair
         desc: |-
-          Advanced tracks, rollers, and belt-drive openers ensure whisper-quiet performance.
+          We handle common garage door repairs, including broken springs, worn rollers, frayed cables, damaged tracks, failed weatherstripping, opener issues, and doors that no longer close evenly.
 
-      - title: Curb Appeal Boost
+      - title: Opener and smart controls
         desc: |-
-          A new door can instantly refresh your home's exterior, adding style and sophistication.
+          Quiet belt-drive openers, wall controls, keypad entry, safety sensors, remote programming, and WiFi smart garage door opener upgrades can be included with the installation.
 
-      - title: Durable Materials
+      - title: Insulated and custom doors
         desc: |-
-          Steel, composite, and aluminum doors are resistant to rust, dents, and warping — built to last decades.
+          Choose insulated steel, carriage-style, flush modern, ribbed panel, wood-look, frosted glass, full-view glass, or custom-sized garage doors for Toronto and GTA homes.
 
-      - title: Increased Property Value
+      - title: Weatherseal and draft control
         desc: |-
-          Garage door replacements consistently offer one of the highest returns on investment for home upgrades.
+          Bottom seals, perimeter weatherstripping, threshold details, and proper panel fit help reduce drafts, water entry, pests, rattling, and winter heat loss.
+
+  - type: ImagePanel
+    title: Repair or replace?
+    content:
+      - title: Repair when the door is sound
+        desc: |-
+          If the panels are straight and the door still fits the opening, a spring, cable, roller, opener, track, or seal repair may be the better first step.
+        image:
+          src: ./photos/07.jpg
+          alt: Garage door repair assessment for tracks, rollers, springs, and smooth overhead operation.
+
+      - title: Replace when the panels fail
+        desc: |-
+          Replacement makes more sense when panels are bent, rusted, poorly insulated, water damaged, or too heavy for the existing opener and hardware.
+        image:
+          src: ./photos/02.jpg
+          alt: Garage door replacement with new insulated steel panels on a GTA home.
+
+      - title: Upgrade when comfort matters
+        desc: |-
+          An insulated garage door is worth considering when the garage connects to living space, has a room above it, or is used as storage, gym, workshop, or entry area.
+        image:
+          src: ./photos/06.jpg
+          alt: Insulated garage door with frosted windows for comfort, privacy, and curb appeal.
+
+  - type: Benefits
+    title: What competitors often leave vague
+    content:
+      - title: Door balance and spring sizing
+        desc: |-
+          A garage door can look fine and still operate badly if the springs are not matched to the door weight. We check balance, lift, opener strain, and safety before calling the job complete.
+
+      - title: Track and opening condition
+        desc: |-
+          Older garages often have crooked framing, worn tracks, tight headroom, or poor weatherseal surfaces. These details affect the final fit more than the door style alone.
+
+      - title: Opener compatibility
+        desc: |-
+          Heavy insulated doors, tall doors, double doors, and glass garage doors need the right opener, rail length, safety sensor setup, and force settings.
+
+      - title: Exterior finishing
+        desc: |-
+          Aluminum capping, trim, seals, colour, glass placement, panel profile, and hardware should suit the whole facade, not just the garage opening.
 
   - type: TextCarousel
     text:
-      - A garage door that transforms your home's look
-      - Smooth, quiet, and built to last
-      - Security and style in one upgrade
-      - Precision installation you can trust
-      - Insulated comfort for every season
+      - garage door installation Toronto
+      - garage door repair Vaughan
+      - garage door replacement GTA
+      - insulated garage doors for Canadian winters
+      - quiet garage door opener installation
+      - broken spring and cable repair
+      - custom garage doors for modern homes
+      - weatherstripping and draft control
+      - wood-look and carriage-style garage doors
+      - smart garage door opener upgrades
+      - garage door service Toronto and GTA
+      - garage door replacement with clean finishing
+
+  - type: Prices
+    title: What affects garage door cost?
+    content:
+      - title: Repair
+        min: 180
+        max: 850
+        materials:
+          - Spring, cable, roller, seal, opener, or track parts
+          - Door balance and safety checks
+          - Minor hardware adjustment
+        desc: |-
+          Repair pricing depends on the failed part, door size, access, hardware condition, and whether the opener or tracks also need adjustment.
+
+      - title: Standard replacement
+        min: 2200
+        max: 5200
+        materials:
+          - Insulated steel garage door
+          - New tracks and hardware
+          - Removal and disposal of the old door
+        desc: |-
+          A typical residential garage door replacement depends on single or double width, insulation level, panel style, glass, colour, capping, and opener requirements.
+
+      - title: Custom upgrade
+        min: 5200
+        max: 12000
+        materials:
+          - Full-view glass, premium insulated, custom colour, or wood-look door
+          - Smart opener and keypad options
+          - Exterior trim, weatherseal, and finishing details
+        desc: |-
+          Custom garage doors cost more when the opening is non-standard, the panel style is premium, or the project includes opener upgrades and exterior finishing.
 
   - type: Reviews
     title: What our clients say
@@ -81,17 +164,318 @@ sections:
         desc: |-
           Fast installation, great service, and outstanding quality. Highly recommended.
 
+      - title: Nina
+        location: Mississauga
+        stars: 5
+        desc: |-
+          We replaced an old noisy garage door with an insulated modern door and new opener. The house looks cleaner from the street and the garage is much quieter.
+
   - type: Faq
-    title: Have any questions?
+    title: Garage door FAQ
     content:
-      - title: How long does a garage door installation take?
+      - title: What garage door services do you provide?
         desc: |-
-          Most installations take just a few hours, depending on door size and opener setup.
+          We provide garage door installation, garage door replacement, garage door repair, opener installation, opener repair, spring replacement, cable repair, roller replacement, track repair, weatherstripping, bottom seal replacement, keypad setup, smart opener setup, panel replacement, insulated garage door upgrades, glass garage doors, and custom garage doors.
 
-      - title: Do you offer insulated and custom garage doors?
+      - title: Do you repair garage doors or only install new ones?
         desc: |-
-          Yes — we provide insulated, custom-sized, wood-look, glass, modern, and carriage-style options.
+          We do both. If the door panels, tracks, and frame are still in good condition, repair may be enough. If the door is bent, rusted, poorly insulated, repeatedly failing, or too heavy for the opener and spring system, replacement is usually the better long-term choice.
 
+      - title: How do I know if my garage door spring is broken?
+        desc: |-
+          Common signs of a broken spring include a loud bang from the garage, the opener lifting the door only an inch or two, a door that feels extremely heavy by hand, a visible gap in the torsion spring, a crooked door, or cables hanging loose. Stop using the opener until the spring system is inspected.
+
+      - title: Should I replace both garage door springs if only one breaks?
+        desc: |-
+          Usually yes when the springs are the same age and work as a pair. A new spring beside an old tired spring can leave the door unbalanced, strain the opener, and cause uneven lifting. We check spring size, cycle life, door weight, and balance before recommending the right repair.
+
+      - title: Are garage door springs dangerous?
+        desc: |-
+          Yes. Torsion springs and extension springs are under high tension and can cause serious injury if handled without the right tools and training. Do not loosen, wind, unwind, cut, or remove spring hardware yourself.
+
+      - title: Can I open the garage door with a broken spring?
+        desc: |-
+          It is not recommended. The spring carries most of the door weight. Running the opener with a broken spring can strip gears, bend the top panel, pull the opener bracket loose, drop the door, or cause cables to slip off the drums.
+
+      - title: Why does my garage door open a few inches and stop?
+        desc: |-
+          A door that lifts a few inches and stops often has a broken spring, weak spring, binding track, damaged roller, cable issue, or an opener force limit reacting to too much resistance. The door should be tested by hand after disconnecting the opener, but heavy or stuck doors should be left for a technician.
+
+      - title: Why is my garage door stuck halfway?
+        desc: |-
+          A stuck halfway door may have a broken spring, slipped cable, bent track, damaged roller, broken hinge, obstruction, or opener travel issue. Do not force it. Forcing a stuck door can bend panels or pull the door out of the tracks.
+
+      - title: Why did my garage door cable snap?
+        desc: |-
+          Cables can snap from age, rust, fraying, poor drum alignment, worn bearings, damaged bottom brackets, an unbalanced door, broken springs, or a door that has been forced while jammed. Cable problems should be repaired before the door is used again.
+
+      - title: What does it mean if a garage door cable is hanging loose?
+        desc: |-
+          A loose or dangling cable often means the door is out of balance, the spring has failed, the cable came off the drum, or the door moved unevenly. Do not run the opener. The cable system should be reset with the door supported safely.
+
+      - title: Can you repair garage door cables?
+        desc: |-
+          Yes. We repair and replace garage door lift cables, inspect drums, bearings, bottom brackets, pulleys, springs, and track alignment, then rebalance the door so the cable problem does not return immediately.
+
+      - title: Can you fix a garage door that is off track?
+        desc: |-
+          Yes. An off-track garage door should not be forced open or closed. We inspect rollers, tracks, cables, hinges, brackets, bottom fixtures, spring balance, and panel damage before realigning the door.
+
+      - title: Why does my garage door close and then open again?
+        desc: |-
+          The usual causes are blocked or misaligned photo-eye sensors, dirty sensor lenses, bad sensor wiring, tight weatherstripping, a binding track, wrong opener force settings, incorrect travel limits, or the door hitting the floor before the opener thinks it is closed.
+
+      - title: Why will my garage door not close unless I hold the wall button?
+        desc: |-
+          That often points to a safety sensor issue. The opener may allow constant-pressure closing from the wall button but refuse remote closing when the photo eyes are blocked, misaligned, dirty, sun-affected, or disconnected.
+
+      - title: Why does my garage door reverse in winter?
+        desc: |-
+          Winter reversal can come from stiff weatherstripping, ice at the bottom seal, frozen tracks, thick grease, weak opener settings, tight rollers, contracting framing, or a door that is already out of balance. The fix depends on whether the door is binding or the opener is misreading resistance.
+
+      - title: Why is my garage door so noisy?
+        desc: |-
+          Noise can come from worn steel rollers, dry hinges, loose track bolts, tired springs, a chain-drive opener, poor opener mounting, bent tracks, damaged bearings, or panels flexing during travel. A quiet door starts with balance and hardware, not just a quiet opener.
+
+      - title: What is included in a garage door tune-up?
+        desc: |-
+          A tune-up can include door balance testing, spring inspection, cable inspection, roller and hinge review, track alignment, bracket tightening, opener force and travel checks, sensor testing, weatherseal review, lubrication, and safety testing.
+
+      - title: How often should a garage door be maintained?
+        desc: |-
+          A residential garage door should be inspected at least once a year, and more often if it is used as the main entry. Busy households, heavy insulated doors, older tracks, and cold garages benefit from regular maintenance.
+
+      - title: What parts should be lubricated on a garage door?
+        desc: |-
+          Hinges, steel roller stems, bearings, torsion springs, and some opener chains may need light garage-door-safe lubricant. Do not pack tracks with heavy grease. Nylon rollers, belts, sensors, and electrical parts should not be coated.
+
+      - title: Do you install garage door openers?
+        desc: |-
+          Yes. We install belt-drive openers, chain-drive openers, wall-mount openers, smart WiFi openers, battery backup openers, keypads, wall controls, remotes, and safety sensors.
+
+      - title: Should I choose a belt-drive or chain-drive opener?
+        desc: |-
+          Belt-drive openers are quieter and are often better for attached garages or rooms above the garage. Chain-drive openers are durable and cost-effective but usually louder. The right choice depends on door weight, garage layout, budget, and noise sensitivity.
+
+      - title: Are wall-mount garage door openers worth it?
+        desc: |-
+          Wall-mount openers can be useful for high ceilings, finished garages, storage lifts, or a cleaner ceiling. They need the right torsion setup, side clearance, outlet location, and cable tension monitoring.
+
+      - title: Do I need a battery backup opener?
+        desc: |-
+          Battery backup is useful if the garage is a primary entry, if there is no easy pedestrian door, or if power outages would trap a vehicle. It lets the opener operate for limited cycles during an outage.
+
+      - title: Can you program remotes, keypads, and car HomeLink?
+        desc: |-
+          Yes. We can program compatible remotes, keypad entry, wall controls, and vehicle HomeLink systems. Compatibility depends on opener brand, model, radio frequency, and security protocol.
+
+      - title: Why does my garage door remote work sometimes but not always?
+        desc: |-
+          Intermittent remote problems can come from weak batteries, antenna position, radio interference, LED bulb interference, old remotes, receiver board issues, range limits, or opener logic board failure.
+
+      - title: Why is my garage door opener humming but not moving the door?
+        desc: |-
+          A humming opener may have a failed capacitor, stripped gear, jammed trolley, locked door, broken spring, or motor problem. If the door is heavy by hand, repair the door first before blaming the opener.
+
+      - title: Can a garage door opener damage the door?
+        desc: |-
+          Yes. An opener can bend the top panel, strip gears, pull the opener bracket, or force a door off track when the door is unbalanced, frozen, stuck, or set with excessive force. The opener should move a balanced door, not drag a failed one.
+
+      - title: Do you install insulated garage doors?
+        desc: |-
+          Yes. We install insulated garage doors for attached garages, rooms over garages, workshops, gyms, storage areas, and homes where comfort, noise, strength, and curb appeal matter.
+
+      - title: What R-value should a garage door have?
+        desc: |-
+          R-value depends on how the garage is used. A detached storage garage may not need the same insulation as an attached garage below a bedroom. For Toronto and GTA homes, insulated steel doors are often a practical choice for comfort, stiffness, and winter performance.
+
+      - title: Is an insulated garage door worth it?
+        desc: |-
+          Often yes, especially for attached garages, garages with rooms above, garages used as workshops or gyms, and homes with cold drafts near the garage entry. Insulated doors are also usually quieter and more rigid than thin non-insulated doors.
+
+      - title: Will an insulated garage door make my garage warm?
+        desc: |-
+          Not by itself. Insulation helps reduce heat loss, but garage temperature also depends on wall insulation, ceiling insulation, air leaks, weatherstripping, concrete slab temperature, door seals, and whether the garage is heated.
+
+      - title: Do you replace garage door weatherstripping?
+        desc: |-
+          Yes. We replace bottom seals, perimeter weatherstripping, threshold seals, and stop moulding where needed to reduce drafts, water entry, light gaps, pests, and rattling.
+
+      - title: Why is there water coming under my garage door?
+        desc: |-
+          Water can enter because of a worn bottom seal, uneven concrete, missing threshold, poor slope, gaps at the jambs, damaged weatherstripping, wind-driven rain, or snow melting against the door. We check the seal and the floor condition before recommending a fix.
+
+      - title: Why can I see daylight around my garage door?
+        desc: |-
+          Daylight around the door usually means the perimeter weatherseal is worn, the door is not sitting square, the tracks are misaligned, the bottom seal is compressed, the floor is uneven, or the panels are warped.
+
+      - title: Can you replace one damaged garage door panel?
+        desc: |-
+          Sometimes. Panel replacement depends on the door brand, model, colour, age, section size, panel profile, and whether matching parts are still available. If several panels are damaged or faded, full replacement may look better.
+
+      - title: Can a bent garage door be repaired?
+        desc: |-
+          Minor bends may be corrected with reinforcement or hardware adjustment. Severe panel bends, cracked stiles, folded sections, or opener damage often require panel replacement or full door replacement.
+
+      - title: What causes garage door panels to crack at the top?
+        desc: |-
+          Top panels can crack when the opener arm pulls against an unbalanced or stuck door, when the opener bracket is weak, when the spring is failing, or when the top section lacks proper reinforcement.
+
+      - title: Do you install modern black garage doors?
+        desc: |-
+          Yes. Black garage doors are popular for modern and transitional homes. We review sun exposure, material, finish, panel profile, glass, exterior colours, and heat buildup before finalizing the choice.
+
+      - title: Do you install glass garage doors?
+        desc: |-
+          Yes. Full-view glass garage doors can work well for modern homes, studios, gyms, show garages, and contemporary exteriors. We review privacy, insulation, glass type, door weight, opener compatibility, and orientation.
+
+      - title: Do you install wood-look garage doors?
+        desc: |-
+          Yes. Wood-look steel or composite garage doors give a warm wood appearance with less maintenance than real wood. They are a good option when the home needs natural texture but the owner wants durable panels.
+
+      - title: Do you install carriage-style garage doors?
+        desc: |-
+          Yes. Carriage-style garage doors suit traditional, stone, brick, and heritage-inspired homes. They can be built as overhead sectional doors with decorative hardware, windows, and insulated steel construction.
+
+      - title: Do you install custom-sized garage doors?
+        desc: |-
+          Yes. We measure the opening, headroom, side room, backroom, track condition, floor slope, jambs, and opener requirements before ordering a custom-sized garage door.
+
+      - title: What measurements are needed for a garage door quote?
+        desc: |-
+          Useful measurements include opening width and height, headroom above the opening, side room on each side, backroom depth, ceiling height, existing track type, opener location, and photos of the inside and outside.
+
+      - title: Can you quote garage door repair from photos?
+        desc: |-
+          Often yes. Send photos of the inside and outside of the door, springs, cables, rollers, tracks, opener, wall button, sensors, bottom seal, and the problem area. A short video of the door trying to move is also helpful.
+
+      - title: How long does garage door installation take?
+        desc: |-
+          Most standard residential garage door installations take a few hours once the door and parts are on site. Custom doors, opener replacement, capping, framing correction, and weatherseal work can add time.
+
+      - title: How long does garage door repair take?
+        desc: |-
+          Many common repairs, such as springs, cables, rollers, weatherstripping, sensor alignment, or opener adjustments, can be completed in one visit if the right parts are available.
+
+      - title: How much does garage door repair cost?
+        desc: |-
+          Cost depends on the failed part, door size, door weight, access, hardware condition, spring type, opener model, and whether multiple parts failed together. Spring, cable, roller, opener, seal, and track repairs are priced differently.
+
+      - title: How much does a new garage door cost?
+        desc: |-
+          New garage door cost depends on single or double width, insulation, steel thickness, glass, colour, panel profile, custom sizing, opener needs, capping, trim, disposal, and site conditions.
+
+      - title: Do you offer emergency garage door repair?
+        desc: |-
+          Scheduling depends on availability, but urgent repairs are prioritized when a vehicle is trapped, the door is stuck open, the door is unsafe, a spring has broken, a cable has snapped, or the home cannot be secured.
+
+      - title: What should I do if my garage door is stuck open?
+        desc: |-
+          Keep people and vehicles clear of the opening, do not force the door, and call for service. A door stuck open may have cable, spring, track, roller, opener, or panel issues and can fall if handled incorrectly.
+
+      - title: What should I do if my car is trapped in the garage?
+        desc: |-
+          If the door is heavy, crooked, stuck, or has loose cables, do not try to lift it. A technician can secure the door, release tension safely, repair the failed part, and help get the vehicle out.
+
+      - title: Can I use the emergency release cord?
+        desc: |-
+          The emergency release can disconnect the opener from the door, but it does not fix a broken spring, snapped cable, or stuck door. Only use it when the door is closed or safely supported and you understand how the door will move.
+
+      - title: Why is my garage door crooked?
+        desc: |-
+          A crooked garage door often means one cable has slipped or snapped, a roller came out, a track is bent, a spring is uneven, or one side is binding. Stop using the opener until it is repaired.
+
+      - title: Why does my garage door slam shut?
+        desc: |-
+          A door that drops or slams is usually not properly counterbalanced. Broken springs, weak springs, slipped cables, or wrong spring sizing can make the door dangerous. The door should be serviced before further use.
+
+      - title: Why does my garage door move too fast?
+        desc: |-
+          Fast or uncontrolled movement usually means spring or cable failure. The opener is not designed to control the full weight of a falling door. Stop using the door and schedule repair.
+
+      - title: Why does my garage door shake while opening?
+        desc: |-
+          Shaking can come from worn rollers, loose hinges, bent tracks, unbalanced springs, damaged panels, opener rail movement, or dry hardware. A balance and hardware inspection will identify the cause.
+
+      - title: Why does my garage door gap at one side?
+        desc: |-
+          One-sided gaps can come from uneven concrete, worn bottom seal, crooked tracks, loose jamb brackets, warped panels, cable imbalance, or a door not sitting square in the opening.
+
+      - title: Why does my garage door opener light flash?
+        desc: |-
+          Flashing opener lights often signal sensor obstruction, sensor misalignment, force limit issues, travel limit problems, lock mode, or a fault code. The exact meaning depends on the opener brand and model.
+
+      - title: Why does my garage door keypad stop working?
+        desc: |-
+          Keypad issues can come from dead batteries, worn buttons, lost programming, frequency mismatch, weather damage, lockout after wrong codes, or opener receiver problems.
+
+      - title: Can you repair commercial garage doors?
+        desc: |-
+          This page focuses on residential garage doors. If you have a light commercial overhead door, opener, track, spring, or weatherseal issue, send photos and we can confirm whether it fits our scope.
+
+      - title: Do you remove and dispose of the old garage door?
+        desc: |-
+          Yes. Garage door replacement can include removal and disposal of the old door, old tracks, old opener parts, packaging, and jobsite cleanup.
+
+      - title: Do you install exterior capping or trim around garage doors?
+        desc: |-
+          Yes, when the project calls for it. Aluminum capping, exterior trim, perimeter seals, and colour coordination help the new garage door look finished from the street.
+
+      - title: Can you match the garage door to my front door or windows?
+        desc: |-
+          Yes. We can coordinate colour, panel profile, glass style, hardware, and trim with existing front doors, windows, stone, brick, siding, soffits, and exterior paint.
+
+      - title: What garage door material is best?
+        desc: |-
+          Steel is the most common choice because it is durable, available in insulated options, and comes in many styles. Aluminum and glass suit modern looks. Composite and wood-look doors add warmth. Real wood needs more maintenance.
+
+      - title: What is a torsion spring?
+        desc: |-
+          A torsion spring is mounted on a shaft above the door opening and helps counterbalance the door weight. It twists under tension as the door moves. It should only be adjusted by a trained technician.
+
+      - title: What is an extension spring?
+        desc: |-
+          Extension springs stretch along the horizontal tracks on some older or lighter garage doors. They should have safety cables and proper hardware. Many replacements use torsion systems when appropriate.
+
+      - title: What are garage door drums?
+        desc: |-
+          Cable drums sit on the torsion shaft and guide the lift cables as the door opens and closes. Worn, misaligned, or damaged drums can cause cable problems and uneven door travel.
+
+      - title: What are garage door rollers?
+        desc: |-
+          Rollers guide the door sections through the tracks. Worn rollers can make the door noisy, shaky, or hard to move. Nylon rollers are often quieter than older steel rollers.
+
+      - title: What are garage door hinges?
+        desc: |-
+          Hinges connect sectional door panels and allow the door to curve through the track. Loose, cracked, or worn hinges can cause noise, panel flex, or uneven movement.
+
+      - title: What is a garage door safety sensor?
+        desc: |-
+          Safety sensors are the photo eyes near the bottom of the door tracks. They stop the opener from closing when something blocks the path. They must be aligned, clean, powered, and mounted securely.
+
+      - title: Do you install garage doors in Toronto?
+        desc: |-
+          Yes. We install and repair garage doors in Toronto, including detached homes, semis, townhomes, laneway garages, attached garages, and finished garages.
+
+      - title: Do you repair garage doors in Vaughan and Woodbridge?
+        desc: |-
+          Yes. We provide garage door repair, replacement, openers, springs, cables, rollers, and insulated garage door installation in Vaughan, Woodbridge, Maple, and nearby York Region areas.
+
+      - title: Do you service Richmond Hill, Markham, and Aurora?
+        desc: |-
+          Yes. We service Richmond Hill, Markham, Aurora, King City, Kleinburg, Stouffville, Newmarket, and nearby communities for garage door installation and repair.
+
+      - title: Do you service Mississauga, Oakville, and Burlington?
+        desc: |-
+          Yes. We provide garage door replacement, repair, insulated doors, openers, weatherstripping, and custom garage doors in Mississauga, Oakville, Burlington, and nearby west GTA areas.
+
+      - title: Do you service Pickering, Ajax, Whitby, and Oshawa?
+        desc: |-
+          Yes. We service Durham Region, including Pickering, Ajax, Whitby, and Oshawa, for garage door repair, replacement, springs, cables, openers, and insulated garage door upgrades.
+
+  - type: ServiceAreas
+    title: Garage door service areas
+    service: garage-doors
   - type: Services
     exclude:
       - garage-doors

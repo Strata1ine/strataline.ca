@@ -1033,6 +1033,9 @@ sections:
         desc: |-
           Yes. Painting and flooring should be scheduled to reduce dust and protect finished surfaces. We plan the order based on the renovation scope.
 
+  - type: ServiceAreas
+    title: Interior painting service areas
+    service: painting
   - type: Services
     exclude:
       - painting

@@ -298,91 +298,71 @@ sections:
 
   - type: Faq
     title: Stair tread caps FAQ
+    showMoreLabel: View more tread cap questions
     content:
-      - title: Can stair tread caps be installed over carpet stairs?
+      - title: What are stair tread caps?
         desc: |-
-          Yes. Carpet is removed, the structure is prepared, and the tread caps are installed over the existing staircase base.
+          Stair tread caps are hardwood overlays installed over existing stairs to create a new finished tread surface. They are often used to convert carpeted stairs or worn stairs to a hardwood look without rebuilding the staircase.
 
-      - title: Are stair tread caps real wood?
+      - title: When are tread caps better than refinishing?
         desc: |-
-          Yes. We typically use solid oak so the finished staircase looks and feels like hardwood, not a cheap overlay.
+          Tread caps are better when existing treads are carpet-grade, badly damaged, thin, patched, uneven, or not worth sanding. Refinishing is better when the original hardwood is sound and attractive.
 
-      - title: How long does stair tread caps installation take?
+      - title: Can carpeted stairs be capped with hardwood?
         desc: |-
-          Most projects take 2 to 4 days depending on staircase size, layout, and whether railing work is included.
+          Yes. After carpet removal, we inspect treads, nosing, staples, squeaks, risers, stringers, and railing details. Some stairs are ready for caps; others need repairs first.
 
-      - title: Will the new stairs match my floors?
+      - title: Are tread caps real hardwood?
         desc: |-
-          Yes. Stain and finish can be adjusted so the new staircase works with your existing floors and the style of the home.
+          They can be made from hardwood species such as oak or maple depending on the product and scope. The right species should match durability needs, stain goals, and nearby flooring.
 
-      - title: Is stair capping better than replacing the whole staircase?
+      - title: Can tread caps match my hardwood floors?
         desc: |-
-          In many cases, yes. It delivers most of the visual impact of a new staircase without the cost and mess of full reconstruction.
+          Usually close, but exact matching depends on wood species, floor age, stain, sheen, lighting, and wear. Samples help set realistic expectations before finishing.
 
-      - title: Do you also upgrade railings?
+      - title: Do tread caps change stair height?
         desc: |-
-          Yes. Many tread caps projects are completed together with black iron balusters, updated handrails, and post refinishing or replacement.
+          They can change finished tread height and nosing profile. Rise consistency, landing transitions, door clearances, and railing relationships should be reviewed before installation.
 
-  - type: ZigZag
-    title: Explore our stair services
-    content:
-      - title: Stair Renovation — Full staircase upgrades
-        link: /services/stairs
+      - title: Can open-sided stairs use tread caps?
         desc: |-
-          Explore complete staircase renovation options, from structural updates and layout improvements to full visual modernization. This is the best fit when the staircase needs more than a surface-level change.
-        image:
-          src: ../staircase-renovation-gallery/staircase-refinishing-vaughan-dark-treads-white-risers-modern.jpg
-          alt: Staircase in North York suitable for full stair renovation or railing upgrade.
+          Yes, but open-sided stairs need return nosing, finished edges, and careful detailing. They cost more than closed stairs because more finished carpentry is visible.
 
-      - title: Stair Refinishing — Restore existing wood stairs
-        link: /services/stairs/refinishing
+      - title: Can curved stairs use tread caps?
         desc: |-
-          If the staircase is solid but worn, refinishing can restore the wood and completely update the look without full replacement. This is a strong option for stained stairs, natural wood treads, and dated finishes.
-        image:
-          src: ../refinishing/staircase-refinishing-gallery/staircase-refinishing-dustless-sanding-festool.jpg
-          alt: Staircase in Toronto suitable for stair refinishing and railing updates.
+          Sometimes. Curved and pie-shaped stairs require more templating, cutting, fitting, and finish work than straight treads.
 
-      - title: Railing Installation — Upgrade balusters, posts, and handrails
-        link: /services/stairs/railing-installation
+      - title: Do risers get replaced with tread caps?
         desc: |-
-          Replace dated balusters, handrails, and posts with a cleaner, more modern railing system. This is often the fastest way to transform the appearance of a staircase without rebuilding it.
-        image:
-          src: ../railing-installation/railing-installation-gallery/stair-railing-etobicoke-modern-17.jpg
-          alt: Black baluster stair railing installation in Vaughan.
+          Often the risers are painted, refaced, or replaced so the finished staircase looks complete. White risers with stained caps are a common choice.
 
-  - type: TextCarousel
-    text:
-      - stair tread caps Vaughan
-      - stair tread caps Toronto
-      - stair caps installation GTA
-      - stair tread caps contractor
-      - cover carpeted stairs with wood
-      - convert carpet stairs to hardwood
-      - stair caps vs refinishing
-      - stair tread overlay installation
-      - hardwood stair caps installation
-      - oak stair tread caps
-      - modern stair upgrade without replacement
-      - stair renovation with tread caps
-      - replace worn stair treads
-      - stair caps for damaged stairs
-      - stair caps cost Toronto
-      - stair caps cost Vaughan
-      - custom stair tread caps
-      - stair caps with railing upgrade
-      - stair caps for curved staircase
-      - stair caps installation near me
-      - Woodbridge stair tread caps
-      - Richmond Hill stair caps
-      - Markham stair tread caps
-      - North York stair caps
-      - Etobicoke stair caps
-      - Mississauga stair caps
-      - upgrade stairs without rebuilding
-      - clean stair renovation process
-      - finished home stair upgrade
-      - professional stair caps installation
+      - title: Can squeaks be fixed before tread caps go on?
+        desc: |-
+          Often. Squeaks should be addressed before caps are installed where access allows. Some squeaks come from structure or stringers and may not be fully removable without more invasive work.
 
+      - title: Can railings be replaced with tread caps?
+        desc: |-
+          Yes. Railing replacement can be coordinated with tread caps so post locations, baluster holes, stain, and paint are handled cleanly.
+
+      - title: How long does tread cap installation take?
+        desc: |-
+          Timing depends on tread count, landings, open sides, railing work, staining, painting, drying time, and repairs. A simple staircase can be much faster than a full custom stair rebuild.
+
+      - title: What affects tread cap cost?
+        desc: |-
+          Cost depends on tread count, landings, open sides, curved treads, wood species, stain, riser work, stringers, railing changes, carpet removal, repairs, and finish coats.
+
+      - title: What should a tread cap quote include?
+        desc: |-
+          It should list tread count, landings, cap material, risers, stringers, nosing, open-side returns, stain, finish, railing impacts, repairs, protection, cleanup, exclusions, and timeline.
+
+      - title: Do you install stair tread caps across the GTA?
+        desc: |-
+          Yes. We install stair tread caps in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
+
+  - type: ServiceAreas
+    title: Stair tread caps service areas
+    service: stairs/tread-caps
   - type: Services
     exclude:
       - stairs

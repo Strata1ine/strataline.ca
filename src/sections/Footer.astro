@@ -65,11 +65,17 @@ import type { SchemaContext } from 'astro:content';
 				</li>
 				<li>
 					<a
-						class="desc-base text-cyan-800 hover:underline"
+						class="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-black px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition duration-200 hover:-translate-y-0.5 hover:bg-cyan-900 hover:shadow-[0_14px_34px_rgba(0,0,0,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
 						data-astro-prefetch
 						href="/reviews"
 					>
-						Leave a Review
+						<Icon
+							is:inline
+							aria-hidden={true}
+							name="ph:star-fill"
+							class="size-4 text-primary transition-transform duration-200 group-hover:rotate-12"
+						/>
+						<span>Leave a review</span>
 					</a>
 				</li>
 			</ul>

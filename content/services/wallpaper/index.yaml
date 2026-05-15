@@ -364,87 +364,111 @@ sections:
 
   - type: Faq
     title: Wallpaper installation FAQ
+    showMoreLabel: View more wallpaper questions
     content:
-      - title: Do walls need to be smooth before wallpaper installation?
+      - title: What wallpaper services do you provide?
         desc: |-
-          Yes. Wallpaper looks best on properly prepared walls. Depending on the surface, prep can include patching, sanding, sealing, priming, skim coating, and correcting minor defects so the wallpaper finishes cleanly.
+          We provide wallpaper installation, feature walls, powder rooms, bedrooms, dining rooms, nurseries, offices, murals, commercial wallcoverings, wallpaper removal, wall preparation, wall repair, priming, layout planning, and coordination with painting or trim work.
+
+      - title: How much does wallpaper installation cost in Toronto and the GTA?
+        desc: |-
+          Cost depends on wall size, wallpaper type, pattern repeat, wall condition, height, corners, obstacles, murals, grasscloth, commercial vinyl, removal, priming, and repair. Designer papers and murals usually need more time and planning than standard wallpaper.
+
+      - title: What wallpaper types can you install?
+        desc: |-
+          We install standard wallpaper, non-woven wallpaper, vinyl, grasscloth, natural fibre, textured paper, murals, peel-and-stick, pre-pasted papers, designer papers, and some commercial wallcoverings depending on site conditions and product instructions.
+
+      - title: Can you install grasscloth wallpaper?
+        desc: |-
+          Yes. Grasscloth needs careful handling because natural shading, panel variation, paste sensitivity, and visible seams are part of the material. Wall prep, adhesive choice, and clean handling are critical.
+
+      - title: Can you install wallpaper murals?
+        desc: |-
+          Yes. Murals need panel order checks, wall measurement, plumb layout, centering, allowance for trimming, pattern alignment, and review of doors, windows, outlets, and focal points before installation.
+
+      - title: Can you install peel-and-stick wallpaper?
+        desc: |-
+          Yes. Peel-and-stick wallpaper can work for accent walls and rentals, but it still needs a clean, smooth, properly cured wall. It is less forgiving on textured walls, fresh paint, humidity, and uneven surfaces.
+
+      - title: Is peel-and-stick wallpaper easier than traditional wallpaper?
+        desc: |-
+          Not always. Peel-and-stick has no paste, but it can stretch, trap bubbles, pull paint, or misalign on large panels. Traditional wallpaper often allows more slip for precise pattern matching.
 
       - title: Can wallpaper be installed in bathrooms?
         desc: |-
-          Yes, especially in powder rooms and well ventilated bathrooms. Product choice, moisture levels, and wall preparation all affect performance.
+          Yes, especially in powder rooms and well-ventilated bathrooms. Full wet areas, shower splash zones, poor fans, and high humidity need product review and careful seam planning.
 
-      - title: Do you remove old wallpaper?
+      - title: Can wallpaper be installed in kitchens?
         desc: |-
-          Yes. We can remove old wallpaper, clean off adhesive residue, repair the wall where needed, and prepare the surface for new wallpaper installation.
+          Yes. Kitchens need washable materials, good adhesion, clean walls, and smart placement away from heavy grease, steam, and direct splash unless the product is suitable.
 
-      - title: Can wallpaper be installed on textured walls?
+      - title: Can you wallpaper over textured walls?
         desc: |-
-          Textured walls often need prep first. Depending on the texture and wallpaper type, this can include sanding, skim coating, priming, or other corrective work.
+          Textured walls are not ideal. Texture can show through, reduce adhesion, and make seams look uneven. Skim coating, sanding, sealing, and priming may be needed first.
 
-      - title: Do you install murals and textured wallpaper?
+      - title: Do walls need primer before wallpaper?
         desc: |-
-          Yes. We install standard wallpaper, murals, textured wallpaper, designer wall coverings, feature walls, and statement walls in a range of residential spaces.
+          Usually yes. Wallpaper primer helps adhesion, improves slip during installation, reduces wall damage during future removal, and seals repairs or porous drywall. Fresh paint alone is not always enough.
 
-      - title: Do you install peel and stick wallpaper?
+      - title: How long should fresh paint cure before wallpaper?
         desc: |-
-          Yes. We install peel and stick wallpaper as well as paste the wall and traditional wallpapers. Each product has its own handling and installation requirements.
+          Many wallpapers need paint to cure before installation, often around three to four weeks depending on product and paint. Fresh paint can release, bubble, or fail under adhesive.
 
-      - title: What is the difference between paste the wall and traditional wallpaper?
+      - title: Can you install wallpaper over old wallpaper?
         desc: |-
-          Paste the wall products are installed by applying adhesive directly to the wall, while traditional wallpaper often requires paste on the back of the paper. The correct method depends on the manufacturer instructions.
+          It is usually better to remove old wallpaper first. Layers can hide loose seams, old adhesive, stains, texture, and moisture problems that can telegraph through the new paper.
 
-      - title: What is pattern matching in wallpaper installation?
+      - title: Do you remove wallpaper?
         desc: |-
-          Pattern matching means aligning the wallpaper design correctly from strip to strip so seams blend properly and the pattern reads continuously across the wall.
+          Yes. We remove wallpaper using methods suited to the material and wall condition, then clean adhesive residue, seal torn drywall paper where needed, skim coat if required, prime, and prepare for paint or new wallpaper.
 
-      - title: How much does wallpaper installation cost?
+      - title: What happens if wallpaper removal damages drywall?
         desc: |-
-          Cost depends on wall condition, room size, wallpaper type, pattern complexity, trimming difficulty, access, and whether wallpaper removal or prep work is required.
+          Torn drywall paper, gouges, glue residue, and uneven walls are common after removal. These areas may need sealing, skim coating, sanding, primer, and repainting or re-priming before new wallpaper.
 
-      - title: How long does wallpaper installation take?
+      - title: Why do wallpaper seams show?
         desc: |-
-          A single feature wall may be completed in one day. Full rooms, murals, wallpaper removal, wall repairs, and complex layouts can take longer.
+          Seams can show because of off-plumb layout, poor wall prep, wrong paste, dark wall colour behind light paper, natural material variation, overworking seams, shrinkage, or pattern mismatch.
 
-      - title: Do you supply wallpaper?
+      - title: How do you prevent bubbles in wallpaper?
         desc: |-
-          Usually the client supplies the wallpaper because style and product choice are personal. We can still advise on suitability and help review quantities before installation.
+          Bubbles are reduced with proper wall prep, correct adhesive, booking time where required, smooth installation, clean tools, and avoiding trapped dust, old glue, wet paint, or incompatible surfaces.
 
-      - title: Can you quote wallpaper installation from photos?
+      - title: What is pattern repeat and why does it matter?
         desc: |-
-          In many cases, yes. Photos, measurements, ceiling height, and the wallpaper product information are usually enough for an initial estimate.
+          Pattern repeat is how often the design repeats vertically. Large repeats create more waste and need more rolls because each drop must align with the previous one.
 
-      - title: What rooms are best for wallpaper?
+      - title: How many rolls of wallpaper do I need?
         desc: |-
-          Wallpaper works especially well in bedrooms, dining rooms, powder rooms, hallways, foyers, offices, libraries, nurseries, living rooms, and feature wall applications.
+          Roll quantity depends on wall width, height, roll dimensions, pattern repeat, doors, windows, and waste. Murals are usually ordered by wall size or panel count. Always order extra for repairs.
 
-      - title: Why hire a professional wallpaper installer?
+      - title: Should wallpaper be centered on a wall?
         desc: |-
-          Professional installation reduces the risk of bubbles, crooked seams, poor adhesion, bad pattern alignment, rough trimming, and other common DIY mistakes.
+          Often yes, especially for murals, fireplaces, beds, vanities, powder rooms, and dining room feature walls. Centering can affect where seams land and how much material is needed.
 
-  - type: ImagePanel
-    title: Get a quote for wallpaper installation
-    content:
-      - title: Send photos and wall measurements
+      - title: Can you wallpaper stairwells or high walls?
         desc: |-
-          The quickest way to price your wallpaper installation project is to send photos of the wall, approximate measurements, and the wallpaper product details if you already have them.
-        image:
-          src: ./photos/bedroom-wallpaper-installation-toronto-neutral-vertical-stripe-feature-wall-01.jpg
-          alt: Bedroom wallpaper installation in Toronto with a finished stripe feature wall.
+          Yes, when access can be set safely. Stairwells need extra planning for ladders, platforms, panel length, pattern alignment, and clean trimming at angles.
 
-      - title: Feature wall or full room
+      - title: Can you wallpaper around outlets and fixtures?
         desc: |-
-          We install single accent walls, bedrooms, dining rooms, foyers, libraries, offices, powder rooms, and full wallpapered rooms depending on the layout and product.
-        image:
-          src: ./photos/dining-room-wallpaper-installation-vaughan-soft-floral-luxury-space.png
-          alt: Dining room wallpaper installation in Vaughan.
+          Yes. Outlets, switches, sconces, mirrors, vanities, trim, windows, and doors are handled with careful cuts and clean edges. Power safety and fixture access are reviewed.
 
-      - title: Clean, careful finishing
+      - title: Can wallpaper hide wall imperfections?
         desc: |-
-          Wallpaper work is detail work. Proper prep, careful layout, clean trimming, and tight seams are what make the finished wall look sharp and professionally installed.
-        image:
-          src: ./photos/modern-bathroom-wallpaper-installation-woodbridge-vanity-feature-wall-02.jpg
-          alt: Clean bathroom wallpaper installation in Woodbridge.
+          Some textured wallpapers can soften minor flaws, but wallpaper does not fix poor walls. Dents, ridges, torn paper, seams, and texture can still show unless repaired first.
 
+      - title: What should I send for a wallpaper quote?
+        desc: |-
+          Send photos of each wall, dimensions, ceiling height, wallpaper product link, roll size, pattern repeat, wall condition, old wallpaper status, and whether there are murals, high walls, or many obstacles.
+
+      - title: Do you provide wallpaper installation across the GTA?
+        desc: |-
+          Yes. We install wallpaper in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
+
+  - type: ServiceAreas
+    title: Wallpaper installation service areas
+    service: wallpaper
   - type: Services
     exclude:
       - wallpaper

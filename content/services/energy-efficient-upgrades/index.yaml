@@ -1,203 +1,305 @@
-title: Energy-efficient upgrades
-hidden: true
-
+title: Energy-efficient home upgrades
+position: 10
 seo: |-
-  Energy-efficient home upgrades, insulation improvements, smart thermostat installation,
-  energy-saving windows, air sealing services, HVAC optimization, LED lighting upgrades,
-  tankless water heater installation, on-demand water heaters,
-  Toronto energy renovations, Vaughan home efficiency upgrades.
-
+  Energy-efficient home upgrades in Toronto and the GTA, including air sealing, attic insulation, draft-proofing, ENERGY STAR windows and doors, smart thermostats, LED lighting, HVAC improvements, tankless water heaters, ventilation, and rebate-ready home efficiency work.
 desc: |-
-  Enhance comfort, reduce utility costs, and modernize your home with professionally
-  installed energy-efficient upgrades tailored to your home. We also install high-efficiency
-  tankless on-demand water heaters for endless hot water with lower energy consumption.
+  Make your home warmer in winter, cooler in summer, and less expensive to run. We plan and install practical energy-efficient upgrades for Toronto and GTA homes, including air sealing, insulation improvements, high-efficiency windows and doors, smart thermostats, LED lighting, weatherstripping, tankless water heaters, and ventilation upgrades.
 
 image:
   src: ./cover.jpg
-  alt: Energy-efficient home upgrades
+  alt: |-
+    Energy-efficient home upgrades with improved insulation, air sealing, efficient windows, and smarter mechanical systems for a GTA home.
 
 sections:
   - type: Benefits
-    title: Benefits of Energy Efficiency
+    title: Energy upgrades that solve real comfort problems
     content:
-      - title: Lower Monthly Utility Bills
-        desc: Improve insulation, windows, and mechanical systems to significantly reduce heating and cooling costs.
+      - title: Lower heating and cooling waste
+        desc: |-
+          Air leaks, weak insulation, poor windows, and old weatherstripping make the HVAC system work harder. We focus on upgrades that reduce wasted energy first.
 
-      - title: Enhanced Comfort
-        desc: Eliminate drafts, maintain steady indoor temperatures, and improve your home’s climate balance.
+      - title: Warmer rooms and fewer drafts
+        desc: |-
+          Draft-proofing, attic insulation, window and door sealing, and proper ventilation help correct cold rooms, hot rooms, and uneven temperatures.
 
-      - title: Government Rebates
-        desc: Many efficiency upgrades qualify for rebates and incentives that help you save even more.
+      - title: Rebate-aware planning
+        desc: |-
+          Many Ontario rebate programs require a pre-upgrade energy assessment, qualified measures, and a final audit. We help homeowners plan the work so the scope is easier to document.
 
-      - title: Increased Home Value
-        desc: Energy-efficient improvements add long-term value and appeal to future buyers.
+      - title: Better long-term renovation value
+        desc: |-
+          Efficiency work often pairs naturally with window replacement, door replacement, attic work, basement upgrades, bathroom ventilation, and whole-home renovations.
 
-  - type: ZigZag
-    title: Types of Upgrades We Offer
+  - type: ImagePanel
+    title: Where most homes lose energy
     content:
-      - title: High-Efficiency Windows & Doors
+      - title: Attic and roofline
         desc: |-
-          ENERGY STAR® certified installations that minimize heat loss and improve
-          year-round comfort.
-        image:
-          src: ./photos/windows.jpg
-          alt: High-efficiency window installation.
-
-      - title: Improved Insulation
-        desc: |-
-          Attic, wall, and basement insulation upgrades eliminate heat escape, reduce
-          HVAC strain, and stabilize indoor temperatures.
+          Poor attic insulation and air leaks at the top of the house can cause heat loss, ice dam risk, cold upper floors, and higher winter bills.
         image:
           src: ./photos/insulation.jpg
-          alt: Attic insulation upgrade.
+          alt: Attic insulation upgrade for better energy efficiency in a Toronto home.
 
-  - type: ZigZag
-    title: Smart Efficiency Upgrades
-    content:
-      - title: Smart Thermostats
+      - title: Windows and exterior doors
         desc: |-
-          Programmable and learning thermostats optimize heating and cooling based on
-          your routine—saving energy automatically.
+          Old windows, failed seals, leaky frames, and poorly fitted exterior doors can create drafts and heat loss even when the furnace is working properly.
         image:
-          src: ./photos/thermostat.webp
-          alt: Smart thermostat installation.
+          src: ./photos/windows.jpg
+          alt: ENERGY STAR window and exterior door replacement for a GTA home.
 
-      - title: Air Sealing
+      - title: Mechanical systems
         desc: |-
-          Air sealing is one of the most effective and affordable ways to improve your
-          home's efficiency. We locate and seal hidden gaps, cracks, and draft points
-          around windows, doors, attics, basements, and utility penetrations. This reduces
-          heat loss, stabilizes indoor temperatures, improves air quality, and lowers
-          your monthly utility bills.
-        image:
-          src: ./photos/airsealing.jpg
-          alt: Air sealing and draft prevention.
-
-      - title: On-Demand Tankless Water Heaters
-        desc: |-
-          High-efficiency tankless water heaters provide endless hot water while reducing
-          energy consumption. These systems heat water only when needed, lowering utility
-          costs and eliminating standby heat loss. We install modern on-demand units with
-          proper venting, gas line upgrades, and optional smart home integration.
-        image:
-          src: ./photos/tankless.jpg
-          alt: Tankless water heater installation.
-
-  - type: ZigZag
-    title: Additional Energy-Saving Upgrades
-    content:
-      - title: HVAC System Optimization
-        desc: |-
-          Improve your furnace and AC efficiency with system balancing, duct sealing,
-          and high-performance equipment upgrades. A well-optimized HVAC system reduces
-          energy waste and extends equipment lifespan.
+          Smart controls, duct sealing, ventilation, lighting, and water heating upgrades can reduce waste and make the house easier to manage day to day.
         image:
           src: ./photos/hvac.jpg
-          alt: HVAC system optimization.
+          alt: HVAC system optimization for an energy-efficient home renovation.
 
-      - title: LED Lighting Upgrades
+  - type: ZigZag
+    title: High-value efficiency upgrades
+    content:
+      - title: Air sealing and draft-proofing
         desc: |-
-          Modern LED lighting reduces electricity consumption by up to 80% while
-          providing cleaner, brighter illumination. We upgrade outdated fixtures to
-          long-lasting, high-efficiency LEDs.
+          Air sealing is one of the most important energy upgrades because it addresses hidden gaps around attics, rim joists, windows, doors, basements, plumbing penetrations, pot lights, and utility openings. Less leakage means better comfort and less HVAC strain.
+        image:
+          src: ./photos/airsealing.jpg
+          alt: Air sealing and draft-proofing around common heat loss points.
+
+      - title: Attic, wall, and basement insulation
+        desc: |-
+          Insulation upgrades help stabilize room temperatures, reduce heat loss, and make the home feel less drafty. We plan insulation around ventilation, access, air sealing, and the existing condition of the house.
+        image:
+          src: ./photos/insulation.jpg
+          alt: Insulation upgrade for attic, wall, and basement energy efficiency.
+
+      - title: Energy-efficient windows and doors
+        desc: |-
+          ENERGY STAR window and door replacement can improve comfort, reduce drafts, help with condensation issues, and modernize curb appeal. Proper installation and sealing matter as much as the product rating.
+        image:
+          src: ./photos/windows.jpg
+          alt: Energy-efficient window and door replacement for a Toronto home.
+
+  - type: ZigZag
+    title: Smart mechanical and electrical upgrades
+    content:
+      - title: Smart thermostats
+        desc: |-
+          Smart thermostat installation helps manage heating and cooling schedules, reduce waste, and make temperature control easier for busy households.
+        image:
+          src: ./photos/thermostat.webp
+          alt: Smart thermostat installation for home energy savings.
+
+      - title: Tankless water heaters
+        desc: |-
+          Tankless water heaters heat water on demand, reducing standby heat loss from a storage tank. Proper sizing, venting, gas supply, and installation details are critical.
+        image:
+          src: ./photos/tankless.jpg
+          alt: Tankless water heater installation for efficient hot water.
+
+      - title: LED lighting and controls
+        desc: |-
+          LED lighting, dimmers, sensors, and better fixture planning can reduce electrical use while improving daily lighting quality in kitchens, bathrooms, basements, and whole-home renovations.
         image:
           src: ./photos/led.jpg
-          alt: LED lighting upgrade.
+          alt: LED lighting upgrade for an energy-efficient home.
 
-      - title: Weather-Stripping & Draft-Proofing
+      - title: HRV, ERV, and ventilation
         desc: |-
-          Proper weather-stripping around doors and windows eliminates drafts and reduces
-          heat loss—one of the highest-value upgrades for the cost.
-        image:
-          src: ./photos/weatherstrip.jpg
-          alt: Weather stripping installation.
-
-      - title: HRV/ERV Ventilation & Indoor Air Quality
-        desc: |-
-          Balanced ventilation, HRV/ERV systems, and air-quality improvements keep your
-          home healthier while reducing heating and cooling strain.
+          As homes become tighter, ventilation matters more. HRV and ERV systems can improve air exchange while reducing heating and cooling loss compared with uncontrolled drafts.
         image:
           src: ./photos/ventilation.jpg
-          alt: Ventilation and air quality upgrade.
+          alt: HRV and ERV ventilation upgrade for indoor air quality and energy efficiency.
+
+  - type: Benefits
+    title: Rebate and audit planning
+    content:
+      - title: Start with eligibility
+        desc: |-
+          Rebate rules change. Before starting work, confirm the current program, heating fuel requirements, audit requirements, eligible measures, timelines, and documentation.
+
+      - title: Use the audit as a roadmap
+        desc: |-
+          A pre-retrofit EnerGuide evaluation can identify the upgrades with the best return for the home, then a post-retrofit audit confirms the completed measures.
+
+      - title: Bundle work when it makes sense
+        desc: |-
+          Some programs require more than one qualifying upgrade. Windows, doors, insulation, air sealing, heat pumps, and water heating should be planned together when rebate value matters.
+
+      - title: Keep product and installation records
+        desc: |-
+          Product labels, invoices, model numbers, photos, and installation details are easier to collect during the project than after the walls are closed and materials are gone.
+
+  - type: TextCarousel
+    text:
+      - energy-efficient upgrades Toronto
+      - home energy retrofit GTA
+      - air sealing and draft-proofing
+      - attic insulation upgrades
+      - ENERGY STAR windows and doors
+      - tankless water heater installation
+      - smart thermostat installation
+      - LED lighting upgrades
+      - HRV and ERV ventilation
+      - rebate-ready energy upgrades
+      - warmer rooms and lower energy waste
+      - efficiency upgrades for older homes
+
+  - type: Prices
+    title: What affects energy upgrade cost?
+    content:
+      - title: Targeted fixes
+        min: 450
+        max: 2500
+        materials:
+          - Weatherstripping and draft control
+          - Smart thermostat or LED fixture upgrades
+          - Small air sealing scopes
+        desc: |-
+          Smaller upgrades are useful when the home has specific comfort problems, such as a drafty door, poor lighting, or thermostat control issues.
+
+      - title: Comfort package
+        min: 2500
+        max: 12000
+        materials:
+          - Air sealing
+          - Attic or basement insulation improvements
+          - Ventilation or water heating updates
+        desc: |-
+          Mid-size energy upgrade packages usually combine air leakage reduction, insulation improvements, and mechanical improvements for a more noticeable comfort change.
+
+      - title: Whole-home retrofit
+        min: 12000
+        max: 65000
+        materials:
+          - Window and door replacement
+          - Insulation and air sealing
+          - HVAC, tankless, ventilation, and electrical upgrades
+        desc: |-
+          Larger energy retrofits are planned around the home energy audit, product choices, access, permits, scheduling, and whether the work is part of a broader renovation.
 
   - type: Reviews
-    title: Client Results
+    title: Client results
     content:
       - title: Sarah P.
         location: Toronto
         stars: 5
         desc: |-
-          Our heating bill dropped nearly 30% after upgrading insulation and replacing two
-          windows. The house feels warmer than ever.
+          Our heating bill dropped after upgrading insulation and replacing two windows. The house feels warmer than ever.
 
       - title: Daniel K.
         location: Vaughan
         stars: 5
         desc: |-
-          Installing a smart thermostat made a noticeable difference right away. The work
-          was done neatly, professionally, and with great attention to detail. Highly recommend!
+          Installing a smart thermostat made a noticeable difference right away. The work was done neatly, professionally, and with great attention to detail.
 
       - title: Maria L.
         location: Richmond Hill
         stars: 5
         desc: |-
-          We noticed an immediate difference—no more drafts! Highly recommend their
-          energy-efficiency services.
+          We noticed an immediate difference. No more drafts, cleaner work than expected, and clear advice on what was actually worth doing.
 
   - type: Faq
-    title: Have Questions About Energy Efficiency?
+    title: Energy-efficient upgrades FAQ
+    showMoreLabel: View more energy upgrade questions
     content:
-      - title: Which upgrades offer the best savings?
-        desc: >
-          Insulation upgrades, air sealing, and high-efficiency windows deliver the highest
-          return on investment by significantly reducing heating and cooling losses.
+      - title: What energy-efficient home upgrades do you provide?
+        desc: |-
+          We help with practical energy-efficient upgrades such as air sealing, insulation planning, window and door replacement, weatherstripping, smart thermostats, lighting updates, ventilation improvements, tankless water heater coordination, and renovation planning that improves comfort.
 
-      - title: Do these upgrades qualify for rebates?
-        desc: >
-          Many upgrades qualify for federal and provincial rebates. Eligibility depends on
-          your home’s energy audit results and which upgrades you choose. We assist with
-          the entire rebate process.
+      - title: What is the best first energy upgrade for an older home?
+        desc: |-
+          Start with diagnosis. Drafts, attic insulation, air leaks, old windows, leaky doors, weak ventilation, and inefficient mechanical equipment affect homes differently. Air sealing and insulation often deliver strong comfort gains before expensive finish upgrades.
 
-      - title: How long does an energy-efficient upgrade take?
-        desc: >
-          Most upgrades—such as insulation, air sealing, thermostat installation, or lighting—can be
-          completed in one day. Larger installations like windows or tankless heaters typically
-          take 1–2 days.
+      - title: Should I get a home energy audit first?
+        desc: |-
+          An energy audit is useful when you want measured results, rebate eligibility, blower-door data, or a whole-home retrofit plan. It helps prioritize air sealing, insulation, windows, doors, HVAC, and ventilation.
 
-      - title: Do I need an energy audit first?
-        desc: >
-          Yes. A pre-upgrade energy assessment is required for most rebates. We help schedule
-          the audit with a certified energy advisor.
+      - title: What is a blower door test?
+        desc: |-
+          A blower door test measures how leaky the building envelope is. It helps identify air leakage around attics, rim joists, windows, doors, outlets, penetrations, and framing gaps.
 
-      - title: What areas of the Greater Toronto Area do you serve?
-        desc: >
-          We serve all of the GTA, including Toronto, Mississauga, Brampton, Vaughan,
-          Richmond Hill, Markham, Oakville, Pickering, Ajax, Whitby, and Oshawa.
+      - title: What is air sealing?
+        desc: |-
+          Air sealing closes gaps that let conditioned air escape and outdoor air enter. Common areas include attic hatches, pot lights, plumbing penetrations, rim joists, baseboards, window frames, door frames, vents, and electrical boxes.
 
-      - title: How much can I expect to save on energy bills?
-        desc: >
-          Savings vary by home, but typical improvements reduce heating and cooling consumption
-          by 15–30%. Some upgrades, like air sealing, have immediate impact.
+      - title: Is insulation or air sealing more important?
+        desc: |-
+          Both matter. Insulation slows heat transfer, but air leaks can bypass insulation. In many homes, air sealing before or during insulation work makes the insulation perform better.
 
-      - title: Are tankless water heaters more efficient?
-        desc: >
-          Yes—tankless systems only heat water when needed. This reduces standby energy loss
-          and provides unlimited hot water with lower operating costs.
+      - title: What insulation upgrades are common in Toronto homes?
+        desc: |-
+          Common upgrades include attic insulation, attic hatch sealing, rim joist insulation, basement header insulation, wall insulation during renovations, garage ceiling insulation, and targeted fixes for cold rooms.
 
-      - title: Can you help me choose the most cost-effective upgrades?
-        desc: >
-          Absolutely. We assess your home's energy usage and recommend upgrades that offer
-          the best combination of comfort, savings, and rebate value.
+      - title: Can new windows improve energy efficiency?
+        desc: |-
+          Yes, especially if existing windows are drafty, failed, single-pane, poorly sealed, or uncomfortable. The biggest gains come from matching good windows with proper installation, insulation, and air sealing.
 
-      - title: Do you handle installation and cleanup?
-        desc: >
-          Yes. All upgrades include full installation, jobsite protection, cleanup, and
-          disposal of old materials where needed.
+      - title: Are ENERGY STAR windows and doors worth it?
+        desc: |-
+          ENERGY STAR windows and doors can improve comfort, reduce drafts, and support energy goals. The product label matters, but installation quality, flashing, foam, caulking, and trim details also matter.
 
-      - title: How soon can you start after the audit?
-        desc: >
-          Most projects can begin within a few days of the audit report being released.
+      - title: Should I replace windows before insulation?
+        desc: |-
+          It depends on the house. If windows are failing or leaking, replacement may come first. If windows are functional but the attic is under-insulated or the home is leaky, air sealing and insulation may give better first returns.
 
+      - title: What causes drafts around windows and doors?
+        desc: |-
+          Drafts can come from failed weatherstripping, poor installation, missing insulation, failed caulking, warped frames, bad thresholds, old locks, siding gaps, or air leakage through nearby wall cavities.
+
+      - title: Can weatherstripping make a real difference?
+        desc: |-
+          Yes. Door sweeps, compression seals, thresholds, and window weatherstripping can reduce drafts quickly when the frame and slab are otherwise sound. Severe frame problems may need replacement.
+
+      - title: What is thermal bridging?
+        desc: |-
+          Thermal bridging happens when framing, metal, concrete, or other conductive materials carry heat through the building envelope. It can make walls, floors, or window areas feel cold even when insulation exists.
+
+      - title: Why are some rooms colder than others?
+        desc: |-
+          Cold rooms can be caused by poor insulation, air leaks, duct issues, blocked returns, exterior exposure, attic bypasses, old windows, garage adjacency, basement leakage, or unbalanced heating and cooling.
+
+      - title: Can renovations improve comfort without a full retrofit?
+        desc: |-
+          Yes. When renovating kitchens, bathrooms, basements, windows, doors, or trim, it is smart to address hidden gaps, insulation, ventilation, and drafts while walls or openings are accessible.
+
+      - title: What is the role of ventilation in an energy-efficient home?
+        desc: |-
+          As homes get tighter, ventilation becomes more important. Bathroom fans, kitchen exhaust, HRVs or ERVs, fresh air, and humidity control help maintain indoor air quality and reduce condensation.
+
+      - title: Can energy upgrades cause condensation?
+        desc: |-
+          They can reveal humidity problems. Tighter windows and doors reduce air leakage, so indoor humidity may condense on cold surfaces if ventilation, air movement, and humidity are not managed.
+
+      - title: Are smart thermostats worth it?
+        desc: |-
+          Smart thermostats can help scheduling, monitoring, and comfort, but they do not fix drafts, weak insulation, poor ducts, or undersized equipment. They work best as part of a broader plan.
+
+      - title: Are tankless water heaters energy efficient?
+        desc: |-
+          Tankless water heaters can reduce standby losses and save space, but sizing, venting, gas capacity, water hardness, maintenance, and usage patterns matter. They are not the right fit for every home.
+
+      - title: What about LED lighting upgrades?
+        desc: |-
+          LED lighting reduces electrical use and heat output. During renovations, it is also a chance to improve fixture placement, dimmers, colour temperature, and task lighting.
+
+      - title: Do rebates still exist for energy upgrades?
+        desc: |-
+          Rebate programs change often. Eligibility may depend on energy audits, product ratings, installation dates, contractor requirements, income rules, and program funding. Always confirm current program details before starting work.
+
+      - title: Can you help plan upgrades around rebate requirements?
+        desc: |-
+          We can help scope the renovation work and coordinate product information, but rebate eligibility should be confirmed with the program administrator or energy advisor before work starts.
+
+      - title: What should an energy upgrade quote include?
+        desc: |-
+          It should list the upgrade scope, product ratings where relevant, installation method, air sealing details, insulation R-values, ventilation implications, finish repairs, exclusions, timing, and warranty terms.
+
+      - title: Do you provide energy-efficient upgrades across the GTA?
+        desc: |-
+          Yes. We provide energy-efficient renovation upgrades in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
+
+  - type: ServiceAreas
+    title: Energy-efficient upgrade service areas
+    service: energy-efficient-upgrades
   - type: Services
     exclude:
       - energy-efficient-upgrades

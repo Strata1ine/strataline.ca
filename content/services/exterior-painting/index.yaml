@@ -2442,6 +2442,9 @@ sections:
         desc: |-
           Yes. Utility screens can be painted or stained if material and access allow it. Equipment ventilation must remain clear.
 
+  - type: ServiceAreas
+    title: Exterior painting service areas
+    service: exterior-painting
   - type: Services
     exclude:
       - exterior-painting
