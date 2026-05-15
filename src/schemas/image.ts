@@ -6,6 +6,7 @@ export const image = (c: SchemaContext) =>
 		alt: z.string(),
 		x: z.enum(['left', 'right']).optional(),
 		y: z.enum(['top', 'bottom']).optional(),
+		size: z.enum(['wide', 'feature']).optional(),
 	});
 
 export type ImageSource = z.infer<ReturnType<typeof image>>;

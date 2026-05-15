@@ -565,6 +565,7 @@ image:
     Description of the image.
   x: left # Optional: "left" or "right"
   y: top # Optional: "top" or "bottom"
+  size: wide # Optional: makes Gallery images taller for wide shots. Use feature for panoramic detail photos that need extra height.
 ```
 
 ## Formatting Conventions

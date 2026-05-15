@@ -21,10 +21,17 @@ export default function Gallery(props: { content: GalleryMeta['content'] }) {
 		return 8;
 	};
 
+	const getSizeMultiplier = (item: GalleryMeta['content'][number]) => {
+		if (item.size === 'feature') return 2.75;
+		if (item.size === 'wide') return 2;
+		return 1;
+	};
+
 	const masonry = createMasonry({
 		source: () => props.content,
 		columns: getColumns,
-		mapHeight: (item) => () => item.src.height / 4.0 / (br.md ? 1 : 2) + getGap(),
+		mapHeight: (item) => () =>
+			(item.src.height / 4.0 / (br.md ? 1 : 2)) * getSizeMultiplier(item) + getGap(),
 		mapElement: (data) => (
 			<div
 				class="relative"
@@ -34,7 +41,11 @@ export default function Gallery(props: { content: GalleryMeta['content'] }) {
 					'margin-bottom': `${data.margin()}px`,
 				}}
 			>
-				<Image widths={[400, 800, 1000]} image={data.source} class="absolute" />
+				<Image
+					widths={[400, 800, 1000]}
+					image={data.source}
+					class={data.source.size === 'feature' ? 'absolute !object-contain bg-primary-light' : 'absolute'}
+				/>
 			</div>
 		),
 	});
