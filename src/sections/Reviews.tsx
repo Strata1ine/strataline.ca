@@ -1,14 +1,8 @@
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 import type { Props as ReviewsProps } from './Reviews.astro';
 import { createMediaQuery } from '@solid-primitives/media';
-import createPersistent from 'solid-persistent';
 
-import business from '#/business.json';
-import Inputs from '@/components/Inputs';
-import Menus from '@/components/Menus';
 import Stars from '@/components/Stars';
-import Actions from '@/components/Actions';
-import Dialog from 'corvu/dialog';
 import Feather from '~icons/ph/feather-fill';
 import CaretLeft from '~icons/ph/caret-left-bold';
 import CaretRight from '~icons/ph/caret-right-bold';
@@ -16,6 +10,10 @@ import CaretRight from '~icons/ph/caret-right-bold';
 export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const isMobile = createMediaQuery('(max-width: 650px)');
 	const power = createMemo(() => (isMobile() ? 0 : 1));
+	const reviewTrimLength = createMemo(() => {
+		const lengths = props.meta.map((review) => plainReviewText(review.desc).length).sort((a, b) => b - a);
+		return lengths[1] ?? lengths[0] ?? 0;
+	});
 
 	const [idx, _setIdx] = createSignal(0);
 	const [pos, setPos] = createSignal(0);
@@ -106,8 +104,6 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 		);
 	};
 
-	const menu = WriteReview();
-
 	return (
 		<>
 			<div
@@ -172,7 +168,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 						translate: `${(-pos() * 100) / (power() + 1)}% 0 0`,
 					}}
 				>
-					<For each={props.meta}>{(review) => <Review {...review} />}</For>
+					<For each={props.meta}>{(review) => <Review {...review} trimLength={reviewTrimLength()} />}</For>
 				</div>
 
 				<Show when={canGoNext()}>
@@ -202,18 +198,18 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					</button>
 				</Show>
 
-				<button
+				<a
 					class="bg-primary absolute bottom-0 left-8 flex translate-y-1/2 cursor-pointer items-center gap-4 rounded-lg px-4 py-3 sm:right-12 sm:left-auto"
+					href="https://g.page/r/CVMFoUd4wK3bEBE/review"
+					target="_blank"
+					rel="noopener noreferrer"
 					onPointerDown={(e) => {
 						e.stopPropagation();
-					}}
-					onClick={() => {
-						menu.setOpen(true);
 					}}
 				>
 					<Feather class="size-8" />
 					<span class="font-sans">Write a review</span>
-				</button>
+				</a>
 			</div>
 
 			<Show when={reviewCount() > 1}>
@@ -232,13 +228,20 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 					/>
 				</div>
 			</Show>
-
-			{menu.dialog}
 		</>
 	);
 }
 
-const Review = (review: ReviewsProps['content'][number]) => {
+type ReviewProps = ReviewsProps['content'][number] & {
+	trimLength: number;
+};
+
+const Review = (review: ReviewProps) => {
+	const [expanded, setExpanded] = createSignal(false);
+	const plainDesc = createMemo(() => plainReviewText(review.desc));
+	const shouldTrim = createMemo(() => review.trimLength > 0 && plainDesc().length > review.trimLength);
+	const collapsedDesc = createMemo(() => truncateReviewText(plainDesc(), review.trimLength));
+
 	return (
 		<div class="content-box w-full flex-none px-2 sm:w-1/2 sm:px-4">
 			<div class="border-primary-dark mb-7 h-full rounded-md border p-7 md:p-10">
@@ -253,55 +256,53 @@ const Review = (review: ReviewsProps['content'][number]) => {
 					<Stars class="size-6" length={review.stars} />
 				</div>
 
-				{/* its safe */}
-				{/* eslint-disable-next-line solid/no-innerhtml */}
-				<p class="desc-base" innerHTML={review.desc} />
+				<Show
+					when={shouldTrim() && !expanded()}
+					fallback={
+						// eslint-disable-next-line solid/no-innerhtml
+						<p class="desc-base" innerHTML={review.desc} />
+					}
+				>
+					<p class="desc-base">{collapsedDesc()}</p>
+				</Show>
+
+				<Show when={shouldTrim()}>
+					<button
+						type="button"
+						class="text-secondary mt-4 cursor-pointer font-sans text-sm font-semibold transition hover:text-black"
+						onPointerDown={(e) => e.stopPropagation()}
+						onClick={(e) => {
+							e.stopPropagation();
+							setExpanded((value) => !value);
+						}}
+					>
+						{expanded() ? 'Show less' : 'Read more'}
+					</button>
+				</Show>
 			</div>
 		</div>
 	);
 };
 
-function WriteReview() {
-	const [open, setOpen] = createSignal(false);
-	const persistedContent = createPersistent(() => {
-		return (
-			<>
-				<div class="mt-4">
-					<Inputs.StarSlider />
-				</div>
+function plainReviewText(html: string) {
+	return html
+		.replace(/<[^>]*>/g, ' ')
+		.replace(/&nbsp;/g, ' ')
+		.replace(/&amp;/g, '&')
+		.replace(/&#x26;|&#38;/g, '&')
+		.replace(/&rsquo;|&#8217;/g, "'")
+		.replace(/&lsquo;|&#8216;/g, "'")
+		.replace(/&rdquo;|&#8221;/g, '"')
+		.replace(/&ldquo;|&#8220;/g, '"')
+		.replace(/\s+/g, ' ')
+		.trim();
+}
 
-				<div class="mt-12 space-y-11">
-					<Inputs.Field name="Full name" required>
-						<Inputs.Field.Body type="name" autocomplete="name" />
-					</Inputs.Field>
+function truncateReviewText(text: string, maxLength: number) {
+	if (text.length <= maxLength) return text;
 
-					<Inputs.Email required />
-					<Inputs.Select name="Location" items={['Select a location', ...business.areaServed]} />
-					<Inputs.TextArea required name="Review" />
-					<Actions.Button value="submit" variant="fill">
-						Submit
-					</Actions.Button>
-				</div>
-			</>
-		);
-	});
-
-	return {
-		open,
-		setOpen,
-		dialog: (
-			<Dialog open={open()} onOpenChange={setOpen}>
-				<Dialog.Portal>
-					<Menus.DialogForm
-						title="Review"
-						desc="We will verify your submission via email."
-						id="0fqNd4cJ0"
-						action="/submissions/review"
-					>
-						{persistedContent()}
-					</Menus.DialogForm>
-				</Dialog.Portal>
-			</Dialog>
-		),
-	};
+	const trimmed = text.slice(0, maxLength).trimEnd();
+	const lastSpace = trimmed.lastIndexOf(' ');
+	const safeText = lastSpace > 120 ? trimmed.slice(0, lastSpace) : trimmed;
+	return `${safeText.replace(/[.,;:!?-]+$/, '')}...`;
 }

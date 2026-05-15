@@ -14,6 +14,7 @@ const menuHref = (item: HeaderMeta['content'][number]) => {
 	if (item.id?.startsWith('http') || item.id?.startsWith('/')) return item.id;
 	return `#${item.id}`;
 };
+const isExternalMenuHref = (href: string) => href.startsWith('http') && !href.includes('strataline.ca');
 
 export default function Header(props: { content: HeaderMeta['content'] }) {
 	return (
@@ -64,24 +65,31 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 								<ul class="contents">
 									<For
 										each={props.content}
-										children={(item, index) => (
-											<li
-												class="animate-in [animation-fill-mode:backwards]"
-												style={{
-													'--tw-enter-translate-x': '-5rem',
-													'animation-delay': `${index() * 150}ms`,
-												}}
-											>
-												<a
-													class={cn(styles.link, 'font-serif text-3xl font-semibold text-nowrap')}
-													href={menuHref(item)}
-													tabindex="0"
-													onClick={() => popover.setOpen(false)}
+										children={(item, index) => {
+											const href = menuHref(item);
+											const external = isExternalMenuHref(href);
+
+											return (
+												<li
+													class="animate-in [animation-fill-mode:backwards]"
+													style={{
+														'--tw-enter-translate-x': '-5rem',
+														'animation-delay': `${index() * 150}ms`,
+													}}
 												>
-													{item.name}
-												</a>
-											</li>
-										)}
+													<a
+														class={cn(styles.link, 'font-serif text-3xl font-semibold text-nowrap')}
+														href={href}
+														target={external ? '_blank' : undefined}
+														rel={external ? 'noopener noreferrer' : undefined}
+														tabindex="0"
+														onClick={() => popover.setOpen(false)}
+													>
+														{item.name}
+													</a>
+												</li>
+											);
+										}}
 									/>
 								</ul>
 							</Dialog.Content>

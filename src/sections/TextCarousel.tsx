@@ -10,7 +10,7 @@ export default function TextCarousel(props: { meta: TextCarouselMeta }) {
 	let clientY = 0;
 	let startPos = 0;
 	let rawPos = 0;
-	let moveDirection = -1;
+	let moveDirection = props.meta.direction === 'right' ? -1 : 1;
 	let lastFrame = 0;
 
 	let pos = 0;

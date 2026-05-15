@@ -162,9 +162,8 @@ export default function Talk() {
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
-		const { x } = sensor.getBoundingClientRect();
 		setStyle(
-			`${window.innerWidth - x - fabSize - inset()}px calc(100svh - ${fabSize + inset()}px) 0`,
+			`${inset()}px calc(100svh - ${fabSize + inset()}px) 0`,
 		);
 	};
 
@@ -214,7 +213,7 @@ export default function Talk() {
 									buttonVariants(),
 									'absolute h-12 w-full !border-[#e2556e] !bg-[#e2556e] px-5 !text-white shadow-lg shadow-[#e2556e]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e2556e] xl:h-[3.25rem]',
 								)
-							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0'),
+							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0 left-0'),
 					)}
 					style={{
 						translate: style(),

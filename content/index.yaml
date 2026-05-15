@@ -22,6 +22,9 @@ sections:
       - id: https://strataline.ca/services/painting
         href: https://strataline.ca/services/painting
         name: Painting
+      - id: https://g.page/r/CVMFoUd4wK3bEBE/review
+        href: https://g.page/r/CVMFoUd4wK3bEBE/review
+        name: Write a Review
 
   - type: Hero
     title: |-
@@ -53,11 +56,22 @@ sections:
     id: popular
 
   - type: TextCarousel
+    direction: left
     text:
       - AS SEEN ON CITYTV
       - FEATURED IN THE TORONTO STAR
       - FEATURED IN HOUSE & HOME
       - FEATURED ON HGTV
+      - trusted in finished homes
+      - clean work without construction-site chaos
+      - dust-controlled renovation process
+      - careful prep before visible work
+      - detailed estimates before booking
+      - WSIB covered renovation contractor
+      - 5M liability insured contractor
+      - precise work that looks intentional
+      - respectful crews in occupied homes
+      - workmanship built to last
 
   - type: ZigZag
     id: accomplishments
@@ -106,12 +120,28 @@ sections:
   - type: Services
     id: explore
     content:
+      direction: left
       text:
         - Dust-free from start to finish
         - Clean work in finished homes
         - Meticulous craftsmanship
         - Architectural precision
         - Long-lasting results
+        - Detailed estimates
+        - WSIB covered
+        - 5M liability insured
+        - Careful surface prep
+        - Clean daily cleanup
+        - Respectful occupied-home work
+        - Proper materials
+        - Smooth finished surfaces
+        - Straight lines and tight details
+        - Built for everyday use
+        - Finished properly the first time
+        - No patchwork look
+        - Clear scope before work starts
+        - Photo estimates available
+        - GTA renovation contractor
 
   - type: ImageCarousel
     content:
@@ -204,33 +234,55 @@ sections:
           Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase. The end result looks fantastic and fits the space perfectly. You can tell the work was done with care.
 
   - type: TextCarousel
+    direction: left
     text:
+      - trusted home renovation contractor
+      - clean renovation work in occupied homes
+      - finished renovation work with careful prep
+      - dust-controlled renovation services
+      - renovation contractor with detailed estimates
+      - WSIB covered renovation contractor
+      - 5M liability insured renovation contractor
       - home renovation contractor Vaughan
       - trusted renovation contractor Toronto
-      - dust-free renovation services
+      - renovation contractor GTA
+      - residential renovation contractor
+      - interior renovation contractor
+      - high-end home renovation services
       - clean renovation process
       - finished home renovation specialists
+      - no construction-site mess left behind
+      - results that match your home
+      - installed properly the first time
+      - built for long-term durability
+      - professional finish, not patchwork
+      - precise sanding and stain matching
       - staircase renovation Vaughan
+      - staircase refinishing Toronto
       - stair refinishing contractor GTA
       - stair tread caps installation
       - stair railing installation Toronto
-      - no construction-site mess left behind
-      - results that actually match your home
-      - installed properly the first time
-      - built for long-term durability
-      - precise sanding and stain matching
-      - professional finish, not patchwork
-      - staircase refinishing Toronto
-      - convert carpeted stairs to wood
       - stair railing Vaughan
       - modern staircase upgrades
-      - popcorn ceiling removal contractor
-      - drywall repair and skim coating
-      - interior painting and finishing
-      - clean, controlled renovation process
-      - high-end home renovation services
+      - convert carpeted stairs to wood
+      - hardwood stair refinishing
+      - custom stair railing installation
       - staircase transformation before after
-      - home renovation contractor Vaughan
+      - popcorn ceiling removal contractor
+      - smooth ceiling finishing
+      - drywall repair and skim coating
+      - Level 5 drywall finishing
+      - interior painting and finishing
+      - residential interior painting
+      - cabinet and trim painting
+      - doors and windows installation
+      - front entry door replacement
+      - energy efficient window replacement
+      - kitchen renovation contractor
+      - bathroom renovation contractor
+      - basement renovation finishing
+      - exterior painting contractor
+      - commercial painting contractor
       - Woodbridge renovation contractor
       - Richmond Hill renovation contractor
       - Markham renovation contractor
@@ -241,4 +293,21 @@ sections:
       - Aurora renovation contractor
       - King City renovation contractor
       - Newmarket renovation contractor
-      - renovation contractor GTA
+      - Burlington renovation contractor
+      - Thornhill renovation contractor
+      - Maple renovation contractor
+      - Kleinburg renovation contractor
+      - Concord renovation contractor
+      - Caledon renovation contractor
+      - Brampton renovation contractor
+      - Scarborough renovation contractor
+      - Vaughan staircase renovation
+      - Toronto staircase refinishing
+      - Richmond Hill popcorn ceiling removal
+      - Markham drywall repair contractor
+      - North York interior painting
+      - Etobicoke kitchen renovation
+      - Mississauga bathroom renovation
+      - Oakville door and window replacement
+      - Woodbridge exterior painting
+      - GTA renovation contractor near me

@@ -15,6 +15,7 @@ export const schema = createSchema('Services', (c: SchemaContext) =>
 			.object({
 				id: z.string().optional(),
 				speed: z.number().optional().default(0.1),
+				direction: z.enum(['left', 'right']).optional().default('left'),
 				text: z.array(z.string()),
 			})
 			.optional(),
