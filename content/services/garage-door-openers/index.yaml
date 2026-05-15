@@ -1,0 +1,73 @@
+title: Garage door openers
+position: 25
+seo: |-
+  Garage door opener installation, opener repair, quiet belt drive openers, smart garage door openers, keypad setup, safety sensor alignment, remote programming, and opener replacement in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Garage door opener installation and repair for quieter, safer daily use. We install belt-drive openers, smart controls, wall consoles, keypads, remotes, safety sensors, and opener systems matched to the door.
+image:
+  src: ../garage-doors/photos/09.jpg
+  alt: Quiet garage door opener installation for a modern residential garage door.
+
+sections:
+  - type: Benefits
+    title: Opener work that protects the door
+    content:
+      - title: Door balance first
+        desc: |-
+          An opener should not fight a heavy or unbalanced door. Springs, rollers, tracks, and cables need to be checked before opener setup.
+      - title: Quiet drive options
+        desc: |-
+          Belt-drive openers are popular for attached garages, bedrooms over garages, and homes where vibration matters.
+      - title: Smart controls and keypads
+        desc: |-
+          WiFi openers, phone control, keypad entry, wall consoles, remotes, and safety sensors can be included or replaced.
+      - title: Correct force and travel settings
+        desc: |-
+          Opener limits, safety reversal, force settings, rail length, and sensor alignment affect safety and reliability.
+
+  - type: ZigZag
+    title: Related garage door services
+    content:
+      - title: Garage door installation and repair
+        desc: |-
+          Openers work best when the door itself is balanced, aligned, sealed, and moving cleanly on the tracks.
+        image:
+          src: ../garage-doors/photos/02.jpg
+          alt: Garage door installation with a matched opener system.
+        link: /services/garage-doors
+      - title: Garage door spring repair
+        desc: |-
+          If the opener strains, hums, or will not lift the door, the real issue may be broken springs or an unbalanced door.
+        image:
+          src: ../garage-doors/photos/07.jpg
+          alt: Garage door spring and hardware repair before opener use.
+        link: /services/garage-door-spring-repair
+
+  - type: TextCarousel
+    text:
+      - garage door opener installation
+      - smart garage door opener
+      - quiet belt drive opener
+      - opener repair Toronto
+      - safety sensor alignment
+      - keypad and remote setup
+
+  - type: Faq
+    title: Garage door opener FAQ
+    content:
+      - title: Should I replace the opener when replacing the garage door?
+        desc: |-
+          Often yes if the opener is noisy, underpowered, missing safety features, or poorly matched to the new door weight.
+      - title: Why does my opener run but the door does not move?
+        desc: |-
+          Possible causes include broken springs, disconnected trolley, stripped gear, cable issues, or a door that is too heavy for the opener.
+      - title: Can you add a smart garage door opener?
+        desc: |-
+          Yes. Smart opener options can include app control, alerts, scheduling, keypads, and remote access depending on the model.
+      - title: Why does my garage door reverse when closing?
+        desc: |-
+          Common causes include blocked or misaligned safety sensors, travel limit issues, track resistance, damaged rollers, or incorrect opener force settings.
+
+  - type: Services
+    exclude:
+      - garage-door-openers

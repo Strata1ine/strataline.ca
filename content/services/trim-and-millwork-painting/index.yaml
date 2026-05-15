@@ -1,0 +1,56 @@
+title: Trim and millwork painting
+position: 23
+seo: |-
+  Trim painting, baseboard painting, door painting, wainscoting painting, crown moulding painting, built-in painting, stair railing painting, and sprayed millwork finishes in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, and the GTA.
+desc: |-
+  Trim and millwork painting for baseboards, doors, casings, crown moulding, wainscoting, built-ins, railings, and detailed interior finishes that need crisp lines and a durable smooth finish.
+image:
+  src: ../painting/photos/high-end-wainscoting-painting-spray-finish.png
+  alt: Wainscoting and trim painting with a smooth sprayed satin finish.
+
+sections:
+  - type: Benefits
+    title: Details that change the room
+    content:
+      - title: Crisp lines and clean prep
+        desc: |-
+          Trim painting needs caulking, sanding, nail-hole filling, masking, priming, and clean cut lines where walls meet millwork.
+      - title: Durable satin finishes
+        desc: |-
+          Doors, baseboards, and hand-contact surfaces need tougher paint than standard wall finishes.
+      - title: Sprayed or brushed as needed
+        desc: |-
+          Some millwork benefits from sprayed finishing, while installed trim may need careful brushing and rolling depending on access.
+      - title: Works with full repaint projects
+        desc: |-
+          Trim painting often pairs with wall painting, ceiling painting, stair refinishing, cabinet painting, and drywall repair.
+
+  - type: TextCarousel
+    text:
+      - trim painting Toronto
+      - baseboard painting
+      - door painting
+      - wainscoting painting
+      - sprayed millwork finish
+      - crown moulding painting
+      - built-in painting
+
+  - type: Faq
+    title: Trim painting FAQ
+    content:
+      - title: Do you caulk trim before painting?
+        desc: |-
+          Yes where appropriate. Open gaps at trim, casing, crown, and baseboards are caulked before finish paint for a cleaner line.
+      - title: Can old stained trim be painted white?
+        desc: |-
+          Yes, but stained wood usually needs sanding, bonding primer, stain-blocking where needed, and durable trim paint.
+      - title: Do you paint interior doors?
+        desc: |-
+          Yes. We paint slab doors, paneled doors, closet doors, casings, jambs, and related trim.
+      - title: Can you paint stair railings?
+        desc: |-
+          Yes. Painted railings need careful prep because handrails receive heavy contact. Stain-grade refinishing may be better for some stair projects.
+
+  - type: Services
+    exclude:
+      - trim-and-millwork-painting

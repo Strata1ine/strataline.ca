@@ -1,0 +1,73 @@
+title: Exterior brick painting
+position: 24
+seo: |-
+  Exterior brick painting, brick staining, masonry painting, limewash-style brick finishes, exterior house painting, aluminum siding painting, stucco painting, and masonry prep in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Exterior brick painting and masonry coating for homes that need a cleaner, more modern facade. We review brick condition, moisture, prep, primer, coating choice, and surrounding exterior finishes before painting.
+image:
+  src: ../exterior-painting/photos/exterior-house-painting-toronto-after.webp
+  alt: Exterior brick painting and house painting with a clean modern facade in Toronto.
+
+sections:
+  - type: Benefits
+    title: Brick painting needs the right prep
+    content:
+      - title: Moisture review
+        desc: |-
+          Brick, mortar, flashing, grade, and previous coatings should be reviewed before painting because trapped moisture can damage masonry.
+      - title: Cleaning and repair
+        desc: |-
+          Loose paint, dirt, efflorescence, cracked mortar, and failed caulking need attention before primer or masonry coating.
+      - title: Breathable coating choices
+        desc: |-
+          The right exterior paint or masonry coating depends on brick condition, exposure, colour, and whether the surface was previously painted.
+      - title: Whole facade planning
+        desc: |-
+          Brick colour should work with garage doors, windows, trim, soffits, eaves, railings, stone, and landscaping.
+
+  - type: ZigZag
+    title: Exterior upgrades that connect
+    content:
+      - title: Exterior house painting
+        desc: |-
+          Brick painting often pairs with siding, stucco, trim, front door, porch, railing, and garage door colour updates.
+        image:
+          src: ../exterior-painting/cover.jpg
+          alt: Exterior house painting and facade refresh in the GTA.
+        link: /services/exterior-painting
+      - title: Garage door replacement
+        desc: |-
+          A new garage door can complete a brick facade refresh by updating one of the largest visible exterior surfaces.
+        image:
+          src: ../garage-doors/photos/03.jpg
+          alt: Wood-look garage door replacement paired with exterior brick painting.
+        link: /services/garage-doors
+
+  - type: TextCarousel
+    text:
+      - exterior brick painting
+      - brick staining Toronto
+      - masonry painting GTA
+      - exterior house painting
+      - brick facade refresh
+      - painted brick homes
+
+  - type: Faq
+    title: Exterior brick painting FAQ
+    content:
+      - title: Is painting brick a good idea?
+        desc: |-
+          It can be when the brick is suitable and moisture issues are addressed. Poor prep or the wrong coating can create peeling, trapped moisture, or maintenance problems.
+      - title: Do you repair mortar before painting?
+        desc: |-
+          Minor cracks and gaps may need repair before painting. Larger masonry problems should be handled before any coating is applied.
+      - title: What colours work best for painted brick?
+        desc: |-
+          Warm whites, soft greys, taupes, charcoal, and muted earthy colours are common, but the best choice depends on roof, windows, trim, stone, and neighbourhood context.
+      - title: Can you paint previously painted brick?
+        desc: |-
+          Yes, if the existing coating is sound. Peeling, chalking, moisture staining, or loose areas need prep before repainting.
+
+  - type: Services
+    exclude:
+      - exterior-brick-painting

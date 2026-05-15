@@ -1,0 +1,73 @@
+title: Entry door replacement
+position: 28
+seo: |-
+  Entry door replacement, front door installation, exterior door replacement, fiberglass doors, steel entry doors, glass inserts, sidelites, transoms, patio doors, weatherstripping, and door installation in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Entry door replacement for better curb appeal, insulation, security, and day-to-day use. We plan door style, glass inserts, sidelites, colour, hardware, weatherstripping, and finishing details.
+image:
+  src: ../doors_and_windows/photos/supplier/entry-doors/exterior-entry-door-installation-showcase-1.jpg
+  alt: Exterior entry door replacement with decorative glass and clean front door finishing.
+
+sections:
+  - type: Benefits
+    title: Front doors affect more than curb appeal
+    content:
+      - title: Fit and weatherseal
+        desc: |-
+          A new entry door should close cleanly, seal properly, resist drafts, and protect the threshold from water.
+      - title: Glass, privacy, and light
+        desc: |-
+          Decorative glass, clear glass, privacy glass, sidelites, and transoms change both the exterior look and interior light.
+      - title: Security and hardware
+        desc: |-
+          Locksets, deadbolts, hinges, reinforced strike areas, and door material all affect everyday security.
+      - title: Exterior finishing
+        desc: |-
+          Capping, trim, caulking, paint colour, brick mould, and threshold details should match windows, garage doors, and exterior paint.
+
+  - type: ZigZag
+    title: Related door and window services
+    content:
+      - title: Doors and windows
+        desc: |-
+          Entry doors can be planned with window replacement, patio doors, exterior capping, and energy-efficient upgrades.
+        image:
+          src: ../doors_and_windows/door.jpg
+          alt: Front entry door replacement and door installation in Toronto.
+        link: /services/doors_and_windows
+      - title: Exterior painting
+        desc: |-
+          New front doors often work best with refreshed trim, painted brick, siding, railings, and garage door colour planning.
+        image:
+          src: ../exterior-painting/cover.jpg
+          alt: Exterior painting coordinated with front entry door replacement.
+        link: /services/exterior-painting
+
+  - type: TextCarousel
+    text:
+      - entry door replacement
+      - front door installation
+      - exterior door replacement
+      - fiberglass entry doors
+      - steel entry doors
+      - glass inserts and sidelites
+
+  - type: Faq
+    title: Entry door FAQ
+    content:
+      - title: Should I choose steel or fiberglass?
+        desc: |-
+          Steel doors are durable and cost-effective. Fiberglass doors can offer better dent resistance, wood-look styling, and strong insulation depending on the model.
+      - title: Can a front door improve drafts?
+        desc: |-
+          Yes, if the slab, frame, threshold, sweep, weatherstripping, and installation are properly fitted.
+      - title: Can I add glass to a front door?
+        desc: |-
+          Yes. Glass inserts, sidelites, and transoms can add light and style, with privacy options available.
+      - title: What affects entry door cost?
+        desc: |-
+          Door size, material, glass, sidelites, colour, hardware, capping, threshold work, trim, and site conditions all affect price.
+
+  - type: Services
+    exclude:
+      - entry-door-replacement

@@ -1,0 +1,73 @@
+title: Smooth ceiling finishing
+position: 21
+seo: |-
+  Smooth ceiling finishing, skim coating ceilings, ceiling repair, Level 5 ceiling finish, popcorn ceiling removal finishing, drywall ceiling repair, priming, and ceiling painting in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, and the GTA.
+desc: |-
+  Smooth ceiling finishing after popcorn removal, ceiling repair, old texture removal, drywall seams, cracks, and uneven ceiling surfaces. We prepare ceilings for a clean modern finish without the rough patchwork look.
+image:
+  src: ../popcorn-removal/cleanup.jpg
+  alt: Smooth ceiling finishing after popcorn ceiling removal with dust-controlled prep.
+
+sections:
+  - type: Benefits
+    title: What makes a ceiling look finished
+    content:
+      - title: Flatness before paint
+        desc: |-
+          Ceiling paint does not hide waves, ridges, tape lines, or old texture. The surface needs proper repair, sanding, and priming first.
+      - title: Careful skim coating
+        desc: |-
+          Skim coating helps correct uneven ceiling texture, old popcorn residue, drywall seams, patch marks, and shadowing under natural light.
+      - title: Dust-controlled prep
+        desc: |-
+          Ceiling sanding can be messy, so we plan containment, protection, cleanup, and workflow for finished homes.
+      - title: Paint matched to ceiling light
+        desc: |-
+          Smooth ceilings need the right flat paint, primer, roller technique, and drying conditions to reduce flashing and lap marks.
+
+  - type: ZigZag
+    title: Connected ceiling services
+    content:
+      - title: Popcorn ceiling removal
+        desc: |-
+          Removal is only the first part. The finished result depends on skim coating, drywall correction, sanding, priming, and ceiling paint.
+        image:
+          src: ../painting/photos/popcorn-ceiling-removal-gta.png
+          alt: Popcorn ceiling removal followed by smooth ceiling finishing.
+        link: /services/popcorn-removal
+      - title: Drywall repair and skim coating
+        desc: |-
+          Ceiling cracks, nail pops, torn paper, and visible seams are repaired before the final smooth ceiling finish.
+        image:
+          src: ../painting/photos/smooth-wall-finish-level-5.jpg
+          alt: Drywall skim coating for smooth ceilings and walls.
+        link: /services/drywall-repair-skim-coating
+
+  - type: TextCarousel
+    text:
+      - smooth ceiling finishing
+      - skim coating ceilings
+      - Level 5 ceiling finish
+      - popcorn ceiling finishing
+      - ceiling repair Toronto
+      - flat ceiling painting
+
+  - type: Faq
+    title: Smooth ceiling FAQ
+    content:
+      - title: Is popcorn removal enough for a smooth ceiling?
+        desc: |-
+          Not usually. Once texture is removed, the ceiling often needs drywall repair, skim coating, sanding, primer, and paint to look properly smooth.
+      - title: Why do smooth ceilings show flaws?
+        desc: |-
+          Ceilings catch light across a wide flat plane. Tape joints, old patches, ridges, and uneven sanding can show unless the prep is handled carefully.
+      - title: Can you fix cracked ceiling seams?
+        desc: |-
+          Yes. We repair cracked seams, loose tape, nail pops, water-damaged compound, and old patch lines before finishing.
+      - title: Do smooth ceilings create a lot of dust?
+        desc: |-
+          Sanding can create dust, but protection, containment, dust extraction, and cleanup reduce disruption in finished homes.
+
+  - type: Services
+    exclude:
+      - smooth-ceiling-finishing

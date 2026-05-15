@@ -1,0 +1,55 @@
+title: Garage door spring repair
+position: 26
+seo: |-
+  Garage door spring repair, broken garage door spring replacement, torsion spring replacement, extension spring repair, cable repair, roller replacement, door balance adjustment, and garage door safety service in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Garage door spring repair and balance service for doors that feel heavy, slam shut, open unevenly, or stop working. We inspect springs, cables, rollers, tracks, opener strain, and safety before repair.
+image:
+  src: ../garage-doors/photos/07.jpg
+  alt: Garage door spring repair and hardware inspection for safe overhead operation.
+
+sections:
+  - type: Benefits
+    title: Broken springs are a safety issue
+    content:
+      - title: Heavy door symptoms
+        desc: |-
+          A broken spring can make the garage door feel extremely heavy, stop halfway, slam down, or refuse to open even when the opener runs.
+      - title: Matched spring sizing
+        desc: |-
+          Springs must match door weight, height, drum setup, and hardware condition. Guesswork can shorten opener life or create unsafe movement.
+      - title: Cable and roller review
+        desc: |-
+          Spring problems often appear with frayed cables, worn rollers, bent tracks, loose brackets, or opener strain.
+      - title: Balance and safety testing
+        desc: |-
+          After repair, the door should lift smoothly, hold position, close evenly, and trigger safety systems properly.
+
+  - type: TextCarousel
+    text:
+      - garage door spring repair
+      - broken spring replacement
+      - torsion spring repair
+      - cable repair
+      - garage door balance
+      - garage door safety service
+
+  - type: Faq
+    title: Garage door spring FAQ
+    content:
+      - title: Can I open a garage door with a broken spring?
+        desc: |-
+          It is not recommended. The door can be very heavy and unsafe, and using the opener may damage the opener or door hardware.
+      - title: How do I know if the spring is broken?
+        desc: |-
+          Signs include a visible gap in the torsion spring, a loud snap, a door that will not lift, crooked movement, loose cables, or an opener that strains.
+      - title: Do both springs need replacement?
+        desc: |-
+          On two-spring systems, replacing both may be recommended when they are the same age so the door remains balanced.
+      - title: Why does spring sizing matter?
+        desc: |-
+          The wrong spring can make the door too heavy, too light, uneven, noisy, or hard on the opener.
+
+  - type: Services
+    exclude:
+      - garage-door-spring-repair

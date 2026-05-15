@@ -1,0 +1,73 @@
+title: Wallpaper removal
+position: 32
+seo: |-
+  Wallpaper removal, wallpaper glue removal, wall repair after wallpaper, skim coating, priming, wallpaper replacement, paint prep, and wall finishing in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Wallpaper removal and wall repair for rooms with old paper, glue residue, torn drywall paper, painted-over wallpaper, failed seams, or walls that need paint or new wallpaper after removal.
+image:
+  src: ../wallpaper/photos/bathroom-wallpaper-installation-toronto-grey-pattern-feature-wall-01.jpg
+  alt: Wallpaper removal and replacement planning for a bathroom feature wall in Toronto.
+
+sections:
+  - type: Benefits
+    title: Removal is only half the job
+    content:
+      - title: Glue and residue cleanup
+        desc: |-
+          Old adhesive can cause paint failure, bubbling, stains, and poor wallpaper adhesion if it is not cleaned or sealed properly.
+      - title: Drywall paper repair
+        desc: |-
+          Torn drywall paper may need sealing, skim coating, sanding, and primer before paint or new wallpaper.
+      - title: Painted-over wallpaper
+        desc: |-
+          Painted wallpaper can be slower to remove because moisture may not penetrate evenly and hidden seams can release unpredictably.
+      - title: Paint or replacement wallpaper
+        desc: |-
+          After removal, walls can be finished for paint or prepared for new wallpaper installation.
+
+  - type: ZigZag
+    title: Related wallpaper and wall services
+    content:
+      - title: Wallpaper installation
+        desc: |-
+          When replacing old wallpaper, clean wall prep and primer help new wallpaper bond properly and remove better later.
+        image:
+          src: ../wallpaper/cover.jpg
+          alt: Wallpaper installation after wallpaper removal and wall preparation.
+        link: /services/wallpaper
+      - title: Drywall repair and skim coating
+        desc: |-
+          Wallpaper removal often exposes torn paper, uneven walls, old patches, and defects that need repair before painting.
+        image:
+          src: ../painting/photos/level-5-skim-coating-wall-repair.jpg
+          alt: Drywall repair after wallpaper removal.
+        link: /services/drywall-repair-skim-coating
+
+  - type: TextCarousel
+    text:
+      - wallpaper removal Toronto
+      - wallpaper glue removal
+      - wall repair after wallpaper
+      - skim coating after removal
+      - wallpaper replacement
+      - paint prep after wallpaper
+
+  - type: Faq
+    title: Wallpaper removal FAQ
+    content:
+      - title: Can wallpaper be painted over instead of removed?
+        desc: |-
+          Sometimes, but it is risky. Loose seams, trapped adhesive, texture, and moisture can telegraph through paint or fail later.
+      - title: Why does drywall tear during wallpaper removal?
+        desc: |-
+          Drywall tears when the wall was not properly primed, adhesive bonded too strongly, or old layers were installed over weak paint or paper.
+      - title: Do walls need skim coating after wallpaper removal?
+        desc: |-
+          Often yes if there is torn paper, glue residue, dents, seams, texture, or uneven areas that would show under paint.
+      - title: Can you remove wallpaper and install new wallpaper?
+        desc: |-
+          Yes. We remove old paper, correct wall issues, prime where needed, and prepare the wall for new wallpaper installation.
+
+  - type: Services
+    exclude:
+      - wallpaper-removal

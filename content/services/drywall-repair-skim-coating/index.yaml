@@ -1,0 +1,74 @@
+title: Drywall repair and skim coating
+position: 20
+seo: |-
+  Drywall repair, skim coating, Level 5 drywall finishing, wall repair, ceiling repair, crack repair, water damage repair, and smooth wall preparation before painting in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, and the GTA.
+desc: |-
+  Drywall repair and skim coating for walls and ceilings that need a smooth, paint-ready finish. We fix cracks, dents, nail pops, torn drywall paper, uneven seams, texture, and water damage before primer and paint.
+image:
+  src: ../painting/photos/smooth-wall-finish-level-5.jpg
+  alt: Level 5 drywall finish and skim coating on a smooth wall before interior painting.
+
+sections:
+  - type: Benefits
+    title: Drywall problems we fix
+    content:
+      - title: Cracks, dents, and nail pops
+        desc: |-
+          We repair common drywall damage before painting, including settlement cracks, screw pops, dents, corner bead damage, gouges, and failed old patches.
+      - title: Skim coating and Level 5 finish
+        desc: |-
+          Skim coating helps correct texture, rough drywall, visible seams, and critical-light walls where ordinary patching still shows after paint.
+      - title: Water damage and torn paper
+        desc: |-
+          Water stains, bubbling paint, loose compound, and torn drywall paper need sealing, repair, sanding, priming, and paint-ready finishing.
+      - title: Ceiling repair before painting
+        desc: |-
+          Smooth ceilings show every flaw. We repair seams, cracks, old texture, popcorn removal marks, and damaged ceiling areas before ceiling paint.
+
+  - type: ZigZag
+    title: Related wall finishing services
+    content:
+      - title: Interior painting after drywall repair
+        desc: |-
+          Drywall repair is often the first step before a clean repaint. We can repair, sand, prime, and paint the same room so the finish reads as one surface.
+        image:
+          src: ../painting/photos/luxury-interior-painting-toronto.jpg
+          alt: Interior painting after drywall repair and skim coating in Toronto.
+        link: /services/painting
+      - title: Smooth ceiling finishing
+        desc: |-
+          After popcorn ceiling removal, ceiling repairs and skim coating help create a flat, modern ceiling with fewer waves, seams, and shadows.
+        image:
+          src: ../popcorn-removal/cleanup.jpg
+          alt: Smooth ceiling finishing after popcorn ceiling removal.
+        link: /services/smooth-ceiling-finishing
+
+  - type: TextCarousel
+    text:
+      - drywall repair Toronto
+      - skim coating walls
+      - Level 5 drywall finish
+      - wall repair before painting
+      - ceiling repair and painting
+      - water damage drywall repair
+      - smooth wall preparation
+
+  - type: Faq
+    title: Drywall repair FAQ
+    content:
+      - title: When do walls need skim coating instead of patching?
+        desc: |-
+          Skim coating is useful when flaws cover a broad area: old texture, many patches, visible drywall seams, torn paper, roller texture, or walls hit by strong side lighting.
+      - title: Can you repair drywall and paint the same room?
+        desc: |-
+          Yes. We often combine drywall repair, skim coating, priming, and interior painting so the repaired areas blend with the rest of the room.
+      - title: Do water-damaged walls need primer?
+        desc: |-
+          Usually yes. Stains, torn paper, and porous repair areas need proper sealing or stain-blocking primer before finish paint.
+      - title: Can you repair ceilings after popcorn removal?
+        desc: |-
+          Yes. Popcorn removal can reveal seams, old tape lines, patched areas, and uneven drywall that may need skim coating before ceiling paint.
+
+  - type: Services
+    exclude:
+      - drywall-repair-skim-coating

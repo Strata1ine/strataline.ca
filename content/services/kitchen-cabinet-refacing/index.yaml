@@ -1,0 +1,73 @@
+title: Kitchen cabinet refacing
+position: 30
+seo: |-
+  Kitchen cabinet refacing, cabinet door replacement, cabinet painting, kitchen cabinet upgrades, new cabinet fronts, hardware replacement, soft close hinges, and kitchen refresh services in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Kitchen cabinet refacing and cabinet front upgrades for kitchens with a good layout but dated doors, worn finishes, old hardware, or tired colours. We help plan doors, panels, paint, hardware, and related kitchen finishes.
+image:
+  src: ../kitchens/cover.jpg
+  alt: Kitchen cabinet refacing and kitchen renovation with updated cabinet fronts and clean finishes.
+
+sections:
+  - type: Benefits
+    title: When refacing makes sense
+    content:
+      - title: Keep the working layout
+        desc: |-
+          Refacing is strongest when cabinet boxes are sound and the kitchen layout already works.
+      - title: Upgrade visible surfaces
+        desc: |-
+          New doors, drawer fronts, panels, trim, paint, pulls, hinges, and soft-close hardware can change the kitchen without a full gut renovation.
+      - title: Pair with paint or counters
+        desc: |-
+          Cabinet refacing often works with cabinet painting, backsplash, countertop, lighting, flooring, and wall painting updates.
+      - title: Avoid unnecessary demolition
+        desc: |-
+          A focused kitchen refresh can reduce disruption compared with full cabinet replacement.
+
+  - type: ZigZag
+    title: Related kitchen services
+    content:
+      - title: Cabinet painting
+        desc: |-
+          If doors and boxes are sound, cabinet painting can be the fastest way to change colour and clean up a dated kitchen.
+        image:
+          src: ../painting/photos/modern-kitchen-repaint-satin.jpg
+          alt: Cabinet painting and refinishing for a kitchen refresh.
+        link: /services/cabinet-painting
+      - title: Kitchen renovations
+        desc: |-
+          When layout, plumbing, electrical, cabinetry, and flooring all need changes, a full kitchen renovation may be the better path.
+        image:
+          src: ../kitchens/photos/white-custom-kitchen-cabinets-quartz-backsplash-integrated-range-toronto.webp
+          alt: Kitchen renovation with white cabinets, quartz backsplash, and modern finishes.
+        link: /services/kitchens
+
+  - type: TextCarousel
+    text:
+      - kitchen cabinet refacing
+      - cabinet door replacement
+      - kitchen cabinet refresh
+      - soft close hinges
+      - cabinet hardware replacement
+      - cabinet painting and refacing
+
+  - type: Faq
+    title: Cabinet refacing FAQ
+    content:
+      - title: Is cabinet refacing the same as cabinet painting?
+        desc: |-
+          No. Painting changes the finish on existing parts. Refacing can include new doors, drawer fronts, panels, hardware, and finish updates.
+      - title: When is full kitchen renovation better?
+        desc: |-
+          Full renovation is better when the layout is poor, cabinets are damaged, plumbing or electrical must move, or storage needs change significantly.
+      - title: Can I add soft-close hinges?
+        desc: |-
+          Often yes, depending on cabinet construction and door style.
+      - title: What should I send for a cabinet refacing quote?
+        desc: |-
+          Send photos of the full kitchen, cabinet interiors, doors, hinges, panels, dimensions, and notes on whether counters or backsplash are staying.
+
+  - type: Services
+    exclude:
+      - kitchen-cabinet-refacing

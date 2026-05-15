@@ -1,0 +1,66 @@
+title: Walk-in shower renovation
+position: 29
+seo: |-
+  Walk-in shower renovation, tub to shower conversion, custom shower renovation, glass shower installation, shower tile, waterproofing, niche installation, curbless shower planning, and bathroom renovation in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Walk-in shower renovation for bathrooms that need a cleaner layout, better waterproofing, updated tile, glass doors, niches, benches, fixtures, and easier everyday use.
+image:
+  src: ../bathrooms/photos/walk-in-shower-window-bathroom-renovation-toronto.webp
+  alt: Walk-in shower renovation with glass enclosure and modern bathroom tile in Toronto.
+
+sections:
+  - type: Benefits
+    title: Shower renovation details that matter
+    content:
+      - title: Waterproofing before tile
+        desc: |-
+          A shower is only as good as the waterproofing behind it. Substrate, slope, corners, seams, niche details, and penetrations matter.
+      - title: Glass and layout planning
+        desc: |-
+          Door swing, fixed panels, curb height, entry width, towel access, vanity clearance, and toilet clearance should be planned before tile starts.
+      - title: Tile, niche, and fixture placement
+        desc: |-
+          Tile layout, drain location, valve height, shower head height, niche position, bench size, and grout lines affect the finished look.
+      - title: Tub to shower conversions
+        desc: |-
+          Removing a bathtub can make a bathroom feel cleaner and more usable when the home does not need that tub for resale or family use.
+
+  - type: ZigZag
+    title: Related bathroom pages
+    content:
+      - title: Bathroom renovations
+        desc: |-
+          Shower renovation can be a focused project or part of a full bathroom remodel with vanity, flooring, lighting, fan, toilet, and paint.
+        image:
+          src: ../bathrooms/cover.jpg
+          alt: Full bathroom renovation with walk-in shower and modern finishes.
+        link: /services/bathrooms
+
+  - type: TextCarousel
+    text:
+      - walk-in shower renovation
+      - tub to shower conversion
+      - glass shower installation
+      - shower waterproofing
+      - bathroom tile renovation
+      - custom shower Toronto
+
+  - type: Faq
+    title: Walk-in shower FAQ
+    content:
+      - title: Can you convert a bathtub to a walk-in shower?
+        desc: |-
+          Yes, when plumbing, drainage, layout, waterproofing, and glass clearance support the conversion.
+      - title: Do walk-in showers need waterproofing behind tile?
+        desc: |-
+          Yes. Tile and grout are not the waterproofing system. Proper membranes, seams, drains, and penetrations are critical.
+      - title: What affects shower renovation cost?
+        desc: |-
+          Size, demolition, plumbing changes, tile, waterproofing, glass, niches, benches, fixtures, and structural/site conditions all affect price.
+      - title: Can a shower be curbless?
+        desc: |-
+          Sometimes. Curbless showers need slope, drain planning, floor height, waterproofing, and splash control reviewed before committing.
+
+  - type: Services
+    exclude:
+      - walk-in-shower-renovation

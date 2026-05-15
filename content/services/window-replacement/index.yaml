@@ -1,0 +1,73 @@
+title: Window replacement
+position: 27
+seo: |-
+  Window replacement, vinyl windows, energy efficient windows, casement windows, awning windows, sliding windows, picture windows, bay windows, window installation, and drafty window replacement in Toronto, Vaughan, Richmond Hill, Markham, Mississauga, Oakville, and the GTA.
+desc: |-
+  Window replacement for drafty, fogged, damaged, or outdated windows. We help plan vinyl window styles, glass, grilles, colour, trim, capping, and energy-efficient upgrades for GTA homes.
+image:
+  src: ../doors_and_windows/photos/supplier/ontario-vinyl-casement-window.png
+  alt: Energy efficient vinyl casement window replacement for an Ontario home.
+
+sections:
+  - type: Benefits
+    title: Window replacement planning
+    content:
+      - title: Match the opening and room
+        desc: |-
+          Casement, awning, slider, hung, picture, fixed, bay, and specialty windows each solve different airflow, view, egress, and design needs.
+      - title: Draft and condensation review
+        desc: |-
+          Window replacement can help with drafts, fogged glass, poor seals, cold rooms, water staining, and old frames that no longer close properly.
+      - title: Energy-efficient glass
+        desc: |-
+          Low-E glass, argon fills, warm-edge spacers, frame design, and proper installation all affect comfort and efficiency.
+      - title: Exterior and interior finishing
+        desc: |-
+          Trim, drywall, casing, capping, caulking, sill condition, and exterior colours should be reviewed with the window order.
+
+  - type: ZigZag
+    title: Related exterior upgrades
+    content:
+      - title: Doors and windows
+        desc: |-
+          Window replacement often pairs with front entry doors, patio doors, trim, weatherstripping, and energy upgrades.
+        image:
+          src: ../doors_and_windows/cover.jpg
+          alt: Door and window replacement for a GTA home.
+        link: /services/doors_and_windows
+      - title: Energy-efficient upgrades
+        desc: |-
+          Windows can be part of a broader plan for air sealing, insulation, doors, ventilation, and heating efficiency.
+        image:
+          src: ../energy-efficient-upgrades/photos/windows.jpg
+          alt: Energy-efficient window replacement as part of home upgrade planning.
+        link: /services/energy-efficient-upgrades
+
+  - type: TextCarousel
+    text:
+      - window replacement Toronto
+      - energy efficient windows
+      - vinyl window installation
+      - casement windows
+      - awning windows
+      - drafty window replacement
+
+  - type: Faq
+    title: Window replacement FAQ
+    content:
+      - title: When should windows be replaced?
+        desc: |-
+          Replacement is worth considering when windows are drafty, fogged between panes, hard to operate, leaking, rotting, noisy, or visibly failing around the frame.
+      - title: Which window style is best?
+        desc: |-
+          It depends on room use, airflow, view, size, egress, security, and exterior design. Casement and awning windows are common for tighter seals.
+      - title: Can window replacement reduce drafts?
+        desc: |-
+          Yes, if the window and installation details address air leakage around the frame, sash, trim, and exterior seal.
+      - title: Do you replace patio doors too?
+        desc: |-
+          Yes. Patio doors, sliding doors, garden doors, and entry doors can be planned with window replacement.
+
+  - type: Services
+    exclude:
+      - window-replacement

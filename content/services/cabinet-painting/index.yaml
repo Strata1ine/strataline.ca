@@ -1,0 +1,73 @@
+title: Cabinet painting
+position: 22
+seo: |-
+  Cabinet painting, kitchen cabinet painting, cabinet refinishing, sprayed cabinet doors, vanity painting, millwork painting, and durable cabinet repainting in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, and the GTA.
+desc: |-
+  Cabinet painting and refinishing for kitchens, vanities, built-ins, and millwork that need a clean sprayed finish. We prep, prime, sand, and paint cabinets for a smoother upgrade without replacing the whole kitchen.
+image:
+  src: ../painting/photos/modern-kitchen-repaint-satin.jpg
+  alt: Kitchen cabinet painting with a smooth satin finish and crisp modern colour.
+
+sections:
+  - type: Benefits
+    title: Cabinet painting that holds up
+    content:
+      - title: Degreasing and sanding
+        desc: |-
+          Kitchen cabinets collect oil, cleaners, wax, and hand contact. Good cabinet painting starts with cleaning, sanding, and adhesion prep.
+      - title: Proper primer
+        desc: |-
+          Primer choice matters for laminate, maple, oak, MDF, stained wood, old paint, and glossy factory finishes.
+      - title: Sprayed finish options
+        desc: |-
+          Doors, drawers, panels, vanities, built-ins, and millwork can be sprayed for a smoother finish than brush-only painting.
+      - title: Colour and sheen planning
+        desc: |-
+          Whites, warm neutrals, dark colours, satin finishes, and durable cabinet coatings all behave differently in busy kitchens.
+
+  - type: ZigZag
+    title: Related kitchen upgrades
+    content:
+      - title: Kitchen cabinet refacing
+        desc: |-
+          If the cabinet layout works but doors are worn, refacing or new fronts may be a better fit than a full kitchen renovation.
+        image:
+          src: ../kitchens/cover.jpg
+          alt: Kitchen cabinet refacing and cabinet door upgrade in a GTA kitchen.
+        link: /services/kitchen-cabinet-refacing
+      - title: Interior painting and trim
+        desc: |-
+          Cabinet painting often pairs with wall painting, trim painting, ceiling repair, and a cleaner overall kitchen refresh.
+        image:
+          src: ../painting/photos/high-end-trim-painting-spray-finish.png
+          alt: Trim and millwork painting with a smooth sprayed finish.
+        link: /services/trim-and-millwork-painting
+
+  - type: TextCarousel
+    text:
+      - kitchen cabinet painting
+      - cabinet refinishing Toronto
+      - sprayed cabinet doors
+      - vanity painting
+      - built-in millwork painting
+      - cabinet repainting GTA
+
+  - type: Faq
+    title: Cabinet painting FAQ
+    content:
+      - title: Is cabinet painting cheaper than replacing cabinets?
+        desc: |-
+          Usually yes when the boxes and layout are in good condition. Replacement makes more sense when cabinets are damaged, poorly built, or the layout no longer works.
+      - title: Can oak cabinets be painted?
+        desc: |-
+          Yes, but oak grain can remain visible unless extra grain filling and prep are included. We review expectations before quoting.
+      - title: Do you remove cabinet doors for painting?
+        desc: |-
+          Doors and drawers are usually removed for better prep and finish. Cabinet boxes, panels, and trim are protected and painted on site.
+      - title: What finish is best for cabinets?
+        desc: |-
+          Durable satin or low-sheen cabinet coatings are common because they clean more easily than wall paint and resist everyday handling better.
+
+  - type: Services
+    exclude:
+      - cabinet-painting
