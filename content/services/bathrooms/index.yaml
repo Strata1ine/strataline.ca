@@ -14,8 +14,12 @@ sections:
     content:
       - src: ./photos/spa-bathroom-freestanding-tub-glass-shower-vaughan.webp
         alt: Spa bathroom renovation with freestanding tub, glass shower, marble tile, dark vanity, and bright natural light in Vaughan.
+      - src: ./photos/freestanding-tub-glass-shower-marble-bathroom-renovation-toronto.webp
+        alt: Toronto bathroom renovation with freestanding tub, frameless glass shower, marble-look tile, chrome tub filler, and bright window light.
       - src: ./photos/double-vanity-oak-cabinets-bathroom-renovation-vaughan.webp
         alt: Double vanity bathroom renovation with oak cabinets, two mirrors, quartz counter, wall sconces, and dark tile floor in Vaughan.
+      - src: ./photos/oak-double-vanity-black-fixtures-bathroom-renovation-toronto.webp
+        alt: Oak double vanity bathroom renovation in Toronto with black faucets, black framed mirrors, quartz countertop, and glass shower beside the vanity.
       - src: ./photos/marble-glass-shower-bathroom-renovation-vaughan.webp
         alt: Marble glass shower bathroom renovation with frameless shower door, recessed lighting, and large format tile in Vaughan.
       - src: ./photos/dark-double-vanity-bathroom-renovation-vaughan.webp
@@ -181,6 +185,10 @@ sections:
         image:
           src: ./photos/double-vanity-oak-cabinets-bathroom-renovation-vaughan.webp
           alt: Double vanity with oak cabinets, two mirrors, quartz counter, wall sconces, and dark floor tile.
+      - title: Oak vanity with black fixtures
+        image:
+          src: ./photos/oak-double-vanity-black-fixtures-bathroom-renovation-toronto.webp
+          alt: Oak double vanity with black faucets, black framed mirrors, quartz counter, and glass shower in a Toronto bathroom renovation.
       - title: Walk-in showers
         image:
           src: ./photos/marble-glass-shower-bathroom-renovation-vaughan.webp
@@ -227,6 +235,10 @@ sections:
         image:
           src: ./photos/spa-bathroom-freestanding-tub-glass-shower-vaughan.webp
           alt: Spa bathroom with freestanding tub, frameless glass shower, marble-look tile, dark vanity, and bright window.
+      - title: Freestanding tub and glass shower
+        image:
+          src: ./photos/freestanding-tub-glass-shower-marble-bathroom-renovation-toronto.webp
+          alt: Freestanding tub and frameless glass shower bathroom renovation with marble-look tile and chrome fixtures in Toronto.
       - title: Black vanity and round mirror
         image:
           src: ./photos/black-vanity-round-mirror-glass-shower-bathroom-renovation-woodbridge.webp
@@ -349,8 +361,14 @@ sections:
       - src: ./photos/spa-bathroom-freestanding-tub-glass-shower-vaughan.webp
         alt: Spa bathroom renovation with freestanding tub, glass shower, marble tile, dark vanity, and bright natural light in Vaughan.
         size: wide
+      - src: ./photos/freestanding-tub-glass-shower-marble-bathroom-renovation-toronto.webp
+        alt: Toronto bathroom renovation with freestanding tub, frameless glass shower, marble-look porcelain tile, chrome tub filler, and bright window light.
+        size: wide
       - src: ./photos/double-vanity-oak-cabinets-bathroom-renovation-vaughan.webp
         alt: Double vanity bathroom renovation with oak cabinets, two mirrors, quartz counter, wall sconces, and dark tile floor in Vaughan.
+        size: wide
+      - src: ./photos/oak-double-vanity-black-fixtures-bathroom-renovation-toronto.webp
+        alt: Oak double vanity bathroom renovation in Toronto with black faucets, black mirror frames, quartz countertop, and glass shower panel.
         size: wide
       - src: ./photos/marble-glass-shower-bathroom-renovation-vaughan.webp
         alt: Marble glass shower bathroom renovation with frameless shower door, recessed lighting, and large format tile in Vaughan.

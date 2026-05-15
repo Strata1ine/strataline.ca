@@ -174,13 +174,11 @@ const { title, intro, content = [] } = Astro.props as Props;
 		};
 
 		stage.addEventListener('pointerdown', (event) => {
-			event.preventDefault();
 			startDragging(event);
 			stage.setPointerCapture?.(event.pointerId);
 		});
 
 		divider.addEventListener('pointerdown', (event) => {
-			event.preventDefault();
 			event.stopPropagation();
 			startDragging(event);
 			divider.setPointerCapture?.(event.pointerId);
@@ -297,7 +295,7 @@ const { title, intro, content = [] } = Astro.props as Props;
 		border-radius: 0.85rem;
 		background: #f3f4f6;
 		cursor: ew-resize;
-		touch-action: none;
+		touch-action: pan-y;
 	}
 
 	.ba-image {
@@ -368,6 +366,7 @@ const { title, intro, content = [] } = Astro.props as Props;
 		z-index: 5;
 		pointer-events: all;
 		cursor: ew-resize;
+		touch-action: pan-y;
 	}
 
 	.ba-divider::before {
