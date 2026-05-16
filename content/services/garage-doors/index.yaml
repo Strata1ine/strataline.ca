@@ -473,6 +473,25 @@ sections:
         desc: |-
           Yes. We service Durham Region, including Pickering, Ajax, Whitby, and Oshawa, for garage door repair, replacement, springs, cables, openers, and insulated garage door upgrades.
 
+  - type: ZigZag
+    title: Specialty garage door pages
+    content:
+      - title: Garage door openers
+        desc: |-
+          Quiet opener installation, smart controls, keypads, remotes, safety sensors, wall consoles, and opener replacement matched to the door.
+        image:
+          src: ./photos/09.jpg
+          alt: Quiet garage door opener installation for a modern residential garage door.
+        link: /services/garage-door-openers
+
+      - title: Garage door spring repair
+        desc: |-
+          Broken springs, torsion spring sizing, cable issues, door balance, opener strain, and safe hardware repair explained clearly.
+        image:
+          src: ./photos/07.jpg
+          alt: Garage door spring repair and hardware inspection.
+        link: /services/garage-door-spring-repair
+
   - type: ServiceAreas
     title: Garage door service areas
     service: garage-doors

@@ -2442,6 +2442,17 @@ sections:
         desc: |-
           Yes. Utility screens can be painted or stained if material and access allow it. Equipment ventilation must remain clear.
 
+  - type: ZigZag
+    title: Specialty exterior painting pages
+    content:
+      - title: Exterior brick painting
+        desc: |-
+          Brick painting, masonry prep, moisture review, mortar condition, breathable coatings, facade colour planning, and exterior finish coordination.
+        image:
+          src: ./photos/exterior-house-painting-toronto-after.webp
+          alt: Exterior brick painting and house painting with a clean modern facade.
+        link: /services/exterior-brick-painting
+
   - type: ServiceAreas
     title: Exterior painting service areas
     service: exterior-painting

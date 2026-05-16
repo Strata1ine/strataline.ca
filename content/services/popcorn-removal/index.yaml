@@ -377,6 +377,25 @@ sections:
         desc: |-
           Yes. We remove popcorn ceilings in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty ceiling pages
+    content:
+      - title: Smooth ceiling finishing
+        desc: |-
+          Popcorn removal is only part of the result. Smooth ceiling finishing covers repair, skim coating, sanding, primer, and ceiling paint.
+        image:
+          src: ./cleanup.jpg
+          alt: Smooth ceiling finishing after dust-controlled popcorn ceiling removal.
+        link: /services/smooth-ceiling-finishing
+
+      - title: Drywall repair and skim coating
+        desc: |-
+          Ceiling cracks, drywall seams, torn paper, patched areas, and wall defects often need correction before the final smooth finish.
+        image:
+          src: ../painting/photos/smooth-wall-finish-level-5.jpg
+          alt: Drywall repair and skim coating for smooth walls and ceilings.
+        link: /services/drywall-repair-skim-coating
+
   - type: ServiceAreas
     title: Popcorn ceiling removal service areas
     service: popcorn-removal

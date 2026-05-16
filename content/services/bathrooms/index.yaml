@@ -570,6 +570,17 @@ sections:
         desc: |-
           Yes. We renovate bathrooms in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty bathroom pages
+    content:
+      - title: Walk-in shower renovation
+        desc: |-
+          Focused planning for tub-to-shower conversions, waterproofing, shower tile, niches, glass, benches, drains, and curbless shower details.
+        image:
+          src: ./photos/walk-in-shower-window-bathroom-renovation-toronto.webp
+          alt: Walk-in shower renovation with glass enclosure and modern bathroom tile.
+        link: /services/walk-in-shower-renovation
+
   - type: ServiceAreas
     title: Bathroom renovation service areas
     service: bathrooms

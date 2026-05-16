@@ -1033,6 +1033,41 @@ sections:
         desc: |-
           Yes. Painting and flooring should be scheduled to reduce dust and protect finished surfaces. We plan the order based on the renovation scope.
 
+  - type: ZigZag
+    title: Specialty painting and wall finishing pages
+    content:
+      - title: Drywall repair and skim coating
+        desc: |-
+          Go deeper on cracked walls, visible seams, nail pops, water damage, skim coating, and Level 5 drywall finishing before paint.
+        image:
+          src: ./photos/smooth-wall-finish-level-5.jpg
+          alt: Level 5 drywall finish and skim coating before interior painting.
+        link: /services/drywall-repair-skim-coating
+
+      - title: Trim and millwork painting
+        desc: |-
+          See the details behind baseboard painting, door painting, wainscoting, crown moulding, built-ins, and sprayed millwork finishes.
+        image:
+          src: ./photos/high-end-wainscoting-painting-spray-finish.png
+          alt: Trim and wainscoting painting with a smooth sprayed finish.
+        link: /services/trim-and-millwork-painting
+
+      - title: Cabinet painting
+        desc: |-
+          Focused information for kitchen cabinet painting, vanity painting, sprayed doors, primer choice, sanding, and durable cabinet finishes.
+        image:
+          src: ./photos/modern-kitchen-repaint-satin.jpg
+          alt: Cabinet painting with a smooth satin kitchen finish.
+        link: /services/cabinet-painting
+
+      - title: Smooth ceiling finishing
+        desc: |-
+          Learn how ceiling repair, skim coating, sanding, primer, and flat ceiling paint create a clean finish after popcorn removal.
+        image:
+          src: ./photos/popcorn-ceiling-removal-gta.png
+          alt: Smooth ceiling finishing after popcorn ceiling removal.
+        link: /services/smooth-ceiling-finishing
+
   - type: ServiceAreas
     title: Interior painting service areas
     service: painting

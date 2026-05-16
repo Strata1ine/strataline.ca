@@ -307,6 +307,41 @@ sections:
         desc: |-
           Yes. We renovate stairs in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty stair pages
+    content:
+      - title: Carpet to hardwood stairs
+        desc: |-
+          A focused path for carpeted stair conversion, tread caps, white risers, squeak repair, stain matching, and railing coordination.
+        image:
+          src: ./staircase-renovation-gallery/stair-tread-caps-installation-toronto-oak-modern.jpg
+          alt: Carpet to hardwood stair conversion with oak stair tread caps.
+        link: /services/carpet-to-hardwood-stairs
+
+      - title: Stair tread caps
+        desc: |-
+          Hardwood tread cap installation for stairs that need a cleaner wood finish without rebuilding the entire staircase.
+        image:
+          src: ./staircase-renovation-gallery/staircase-tread-caps-installation-toronto-after.jpg
+          alt: Stair tread cap installation after carpet removal.
+        link: /services/stairs/tread-caps
+
+      - title: Stair refinishing
+        desc: |-
+          Sanding, staining, colour matching, riser finishing, dust control, and refinishing existing hardwood stairs.
+        image:
+          src: ./staircase-renovation-gallery/staircase-refinishing-vaughan-dark-treads-white-risers-modern.jpg
+          alt: Stair refinishing with dark treads and white risers.
+        link: /services/stairs/refinishing
+
+      - title: Railing installation
+        desc: |-
+          Handrails, iron balusters, newel posts, modern railing updates, code-aware planning, and finishing details.
+        image:
+          src: ./staircase-renovation-gallery/stair-railing-installation-vaughan-stainless-steel-modern.jpg
+          alt: Modern stair railing installation with stainless steel balusters.
+        link: /services/stairs/railing-installation
+
   - type: ServiceAreas
     title: Stair renovation service areas
     service: stairs

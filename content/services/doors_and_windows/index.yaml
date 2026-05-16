@@ -754,6 +754,25 @@ sections:
         desc: |-
           Yes. We replace doors and windows in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty door and window pages
+    content:
+      - title: Window replacement
+        desc: |-
+          A focused guide to drafty windows, fogged glass, vinyl windows, casement and awning windows, glass choices, trim, and energy performance.
+        image:
+          src: ./photos/supplier/ontario-vinyl-casement-window.png
+          alt: Energy efficient vinyl casement window replacement for an Ontario home.
+        link: /services/window-replacement
+
+      - title: Entry door replacement
+        desc: |-
+          Front door replacement, exterior door installation, glass inserts, sidelites, hardware, thresholds, weatherstripping, and curb appeal planning.
+        image:
+          src: ./photos/supplier/entry-doors/exterior-entry-door-installation-showcase-1.jpg
+          alt: Exterior entry door replacement with decorative glass and clean finishing.
+        link: /services/entry-door-replacement
+
   - type: ServiceAreas
     title: Door and window replacement service areas
     service: doors_and_windows

@@ -466,6 +466,17 @@ sections:
         desc: |-
           Yes. We install wallpaper in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty wallpaper pages
+    content:
+      - title: Wallpaper removal
+        desc: |-
+          Old wallpaper, glue residue, torn drywall paper, painted-over paper, skim coating, primer, and paint-ready wall repair after removal.
+        image:
+          src: ./photos/bathroom-wallpaper-installation-toronto-grey-pattern-feature-wall-01.jpg
+          alt: Wallpaper removal and replacement planning for a bathroom feature wall.
+        link: /services/wallpaper-removal
+
   - type: ServiceAreas
     title: Wallpaper installation service areas
     service: wallpaper

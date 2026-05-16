@@ -580,6 +580,25 @@ sections:
         desc: |-
           Yes. We renovate kitchens in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
 
+  - type: ZigZag
+    title: Specialty kitchen pages
+    content:
+      - title: Kitchen cabinet refacing
+        desc: |-
+          A practical route for kitchens with good layouts but dated doors, panels, hardware, hinges, and visible cabinet surfaces.
+        image:
+          src: ./photos/new-kitchen-cabinet-doors-drawers-refacing-newmarket.webp
+          alt: Kitchen cabinet refacing with new cabinet doors and drawer fronts.
+        link: /services/kitchen-cabinet-refacing
+
+      - title: Cabinet painting
+        desc: |-
+          Cabinet painting, sprayed doors, primer, sanding, finish durability, colour planning, vanities, built-ins, and kitchen refresh details.
+        image:
+          src: ../painting/photos/modern-kitchen-repaint-satin.jpg
+          alt: Kitchen cabinet painting with a smooth satin finish.
+        link: /services/cabinet-painting
+
   - type: ServiceAreas
     title: Kitchen renovation service areas
     service: kitchens
