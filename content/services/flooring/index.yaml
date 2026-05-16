@@ -1,0 +1,339 @@
+title: Flooring installation
+position: 7
+seo: |-
+  Flooring installation in Toronto, Vaughan, Woodbridge, and the GTA for engineered hardwood, luxury vinyl plank, laminate, hybrid resilient flooring, carpet tile, herringbone hardwood, and Fuzion Flooring products. Clean floor prep, subfloor levelling, transitions, stairs, trim, and dust-controlled installation for finished homes.
+desc: |-
+  Flooring installation for finished homes across Toronto, Vaughan, Woodbridge, and the GTA. We install engineered hardwood, luxury vinyl plank, laminate, hybrid resilient flooring, carpet tile, herringbone layouts, transitions, trims, and stair-to-floor details with careful prep and clean site protection.
+image:
+  src: ./cover.jpg
+  alt: |-
+    Open-concept kitchen and dining renovation with light oak engineered hardwood flooring, custom cabinetry, island seating, and finished trim.
+
+sections:
+  - type: ImageCarousel
+    content:
+      - src: ./photos/light-oak-flooring-open-concept-kitchen.jpg
+        alt: Light oak engineered hardwood flooring installed through an open-concept kitchen with island seating.
+      - src: ./photos/light-oak-engineered-hardwood-staircase-main-floor.jpg
+        alt: Light oak engineered hardwood flooring coordinated with a curved staircase and black iron railings.
+      - src: ./photos/dark-wide-plank-hardwood-living-room.jpg
+        alt: Dark wide plank hardwood flooring installed through a finished living room with clean baseboards.
+      - src: ./photos/herringbone-hardwood-border-marble-tile-transition.jpg
+        alt: Herringbone hardwood flooring with a precise border meeting marble-look tile.
+      - src: ./photos/light-oak-flooring-dining-room-kitchen.jpg
+        alt: Light oak flooring through a dining room and kitchen with bright finished interior details.
+      - src: ./photos/flush-wood-floor-vent-herringbone-hardwood.jpg
+        alt: Flush wood floor vent set into herringbone hardwood flooring.
+
+  - type: Benefits
+    title: Flooring that fits the house
+    content:
+      - title: Material matched to the room
+        desc: |-
+          Engineered hardwood, luxury vinyl plank, hybrid resilient flooring, laminate, and carpet tile each solve different problems. We help choose the right floor for kitchens, main floors, basements, stairs, offices, rentals, and high-traffic family spaces.
+      - title: Prep before planks
+        desc: |-
+          Flatness, subfloor condition, moisture, old adhesive, squeaks, height transitions, door clearances, and stair tie-ins matter before flooring is opened. Good installation starts below the finished surface.
+      - title: Clean work in occupied homes
+        desc: |-
+          We protect adjacent rooms, manage demolition, cut carefully, control dust, and keep access routes clear wherever possible. Flooring changes the whole house, so the process has to be orderly.
+      - title: Supplier-aware installation
+        desc: |-
+          Fuzion Flooring offers engineered hardwood, luxury vinyl, hybrid resilient, laminate, carpet tile, and accessories. We build the scope around the chosen product, installation method, subfloor, warranty requirements, and room conditions.
+      - title: Transitions that look planned
+        desc: |-
+          Floor replacement often meets stairs, tile, railings, baseboards, casing, doors, and kitchen cabinets. We plan trims, nosing, reducers, thresholds, vents, and colour matching so the work does not look patched.
+      - title: Built for daily wear
+        desc: |-
+          Pets, kids, chairs, winter grit, sunlight, humidity, and cleaning habits all affect flooring performance. We explain what each product handles well before the final decision is made.
+
+  - type: TextCarousel
+    text:
+      - Flooring installation Toronto
+      - Flooring installation Vaughan
+      - Flooring installation Woodbridge
+      - Flooring contractor GTA
+      - Engineered hardwood flooring installation
+      - Luxury vinyl plank flooring installation
+      - Hybrid resilient flooring installation
+      - Laminate flooring installation
+      - Carpet tile installation
+      - Fuzion Flooring installer
+      - Fuzion engineered hardwood
+      - Fuzion luxury vinyl plank
+      - SmartDrop flooring installation
+      - Wide plank hardwood flooring
+      - Herringbone hardwood floor installation
+      - Waterproof vinyl flooring
+      - Kitchen flooring installation
+      - Main floor flooring replacement
+      - Basement vinyl plank flooring
+      - Condo flooring installation
+      - Subfloor levelling for flooring
+      - Floor transitions and trims
+      - Stair and floor stain matching
+      - Dust-controlled flooring renovation
+      - Occupied home flooring installation
+      - Flooring replacement before selling
+      - Hardwood flooring with stair renovation
+      - Flooring installation estimate GTA
+
+  - type: ZigZag
+    title: Flooring material options
+    content:
+      - title: Engineered hardwood
+        desc: |-
+          Engineered hardwood gives the look and feel of real wood with a more stable construction than solid hardwood. It is a strong choice for main floors, dining rooms, bedrooms, open layouts, and stair-adjacent spaces where natural grain, wide planks, low-luster finishes, and long-term value matter.
+        image:
+          src: ./photos/light-oak-engineered-hardwood-staircase-main-floor.jpg
+          alt: Engineered hardwood flooring installed through a main floor and coordinated with a curved staircase.
+        link: https://www.fuzionflooring.com/engineered-hardwood-collections/
+
+      - title: Luxury vinyl plank
+        desc: |-
+          Luxury vinyl plank is useful where water resistance, fast installation, high traffic, and low-maintenance care matter. It can work well in basements, kitchens, rentals, commercial rooms, and family spaces when the subfloor is prepared correctly.
+        image:
+          src: ./photos/dark-wide-plank-hardwood-condo-living-room.jpg
+          alt: Wide plank flooring in a finished condo living room with bright windows and clean trim.
+        link: https://www.fuzionflooring.com/luxury-vinyl-collections/
+
+      - title: Herringbone and patterned floors
+        desc: |-
+          Herringbone, chevron, and specialty layouts need more planning than standard plank installation. Layout lines, border cuts, room squareness, waste factor, transitions, and focal points are decided before the first row is installed.
+        image:
+          src: ./photos/herringbone-hardwood-border-marble-tile-transition.jpg
+          alt: Herringbone hardwood flooring with a border detail and marble tile transition.
+
+      - title: Laminate, hybrid, and carpet tile
+        desc: |-
+          Laminate and hybrid resilient floors can offer strong performance at a practical budget, while carpet tile is useful for offices, basements, and commercial spaces where sections may need replacement later. The right choice depends on use, subfloor, moisture, acoustics, and design goals.
+        image:
+          src: ./photos/dark-hardwood-hallway-flooring.jpg
+          alt: Dark hardwood hallway flooring with clean baseboards and doorway transitions.
+        link: https://www.fuzionflooring.com/
+
+  - type: ImagePanel
+    title: Details we plan before installation
+    content:
+      - title: Subfloor flatness
+        desc: |-
+          Uneven subfloors can cause hollow spots, movement, open seams, click-joint stress, and visible waves. We check flatness, fastening, patching, levelling, and old flooring layers before installation.
+        image:
+          src: ./photos/herringbone-hardwood-floor-border-installation.jpg
+          alt: Herringbone hardwood border installation showing careful layout and edge planning.
+
+      - title: Moisture and room use
+        desc: |-
+          Kitchens, basements, entries, laundry areas, and condos need different flooring decisions. Product selection should match moisture exposure, traffic, temperature swings, cleaning habits, and warranty rules.
+        image:
+          src: ./photos/light-oak-flooring-open-concept-kitchen.jpg
+          alt: Kitchen flooring selected for daily use, traffic, and easy cleaning in a renovated open-concept home.
+
+      - title: Stairs and transitions
+        desc: |-
+          Flooring rarely stops cleanly on its own. We coordinate stair nosing, reducers, thresholds, vents, baseboards, casing, railings, and colour matching so the floor belongs to the whole interior.
+        image:
+          src: ./photos/light-oak-hardwood-floor-stair-railing.jpg
+          alt: Light oak hardwood flooring coordinated with stair railings and finished hallway trim.
+
+      - title: Plank layout
+        desc: |-
+          Direction, starting line, board width, feature walls, hallway runs, kitchen islands, and room transitions affect the final look. A good layout avoids skinny cuts in obvious places.
+        image:
+          src: ./photos/flush-floor-register-hardwood-detail.jpg
+          alt: Flush floor register detail installed into patterned hardwood flooring.
+
+  - type: Gallery
+    title: Flooring project photos
+    content:
+      - src: ./photos/light-oak-flooring-open-concept-kitchen.jpg
+        alt: Light oak flooring installed through an open-concept kitchen and dining area.
+        size: wide
+      - src: ./photos/light-oak-engineered-hardwood-staircase-main-floor.jpg
+        alt: Light oak engineered hardwood flooring coordinated with curved stairs and black railings.
+        size: wide
+      - src: ./photos/dark-wide-plank-hardwood-living-room.jpg
+        alt: Dark wide plank hardwood flooring in a finished living room.
+        size: wide
+      - src: ./photos/dark-wide-plank-hardwood-condo-living-room.jpg
+        alt: Dark wide plank hardwood flooring in a condo living room with natural light.
+      - src: ./photos/herringbone-hardwood-border-marble-tile-transition.jpg
+        alt: Herringbone hardwood border with marble-look tile transition.
+        size: wide
+      - src: ./photos/herringbone-hardwood-floor-border-installation.jpg
+        alt: Herringbone hardwood flooring border installation detail.
+      - src: ./photos/flush-wood-floor-vent-herringbone-hardwood.jpg
+        alt: Flush wood floor vent integrated into herringbone hardwood flooring.
+      - src: ./photos/flush-floor-register-hardwood-detail.jpg
+        alt: Flush floor register and hardwood flooring detail.
+      - src: ./photos/dark-hardwood-hallway-flooring.jpg
+        alt: Dark hardwood hallway flooring with clean door transitions.
+      - src: ./photos/light-oak-hardwood-floor-stair-railing.jpg
+        alt: Light oak hardwood flooring beside a stair railing and finished trim.
+
+  - type: Benefits
+    title: Common flooring scopes
+    content:
+      - title: Main floor replacement
+        desc: |-
+          Continuous flooring through living rooms, dining rooms, kitchens, halls, and entries needs careful demolition, floor height planning, baseboard work, transitions, and furniture coordination.
+      - title: Kitchen flooring
+        desc: |-
+          Kitchen floors must work with cabinets, islands, appliances, toe kicks, dishwasher access, water exposure, and adjacent rooms. Flooring timing should be coordinated with the full kitchen scope.
+      - title: Basement flooring
+        desc: |-
+          Basements need moisture-aware products, proper underlayment where required, flat concrete, transition planning, and realistic expectations around slab conditions.
+      - title: Condo flooring
+        desc: |-
+          Condo work may require board approval, sound-rated underlayment, elevator booking, delivery windows, disposal rules, insurance documents, and work-hour restrictions.
+      - title: Stair and floor packages
+        desc: |-
+          Flooring replacement often looks best when stairs are refinished, capped, or stain-matched at the same time. This prevents the old staircase from fighting the new floor.
+      - title: Commercial and office flooring
+        desc: |-
+          Luxury vinyl, carpet tile, and durable laminate can suit offices, showrooms, retail rooms, and workspaces that need fast turnaround and replaceable surfaces.
+
+  - type: Prices
+    title: What's the cost?
+    content:
+      - title: Practical
+        min: 4500
+        max: 12000
+        materials:
+          - Laminate flooring
+          - Entry luxury vinyl plank
+          - Basic trim and transitions
+          - Minor subfloor preparation
+        desc: |-
+          Best for smaller rooms, rentals, basements, offices, and straightforward flooring replacement where the existing subfloor is in good condition.
+      - title: Premium
+        min: 12000
+        max: 35000
+        materials:
+          - Engineered hardwood or premium luxury vinyl
+          - Wider planks
+          - New baseboards or shoe moulding
+          - Levelling, transitions, and stair tie-ins
+        desc: |-
+          Best for main floors, kitchens, open layouts, occupied homes, and projects where the floor needs to connect cleanly with stairs, trim, doors, and adjacent finishes.
+      - title: Custom
+        min: 35000
+        max: 95000
+        materials:
+          - Herringbone or chevron hardwood
+          - Wide plank engineered hardwood
+          - Specialty trims and vents
+          - Stair refinishing or tread coordination
+        desc: |-
+          Best for high-detail installations, patterned floors, full main-floor replacement, premium Fuzion Flooring selections, custom transitions, and flooring paired with stair renovation or millwork.
+
+  - type: Faq
+    title: Flooring installation FAQ
+    showMoreLabel: View more flooring questions
+    content:
+      - title: What flooring services do you provide?
+        desc: |-
+          We handle flooring installation, flooring replacement, engineered hardwood, luxury vinyl plank, hybrid resilient flooring, laminate, carpet tile, herringbone and patterned layouts, subfloor preparation, levelling, transitions, trims, baseboards, stair coordination, and cleanup.
+
+      - title: Do you install Fuzion Flooring products?
+        desc: |-
+          Yes. Fuzion Flooring carries engineered hardwood, luxury vinyl, hybrid resilient, laminate, carpet tile, and accessories. We install based on the specific product instructions, subfloor requirements, room conditions, and warranty expectations.
+
+      - title: Is engineered hardwood better than solid hardwood?
+        desc: |-
+          Engineered hardwood is often more stable than solid hardwood because of its layered construction. It is a strong choice for many GTA homes, especially where wider planks, changing humidity, and open main floors are part of the plan.
+
+      - title: Where does luxury vinyl plank make sense?
+        desc: |-
+          Luxury vinyl plank can be a good fit for basements, kitchens, laundry-adjacent areas, rentals, busy family spaces, and commercial rooms where water resistance, durability, and easier maintenance matter.
+
+      - title: What is SmartDrop flooring?
+        desc: |-
+          SmartDrop is a Fuzion luxury vinyl line designed around faster loose-lay installation. Suitability still depends on product selection, subfloor condition, room size, traffic, perimeter details, and whether glue-down is better for the space.
+
+      - title: Can new flooring go over old flooring?
+        desc: |-
+          Sometimes, but it depends on the old flooring type, bond, height, flatness, moisture, movement, manufacturer instructions, and transitions. Removing old flooring is often the cleaner long-term choice.
+
+      - title: Do floors need to acclimate before installation?
+        desc: |-
+          Many flooring products need jobsite conditioning or acclimation. Requirements depend on the material, packaging, humidity, temperature, subfloor, and manufacturer instructions. We confirm before scheduling installation.
+
+      - title: How important is subfloor levelling?
+        desc: |-
+          Very important. Uneven subfloors can create movement, noise, gaps, broken locking joints, and visible imperfections. Levelling or patching should be handled before the finished flooring is installed.
+
+      - title: Can you install herringbone flooring?
+        desc: |-
+          Yes. Herringbone flooring needs careful layout, extra waste allowance, accurate cuts, strong reference lines, and attention to room geometry. It costs more than straight plank installation because it is more detailed.
+
+      - title: Can flooring be installed in kitchens before cabinets?
+        desc: |-
+          It depends on the flooring type, cabinet plan, appliance access, island fastening, and renovation sequence. Some floors run under cabinets, while floating floors usually need expansion space and should follow manufacturer rules.
+
+      - title: Can you match new flooring to existing stairs?
+        desc: |-
+          Usually we can get close, but exact matching depends on species, stain, age, sun exposure, finish, and product availability. When stairs matter visually, refinishing or capping them with the flooring project often gives the cleanest result.
+
+      - title: Do you replace baseboards during flooring installation?
+        desc: |-
+          Yes. We can remove and reinstall existing baseboards where practical, install new baseboards, or use shoe moulding depending on the floor height, wall condition, budget, and finish level.
+
+      - title: What flooring is best for pets?
+        desc: |-
+          Pets need scratch-resistant surfaces, good traction, easy cleaning, and realistic expectations around claws and spills. Luxury vinyl, durable laminate, and harder engineered hardwood finishes can all work depending on the home.
+
+      - title: What flooring is best for basements?
+        desc: |-
+          Basement flooring should be moisture-aware. Luxury vinyl plank, hybrid resilient flooring, and some laminate systems can work well when the slab is flat, dry enough, and prepared correctly.
+
+      - title: Do condos need special flooring underlayment?
+        desc: |-
+          Often yes. Condo boards may require acoustic ratings, underlayment documentation, product specs, contractor insurance, elevator booking, and approval before installation. We review requirements before work starts.
+
+      - title: How long does flooring installation take?
+        desc: |-
+          A room can take a day or two. A main floor can take several days or longer depending on demolition, levelling, layout, stairs, baseboards, transitions, furniture, and product type.
+
+      - title: What should I send for a flooring quote?
+        desc: |-
+          Send room photos, measurements, existing floor type, stairs or transitions, basement or condo details, product preference, floor plan if available, and photos of problem areas like humps, dips, squeaks, or water damage.
+
+      - title: What should a flooring quote include?
+        desc: |-
+          A clear quote should include demolition, disposal, subfloor preparation, levelling assumptions, product installation, underlayment, trims, transitions, baseboards, stair details, furniture handling, exclusions, timeline, and warranty notes.
+
+      - title: Do you provide flooring installation across the GTA?
+        desc: |-
+          Yes. We install flooring in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Mississauga, Oakville, Burlington, Pickering, Ajax, Whitby, Oshawa, and nearby GTA communities.
+
+  - type: ZigZag
+    title: Related renovation pages
+    content:
+      - title: Staircase renovation
+        desc: |-
+          Pair flooring installation with stair refinishing, tread caps, railing updates, and stain matching so the main floor and staircase feel connected.
+        image:
+          src: ./photos/light-oak-engineered-hardwood-staircase-main-floor.jpg
+          alt: Main floor hardwood flooring coordinated with a curved staircase and railing details.
+        link: /services/stairs
+
+      - title: Kitchen renovations
+        desc: |-
+          Flooring is often part of a larger kitchen plan involving cabinets, islands, appliances, lighting, counters, and trim.
+        image:
+          src: ./photos/light-oak-flooring-open-concept-kitchen.jpg
+          alt: Kitchen renovation with light oak flooring, island seating, and bright cabinetry.
+        link: /services/kitchens
+
+      - title: Painting and finishing
+        desc: |-
+          New flooring often leads to baseboard, casing, wall, stair, and trim finishing. Painting after flooring gives the room a sharper final result.
+        image:
+          src: ./photos/dark-wide-plank-hardwood-living-room.jpg
+          alt: Dark hardwood flooring with finished baseboards and painted walls.
+        link: /services/painting
+
+  - type: Services
+    exclude:
+      - flooring
