@@ -27,6 +27,13 @@ const currentId = serviceSegments.join('/');
 
 const allPages = await getCollection('services');
 
+const isIndexable = (entry: (typeof allPages)[number]) => {
+	if (entry.data.hidden === true) return false;
+	if (typeof entry.data.seo === 'string') return true;
+
+	return entry.data.seo.noindex !== true && entry.data.seo.indexableQuality !== 'weak';
+};
+
 const toLabel = (id: string) => {
 	const area = id.replace(`${meta.service}/`, '');
 
@@ -69,10 +76,12 @@ const serviceTitle = hubPage?.data.title ?? meta.title;
 const serviceLabel =
 	meta.title.replace(/\s+service areas$/i, '') ||
 	serviceTitle.replace(/\s+-\s+.*$/, '').replace(/\s+in\s+.*$/i, '');
+const summaryLabel = `View ${serviceLabel.toLowerCase()} service areas`;
 
 const areaPages = allPages
 	.filter((entry) => entry.id.startsWith(`${meta.service}/`))
 	.filter((entry) => entry.id !== currentId)
+	.filter((entry) => isIndexable(entry))
 	.sort((a, b) => {
 		const aArea = a.id.replace(`${meta.service}/`, '');
 		const bArea = b.id.replace(`${meta.service}/`, '');
@@ -86,59 +95,98 @@ const areaPages = allPages
 		if (aRank !== bRank) return aRank - bRank;
 		return a.data.title.localeCompare(b.data.title);
 	});
+
+const showHubCard = Boolean(hubPage && hubPage.id !== currentId);
+const hasServiceAreaLinks = showHubCard || areaPages.length > 0;
 ---
 
-<Layout.Divider id={meta.id}>
-	<Layout.Title title={meta.title} pos="left" />
+{
+	hasServiceAreaLinks && (
+		<Layout.Divider id={meta.id}>
+			<Layout.Title title={meta.title} pos="left" />
 
-	<Layout.Container variant="inner">
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{
-				hubPage && hubPage.id !== currentId && (
-					<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
-						<h3 class="mb-2 font-serif text-2xl font-semibold">
-							{serviceLabel} hub
-						</h3>
+			<Layout.Container variant="inner">
+				<p class="desc-base mb-5 max-w-3xl">
+					We serve Toronto, York Region, Peel, Durham, Halton, and nearby GTA communities.
+					Open the city list to find local {serviceLabel.toLowerCase()} pages with planning
+					notes, FAQs, and quote details.
+				</p>
 
-						<p class="desc-base mb-4">
-							See our full {serviceLabel.toLowerCase()} coverage across Toronto and the GTA.
-						</p>
-
-						<Actions.Link
-							href={`/services/${hubPage.id}`}
-							rel="noopener noreferrer"
-							data-astro-prefetch=""
+				<details class="service-areas-collapse group">
+					<summary class="bg-primary inline-flex min-h-13 cursor-pointer select-none items-center gap-3 rounded-full px-6 py-3 font-sans text-base font-semibold text-black shadow-sm transition hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black sm:text-lg">
+						<span>{summaryLabel}</span>
+						<span
+							class="service-areas-icon flex size-7 items-center justify-center rounded-full bg-white/75 text-xl leading-none transition-transform"
+							aria-hidden="true"
 						>
-							View all service areas
-						</Actions.Link>
+							+
+						</span>
+					</summary>
+
+					<div class="service-area-grid mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{showHubCard && hubPage && (
+							<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+								<h3 class="mb-2 font-serif text-2xl font-semibold">
+									{serviceLabel} hub
+								</h3>
+
+								<p class="desc-base mb-4">
+									See our full {serviceLabel.toLowerCase()} coverage across Toronto and the GTA.
+								</p>
+
+								<Actions.Link
+									href={`/services/${hubPage.id}`}
+									rel="noopener noreferrer"
+									data-astro-prefetch=""
+								>
+									View all service areas
+								</Actions.Link>
+							</div>
+						)}
+
+						{areaPages.map((page) => {
+							const label = toLabel(page.id);
+
+							return (
+								<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+									<h3 class="mb-2 font-serif text-2xl font-semibold">{label}</h3>
+
+									<p class="desc-base mb-4">
+										See {serviceLabel.toLowerCase()} services in {label}, with local project
+										planning, FAQs, and quote information.
+									</p>
+
+									<Actions.Link
+										href={`/services/${page.id}`}
+										rel="noopener noreferrer"
+										data-astro-prefetch=""
+									>
+										{serviceLabel} in {label}
+									</Actions.Link>
+								</div>
+							);
+						})}
 					</div>
-				)
-			}
+				</details>
+			</Layout.Container>
+		</Layout.Divider>
+	)
+}
 
-			{
-				areaPages.map((page) => {
-					const label = toLabel(page.id);
+<style>
+	.service-areas-collapse > summary {
+		list-style: none;
+	}
 
-					return (
-						<div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
-							<h3 class="mb-2 font-serif text-2xl font-semibold">{label}</h3>
+	.service-areas-collapse > summary::-webkit-details-marker {
+		display: none;
+	}
 
-							<p class="desc-base mb-4">
-								See {serviceLabel.toLowerCase()} services in {label}, with local project planning,
-								FAQs, and quote information.
-							</p>
+	.service-areas-collapse:not([open]) > .service-area-grid {
+		display: none;
+	}
 
-							<Actions.Link
-								href={`/services/${page.id}`}
-								rel="noopener noreferrer"
-								data-astro-prefetch=""
-							>
-								{serviceLabel} in {label}
-							</Actions.Link>
-						</div>
-					);
-				})
-			}
-		</div>
-	</Layout.Container>
-</Layout.Divider>
+	.service-areas-collapse[open] .service-areas-icon {
+		transform: rotate(45deg);
+	}
+</style>

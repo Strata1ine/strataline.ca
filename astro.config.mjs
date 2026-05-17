@@ -1,4 +1,7 @@
 // @ts-check
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -15,6 +18,33 @@ import solidJs from '@astrojs/solid-js';
 import { frontmatterComponents, glob } from 'astro-frontmatter-cms/integration';
 
 import compressor from 'astro-compressor';
+
+const root = path.dirname(fileURLToPath(import.meta.url));
+const servicesRoot = path.join(root, 'content', 'services');
+
+function walkFiles(dir) {
+	if (!fs.existsSync(dir)) return [];
+	return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+		const full = path.join(dir, entry.name);
+		return entry.isDirectory() ? walkFiles(full) : [full];
+	});
+}
+
+const indexableServicePaths = new Set(
+	walkFiles(servicesRoot)
+		.filter((file) => path.basename(file) === 'index.yaml')
+		.filter((file) => {
+			const text = fs.readFileSync(file, 'utf8');
+			if (/^\s*hidden:\s*true\s*$/m.test(text)) return false;
+			if (/^\s*noindex:\s*true\s*$/m.test(text)) return false;
+			if (/^\s*indexableQuality:\s*weak\s*$/m.test(text)) return false;
+			return true;
+		})
+		.map((file) => {
+			const relative = path.relative(servicesRoot, path.dirname(file)).replaceAll(path.sep, '/');
+			return `/services/${relative}`.replace(/\/index$/, '');
+		}),
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -80,7 +110,12 @@ export default defineConfig({
 	integrations: [
 		frontmatterComponents(),
 		sitemap({
-			filter: (page) => !page.includes('/submissions/'),
+			filter: (page) => {
+				const pathname = new URL(page).pathname.replace(/\/$/, '');
+				if (pathname.includes('/submissions/')) return false;
+				if (pathname.startsWith('/services/')) return indexableServicePaths.has(pathname);
+				return true;
+			},
 		}),
 		icon({
 			include: {

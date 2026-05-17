@@ -25,17 +25,33 @@ export const collections = {
 	services: defineCollection({
 		loader: glob({ pattern: '**/index.yaml', base: './content/services' }),
 		schema: (c: SchemaContext) =>
+			{
+				const seo = z.union([
+					z.string(),
+					z.object({
+						description: z.string(),
+						noindex: z.boolean().optional(),
+						indexableQuality: z.enum(['strong', 'medium', 'weak']).optional(),
+					}),
+				]);
+
+				return (
 			z.object({
 				startPos: ZPos.optional(),
 				title: z.string(),
 				desc: z.string(),
-				seo: z.string(),
+				seo,
 				image: image(c),
 				position: z.coerce.number().optional(),
 				draft: z.boolean().optional(),
+				generated: z.boolean().optional(),
+				generator: z.string().optional(),
+				qualityScore: z.coerce.number().optional(),
 				hidden: z.boolean().optional(),
 				sections: parseBlocks(c).optional(),
-			}),
+			})
+				);
+			},
 	}),
 };
 

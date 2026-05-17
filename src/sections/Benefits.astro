@@ -27,18 +27,15 @@ import markdown from '@/build/markdown';
 	<Layout.Title title={meta.title} pos={meta.pos} class="relative flex items-center gap-6" />
 
 	<Layout.Container variant="inner">
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 xl:gap-11">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 xl:gap-6">
 			{
-				meta.content.map(async (benefit, i) => {
+				meta.content.map(async (benefit) => {
 					return (
-						<div>
-							<div class="mb-3 flex items-baseline gap-4">
-								<h3 class="text-secondary heading-7xl">o{i + 1}</h3>
-								<h4 class="font-serif text-3xl font-bold xl:text-4xl">{benefit.title}</h4>
-							</div>
+						<article class="rounded-lg border border-black/10 bg-white/70 p-5 shadow-sm shadow-black/5 md:p-6">
+							<h3 class="font-serif text-2xl leading-tight font-bold text-pretty md:text-3xl">{benefit.title}</h3>
 
-							<p class="desc-base" set:html={await markdown.parseInline(benefit.desc)} />
-						</div>
+							<p class="mt-3 font-sans text-base leading-8 text-black/75 md:text-lg md:leading-9" set:html={await markdown.parseInline(benefit.desc)} />
+						</article>
 					);
 				})
 			}

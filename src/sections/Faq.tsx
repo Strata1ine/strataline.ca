@@ -10,15 +10,14 @@ export default function Faq(props: {
 }) {
 	const [revealStage, setRevealStage] = createSignal(0);
 	const [jsEnabled, setJsEnabled] = createSignal(false);
-	const initialCount = 4;
-	const revealStages = 4;
+	const initialCount = 6;
+	const revealBatchSize = 8;
 	const hiddenCount = () => Math.max(0, props.content.length - initialCount);
-	const revealSize = () => Math.max(1, Math.ceil(hiddenCount() / revealStages));
 	const visibleCount = () =>
 		jsEnabled()
 			? Math.min(
 					props.content.length,
-					initialCount + revealStage() * revealSize(),
+					initialCount + revealStage() * revealBatchSize,
 				)
 			: props.content.length;
 	const visibleItems = () => props.content.slice(0, visibleCount());
@@ -77,7 +76,9 @@ export default function Faq(props: {
 						type="button"
 						class="bg-primary-dark border-primary-dark text-background hover:bg-primary-dark/90 focus-visible:ring-primary-dark rounded-[8px] border px-8 py-3 font-serif text-xl leading-none transition-colors focus-visible:outline-none focus-visible:ring-2"
 						onClick={() =>
-							setRevealStage((stage) => Math.min(revealStages, stage + 1))
+							setRevealStage((stage) =>
+								Math.min(Math.ceil(hiddenCount() / revealBatchSize), stage + 1),
+							)
 						}
 					>
 						{showMoreLabel()}

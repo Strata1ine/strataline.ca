@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-05-17T06:06:38.296Z",
+  "dryRun": false,
+  "total": 2,
+  "strong": 2,
+  "weak": 0,
+  "worstSimilarPairs": [],
+  "pages": [
+    {
+      "slug": "toronto",
+      "page": "/services/painting/toronto",
+      "quality": "strong",
+      "qualityScore": 94,
+      "wordCount": 1703,
+      "faqCount": 7,
+      "linkCount": 11,
+      "mediaCount": 1,
+      "hasLocalMedia": false,
+      "title": "Toronto Painters for Interior Walls, Trim & Finished Homes",
+      "h1": "A Cleaner Way to Repaint condos and townhomes in Toronto"
+    },
+    {
+      "slug": "vaughan",
+      "page": "/services/painting/vaughan",
+      "quality": "strong",
+      "qualityScore": 94,
+      "wordCount": 1604,
+      "faqCount": 7,
+      "linkCount": 11,
+      "mediaCount": 1,
+      "hasLocalMedia": false,
+      "title": "House Painting Vaughan - Interior Walls, Trim & Doors",
+      "h1": "Vaughan Painting for want a sharper modern interior with durable trim and clean lines"
+    }
+  ]
+}
