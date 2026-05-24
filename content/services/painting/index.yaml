@@ -8,32 +8,32 @@ desc: |-
   Professional interior painting, drywall repair, skim coating, ceiling painting and trim finishing for houses and condos throughout Toronto and the GTA.
 
 image:
-  src: ./photos/interior-painting-toronto-premium-finish.webp
-  alt: Premium interior painting with smooth walls, crisp trim and bright open-concept living space in Toronto.
+  src: ./photos/open-concept-home-painting-gta.webp
+  alt: Interior painting in Toronto featuring smooth walls, crisp trim, bright natural light and a premium open-concept living space.
 
 sections:
   - type: ImageCarousel
     content:
-      - src: ./photos/interior-painting-toronto-premium-finish.webp
-        alt: Premium interior painting in Toronto with smooth walls, crisp trim, and a bright open-concept living space.
       - src: ./photos/open-concept-home-painting-gta.webp
         alt: Open-concept home painting in the GTA with white walls, finished trim, and clean living room paint lines.
       - src: ./photos/luxury-home-interior-painting.webp
         alt: Luxury home interior painting with smooth white walls, hardwood floors, and finished modern living space.
-      - src: ./photos/staircase-and-wall-painting-finished-home.webp
-        alt: Staircase and wall painting in a finished home with crisp trim, smooth walls, and clean interior paint.
-      - src: ./photos/dining-room-painting-toronto.webp
-        alt: Dining room painting in Toronto with smooth walls, detailed trim, and a premium interior paint finish.
-      - src: ./photos/kitchen-wall-painting-premium-finish.webp
-        alt: Kitchen wall painting with a premium finish, bright white trim, and clean open-concept paint lines.
+      - src: ./photos/interior-painting-toronto-premium-finish.webp
+        alt: Premium interior painting in Toronto with smooth walls, crisp trim, and a bright open-concept living space.
       - src: ./photos/bright-living-room-interior-painting.webp
         alt: Bright living room interior painting with smooth white walls, crisp baseboards, and a finished Toronto home.
+      - src: ./photos/living-room-interior-painting-neutral-finish.webp
+        alt: Neutral living room interior painting with smooth walls, clean trim, and a finished premium home.
+      - src: ./photos/toronto-modern-living-room-interior-painting.webp
+        alt: Toronto modern living room interior painting with bright walls, crisp trim, and a finished open space.
+      - src: ./photos/dining-room-painting-toronto.webp
+        alt: Dining room painting in Toronto with smooth walls, detailed trim, and a premium interior paint finish.
+      - src: ./photos/toronto-dining-room-interior-painting.webp
+        alt: Toronto dining room interior painting with clean wall finish, bright trim, and a polished living area.
+      - src: ./photos/toronto-feature-wall-interior-painting.webp
+        alt: Toronto feature wall interior painting with sharp cut lines and a finished modern room.
       - src: ./photos/luxury-home-painting-toronto.webp
         alt: Luxury home painting in Toronto with smooth interior walls, refined trim, and a clean premium finish.
-      - src: ./photos/ceiling-painting-coffered-ceiling.webp
-        alt: Ceiling painting for a coffered ceiling with fresh white paint and clean trim detail.
-      - src: ./photos/wainscoting-and-millwork-painting.webp
-        alt: Wainscoting and millwork painting with a smooth satin finish and sharp professional lines.
 
   - type: Benefits
     title: Why homeowners choose Strataline
@@ -113,14 +113,14 @@ sections:
         desc: |-
           Paint does not hide bad drywall. We fix cracked walls, nail pops, dents, bad drywall finish, visible seams, paint peeling, and water damage wall repair before applying primer and finish coats.
         image:
-          src: ./photos/level-5-skim-coating-wall-repair.webp
+          src: ./photos/level-5-skim-coating-finish.webp
           alt: Cracked wall repair, patching, skim coating, and painting preparation.
 
       - title: Skim coating & Level 5 finish
         desc: |-
           For homes with critical lighting, large smooth walls, stairwells, or modern minimal trim, we offer skim coating and Level 5 drywall finish so the final paint looks even from every angle.
         image:
-          src: ./photos/smooth-wall-level-5-paint-finish.webp
+          src: ./photos/level-5-drywall-finish-painted-wall.webp
           alt: Level 5 drywall finish and skim coating walls before smooth interior painting.
 
   - type: ZigZag
@@ -130,7 +130,7 @@ sections:
         desc: |-
           We paint flat ceilings, smooth ceilings, repaired ceilings, and ceilings after popcorn removal. Proper prep helps avoid flashing, roller marks, and uneven sheen under natural light.
         image:
-          src: ./photos/ceiling-painting-coffered-ceiling.webp
+          src: ./photos/coffered-ceiling-painting-toronto.webp
           alt: Smooth ceiling painting after popcorn ceiling removal in the GTA.
           link: /services/popcorn-removal
 
@@ -138,7 +138,7 @@ sections:
         desc: |-
           Trim and baseboard painting needs a steady hand and the right finish. We paint casings, doors, crown moulding, wainscoting, railings, built-ins, and millwork with crisp lines and durable satin finishes.
         image:
-          src: ./photos/wainscoting-and-millwork-painting.webp
+          src: ./photos/wainscoting-painting-satin-finish.webp
           alt: Wainscoting, doors, trim, and baseboard painting with a sprayed satin finish.
 
   - type: Reviews
@@ -1074,7 +1074,7 @@ sections:
         desc: |-
           Go deeper on cracked walls, visible seams, nail pops, water damage, skim coating, and Level 5 drywall finishing before paint.
         image:
-          src: ./photos/smooth-wall-level-5-paint-finish.webp
+          src: ./photos/level-5-drywall-finish-painted-wall.webp
           alt: Level 5 drywall finish and skim coating before interior painting.
         link: /services/drywall-repair-skim-coating
 
@@ -1082,7 +1082,7 @@ sections:
         desc: |-
           See the details behind baseboard painting, door painting, wainscoting, crown moulding, built-ins, and sprayed millwork finishes.
         image:
-          src: ./photos/wainscoting-and-millwork-painting.webp
+          src: ./photos/wainscoting-painting-satin-finish.webp
           alt: Trim and wainscoting painting with a smooth sprayed finish.
         link: /services/trim-and-millwork-painting
 
@@ -1090,7 +1090,7 @@ sections:
         desc: |-
           Focused information for kitchen cabinet painting, vanity painting, sprayed doors, primer choice, sanding, and durable cabinet finishes.
         image:
-          src: ./photos/modern-kitchen-repaint-satin-finish.webp
+          src: ./photos/kitchen-wall-painting-satin-finish.webp
           alt: Cabinet painting with a smooth satin kitchen finish.
         link: /services/cabinet-painting
 
@@ -1098,7 +1098,7 @@ sections:
         desc: |-
           Learn how ceiling repair, skim coating, sanding, primer, and flat ceiling paint create a clean finish after popcorn removal.
         image:
-          src: ./photos/ceiling-painting-coffered-ceiling.webp
+          src: ./photos/coffered-ceiling-painting-toronto.webp
           alt: Smooth ceiling finishing after popcorn ceiling removal.
         link: /services/smooth-ceiling-finishing
 

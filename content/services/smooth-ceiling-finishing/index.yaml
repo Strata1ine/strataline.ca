@@ -33,14 +33,14 @@ sections:
         desc: |-
           Removal is only the first part. The finished result depends on skim coating, drywall correction, sanding, priming, and ceiling paint.
         image:
-          src: ../painting/photos/ceiling-painting-coffered-ceiling.webp
+          src: ../painting/photos/coffered-ceiling-painting-toronto.webp
           alt: Popcorn ceiling removal followed by smooth ceiling finishing.
         link: /services/popcorn-removal
       - title: Drywall repair and skim coating
         desc: |-
           Ceiling cracks, nail pops, torn paper, and visible seams are repaired before the final smooth ceiling finish.
         image:
-          src: ../painting/photos/smooth-wall-finish-level-5.jpg
+          src: ../painting/photos/smooth-wall-finishing-before-painting.jpg
           alt: Drywall skim coating for smooth ceilings and walls.
         link: /services/drywall-repair-skim-coating
 

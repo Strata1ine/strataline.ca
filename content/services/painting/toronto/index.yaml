@@ -28,7 +28,7 @@ sections:
         alt: Modern Toronto living room painting with smooth light walls and detailed ceiling trim.
       - src: ../photos/living-room-interior-painting-neutral-finish.webp
         alt: Neutral living room interior painting with bright window light and clean white trim.
-      - src: ../photos/smooth-wall-level-5-paint-finish.webp
+      - src: ../photos/level-5-drywall-finish-painted-wall.webp
         alt: Smooth wall finish and Level 5 paint preparation beside a finished stair opening.
 
   - type: Benefits
@@ -57,7 +57,7 @@ sections:
           alt: Toronto feature wall painting with warm wood tones, clean edges, and a finished living area.
       - title: Smooth walls beside detailed stairs
         image:
-          src: ../photos/smooth-wall-level-5-paint-finish.webp
+          src: ../photos/level-5-drywall-finish-painted-wall.webp
           alt: Smooth wall finish and Level 5 paint preparation beside a finished stair opening.
 
   - type: Benefits
@@ -121,7 +121,7 @@ sections:
           alt: Protected interior spray painting process with masking and controlled application.
       - title: Trim and baseboard spray finish
         image:
-          src: ../photos/trim-and-baseboard-painting.webp
+          src: ../photos/trim-painting-baseboard-finishing.webp
           alt: Trim and baseboard painting with a sprayed finish and sharp professional lines.
       - title: Clean neutral living room finish
         image:

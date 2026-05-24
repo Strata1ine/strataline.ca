@@ -46,14 +46,14 @@ sections:
         desc: |-
           A good scope separates what is necessary, what is optional, and what should be coordinated at the same time for a cleaner final result.
         image:
-          src: ../photos/smooth-wall-level-5-paint-finish.webp
+          src: ../photos/level-5-drywall-finish-painted-wall.webp
           alt: Professional interior painting scope in Mississauga.
 
       - title: Finish cleanly
         desc: |-
           The final details matter: alignment, touch-ups, sealing, paint, trim, cleanup, and the way the finished work looks in normal light.
         image:
-          src: ../photos/trim-and-baseboard-painting.webp
+          src: ../photos/trim-painting-baseboard-finishing.webp
           alt: Finished interior painting project in Mississauga.
 
   - type: Benefits
@@ -133,14 +133,14 @@ sections:
         desc: |-
           We explain what is included, what may be optional, and what conditions could affect cost or timing.
         image:
-          src: ../photos/smooth-wall-level-5-paint-finish.webp
+          src: ../photos/level-5-drywall-finish-painted-wall.webp
           alt: Scope review for interior painting in Mississauga.
 
       - title: Book clean work
         desc: |-
           Once the scope is clear, the work is scheduled around access, material readiness, protection, and cleanup.
         image:
-          src: ../photos/trim-and-baseboard-painting.webp
+          src: ../photos/trim-painting-baseboard-finishing.webp
           alt: Clean finished interior painting in Mississauga.
 
   - type: Services

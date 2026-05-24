@@ -14,21 +14,21 @@ desc: |-
   Interior painting in Vaughan for finished homes that need careful prep, protected rooms, clean trim and door painting, and a tidy handoff.
 
 image:
-  src: ../photos/foyer-ceiling-painting-vaughan.webp
+  src: ../photos/foyer-ceiling-painting-gta.webp
   alt: "Vaughan interior painting with a freshly painted coffered ceiling, clean trim, and bright foyer walls."
 
 sections:
   - type: ImageCarousel
     content:
-      - src: ../photos/foyer-ceiling-painting-vaughan.webp
+      - src: ../photos/foyer-ceiling-painting-gta.webp
         alt: Vaughan interior painting with a freshly painted coffered ceiling, crisp trim, and protected finished floors.
-      - src: ../photos/ceiling-painting-coffered-ceiling.webp
+      - src: ../photos/coffered-ceiling-painting-toronto.webp
         alt: Fresh white ceiling paint finish on detailed coffered ceiling panels in a Vaughan home.
       - src: ../photos/interior-spray-painting-protected-room.webp
         alt: Protected interior spray painting process with masking, suit, and controlled application.
-      - src: ../photos/dark-feature-wall-interior-painting.webp
+      - src: ../photos/feature-wall-painting-dark-accent-wall.webp
         alt: Finished dark feature wall painting with clean ceiling lines and detailed room preparation.
-      - src: ../photos/wainscoting-and-millwork-painting.webp
+      - src: ../photos/wainscoting-painting-satin-finish.webp
         alt: Spray painting wainscoting and trim for a smooth satin finish.
 
   - type: Benefits
@@ -49,15 +49,15 @@ sections:
     content:
       - title: Fresh coffered ceiling and foyer paint
         image:
-          src: ../photos/foyer-ceiling-painting-vaughan.webp
+          src: ../photos/foyer-ceiling-painting-gta.webp
           alt: Vaughan interior painting with a freshly painted coffered ceiling, crisp trim, and protected finished floors.
       - title: Detailed ceiling paint finish
         image:
-          src: ../photos/ceiling-painting-coffered-ceiling.webp
+          src: ../photos/coffered-ceiling-painting-toronto.webp
           alt: Fresh white ceiling paint finish on detailed coffered ceiling panels in a Vaughan home.
       - title: Dark feature wall repaint
         image:
-          src: ../photos/dark-feature-wall-interior-painting.webp
+          src: ../photos/feature-wall-painting-dark-accent-wall.webp
           alt: Finished dark feature wall painting with clean ceiling lines and detailed room preparation.
 
   - type: Benefits
@@ -121,11 +121,11 @@ sections:
           alt: Protected interior spray painting process with masking and controlled application.
       - title: Smooth wainscoting spray finish
         image:
-          src: ../photos/wainscoting-and-millwork-painting.webp
+          src: ../photos/wainscoting-painting-satin-finish.webp
           alt: Spray painting wainscoting and trim for a smooth satin finish.
       - title: Bright finished bedroom walls
         image:
-          src: ../photos/bedroom-interior-painting-bright-white-walls.webp
+          src: ../photos/condo-bedroom-painting-white-walls.webp
           alt: Bedroom interior painting with bright white walls and clean finished trim.
 
   - type: Benefits
