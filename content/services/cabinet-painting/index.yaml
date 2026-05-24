@@ -6,7 +6,7 @@ seo: |-
 desc: |-
   Cabinet painting and refinishing for kitchens, vanities, built-ins, and millwork that need a clean sprayed finish. We prep, prime, sand, and paint cabinets for a smoother upgrade without replacing the whole kitchen.
 image:
-  src: ../painting/photos/modern-kitchen-repaint-satin.jpg
+  src: ../painting/photos/modern-kitchen-repaint-satin.webp
   alt: Kitchen cabinet painting with a smooth satin finish and crisp modern colour.
 
 sections:
@@ -40,7 +40,7 @@ sections:
         desc: |-
           Cabinet painting often pairs with wall painting, trim painting, ceiling repair, and a cleaner overall kitchen refresh.
         image:
-          src: ../painting/photos/spray-painted-trim-finish.png
+          src: ../painting/photos/spray-painted-trim-finish.webp
           alt: Trim and millwork painting with a smooth sprayed finish.
         link: /services/trim-and-millwork-painting
 

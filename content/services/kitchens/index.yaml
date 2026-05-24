@@ -595,7 +595,7 @@ sections:
         desc: |-
           Cabinet painting, sprayed doors, primer, sanding, finish durability, colour planning, vanities, built-ins, and kitchen refresh details.
         image:
-          src: ../painting/photos/modern-kitchen-repaint-satin.jpg
+          src: ../painting/photos/modern-kitchen-repaint-satin.webp
           alt: Kitchen cabinet painting with a smooth satin finish.
         link: /services/cabinet-painting
 

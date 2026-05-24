@@ -40,7 +40,7 @@ sections:
         desc: |-
           Wallpaper removal often exposes torn paper, uneven walls, old patches, and defects that need repair before painting.
         image:
-          src: ../painting/photos/drywall-repair-before-painting.jpg
+          src: ../painting/photos/drywall-repair-before-painting.webp
           alt: Drywall repair after wallpaper removal.
         link: /services/drywall-repair-skim-coating
 

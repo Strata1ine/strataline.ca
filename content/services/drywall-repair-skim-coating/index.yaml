@@ -6,7 +6,7 @@ seo: |-
 desc: |-
   Drywall repair and skim coating for walls and ceilings that need a smooth, paint-ready finish. We fix cracks, dents, nail pops, torn drywall paper, uneven seams, texture, and water damage before primer and paint.
 image:
-  src: ../painting/photos/smooth-wall-finishing-before-painting.jpg
+  src: ../painting/photos/smooth-wall-finishing-before-painting.webp
   alt: Level 5 drywall finish and skim coating on a smooth wall before interior painting.
 
 sections:
@@ -33,7 +33,7 @@ sections:
         desc: |-
           Drywall repair is often the first step before a clean repaint. We can repair, sand, prime, and paint the same room so the finish reads as one surface.
         image:
-          src: ../painting/photos/luxury-interior-painting-toronto.jpg
+          src: ../painting/photos/luxury-interior-painting-toronto.webp
           alt: Interior painting after drywall repair and skim coating in Toronto.
         link: /services/painting
       - title: Smooth ceiling finishing
