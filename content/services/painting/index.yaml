@@ -1,38 +1,58 @@
 title: Interior painting & wall finishing
-position: 4
+position: 2
 seo: |-
   Interior painting, drywall repair, skim coating, ceiling painting, trim painting, and clean house painting services in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and the GTA.
   Strataline prepares walls properly, controls dust, and delivers smooth premium paint finishes for finished homes.
 
 desc: |-
-  Professional interior painting for homes that need more than a quick repaint.
-  We repair cracked walls, skim coat uneven surfaces, paint ceilings, spray trim and millwork, and deliver clean, smooth finishes across Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, and the GTA.
+  Professional interior painting, drywall repair, skim coating, ceiling painting and trim finishing for houses and condos throughout Toronto and the GTA.
 
 image:
-  src: ./cover.jpg
-  alt: Professional interior painting with smooth walls, crisp trim, and a clean premium finish in a GTA home.
+  src: ./photos/interior-painting-toronto-premium-finish.webp
+  alt: Premium interior painting with smooth walls, crisp trim and bright open-concept living space in Toronto.
 
 sections:
   - type: ImageCarousel
     content:
-      - src: ./photos/coffered-ceiling-foyer-painting-vaughan.webp
-        alt: Interior painting in Vaughan with a freshly painted coffered ceiling, clean trim, and bright foyer walls.
-      - src: ./photos/dark-feature-wall-interior-painting.webp
-        alt: Dark feature wall interior painting with clean cut lines, detailed ceiling work, and a finished premium room.
-      - src: ./photos/luxury-interior-painting-toronto.webp
-        alt: Interior painting in Toronto with smooth walls, clean cut lines, and a refined matte paint finish.
-      - src: ./photos/smooth-wall-level-5-paint-finish.webp
-        alt: Level 5 drywall finish and skim coating for smooth wall painting in a high-end home.
-      - src: ./photos/interior-spray-painting-protected-room.webp
-        alt: Dust-controlled interior spray painting with masking and room protection for a clean painted finish.
-      - src: ./photos/wainscoting-spray-painting-satin-finish.webp
-        alt: Spray painting wainscoting and millwork with a smooth satin finish.
-      - src: ./photos/designer-colour-consultation-paint-samples.webp
-        alt: Interior paint colour consultation with premium paint samples for a Toronto home.
-      - src: ./photos/modern-kitchen-repaint-satin-finish.webp
-        alt: Kitchen repaint with satin cabinetry, crisp trim, and smooth wall painting.
-      - src: ./photos/trim-baseboard-spray-painting-finish.webp
-        alt: Trim and baseboard painting with a sprayed finish and sharp professional lines.
+      - src: ./photos/interior-painting-toronto-premium-finish.webp
+        alt: Premium interior painting in Toronto with smooth walls, crisp trim, and a bright open-concept living space.
+      - src: ./photos/open-concept-home-painting-gta.webp
+        alt: Open-concept home painting in the GTA with white walls, finished trim, and clean living room paint lines.
+      - src: ./photos/luxury-home-interior-painting.webp
+        alt: Luxury home interior painting with smooth white walls, hardwood floors, and finished modern living space.
+      - src: ./photos/staircase-and-wall-painting-finished-home.webp
+        alt: Staircase and wall painting in a finished home with crisp trim, smooth walls, and clean interior paint.
+      - src: ./photos/dining-room-painting-toronto.webp
+        alt: Dining room painting in Toronto with smooth walls, detailed trim, and a premium interior paint finish.
+      - src: ./photos/kitchen-wall-painting-premium-finish.webp
+        alt: Kitchen wall painting with a premium finish, bright white trim, and clean open-concept paint lines.
+      - src: ./photos/bright-living-room-interior-painting.webp
+        alt: Bright living room interior painting with smooth white walls, crisp baseboards, and a finished Toronto home.
+      - src: ./photos/luxury-home-painting-toronto.webp
+        alt: Luxury home painting in Toronto with smooth interior walls, refined trim, and a clean premium finish.
+      - src: ./photos/ceiling-painting-coffered-ceiling.webp
+        alt: Ceiling painting for a coffered ceiling with fresh white paint and clean trim detail.
+      - src: ./photos/wainscoting-and-millwork-painting.webp
+        alt: Wainscoting and millwork painting with a smooth satin finish and sharp professional lines.
+
+  - type: Benefits
+    title: Why homeowners choose Strataline
+    content:
+      - title: Dust-Controlled Preparation
+        desc: |-
+          Floors protected • Furniture covered • Daily cleanup.
+
+      - title: Occupied-Home Specialists
+        desc: |-
+          Designed for furnished and lived-in homes
+
+      - title: WSIB & $5M Insurance
+        desc: |-
+          Fully insured professional work
+
+      - title: Featured on HGTV & CityTV
+        desc: |-
+          Recognized renovation specialists
 
   - type: QuoteCta
     title: Get a clear painting quote from photos
@@ -50,27 +70,16 @@ sections:
       - title: Book clean work
         desc: Floors, furniture, and finished rooms are protected before painting starts.
 
-  - type: Benefits
-    title: Why homeowners choose Strataline
-    content:
-      - title: Walls prepared before paint
-        desc: |-
-          Good painting starts with the surface. We repair holes, cracked walls, peeling paint, visible seams, uneven drywall, and water damage before primer or finish paint goes on.
-
-      - title: Clean work in finished homes
-        desc: |-
-          We protect floors, stairs, furniture, built-ins, and nearby rooms. Sanding, patching, and painting are planned for low mess, clear access, and tidy daily cleanup.
-
-      - title: Smooth premium finishes
-        desc: |-
-          We use premium interior paint, proper primers, fine rollers, spray finishing where needed, and careful sanding between coats for smooth matte, eggshell, or satin finishes.
-
-      - title: Local GTA painting crew
-        desc: |-
-          We provide house painting services in Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, North York, Thornhill, Etobicoke, Forest Hill, Rosedale, and nearby GTA communities.
-
   - type: TextCarousel
     text:
+      - Whole-house repainting
+      - Condo painting
+      - Stairwells & foyers
+      - Ceiling repainting
+      - Drywall repair & painting
+      - Trim & millwork painting
+      - Move-in / move-out painting
+      - Pre-sale refreshes
       - Interior painting
       - House painting services
       - Drywall repair and painting
@@ -83,18 +92,18 @@ sections:
   - type: ZigZag
     title: Interior painting services
     content:
-      - title: Walls, rooms & full homes
+      - title: Walls, rooms & entire homes
         desc: |-
           We paint bedrooms, living rooms, kitchens, dining rooms, hallways, stairwells, basements, condos, and full homes. Every interior painting project starts with surface prep, masking, priming where required, and clean finish coats.
         image:
-          src: ./photos/luxury-interior-painting-toronto.webp
+          src: ./photos/luxury-home-painting-toronto.webp
           alt: Professional interior wall painting in a Toronto home with smooth matte paint and crisp trim.
 
       - title: Colour matching & paint selection
         desc: |-
           We help match Benjamin Moore, Sherwin Williams, Farrow & Ball, and designer colours. We can guide matte vs satin walls, low VOC paint, washable finishes, and durable paint for busy family spaces.
         image:
-          src: ./photos/designer-colour-consultation-paint-samples.webp
+          src: ./photos/paint-colour-consultation-toronto.webp
           alt: Premium interior paint colour samples for house painting in Toronto and Vaughan.
 
   - type: ZigZag
@@ -121,7 +130,7 @@ sections:
         desc: |-
           We paint flat ceilings, smooth ceilings, repaired ceilings, and ceilings after popcorn removal. Proper prep helps avoid flashing, roller marks, and uneven sheen under natural light.
         image:
-          src: ./photos/coffered-ceiling-fresh-white-paint-finish.webp
+          src: ./photos/ceiling-painting-coffered-ceiling.webp
           alt: Smooth ceiling painting after popcorn ceiling removal in the GTA.
           link: /services/popcorn-removal
 
@@ -129,13 +138,25 @@ sections:
         desc: |-
           Trim and baseboard painting needs a steady hand and the right finish. We paint casings, doors, crown moulding, wainscoting, railings, built-ins, and millwork with crisp lines and durable satin finishes.
         image:
-          src: ./photos/wainscoting-spray-painting-satin-finish.webp
+          src: ./photos/wainscoting-and-millwork-painting.webp
           alt: Wainscoting, doors, trim, and baseboard painting with a sprayed satin finish.
 
   - type: Reviews
     title: What our customers have to say
     id: reviews
     content:
+      - title: Lani Selick
+        location: Toronto
+        stars: 5
+        desc: |-
+          WOW! Just WOW! Max removed all the popcorn from our 1800 sq ft town home, repainted from top to bottom plus did some carpentry repairs on our floors…and the final result is spectacular! But just as important, he made the entire renovation painless for us: not only was the process completely dust free and mess free, but Max also moved ALL the furniture and pictures himself (no help from us at all) then put EVERYTHING back together the way it was. We literally walked out of our home before he started and then walked back in a couple of weeks later to a beautiful brand new home with everything in the exact same place as it was beforehand. Renovating doesn’t not get better than this!!!
+
+      - title: MikeKK
+        location: Burlington
+        stars: 5
+        desc: |-
+          We initially contacted Max to remove the popcorn finish on our vaulted great room ceiling & to refinish/modernize our curved 'blonde-oak' finished stairway leading downstairs. Not only did he do an impeccable job making the ceiling look brand 'new', and with no detectable dust left anywhere, but he also re-located some potlights & installed new crown moulding that required meticulous precision due to several odd corner angles that other contactors insisted couldn't be done. It looked so good we ended up having our main hallway, front foyer, & sunroom ceilings re-done as well. The stairway & railing were re-finished in a darker oak stain that matched our dark hardwood flooring & the new modern metal spindles, and new trimwork have made it look better than ever & despite the hours of sanding off the old finish, there was no dust...!! In the end, we also had his team re-paint all of the above areas, which turned out perfectly as well... Our level of confidence with Max's professionalism & skilled expertise, not to mention being easy to deal with, is such that we would recommend his services to anyone, and should we need assistance from a contractor in the future, he'll be the first person we call, as it's clear he can handle just about anything...
+
       - title: John Seigel
         location: Richmond Hill
         stars: 5
@@ -150,7 +171,7 @@ sections:
           Maxim also installed wainscoting and trim work throughout the hallway, stairwell and landing. We would highly recommend their workmanship with very little disruption to the home.
 
   - type: Faq
-    title: "Interior painting FAQ: costs, prep, finishes, and project planning"
+    title: 'Interior painting FAQ: costs, prep, finishes, and project planning'
     showMoreLabel: View more painting questions
     content:
       - title: What should be included in a professional interior painting scope?
@@ -158,6 +179,13 @@ sections:
           A proper interior painting scope should separate rooms, ceilings, walls, trim, doors, closets, drywall repair, sanding, caulking, priming, paint products, number of coats, protection, cleanup, and timing. That prevents vague pricing and helps you compare quotes fairly.
 
           We also note surface issues before painting, such as nail pops, dents, cracked corners, peeling paint, water stains, glossy trim, rough previous repairs, or walls that may need skim coating. Paint looks clean only when the prep is planned clearly.
+
+      - title: What does interior painting typically cost?
+        desc: |-
+          Bedroom repaint: $500-$1,200
+          Living room: $900-$2,500
+          Condo repaint: $2,500-$8,000+
+          Whole house: depends on scope
 
       - title: How much does interior painting cost in Toronto and the GTA?
         desc: |-
@@ -1054,7 +1082,7 @@ sections:
         desc: |-
           See the details behind baseboard painting, door painting, wainscoting, crown moulding, built-ins, and sprayed millwork finishes.
         image:
-          src: ./photos/wainscoting-spray-painting-satin-finish.webp
+          src: ./photos/wainscoting-and-millwork-painting.webp
           alt: Trim and wainscoting painting with a smooth sprayed finish.
         link: /services/trim-and-millwork-painting
 
@@ -1070,7 +1098,7 @@ sections:
         desc: |-
           Learn how ceiling repair, skim coating, sanding, primer, and flat ceiling paint create a clean finish after popcorn removal.
         image:
-          src: ./photos/coffered-ceiling-fresh-white-paint-finish.webp
+          src: ./photos/ceiling-painting-coffered-ceiling.webp
           alt: Smooth ceiling finishing after popcorn ceiling removal.
         link: /services/smooth-ceiling-finishing
 

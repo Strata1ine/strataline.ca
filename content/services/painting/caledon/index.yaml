@@ -39,7 +39,7 @@ sections:
         desc: |-
           We look for the details that affect scope: access, old finishes, hidden repairs, measurements, transitions, and how the work connects to nearby rooms.
         image:
-          src: ../photos/luxury-interior-painting-toronto.webp
+          src: ../photos/luxury-home-painting-toronto.webp
           alt: interior painting planning in Caledon.
 
       - title: Choose the right scope
@@ -53,7 +53,7 @@ sections:
         desc: |-
           The final details matter: alignment, touch-ups, sealing, paint, trim, cleanup, and the way the finished work looks in normal light.
         image:
-          src: ../photos/trim-baseboard-spray-painting-finish.webp
+          src: ../photos/trim-and-baseboard-painting.webp
           alt: Finished interior painting project in Caledon.
 
   - type: Benefits
@@ -126,7 +126,7 @@ sections:
         desc: |-
           Photos are the fastest way to start. Include wide room views, close-ups of problem areas, and rough dimensions.
         image:
-          src: ../photos/luxury-interior-painting-toronto.webp
+          src: ../photos/luxury-home-painting-toronto.webp
           alt: Quote photo for interior painting in Caledon.
 
       - title: Review the scope
@@ -140,7 +140,7 @@ sections:
         desc: |-
           Once the scope is clear, the work is scheduled around access, material readiness, protection, and cleanup.
         image:
-          src: ../photos/trim-baseboard-spray-painting-finish.webp
+          src: ../photos/trim-and-baseboard-painting.webp
           alt: Clean finished interior painting in Caledon.
 
   - type: Services
