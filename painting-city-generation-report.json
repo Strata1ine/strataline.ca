@@ -1,36 +1,127 @@
 {
-  "generatedAt": "2026-05-17T06:06:38.296Z",
+  "generatedAt": "2026-05-24T23:09:58.021Z",
   "dryRun": false,
-  "total": 2,
-  "strong": 2,
+  "total": 3,
+  "indexablePages": 3,
+  "noindexPages": 0,
+  "strong": 3,
   "weak": 0,
+  "similarityWarningThreshold": 0.35,
+  "similarityWarnings": 0,
+  "similarityScores": [
+    {
+      "a": "toronto",
+      "b": "vaughan",
+      "similarity": 0.208
+    },
+    {
+      "a": "toronto",
+      "b": "forest-hill",
+      "similarity": 0.2
+    },
+    {
+      "a": "vaughan",
+      "b": "forest-hill",
+      "similarity": 0.2
+    }
+  ],
+  "missingImageWarnings": [],
+  "competitorCoverageNotes": [
+    "Reviewed competitor coverage for Toronto condo painting, Vaughan house painting, Forest Hill interior painting, and Oakville premium painting searches.",
+    "Coverage gaps to answer on Strataline pages: pricing guidance, quote process, condo access, occupied-home protection, drywall/plaster repair, trim and doors, ceilings, low VOC paint, paint brands, warranty/insurance questions, reviews, service areas, and before/after images.",
+    "City pages should use this research as a checklist only and avoid copying competitor wording."
+  ],
   "worstSimilarPairs": [],
   "pages": [
     {
       "slug": "toronto",
       "page": "/services/painting/toronto",
+      "archetype": "toronto-core",
+      "archetypeLabel": "Toronto core",
+      "template": "D",
       "quality": "strong",
       "qualityScore": 94,
-      "wordCount": 1703,
-      "faqCount": 7,
-      "linkCount": 11,
-      "mediaCount": 1,
+      "wordCount": 1793,
+      "faqCount": 17,
+      "linkCount": 12,
+      "mediaCount": 10,
+      "repeatedPhraseCounts": {
+        "occupied homes": 0,
+        "finished homes": 1,
+        "protection": 7,
+        "prep": 6,
+        "painting project": 0,
+        "careful preparation": 0,
+        "daily cleanup": 1,
+        "trim and doors": 2
+      },
       "hasLocalMedia": false,
+      "hasUsefulImages": true,
+      "missingImageWarning": null,
       "title": "Toronto Painters for Interior Walls, Trim & Finished Homes",
-      "h1": "A Cleaner Way to Repaint condos and townhomes in Toronto"
+      "h1": "A Cleaner Way to Repaint condos and townhomes in Toronto",
+      "highestSimilarity": 0.208,
+      "uniqueContentShare": 0.792
     },
     {
       "slug": "vaughan",
       "page": "/services/painting/vaughan",
+      "archetype": "family-home-refresh",
+      "archetypeLabel": "Family home refresh",
+      "template": "A",
       "quality": "strong",
       "qualityScore": 94,
-      "wordCount": 1604,
-      "faqCount": 7,
-      "linkCount": 11,
-      "mediaCount": 1,
+      "wordCount": 1963,
+      "faqCount": 17,
+      "linkCount": 12,
+      "mediaCount": 10,
+      "repeatedPhraseCounts": {
+        "occupied homes": 1,
+        "finished homes": 0,
+        "protection": 7,
+        "prep": 5,
+        "painting project": 0,
+        "careful preparation": 0,
+        "daily cleanup": 2,
+        "trim and doors": 4
+      },
       "hasLocalMedia": false,
+      "hasUsefulImages": true,
+      "missingImageWarning": null,
       "title": "House Painting Vaughan - Interior Walls, Trim & Doors",
-      "h1": "Vaughan Painting for want a sharper modern interior with durable trim and clean lines"
+      "h1": "Vaughan Painting for detached family homes, newer subdivisions, main floors, and stairwells",
+      "highestSimilarity": 0.208,
+      "uniqueContentShare": 0.792
+    },
+    {
+      "slug": "forest-hill",
+      "page": "/services/painting/forest-hill",
+      "archetype": "luxury-heritage",
+      "archetypeLabel": "Luxury heritage",
+      "template": "A",
+      "quality": "strong",
+      "qualityScore": 94,
+      "wordCount": 1948,
+      "faqCount": 17,
+      "linkCount": 13,
+      "mediaCount": 10,
+      "repeatedPhraseCounts": {
+        "occupied homes": 0,
+        "finished homes": 0,
+        "protection": 6,
+        "prep": 8,
+        "painting project": 0,
+        "careful preparation": 0,
+        "daily cleanup": 0,
+        "trim and doors": 1
+      },
+      "hasLocalMedia": false,
+      "hasUsefulImages": true,
+      "missingImageWarning": null,
+      "title": "Forest Hill Interior Painting - Walls, Trim, Doors & Prep",
+      "h1": "Wall, Trim and Door Painting in Forest Hill",
+      "highestSimilarity": 0.2,
+      "uniqueContentShare": 0.8
     }
   ]
 }

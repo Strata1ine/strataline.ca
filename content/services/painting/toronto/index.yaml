@@ -11,206 +11,221 @@ seo:
   indexableQuality: strong
 
 desc: |-
-  Interior painting in Toronto for condos and homes that need clean wall prep, trim and door painting, careful protection, and photo-based quoting.
+  Interior painting in Toronto for condos, compact homes, designer colour changes, elevator bookings, parking limits, feature walls, and photo-based quote planning.
 
 image:
-  src: ../photos/toronto-dining-room-interior-painting.webp
-  alt: "Toronto interior painting with bright dining room walls, clean trim, and a finished open living space."
+  src: ../photos/toronto-modern-living-room-interior-painting.webp
+  alt: "Interior painting finish example for Strataline clients."
 
 sections:
   - type: ImageCarousel
     content:
-      - src: ../photos/toronto-dining-room-interior-painting.webp
-        alt: Toronto dining room interior painting with bright walls, clean trim, and an open finished layout.
-      - src: ../photos/toronto-feature-wall-interior-painting.webp
-        alt: Toronto feature wall painting with warm wood tones, clean edges, and a finished living area.
       - src: ../photos/toronto-modern-living-room-interior-painting.webp
-        alt: Modern Toronto living room painting with smooth light walls and detailed ceiling trim.
+        alt: "Premium interior painting example."
+      - src: ../photos/toronto-feature-wall-interior-painting.webp
+        alt: "Premium interior painting example."
+      - src: ../photos/open-concept-home-painting-gta.webp
+        alt: "Premium interior painting example."
+      - src: ../photos/bright-living-room-interior-painting.webp
+        alt: "Premium interior painting example."
       - src: ../photos/living-room-interior-painting-neutral-finish.webp
-        alt: Neutral living room interior painting with bright window light and clean white trim.
-      - src: ../photos/level-5-drywall-finish-painted-wall.webp
-        alt: Smooth wall finish and Level 5 paint preparation beside a finished stair opening.
+        alt: "Premium interior painting example."
+      - src: ../photos/dining-room-painting-toronto.webp
+        alt: "Premium interior painting example."
 
   - type: Benefits
-    title: "Interior painting in Toronto, planned for real homes"
+    title: "Painting Toronto condos without building headaches"
     content:
-      - title: "Toronto homes need a real prep plan"
+      - title: "Downtown condos and compact rooms"
         desc: |-
-          Toronto projects often involve condos, semis, townhomes, older detached homes, renovated infill homes, and high-finish downtown properties. We check drywall dents, previous tenant patches, and scuffed trim, then decide what needs sanding, patching, caulking, primer, or extra finish coats before the price is locked in.
-      - title: "The rooms we usually discuss first"
+          Toronto condo painting is often less about square footage and more about access. We plan the repaint around unit layout, furniture, service elevator timing, hallway rules, and the rooms that need to open first. Larger wall repairs can be coordinated with [drywall repair and skim coating](/services/drywall-repair-skim-coating).
+      - title: "Rental turnover and owner-occupied units"
         desc: |-
-          Most quote conversations start with condo living areas, bedrooms, entry halls, and feature walls. We separate walls, ceilings, trim, doors, and repairs so the scope is easy to compare and nothing important is hidden in a vague line item.
-      - title: "Built for the way the home is used"
+          A turnover unit may need fast repair decisions and durable neutral colour. An owner-occupied condo may need quieter staging, low-odour products, and a room-by-room sequence.
+      - title: "Photo quotes with the right details"
         desc: |-
-          This is a better fit for owners who want a clean repaint without turning a condo or busy home into a construction zone. The job is planned around access, cleanliness, drying time, and how the rooms need to function while work is underway.
+          Useful photos show wide room views, wall damage, trim and doors, ceiling height, feature colours, elevator notes, parking notes, and where materials can be staged.
+
+  - type: Benefits
+    title: "Elevator, parking and access planning"
+    content:
+      - title: "Elevators and loading docks"
+        desc: |-
+          Before booking, we ask about service elevator windows, loading dock rules, move-in pads, hallway coverage, disposal rules, and allowed contractor hours.
+      - title: "Parking that does not derail the day"
+        desc: |-
+          Downtown parking limits can change arrival time, unloading, and material movement. We factor that into the schedule instead of treating access as an afterthought.
+      - title: "Hallways, alarms and building rules"
+        desc: |-
+          Condo work has shared spaces. We confirm hallway requirements, security desk instructions, garbage handling, and any rules that affect tools or coatings.
 
   - type: ImagePanel
-    title: "Toronto painting project examples"
+    title: "Toronto condo-style finish examples"
     content:
-      - title: Bright dining and living room repaint
+      - title: "Finished rooms"
         image:
-          src: ../photos/toronto-dining-room-interior-painting.webp
-          alt: Toronto dining room interior painting with bright walls, clean trim, and an open finished layout.
-      - title: Warm feature wall and clean edges
+          src: ../photos/open-concept-home-painting-gta.webp
+          alt: "Premium painting finish example."
+      - title: "Trim and ceilings"
         image:
-          src: ../photos/toronto-feature-wall-interior-painting.webp
-          alt: Toronto feature wall painting with warm wood tones, clean edges, and a finished living area.
-      - title: Smooth walls beside detailed stairs
-        image:
-          src: ../photos/level-5-drywall-finish-painted-wall.webp
-          alt: Smooth wall finish and Level 5 paint preparation beside a finished stair opening.
-
-  - type: Benefits
-    title: "What we usually paint in Toronto homes"
-    content:
-      - title: "Occupied-home repainting"
-        desc: |-
-          For lived-in condos, the sequence matters. We plan work zones, access paths, furniture movement, drying time, and daily cleanup so the project stays controlled while the household keeps moving.
-      - title: "Bedrooms and private spaces"
-        desc: |-
-          Bedrooms often need a quieter schedule, careful furniture handling, patching around headboards or desks, and a finish that looks clean without feeling overly shiny in softer light.
-      - title: "Condo living areas refresh"
-        desc: |-
-          Painting condo living areas usually means wall repair, ceiling-line control, clean cut lines, and a plan for furniture. In Toronto, we check how daylight will reveal patch edges, roller texture, and old touch-ups before painting starts.
-
-  - type: Benefits
-    title: "Prep makes the difference"
-    content:
-      - title: "Drywall dents"
-        desc: |-
-          When we find drywall dents, the paint job needs more than rolling. We review texture, edges, primer needs, and lighting so the repair does not stand out after the finish dries.
-      - title: "Previous tenant patches"
-        desc: |-
-          previous tenant patches can show through a new colour if it is treated as a quick touch-up. We identify the problem, sand or repair as needed, spot-prime where useful, and then paint the area as part of the full surface.
-      - title: "Scuffed trim"
-        desc: |-
-          For scuffed trim, the right sequence is clean, repair, sand, prime where needed, and then coat. Skipping those steps is what makes freshly painted rooms still look tired.
-
-  - type: Benefits
-    title: "Walls, trim, doors, and ceilings are separate finish systems"
-    content:
-      - title: "Walls"
-        desc: |-
-          Wall painting is where every dent, patch, and roller mark becomes visible. We look at the room in normal light and decide how much correction is needed before finish coats.
-      - title: "Trim and baseboards"
-        desc: |-
-          Old trim can make a new wall colour look unfinished. We check chipped edges, gaps, gloss, brush marks, and previous buildup before deciding how far the trim scope should go.
-      - title: "Doors"
-        desc: |-
-          Doors often need extra attention around handles, panel edges, hinge-side buildup, and previous brush marks. The goal is a durable, smooth finish that stands up to daily use.
-
-  - type: Benefits
-    title: "A cleaner process for occupied Toronto homes"
-    content:
-      - title: "Use the right coating for each surface"
-        desc: |-
-          A durable trim coating, a calm wall finish, and a flat ceiling paint solve different problems. We keep those systems separate so the home looks intentional.
-      - title: "Inspect after drying"
-        desc: |-
-          The last part of the job is cleanup, reinstalling what was moved, checking edges, and making sure the rooms feel ready to use again.
-      - title: "Protect the finished home first"
-        desc: |-
-          Protection is part of the painting process, not a courtesy add-on. Finished floors, trim, stairs, furniture, and adjacent rooms are planned before tools come out.
-
-  - type: ImagePanel
-    title: "Prep, protection, and finish details"
-    content:
-      - title: Protected spray painting setup
-        image:
-          src: ../photos/interior-spray-painting-protected-room.webp
-          alt: Protected interior spray painting process with masking and controlled application.
-      - title: Trim and baseboard spray finish
-        image:
-          src: ../photos/trim-painting-baseboard-finishing.webp
-          alt: Trim and baseboard painting with a sprayed finish and sharp professional lines.
-      - title: Clean neutral living room finish
+          src: ../photos/bright-living-room-interior-painting.webp
+          alt: "Premium painting finish example."
+      - title: "Smooth walls"
         image:
           src: ../photos/living-room-interior-painting-neutral-finish.webp
-          alt: Neutral living room interior painting with bright window light and clean white trim.
+          alt: "Premium painting finish example."
 
   - type: Benefits
-    title: "Why homeowners choose Strataline for painting in Toronto"
+    title: "Condo repaint before listing or move-in"
     content:
-      - title: "Clean finished-home process"
+      - title: "Before listing"
         desc: |-
-          Strataline is built around careful work in occupied homes. For Toronto, that means masking, floor protection, dust-producing prep control, daily cleanup, and a work sequence that respects the rest of the house.
-      - title: "Better surface preparation"
+          Entry walls, living areas, bedrooms, dark feature walls, scuffed doors, and visible patches are usually the highest-impact items before photos and showings.
+      - title: "Before move-in"
         desc: |-
-          Painting looks expensive or cheap depending on the prep. We look for drywall dents, previous tenant patches, and scuffed trim before finish coats, because those details decide how the room reads when the light changes.
-      - title: "Recognized local renovation experience"
+          When the unit is empty, we can handle bedrooms, closets, living areas, trim, and colour changes before furniture makes access harder.
+      - title: "Rental turnover"
         desc: |-
-          Our work and renovation advice have been featured by CityTV, The Toronto Star, House & Home, and HGTV. That credibility matters when the project is inside a finished, furnished home.
+          Turnovers often need practical repairs, washable wall paint, reliable neutral colour, and a clear schedule between tenants.
+      - title: "Occupied condo painting"
+        desc: |-
+          When someone is living in the unit, the work is staged around furniture, drying time, ventilation, pets, work-from-home needs, and evening access.
 
   - type: Benefits
-    title: "Related services for Toronto homes"
+    title: "Feature walls, repairs and clean finishes"
+    content:
+      - title: "Dark accent wall changes"
+        desc: |-
+          Deep feature colours may need primer and extra coats so the new colour reads evenly in daylight and pot lights. If the wall surface is rough, we review whether [drywall repair and skim coating](/services/drywall-repair-skim-coating) belongs in the scope.
+      - title: "Drywall dents and anchor holes"
+        desc: |-
+          Condo walls often collect TV anchors, art holes, moving damage, and tenant touch-ups. Those repairs are reviewed before colour is applied.
+      - title: "Modern paint finish choices"
+        desc: |-
+          Condo interiors often need washable low-sheen walls, durable trim paint, and careful sheen choices because compact rooms show marks quickly.
+
+  - type: Benefits
+    title: "How To Compare Painting Quotes"
+    content:
+      - title: "Prep and repairs"
+        desc: |-
+          Ask whether wall dents, cracks, old patches, sanding, caulking, stain blocking, primer, skim coating, and drywall dents and previous tenant patches are included or priced separately.
+      - title: "Surfaces included"
+        desc: |-
+          Walls, ceilings, trim, doors, baseboards, stair halls, closets, feature walls, and touch-ups should be named clearly. A low quote can simply mean fewer surfaces are included.
+      - title: "Protection and cleanup"
+        desc: |-
+          Furniture movement, floor covering, stair protection, masking, access paths, dust control, garbage removal, and daily cleanup should be part of the comparison, especially in lived-in spaces.
+      - title: "Paint system and coats"
+        desc: |-
+          Compare paint line, sheen, primer, coat count, colour changes, low VOC needs, trim coating, and whether the quote allows enough time for proper drying and finish quality.
+
+  - type: Faq
+    title: "Toronto condo painting FAQ"
+    showMoreLabel: View more interior painting questions
+    content:
+      - title: "Can you paint downtown Toronto condos with elevator booking rules?"
+        desc: |-
+          Yes. We ask for elevator times, service entrance rules, loading dock details, hallway requirements, parking limits, and work-hour restrictions before the quote is finalized.
+      - title: "Can you repaint a Toronto condo before listing?"
+        desc: |-
+          Yes. We focus on entry walls, living areas, bedrooms, feature walls, trim touch-ups, and colours that photograph cleanly for sale preparation.
+      - title: "Can you handle parking and loading access in Toronto?"
+        desc: |-
+          Yes. Parking and loading affect timing, material movement, and staging. We ask about those details early so the painting day is not derailed at the curb.
+      - title: "Do you paint occupied Toronto condos?"
+        desc: |-
+          Yes. We can work by room, keep access paths open, discuss low-odour products, and plan drying windows around daily use.
+      - title: "Can you remove a dark condo feature wall?"
+        desc: |-
+          Yes. Dark accent colours often need primer or extra coats, especially when the new colour is light or the wall is strongly lit.
+      - title: "Can you provide a condo painting quote from photos?"
+        desc: |-
+          Often, yes. Send each room from two angles, trim and door close-ups, wall damage, ceiling height, elevator notes, parking notes, and the colours you are considering.
+      - title: "How much does condo painting cost in Toronto?"
+        desc: |-
+          Cost depends on room count, access, repairs, trim, doors, ceilings, colour changes, product choice, and whether the unit is empty or furnished.
+      - title: "How long does a Toronto condo repaint take?"
+        desc: |-
+          A simple condo can move quickly, while repairs, feature wall colour changes, trim, ceilings, elevator windows, and furniture can add time.
+      - title: "Can you paint rental turnover units?"
+        desc: |-
+          Yes. We can prioritize durable wall finishes, quick repair decisions, entry walls, bedrooms, living rooms, and trim that affects the first impression.
+      - title: "Do building rules change the painting schedule?"
+        desc: |-
+          They can. Some buildings limit service elevator use, loading hours, disposal, hallway coverage, and contractor access. Those rules are part of the plan.
+      - title: "What paint finish works best for condos?"
+        desc: |-
+          Many condo walls suit a washable low-sheen finish, while trim and doors need something tougher. Strong daylight and pot lights can make sheen choice important.
+      - title: "Do you repair drywall dents before painting?"
+        desc: |-
+          Yes. Condo walls often have anchor holes, moving scuffs, furniture marks, and previous tenant patches that should be corrected before colour goes on.
+      - title: "Can you match designer colours?"
+        desc: |-
+          Yes. We can discuss samples, undertones, sheen, trim contrast, coverage, and whether the colour needs primer or extra coats.
+      - title: "Do you paint ceilings in condos?"
+        desc: |-
+          Yes, when stains, repairs, old roller marks, or colour contrast would make fresh walls look unfinished.
+      - title: "Can you work around furniture in a small condo?"
+        desc: |-
+          Yes. Furniture movement, drop zones, drying areas, and tool staging are planned before the work starts.
+      - title: "Why do Toronto painting quotes vary so much?"
+        desc: |-
+          Some quotes include building logistics, wall repair, primer, trim, doors, cleanup, paint quality, and access planning. Others only price wall colour.
+      - title: "Do you service nearby areas from Toronto?"
+        desc: |-
+          Yes. We also handle painting in Etobicoke, Leaside, Forest Hill, Rosedale when the scope fits our interior painting work.
+
+  - type: QuoteCta
+    title: "Get a clear Toronto painting quote from photos"
+    desc: "Send room photos, close-ups of drywall dents and previous tenant patches, trim and door condition, ceiling height, access notes, furniture constraints, and the rooms you want painted. We will reply with scope, timing, product notes, and what needs to be handled before paint."
+    phone: (416) 471-5999
+    phoneHref: sms:+14164715999
+    image:
+      src: ../photos/toronto-modern-living-room-interior-painting.webp
+      alt: "Toronto painting quote."
+    steps:
+      - title: Send the rooms
+        desc: Show room photos, trim, doors, ceilings, stair halls, and problem areas.
+      - title: Review the scope
+        desc: We note repairs, primer, trim sanding, ceiling work, access constraints, and finish expectations.
+      - title: Book the sequence
+        desc: Rooms are staged, painted, cleaned, and handed back in a sensible order.
+
+  - type: Benefits
+    title: "Related Strataline services"
     content:
       - title: "Interior painting hub"
         desc: |-
-          Use the main interior painting page for scope planning, room-by-room examples, finish choices, and quote information before narrowing the work for a Toronto property. [View interior painting hub](/services/painting).
-      - title: "Trim and millwork painting"
-        desc: |-
-          If the trim is dated, chipped, glossy, or full of caulking gaps, review the trim painting page before treating it as a small add-on. [View trim and millwork painting](/services/trim-and-millwork-painting).
+          See the main painting page for room scope, finish choices, images, and quote planning. [View interior painting hub](/services/painting).
       - title: "Drywall repair and skim coating"
         desc: |-
-          Drywall repair and skim coating should be planned before painting where dents, cracks, old patches, torn paper, or strong side light would show through new paint. [View drywall repair and skim coating](/services/drywall-repair-skim-coating).
+          Plan repairs before painting where cracks, rough patches, or side light would show through. [View drywall repair and skim coating](/services/drywall-repair-skim-coating).
+      - title: "Trim and millwork painting"
+        desc: |-
+          Use this when baseboards, casing, doors, crown, wainscoting, or built-ins need a separate finish system. [View trim and millwork painting](/services/trim-and-millwork-painting).
+      - title: "Smooth ceiling finishing"
+        desc: |-
+          Coordinate ceiling smoothing, repairs, primer, and paint before final wall colour. [View smooth ceiling finishing](/services/smooth-ceiling-finishing).
       - title: "Popcorn ceiling removal"
         desc: |-
-          If the ceiling still has popcorn texture, plan ceiling smoothing before final wall colour so the room does not need to be disturbed twice. [View popcorn ceiling removal](/services/popcorn-removal).
-      - title: "Cabinet painting"
+          Remove texture, repair the ceiling, then paint walls and ceilings in the right sequence. [View popcorn ceiling removal](/services/popcorn-removal).
+      - title: "Stair refinishing and stairs"
         desc: |-
-          Cabinet painting belongs in the plan when kitchens, vanities, laundry cabinets, or built-ins need a more controlled finish than standard wall painting. [View cabinet painting](/services/cabinet-painting).
+          Coordinate stair refinishing, railing work, adjacent wall painting, and trim details. [View stair refinishing and stairs](/services/stairs).
 
   - type: Benefits
-    title: "Nearby interior painting service areas"
+    title: "Nearby service areas"
     content:
       - title: "Interior painting in Etobicoke"
         desc: |-
-          Review Etobicoke if you are close to that area or comparing nearby scheduling, common room types, and finish expectations. [View painting in Etobicoke](/services/painting/etobicoke).
+          Etobicoke painting for bungalows and detached homes, local prep, protection, and scheduling context. [View painting in Etobicoke](/services/painting/etobicoke).
       - title: "Interior painting in Leaside"
         desc: |-
-          Leaside projects often involve careful interior painting for renovated family homes, older trim details, and busy main floors. The local page covers prep, protection, room planning, and nearby painting context. [View painting in Leaside](/services/painting/leaside).
+          Leaside painting for detached family homes and renovated semis, local prep, protection, and scheduling context. [View painting in Leaside](/services/painting/leaside).
       - title: "Interior painting in Forest Hill"
         desc: |-
-          The Forest Hill page is useful when comparing painting scopes for older detached homes and renovated luxury homes, especially where access and prep expectations differ. [View painting in Forest Hill](/services/painting/forest-hill).
+          Forest Hill painting for older detached homes and renovated luxury homes, local prep, protection, and scheduling context. [View painting in Forest Hill](/services/painting/forest-hill).
       - title: "Interior painting in Rosedale"
         desc: |-
-          Review Rosedale if you are close to that area or comparing nearby scheduling, common room types, and finish expectations. [View painting in Rosedale](/services/painting/rosedale).
-      - title: "Interior painting in The Beaches"
-        desc: |-
-          The Beaches projects often involve fresh, clean interior painting for character homes, family spaces, and bright rooms near the lake. The local page covers prep, protection, room planning, and nearby painting context. [View painting in The Beaches](/services/painting/the-beaches).
-
-  - type: Faq
-    title: "Toronto interior painting FAQ"
-    showMoreLabel: View more interior painting questions
-    content:
-      - title: "How do you handle painting in Toronto condos with elevator, parking, or building rules?"
-        desc: |-
-          We ask about elevator booking, parking, loading rules, work-hour limits, hallway protection, garbage removal, and material staging before scheduling. Condo logistics can affect timing as much as the painting itself.
-      - title: "Do older Toronto homes need more prep before painting?"
-        desc: |-
-          Usually, yes. Older walls and trim are rarely flat, clean, and ready for paint. We look for movement cracks, old patches, caulking gaps, gloss, and areas that need primer before finish coats.
-      - title: "How do you protect floors, stairs, and furniture during painting?"
-        desc: |-
-          We cover the surfaces at risk, organize the work zone, and clean daily. In a finished home, the protection plan is as important as the painting sequence.
-      - title: "What usually affects the price of interior painting in Toronto?"
-        desc: |-
-          The biggest variables are room count, ceiling height, amount of repair, trim and door condition, colour change, furniture movement, access, number of coats, primer needs, and how clean the final finish needs to be.
-      - title: "Do you repair wall dents and previous patch marks before painting in Toronto?"
-        desc: |-
-          Yes. We review dents, nail pops, cracks, old repairs, raised patch edges, and primer needs before painting. The goal is not just to change the colour; it is to make the surface look cleaner once light hits it.
-      - title: "Can you repaint trim and doors without making the house feel like a construction site?"
-        desc: |-
-          Yes. The key is staging. We plan door access, drying time, hardware areas, trim sanding, masking, and cleanup so the home does not feel taken over.
-      - title: "What paint finish do you recommend for Toronto homes?"
-        desc: |-
-          We choose finish by surface first. Walls, trim, doors, and ceilings should not all be treated the same because they wear and reflect light differently.
-
-  - type: Benefits
-    title: "Start your Toronto painting quote"
-    content:
-      - title: "Get a painting quote in Toronto"
-        desc: |-
-          Tell us which rooms matter most, whether the home is occupied, and what finish level you expect. Photos of condo living areas and bedrooms help us price the work more accurately. Call [(416) 471 5999](tel:+14164715999).
-      - title: "What helps us price it properly"
-        desc: |-
-          Measurements, room count, door count, trim condition, ceiling height, colour change, repair photos, and furniture constraints usually tell us more than a short written description.
+          Rosedale painting for large older homes and renovated detached homes, local prep, protection, and scheduling context. [View painting in Rosedale](/services/painting/rosedale).
