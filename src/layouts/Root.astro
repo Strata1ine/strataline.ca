@@ -29,7 +29,10 @@ const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons
 
 const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
 
-const pathname = Astro.url.pathname.replace(/\/$/, '');
+const pathname = Astro.url.pathname
+	.replace(/\/index\.html$/, '/')
+	.replace(/\.html$/, '')
+	.replace(/\/$/, '');
 const canonicalUrl = `${Astro.url.origin}${pathname || '/'}`;
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
