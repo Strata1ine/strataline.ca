@@ -81,13 +81,12 @@ if (cardshow.length > 0) {
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		{noIndex && <meta name="robots" content="noindex, nofollow" />}
 
 		<title>
 			{title ? `${title} | ${business.name}` : business.name}
 		</title>
 
-		{!noIndex && <link rel="canonical" href={canonicalUrl} />}
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 

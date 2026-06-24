@@ -17,6 +17,7 @@ import { getEntry, getCollection } from '@/content.config';
 const index = await getEntry('index', 'index');
 const services = (await getCollection('services'))
 	.filter((service) => !service.data.hidden)
+	.filter((service) => service.id.split('/').length === 1)
 	.filter((service) =>
 		index.data.popular.some((pattern: string) => service.id.split('/')[0].includes(pattern)),
 	)

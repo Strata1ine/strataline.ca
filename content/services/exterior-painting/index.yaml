@@ -8,7 +8,7 @@ desc: |-
   We clean, sand, scrape, prime, protect, and paint exterior surfaces so doors, trim, siding, stucco, masonry, railings, and garage doors look sharp and hold up to Ontario weather.
 
 image:
-  src: ./cover.jpg
+  src: ./cover.webp
   alt: Exterior house painting in Toronto with white stucco, black trim, black garage doors, and updated curb appeal.
 
 sections:
@@ -329,7 +329,6 @@ sections:
         image:
           src: ./photos/exterior-house-painting-vaughan-after.webp
           alt: Exterior painting with clean stucco, dark trim, black windows, and professional exterior finish.
-
 
   - type: Benefits
     title: Exterior painting scope
