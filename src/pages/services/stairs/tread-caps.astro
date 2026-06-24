@@ -1,0 +1,14 @@
+---
+import ServicePage from '../[...slug].astro';
+import { getEntry } from '@/content.config';
+
+export const prerender = true;
+
+const service = await getEntry('services', 'stairs/tread-caps');
+
+if (!service) {
+	throw new Error('Service not found: stairs/tread-caps');
+}
+---
+
+<ServicePage service={service} />

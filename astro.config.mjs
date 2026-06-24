@@ -46,71 +46,6 @@ const indexableServicePaths = new Set(
 		}),
 );
 
-<<<<<<< HEAD
-const htmlRedirects = Object.fromEntries(
-	[
-		'/index',
-		...extensionlessRoutes,
-		...servicePaths,
-		...Object.keys(redirects).map((pathname) => normalizePathname(pathname)),
-	]
-		.map((pathname) => normalizePathname(pathname))
-		.filter((pathname, index, paths) => paths.indexOf(pathname) === index)
-		.map((pathname) => [
-			pathname === '/' ? '/index.html' : `${pathname}.html`,
-			{
-				status: 301,
-				destination: pathname,
-			},
-		]),
-);
-
-const forcedRedirectPaths = new Set([
-	'/services/garage-doors',
-	'/services/garage-doors.html',
-	'/services/garage-door-openers',
-	'/services/garage-door-openers.html',
-	'/services/garage-door-spring-repair',
-	'/services/garage-door-spring-repair.html',
-	'/services/energy-efficient-home-upgrades',
-	'/services/energy-efficient-home-upgrades.html',
-	'/services/energy-efficient-upgrades',
-	'/services/energy-efficient-upgrades.html',
-]);
-
-function forceHtmlRedirects() {
-	return {
-		name: 'force-html-redirects',
-		hooks: {
-			'astro:build:done': ({ dir }) => {
-				const redirectsFile = fileURLToPath(new URL('_redirects', dir));
-				if (!fs.existsSync(redirectsFile)) return;
-
-				const redirectsText = fs.readFileSync(redirectsFile, 'utf8');
-				const updatedText = redirectsText
-					.split(/\r?\n/)
-					.map((line) => {
-						const [from] = line.split(/\s+/, 1);
-						if (
-							!forcedRedirectPaths.has(from) &&
-							!/^\/\S+\.html\s+\S+\s+30[1278]$/.test(line)
-						) {
-							return line;
-						}
-						return line.replace(/\s+(30[1278])$/, ' $1!');
-					})
-					.join('\n');
-
-				if (updatedText !== redirectsText) {
-					fs.writeFileSync(redirectsFile, updatedText);
-				}
-			},
-		},
-	};
-}
-
-=======
->>>>>>> max
 // https://astro.build/config
 export default defineConfig({
 	adapter: netlify({
@@ -191,12 +126,5 @@ export default defineConfig({
 		solidJs(),
 		compressor(),
 	],
-<<<<<<< HEAD
-	redirects: {
-		...htmlRedirects,
-		...redirects,
-	},
-=======
 	redirects: redirects,
->>>>>>> max
 });

@@ -1,0 +1,14 @@
+---
+import ServicePage from '../[...slug].astro';
+import { getEntry } from '@/content.config';
+
+export const prerender = true;
+
+const service = await getEntry('services', 'stairs/refinishing');
+
+if (!service) {
+	throw new Error('Service not found: stairs/refinishing');
+}
+---
+
+<ServicePage service={service} />

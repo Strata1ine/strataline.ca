@@ -1,0 +1,14 @@
+---
+import ServicePage from '../[...slug].astro';
+import { getEntry } from '@/content.config';
+
+export const prerender = true;
+
+const service = await getEntry('services', 'stairs/railing-installation');
+
+if (!service) {
+	throw new Error('Service not found: stairs/railing-installation');
+}
+---
+
+<ServicePage service={service} />
