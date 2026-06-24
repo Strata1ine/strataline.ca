@@ -92,6 +92,19 @@ const htmlRedirects = Object.fromEntries(
 		]),
 );
 
+const forcedRedirectPaths = new Set([
+	'/services/garage-doors',
+	'/services/garage-doors.html',
+	'/services/garage-door-openers',
+	'/services/garage-door-openers.html',
+	'/services/garage-door-spring-repair',
+	'/services/garage-door-spring-repair.html',
+	'/services/energy-efficient-home-upgrades',
+	'/services/energy-efficient-home-upgrades.html',
+	'/services/energy-efficient-upgrades',
+	'/services/energy-efficient-upgrades.html',
+]);
+
 function forceHtmlRedirects() {
 	return {
 		name: 'force-html-redirects',
@@ -104,7 +117,13 @@ function forceHtmlRedirects() {
 				const updatedText = redirectsText
 					.split(/\r?\n/)
 					.map((line) => {
-						if (!/^\/\S+\.html\s+\S+\s+30[1278]$/.test(line)) return line;
+						const [from] = line.split(/\s+/, 1);
+						if (
+							!forcedRedirectPaths.has(from) &&
+							!/^\/\S+\.html\s+\S+\s+30[1278]$/.test(line)
+						) {
+							return line;
+						}
 						return line.replace(/\s+(30[1278])$/, ' $1!');
 					})
 					.join('\n');
@@ -205,7 +224,7 @@ export default defineConfig({
 		compressor(),
 	],
 	redirects: {
-		...redirects,
 		...htmlRedirects,
+		...redirects,
 	},
 });

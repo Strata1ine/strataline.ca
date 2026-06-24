@@ -35,14 +35,14 @@ sections:
         image:
           src: ../garage-doors/photos/02.jpg
           alt: Garage door installation with a matched opener system.
-        link: /services/garage-doors
+        link: /services/doors_and_windows
       - title: Garage door spring repair
         desc: |-
           If the opener strains, hums, or will not lift the door, the real issue may be broken springs or an unbalanced door.
         image:
           src: ../garage-doors/photos/07.jpg
           alt: Garage door spring and hardware repair before opener use.
-        link: /services/garage-door-spring-repair
+        link: /services/doors_and_windows
 
   - type: TextCarousel
     text:

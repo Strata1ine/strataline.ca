@@ -3,7 +3,9 @@ import Root from '@/layouts/Root.astro';
 import { getEntry, getCollection } from '@/content.config';
 
 const data = (await getEntry('index', 'index')).data;
-const services = (await getCollection('services')).filter((service) => service?.id);
+const services = (await getCollection('services')).filter(
+	(service) => service?.id && service.id !== 'doors_and_windows' && service.data.hidden !== true,
+);
 import { seo } from '@/pages/services/[...slug].astro';
 ---
 

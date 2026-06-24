@@ -68,5 +68,17 @@
 	"/baseboards": "/services/trim-and-millwork-painting",
 	"/contact/": "/",
 	"/home-renovation/closets-storage/": "/",
-	"/fiberglass-and-steel-door-installation-and-replacement-vinyl-windows-exterior-trim-woodbridge-maple-vaughan-king-aurora-nemwarket-caledon-nobleton-kleinburg/": "/services/entry-door-replacement"
+	"/fiberglass-and-steel-door-installation-and-replacement-vinyl-windows-exterior-trim-woodbridge-maple-vaughan-king-aurora-nemwarket-caledon-nobleton-kleinburg/": "/services/entry-door-replacement",
+	"/services/doors-and-windows": "/services/doors_and_windows",
+	"/services/doors-and-windows.html": "/services/doors_and_windows",
+	"/services/garage-doors": "/services/doors-and-windows",
+	"/services/garage-doors.html": "/services/doors-and-windows",
+	"/services/garage-door-openers": "/services/doors-and-windows",
+	"/services/garage-door-openers.html": "/services/doors-and-windows",
+	"/services/garage-door-spring-repair": "/services/doors-and-windows",
+	"/services/garage-door-spring-repair.html": "/services/doors-and-windows",
+	"/services/energy-efficient-home-upgrades": "/",
+	"/services/energy-efficient-home-upgrades.html": "/",
+	"/services/energy-efficient-upgrades": "/",
+	"/services/energy-efficient-upgrades.html": "/"
 }

@@ -36,13 +36,13 @@ sections:
           src: ../exterior-painting/cover.jpg
           alt: Exterior house painting and facade refresh in the GTA.
         link: /services/exterior-painting
-      - title: Garage door replacement
+      - title: Doors, windows, and garage openings
         desc: |-
-          A new garage door can complete a brick facade refresh by updating one of the largest visible exterior surfaces.
+          Door, window, trim, and garage opening details can complete a brick facade refresh by updating the largest visible exterior surfaces.
         image:
           src: ../garage-doors/photos/03.jpg
-          alt: Wood-look garage door replacement paired with exterior brick painting.
-        link: /services/garage-doors
+          alt: Garage door and exterior opening details paired with exterior brick painting.
+        link: /services/doors_and_windows
 
   - type: TextCarousel
     text:

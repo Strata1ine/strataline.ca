@@ -36,13 +36,6 @@ sections:
           src: ../doors_and_windows/cover.jpg
           alt: Door and window replacement for a GTA home.
         link: /services/doors_and_windows
-      - title: Energy-efficient upgrades
-        desc: |-
-          Windows can be part of a broader plan for air sealing, insulation, doors, ventilation, and heating efficiency.
-        image:
-          src: ../energy-efficient-upgrades/photos/windows.jpg
-          alt: Energy-efficient window replacement as part of home upgrade planning.
-        link: /services/energy-efficient-upgrades
 
   - type: TextCarousel
     text:

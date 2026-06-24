@@ -1,3 +1,4 @@
+hidden: true
 title: Garage door installation and repair
 position: 9
 seo: |-
@@ -482,7 +483,7 @@ sections:
         image:
           src: ./photos/09.jpg
           alt: Quiet garage door opener installation for a modern residential garage door.
-        link: /services/garage-door-openers
+        link: /services/doors_and_windows
 
       - title: Garage door spring repair
         desc: |-
@@ -490,7 +491,7 @@ sections:
         image:
           src: ./photos/07.jpg
           alt: Garage door spring repair and hardware inspection.
-        link: /services/garage-door-spring-repair
+        link: /services/doors_and_windows
 
   - type: ServiceAreas
     title: Garage door service areas
