@@ -25,11 +25,14 @@ sections:
 
   - type: Hero
     title: |-
+      Dust-Free 
+      Home 
       Renovations
-      Without the
-      Disruption
     desc: |-
-      Dust-controlled renovations in finished homes — precise execution with minimal intrusion and uncompromising detail.
+      Popcorn Ceiling Removal 
+      Interior Painting 
+      Stair Refinishing 
+      Drywall Repair
     content:
       images:
         - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg

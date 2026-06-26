@@ -162,9 +162,7 @@ export default function Talk() {
 
 	const update = () => {
 		if (above() || !sensor) return setStyle(null);
-		setStyle(
-			`${inset()}px calc(100svh - ${fabSize + inset()}px) 0`,
-		);
+		setStyle(`${inset()}px calc(100svh - ${fabSize + inset()}px) 0`);
 	};
 
 	onMount(() => {
@@ -204,14 +202,14 @@ export default function Talk() {
 		>
 			<div class="relative h-12 w-full max-w-[21rem] xl:h-[3.25rem]">
 				<LetsTalk
-					aria-label="Start your project (Ctrl+/)"
+					aria-label="Get a Free Estimate (Ctrl+/)"
 					class={cn(
 						'z-1',
 						hydrated() && 'duration-1000',
 						above()
 							? cn(
 									buttonVariants(),
-									'absolute h-12 w-full !border-[#e2556e] !bg-[#e2556e] px-5 !text-white shadow-lg shadow-[#e2556e]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e2556e] xl:h-[3.25rem]',
+									'absolute h-12 w-full !border-[#C54A37] !bg-[#C54A37] px-5 !text-white shadow-lg shadow-[#C54A37]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C54A37] xl:h-[3.25rem]',
 								)
 							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0 left-0'),
 					)}
@@ -229,7 +227,7 @@ export default function Talk() {
 							above() ? 'opacity-100' : 'opacity-0',
 						)}
 					>
-						Start Your Project →
+						Get a Free Estimate →
 					</span>
 
 					<ChatCircle
@@ -250,12 +248,11 @@ export default function Talk() {
 				href={phoneHref}
 				aria-label={`Call Strataline at ${displayTelephone}`}
 			>
-				Speak with a Project Specialist:{' '}
-				<span class="whitespace-nowrap">{displayTelephone}</span>
+				Call: <span class="whitespace-nowrap">{displayTelephone}</span>
 			</a>
 			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
-				Photo estimates available {'\u2022'} Fully contained <br />
-				For homes, condos, and occupied spaces
+				15+ Years Experience • Dust-Free Process <br />
+				Fully Insured • Photo Estimates Available
 			</p>
 		</div>
 	);

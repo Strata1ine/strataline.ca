@@ -1,12 +1,15 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-primary: oklch(0.9768 0.0221 7.17);
-	--color-primary-dark: oklch(0.9468 0.0221 7.17);
-	--color-secondary: oklch(0.6882 0.1899 10.14);
-	--color-white: #fffafb;
-	--color-gold: oklch(0.924 0.0505 70.99);
-	--color-black: var(--color-stone-950);
+	--color-primary: #efeff1; /* Left colour block on main page */
+	--color-primary-dark: #dededf; /* scroll outlines.*/
+	--color-secondary: #0c0a09; /* logo and contact button in header */
+	--color-white: #f5f5f7; /* main background */
+	--color-gold: oklch(0.924 0.0505 70.99); /* review stars */
+	--color-black: var(
+		--color-stone-950
+	); /* Primary text
+Headlines, body text, navigation, footer text, icons, borders, dark overlays. */
 
 	--font-serif: var(--font-cormorant-garamond);
 	--font-sans: var(--font-inter);
