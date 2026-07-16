@@ -197,7 +197,7 @@ export default function Talk() {
 
 	return (
 		<div
-			class="relative mt-7 flex max-w-full flex-col items-start gap-2.5"
+			class="relative mt-7 flex max-w-full flex-col items-start gap-3.5 sm:gap-3"
 			ref={(el) => (sensor = el!)}
 		>
 			<div class="relative h-12 w-full max-w-[21rem] xl:h-[3.25rem]">
@@ -244,13 +244,13 @@ export default function Talk() {
 				/>
 			</div>
 			<a
-				class="hover:text-secondary font-sans text-base leading-snug font-semibold text-black/90 transition sm:text-lg xl:text-xl"
+				class="hover:text-secondary mt-1 font-sans text-base leading-snug font-semibold text-black/90 transition sm:mt-0 sm:text-lg xl:text-xl"
 				href={phoneHref}
 				aria-label={`Call Strataline at ${displayTelephone}`}
 			>
 				Call: <span class="whitespace-nowrap">{displayTelephone}</span>
 			</a>
-			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-black/55 sm:text-base">
+			<p class="max-w-full text-balance font-sans text-sm leading-snug font-semibold text-black/55 xl:text-base">
 				15+ Years Experience • Dust-Free Process <br />
 				Fully Insured • Photo Estimates Available
 			</p>

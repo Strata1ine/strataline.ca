@@ -17,6 +17,19 @@ You are NOT allowed to:
 - Modify TypeScript/JavaScript/Astro component files
 - Change build scripts or deployment configurations
 
+## Operational Guardrails
+
+- Work only on the files required for the task.
+- Before editing, identify the smallest number of files required.
+- Do not scan or refactor the entire repository.
+- Do not redesign unrelated sections.
+- Do not rewrite existing components unless necessary.
+- Reuse existing Astro components, spacing, typography, colours, buttons, card styles, and responsive behaviour.
+- Do not install new packages.
+- Do not create duplicate components when an existing component can be reused.
+- Preserve all existing URLs, metadata, schema, redirects, and SEO content.
+- After editing, run the existing build or validation command and report only the files changed, what was changed, and any unresolved issue.
+
 ## Content Structure
 
 All content is managed through YAML files in the `/content` directory. Follow the conventions documented in `docs/schema.md` when creating or modifying content files.

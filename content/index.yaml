@@ -24,15 +24,8 @@ sections:
         name: ★★★★★ Reviews
 
   - type: Hero
-    title: |-
-      Dust-Free 
-      Home 
-      Renovations
-    desc: |-
-      Popcorn Ceiling Removal 
-      Interior Painting 
-      Stair Refinishing 
-      Drywall Repair
+    title: Dust-Free Home Renovations
+    desc: Popcorn Ceiling Removal • Interior Painting • Stair Refinishing • Drywall Repair
     content:
       images:
         - src: ./slideshow/staircase-renovation-toronto-open-riser.jpg
