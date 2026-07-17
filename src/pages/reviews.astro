@@ -41,7 +41,7 @@ const proofCards = [
 		<Layout.Divider class="pt-12 pb-14 sm:pt-18 sm:pb-20">
 			<Layout.Container variant="inner" class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
 				<div>
-					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+					<p class="font-sans text-sm font-semibold tracking-[0.18em] text-secondary uppercase">
 						Client feedback
 					</p>
 					<h1 class="mt-4 max-w-4xl font-serif text-5xl leading-[0.95] font-semibold text-black sm:text-7xl lg:text-8xl">
@@ -117,7 +117,7 @@ const proofCards = [
 		<Layout.Divider class="bg-primary/25 py-14 sm:py-18">
 			<Layout.Container variant="inner" class="grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-center">
 				<div>
-					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+					<p class="font-sans text-sm font-semibold tracking-[0.18em] text-secondary uppercase">
 						Review inspiration
 					</p>
 					<h2 class="mt-3 font-serif text-4xl leading-none font-semibold sm:text-6xl">
@@ -136,7 +136,7 @@ const proofCards = [
 		<Layout.Divider class="py-14 sm:py-20">
 			<Layout.Container variant="inner">
 				<div class="max-w-3xl">
-					<p class="font-sans text-sm font-bold tracking-[0.18em] text-secondary uppercase">
+					<p class="font-sans text-sm font-semibold tracking-[0.18em] text-secondary uppercase">
 						Social proof
 					</p>
 					<h2 class="mt-3 font-serif text-4xl leading-none font-semibold sm:text-6xl">
@@ -147,7 +147,7 @@ const proofCards = [
 				<div class="mt-8 grid gap-4 md:grid-cols-3">
 					{proofCards.map((card) => (
 						<article class="border-primary-dark relative min-h-88 overflow-hidden rounded-2xl border bg-white p-6 shadow-sm shadow-black/5">
-							<p class="font-sans text-2xl font-bold tracking-[0.12em] text-secondary" aria-label="5 stars">
+							<p class="font-sans text-2xl font-semibold tracking-[0.12em] text-secondary" aria-label="5 stars">
 								&#9733;&#9733;&#9733;&#9733;&#9733;
 							</p>
 							<h3 class="mt-4 font-serif text-3xl leading-none font-semibold">{card.title}</h3>
@@ -159,7 +159,7 @@ const proofCards = [
 								{card.reviews.map((review, index) => (
 									<div class="review-slide absolute inset-0" data-active={index === 0 ? 'true' : 'false'}>
 										<p class="desc-base line-clamp-3">{review.desc}</p>
-										<p class="mt-4 font-sans text-sm font-bold text-secondary">
+										<p class="mt-4 font-sans text-sm font-semibold text-secondary">
 											{review.title}{review.location ? `, ${review.location}` : ''}
 										</p>
 									</div>
@@ -247,7 +247,7 @@ const proofCards = [
 
 	.review-platform-title {
 		font-size: 1.1rem;
-		font-weight: 800;
+		font-weight: 600;
 		line-height: 1.2;
 	}
 

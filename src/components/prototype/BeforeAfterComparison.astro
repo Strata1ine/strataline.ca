@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import { beforeAfterComparison } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-before-after section-anchor" id="transformation">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">Transformation</p>
+		<h2>See what proper preparation changes</h2>
+		<p>
+			Compare the original condition with the completed work. The difference is created through
+			preparation, correction and finishing—not a filter.
+		</p>
+	</div>
+
+	<div class="proto-before-after__frame reveal" data-before-after>
+		<figure class="proto-before-after__image proto-before-after__image--after">
+			<Image
+				src={beforeAfterComparison.after.src}
+				alt={beforeAfterComparison.after.alt}
+				widths={[720, 960, 1280, 1600]}
+				sizes="(max-width: 900px) 100vw, 72vw"
+				loading="lazy"
+			/>
+			<figcaption>{beforeAfterComparison.after.label}</figcaption>
+		</figure>
+		<figure class="proto-before-after__image proto-before-after__image--before" data-before-layer>
+			<Image
+				src={beforeAfterComparison.before.src}
+				alt={beforeAfterComparison.before.alt}
+				widths={[720, 960, 1280, 1600]}
+				sizes="(max-width: 900px) 100vw, 72vw"
+				loading="lazy"
+			/>
+			<figcaption>{beforeAfterComparison.before.label}</figcaption>
+		</figure>
+		<label class="proto-before-after__control">
+			<span class="sr-only">Compare before and after</span>
+			<input
+				type="range"
+				min="0"
+				max="100"
+				value="50"
+				aria-label="Reveal more or less of the before image"
+				data-before-range
+			/>
+		</label>
+		<span class="proto-before-after__handle" aria-hidden="true" data-before-handle></span>
+	</div>
+</section>
+
+<script is:inline>
+	document.querySelectorAll('[data-before-after]').forEach((frame) => {
+		const range = frame.querySelector('[data-before-range]');
+		const before = frame.querySelector('[data-before-layer]');
+		const handle = frame.querySelector('[data-before-handle]');
+		if (!(range instanceof HTMLInputElement) || !(before instanceof HTMLElement)) return;
+
+		const update = () => {
+			const value = `${range.value}%`;
+			before.style.clipPath = `inset(0 ${100 - Number(range.value)}% 0 0)`;
+			if (handle instanceof HTMLElement) handle.style.left = value;
+		};
+
+		range.addEventListener('input', () => {
+			update();
+			window.trackProtoEvent?.('before_after_interaction');
+		});
+		update();
+	});
+</script>

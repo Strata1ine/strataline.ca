@@ -22,7 +22,7 @@ function DialogForm(props: {
 			>
 				<div class="relative mx-auto max-w-120 bg-white p-10 sm:my-10 sm:rounded-lg">
 					<div class="flex items-center gap-3">
-						<Dialog.Label class="flex-1 font-serif text-5xl font-bold sm:text-6xl">
+						<Dialog.Label class="flex-1 font-serif text-5xl font-semibold sm:text-6xl">
 							{props.title}
 						</Dialog.Label>
 

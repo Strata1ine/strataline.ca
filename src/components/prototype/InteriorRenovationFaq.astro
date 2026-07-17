@@ -1,0 +1,20 @@
+---
+import { renovationFaqs } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-faq section-anchor" id="faq">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">FAQ</p>
+		<h2>Interior renovation questions</h2>
+	</div>
+	<div class="proto-faq__list">
+		{
+			renovationFaqs.map((item) => (
+				<details class="reveal">
+					<summary>{item.question}</summary>
+					<p>{item.answer}</p>
+				</details>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import { featuredMedia } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-media-proof section-anchor" id="media">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">As seen on</p>
+		<h2>Featured by leading Canadian media</h2>
+		<p>
+			CityTV, HGTV, The Toronto Star and House & Home have featured Strataline's renovation work,
+			dust-controlled process and finishing expertise.
+		</p>
+	</div>
+
+	<div class="proto-media-proof__grid">
+		{
+			featuredMedia.map((item) =>
+				item.type === 'video' ? (
+					<article class="proto-media-card proto-media-card--video reveal" data-proto-video-card>
+						<div class="proto-media-card__frame">
+							<video muted playsinline preload="metadata" poster={item.image.src.src}>
+								<source src={item.video} type="video/mp4" />
+							</video>
+							<button
+								class="proto-video-button"
+								type="button"
+								data-video-toggle
+								aria-pressed="false"
+								aria-label={`Play ${item.source} feature video`}
+							>
+								<span data-video-label>Play</span>
+							</button>
+						</div>
+						<div class="proto-media-card__copy">
+							<p>{item.source}</p>
+							<h3>{item.title}</h3>
+						</div>
+					</article>
+				) : item.link ? (
+					<a
+						class="proto-media-card reveal"
+						href={item.link}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<div class="proto-media-card__frame">
+							<Image
+								src={item.image.src}
+								alt={item.image.alt}
+								widths={[480, 720, 960]}
+								sizes="(max-width: 900px) 100vw, 25vw"
+								loading="lazy"
+							/>
+						</div>
+						<div class="proto-media-card__copy">
+							<p>{item.source}</p>
+							<h3>{item.title}</h3>
+							<span class="proto-media-card__link">
+								Read the article <span aria-hidden="true">&#8599;</span>
+							</span>
+						</div>
+					</a>
+				) : (
+					<article class="proto-media-card reveal">
+						<div class="proto-media-card__frame">
+							<Image
+								src={item.image.src}
+								alt={item.image.alt}
+								widths={[480, 720, 960]}
+								sizes="(max-width: 900px) 100vw, 25vw"
+								loading="lazy"
+							/>
+						</div>
+						<div class="proto-media-card__copy">
+							<p>{item.source}</p>
+							<h3>{item.title}</h3>
+						</div>
+					</article>
+				),
+			)
+		}
+	</div>
+</section>
+
+<script is:inline>
+	const mediaCards = [...document.querySelectorAll('[data-proto-video-card]')];
+
+	const pauseCard = (card) => {
+		const video = card.querySelector('video');
+		if (video instanceof HTMLVideoElement) video.pause();
+	};
+
+	mediaCards.forEach((card) => {
+		const video = card.querySelector('video');
+		const button = card.querySelector('[data-video-toggle]');
+		const label = card.querySelector('[data-video-label]');
+
+		if (!(video instanceof HTMLVideoElement) || !(button instanceof HTMLButtonElement)) return;
+		video.controls = false;
+
+		const sync = () => {
+			const playing = !video.paused && !video.ended;
+			const hasNativeControls = video.controls && !video.ended;
+			button.hidden = hasNativeControls;
+			card.classList.toggle('has-native-controls', hasNativeControls);
+			button.setAttribute(
+				'aria-label',
+				`${playing ? 'Playing' : 'Play'} ${card.querySelector('h3')?.textContent ?? 'feature video'}`,
+			);
+			button.setAttribute('aria-pressed', String(playing));
+			if (label) label.textContent = 'Play';
+		};
+
+		button.addEventListener('click', async () => {
+			if (video.paused || video.ended) {
+				mediaCards.forEach((otherCard) => {
+					if (otherCard !== card) pauseCard(otherCard);
+				});
+				video.controls = true;
+				button.hidden = true;
+				try {
+					await video.play();
+				} catch {
+					video.controls = false;
+					button.hidden = false;
+				}
+			}
+			sync();
+		});
+
+		video.addEventListener('play', () => {
+			mediaCards.forEach((otherCard) => {
+				if (otherCard !== card) pauseCard(otherCard);
+			});
+			video.controls = true;
+			sync();
+		});
+		video.addEventListener('play', () => window.trackProtoEvent?.('media_video_play'));
+		video.addEventListener('pause', sync);
+		video.addEventListener('ended', () => {
+			video.controls = false;
+			sync();
+		});
+		sync();
+	});
+
+	if ('IntersectionObserver' in window) {
+		const videoObserver = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) pauseCard(entry.target);
+				}
+			},
+			{ threshold: 0.2 },
+		);
+
+		mediaCards.forEach((card) => videoObserver.observe(card));
+	}
+</script>

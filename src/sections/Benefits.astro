@@ -32,7 +32,7 @@ import markdown from '@/build/markdown';
 				meta.content.map(async (benefit) => {
 					return (
 						<article class="rounded-lg border border-black/10 bg-white/70 p-5 shadow-sm shadow-black/5 md:p-6">
-							<h3 class="font-serif text-2xl leading-tight font-bold text-pretty md:text-3xl">{benefit.title}</h3>
+							<h3 class="font-serif text-2xl leading-tight font-semibold text-pretty md:text-3xl">{benefit.title}</h3>
 
 							<p class="mt-3 font-sans text-base leading-8 text-black/75 md:text-lg md:leading-9" set:html={await markdown.parseInline(benefit.desc)} />
 						</article>

@@ -1,0 +1,51 @@
+---
+import { processStages } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-process section-anchor" id="process">
+	<div class="proto-process__intro reveal">
+		<p class="proto-eyebrow">Process</p>
+		<h2>One project. One sequence. One point of contact.</h2>
+		<p class="sr-only" aria-live="polite" data-process-status></p>
+	</div>
+	<ol class="proto-process__stages">
+		{
+			processStages.map((stage) => (
+				<li class="reveal" data-process-stage data-stage-title={stage.title}>
+					<span>{stage.number}</span>
+					<h3>{stage.title}</h3>
+					<p>{stage.receives}</p>
+					<ul>
+						{stage.items.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<script is:inline>
+	const processStages = [...document.querySelectorAll('[data-process-stage]')];
+	const processStatus = document.querySelector('[data-process-status]');
+
+	if ('IntersectionObserver' in window) {
+		const processObserver = new IntersectionObserver(
+			(entries) => {
+				const active = entries
+					.filter((entry) => entry.isIntersecting)
+					.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]?.target;
+
+				if (!(active instanceof HTMLElement)) return;
+				processStages.forEach((stage) => stage.classList.toggle('is-active', stage === active));
+				if (processStatus) {
+					processStatus.textContent = `Current renovation stage: ${active.dataset.stageTitle}`;
+				}
+			},
+			{ rootMargin: '-25% 0px -45% 0px', threshold: [0.25, 0.5, 0.75] },
+		);
+
+		processStages.forEach((stage) => processObserver.observe(stage));
+	}
+</script>

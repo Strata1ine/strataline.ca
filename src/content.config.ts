@@ -24,19 +24,17 @@ export const collections = {
 	}),
 	services: defineCollection({
 		loader: glob({ pattern: '**/index.yaml', base: './content/services' }),
-		schema: (c: SchemaContext) =>
-			{
-				const seo = z.union([
-					z.string(),
-					z.object({
-						description: z.string(),
-						noindex: z.boolean().optional(),
-						indexableQuality: z.enum(['strong', 'medium', 'weak']).optional(),
-					}),
-				]);
+		schema: (c: SchemaContext) => {
+			const seo = z.union([
+				z.string(),
+				z.object({
+					description: z.string(),
+					noindex: z.boolean().optional(),
+					indexableQuality: z.enum(['strong', 'medium', 'weak']).optional(),
+				}),
+			]);
 
-				return (
-			z.object({
+			return z.object({
 				startPos: ZPos.optional(),
 				title: z.string(),
 				desc: z.string(),
@@ -49,9 +47,29 @@ export const collections = {
 				qualityScore: z.coerce.number().optional(),
 				hidden: z.boolean().optional(),
 				sections: parseBlocks(c).optional(),
-			})
-				);
-			},
+			});
+		},
+	}),
+	projects: defineCollection({
+		loader: glob({ pattern: '**/index.yaml', base: './content/projects' }),
+		schema: (c: SchemaContext) =>
+			z.object({
+				title: z.string(),
+				slug: z.string(),
+				location: z.string(),
+				summary: z.string(),
+				services: z.array(z.string()),
+				cover: image(c),
+				gallery: z.array(image(c)).default([]),
+				before: z.array(image(c)).default([]),
+				after: z.array(image(c)).default([]),
+				challenges: z.array(z.string()).default([]),
+				scope: z.array(z.string()).default([]),
+				materials: z.array(z.string()).default([]),
+				testimonialReference: z.string().optional(),
+				completionYear: z.coerce.number().optional(),
+				featured: z.boolean().default(false),
+			}),
 	}),
 };
 

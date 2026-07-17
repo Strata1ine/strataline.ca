@@ -222,7 +222,7 @@ export default function Talk() {
 					<span
 						aria-hidden="true"
 						class={cn(
-							'absolute top-1/2 left-1/2 -translate-1/2 font-bold whitespace-nowrap text-white',
+							'absolute top-1/2 left-1/2 -translate-1/2 font-semibold whitespace-nowrap text-white',
 							hydrated() && 'transition-opacity duration-750',
 							above() ? 'opacity-100' : 'opacity-0',
 						)}
@@ -244,7 +244,7 @@ export default function Talk() {
 				/>
 			</div>
 			<a
-				class="hover:text-secondary mt-1 font-sans text-base leading-snug font-semibold text-black/90 transition sm:mt-0 sm:text-lg xl:text-xl"
+				class="hover:text-secondary mt-1 font-serif text-base leading-snug font-medium text-black/90 transition sm:mt-0 sm:text-lg xl:text-xl"
 				href={phoneHref}
 				aria-label={`Call Strataline at ${displayTelephone}`}
 			>

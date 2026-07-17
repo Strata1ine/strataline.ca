@@ -21,7 +21,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 		<div class="inline-flex min-w-0 flex-nowrap items-center justify-end gap-x-1 min-[380px]:gap-x-2 sm:gap-x-4">
 			<LetsTalk
 				aria-label="Open contact form"
-				class="shrink-0 cursor-pointer rounded-md bg-secondary px-2 py-1.5 font-serif text-xs font-bold leading-none text-white shadow-sm transition hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary min-[380px]:px-3 min-[380px]:py-2 min-[380px]:text-base sm:px-5 sm:text-xl"
+				class="shrink-0 cursor-pointer rounded-md bg-secondary px-2 py-1.5 font-sans text-xs font-semibold leading-none text-white shadow-sm transition hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary min-[380px]:px-3 min-[380px]:py-2 min-[380px]:text-base sm:px-5 sm:text-xl"
 			>
 				Contact
 			</LetsTalk>
@@ -33,7 +33,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 				{business.email}
 			</a>
 			<a
-				class="shrink-0 whitespace-nowrap text-[10px] leading-none hover:text-primary min-[380px]:text-xs sm:text-base"
+				class="shrink-0 whitespace-nowrap font-serif text-[10px] leading-none hover:text-primary min-[380px]:text-xs sm:text-base"
 				href={phoneHref}
 				aria-label={`Call Strataline at ${business.telephone}`}
 			>
@@ -78,7 +78,7 @@ export default function Header(props: { content: HeaderMeta['content'] }) {
 													}}
 												>
 													<a
-														class={cn(styles.link, 'font-serif text-3xl font-semibold text-nowrap')}
+														class={cn(styles.link, 'font-sans text-3xl font-semibold text-nowrap')}
 														href={href}
 														target={external ? '_blank' : undefined}
 														rel={external ? 'noopener noreferrer' : undefined}

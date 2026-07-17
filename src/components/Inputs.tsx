@@ -64,7 +64,7 @@ function FieldRoot(props: FieldProps) {
 						)}
 						for={id}
 					>
-						<span class="text-md font-serif leading-none font-bold">{props.name}</span>
+						<span class="text-md font-sans leading-none font-semibold">{props.name}</span>
 						{props.required ? <Asterick class="text-secondary size-3" /> : null}
 					</label>
 				</Show>

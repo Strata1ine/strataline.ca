@@ -1,0 +1,39 @@
+---
+import business from '#/business.json';
+import { footerAreas, footerColumns } from '@/data/interiorRenovationsPrototype';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="proto-footer">
+	<div class="proto-footer__brand">
+		<strong>Strataline</strong>
+		<span>Dust-Free Renovation Experts</span>
+		<a href="tel:+14164715999">{business.telephone}</a>
+		<a href={`mailto:${business.email}`}>{business.email}</a>
+		<p>Serving Toronto, Vaughan and the GTA.</p>
+	</div>
+
+	{
+		footerColumns.map((column) => (
+			<nav aria-label={column.title}>
+				<h2>{column.title}</h2>
+				{column.links.map((link) => (
+					<a href={link.href}>{link.label}</a>
+				))}
+			</nav>
+		))
+	}
+
+	<nav aria-label="Service areas">
+		<h2>Areas</h2>
+		{footerAreas.map((area) => <span>{area}</span>)}
+	</nav>
+
+	<div class="proto-footer__bottom">
+		<p>© {year} Strataline. All rights reserved.</p>
+		<a href="/privacy">Privacy</a>
+		<a href="/tos">Terms</a>
+		<a href="/sitemap-index.xml">Sitemap</a>
+	</div>
+</footer>

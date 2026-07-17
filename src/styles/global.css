@@ -11,7 +11,7 @@
 	); /* Primary text
 Headlines, body text, navigation, footer text, icons, borders, dark overlays. */
 
-	--font-serif: var(--font-cormorant-garamond);
+	--font-serif: var(--font-source-serif-4);
 	--font-sans: var(--font-inter);
 	--font-mono: initial;
 
@@ -90,6 +90,8 @@ Headlines, body text, navigation, footer text, icons, borders, dark overlays. */
 :root {
 	color: var(--color-black);
 	background-color: var(--color-white);
+	font-variant-numeric: lining-nums;
+	font-feature-settings: 'lnum' 1;
 }
 
 @layer components {
@@ -153,17 +155,17 @@ Headlines, body text, navigation, footer text, icons, borders, dark overlays. */
 	}
 
 	.heading-9xl {
-		@apply font-serif text-5xl font-bold text-balance sm:text-9xl;
+		@apply font-serif text-5xl font-semibold text-balance sm:text-9xl;
 	}
 
 	.heading-7xl,
 	.prose h1 {
-		@apply font-serif text-5xl font-bold text-pretty xl:text-6xl;
+		@apply font-serif text-5xl font-semibold text-pretty xl:text-6xl;
 	}
 
 	.heading-5xl,
 	.prose h2 {
-		@apply font-serif text-4xl font-bold text-balance md:text-5xl xl:text-6xl;
+		@apply font-serif text-4xl font-semibold text-balance md:text-5xl xl:text-6xl;
 	}
 
 	.desc-base,
@@ -179,11 +181,11 @@ Headlines, body text, navigation, footer text, icons, borders, dark overlays. */
 
 	.heading-4xl,
 	.prose h3 {
-		@apply font-serif text-3xl font-bold text-balance xl:text-5xl;
+		@apply font-serif text-3xl font-semibold text-balance xl:text-5xl;
 	}
 
 	.prose h4 {
-		@apply font-serif text-3xl font-bold text-balance xl:text-4xl;
+		@apply font-serif text-3xl font-semibold text-balance xl:text-4xl;
 	}
 
 	.prose h2,

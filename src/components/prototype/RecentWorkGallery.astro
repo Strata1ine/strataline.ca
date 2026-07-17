@@ -1,0 +1,183 @@
+---
+import { Image } from 'astro:assets';
+import { recentWork } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-recent-work section-anchor" id="recent-work">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">Recent work</p>
+		<h2>Finished interiors, built as one complete space</h2>
+		<p>
+			Real Strataline projects across kitchens, bathrooms, living areas, ceilings, flooring and
+			staircases.
+		</p>
+	</div>
+	<div class="proto-work-gallery" data-work-gallery>
+		{
+			recentWork.map((item, index) => (
+				<article
+					class:list={[
+						'proto-work-gallery__item reveal',
+						index === 0 && 'proto-work-gallery__item--featured',
+					]}
+				>
+					<button
+						type="button"
+						data-lightbox-open
+						data-index={index}
+						data-full={item.image.src.src}
+						data-alt={item.image.alt}
+						data-caption={item.caption}
+						data-service={item.service}
+						data-location={item.location}
+						data-summary={item.summary}
+					>
+						<figure>
+							<Image
+								src={item.image.src}
+								alt={item.image.alt}
+								widths={[480, 720, 960, 1280]}
+								sizes={
+									index === 0 ? '(max-width: 900px) 100vw, 55vw' : '(max-width: 900px) 50vw, 22vw'
+								}
+								loading="lazy"
+							/>
+						</figure>
+						<span>{item.caption}</span>
+					</button>
+					<a class="proto-work-gallery__service" href={item.href}>
+						Explore service
+					</a>
+				</article>
+			))
+		}
+	</div>
+
+	<div
+		class="proto-lightbox"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Recent work image viewer"
+		data-lightbox
+		hidden
+	>
+		<button class="proto-lightbox__close" type="button" data-lightbox-close>
+			<span aria-hidden="true">×</span>
+			<span class="sr-only">Close image viewer</span>
+		</button>
+		<button class="proto-lightbox__nav proto-lightbox__nav--prev" type="button" data-lightbox-prev>
+			<span aria-hidden="true">‹</span>
+			<span class="sr-only">Previous image</span>
+		</button>
+		<figure class="proto-lightbox__figure">
+			<img src="" alt="" data-lightbox-image />
+			<figcaption>
+				<strong data-lightbox-caption></strong>
+				<span data-lightbox-meta></span>
+				<span data-lightbox-summary></span>
+			</figcaption>
+		</figure>
+		<button class="proto-lightbox__nav proto-lightbox__nav--next" type="button" data-lightbox-next>
+			<span aria-hidden="true">›</span>
+			<span class="sr-only">Next image</span>
+		</button>
+	</div>
+</section>
+
+<script is:inline>
+	const galleryButtons = [...document.querySelectorAll('[data-lightbox-open]')];
+	const lightbox = document.querySelector('[data-lightbox]');
+	const lightboxImage = document.querySelector('[data-lightbox-image]');
+	const lightboxCaption = document.querySelector('[data-lightbox-caption]');
+	const lightboxMeta = document.querySelector('[data-lightbox-meta]');
+	const lightboxSummary = document.querySelector('[data-lightbox-summary]');
+	const closeButton = document.querySelector('[data-lightbox-close]');
+	const previousButton = document.querySelector('[data-lightbox-prev]');
+	const nextButton = document.querySelector('[data-lightbox-next]');
+	let activeIndex = 0;
+	let lastFocused = null;
+	let startX = 0;
+
+	const focusableSelector =
+		'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+	const showImage = (index) => {
+		const button = galleryButtons[index];
+		if (!(button instanceof HTMLElement)) return;
+		activeIndex = index;
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.src = button.dataset.full ?? '';
+			lightboxImage.alt = button.dataset.alt ?? '';
+		}
+		if (lightboxCaption) lightboxCaption.textContent = button.dataset.caption ?? '';
+		if (lightboxMeta) {
+			lightboxMeta.textContent = [button.dataset.service, button.dataset.location]
+				.filter(Boolean)
+				.join(' • ');
+		}
+		if (lightboxSummary) lightboxSummary.textContent = button.dataset.summary ?? '';
+	};
+
+	const openLightbox = (index) => {
+		if (!(lightbox instanceof HTMLElement)) return;
+		lastFocused = document.activeElement;
+		showImage(index);
+		lightbox.hidden = false;
+		document.documentElement.classList.add('proto-no-scroll');
+		window.trackProtoEvent?.('project_open');
+		closeButton?.focus();
+	};
+
+	const closeLightbox = () => {
+		if (!(lightbox instanceof HTMLElement)) return;
+		lightbox.hidden = true;
+		document.documentElement.classList.remove('proto-no-scroll');
+		if (lastFocused instanceof HTMLElement) lastFocused.focus();
+	};
+
+	const stepLightbox = (direction) => {
+		const nextIndex = (activeIndex + direction + galleryButtons.length) % galleryButtons.length;
+		showImage(nextIndex);
+	};
+
+	galleryButtons.forEach((button, index) => {
+		button.addEventListener('click', () => openLightbox(index));
+	});
+
+	closeButton?.addEventListener('click', closeLightbox);
+	previousButton?.addEventListener('click', () => stepLightbox(-1));
+	nextButton?.addEventListener('click', () => stepLightbox(1));
+
+	lightbox?.addEventListener('touchstart', (event) => {
+		startX = event.changedTouches[0]?.clientX ?? 0;
+	});
+
+	lightbox?.addEventListener('touchend', (event) => {
+		const endX = event.changedTouches[0]?.clientX ?? 0;
+		if (Math.abs(endX - startX) < 48) return;
+		stepLightbox(endX < startX ? 1 : -1);
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!(lightbox instanceof HTMLElement) || lightbox.hidden) return;
+		if (event.key === 'Escape') closeLightbox();
+		if (event.key === 'ArrowLeft') stepLightbox(-1);
+		if (event.key === 'ArrowRight') stepLightbox(1);
+		if (event.key !== 'Tab') return;
+
+		const focusable = [...lightbox.querySelectorAll(focusableSelector)].filter(
+			(element) => element instanceof HTMLElement && !element.hasAttribute('disabled'),
+		);
+		const first = focusable[0];
+		const last = focusable[focusable.length - 1];
+		if (!(first instanceof HTMLElement) || !(last instanceof HTMLElement)) return;
+
+		if (event.shiftKey && document.activeElement === first) {
+			event.preventDefault();
+			last.focus();
+		} else if (!event.shiftKey && document.activeElement === last) {
+			event.preventDefault();
+			first.focus();
+		}
+	});
+</script>

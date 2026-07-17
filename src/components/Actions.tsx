@@ -4,7 +4,7 @@ import type { ComponentProps } from 'solid-js';
 import { splitProps } from 'solid-js';
 
 export const buttonVariants = cva(
-	'touch-manipulation font-bold cursor-pointer select-none px-6 py-4 font-serif text-xl xl:text-2xl leading-none rounded-md',
+	'touch-manipulation cursor-pointer select-none px-6 py-4 font-sans text-xl font-semibold xl:text-2xl leading-none rounded-md',
 	{
 		variants: {
 			variant: {

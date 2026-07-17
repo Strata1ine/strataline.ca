@@ -70,11 +70,11 @@ import { cn } from '@/frontend/utils';
 							{i != 0 && <hr class="border-primary-dark my-7" />}
 
 							<div class="flex items-center justify-between gap-4">
-								<h3 class="font-serif text-3xl font-bold">{price.title}</h3>
+								<h3 class="font-serif text-3xl font-semibold">{price.title}</h3>
 								<div class="flex items-center gap-3">
-									<span class="text-green-800">${price.min.toLocaleString()}</span>
+									<span class="font-serif font-medium text-green-800">${price.min.toLocaleString()}</span>
 									<span class="desc-base">-</span>
-									<span class="text-green-800">${price.max.toLocaleString()}</span>
+									<span class="font-serif font-medium text-green-800">${price.max.toLocaleString()}</span>
 								</div>
 							</div>
 

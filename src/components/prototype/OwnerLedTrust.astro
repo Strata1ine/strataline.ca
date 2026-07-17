@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import { ownerLedTrust } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-owner-trust section-anchor" id="why-strataline">
+	<div class="proto-owner-trust__media reveal">
+		<Image
+			src={ownerLedTrust.image.src}
+			alt={ownerLedTrust.image.alt}
+			widths={[480, 720, 960, 1280]}
+			sizes="(max-width: 900px) 100vw, 44vw"
+			loading="lazy"
+		/>
+	</div>
+	<div class="proto-owner-trust__copy reveal">
+		<p class="proto-eyebrow">Owner-led work</p>
+		<h2>The person who scopes the project stays involved</h2>
+		<p>
+			Maxim Sologub remains directly involved in scope development, coordination and quality control
+			throughout the renovation.
+		</p>
+		<ul class="proto-owner-trust__themes">
+			<li>Direct communication</li>
+			<li>Written scope</li>
+			<li>Containment and HEPA</li>
+			<li>Occupied-home protection</li>
+			<li>Coordinated finishes</li>
+			<li>Media recognition</li>
+		</ul>
+		<blockquote>
+			<p>“{ownerLedTrust.quote}”</p>
+			<cite>
+				<strong>{ownerLedTrust.name}</strong>
+				<span>{ownerLedTrust.location}</span>
+			</cite>
+		</blockquote>
+	</div>
+</section>

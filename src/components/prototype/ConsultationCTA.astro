@@ -1,0 +1,230 @@
+---
+const phone = '(416) 471-5999';
+const budgetChoices = [
+	'Under $15,000',
+	'$15,000-$30,000',
+	'$30,000-$60,000',
+	'$60,000-$100,000',
+	'$100,000+',
+	'Not sure yet',
+];
+---
+
+<section class="proto-consultation section-anchor" id="consultation">
+	<div class="proto-consultation__intro reveal">
+		<p class="proto-eyebrow">Project intake</p>
+		<h2>Tell us about the entire project</h2>
+		<p>
+			We review the full scope before arranging the next step. Include the rooms, surfaces and
+			connected work you are considering.
+		</p>
+	</div>
+	<form
+		class="proto-consultation__form reveal"
+		action="https://submit-form.com/jReRE2JLR"
+		method="post"
+		data-progressive-form
+	>
+		<input type="hidden" name="_redirect" value="https://strataline.ca/submissions/talk" />
+		<label class="proto-honeypot" aria-hidden="true">
+			<span>Leave this field empty</span>
+			<input name="Company Website" tabindex="-1" autocomplete="off" />
+		</label>
+
+		<div class="proto-form-step" data-form-step="1">
+			<h3 class="proto-form-step__label" tabindex="-1" data-form-heading>Step 1 of 2</h3>
+			<div class="proto-consultation__fields">
+				<label>
+					<span>Project type</span>
+					<select name="Project Type" required>
+						<option value="">Select one</option>
+						<option>Complete interior renovation</option>
+						<option>Stairs and railings</option>
+						<option>Ceilings and walls</option>
+						<option>Kitchen or bathroom</option>
+						<option>Doors, windows or finishing details</option>
+						<option>Not sure yet</option>
+					</select>
+				</label>
+				<label>
+					<span>Property city</span>
+					<input name="Property City" autocomplete="address-level2" required />
+				</label>
+				<label>
+					<span>Occupancy</span>
+					<select name="Occupancy" required>
+						<option value="">Select one</option>
+						<option>Occupied</option>
+						<option>Vacant</option>
+						<option>Pre-move-in</option>
+					</select>
+				</label>
+				<label>
+					<span>Preferred start window</span>
+					<select name="Preferred Start Window" required>
+						<option value="">Select one</option>
+						<option>As soon as practical</option>
+						<option>Within 1-3 months</option>
+						<option>3+ months away</option>
+						<option>Flexible</option>
+					</select>
+				</label>
+				<label class="proto-consultation__field-wide">
+					<span>Approximate budget</span>
+					<select name="Approximate Budget" required>
+						<option value="">Select one</option>
+						{budgetChoices.map((choice) => <option>{choice}</option>)}
+					</select>
+				</label>
+			</div>
+			<div class="proto-actions">
+				<button class="proto-button proto-button--primary" type="button" data-form-next>
+					Continue
+				</button>
+			</div>
+		</div>
+
+		<div class="proto-form-step" data-form-step="2">
+			<h3 class="proto-form-step__label" tabindex="-1" data-form-heading>Step 2 of 2</h3>
+			<div class="proto-consultation__fields">
+				<label>
+					<span>Name</span>
+					<input name="Name" autocomplete="name" required />
+				</label>
+				<label>
+					<span>Email</span>
+					<input type="email" name="Email" autocomplete="email" required />
+				</label>
+				<label>
+					<span>Phone</span>
+					<input type="tel" name="Phone" autocomplete="tel" />
+				</label>
+				<label>
+					<span>Property address</span>
+					<input name="Property Address" autocomplete="street-address" />
+				</label>
+				<label class="proto-consultation__field-wide">
+					<span>Project description</span>
+					<textarea
+						name="Project Details"
+						rows="5"
+						required
+						placeholder="List the rooms, surfaces and connected work you are considering."
+					></textarea>
+				</label>
+			</div>
+			<p class="proto-consultation__privacy">
+				Your project details are used only to review and respond to your request.
+			</p>
+			<p class="proto-form-status" aria-live="polite" data-form-status></p>
+			<div class="proto-actions">
+				<button class="proto-button proto-button--quiet" type="button" data-form-back>Back</button>
+				<button class="proto-button proto-button--primary" type="submit" data-form-submit>
+					Submit Project Details
+				</button>
+				<a class="proto-button proto-button--quiet" href="tel:+14164715999">Call or Text {phone}</a>
+			</div>
+		</div>
+	</form>
+</section>
+
+<script is:inline>
+	const progressiveForm = document.querySelector('[data-progressive-form]');
+
+	if (progressiveForm instanceof HTMLFormElement) {
+		progressiveForm.classList.add('is-enhanced');
+		const steps = [...progressiveForm.querySelectorAll('[data-form-step]')];
+		const nextButton = progressiveForm.querySelector('[data-form-next]');
+		const backButton = progressiveForm.querySelector('[data-form-back]');
+		const status = progressiveForm.querySelector('[data-form-status]');
+		const submitButton = progressiveForm.querySelector('[data-form-submit]');
+		let hasStarted = false;
+
+		const setStatus = (message) => {
+			if (status) status.textContent = message;
+		};
+
+		const setStep = (step) => {
+			steps.forEach((element) => {
+				const active = element.getAttribute('data-form-step') === String(step);
+				element.hidden = !active;
+			});
+			setStatus('');
+		};
+
+		const focusStep = (step) => {
+			const heading = progressiveForm.querySelector(
+				`[data-form-step="${step}"] [data-form-heading]`,
+			);
+			if (heading instanceof HTMLElement) heading.focus();
+		};
+
+		const validateStep = (step) => {
+			const fields = steps[step - 1]?.querySelectorAll('input, select, textarea') ?? [];
+			return [...fields].every((field) => {
+				if (
+					!(
+						field instanceof HTMLInputElement ||
+						field instanceof HTMLSelectElement ||
+						field instanceof HTMLTextAreaElement
+					)
+				) {
+					return true;
+				}
+				return field.reportValidity();
+			});
+		};
+
+		nextButton?.addEventListener('click', () => {
+			if (!hasStarted) {
+				window.trackProtoEvent?.('form_start');
+				hasStarted = true;
+			}
+			if (!validateStep(1)) {
+				setStatus('Please complete Step 1 before continuing.');
+				return;
+			}
+			window.trackProtoEvent?.('form_step_complete', { step: 1 });
+			setStep(2);
+			setStatus('Step 2 is ready. Add your contact details and project description.');
+			focusStep(2);
+		});
+
+		backButton?.addEventListener('click', () => {
+			setStep(1);
+			focusStep(1);
+		});
+
+		progressiveForm.addEventListener('submit', async (event) => {
+			if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
+				setStatus('Please complete the required fields before submitting.');
+				return;
+			}
+			if (!(submitButton instanceof HTMLButtonElement) || !window.fetch) return;
+
+			event.preventDefault();
+			submitButton.disabled = true;
+			setStatus('Sending project details...');
+
+			try {
+				const response = await fetch(progressiveForm.action, {
+					method: 'POST',
+					body: new FormData(progressiveForm),
+					headers: { Accept: 'application/json' },
+				});
+				if (!response.ok) throw new Error('Submission failed');
+				window.trackProtoEvent?.('form_submit_success');
+				progressiveForm.reset();
+				setStep(1);
+				setStatus('Project details sent. We will review the scope and respond.');
+			} catch {
+				window.trackProtoEvent?.('form_submit_error');
+				setStatus('The form could not send. Please call or text us instead.');
+			} finally {
+				submitButton.disabled = false;
+			}
+		});
+
+		setStep(1);
+	}
+</script>

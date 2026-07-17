@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import { trustStrip, type PrototypeImage } from '@/data/interiorRenovationsPrototype';
+
+interface Props {
+	image: PrototypeImage;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="proto-hero section-anchor" id="overview">
+	<div class="proto-hero__copy reveal">
+		<p class="proto-eyebrow">Interior Renovations in Toronto &amp; the GTA</p>
+		<h1>
+			<span>One contractor.</span>
+			<span>One complete</span>
+			<span>interior renovation.</span>
+		</h1>
+		<p class="proto-hero__lead">
+			Dust-free renovations, premium finishes and complete project management for ceilings, walls,
+			flooring, trim, doors, cabinetry, fireplaces and stairs.
+		</p>
+		<div class="proto-actions proto-actions--hero">
+			<a
+				class="proto-button proto-button--primary"
+				href="#consultation"
+				data-track-event="hero_quote_click"
+			>
+				Request a Quote
+			</a>
+			<a
+				class="proto-phone-cta"
+				href="tel:+14164715999"
+				aria-label="Call or text Strataline at 416 471 5999"
+				data-track-event="hero_phone_click"
+			>
+				<span>Call or Text</span>
+				<strong>(416) 471-5999</strong>
+			</a>
+		</div>
+		<p class="proto-hero__trust">
+			15+ years in the GTA &middot; WSIB covered &middot; $5M liability insurance &middot;
+			Dust-controlled work in occupied homes
+		</p>
+	</div>
+	<figure class="proto-hero__media reveal">
+		<Image
+			src={image.src}
+			alt={image.alt}
+			widths={[720, 1080, 1440, 1800]}
+			sizes="(max-width: 900px) 100vw, 58vw"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</figure>
+	<div class="proto-trust-strip reveal" aria-label="Strataline trust signals">
+		{
+			trustStrip.map((item) => (
+				<div>
+					<strong>{item.label}</strong>
+					<span>{item.detail}</span>
+				</div>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,20 @@
+---
+import { subnavItems } from '@/data/interiorRenovationsPrototype';
+---
+
+<nav
+	class="proto-subnav"
+	aria-label="Interior renovations section navigation"
+	aria-hidden="true"
+	data-prototype-subnav
+>
+	<div class="proto-subnav__links">
+		{
+			subnavItems.map((item) => (
+				<a href={item.href} data-subnav-link>
+					{item.label}
+				</a>
+			))
+		}
+	</div>
+</nav>

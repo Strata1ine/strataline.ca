@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import type { PrototypeImage } from '@/data/interiorRenovationsPrototype';
+
+interface Props {
+	id?: string;
+	eyebrow?: string;
+	title: string;
+	copy: string;
+	image: PrototypeImage;
+	items?: string[];
+	reverse?: boolean;
+	dark?: boolean;
+}
+
+const { id, eyebrow, title, copy, image, items = [], reverse = false, dark = false } = Astro.props;
+---
+
+<section class:list={['proto-feature section-anchor', reverse && 'proto-feature--reverse', dark && 'proto-feature--dark']} id={id}>
+	<figure class="proto-feature__image reveal">
+		<Image src={image.src} alt={image.alt} widths={[640, 960, 1280]} sizes="(max-width: 900px) 100vw, 48vw" loading="lazy" />
+	</figure>
+	<div class="proto-feature__copy reveal">
+		{eyebrow && <p class="proto-eyebrow">{eyebrow}</p>}
+		<h2>{title}</h2>
+		<p>{copy}</p>
+		{items.length > 0 && (
+			<ul class="proto-inline-list">
+				{items.map((item) => <li>{item}</li>)}
+			</ul>
+		)}
+	</div>
+</section>
+

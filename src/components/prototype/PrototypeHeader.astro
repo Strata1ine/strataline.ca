@@ -1,0 +1,152 @@
+---
+import { navItems, servicesMenu } from '@/data/interiorRenovationsPrototype';
+---
+
+<header class="proto-header" data-prototype-header>
+	<a class="proto-wordmark" href="/" aria-label="Strataline home">
+		<span class="proto-wordmark__mark">S</span>
+		<span>Strataline</span>
+	</a>
+
+	<nav class="proto-nav" aria-label="Prototype global navigation">
+		{
+			navItems.map((item) =>
+				item.hasMenu ? (
+					<div class="proto-nav__item proto-nav__item--menu" data-services-menu-item>
+						<button
+							class="proto-nav__button"
+							type="button"
+							aria-expanded="false"
+							aria-controls="services-mega-menu"
+							data-services-menu-button
+						>
+							{item.label}
+						</button>
+						<div class="proto-mega-menu-shell" data-services-menu-shell>
+							<div id="services-mega-menu" class="proto-mega-menu" aria-label="Services menu">
+								{servicesMenu.map((group, groupIndex) => (
+									<div>
+										<p>{group.title}</p>
+										{groupIndex === 0 && <a href={item.href}>All Services</a>}
+										{group.links.map((link) => (
+											<a
+												href={link.href}
+												aria-current={link.href === '/interior-renovations' ? 'page' : undefined}
+											>
+												{link.label}
+											</a>
+										))}
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				) : (
+					<a href={item.href}>{item.label}</a>
+				),
+			)
+		}
+	</nav>
+
+	<a class="proto-header__cta" href="#consultation">Request a Quote</a>
+
+	<button
+		class="proto-menu-button"
+		type="button"
+		aria-controls="prototype-mobile-menu"
+		aria-expanded="false"
+		data-menu-toggle
+	>
+		<span class="sr-only">Open menu</span>
+		<span></span>
+		<span></span>
+	</button>
+
+	<div class="proto-mobile-menu" id="prototype-mobile-menu" data-mobile-menu hidden>
+		<nav aria-label="Prototype mobile navigation">
+			<details>
+				<summary>Services</summary>
+				<a href="#services">All Services</a>
+				<a href="/interior-renovations" aria-current="page">Interior Renovations</a>
+				{
+					servicesMenu.map((group) => (
+						<div class="proto-mobile-menu__group">
+							<p>{group.title}</p>
+							{group.links.map((link) => (
+								<a href={link.href}>{link.label}</a>
+							))}
+						</div>
+					))
+				}
+			</details>
+			{navItems.filter((item) => !item.hasMenu).map((item) => <a href={item.href}>{item.label}</a>)}
+			<a href="#consultation">Request a Quote</a>
+			<a href="tel:+14164715999">Call or Text (416) 471-5999</a>
+		</nav>
+	</div>
+</header>
+
+<script is:inline>
+	const servicesMenuItem = document.querySelector('[data-services-menu-item]');
+	const servicesMenuButton = document.querySelector('[data-services-menu-button]');
+	const servicesMenuShell = document.querySelector('[data-services-menu-shell]');
+	let servicesMenuCloseTimer = 0;
+
+	const setServicesMenu = (open, options = {}) => {
+		if (
+			!(servicesMenuItem instanceof HTMLElement) ||
+			!(servicesMenuButton instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+		window.clearTimeout(servicesMenuCloseTimer);
+		servicesMenuItem.dataset.menuOpen = String(open);
+		servicesMenuButton.setAttribute('aria-expanded', String(open));
+		if (!open && options.returnFocus) servicesMenuButton.focus();
+	};
+
+	const scheduleServicesMenuClose = () => {
+		window.clearTimeout(servicesMenuCloseTimer);
+		servicesMenuCloseTimer = window.setTimeout(() => setServicesMenu(false), 180);
+	};
+
+	if (
+		servicesMenuItem instanceof HTMLElement &&
+		servicesMenuButton instanceof HTMLButtonElement &&
+		servicesMenuShell instanceof HTMLElement
+	) {
+		servicesMenuItem.addEventListener('pointerenter', () => setServicesMenu(true));
+		servicesMenuItem.addEventListener('pointerleave', scheduleServicesMenuClose);
+		servicesMenuItem.addEventListener('mouseenter', () => setServicesMenu(true));
+		servicesMenuItem.addEventListener('mouseleave', scheduleServicesMenuClose);
+		servicesMenuShell.addEventListener('pointerenter', () => setServicesMenu(true));
+		servicesMenuShell.addEventListener('pointerleave', scheduleServicesMenuClose);
+		servicesMenuShell.addEventListener('mouseenter', () => setServicesMenu(true));
+		servicesMenuShell.addEventListener('mouseleave', scheduleServicesMenuClose);
+		servicesMenuItem.addEventListener('focusin', () => setServicesMenu(true));
+		servicesMenuItem.addEventListener('focusout', () => {
+			window.setTimeout(() => {
+				if (!servicesMenuItem.contains(document.activeElement)) setServicesMenu(false);
+			}, 0);
+		});
+		servicesMenuButton.addEventListener('click', () => {
+			setServicesMenu(servicesMenuButton.getAttribute('aria-expanded') !== 'true');
+		});
+		servicesMenuButton.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				setServicesMenu(true);
+			}
+		});
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && servicesMenuButton.getAttribute('aria-expanded') === 'true') {
+				setServicesMenu(false, { returnFocus: true });
+			}
+		});
+		document.addEventListener('click', (event) => {
+			if (event.target instanceof Node && !servicesMenuItem.contains(event.target)) {
+				setServicesMenu(false);
+			}
+		});
+	}
+</script>

@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import { serviceChooser } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-service-chooser section-anchor" id="services">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">Services</p>
+		<h2>What are you planning to change?</h2>
+	</div>
+	<div class="proto-service-chooser__grid">
+		{
+			serviceChooser.map((path) => (
+				<article class="proto-service-path reveal">
+					<figure>
+						<Image
+							src={path.image.src}
+							alt={path.image.alt}
+							widths={[480, 720, 960, 1280]}
+							sizes="(max-width: 900px) 100vw, 45vw"
+							loading="lazy"
+						/>
+					</figure>
+					<div class="proto-service-path__copy">
+						<h3>{path.title}</h3>
+						<p>{path.copy}</p>
+						<ul>
+							{path.links.map((link) => (
+								<li>
+									<a href={link.href} data-track-event="service_link_click">
+										{link.label}
+									</a>
+								</li>
+							))}
+						</ul>
+						<a
+							class="proto-service-path__action"
+							href={path.links[0]?.href}
+							data-track-event="service_link_click"
+						>
+							Explore
+						</a>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>

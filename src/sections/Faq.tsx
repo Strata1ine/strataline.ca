@@ -74,7 +74,7 @@ export default function Faq(props: {
 				<div class="mt-8 flex justify-center">
 					<button
 						type="button"
-						class="bg-primary-dark border-primary-dark text-background hover:bg-primary-dark/90 focus-visible:ring-primary-dark rounded-[8px] border px-8 py-3 font-serif text-xl leading-none transition-colors focus-visible:outline-none focus-visible:ring-2"
+						class="bg-primary-dark border-primary-dark text-background hover:bg-primary-dark/90 focus-visible:ring-primary-dark rounded-[8px] border px-8 py-3 font-sans text-xl font-semibold leading-none transition-colors focus-visible:outline-none focus-visible:ring-2"
 						onClick={() =>
 							setRevealStage((stage) =>
 								Math.min(Math.ceil(hiddenCount() / revealBatchSize), stage + 1),

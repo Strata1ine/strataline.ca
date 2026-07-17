@@ -1,0 +1,27 @@
+---
+import { capabilityGroups } from '@/data/interiorRenovationsPrototype';
+---
+
+<section class="proto-capabilities section-anchor" id="capabilities">
+	<div class="proto-section-head reveal">
+		<p class="proto-eyebrow">Capabilities</p>
+		<h2>Everything that makes the interior feel complete</h2>
+		<p>Breadth is organized by how the work connects inside the home, not as a dense directory.</p>
+	</div>
+	<div class="proto-capability-index">
+		{
+			capabilityGroups.map((group) => (
+				<section class="proto-capability-group reveal">
+					<h3>{group.title}</h3>
+					<ul>
+						{group.items.map((item) => (
+							<li>
+								{item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>}
+							</li>
+						))}
+					</ul>
+				</section>
+			))
+		}
+	</div>
+</section>

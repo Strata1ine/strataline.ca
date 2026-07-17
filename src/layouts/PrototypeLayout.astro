@@ -1,0 +1,116 @@
+---
+import { Font } from 'astro:assets';
+import business from '#/business.json';
+import '@/styles/interior-renovations-prototype.css';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	canonicalPath?: string;
+	schemas?: Array<Record<string, unknown>>;
+}
+
+const {
+	title,
+	description,
+	image = '/strataline-og.jpg',
+	canonicalPath = Astro.url.pathname,
+	schemas = [],
+} = Astro.props;
+const siteUrl = 'https://strataline.ca';
+const normalizedPath = canonicalPath.replace(/\/$/, '') || '/';
+const canonicalUrl = `${siteUrl}${normalizedPath}`;
+const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const isProd = import.meta.env.PROD;
+
+const organizationSchema = {
+	'@type': 'Organization',
+	'@id': `${siteUrl}/#organization`,
+	name: 'Strataline Inc.',
+	url: siteUrl,
+	logo: `${siteUrl}/strataline-logo-S-small.png`,
+	telephone: business.telephone,
+	email: business.email,
+	sameAs: business.sameAs,
+	image: imageUrl,
+	description,
+};
+
+const websiteSchema = {
+	'@type': 'WebSite',
+	'@id': `${siteUrl}/#website`,
+	url: siteUrl,
+	name: 'Strataline',
+	publisher: { '@id': `${siteUrl}/#organization` },
+};
+
+const schemaGraph = {
+	'@context': 'https://schema.org',
+	'@graph': [organizationSchema, websiteSchema, ...schemas],
+};
+
+const analyticsScript = `
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+	dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'G-P421REBVZG');
+`;
+
+const eventScript = `
+window.trackProtoEvent = (name, params = {}) => {
+	if (typeof window.gtag === 'function') {
+		window.gtag('event', name, params);
+	}
+};
+`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<Font cssVariable="--font-source-serif-4" />
+		<Font cssVariable="--font-inter" />
+
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+		{
+			isProd && (
+				<>
+					<script
+						is:inline
+						src="https://analytics.ahrefs.com/analytics.js"
+						data-key="HvLQm3PHR0ElL+Vu8t6KBg"
+						async
+					/>
+					<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P421REBVZG" />
+					<script is:inline set:html={analyticsScript} />
+				</>
+			)
+		}
+		<script is:inline set:html={eventScript} />
+	</head>
+	<body class="prototype-body">
+		<slot />
+	</body>
+</html>

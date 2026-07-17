@@ -71,10 +71,10 @@ export default defineConfig({
 		contentIntellisense: true,
 		fonts: [
 			{
-				name: 'Cormorant Garamond',
-				cssVariable: '--font-cormorant-garamond',
+				name: 'Source Serif 4',
+				cssVariable: '--font-source-serif-4',
 				provider: fontProviders.fontsource(),
-				weights: [500, 700],
+				weights: [400, 500, 600],
 				styles: ['normal'],
 				subsets: ['latin'],
 			},
