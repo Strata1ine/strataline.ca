@@ -160,7 +160,7 @@ const schemas = [
 		};
 
 		const setActiveSection = (id, options = {}) => {
-			if (!id || activeId === id) return;
+			if (!id) return;
 			activeId = id;
 			subnavLinks.forEach((link) => {
 				const isActive = link.getAttribute('href') === `#${id}`;
@@ -217,7 +217,7 @@ const schemas = [
 				const target = document.getElementById(hashId);
 				if (target) {
 					const rect = target.getBoundingClientRect();
-					if (Math.abs(rect.top - stickyOffset()) < 96) {
+					if (rect.top < window.innerHeight * 0.68 && rect.bottom > stickyOffset()) {
 						setActiveSection(hashId);
 						return;
 					}
