@@ -1,0 +1,84 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	eyebrow: string;
+	title: string;
+	body: string;
+	image: {
+		src: ImageMetadata;
+		alt: string;
+	};
+	action?: {
+		label: string;
+		href: string;
+	};
+	links?: ReadonlyArray<{
+		label: string;
+		href: string;
+	}>;
+	position?: 'left' | 'right';
+	focalPoint?: string;
+}
+
+const {
+	eyebrow,
+	title,
+	body,
+	image,
+	action,
+	links = [],
+	position = 'left',
+	focalPoint = 'center',
+} = Astro.props;
+---
+
+<section
+	class:list={['proto-immersive', `proto-immersive--${position}`]}
+	data-immersive
+	style={`--immersive-focal-point: ${focalPoint};`}
+>
+	<figure class="proto-immersive__media">
+		<Picture
+			src={image.src}
+			alt={image.alt}
+			formats={['avif', 'webp']}
+			widths={[640, 960, 1280, 1600, 1920]}
+			sizes="100vw"
+			loading="lazy"
+		/>
+	</figure>
+	<div class="proto-immersive__shade" aria-hidden="true"></div>
+	<div class="proto-immersive__inner">
+		<div class="proto-immersive__copy reveal">
+			<p class="proto-eyebrow">{eyebrow}</p>
+			<h2>{title}</h2>
+			<p class="proto-immersive__body">{body}</p>
+			{
+				links.length > 0 && (
+					<ul class="proto-immersive__chips">
+						{links.map((link) => (
+							<li>
+								<a href={link.href} data-track-event="immersive_service_click">
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				)
+			}
+			{
+				action && (
+					<a
+						class="proto-immersive__action"
+						href={action.href}
+						data-track-event="immersive_service_click"
+					>
+						{action.label} <span aria-hidden="true">&#8594;</span>
+					</a>
+				)
+			}
+		</div>
+	</div>
+</section>
