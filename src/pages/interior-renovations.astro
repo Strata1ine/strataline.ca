@@ -12,7 +12,12 @@ import ProcessSequence from '@/components/prototype/ProcessSequence.astro';
 import OwnerLedTrust from '@/components/prototype/OwnerLedTrust.astro';
 import InteriorRenovationFaq from '@/components/prototype/InteriorRenovationFaq.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
-import { prototypeImages, serviceAreas } from '@/data/interiorRenovationsPrototype';
+import ImmersiveStory from '@/components/prototype/ImmersiveStory.astro';
+import {
+	immersiveStories,
+	prototypeImages,
+	serviceAreas,
+} from '@/data/interiorRenovationsPrototype';
 
 const title = 'Interior Renovations Toronto & GTA | Strataline';
 const description =
@@ -79,11 +84,17 @@ const schemas = [
 
 			<FeaturedMediaProof />
 
+			<ImmersiveStory {...immersiveStories.connected} />
+
 			<RecentWorkGallery />
+
+			<ImmersiveStory {...immersiveStories.stairs} />
 
 			<BeforeAfterComparison />
 
 			<ServiceChooser />
+
+			<ImmersiveStory {...immersiveStories.doorsWindows} />
 
 			<ProcessSequence />
 
@@ -120,11 +131,10 @@ const schemas = [
 
 	<script is:inline>
 		const header = document.querySelector('[data-prototype-header]');
-		const menuButton = document.querySelector('[data-menu-toggle]');
-		const menu = document.querySelector('[data-mobile-menu]');
 		const subnav = document.querySelector('[data-prototype-subnav]');
 		const subnavLinks = [...document.querySelectorAll('[data-subnav-link]')];
 		const revealEls = [...document.querySelectorAll('.reveal')];
+		const immersiveSections = [...document.querySelectorAll('[data-immersive]')];
 		const hero = document.getElementById('overview');
 		const contactBar = document.querySelector('[data-mobile-contact]');
 		const consultation = document.getElementById('consultation');
@@ -139,8 +149,23 @@ const schemas = [
 		let manualActiveUntil = 0;
 		const contactVisibility = { consultation: false, footer: false };
 
+		const updateImmersiveEffects = () => {
+			if (reducedMotion) return;
+			for (const section of immersiveSections) {
+				if (!(section instanceof HTMLElement)) continue;
+				const rect = section.getBoundingClientRect();
+				if (rect.bottom < -80 || rect.top > window.innerHeight + 80) continue;
+				const progress =
+					(window.innerHeight / 2 - (rect.top + rect.height / 2)) /
+					(window.innerHeight + rect.height);
+				const shift = Math.max(-1, Math.min(1, progress * 2)) * 24;
+				section.style.setProperty('--immersive-shift', `${shift.toFixed(2)}px`);
+			}
+		};
+
 		const setHeaderState = () => {
 			header?.classList.toggle('is-scrolled', window.scrollY > 16);
+			updateImmersiveEffects();
 			if (hero && subnav) {
 				const threshold = hero.offsetTop + hero.offsetHeight * 0.6;
 				const visible = window.scrollY > threshold;
@@ -232,20 +257,6 @@ const schemas = [
 			window.requestAnimationFrame(updateActiveSection);
 		};
 
-		menuButton?.addEventListener('click', () => {
-			const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-			menuButton.setAttribute('aria-expanded', String(!expanded));
-			if (menu) menu.hidden = expanded;
-		});
-
-		menu?.addEventListener('click', (event) => {
-			const target = event.target;
-			if (target instanceof HTMLAnchorElement) {
-				menu.hidden = true;
-				menuButton?.setAttribute('aria-expanded', 'false');
-			}
-		});
-
 		if (!reducedMotion) {
 			const revealObserver = new IntersectionObserver(
 				(entries) => {
@@ -259,8 +270,19 @@ const schemas = [
 				{ rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
 			);
 			revealEls.forEach((element) => revealObserver.observe(element));
+
+			const immersiveObserver = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) entry.target.classList.add('is-immersive-visible');
+					}
+				},
+				{ rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+			);
+			immersiveSections.forEach((section) => immersiveObserver.observe(section));
 		} else {
 			revealEls.forEach((element) => element.classList.add('is-visible'));
+			immersiveSections.forEach((section) => section.classList.add('is-immersive-visible'));
 		}
 
 		subnavLinks.forEach((link) => {

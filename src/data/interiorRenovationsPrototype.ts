@@ -18,6 +18,9 @@ import houseHomeImage from '../../content/awards/strataline-house-and-home-chevr
 import ownerWorksiteImage from '../../content/services/about/photos/strataline-owner-newel-post-installation.jpg';
 import beforeCeilingImage from '../../content/services/popcorn-removal/toronto/project-2/before/popcorn-ceiling-removal-toronto-project-2-before-02.webp';
 import afterCeilingImage from '../../content/services/popcorn-removal/toronto/project-2/after/popcorn-ceiling-removal-toronto-project-2-after-02.webp';
+import connectedRenovationImage from '../../content/project-gallery/living-room-renovation-toronto.jpg';
+import immersiveStaircaseImage from '../../content/project-gallery/staircase-renovation-toronto-hardwood-iron-railing.jpg';
+import doorsWindowsImage from '../../content/services/doors_and_windows/photos/39.jpg';
 
 export type PrototypeImage = {
 	src: ImageMetadata;
@@ -102,17 +105,18 @@ export const navItems = [
 	{ label: 'Contact', href: '#consultation' },
 ];
 
+export const primaryServices = [
+	{ label: 'Interior Renovations', href: '/interior-renovations' },
+	{ label: 'Stairs & Railings', href: '/services/stairs' },
+	{ label: 'Popcorn Ceiling Removal', href: '/services/popcorn-removal' },
+	{ label: 'Doors & Windows', href: '/services/doors_and_windows' },
+	{ label: 'Kitchens', href: '/services/kitchens' },
+	{ label: 'Bathrooms', href: '/services/bathrooms' },
+];
+
 export const servicesMenu = [
 	{
-		title: 'Ceilings and Walls',
-		links: [
-			{ label: 'Popcorn Ceiling Removal', href: '/services/popcorn-removal' },
-			{ label: 'Painting', href: '/services/painting' },
-			{ label: 'Wallpaper', href: '/services/wallpaper' },
-		],
-	},
-	{
-		title: 'Stairs and Railings',
+		title: 'Stairs & Railings',
 		links: [
 			{ label: 'Stair Renovation', href: '/services/stairs' },
 			{ label: 'Stair Refinishing', href: '/services/stairs/refinishing' },
@@ -121,23 +125,69 @@ export const servicesMenu = [
 		],
 	},
 	{
-		title: 'Complete Rooms',
+		title: 'Interior Finishing',
 		links: [
-			{ label: 'Kitchens', href: '/services/kitchens' },
-			{ label: 'Bathrooms', href: '/services/bathrooms' },
-			{ label: 'Interior Renovations', href: '/interior-renovations' },
+			{ label: 'Painting', href: '/services/painting' },
+			{ label: 'Wallpaper', href: '/services/wallpaper' },
+			{ label: 'Ceilings & Walls', href: '/services/popcorn-removal' },
+			{ label: 'Trim & Finish Work', href: '/services/painting' },
 		],
 	},
 	{
-		title: 'Openings and Finishing',
+		title: 'Explore',
 		links: [
-			{ label: 'Doors and Windows', href: '/services/doors_and_windows' },
-			{ label: 'Flooring', href: '/services/flooring' },
-			{ label: 'Drywall Repair', href: '/services/painting' },
-			{ label: 'Trim and Millwork Painting', href: '/services/painting' },
+			{ label: 'Projects', href: '#recent-work' },
+			{ label: 'Process', href: '#process' },
+			{ label: 'Reviews', href: '/reviews' },
+			{ label: 'Media', href: '#media' },
+			{ label: 'Contact', href: '#consultation' },
 		],
 	},
 ];
+
+export const immersiveStories = {
+	connected: {
+		eyebrow: 'Connected renovation',
+		title: 'The entire space should feel intentional.',
+		body: 'Ceilings, flooring, trim, doors, stairs and finishing details are planned together so one renovation does not undo another.',
+		image: {
+			src: connectedRenovationImage,
+			alt: 'Finished Toronto living room renovation with coordinated ceiling, wall panels, flooring, trim and fireplace details.',
+		},
+		action: { label: 'Explore Interior Renovations', href: '/interior-renovations' },
+		position: 'left',
+		focalPoint: 'center center',
+	},
+	stairs: {
+		eyebrow: 'Staircases',
+		title: 'A staircase changes the whole room.',
+		body: 'Refinishing, tread caps and railing upgrades can completely alter the character of an entrance without rebuilding the entire staircase.',
+		image: {
+			src: immersiveStaircaseImage,
+			alt: 'Curved staircase renovation in Toronto with dark hardwood treads and custom iron railings connecting the open entryway.',
+		},
+		links: [
+			{ label: 'Stair Renovation', href: '/services/stairs' },
+			{ label: 'Refinishing', href: '/services/stairs/refinishing' },
+			{ label: 'Tread Caps', href: '/services/stairs/tread-caps' },
+			{ label: 'Railing Installation', href: '/services/stairs/railing-installation' },
+		],
+		position: 'left',
+		focalPoint: 'center center',
+	},
+	doorsWindows: {
+		eyebrow: 'Doors & Windows',
+		title: 'Comfort starts at the opening.',
+		body: 'Replace aging windows and doors to improve comfort, efficiency, security and the finished appearance of the home.',
+		image: {
+			src: doorsWindowsImage,
+			alt: 'Finished Toronto entryway with a new insulated front door, glass sidelights and an adjacent replacement window.',
+		},
+		action: { label: 'Explore Doors & Windows', href: '/services/doors_and_windows' },
+		position: 'right',
+		focalPoint: 'center center',
+	},
+} as const;
 
 export const subnavItems = [
 	{ label: 'Overview', href: '#overview' },
