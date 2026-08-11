@@ -16,8 +16,10 @@ import hgtvImage from '../../content/awards/strataline-hgtv-love-it-or-list-it.j
 import torontoStarImage from '../../content/awards/strataline-toronto-star-popcorn-ceiling-removal-article.jpg';
 import houseHomeImage from '../../content/awards/strataline-house-and-home-chevron-hardwood-floors.webp';
 import ownerWorksiteImage from '../../content/services/about/photos/strataline-owner-newel-post-installation.jpg';
-import beforeCeilingImage from '../../content/services/popcorn-removal/toronto/project-2/before/popcorn-ceiling-removal-toronto-project-2-before-02.webp';
-import afterCeilingImage from '../../content/services/popcorn-removal/toronto/project-2/after/popcorn-ceiling-removal-toronto-project-2-after-02.webp';
+import beforeCeilingImage from '../../content/services/popcorn-removal/images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-before-1.jpg';
+import afterCeilingImage from '../../content/services/popcorn-removal/images/popcorn-ceiling-removal/before-after/toronto-gta/popcorn-ceiling-removal-toronto-gta-after-1.jpg';
+import beforeStairImage from '../../content/services/stairs/staircase-renovation-gallery/staircase-tread-caps-installation-toronto-before.jpg';
+import afterStairImage from '../../content/services/stairs/staircase-renovation-gallery/staircase-tread-caps-installation-toronto-after.jpg';
 import connectedRenovationImage from '../../content/project-gallery/living-room-renovation-toronto.jpg';
 import immersiveStaircaseImage from '../../content/project-gallery/staircase-renovation-toronto-hardwood-iron-railing.jpg';
 import doorsWindowsImage from '../../content/services/doors_and_windows/photos/39.jpg';
@@ -35,6 +37,21 @@ export type PrototypeImage = {
 export type CapabilityItem = {
 	label: string;
 	href?: string;
+};
+
+export type BeforeAfterComparison = {
+	id: string;
+	eyebrow: string;
+	title: string;
+	description: string;
+	beforeImage: ImageMetadata;
+	afterImage: ImageMetadata;
+	beforeAlt: string;
+	afterAlt: string;
+	links: Array<{ label: string; href: string }>;
+	theme: 'light' | 'warm';
+	objectPositionBefore: string;
+	objectPositionAfter: string;
 };
 
 export const prototypeImages = {
@@ -177,8 +194,8 @@ export const immersiveStories = {
 	},
 	doorsWindows: {
 		eyebrow: 'Doors & Windows',
-		title: 'Comfort starts at the opening.',
-		body: 'Replace aging windows and doors to improve comfort, efficiency, security and the finished appearance of the home.',
+		title: 'Better comfort. Better fit. Better finish.',
+		body: 'Replace aging windows and doors to improve comfort, sealing, security and the finished appearance of your home.',
 		image: {
 			src: doorsWindowsImage,
 			alt: 'Finished Toronto entryway with a new insulated front door, glass sidelights and an adjacent replacement window.',
@@ -506,18 +523,50 @@ export const processStages = [
 	},
 ];
 
-export const beforeAfterComparison = {
-	before: {
-		src: beforeCeilingImage,
-		alt: 'Original textured ceiling before Strataline preparation and finishing work in Toronto.',
-		label: 'Before',
+export const beforeAfterComparisons = {
+	ceiling: {
+		id: 'ceiling-transformation',
+		eyebrow: 'Ceilings',
+		title: 'From textured to perfectly smooth',
+		description:
+			'Popcorn removal is only the first step. Proper correction, skim coating, sanding and finishing are what create a ceiling that actually looks new.',
+		beforeImage: beforeCeilingImage,
+		afterImage: afterCeilingImage,
+		beforeAlt:
+			'Textured ceiling before the primary popcorn ceiling removal project shown on the Strataline service page.',
+		afterAlt:
+			'Perfectly smooth finished ceiling after the primary popcorn ceiling removal project shown on the Strataline service page.',
+		links: [
+			{
+				label: 'Explore Popcorn Ceiling Removal',
+				href: '/services/popcorn-removal',
+			},
+		],
+		theme: 'light',
+		objectPositionBefore: 'center center',
+		objectPositionAfter: 'center center',
 	},
-	after: {
-		src: afterCeilingImage,
-		alt: 'Smooth finished ceiling after Strataline preparation and finishing work in Toronto.',
-		label: 'After',
+	stairs: {
+		id: 'stair-transformation',
+		eyebrow: 'Stair capping before & after',
+		title: 'From carpeted stairs to hardwood',
+		description:
+			'Solid oak tread caps, clean risers and an updated railing can completely change the staircase without rebuilding the entire structure.',
+		beforeImage: beforeStairImage,
+		afterImage: afterStairImage,
+		beforeAlt: 'Carpeted Toronto staircase before solid oak tread caps and a new railing system.',
+		afterAlt:
+			'The same Toronto staircase after solid oak tread caps, clean white risers and an updated railing installation.',
+		links: [
+			{ label: 'Stair Renovation', href: '/services/stairs' },
+			{ label: 'Tread Caps', href: '/services/stairs/tread-caps' },
+			{ label: 'Railing Installation', href: '/services/stairs/railing-installation' },
+		],
+		theme: 'warm',
+		objectPositionBefore: 'center center',
+		objectPositionAfter: 'center center',
 	},
-};
+} satisfies Record<string, BeforeAfterComparison>;
 
 export const ownerLedTrust = {
 	image: {

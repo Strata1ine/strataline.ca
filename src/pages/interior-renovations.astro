@@ -14,6 +14,7 @@ import InteriorRenovationFaq from '@/components/prototype/InteriorRenovationFaq.
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
 import ImmersiveStory from '@/components/prototype/ImmersiveStory.astro';
 import {
+	beforeAfterComparisons,
 	immersiveStories,
 	prototypeImages,
 	serviceAreas,
@@ -84,19 +85,21 @@ const schemas = [
 
 			<FeaturedMediaProof />
 
-			<ImmersiveStory {...immersiveStories.connected} />
-
 			<RecentWorkGallery />
 
-			<ImmersiveStory {...immersiveStories.stairs} />
+			<ImmersiveStory {...immersiveStories.connected} />
 
-			<BeforeAfterComparison />
+			<BeforeAfterComparison comparison={beforeAfterComparisons.ceiling} />
 
 			<ServiceChooser />
 
-			<ImmersiveStory {...immersiveStories.doorsWindows} />
+			<ImmersiveStory {...immersiveStories.stairs} />
+
+			<BeforeAfterComparison comparison={beforeAfterComparisons.stairs} />
 
 			<ProcessSequence />
+
+			<ImmersiveStory {...immersiveStories.doorsWindows} />
 
 			<OwnerLedTrust />
 
