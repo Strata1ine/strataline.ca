@@ -19,13 +19,7 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 					<div class="proto-process__stage-copy">
 						<h3>{stage.title}</h3>
 						<p class="proto-process__summary">{stage.summary}</p>
-						<p class="proto-process__receives">{stage.receives}</p>
 					</div>
-					<ul>
-						{stage.items.map((item) => (
-							<li>{item}</li>
-						))}
-					</ul>
 				</li>
 			))
 		}
@@ -55,7 +49,8 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 				});
 				const stageList = document.querySelector('.proto-process__stages');
 				if (stageList instanceof HTMLElement) {
-					const progress = activeIndex < 0 ? 0 : (activeIndex / Math.max(processStages.length - 1, 1)) * 100;
+					const progress =
+						activeIndex < 0 ? 0 : (activeIndex / Math.max(processStages.length - 1, 1)) * 100;
 					stageList.style.setProperty('--process-progress', `${progress}%`);
 				}
 				if (processStatus) {

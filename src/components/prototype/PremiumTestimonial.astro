@@ -1,15 +1,89 @@
 ---
-import { premiumTestimonial } from '@/data/interiorRenovationsPrototype';
+import { getEntry } from '@/content.config';
+
+interface ClientReview {
+	title: string;
+	location?: string;
+	stars?: number;
+	desc: string;
+}
+
+interface ClientReviewExcerpt extends ClientReview {
+	excerpt: string;
+}
+
+const excerptReview = (text: string) => {
+	const sentences = text.split(/(?<=[.!?])\s+/);
+	const excerpt = sentences.slice(0, 3).join(' ');
+	return excerpt.length < text.length ? `${excerpt}…` : excerpt;
+};
+
+const homepage = await getEntry('index', 'index');
+const reviewSection = homepage.data.sections.find((section: any) => section.type === 'Reviews') as
+	| { content?: ClientReview[] }
+	| undefined;
+const clientReviews: ClientReviewExcerpt[] = (reviewSection?.content ?? [])
+	.filter((review) => review.title !== 'Mike')
+	.slice(0, 6)
+	.map((review) => ({ ...review, excerpt: excerptReview(review.desc) }));
 ---
 
-<section class="proto-premium-testimonial reveal" aria-label="Featured homeowner review">
-	<div>
-		<p class="proto-eyebrow">Client confidence</p>
-		<blockquote>"{premiumTestimonial.quote}"</blockquote>
-		<cite>
-			{premiumTestimonial.name}
-			<span>{premiumTestimonial.location}</span>
-		</cite>
+<section class="proto-premium-testimonial reveal" aria-labelledby="client-reviews-title">
+	<div class="proto-premium-testimonial__head">
+		<div>
+			<p class="proto-eyebrow">Client confidence</p>
+			<h2 id="client-reviews-title">What homeowners remember.</h2>
+			<p>
+				Clear communication, careful protection and finished work that feels considered from room to
+				room.
+			</p>
+		</div>
+		<a href="/reviews">Read more client reviews</a>
 	</div>
-	<a href="/reviews">Read more client reviews</a>
+
+	<div
+		class="proto-review-rail"
+		role="list"
+		aria-label="Homeowner reviews"
+		aria-describedby="review-rail-hint"
+		tabindex="0"
+	>
+		{
+			clientReviews.map((review) => (
+				<article class="proto-review-card" role="listitem">
+					<p class="proto-review-card__stars" aria-label={`${review.stars ?? 5} out of 5 stars`}>
+						<span aria-hidden="true">★★★★★</span>
+					</p>
+					<blockquote>
+						<p>“{review.excerpt}”</p>
+					</blockquote>
+					<cite>
+						<strong>{review.title}</strong>
+						{review.location && <span>{review.location}</span>}
+					</cite>
+				</article>
+			))
+		}
+	</div>
+	<p class="proto-review-rail__hint" id="review-rail-hint">Swipe to browse reviews</p>
 </section>
+
+<script is:inline>
+	const reviewRails = document.querySelectorAll('.proto-review-rail');
+	const reduceReviewMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	reviewRails.forEach((rail) => {
+		if (!(rail instanceof HTMLElement)) return;
+		rail.addEventListener('keydown', (event) => {
+			if (!(event instanceof KeyboardEvent) || !['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+				return;
+			}
+			event.preventDefault();
+			const direction = event.key === 'ArrowRight' ? 1 : -1;
+			rail.scrollBy({
+				left: direction * Math.min(rail.clientWidth * 0.84, 520),
+				behavior: reduceReviewMotion ? 'auto' : 'smooth',
+			});
+		});
+	});
+</script>

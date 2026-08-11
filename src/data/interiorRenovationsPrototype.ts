@@ -201,8 +201,8 @@ export const servicesMenu = [
 export const immersiveStories = {
 	connected: {
 		eyebrow: 'Connected renovation',
-		title: 'The entire space should feel intentional.',
-		body: 'Ceilings, flooring, trim, doors, stairs and finishing details are planned together so one renovation does not undo another.',
+		title: 'Every finish should work together.',
+		body: 'Ceilings, flooring, trim, doors, stairs and architectural details are planned as one connected scope, so each room leads naturally into the next.',
 		image: {
 			src: connectedRenovationImage,
 			alt: 'Finished Toronto living room renovation with coordinated ceiling, wall panels, flooring, trim and fireplace details.',
@@ -379,13 +379,6 @@ export const recentWork = [
 	},
 ];
 
-export const premiumTestimonial = {
-	quote:
-		'The Popcorn removal was excellent and a very clean process. They also transformed our stairs from boring oak to a much more modern look.',
-	name: 'John Seigel',
-	location: 'Richmond Hill',
-};
-
 export const projectTypes = [
 	{
 		title: 'Pre-Move-In Renovations',
@@ -525,62 +518,26 @@ export const processStages = [
 		number: '01',
 		title: 'Project Review',
 		summary: 'Scope, priorities and timing',
-		receives: 'project-fit guidance',
-		items: [
-			'complete wish list',
-			'photos and address',
-			'priorities and timing',
-			'known constraints',
-		],
 	},
 	{
 		number: '02',
 		title: 'Site Assessment',
 		summary: 'Measurements and existing conditions',
-		receives: 'measured scope',
-		items: [
-			'existing conditions',
-			'measurements',
-			'recommended approach',
-			'responsibilities and exclusions',
-		],
 	},
 	{
 		number: '03',
 		title: 'Plan & Schedule',
 		summary: 'Materials, sequencing and logistics',
-		receives: 'written inclusions and exclusions',
-		items: [
-			'detailed scope',
-			'material allowances where applicable',
-			'schedule expectations',
-			'payment milestones',
-		],
 	},
 	{
 		number: '04',
 		title: 'Renovation',
 		summary: 'Coordinated trades and dust control',
-		receives: 'protection and coordinated scheduling',
-		items: [
-			'containment',
-			'floor and finish protection',
-			'coordinated trade sequence',
-			'regular communication',
-			'daily cleanup',
-		],
 	},
 	{
 		number: '05',
 		title: 'Final Walkthrough',
 		summary: 'Finish review and project completion',
-		receives: 'walkthrough and deficiency correction',
-		items: [
-			'final detailing',
-			'walkthrough',
-			'deficiency correction',
-			'care information where applicable',
-		],
 	},
 ];
 
@@ -634,9 +591,6 @@ export const ownerLedTrust = {
 		src: ownerWorksiteImage,
 		alt: 'Maxim Sologub reviewing newel post installation details on a Strataline staircase project.',
 	},
-	quote: premiumTestimonial.quote,
-	name: premiumTestimonial.name,
-	location: premiumTestimonial.location,
 };
 
 export const whyStrataline = [
@@ -682,12 +636,12 @@ export const serviceAreas = [
 
 export const renovationFaqs = [
 	{
-		question: 'What types of interior renovation projects are the best fit for Strataline?',
+		question: 'Is Strataline the right fit for my interior renovation?',
 		answer:
 			'Strataline is best suited to coordinated projects involving several rooms, connected surfaces or multiple finish systems. Typical projects include pre-move-in renovations, main-floor updates, staircase and railing work, ceiling and painting projects, flooring, trim, doors and complete interior refreshes.',
 	},
 	{
-		question: 'Can Strataline coordinate several trades within one project?',
+		question: 'Can Strataline coordinate multiple trades under one project?',
 		answer:
 			'Yes. We develop a written scope, organize the sequence of work and coordinate specialized trades where the project requires them. Responsibilities, exclusions and owner-supplied items are identified before work begins.',
 	},
@@ -697,24 +651,24 @@ export const renovationFaqs = [
 			'Often, yes. We use containment, floor protection, dust extraction and daily cleanup to reduce disruption. For more intensive phases, we explain which rooms will be unavailable and help plan the work around the household.',
 	},
 	{
-		question: 'How does the estimate process work?',
+		question: 'How does the estimate and planning process work?',
 		answer:
 			'Start by sending photos, the property address, your preferred timing and the complete list of work you are considering. After review, we may provide preliminary guidance or arrange a site visit. The written proposal identifies the scope, materials, exclusions, expected sequence and payment milestones.',
 	},
 	{
-		question: 'How is renovation dust controlled?',
+		question: 'How are dust, protection and cleanup handled?',
 		answer:
-			'We use physical containment, protected work zones and professional HEPA dust extraction where the work produces dust. The exact setup depends on the project, access and whether the home remains occupied.',
+			'We use physical containment, floor and finish protection, professional HEPA dust extraction where the work produces dust, and regular cleanup. The exact setup depends on the project, access and whether the home remains occupied.',
 	},
 	{
-		question: 'Are permits and licensed trades included?',
+		question: 'How are timelines and scheduling managed?',
 		answer:
-			'Permit and licensed-trade requirements depend on the scope. Where structural, electrical, plumbing or other regulated work is involved, the proposal identifies the required professionals and who is responsible for permits and inspections.',
+			'We establish the work sequence after reviewing the complete scope, site conditions and material availability. You receive clear scheduling expectations, and any changes caused by discoveries, selections or added work are discussed before the schedule is adjusted.',
 	},
 	{
-		question: 'What areas does Strataline serve?',
+		question: 'Do you help with finish selections and scope decisions?',
 		answer:
-			'Strataline serves Toronto, Vaughan, Woodbridge, Richmond Hill, Markham, Aurora, Newmarket, Mississauga, Oakville and surrounding GTA communities.',
+			'Yes. We can help compare practical finish options, identify connected work that should be planned together, and clarify owner-supplied items or allowances before the proposal is finalized.',
 	},
 ];
 
