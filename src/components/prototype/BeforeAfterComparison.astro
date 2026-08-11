@@ -1,70 +1,117 @@
 ---
 import { Image } from 'astro:assets';
-import { beforeAfterComparison } from '@/data/interiorRenovationsPrototype';
+import type { BeforeAfterComparison } from '@/data/interiorRenovationsPrototype';
+
+interface Props {
+	comparison: BeforeAfterComparison;
+}
+
+const { comparison } = Astro.props;
 ---
 
-<section class="proto-before-after section-anchor" id="transformation">
+<section
+	class:list={['proto-before-after', `proto-before-after--${comparison.theme}`, 'section-anchor']}
+	id={comparison.id}
+>
 	<div class="proto-section-head reveal">
-		<p class="proto-eyebrow">Transformation</p>
-		<h2>See what proper preparation changes</h2>
-		<p>
-			Compare the original condition with the completed work. The difference is created through
-			preparation, correction and finishing—not a filter.
-		</p>
+		<p class="proto-eyebrow">{comparison.eyebrow}</p>
+		<h2>{comparison.title}</h2>
+		<p>{comparison.description}</p>
 	</div>
 
-	<div class="proto-before-after__frame reveal" data-before-after>
+	<div
+		class="proto-before-after__frame reveal"
+		data-before-after
+		style={`--before-position: 50%; --before-object-position: ${comparison.objectPositionBefore}; --after-object-position: ${comparison.objectPositionAfter};`}
+	>
 		<figure class="proto-before-after__image proto-before-after__image--after">
 			<Image
-				src={beforeAfterComparison.after.src}
-				alt={beforeAfterComparison.after.alt}
+				src={comparison.afterImage}
+				alt={comparison.afterAlt}
 				widths={[720, 960, 1280, 1600]}
 				sizes="(max-width: 900px) 100vw, 72vw"
 				loading="lazy"
 			/>
-			<figcaption>{beforeAfterComparison.after.label}</figcaption>
+			<figcaption>After</figcaption>
 		</figure>
 		<figure class="proto-before-after__image proto-before-after__image--before" data-before-layer>
 			<Image
-				src={beforeAfterComparison.before.src}
-				alt={beforeAfterComparison.before.alt}
+				src={comparison.beforeImage}
+				alt={comparison.beforeAlt}
 				widths={[720, 960, 1280, 1600]}
 				sizes="(max-width: 900px) 100vw, 72vw"
 				loading="lazy"
 			/>
-			<figcaption>{beforeAfterComparison.before.label}</figcaption>
+			<figcaption>Before</figcaption>
 		</figure>
 		<label class="proto-before-after__control">
-			<span class="sr-only">Compare before and after</span>
+			<span class="sr-only">Compare before and after for {comparison.title}</span>
 			<input
 				type="range"
 				min="0"
 				max="100"
 				value="50"
-				aria-label="Reveal more or less of the before image"
+				aria-label={`Compare before and after: ${comparison.title}`}
+				aria-valuetext="50% before image visible"
 				data-before-range
 			/>
 		</label>
 		<span class="proto-before-after__handle" aria-hidden="true" data-before-handle></span>
 	</div>
+
+	<nav class="proto-before-after__links reveal" aria-label={`${comparison.title} services`}>
+		{comparison.links.map((link) => <a href={link.href}>{link.label}</a>)}
+	</nav>
 </section>
 
-<script is:inline>
-	document.querySelectorAll('[data-before-after]').forEach((frame) => {
+<script>
+	document.querySelectorAll<HTMLElement>('[data-before-after]').forEach((frame) => {
+		if (frame.dataset.beforeAfterReady === 'true') return;
 		const range = frame.querySelector('[data-before-range]');
-		const before = frame.querySelector('[data-before-layer]');
-		const handle = frame.querySelector('[data-before-handle]');
-		if (!(range instanceof HTMLInputElement) || !(before instanceof HTMLElement)) return;
+		if (!(range instanceof HTMLInputElement)) return;
+		frame.dataset.beforeAfterReady = 'true';
+		let activePointer: number | null = null;
 
 		const update = () => {
 			const value = `${range.value}%`;
-			before.style.clipPath = `inset(0 ${100 - Number(range.value)}% 0 0)`;
-			if (handle instanceof HTMLElement) handle.style.left = value;
+			frame.style.setProperty('--before-position', value);
+			range.setAttribute('aria-valuetext', `${range.value}% before image visible`);
 		};
+		const updateFromPointer = (clientX: number) => {
+			const bounds = frame.getBoundingClientRect();
+			const nextValue = ((clientX - bounds.left) / bounds.width) * 100;
+			range.value = String(Math.max(0, Math.min(100, Math.round(nextValue))));
+			update();
+		};
+
+		frame.addEventListener('pointerdown', (event) => {
+			activePointer = event.pointerId;
+			frame.setPointerCapture?.(event.pointerId);
+			updateFromPointer(event.clientX);
+		});
+		frame.addEventListener('pointermove', (event) => {
+			if (activePointer !== event.pointerId) return;
+			updateFromPointer(event.clientX);
+		});
+		const stopPointer = (event: PointerEvent) => {
+			if (activePointer !== event.pointerId) return;
+			activePointer = null;
+		};
+		frame.addEventListener('pointerup', stopPointer);
+		frame.addEventListener('pointercancel', stopPointer);
 
 		range.addEventListener('input', () => {
 			update();
 			window.trackProtoEvent?.('before_after_interaction');
+		});
+		range.addEventListener('keydown', (event) => {
+			if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+			event.preventDefault();
+			if (event.key === 'Home') range.value = range.min;
+			if (event.key === 'End') range.value = range.max;
+			if (event.key === 'ArrowLeft') range.value = String(Math.max(0, Number(range.value) - 2));
+			if (event.key === 'ArrowRight') range.value = String(Math.min(100, Number(range.value) + 2));
+			update();
 		});
 		update();
 	});

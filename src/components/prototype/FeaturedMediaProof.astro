@@ -1,16 +1,27 @@
 ---
 import { Image } from 'astro:assets';
 import { featuredMedia } from '@/data/interiorRenovationsPrototype';
+import asSeenOnTvBadge from '../../../content/awards/as-seen-on-tv-badge.webp';
 ---
 
 <section class="proto-media-proof section-anchor" id="media">
-	<div class="proto-section-head reveal">
-		<p class="proto-eyebrow">As seen on</p>
-		<h2>Featured by leading Canadian media</h2>
-		<p>
-			CityTV, HGTV, The Toronto Star and House & Home have featured Strataline's renovation work,
-			dust-controlled process and finishing expertise.
-		</p>
+	<div class="proto-media-proof__heading-wrap">
+		<div class="proto-as-seen-badge reveal">
+			<Image
+				src={asSeenOnTvBadge}
+				alt="As Seen on TV"
+				widths={[96, 128, 160, 192, 256, 320]}
+				sizes="(max-width: 640px) 24vw, 9vw"
+				loading="lazy"
+			/>
+		</div>
+		<div class="proto-section-head reveal">
+			<h2>Featured by leading Canadian media</h2>
+			<p>
+				CityTV, HGTV, The Toronto Star and House & Home have featured Strataline's renovation work,
+				dust-controlled process and finishing expertise.
+			</p>
+		</div>
 	</div>
 
 	<div class="proto-media-proof__grid">
