@@ -11,7 +11,10 @@ import { serviceChooser } from '@/data/interiorRenovationsPrototype';
 	<div class="proto-service-chooser__grid">
 		{
 			serviceChooser.map((path) => (
-				<article class="proto-service-path reveal">
+				<article
+					class="proto-service-path reveal"
+					style={`--service-object-position: ${path.objectPosition};`}
+				>
 					<figure>
 						<Image
 							src={path.image.src}

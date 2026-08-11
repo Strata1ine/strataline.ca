@@ -5,7 +5,10 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 <section class="proto-process section-anchor" id="process">
 	<div class="proto-process__intro reveal">
 		<p class="proto-eyebrow">Process</p>
-		<h2>One project. One sequence. One point of contact.</h2>
+		<h2><span>One project.</span><span>One point of contact.</span></h2>
+		<p class="proto-process__support">
+			From planning to final walkthrough, the work stays coordinated.
+		</p>
 		<p class="sr-only" aria-live="polite" data-process-status></p>
 	</div>
 	<ol class="proto-process__stages">
@@ -13,8 +16,11 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 			processStages.map((stage) => (
 				<li class="reveal" data-process-stage data-stage-title={stage.title}>
 					<span>{stage.number}</span>
-					<h3>{stage.title}</h3>
-					<p>{stage.receives}</p>
+					<div class="proto-process__stage-copy">
+						<h3>{stage.title}</h3>
+						<p class="proto-process__summary">{stage.summary}</p>
+						<p class="proto-process__receives">{stage.receives}</p>
+					</div>
 					<ul>
 						{stage.items.map((item) => (
 							<li>{item}</li>
@@ -24,6 +30,10 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 			))
 		}
 	</ol>
+	<div class="proto-process__cta reveal">
+		<p>Ready to plan your renovation?</p>
+		<a href="#consultation">Request a Quote</a>
+	</div>
 </section>
 
 <script is:inline>
@@ -38,12 +48,21 @@ import { processStages } from '@/data/interiorRenovationsPrototype';
 					.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]?.target;
 
 				if (!(active instanceof HTMLElement)) return;
-				processStages.forEach((stage) => stage.classList.toggle('is-active', stage === active));
+				const activeIndex = processStages.indexOf(active);
+				processStages.forEach((stage, index) => {
+					stage.classList.toggle('is-active', stage === active);
+					stage.classList.toggle('is-complete', index < activeIndex);
+				});
+				const stageList = document.querySelector('.proto-process__stages');
+				if (stageList instanceof HTMLElement) {
+					const progress = activeIndex < 0 ? 0 : (activeIndex / Math.max(processStages.length - 1, 1)) * 100;
+					stageList.style.setProperty('--process-progress', `${progress}%`);
+				}
 				if (processStatus) {
 					processStatus.textContent = `Current renovation stage: ${active.dataset.stageTitle}`;
 				}
 			},
-			{ rootMargin: '-25% 0px -45% 0px', threshold: [0.25, 0.5, 0.75] },
+			{ rootMargin: '-35% 0px -45% 0px', threshold: [0.25, 0.5, 0.75] },
 		);
 
 		processStages.forEach((stage) => processObserver.observe(stage));

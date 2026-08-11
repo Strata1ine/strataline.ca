@@ -6,10 +6,17 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 <section class="proto-recent-work section-anchor" id="recent-work">
 	<div class="proto-section-head reveal">
 		<p class="proto-eyebrow">Recent work</p>
-		<h2>Finished interiors, built as one complete space</h2>
-		<p>
+		<h2>
+			<span class="proto-desktop-only">Finished interiors, built as one complete space</span>
+			<span class="proto-mobile-only">Real projects. Real finishes.</span>
+		</h2>
+		<p class="proto-desktop-only">
 			Real Strataline projects across kitchens, bathrooms, living areas, ceilings, flooring and
 			staircases.
+		</p>
+		<p class="proto-mobile-only">
+			Kitchens, bathrooms, ceilings, flooring, stairs and complete interior renovations across the
+			GTA.
 		</p>
 	</div>
 	<div class="proto-work-gallery" data-work-gallery>
@@ -23,6 +30,7 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 				>
 					<button
 						type="button"
+						style={`--work-object-position: ${item.objectPosition};`}
 						data-lightbox-open
 						data-index={index}
 						data-full={item.image.src.src}

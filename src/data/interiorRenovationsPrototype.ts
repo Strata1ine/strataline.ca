@@ -111,6 +111,42 @@ export const prototypeImages = {
 			'Room image that can support a vertical sequence from ceiling preparation to finishing.',
 		alt: 'Dust-controlled ceiling renovation prepared for coordinated interior finishing work.',
 	},
+	kitchen: {
+		src: kitchenModernImage,
+		path: '/images/interior-renovations/kitchen-renovation.webp',
+		section: 'Kitchens',
+		orientation: 'landscape',
+		aspectRatio: '16:10',
+		description: 'Finished kitchen with cabinetry, counters, lighting and coordinated details.',
+		alt: 'Modern Toronto kitchen renovation with white cabinetry, counters, lighting and an island.',
+	},
+	bathroom: {
+		src: bathroomImage,
+		path: '/images/interior-renovations/bathroom-renovation.webp',
+		section: 'Bathrooms',
+		orientation: 'landscape',
+		aspectRatio: '16:10',
+		description: 'Finished bathroom with a double vanity, tile, lighting and coordinated fixtures.',
+		alt: 'Modern Toronto bathroom renovation with a double vanity, tile and coordinated lighting.',
+	},
+	doorsWindows: {
+		src: doorsWindowsImage,
+		path: '/images/interior-renovations/doors-windows.webp',
+		section: 'Doors & Windows',
+		orientation: 'landscape',
+		aspectRatio: '16:10',
+		description: 'Finished entry with a replacement door, sidelights and window.',
+		alt: 'Toronto entryway with a replacement front door, glass sidelights and adjacent window.',
+	},
+	architecturalDetails: {
+		src: livingRoomImage,
+		path: '/images/interior-renovations/architectural-details.webp',
+		section: 'Architectural Details',
+		orientation: 'landscape',
+		aspectRatio: '16:10',
+		description: 'Finished living room with trim, mouldings and coordinated finish carpentry.',
+		alt: 'Toronto living room renovation with trim, mouldings, feature details and finish carpentry.',
+	},
 } satisfies Record<string, PrototypeImage>;
 
 export const navItems = [
@@ -279,6 +315,7 @@ export const recentWork = [
 		location: 'Toronto',
 		summary: 'Cabinetry, counters, lighting and finish coordination.',
 		href: '/services/kitchens',
+		objectPosition: 'center center',
 	},
 	{
 		image: {
@@ -290,6 +327,7 @@ export const recentWork = [
 		location: 'Toronto',
 		summary: 'Connected flooring, trim, painting and living-area finishing.',
 		href: '/services/painting',
+		objectPosition: 'center center',
 	},
 	{
 		image: {
@@ -301,6 +339,7 @@ export const recentWork = [
 		location: 'Toronto',
 		summary: 'Smooth walls, trim detailing and coordinated surface finishes.',
 		href: '/services/painting',
+		objectPosition: 'center center',
 	},
 	{
 		image: {
@@ -312,6 +351,7 @@ export const recentWork = [
 		location: 'Toronto',
 		summary: 'Vanity, tile, lighting and finishing details.',
 		href: '/services/bathrooms',
+		objectPosition: 'center center',
 	},
 	{
 		image: {
@@ -323,6 +363,7 @@ export const recentWork = [
 		location: 'Toronto',
 		summary: 'Open-riser stair update with modern railing and finish work.',
 		href: '/services/stairs',
+		objectPosition: 'center 48%',
 	},
 	{
 		image: {
@@ -334,6 +375,7 @@ export const recentWork = [
 		location: 'Mississauga',
 		summary: 'Hardwood stair refinishing with clean stain and finish control.',
 		href: '/services/stairs/refinishing',
+		objectPosition: 'center 48%',
 	},
 ];
 
@@ -378,6 +420,7 @@ export const serviceChooser = [
 		title: 'Complete Interior',
 		copy: 'Coordinate connected rooms, surfaces and finishing details as one managed scope.',
 		image: prototypeImages.mainFloor,
+		objectPosition: 'center center',
 		links: [
 			{ label: 'Interior Renovations', href: '/interior-renovations' },
 			{ label: 'Flooring', href: '/services/flooring' },
@@ -386,20 +429,10 @@ export const serviceChooser = [
 		],
 	},
 	{
-		title: 'Stairs and Railings',
-		copy: 'Modernize treads, railings, stain colours and visible stair details.',
-		image: prototypeImages.homeRefresh,
-		links: [
-			{ label: 'Stair Renovation', href: '/services/stairs' },
-			{ label: 'Stair Refinishing', href: '/services/stairs/refinishing' },
-			{ label: 'Tread Caps', href: '/services/stairs/tread-caps' },
-			{ label: 'Railing Installation', href: '/services/stairs/railing-installation' },
-		],
-	},
-	{
 		title: 'Ceilings and Walls',
 		copy: 'Prepare, repair and finish the surfaces that define the home.',
 		image: prototypeImages.moveIn,
+		objectPosition: 'center center',
 		links: [
 			{ label: 'Popcorn Ceiling Removal', href: '/services/popcorn-removal' },
 			{ label: 'Interior Painting', href: '/services/painting' },
@@ -408,14 +441,37 @@ export const serviceChooser = [
 		],
 	},
 	{
-		title: 'Kitchens, Bathrooms and Openings',
-		copy: 'Plan complete rooms, doors, windows and practical finishing details together.',
-		image: prototypeImages.condo,
+		title: 'Kitchens',
+		copy: 'Plan cabinetry, counters, lighting and finishes as one complete room.',
+		image: prototypeImages.kitchen,
+		objectPosition: 'center center',
 		links: [
 			{ label: 'Kitchens', href: '/services/kitchens' },
-			{ label: 'Bathrooms', href: '/services/bathrooms' },
-			{ label: 'Doors and Windows', href: '/services/doors_and_windows' },
 			{ label: 'Cabinet Painting', href: '/services/painting' },
+		],
+	},
+	{
+		title: 'Bathrooms',
+		copy: 'Coordinate tile, fixtures, lighting and finish details for a complete bathroom.',
+		image: prototypeImages.bathroom,
+		objectPosition: 'center center',
+		links: [{ label: 'Bathrooms', href: '/services/bathrooms' }],
+	},
+	{
+		title: 'Doors & Windows',
+		copy: 'Improve comfort, fit and finish with properly planned replacements.',
+		image: prototypeImages.doorsWindows,
+		objectPosition: 'center center',
+		links: [{ label: 'Doors & Windows', href: '/services/doors_and_windows' }],
+	},
+	{
+		title: 'Architectural Details',
+		copy: 'Trim, mouldings, feature walls and finish carpentry that complete the room.',
+		image: prototypeImages.architecturalDetails,
+		objectPosition: 'center center',
+		links: [
+			{ label: 'Interior Painting', href: '/services/painting' },
+			{ label: 'Wallpaper', href: '/services/wallpaper' },
 		],
 	},
 ];
@@ -446,7 +502,7 @@ export const capabilityGroups: Array<{ title: string; items: CapabilityItem[] }>
 		],
 	},
 	{
-		title: 'Openings and Finishing',
+		title: 'Doors, Windows and Finishing',
 		items: [
 			{ label: 'Doors and Windows', href: '/services/doors_and_windows' },
 			{ label: 'Flooring, trim, drywall repairs and finish coordination' },
@@ -468,6 +524,7 @@ export const processStages = [
 	{
 		number: '01',
 		title: 'Project Review',
+		summary: 'Scope, priorities and timing',
 		receives: 'project-fit guidance',
 		items: [
 			'complete wish list',
@@ -479,6 +536,7 @@ export const processStages = [
 	{
 		number: '02',
 		title: 'Site Assessment',
+		summary: 'Measurements and existing conditions',
 		receives: 'measured scope',
 		items: [
 			'existing conditions',
@@ -489,7 +547,8 @@ export const processStages = [
 	},
 	{
 		number: '03',
-		title: 'Written Proposal',
+		title: 'Plan & Schedule',
+		summary: 'Materials, sequencing and logistics',
 		receives: 'written inclusions and exclusions',
 		items: [
 			'detailed scope',
@@ -500,7 +559,8 @@ export const processStages = [
 	},
 	{
 		number: '04',
-		title: 'Protected Execution',
+		title: 'Renovation',
+		summary: 'Coordinated trades and dust control',
 		receives: 'protection and coordinated scheduling',
 		items: [
 			'containment',
@@ -512,7 +572,8 @@ export const processStages = [
 	},
 	{
 		number: '05',
-		title: 'Completion and Walkthrough',
+		title: 'Final Walkthrough',
+		summary: 'Finish review and project completion',
 		receives: 'walkthrough and deficiency correction',
 		items: [
 			'final detailing',
