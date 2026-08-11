@@ -152,6 +152,7 @@ import { navItems, primaryServices, servicesMenu } from '@/data/interiorRenovati
 	const mobileMenuLabel = document.querySelector('[data-menu-label]');
 	const desktopMedia = window.matchMedia('(min-width: 901px)');
 	let servicesMenuCloseTimer = 0;
+	let suppressServicesFocusOpen = false;
 
 	const desktopMenuIsOpen = () => servicesMenuButton?.getAttribute('aria-expanded') === 'true';
 
@@ -177,7 +178,13 @@ import { navItems, primaryServices, servicesMenu } from '@/data/interiorRenovati
 		servicesMenuPanel.inert = !shouldOpen;
 		document.documentElement.classList.toggle('proto-services-open', shouldOpen);
 
-		if (!shouldOpen && options.returnFocus) servicesMenuButton.focus();
+		if (!shouldOpen && options.returnFocus) {
+			suppressServicesFocusOpen = true;
+			servicesMenuButton.focus();
+			window.queueMicrotask(() => {
+				suppressServicesFocusOpen = false;
+			});
+		}
 	};
 
 	const scheduleServicesMenuClose = () => {
@@ -219,7 +226,9 @@ import { navItems, primaryServices, servicesMenu } from '@/data/interiorRenovati
 		servicesBackdrop.addEventListener('pointerenter', cancelServicesMenuClose);
 		servicesBackdrop.addEventListener('pointerleave', scheduleServicesMenuClose);
 		servicesBackdrop.addEventListener('click', () => setServicesMenu(false));
-		servicesMenuItem.addEventListener('focusin', () => setServicesMenu(true));
+		servicesMenuItem.addEventListener('focusin', () => {
+			if (!suppressServicesFocusOpen) setServicesMenu(true);
+		});
 		servicesMenuButton.addEventListener('click', () => setServicesMenu(true));
 		servicesMenuButton.addEventListener('keydown', (event) => {
 			if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {

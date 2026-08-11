@@ -116,7 +116,6 @@ const budgetChoices = [
 			<p class="proto-consultation__privacy">
 				Your project details are used only to review and respond to your request.
 			</p>
-			<p class="proto-form-status" aria-live="polite" data-form-status></p>
 			<div class="proto-actions">
 				<button class="proto-button proto-button--quiet" type="button" data-form-back>Back</button>
 				<button class="proto-button proto-button--primary" type="submit" data-form-submit>
@@ -125,6 +124,7 @@ const budgetChoices = [
 				<a class="proto-button proto-button--quiet" href="tel:+14164715999">Call or Text {phone}</a>
 			</div>
 		</div>
+		<p class="proto-form-status" role="status" aria-live="polite" data-form-status></p>
 	</form>
 </section>
 
@@ -139,12 +139,14 @@ const budgetChoices = [
 		const status = progressiveForm.querySelector('[data-form-status]');
 		const submitButton = progressiveForm.querySelector('[data-form-submit]');
 		let hasStarted = false;
+		let currentStep = 1;
 
 		const setStatus = (message) => {
 			if (status) status.textContent = message;
 		};
 
 		const setStep = (step) => {
+			currentStep = step;
 			steps.forEach((element) => {
 				const active = element.getAttribute('data-form-step') === String(step);
 				element.hidden = !active;
@@ -195,7 +197,25 @@ const budgetChoices = [
 			focusStep(1);
 		});
 
+		progressiveForm.addEventListener('keydown', (event) => {
+			if (
+				event.key !== 'Enter' ||
+				currentStep !== 1 ||
+				event.target instanceof HTMLTextAreaElement ||
+				event.target instanceof HTMLButtonElement
+			) {
+				return;
+			}
+			event.preventDefault();
+			nextButton?.click();
+		});
+
 		progressiveForm.addEventListener('submit', async (event) => {
+			if (currentStep !== 2) {
+				event.preventDefault();
+				nextButton?.click();
+				return;
+			}
 			if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
 				setStatus('Please complete the required fields before submitting.');
 				return;

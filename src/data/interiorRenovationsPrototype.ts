@@ -300,7 +300,7 @@ export const featuredMedia = [
 			src: houseHomeImage,
 			alt: 'House and Home feature with Strataline flooring and finishing work.',
 		},
-		link: 'https://houseandhome.com/gallery/luxe-for-less-design',
+		link: 'https://houseandhome.com/decorating-and-design/luxe-for-less-design/',
 	},
 ];
 
@@ -308,7 +308,7 @@ export const recentWork = [
 	{
 		image: {
 			src: kitchenModernImage,
-			alt: 'Modern Toronto kitchen renovation by Strataline.',
+			alt: 'Modern kitchen with white cabinetry, a large island and coordinated pendant lighting.',
 		},
 		caption: 'Kitchen renovation - Toronto',
 		service: 'Kitchen renovation',

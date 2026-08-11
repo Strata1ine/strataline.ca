@@ -17,12 +17,13 @@ import {
 	beforeAfterComparisons,
 	immersiveStories,
 	prototypeImages,
+	renovationFaqs,
 	serviceAreas,
 } from '@/data/interiorRenovationsPrototype';
 
 const title = 'Interior Renovations Toronto & GTA | Strataline';
 const description =
-	'Coordinated interior renovations in Toronto and the GTA, including ceilings, painting, flooring, stairs, trim, doors, cabinetry, kitchens, bathrooms and dust-controlled finishing work.';
+	'Complete interior renovations in Toronto and the GTA, including kitchens, bathrooms, stairs, ceilings, flooring, painting, doors and finish work.';
 
 const pageUrl = 'https://strataline.ca/interior-renovations';
 const organizationId = 'https://strataline.ca/#organization';
@@ -36,6 +37,7 @@ const schemas = [
 		description,
 		isPartOf: { '@id': 'https://strataline.ca/#website' },
 		about: { '@id': serviceId },
+		breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
 		provider: { '@id': organizationId },
 	},
 	{
@@ -65,6 +67,19 @@ const schemas = [
 				item: pageUrl,
 			},
 		],
+	},
+	{
+		'@type': 'FAQPage',
+		'@id': `${pageUrl}#faq`,
+		url: `${pageUrl}#faq`,
+		mainEntity: renovationFaqs.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
 	},
 ];
 ---
@@ -174,6 +189,7 @@ const schemas = [
 				const visible = window.scrollY > threshold;
 				subnav.classList.toggle('is-visible', visible);
 				subnav.setAttribute('aria-hidden', String(!visible));
+				subnav.inert = !visible;
 			}
 		};
 
@@ -309,10 +325,9 @@ const schemas = [
 
 		if (contactBar && 'IntersectionObserver' in window) {
 			const updateContactBar = () => {
-				contactBar.classList.toggle(
-					'is-hidden',
-					contactVisibility.consultation || contactVisibility.footer,
-				);
+				const hidden = contactVisibility.consultation || contactVisibility.footer;
+				contactBar.classList.toggle('is-hidden', hidden);
+				contactBar.inert = hidden;
 			};
 			const contactObserver = new IntersectionObserver(
 				(entries) => {

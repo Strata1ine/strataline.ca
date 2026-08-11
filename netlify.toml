@@ -1,3 +1,94 @@
 [build]
   command = "git submodule update --init --recursive && bun run build"
   publish = "dist"
+
+# Keep generated file-format pages on one public, extensionless canonical URL.
+[[redirects]]
+  from = "/interior-renovations.html"
+  to = "/interior-renovations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/kitchens.html"
+  to = "/services/kitchens"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/bathrooms.html"
+  to = "/services/bathrooms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/doors_and_windows.html"
+  to = "/services/doors_and_windows"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/flooring.html"
+  to = "/services/flooring"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/painting.html"
+  to = "/services/painting"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/popcorn-removal.html"
+  to = "/services/popcorn-removal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/stairs.html"
+  to = "/services/stairs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/stairs/refinishing.html"
+  to = "/services/stairs/refinishing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/stairs/tread-caps.html"
+  to = "/services/stairs/tread-caps"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/stairs/railing-installation.html"
+  to = "/services/stairs/railing-installation"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/wallpaper.html"
+  to = "/services/wallpaper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reviews.html"
+  to = "/reviews"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tos.html"
+  to = "/tos"
+  status = 301
+  force = true

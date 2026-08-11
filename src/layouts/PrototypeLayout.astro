@@ -23,16 +23,31 @@ const normalizedPath = canonicalPath.replace(/\/$/, '') || '/';
 const canonicalUrl = `${siteUrl}${normalizedPath}`;
 const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const isProd = import.meta.env.PROD;
+const businessProfiles = [
+	...new Set(
+		business.sameAs
+			.map((url) => url.replace('https://m.yelp.ca', 'https://www.yelp.ca'))
+			.filter((url) =>
+				['houzz.com', 'homestars.com', 'yelp.ca'].some((domain) =>
+					new URL(url).hostname.endsWith(domain),
+				),
+			),
+	),
+];
 
 const organizationSchema = {
-	'@type': 'Organization',
+	'@type': 'GeneralContractor',
 	'@id': `${siteUrl}/#organization`,
 	name: 'Strataline Inc.',
 	url: siteUrl,
 	logo: `${siteUrl}/strataline-logo-S-small.png`,
-	telephone: business.telephone,
+	telephone: '+14164715999',
 	email: business.email,
-	sameAs: business.sameAs,
+	sameAs: businessProfiles,
+	areaServed: {
+		'@type': 'Place',
+		name: 'Greater Toronto Area',
+	},
 	image: imageUrl,
 	description,
 };
