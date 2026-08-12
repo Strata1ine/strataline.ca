@@ -2044,6 +2044,7 @@ html {
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
+	padding-bottom: clamp(2.5rem, 4vw, 4rem);
 }
 
 .proto-faq__watermark {
@@ -2123,62 +2124,50 @@ html {
 	isolation: isolate;
 	width: min(var(--proto-wide), calc(100% - 2rem));
 	overflow: hidden;
-	padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 4rem);
-	border: 1px solid rgba(73, 96, 83, 0.16);
+	padding: clamp(2.75rem, 5vw, 4.5rem) clamp(1rem, 5vw, 4rem);
+	border: 1px solid rgba(152, 101, 54, 0.1);
 	border-radius: calc(var(--proto-radius) + 10px);
-	background:
-		linear-gradient(135deg, rgba(247, 244, 239, 0.96), rgba(229, 237, 228, 0.9)),
-		var(--proto-bg-soft);
+	background: #f5f1ea;
 	box-shadow: var(--proto-shadow-soft);
 }
 
 .proto-service-area::before {
 	content: '';
 	position: absolute;
-	inset: 0;
+	top: 14%;
+	right: 7%;
 	z-index: -2;
-	background-image:
-		radial-gradient(circle at 18% 29%, rgba(73, 96, 83, 0.48) 0 3px, transparent 4px),
-		radial-gradient(circle at 34% 43%, rgba(73, 96, 83, 0.42) 0 3px, transparent 4px),
-		radial-gradient(circle at 52% 27%, rgba(73, 96, 83, 0.4) 0 3px, transparent 4px),
-		radial-gradient(circle at 68% 47%, rgba(73, 96, 83, 0.45) 0 3px, transparent 4px),
-		radial-gradient(circle at 82% 31%, rgba(73, 96, 83, 0.38) 0 3px, transparent 4px),
-		linear-gradient(
-			24deg,
-			transparent 47.8%,
-			rgba(73, 96, 83, 0.13) 48%,
-			rgba(73, 96, 83, 0.13) 48.5%,
-			transparent 48.7%
-		),
-		linear-gradient(
-			152deg,
-			transparent 52%,
-			rgba(73, 96, 83, 0.11) 52.2%,
-			rgba(73, 96, 83, 0.11) 52.7%,
-			transparent 52.9%
-		),
-		linear-gradient(
-			82deg,
-			transparent 31%,
-			rgba(73, 96, 83, 0.09) 31.2%,
-			rgba(73, 96, 83, 0.09) 31.6%,
-			transparent 31.8%
-		);
-	opacity: 0.8;
+	width: 48%;
+	height: 62%;
+	border: 1px solid rgba(73, 96, 83, 0.1);
+	border-radius: 52% 39% 61% 44%;
+	transform: rotate(-9deg);
 }
 
 .proto-service-area::after {
 	content: '';
 	position: absolute;
-	right: -8%;
-	bottom: -48%;
+	top: 24%;
+	right: 13%;
 	z-index: -1;
-	width: 62%;
-	height: 78%;
-	border: 1px solid rgba(83, 133, 149, 0.18);
-	border-radius: 58% 42% 0 0;
-	background: rgba(135, 178, 190, 0.18);
-	transform: rotate(-7deg);
+	width: 34%;
+	height: 42%;
+	border: 1px solid rgba(152, 101, 54, 0.08);
+	border-radius: 47% 58% 42% 54%;
+	transform: rotate(14deg);
+}
+
+.proto-service-area__linework {
+	position: absolute;
+	top: 20%;
+	right: 10%;
+	z-index: -1;
+	width: 40%;
+	height: 48%;
+	border-top: 1px solid rgba(73, 96, 83, 0.08);
+	border-bottom: 1px solid rgba(73, 96, 83, 0.07);
+	border-radius: 43% 56% 48% 61%;
+	transform: rotate(7deg);
 }
 
 .proto-service-area > * {
@@ -2195,21 +2184,18 @@ html {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 0.55rem;
-	padding: 0;
+	gap: 0.35rem 0.65rem;
 	margin: 1.5rem 0 0;
-	list-style: none;
+	color: #455047;
+	font-family: var(--font-source-serif-4), Georgia, serif;
+	font-size: clamp(1rem, 1.5vw, 1.2rem);
+	font-weight: 500;
+	line-height: 1.5;
 }
 
-.proto-area-list li {
-	border: 1px solid rgba(73, 96, 83, 0.2);
-	border-radius: 999px;
-	padding: 0.55rem 0.8rem;
-	background: rgba(255, 255, 255, 0.82);
-	color: #35463d;
-	font-size: 0.88rem;
-	font-weight: 600;
-	box-shadow: 0 0.5rem 1.2rem rgba(48, 67, 56, 0.06);
+.proto-area-list i {
+	color: var(--proto-accent);
+	font-style: normal;
 }
 
 .proto-service-area__note {
@@ -2217,14 +2203,14 @@ html {
 }
 
 .proto-consultation {
-	display: grid;
-	gap: clamp(1.5rem, 4vw, 3rem);
+	--form-gold: #d4a85f;
+	--form-green: #29372f;
+	--form-green-deep: #1a221d;
 	margin-bottom: var(--proto-section);
-	padding: clamp(2rem, 6vw, 5rem);
-	border-radius: calc(var(--proto-radius) + 10px);
+	padding: 0;
+	border-radius: calc(var(--proto-radius) + 8px);
 	background:
-		radial-gradient(circle at 84% 8%, rgba(190, 211, 191, 0.2), transparent 28rem),
-		linear-gradient(135deg, rgba(25, 72, 60, 0.96), rgba(18, 55, 48, 0.94)), #173e35;
+		linear-gradient(145deg, rgba(41, 55, 47, 0.99), rgba(26, 34, 29, 0.99)), var(--form-green-deep);
 	color: #fff;
 	box-shadow: var(--proto-shadow);
 }
@@ -2234,20 +2220,39 @@ html {
 }
 
 .proto-consultation .proto-eyebrow {
-	color: #e2bd8e;
-}
-
-.proto-consultation .proto-actions {
-	justify-content: center;
+	color: var(--form-gold);
 }
 
 .proto-consultation__form {
+	padding: clamp(1.75rem, 5vw, 4rem);
 	text-align: left;
+}
+
+.proto-consultation__intro {
+	max-width: 45rem;
+	margin: 0 auto clamp(1.5rem, 3vw, 2.25rem);
+	text-align: center;
+}
+
+.proto-consultation__intro .proto-eyebrow {
+	margin-bottom: 0.65rem;
+}
+
+.proto-consultation__intro h2,
+.proto-form-success h2 {
+	font-size: clamp(2.35rem, 5vw, 4.5rem);
+	line-height: 0.98;
+}
+
+.proto-consultation__intro > p:last-child {
+	margin: 0.75rem auto 0;
+	font-size: clamp(1rem, 1.2vw, 1.1rem);
+	line-height: 1.55;
 }
 
 .proto-form-step {
 	display: grid;
-	gap: 1rem;
+	gap: 0.9rem;
 }
 
 .proto-form-step[hidden] {
@@ -2257,18 +2262,17 @@ html {
 .proto-consultation__fields {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1rem;
+	gap: 0.85rem 1rem;
 }
 
 .proto-consultation__field-wide,
-.proto-consultation__privacy,
-.proto-consultation__form .proto-actions {
+.proto-consultation__privacy {
 	grid-column: 1 / -1;
 }
 
 .proto-consultation label {
 	display: grid;
-	gap: 0.45rem;
+	gap: 0.35rem;
 }
 
 .proto-consultation label span {
@@ -2290,6 +2294,19 @@ html {
 	background: rgba(255, 255, 255, 0.12);
 	color: #fff;
 	font: inherit;
+	transition:
+		border-color 160ms ease,
+		box-shadow 160ms ease,
+		background 160ms ease;
+}
+
+.proto-consultation input:focus,
+.proto-consultation select:focus,
+.proto-consultation textarea:focus {
+	border-color: var(--form-gold);
+	outline: 0;
+	background: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 0 3px rgba(212, 168, 95, 0.18);
 }
 
 .proto-consultation textarea {
@@ -2302,16 +2319,167 @@ html {
 
 .proto-consultation__privacy {
 	margin: 0;
-	text-align: center;
-	font-size: 0.88rem;
+	color: rgba(255, 255, 255, 0.62) !important;
+	text-align: left;
+	font-size: 0.8rem;
+	line-height: 1.45;
 }
 
-.proto-form-step__label,
-.proto-form-status {
+.proto-form-progress {
+	display: grid;
+	gap: 0.55rem;
+}
+
+.proto-form-step__label {
 	margin: 0;
-	text-align: center;
+	color: #fff;
+	text-align: left;
 	font-size: 0.88rem;
 	font-weight: 700;
+}
+
+.proto-form-step__label span {
+	color: var(--form-gold);
+}
+
+.proto-form-progress__track {
+	display: block;
+	height: 2px;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.15);
+}
+
+.proto-form-progress__track span {
+	display: block;
+	width: 50%;
+	height: 100%;
+	background: var(--form-gold);
+}
+
+.proto-form-progress--complete .proto-form-progress__track span {
+	width: 100%;
+}
+
+.proto-form-step__intro {
+	margin: 0.25rem 0 0.15rem;
+}
+
+.proto-form-step__intro h4 {
+	margin: 0;
+	font-family: var(--font-source-serif-4), Georgia, serif;
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: 500;
+}
+
+.proto-form-step__intro p {
+	margin: 0.4rem 0 0;
+	font-size: 0.95rem;
+	line-height: 1.5;
+}
+
+.proto-form-next {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-top: 0.15rem;
+}
+
+.proto-form-reassurance {
+	margin: 0;
+	font-size: 0.85rem;
+	font-weight: 650;
+}
+
+.proto-form-reassurance span {
+	color: var(--form-gold);
+}
+
+.proto-form-submit-actions {
+	display: grid;
+	gap: 0.65rem;
+	margin-top: 0.1rem;
+}
+
+.proto-form-submit-actions .proto-button--primary {
+	width: 100%;
+	min-height: 3.5rem;
+	border-color: var(--form-gold);
+	background: var(--form-gold);
+	color: #172019;
+	font-size: 0.9rem;
+	font-weight: 800;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+}
+
+.proto-form-submit-actions .proto-button--primary:hover,
+.proto-form-submit-actions .proto-button--primary:focus-visible {
+	border-color: #e2bc77;
+	background: #e2bc77;
+	box-shadow: 0 0 0 3px rgba(212, 168, 95, 0.2);
+	transform: translateY(-1px);
+}
+
+.proto-form-back {
+	justify-self: start;
+	min-height: 2.5rem;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: rgba(255, 255, 255, 0.76);
+	font: inherit;
+	font-weight: 650;
+}
+
+.proto-form-back:hover,
+.proto-form-back:focus-visible,
+.proto-form-phone a:hover,
+.proto-form-phone a:focus-visible {
+	color: var(--form-gold);
+}
+
+.proto-form-phone {
+	margin: 0.15rem 0 0;
+	color: rgba(255, 255, 255, 0.62) !important;
+	font-size: 0.82rem;
+}
+
+.proto-form-phone a {
+	color: rgba(255, 255, 255, 0.88);
+	font-weight: 650;
+}
+
+.proto-form-status {
+	min-height: 1.3rem;
+	margin: 0.7rem 0 0;
+	color: #f0d3a1 !important;
+	text-align: left;
+	font-size: 0.82rem;
+	font-weight: 650;
+}
+
+.proto-form-status:empty {
+	display: none;
+}
+
+.proto-form-success {
+	display: grid;
+	min-height: 28rem;
+	align-content: center;
+	justify-items: center;
+	text-align: center;
+}
+
+.proto-form-success[hidden],
+[data-form-flow][hidden] {
+	display: none;
+}
+
+.proto-form-success > p:not(.proto-eyebrow, .proto-form-phone) {
+	max-width: 36rem;
+	margin: 1rem auto 0;
+	font-size: 1.1rem;
 }
 
 .proto-honeypot {
@@ -2321,8 +2489,8 @@ html {
 }
 
 .proto-consultation .proto-button--primary {
-	border-color: #fff;
-	background: #fff;
+	border-color: var(--form-gold);
+	background: var(--form-gold);
 	color: var(--proto-dark);
 }
 
@@ -2830,13 +2998,36 @@ html {
 		font-size: 44vw;
 	}
 
+	.proto-faq {
+		padding-bottom: 0;
+	}
+
 	.proto-service-area {
 		width: calc(100% - 1rem);
-		padding-inline: 1rem;
+		margin-top: 2.25rem;
+		padding: 2.5rem 1rem;
 	}
 
 	.proto-service-area::before {
-		opacity: 0.58;
+		top: 22%;
+		right: -5%;
+		width: 72%;
+		height: 52%;
+	}
+
+	.proto-service-area::after,
+	.proto-service-area__linework {
+		right: -8%;
+		width: 62%;
+	}
+
+	.proto-area-list {
+		gap: 0.25rem 0.5rem;
+		font-size: 1rem;
+	}
+
+	.proto-service-area__note {
+		margin-top: 1.25rem;
 	}
 
 	.proto-service-chooser .proto-section-head {
@@ -2879,6 +3070,98 @@ html {
 	.proto-capability-index,
 	.proto-consultation__fields {
 		grid-template-columns: 1fr;
+	}
+
+	.proto-consultation {
+		width: 100%;
+		margin-top: var(--mobile-gap-tight);
+		margin-bottom: 0;
+		border-radius: 0;
+	}
+
+	.proto-consultation__form {
+		min-height: calc(100svh - var(--proto-header) - var(--proto-subnav));
+		padding: 1.25rem 1rem calc(6.5rem + env(safe-area-inset-bottom));
+		scroll-margin-top: calc(var(--proto-header) + var(--proto-subnav) + 8px);
+	}
+
+	.proto-consultation__intro {
+		margin-bottom: 1rem;
+		text-align: left;
+	}
+
+	.proto-consultation__intro .proto-eyebrow {
+		margin-bottom: 0.35rem;
+		font-size: 0.75rem;
+	}
+
+	.proto-consultation__intro h2,
+	.proto-form-success h2 {
+		font-size: clamp(2rem, 9.5vw, 2.5rem);
+		line-height: 1;
+	}
+
+	.proto-consultation__intro > p:last-child {
+		margin-top: 0.5rem;
+		font-size: 1rem;
+		line-height: 1.4;
+	}
+
+	.proto-form-step {
+		gap: 0.75rem;
+	}
+
+	.proto-form-progress {
+		gap: 0.4rem;
+	}
+
+	.proto-consultation__fields {
+		gap: 0.7rem;
+	}
+
+	.proto-consultation label {
+		gap: 0.25rem;
+	}
+
+	.proto-consultation input,
+	.proto-consultation select,
+	.proto-consultation textarea {
+		min-height: 3rem;
+		padding: 0.72rem 0.85rem;
+	}
+
+	.proto-form-next {
+		align-items: stretch;
+		flex-direction: column;
+		gap: 0.55rem;
+	}
+
+	.proto-form-next .proto-button {
+		width: 100%;
+	}
+
+	.proto-form-step__intro h4 {
+		font-size: 1.7rem;
+	}
+
+	.proto-form-step__intro p {
+		font-size: 0.9rem;
+	}
+
+	.proto-form-submit-actions .proto-button--primary {
+		order: 1;
+	}
+
+	.proto-form-back {
+		order: 2;
+	}
+
+	.proto-form-phone {
+		margin-top: 0.05rem;
+	}
+
+	.proto-form-success {
+		min-height: calc(100svh - var(--proto-header) - var(--proto-subnav) - 3rem);
 	}
 
 	.proto-project-panel {

@@ -123,16 +123,24 @@ const schemas = [
 
 			<InteriorRenovationFaq />
 
-			<section class="proto-service-area section-anchor reveal" id="service-area">
+			<section class="proto-service-area section-anchor" id="service-area">
+				<span class="proto-service-area__linework" aria-hidden="true"></span>
 				<p class="proto-eyebrow">Service area</p>
 				<h2>Interior renovation services throughout Toronto and the GTA</h2>
 				<p>
 					Strataline supports occupied homes, pre-move-in work and coordinated interior projects
 					across Toronto and surrounding GTA communities.
 				</p>
-				<ul class="proto-area-list" aria-label="Primary service areas">
-					{serviceAreas.map((area) => <li>{area}</li>)}
-				</ul>
+				<p class="proto-area-list" aria-label="Primary service areas">
+					{
+						serviceAreas.map((area, index) => (
+							<>
+								<span>{area}</span>
+								{index < serviceAreas.length - 1 && <i aria-hidden="true">·</i>}
+							</>
+						))
+					}
+				</p>
 				<p class="proto-service-area__note">
 					Not sure whether your property is within our service area? Send the address with your
 					project details.
