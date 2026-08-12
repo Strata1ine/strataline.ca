@@ -2044,7 +2044,7 @@ html {
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
-	padding-bottom: clamp(2.5rem, 4vw, 4rem);
+	padding-bottom: clamp(2.5rem, 3.5vw, 3rem);
 }
 
 .proto-faq__watermark {
@@ -3004,7 +3004,7 @@ html {
 
 	.proto-service-area {
 		width: calc(100% - 1rem);
-		margin-top: 2.25rem;
+		margin-top: 1.75rem;
 		padding: 2.5rem 1rem;
 	}
 
