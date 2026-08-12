@@ -35,13 +35,13 @@ const businessProfiles = [
 	),
 ];
 
-const organizationSchema = {
-	'@type': 'GeneralContractor',
-	'@id': `${siteUrl}/#organization`,
+const businessSchema = {
+	'@type': 'HomeAndConstructionBusiness',
+	'@id': `${siteUrl}/#business`,
 	name: 'Strataline Inc.',
-	url: siteUrl,
+	url: `${siteUrl}/`,
 	logo: `${siteUrl}/strataline-logo-S-small.png`,
-	telephone: '+14164715999',
+	telephone: '+1-416-471-5999',
 	email: business.email,
 	sameAs: businessProfiles,
 	areaServed: {
@@ -55,14 +55,14 @@ const organizationSchema = {
 const websiteSchema = {
 	'@type': 'WebSite',
 	'@id': `${siteUrl}/#website`,
-	url: siteUrl,
+	url: `${siteUrl}/`,
 	name: 'Strataline',
-	publisher: { '@id': `${siteUrl}/#organization` },
+	publisher: { '@id': `${siteUrl}/#business` },
 };
 
 const schemaGraph = {
 	'@context': 'https://schema.org',
-	'@graph': [organizationSchema, websiteSchema, ...schemas],
+	'@graph': [businessSchema, websiteSchema, ...schemas],
 };
 
 const analyticsScript = `

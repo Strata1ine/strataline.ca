@@ -27,7 +27,7 @@ const description =
 	'Complete interior renovations in Toronto and the GTA, including kitchens, bathrooms, stairs, ceilings, flooring, painting, doors and finish work.';
 
 const pageUrl = 'https://strataline.ca/interior-renovations';
-const organizationId = 'https://strataline.ca/#organization';
+const businessId = 'https://strataline.ca/#business';
 const serviceId = `${pageUrl}#service`;
 const schemas = [
 	{
@@ -39,7 +39,7 @@ const schemas = [
 		isPartOf: { '@id': 'https://strataline.ca/#website' },
 		about: { '@id': serviceId },
 		breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
-		provider: { '@id': organizationId },
+		provider: { '@id': businessId },
 	},
 	{
 		'@type': 'Service',
@@ -47,8 +47,8 @@ const schemas = [
 		name: 'Interior Renovations',
 		url: pageUrl,
 		serviceType: 'Interior Renovation',
-		provider: { '@id': organizationId },
-		areaServed: serviceAreas.map((name) => ({ '@type': 'Place', name })),
+		provider: { '@id': businessId },
+		areaServed: serviceAreas,
 		description,
 	},
 	{
