@@ -254,16 +254,32 @@ export const homepageReviews = [
 	},
 ];
 
-export const serviceAreas = [
-	'Toronto',
-	'Vaughan',
-	'Woodbridge',
-	'Richmond Hill',
-	'Markham',
-	'Mississauga',
-	'Oakville',
-	'Burlington',
-	'Etobicoke',
-	'North York',
-	'Thornhill',
-];
+export const homepageServiceArea = {
+	backgroundImage: null as ImageMetadata | null,
+	backgroundImageAlt: '',
+	assetPlaceholder: {
+		targetPath: 'content/homepage/service-area-gta-aerial.webp',
+		recommendedWidth: '2400–3200px',
+		recommendedAspectRatio: '16:9 to 2:1',
+		composition:
+			'An elevated view with Vaughan-area residential fabric in the foreground, broader GTA context and the Toronto skyline in the distance.',
+	},
+	groups: [
+		{
+			label: 'Vaughan & nearby',
+			areas: ['Woodbridge', 'Vaughan', 'Kleinburg', 'Maple', 'Thornhill'],
+		},
+		{
+			label: 'North GTA',
+			areas: ['Richmond Hill', 'Markham', 'Aurora', 'Newmarket', 'King City'],
+		},
+		{
+			label: 'Toronto',
+			areas: ['Toronto', 'North York', 'Etobicoke'],
+		},
+		{
+			label: 'West GTA',
+			areas: ['Bolton / Caledon', 'Mississauga', 'Oakville', 'Burlington'],
+		},
+	],
+};

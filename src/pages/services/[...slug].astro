@@ -85,12 +85,13 @@ const noIndex =
 	service.data.hidden === true ||
 	(typeof service.data.seo !== 'string' &&
 		(service.data.seo.noindex === true || service.data.seo.indexableQuality === 'weak'));
+const serviceSections = service.data.sections.filter((section) => section.type !== 'Services');
 ---
 
 <Root
 	title={service.data.title}
 	desc={seoDescription}
-	blocks={service.data.sections}
+	blocks={serviceSections}
 	startPos={service.data.startPos ?? 'right'}
 	schemas={await seo(Astro, service)}
 	noIndex={noIndex}

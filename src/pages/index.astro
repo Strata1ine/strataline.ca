@@ -14,10 +14,10 @@ import {
 	homepageMedia,
 	homepageRecentWork,
 	homepageReviews,
+	homepageServiceArea,
 	primaryServices,
 	processStages,
 	secondaryServices,
-	serviceAreas,
 } from '@/data/homepage';
 import '@/styles/homepage-recovery.css';
 
@@ -300,18 +300,62 @@ const webPageSchema = {
 		</section>
 
 		<section
-			class="home-service-area section-anchor"
+			class:list={[
+				'home-service-area section-anchor',
+				{ 'home-service-area--placeholder': !homepageServiceArea.backgroundImage },
+			]}
 			id="service-area"
 			aria-labelledby="service-area-title"
+			data-service-area-asset={homepageServiceArea.backgroundImage ? 'image' : 'placeholder'}
 		>
-			<div class="reveal">
-				<p class="home-eyebrow">Service area</p>
-				<h2 id="service-area-title">Home renovations across Toronto and the GTA</h2>
-				<p>
-					Residential renovation projects in Toronto and established communities across the GTA.
-				</p>
+			{
+				homepageServiceArea.backgroundImage && (
+					<Image
+						class="home-service-area__image"
+						src={homepageServiceArea.backgroundImage}
+						alt={homepageServiceArea.backgroundImageAlt}
+						widths={[768, 1024, 1366, 1600, 1920, 2400]}
+						sizes="100vw"
+						loading="lazy"
+						quality={82}
+						aria-hidden="true"
+					/>
+				)
+			}
+			<div class="home-service-area__shade" aria-hidden="true"></div>
+			<div class="home-service-area__inner">
+				<div class="home-service-area__intro reveal">
+					<p class="home-eyebrow">Service area</p>
+					<h2 id="service-area-title">Renovations across Toronto &amp; the GTA</h2>
+					<p>
+						Based in the Vaughan area, Strataline works throughout Toronto and surrounding GTA
+						communities for interior renovations, ceilings, stairs, painting, kitchens, bathrooms,
+						doors and windows.
+					</p>
+				</div>
+
+				<div class="home-service-area__locations reveal">
+					<div class="home-service-area__groups">
+						{
+							homepageServiceArea.groups.map((group, groupIndex) => (
+								<section
+									class="home-service-area__group"
+									aria-labelledby={`service-area-group-${groupIndex}`}
+								>
+									<h3 id={`service-area-group-${groupIndex}`}>{group.label}</h3>
+									<ul>
+										{group.areas.map((area) => <li>{area}</li>)}
+									</ul>
+								</section>
+							))
+						}
+					</div>
+					<p class="home-service-area__cue">
+						Not sure if your project is within our service area?{' '}
+						<a href="tel:+14164715999">Call or text (416) 471-5999</a>.
+					</p>
+				</div>
 			</div>
-			<ul class="reveal">{serviceAreas.map((area) => <li>{area}</li>)}</ul>
 		</section>
 
 		<section class="home-contact section-anchor" aria-label="Project inquiry">
@@ -328,8 +372,10 @@ const webPageSchema = {
 	<Footer />
 
 	<nav class="home-mobile-contact" aria-label="Quick contact" data-mobile-contact>
-		<a href="tel:+14164715999">Call</a>
-		<button type="button" data-home-contact-open data-home-quote>Request Quote</button>
+		<a href="tel:+14164715999" data-mobile-contact-call>Call</a>
+		<button type="button" data-home-contact-open data-home-quote data-mobile-contact-quote>
+			Request Quote
+		</button>
 	</nav>
 
 	<script is:inline>
@@ -410,6 +456,115 @@ const webPageSchema = {
 			});
 			if (inlineConsultation) contactObserver.observe(inlineConsultation);
 			if (homeFooter) contactObserver.observe(homeFooter);
+		}
+
+		const mobileCall = mobileContact?.querySelector('[data-mobile-contact-call]');
+		const mobileQuote = mobileContact?.querySelector('[data-mobile-contact-quote]');
+		if (mobileContact && mobileCall instanceof HTMLElement && mobileQuote instanceof HTMLElement) {
+			const shimmerMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+			const shimmerViewport = window.matchMedia('(max-width: 767px)');
+			const shimmerInterval = 36_000;
+			const shimmerDuration = 850;
+			const shimmerStagger = 420;
+			let shimmerTimer = 0;
+			let quoteCleanupTimer = 0;
+			let callStartTimer = 0;
+			let callCleanupTimer = 0;
+
+			const clearShimmerSequence = () => {
+				window.clearTimeout(quoteCleanupTimer);
+				window.clearTimeout(callStartTimer);
+				window.clearTimeout(callCleanupTimer);
+				quoteCleanupTimer = 0;
+				callStartTimer = 0;
+				callCleanupTimer = 0;
+				mobileQuote.classList.remove('is-shimmering');
+				mobileCall.classList.remove('is-shimmering');
+			};
+
+			const pageCanScheduleShimmer = () =>
+				document.visibilityState === 'visible' &&
+				shimmerViewport.matches &&
+				!shimmerMotion.matches;
+
+			const contactUiIsActive = () => {
+				if (
+					document.documentElement.classList.contains('floating-contact-open') ||
+					document.documentElement.classList.contains('proto-mobile-menu-open') ||
+					document.documentElement.classList.contains('proto-no-scroll')
+				) {
+					return true;
+				}
+
+				return [...document.querySelectorAll('dialog[open], [role="dialog"]:not([hidden])')].some(
+					(overlay) => overlay instanceof HTMLElement && overlay.getClientRects().length > 0,
+				);
+			};
+
+			const canShimmer = () =>
+				pageCanScheduleShimmer() &&
+				!mobileContact.classList.contains('is-hidden') &&
+				!mobileContact.inert &&
+				!contactUiIsActive();
+
+			const scheduleShimmer = () => {
+				window.clearTimeout(shimmerTimer);
+				shimmerTimer = 0;
+				if (!canShimmer()) return;
+				shimmerTimer = window.setTimeout(runShimmerSequence, shimmerInterval);
+			};
+
+			const resetShimmer = () => {
+				window.clearTimeout(shimmerTimer);
+				shimmerTimer = 0;
+				clearShimmerSequence();
+				scheduleShimmer();
+			};
+
+			function runShimmerSequence() {
+				shimmerTimer = 0;
+				if (!canShimmer()) {
+					scheduleShimmer();
+					return;
+				}
+
+				mobileQuote.classList.add('is-shimmering');
+				quoteCleanupTimer = window.setTimeout(
+					() => mobileQuote.classList.remove('is-shimmering'),
+					shimmerDuration,
+				);
+				callStartTimer = window.setTimeout(() => {
+					if (!canShimmer()) {
+						resetShimmer();
+						return;
+					}
+					mobileCall.classList.add('is-shimmering');
+					callCleanupTimer = window.setTimeout(() => {
+						mobileCall.classList.remove('is-shimmering');
+						scheduleShimmer();
+					}, shimmerDuration);
+				}, shimmerStagger);
+			}
+
+			mobileCall.addEventListener('click', resetShimmer);
+			mobileQuote.addEventListener('click', resetShimmer);
+			document.addEventListener('visibilitychange', resetShimmer);
+			shimmerMotion.addEventListener('change', resetShimmer);
+			shimmerViewport.addEventListener('change', resetShimmer);
+
+			const overlayObserver = new MutationObserver(resetShimmer);
+			[
+				document.documentElement,
+				mobileContact,
+				...document.querySelectorAll('[data-mobile-menu], dialog, [data-lightbox]'),
+			].forEach((element) => {
+				overlayObserver.observe(element, {
+					attributes: true,
+					attributeFilter: ['class', 'hidden', 'open'],
+				});
+			});
+
+			scheduleShimmer();
 		}
 	</script>
 </PrototypeLayout>
