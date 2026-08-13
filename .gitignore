@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# temporary visual QA output
+/qa-screenshots/
+/home-final-*.png

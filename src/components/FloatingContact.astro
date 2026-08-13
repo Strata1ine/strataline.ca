@@ -2,9 +2,32 @@
 import { Icon } from 'astro-icon/components';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
 import '@/styles/interior-renovations-prototype.css';
+
+interface Props {
+	defaultProjectType?: string;
+	projectHelperText?: string;
+	eventPrefix?: string;
+	openEventName?: string;
+	formStartEventName?: string;
+	formSubmitEventName?: string;
+}
+
+const {
+	defaultProjectType,
+	projectHelperText,
+	eventPrefix,
+	openEventName,
+	formStartEventName,
+	formSubmitEventName,
+} = Astro.props;
 ---
 
-<div class="floating-contact" data-floating-contact>
+<div
+	class="floating-contact"
+	data-floating-contact
+	data-event-prefix={eventPrefix}
+	data-open-event-name={openEventName}
+>
 	<button
 		class="floating-contact__trigger"
 		type="button"
@@ -31,7 +54,16 @@ import '@/styles/interior-renovations-prototype.css';
 			>
 				<Icon name="ph:x" class="size-6" aria-hidden="true" is:inline />
 			</button>
-			<ConsultationCTA formId="consultation-popup" mode="popup" reveal={false} />
+			<ConsultationCTA
+				formId="consultation-popup"
+				mode="popup"
+				reveal={false}
+				{defaultProjectType}
+				{projectHelperText}
+				{eventPrefix}
+				startEventName={formStartEventName}
+				submitEventName={formSubmitEventName}
+			/>
 		</div>
 	</dialog>
 </div>
@@ -39,11 +71,15 @@ import '@/styles/interior-renovations-prototype.css';
 <script is:inline>
 	if (!window.trackContactEvent) {
 		window.trackContactEvent = (name, params = {}) => {
-			window.trackProtoEvent?.(name, params);
-			if (!window.trackProtoEvent && typeof window.gtag === 'function') {
+			const protoTracker = Reflect.get(window, 'trackProtoEvent');
+			if (typeof protoTracker === 'function') {
+				protoTracker(name, params);
+			} else if (typeof window.gtag === 'function') {
 				window.gtag('event', name, params);
 			}
-			window.dispatchEvent(new CustomEvent('strataline:contact-event', { detail: { name, params } }));
+			window.dispatchEvent(
+				new CustomEvent('strataline:contact-event', { detail: { name, params } }),
+			);
 		};
 	}
 
@@ -54,18 +90,25 @@ import '@/styles/interior-renovations-prototype.css';
 		const trigger = root.querySelector('[data-floating-contact-open]');
 		const dialog = root.querySelector('[data-floating-contact-dialog]');
 		const closeButton = root.querySelector('[data-floating-contact-close]');
+		const eventPrefix = root.dataset.eventPrefix;
+		const openEventName = root.dataset.openEventName;
 		if (!(trigger instanceof HTMLButtonElement) || !(dialog instanceof HTMLDialogElement)) return;
 		let scrollPosition = 0;
 
 		const closeDialog = () => dialog.close();
 		const openDialog = () => {
 			scrollPosition = window.scrollY;
-			window.trackContactEvent?.('contact_form_open_popup');
+			window.trackContactEvent?.(
+				openEventName ??
+					(eventPrefix ? `${eventPrefix}_form_open_popup` : 'contact_form_open_popup'),
+			);
 			document.documentElement.classList.add('floating-contact-open');
 			dialog.showModal();
 			document.dispatchEvent(new CustomEvent('strataline:initialize-contact-forms'));
 			requestAnimationFrame(() => {
-				const firstField = dialog.querySelector('[data-form-step="1"] select, [data-form-step="1"] input');
+				const firstField = dialog.querySelector(
+					'[data-form-step="1"] select, [data-form-step="1"] input',
+				);
 				if (firstField instanceof HTMLElement) firstField.focus();
 			});
 		};
@@ -89,7 +132,7 @@ import '@/styles/interior-renovations-prototype.css';
 
 		const inlineActions = [
 			...document.querySelectorAll(
-				'[data-contact-mode="inline"] [data-form-next], [data-contact-mode="inline"] [data-form-submit]',
+				'[data-contact-mode="inline"], [data-contact-mode="inline"] [data-form-next], [data-contact-mode="inline"] [data-form-submit], [data-floating-contact-avoid]',
 			),
 		];
 		if (inlineActions.length) {

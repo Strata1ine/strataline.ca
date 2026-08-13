@@ -1,0 +1,787 @@
+---
+import { Image } from 'astro:assets';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import Footer from '@/sections/Footer.astro';
+import {
+	heroImage,
+	finishedImage,
+	ownerImage,
+	citylineImage,
+	torontoStarImage,
+	seenOnTvBadge,
+	primaryComparison,
+	comparisons,
+	processSteps,
+	reviews,
+	faqs,
+	serviceAreas,
+} from '@/data/popcornRemovalPage';
+import '@/styles/popcorn-removal.css';
+
+export const prerender = true;
+
+const title = 'Popcorn Ceiling Removal Toronto & GTA | Strataline';
+const description =
+	'Dust-controlled popcorn ceiling removal in Toronto and the GTA with containment, ceiling correction, skim coating, HEPA sanding, priming and painting.';
+const canonicalPath = '/services/popcorn-removal';
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const projectHelperText = 'Have ceiling photos ready? You can text them to';
+const initialComparison = comparisons[0];
+
+if (!initialComparison) {
+	throw new Error('The popcorn-removal gallery requires at least one comparison.');
+}
+
+const schemas = [
+	{
+		'@type': 'WebPage',
+		'@id': `${canonicalUrl}#webpage`,
+		url: canonicalUrl,
+		name: title,
+		description,
+		isPartOf: { '@id': 'https://strataline.ca/#website' },
+		about: { '@id': `${canonicalUrl}#service` },
+		primaryImageOfPage: {
+			'@type': 'ImageObject',
+			url: `https://strataline.ca${heroImage.src}`,
+		},
+		breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+	},
+	{
+		'@type': 'BreadcrumbList',
+		'@id': `${canonicalUrl}#breadcrumb`,
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: 'https://strataline.ca/',
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Popcorn Ceiling Removal',
+				item: canonicalUrl,
+			},
+		],
+	},
+	{
+		'@type': 'Service',
+		'@id': `${canonicalUrl}#service`,
+		name: 'Popcorn Ceiling Removal',
+		serviceType: 'Popcorn ceiling removal and smooth ceiling finishing',
+		description,
+		url: canonicalUrl,
+		provider: { '@id': 'https://strataline.ca/#business' },
+		areaServed: [
+			{ '@type': 'City', name: 'Toronto' },
+			{ '@type': 'City', name: 'Vaughan' },
+			{ '@type': 'City', name: 'Richmond Hill' },
+			{ '@type': 'City', name: 'Markham' },
+			{ '@type': 'City', name: 'Mississauga' },
+			{ '@type': 'City', name: 'Oakville' },
+			{ '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+		],
+	},
+	{
+		'@type': 'FAQPage',
+		'@id': `${canonicalUrl}#faq`,
+		mainEntity: faqs.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<PrototypeLayout
+	{title}
+	{description}
+	image={heroImage.src}
+	{canonicalPath}
+	{schemas}
+	robots="index,follow,max-image-preview:large,max-video-preview:-1"
+	floatingContact={{
+		defaultProjectType: 'Popcorn ceiling removal',
+		projectHelperText,
+		eventPrefix: 'popcorn',
+	}}
+>
+	<div class="popcorn-page">
+		<PrototypeHeader />
+
+		<main>
+			<section class="pc-hero" aria-labelledby="pc-hero-title">
+				<div class="pc-hero__media" aria-hidden="true">
+					<Image
+						src={heroImage}
+						alt=""
+						widths={[640, 960, 1440, 1920]}
+						sizes="100vw"
+						loading="eager"
+						fetchpriority="high"
+						quality={88}
+					/>
+				</div>
+				<div class="pc-hero__shade" aria-hidden="true"></div>
+				<div class="pc-shell pc-hero__inner">
+					<div class="pc-hero__panel">
+						<p class="pc-eyebrow">Popcorn ceiling removal — Toronto &amp; the GTA</p>
+						<h1 id="pc-hero-title">Popcorn ceiling removal in Toronto &amp; the GTA</h1>
+						<p class="pc-hero__lead">
+							We protect the room, remove or resurface the texture as conditions require, correct
+							the ceiling, sand with HEPA source extraction, then prime and paint for a smooth
+							finished result.
+						</p>
+						<div class="pc-hero__actions">
+							<button
+								class="proto-button proto-button--primary pc-contact-open"
+								type="button"
+								data-contact-open
+								data-event="popcorn_hero_photo_estimate_click"
+							>
+								Send Ceiling Photos
+							</button>
+							<a class="pc-phone" href="tel:+14164715999" data-phone-link>
+								<span>Call or text</span>
+								<strong>(416) 471-5999</strong>
+							</a>
+						</div>
+						<ul class="pc-hero__proof" aria-label="Strataline trust details">
+							<li><strong>15+</strong><span>years’ experience</span></li>
+							<li><strong>WSIB</strong><span>covered</span></li>
+							<li><strong>$5M</strong><span>liability insurance</span></li>
+							<li><strong>Clean</strong><span>occupied-home protection</span></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section
+				class="pc-section pc-primary-proof"
+				id="before-after"
+				aria-labelledby="primary-proof-title"
+			>
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Before &amp; after</p>
+						<h2 id="primary-proof-title">From textured to perfectly smooth</h2>
+						<p>
+							Removal is only the beginning. Repair, skim coating, controlled sanding, primer and
+							paint are what create a ceiling that looks properly finished under daylight and
+							artificial light.
+						</p>
+					</div>
+					<div class="pc-comparison" data-before-after>
+						<div class="pc-comparison__stage">
+							<Image
+								class="pc-comparison__image"
+								src={primaryComparison.before}
+								alt={primaryComparison.beforeAlt}
+								widths={[480, 768, 1080, 1440]}
+								sizes="(max-width: 760px) calc(100vw - 32px), 1200px"
+							/>
+							<div class="pc-comparison__after" data-after-layer>
+								<Image
+									class="pc-comparison__image"
+									src={primaryComparison.after}
+									alt={primaryComparison.afterAlt}
+									widths={[480, 768, 1080, 1440]}
+									sizes="(max-width: 760px) calc(100vw - 32px), 1200px"
+								/>
+							</div>
+							<span class="pc-comparison__label pc-comparison__label--before">Before</span>
+							<span class="pc-comparison__label pc-comparison__label--after">After</span>
+							<span class="pc-comparison__divider" data-divider aria-hidden="true"></span>
+							<input
+								class="pc-comparison__range"
+								type="range"
+								min="0"
+								max="100"
+								value="52"
+								aria-label={`Compare before and after: ${primaryComparison.title}`}
+								data-comparison-range
+							/>
+						</div>
+						<p class="pc-comparison__caption">{primaryComparison.title}</p>
+					</div>
+				</div>
+			</section>
+
+			<section
+				class="pc-section pc-photo-estimate"
+				id="photo-estimate"
+				aria-labelledby="photo-estimate-title"
+			>
+				<div class="pc-shell pc-photo-estimate__grid">
+					<div class="pc-heading">
+						<p class="pc-eyebrow">Start with photos</p>
+						<h2 id="photo-estimate-title">Get a realistic scope before booking a visit</h2>
+						<p>
+							Send clear ceiling photos, rough room dimensions, your location and anything unusual
+							about the space. We’ll review the likely removal, repair, skim-coat and painting
+							requirements before recommending the next step.
+						</p>
+						<p class="pc-reply"><span aria-hidden="true">✓</span> Get a reply within 12 hours.</p>
+						<div class="pc-actions" data-floating-contact-avoid>
+							<button
+								class="proto-button proto-button--primary pc-contact-open"
+								type="button"
+								data-contact-open
+								data-event="popcorn_photo_estimate_start"
+							>
+								Send Ceiling Photos
+							</button>
+							<a class="proto-button proto-button--quiet" href="tel:+14164715999" data-phone-link>
+								Call or Text (416) 471-5999
+							</a>
+						</div>
+					</div>
+					<ol class="pc-photo-steps">
+						<li><span>01</span><strong>Send ceiling photos</strong></li>
+						<li><span>02</span><strong>Receive scope and planning guidance</strong></li>
+						<li><span>03</span><strong>Confirm details and scheduling</strong></li>
+					</ol>
+					<p class="pc-photo-estimate__note">
+						Many projects can begin with photos. Complex, high or uncertain ceilings may still
+						require a site assessment.
+					</p>
+				</div>
+			</section>
+
+			<section
+				class="pc-section pc-finished"
+				id="finished-ceiling"
+				aria-labelledby="finished-title"
+			>
+				<div class="pc-shell pc-split">
+					<div class="pc-finished__media">
+						<Image
+							src={finishedImage}
+							alt="Smooth finished ceiling above a bright bay-window room after popcorn removal."
+							widths={[480, 720, 960, 1200]}
+							sizes="(max-width: 800px) calc(100vw - 32px), 50vw"
+						/>
+					</div>
+					<div class="pc-heading pc-finished__copy">
+						<p class="pc-eyebrow">The finished ceiling</p>
+						<h2 id="finished-title">You are paying for the ceiling after the texture is gone.</h2>
+						<p>
+							A low quote can cover scraping while leaving visible seams, waves, ridges and repairs.
+							A complete scope accounts for the ceiling underneath, the skim work it requires and
+							the finish it must achieve once it is primed, painted and viewed under real room
+							lighting.
+						</p>
+						<ul class="pc-check-list">
+							<li>Texture removal or controlled resurfacing</li>
+							<li>Damage and seam correction</li>
+							<li>Skim coating where required</li>
+							<li>Controlled sanding and light inspection</li>
+							<li>Primer and ceiling paint</li>
+							<li>Cleanup and final review</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-process" id="process" aria-labelledby="process-title">
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Clean, controlled process</p>
+						<h2 id="process-title">A finish-led sequence from protection to final review</h2>
+						<p>Each ceiling gets a scope suited to its surface, access and occupancy conditions.</p>
+					</div>
+					<ol class="pc-process__list">
+						{
+							processSteps.map((step) => (
+								<li class="pc-process-card">
+									<div class="pc-process-card__media">
+										<Image
+											src={step.image}
+											alt={step.alt}
+											widths={[360, 540, 720]}
+											sizes="(max-width: 700px) 82vw, 33vw"
+										/>
+									</div>
+									<div class="pc-process-card__copy">
+										<span>{step.number}</span>
+										<h3>{step.title}</h3>
+										<p>{step.text}</p>
+									</div>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<section
+				class="pc-section pc-gallery"
+				id="comparison-gallery"
+				aria-labelledby="gallery-title"
+			>
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Five real transformations</p>
+						<h2 id="gallery-title">Compare the finish where ceilings reveal the most</h2>
+						<p>
+							Select a project, then drag or use the arrow keys to compare the before and after.
+						</p>
+					</div>
+					<div class="pc-gallery__selectors" role="tablist" aria-label="Ceiling comparisons">
+						{
+							comparisons.map((item, index) => (
+								<button
+									type="button"
+									role="tab"
+									aria-selected={index === 0 ? 'true' : 'false'}
+									class:list={['pc-gallery__selector', index === 0 && 'is-active']}
+									data-gallery-select
+									data-before={item.before.src}
+									data-after={item.after.src}
+									data-before-alt={item.beforeAlt}
+									data-after-alt={item.afterAlt}
+									data-label={item.label}
+								>
+									{item.label}
+								</button>
+							))
+						}
+					</div>
+					<div class="pc-comparison pc-comparison--gallery" data-before-after data-gallery-viewer>
+						<div class="pc-comparison__stage">
+							<img
+								class="pc-comparison__image"
+								src={initialComparison.before.src}
+								alt={initialComparison.beforeAlt}
+								width={initialComparison.before.width}
+								height={initialComparison.before.height}
+								loading="lazy"
+								decoding="async"
+								data-gallery-before
+							/>
+							<div class="pc-comparison__after" data-after-layer>
+								<img
+									class="pc-comparison__image"
+									src={initialComparison.after.src}
+									alt={initialComparison.afterAlt}
+									width={initialComparison.after.width}
+									height={initialComparison.after.height}
+									loading="lazy"
+									decoding="async"
+									data-gallery-after
+								/>
+							</div>
+							<span class="pc-comparison__label pc-comparison__label--before">Before</span>
+							<span class="pc-comparison__label pc-comparison__label--after">After</span>
+							<span class="pc-comparison__divider" data-divider aria-hidden="true"></span>
+							<input
+								class="pc-comparison__range"
+								type="range"
+								min="0"
+								max="100"
+								value="52"
+								aria-label={`Compare before and after: ${initialComparison.label}`}
+								data-comparison-range
+							/>
+						</div>
+						<p class="pc-comparison__caption" data-gallery-caption>{initialComparison.label}</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-owner" id="owner-led" aria-labelledby="owner-title">
+				<div class="pc-shell pc-split pc-split--reverse">
+					<div class="pc-heading pc-owner__copy">
+						<p class="pc-eyebrow">Owner-led quality control</p>
+						<h2 id="owner-title">The person who reviews the scope stays involved.</h2>
+						<p>
+							Strataline is owner-operated by Maxim Sologub. Maxim reviews the project information,
+							develops the scope and remains involved through scheduling, execution and quality
+							control.
+						</p>
+						<p class="pc-owner__note">
+							Containment, floor protection, HEPA extraction and daily cleanup are planned around
+							the way the home is being used.
+						</p>
+					</div>
+					<div class="pc-owner__media">
+						<Image
+							src={ownerImage}
+							alt="Strataline owner Maxim Sologub completing detailed renovation work on site."
+							widths={[480, 720, 960]}
+							sizes="(max-width: 800px) calc(100vw - 32px), 50vw"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-reviews" id="reviews" aria-labelledby="reviews-title">
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Popcorn ceiling reviews</p>
+						<h2 id="reviews-title">Clean work. Smooth results. Real occupied homes.</h2>
+					</div>
+					<div class="pc-review-rail" aria-label="Customer reviews">
+						{
+							reviews.map((review) => (
+								<article class="pc-review-card">
+									<span class="pc-review-card__stars" aria-label={`${review.rating} stars`}>
+										{'★'.repeat(review.rating)}
+									</span>
+									<blockquote>“{review.quote}”</blockquote>
+									<footer>
+										<strong>{review.name}</strong>
+										<span>{review.location}</span>
+									</footer>
+								</article>
+							))
+						}
+					</div>
+					<a class="pc-text-link" href="/reviews"
+						>Read more Strataline reviews <span aria-hidden="true">→</span></a
+					>
+				</div>
+			</section>
+
+			<section class="pc-section pc-media" id="media" aria-labelledby="media-title">
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow pc-media__heading">
+						<div>
+							<p class="pc-eyebrow">In the media</p>
+							<h2 id="media-title">
+								Ceiling work seen on Cityline and covered by the Toronto Star
+							</h2>
+						</div>
+						<Image src={seenOnTvBadge} alt="As seen on TV" width={112} height={96} />
+					</div>
+					<div class="pc-media__grid">
+						<article class="pc-media-card">
+							<video
+								controls
+								preload="metadata"
+								poster={citylineImage.src}
+								playsinline
+								data-cityline-video
+							>
+								<source
+									src="/videos/cityline-featuring-strataline-popcorn-removal.mp4"
+									type="video/mp4"
+								/>
+							</video>
+							<div>
+								<p class="pc-eyebrow">Cityline</p>
+								<h3>Dust-controlled popcorn ceiling removal on CityTV</h3>
+							</div>
+						</article>
+						<a
+							class="pc-media-card"
+							href="https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html"
+							target="_blank"
+							rel="noopener noreferrer"
+							data-toronto-star-link
+						>
+							<Image
+								src={torontoStarImage}
+								alt="Toronto Star article about smooth surfaces over popcorn ceilings."
+								widths={[480, 720, 960]}
+								sizes="(max-width: 760px) calc(100vw - 32px), 50vw"
+							/>
+							<div>
+								<p class="pc-eyebrow">Toronto Star</p>
+								<h3>Popcorn ceilings get a new smooth surface</h3>
+								<span class="pc-text-link">Read the article →</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-cost" id="cost" aria-labelledby="cost-title">
+				<div class="pc-shell pc-cost__grid">
+					<div class="pc-heading">
+						<p class="pc-eyebrow">Scope and cost</p>
+						<h2 id="cost-title">What affects popcorn ceiling removal cost?</h2>
+						<p>
+							We do not publish a one-size-fits-all price. Area, height, access, paint, surface
+							condition, protection and the required finished result all affect the scope.
+						</p>
+						<button
+							class="proto-button proto-button--primary pc-contact-open"
+							type="button"
+							data-contact-open
+							data-event="popcorn_photo_estimate_start"
+							data-floating-contact-avoid
+						>
+							Send Ceiling Photos
+						</button>
+					</div>
+					<ul class="pc-cost__factors">
+						<li>
+							<strong>Ceiling area and height</strong><span
+								>Room sizes, vaults and access needs</span
+							>
+						</li>
+						<li>
+							<strong>Texture and paint</strong><span>Adhesion and practical removal strategy</span>
+						</li>
+						<li>
+							<strong>Condition below</strong><span>Seams, cracks, waves and past repairs</span>
+						</li>
+						<li>
+							<strong>Finish and logistics</strong><span
+								>Skim work, coating scope, occupancy and condo access</span
+							>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="pc-section pc-conditions" id="conditions" aria-labelledby="conditions-title">
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Existing conditions</p>
+						<h2 id="conditions-title">Not every popcorn ceiling is the same</h2>
+						<p>
+							The work plan is shaped by what the texture is attached to and how the room is used.
+						</p>
+					</div>
+					<div class="pc-condition-grid">
+						<article>
+							<h3>Painted or unpainted</h3><p>
+								Paint changes how readily texture can be removed and may change the strategy.
+							</p>
+						</article>
+						<article>
+							<h3>Drywall or concrete</h3><p>
+								The substrate affects correction methods, transitions and the finished plane.
+							</p>
+						</article>
+						<article>
+							<h3>Cracks and repairs</h3><p>
+								Seams, patches, waves and previous work may become visible after texture is gone.
+							</p>
+						</article>
+						<article>
+							<h3>Height and access</h3><p>
+								Vaults, stairwells and high ceilings require suitable access and protection.
+							</p>
+						</article>
+						<article>
+							<h3>Details and transitions</h3><p>
+								Bulkheads, columns, crown and angled edges need careful correction.
+							</p>
+						</article>
+						<article>
+							<h3>Occupied-home protection</h3><p>
+								Furniture, floors, openings and circulation routes shape containment.
+							</p>
+						</article>
+						<article>
+							<h3>Condo requirements</h3><p>
+								Work hours, elevator bookings, loading and disposal rules can affect logistics.
+							</p>
+						</article>
+						<article>
+							<h3>Possible asbestos concern</h3><p>
+								If age or history raises concern, test before disturbance. A positive result must be
+								handled by an appropriate regulated specialist before ordinary refinishing.
+							</p>
+						</article>
+						<article>
+							<h3>Real room lighting</h3><p>
+								Daylight, pot lights and low-angle light can reveal surface defects.
+							</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-faq" id="faq" aria-labelledby="faq-title">
+				<div class="pc-shell pc-faq__grid">
+					<div class="pc-heading">
+						<p class="pc-eyebrow">Frequently asked questions</p>
+						<h2 id="faq-title">What homeowners ask before ceiling work starts</h2>
+						<p>Clear answers about scope, protection, testing, timing and the finished result.</p>
+					</div>
+					<div class="pc-faq__items">
+						{
+							faqs.map((item) => (
+								<details data-faq-item>
+									<summary>
+										{item.question}
+										<span aria-hidden="true">+</span>
+									</summary>
+									<p>{item.answer}</p>
+								</details>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section
+				class="pc-section pc-specialties"
+				id="related-services"
+				aria-labelledby="related-title"
+			>
+				<div class="pc-shell">
+					<div class="pc-heading pc-heading--narrow">
+						<p class="pc-eyebrow">Connected interior work</p>
+						<h2 id="related-title">Plan the ceiling with the surfaces around it</h2>
+					</div>
+					<nav class="pc-link-grid" aria-label="Related renovation services">
+						<a href="/services/smooth-ceiling-finishing"
+							><strong>Smooth ceiling finishing</strong><span
+								>Correction, skim coating and finish work →</span
+							></a
+						>
+						<a href="/services/painting"
+							><strong>Interior painting</strong><span
+								>Complete ceiling and connected paint scope →</span
+							></a
+						>
+						<a href="/interior-renovations"
+							><strong>Interior renovations</strong><span
+								>Coordinate ceilings within a larger project →</span
+							></a
+						>
+					</nav>
+				</div>
+			</section>
+
+			<section class="pc-section pc-areas" id="service-areas" aria-labelledby="areas-title">
+				<div class="pc-shell pc-areas__grid">
+					<div class="pc-heading">
+						<p class="pc-eyebrow">Service area</p>
+						<h2 id="areas-title">Popcorn ceiling removal throughout Toronto and the GTA</h2>
+						<p>Serving key GTA locations with project-specific ceiling scopes.</p>
+					</div>
+					<div>
+						<ul class="pc-area-links" aria-label="Key popcorn ceiling removal service areas">
+							{serviceAreas.map((area) => <li>{area}</li>)}
+						</ul>
+						<a class="pc-text-link" href="/#service-area"
+							>View the complete Strataline service area <span aria-hidden="true">→</span></a
+						>
+					</div>
+				</div>
+			</section>
+
+			<section class="pc-section pc-contact" id="consultation" aria-label="Project inquiry">
+				<div class="pc-shell">
+					<ConsultationCTA
+						formId="popcorn-consultation"
+						mode="inline"
+						reveal={false}
+						defaultProjectType="Popcorn ceiling removal"
+						{projectHelperText}
+						eventPrefix="popcorn"
+					/>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+
+		<div class="proto-mobile-contact pc-mobile-contact" data-mobile-contact>
+			<a href="tel:+14164715999" data-phone-link>Call</a>
+			<a href="#consultation">Request Quote</a>
+		</div>
+	</div>
+
+	<script is:inline>
+		const track = (name, params = {}) => window.trackContactEvent?.(name, params);
+
+		document.querySelectorAll('[data-contact-open]').forEach((button) => {
+			button.addEventListener('click', () => {
+				if (!(button instanceof HTMLElement)) return;
+				track(button.dataset.event || 'popcorn_form_open_popup');
+				document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+			});
+		});
+
+		document.querySelectorAll('[data-phone-link]').forEach((link) => {
+			link.addEventListener('click', () => track('popcorn_phone_click'));
+		});
+
+		document.querySelectorAll('[data-before-after]').forEach((comparison) => {
+			const range = comparison.querySelector('[data-comparison-range]');
+			const layer = comparison.querySelector('[data-after-layer]');
+			const divider = comparison.querySelector('[data-divider]');
+			if (!(range instanceof HTMLInputElement) || !(layer instanceof HTMLElement)) return;
+			let tracked = false;
+			const update = () => {
+				const position = `${range.value}%`;
+				layer.style.clipPath = `inset(0 0 0 ${position})`;
+				if (divider instanceof HTMLElement) divider.style.left = position;
+				if (!tracked) {
+					track('popcorn_before_after_interaction');
+					tracked = true;
+				}
+			};
+			range.addEventListener('input', update);
+		});
+
+		const gallery = document.querySelector('[data-gallery-viewer]');
+		const galleryBefore = gallery?.querySelector('[data-gallery-before]');
+		const galleryAfter = gallery?.querySelector('[data-gallery-after]');
+		const galleryRange = gallery?.querySelector('[data-comparison-range]');
+		const galleryCaption = gallery?.querySelector('[data-gallery-caption]');
+		document.querySelectorAll('[data-gallery-select]').forEach((button) => {
+			button.addEventListener('click', () => {
+				if (
+					!(button instanceof HTMLButtonElement) ||
+					!(galleryBefore instanceof HTMLImageElement) ||
+					!(galleryAfter instanceof HTMLImageElement)
+				)
+					return;
+				document.querySelectorAll('[data-gallery-select]').forEach((candidate) => {
+					candidate.classList.toggle('is-active', candidate === button);
+					candidate.setAttribute('aria-selected', candidate === button ? 'true' : 'false');
+				});
+				galleryBefore.src = button.dataset.before || '';
+				galleryBefore.alt = button.dataset.beforeAlt || '';
+				galleryAfter.src = button.dataset.after || '';
+				galleryAfter.alt = button.dataset.afterAlt || '';
+				if (galleryCaption) galleryCaption.textContent = button.dataset.label || '';
+				if (galleryRange instanceof HTMLInputElement) {
+					galleryRange.value = '52';
+					galleryRange.setAttribute(
+						'aria-label',
+						`Compare before and after: ${button.dataset.label || ''}`,
+					);
+					galleryRange.dispatchEvent(new Event('input', { bubbles: true }));
+				}
+				track('popcorn_before_after_interaction', { comparison: button.dataset.label });
+			});
+		});
+
+		document.querySelectorAll('[data-faq-item]').forEach((item) => {
+			item.addEventListener('toggle', () => {
+				if (item instanceof HTMLDetailsElement && item.open) track('popcorn_faq_open');
+			});
+		});
+
+		const citylineVideo = document.querySelector('[data-cityline-video]');
+		citylineVideo?.addEventListener('play', () => track('popcorn_cityline_play'), { once: true });
+		document
+			.querySelector('[data-toronto-star-link]')
+			?.addEventListener('click', () => track('popcorn_toronto_star_click'));
+
+		if (citylineVideo instanceof HTMLVideoElement && 'IntersectionObserver' in window) {
+			new IntersectionObserver(
+				(entries) => {
+					if (!entries[0]?.isIntersecting && !citylineVideo.paused) citylineVideo.pause();
+				},
+				{ threshold: 0.12 },
+			).observe(citylineVideo);
+		}
+	</script>
+</PrototypeLayout>

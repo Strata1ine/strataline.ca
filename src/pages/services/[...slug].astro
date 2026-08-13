@@ -57,7 +57,10 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 };
 
 export async function getStaticPaths() {
-	const services = (await getCollection('services')).filter((service) => service.data.hidden !== true);
+	const services = (await getCollection('services')).filter(
+		(service) =>
+			service.data.hidden !== true && service.id.replace(/\/index$/, '') !== 'popcorn-removal',
+	);
 
 	return services.map((service) => ({
 		params: { slug: service.id.replace(/\/index$/, '') },

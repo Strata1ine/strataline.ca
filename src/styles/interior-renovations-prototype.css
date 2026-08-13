@@ -1299,10 +1299,38 @@ html {
 	display: grid;
 	align-content: stretch;
 	min-width: 0;
+	isolation: isolate;
 	overflow: hidden;
 	border-radius: var(--proto-radius);
 	background: var(--proto-bg-soft);
 	box-shadow: var(--proto-shadow-soft);
+}
+
+.proto-work-gallery__item::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: min(88%, 40rem);
+	height: 62%;
+	border-bottom-left-radius: inherit;
+	background: radial-gradient(
+		ellipse 100% 100% at 0% 100%,
+		rgba(8, 10, 9, 0.64) 0%,
+		rgba(8, 10, 9, 0.48) 28%,
+		rgba(8, 10, 9, 0.25) 52%,
+		rgba(8, 10, 9, 0.09) 72%,
+		rgba(8, 10, 9, 0) 100%
+	);
+	content: '';
+	opacity: 0.92;
+	pointer-events: none;
+	transition: opacity 200ms var(--proto-ease);
+}
+
+.proto-work-gallery__item:hover::after,
+.proto-work-gallery__item:focus-within::after {
+	opacity: 1;
 }
 
 .proto-work-gallery__item button {
@@ -1338,11 +1366,11 @@ html {
 	left: 1rem;
 	right: 1rem;
 	bottom: 3.1rem;
-	z-index: 1;
+	z-index: 2;
 	color: #fff;
 	font-weight: 600;
 	line-height: 1.25;
-	text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .proto-work-gallery__item button:hover img {
@@ -1354,17 +1382,38 @@ html {
 	transition: transform var(--proto-duration) var(--proto-ease);
 }
 
-.proto-work-gallery__service {
+.proto-work-gallery .proto-work-gallery__service {
 	position: absolute;
-	left: 1rem;
-	bottom: 1rem;
+	left: 0;
+	bottom: 0;
 	z-index: 2;
-	color: rgba(255, 255, 255, 0.88);
+	display: inline-flex;
+	min-height: 44px;
+	align-items: center;
+	padding: 1.15rem 3rem 1rem 1rem;
+	border-bottom-left-radius: var(--proto-radius);
+	color: rgba(255, 255, 255, 0.94);
 	font-size: 0.82rem;
-	font-weight: 700;
+	font-weight: 650;
 	text-decoration: underline;
 	text-underline-offset: 0.25em;
-	text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+	transition: color var(--proto-duration) var(--proto-ease);
+}
+
+.proto-work-gallery .proto-work-gallery__service::after {
+	margin-left: 0.35rem;
+	content: '→';
+}
+
+.proto-work-gallery .proto-work-gallery__service:hover,
+.proto-work-gallery .proto-work-gallery__service:focus-visible {
+	color: #fff;
+}
+
+.proto-work-gallery .proto-work-gallery__service:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.94);
+	outline-offset: -5px;
 }
 
 .proto-no-scroll {

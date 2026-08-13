@@ -1,24 +1,415 @@
 ---
-import Root from '@/layouts/Root.astro';
-import '@/styles/interior-renovations-prototype.css';
-import { getEntry, getCollection } from '@/content.config';
+import { Image } from 'astro:assets';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import HomepageMediaWatch from '@/components/prototype/HomepageMediaWatch.astro';
+import RecentWorkGallery from '@/components/prototype/RecentWorkGallery.astro';
+import BeforeAfterComparison from '@/components/prototype/BeforeAfterComparison.astro';
+import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import Footer from '@/sections/Footer.astro';
+import seenOnTvBadge from '../../content/awards/as-seen-on-tv-badge.webp';
+import { beforeAfterComparisons, ownerLedTrust } from '@/data/interiorRenovationsPrototype';
+import {
+	homepageHero,
+	homepageMedia,
+	homepageRecentWork,
+	homepageReviews,
+	primaryServices,
+	processStages,
+	secondaryServices,
+	serviceAreas,
+} from '@/data/homepage';
+import '@/styles/homepage-recovery.css';
 
-const data = (await getEntry('index', 'index')).data;
-const services = (await getCollection('services')).filter(
-	(service) => service?.id && service.id !== 'doors_and_windows' && service.data.hidden !== true,
-);
-import { seo } from '@/pages/services/[...slug].astro';
+const title = 'Home Renovation Contractor Toronto & GTA | Strataline';
+const description =
+	'Owner-led home and interior renovations in Toronto and the GTA, including smooth ceilings, stairs, painting, kitchens, bathrooms, doors and windows.';
+const canonicalUrl = 'https://strataline.ca/';
+const webPageSchema = {
+	'@type': 'WebPage',
+	'@id': `${canonicalUrl}#webpage`,
+	url: canonicalUrl,
+	name: title,
+	description,
+	isPartOf: { '@id': `${canonicalUrl}#website` },
+	about: { '@id': `${canonicalUrl}#business` },
+	primaryImageOfPage: {
+		'@type': 'ImageObject',
+		url: `${canonicalUrl}strataline-og.jpg`,
+	},
+};
 ---
 
-<Root
-	title={data.title}
-	desc={data.desc}
-	blocks={data.sections}
-	schemas={{
-		'@type': 'ItemList',
-		numberOfItems: services.length,
-		itemListElement: (
-			await Promise.all(services.map(async (service) => await seo(Astro, service)))
-		).filter(Boolean),
+<PrototypeLayout
+	{title}
+	{description}
+	canonicalPath="/"
+	robots="index, follow, max-image-preview:large, max-video-preview:-1"
+	schemas={[webPageSchema]}
+	floatingContact={{
+		openEventName: 'homepage_contact_popup_open',
+		formSubmitEventName: 'homepage_contact_popup_submit',
 	}}
-/>
+>
+	<PrototypeHeader />
+
+	<main class="home-page" data-homepage>
+		<div class="home-opening">
+			<section class="home-hero" aria-labelledby="home-title">
+				<Image
+					class="home-hero__image"
+					src={homepageHero.src}
+					alt={homepageHero.alt}
+					widths={[640, 900, 1280, 1600, 1920, 2400]}
+					sizes="100vw"
+					loading="eager"
+					fetchpriority="high"
+					quality={88}
+				/>
+				<div class="home-hero__shade" aria-hidden="true"></div>
+				<div class="home-hero__content">
+					<p class="home-eyebrow">Owner-led renovation contractor · Toronto & the GTA</p>
+					<h1 id="home-title">
+						<span>Renovation work that looks</span>
+						<span><em>finished—not pieced together.</em></span>
+					</h1>
+					<p>
+						Strataline plans and executes interior renovations, smooth ceilings, staircases,
+						painting, kitchens, bathrooms, doors and windows with careful protection, clear scopes
+						and direct owner involvement.
+					</p>
+					<div class="home-hero__actions">
+						<button
+							class="home-button home-button--gold"
+							type="button"
+							data-home-contact-open
+							data-home-quote
+						>
+							Request a Quote
+						</button>
+						<a class="home-button home-button--glass" href="tel:+14164715999"
+							>CALL OR TEXT · (416) 471-5999</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<section class="home-trust" aria-label="Strataline credentials and project standards">
+				<ul>
+					<li><strong>15+ years in the GTA</strong></li>
+					<li><strong>WSIB covered</strong></li>
+					<li><strong>$5M liability insurance</strong></li>
+					<li><strong>Dust-controlled work in occupied homes</strong></li>
+				</ul>
+			</section>
+		</div>
+
+		<section class="home-section home-media section-anchor" id="media">
+			<div class="home-heading home-heading--media reveal">
+				<div>
+					<p class="home-eyebrow">Media appearances</p>
+					<h2>Strataline renovation work, shown in Canadian media</h2>
+					<p>
+						Watch our Cityline and Love It or List It appearances, and read related coverage from
+						the Toronto Star and House & Home.
+					</p>
+				</div>
+				<Image
+					class="home-media__badge"
+					src={seenOnTvBadge}
+					alt="As Seen on TV"
+					widths={[140, 220, 320]}
+					sizes="(max-width: 700px) 110px, 150px"
+					loading="lazy"
+				/>
+			</div>
+			<HomepageMediaWatch
+				items={homepageMedia}
+				selectEventName="homepage_media_video_select"
+				playEventName="homepage_media_play"
+			/>
+		</section>
+
+		<section
+			class="home-section section-anchor"
+			id="services"
+			aria-labelledby="primary-services-title"
+		>
+			<div class="home-heading reveal">
+				<p class="home-eyebrow">Core renovation work</p>
+				<h2 id="primary-services-title">Three ways we transform the home</h2>
+				<p>Connected interior work, specialty ceiling finishing and staircase renovation.</p>
+			</div>
+			<div class="home-primary-services">
+				{
+					primaryServices.map((service) => (
+						<a class="home-service-card reveal" href={service.href} data-home-service>
+							<figure>
+								<Image
+									src={service.image}
+									alt={service.alt}
+									widths={[480, 720, 960, 1200]}
+									sizes="(max-width: 760px) 100vw, 33vw"
+									loading="lazy"
+								/>
+							</figure>
+							<div>
+								<h3>{service.title}</h3>
+								<p>{service.description}</p>
+								<span>
+									Explore service <span aria-hidden="true">→</span>
+								</span>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="home-section home-section--soft" aria-labelledby="secondary-services-title">
+			<div class="home-heading reveal">
+				<p class="home-eyebrow">More services</p>
+				<h2 id="secondary-services-title">The connected work around every room</h2>
+			</div>
+			<div class="home-secondary-services">
+				{
+					secondaryServices.map((service) => (
+						<a class="home-service-tile reveal" href={service.href} data-home-service>
+							<Image
+								src={service.image}
+								alt={service.alt}
+								widths={[320, 480, 640, 800]}
+								sizes="(max-width: 640px) 44vw, (max-width: 1000px) 30vw, 16vw"
+								loading="lazy"
+							/>
+							<div>
+								<>
+									<h3>{service.title}</h3>
+									<p>{service.description}</p>
+								</>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<div class="home-shared-section">
+			<RecentWorkGallery
+				items={homepageRecentWork}
+				title="A range of finished Strataline projects"
+				description="Real kitchens, bathrooms, ceilings, stairs, connected interiors, doors and windows across Toronto and the GTA."
+				eventName="homepage_project_open"
+				serviceClickEventName="homepage_service_click"
+			/>
+		</div>
+
+		<div class="home-shared-section home-shared-section--before-after">
+			<BeforeAfterComparison
+				comparison={beforeAfterComparisons.ceiling}
+				eventName="homepage_before_after_interaction"
+			/>
+		</div>
+
+		<section
+			class="home-section home-process section-anchor"
+			id="process"
+			aria-labelledby="process-title"
+		>
+			<div class="home-heading reveal">
+				<p class="home-eyebrow">How it works</p>
+				<h2 id="process-title">A practical path from first review to completion</h2>
+			</div>
+			<ol>
+				{
+					processStages.map((stage) => (
+						<li class="reveal">
+							<span>{stage.number}</span>
+							<div>
+								<>
+									<h3>{stage.title}</h3>
+									<p>{stage.description}</p>
+								</>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<section class="home-owner section-anchor" id="owner-led" aria-labelledby="owner-title">
+			<figure class="reveal">
+				<Image
+					src={ownerLedTrust.image.src}
+					alt={ownerLedTrust.image.alt}
+					widths={[560, 800, 1100, 1400]}
+					sizes="(max-width: 800px) 100vw, 50vw"
+					loading="lazy"
+				/>
+			</figure>
+			<div class="home-owner__copy reveal">
+				<p class="home-eyebrow">Owner-led renovations</p>
+				<h2 id="owner-title">The person who scopes the project stays involved.</h2>
+				<p>
+					Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the
+					scope and remains involved through scheduling, coordination and quality control.
+				</p>
+				<ul>
+					<li>Direct accountability</li>
+					<li>Clear written scopes</li>
+					<li>Organized trade sequencing</li>
+					<li>Finish review before completion</li>
+				</ul>
+				<strong>Maxim Sologub <span>Owner, Strataline Inc.</span></strong>
+			</div>
+		</section>
+
+		<section
+			class="home-section home-reviews section-anchor"
+			id="reviews"
+			aria-labelledby="reviews-title"
+		>
+			<div class="home-heading reveal">
+				<p class="home-eyebrow">Five-star client reviews</p>
+				<h2 id="reviews-title">What homeowners say after the work is finished</h2>
+			</div>
+			<div
+				class="home-review-rail"
+				role="region"
+				aria-label="Client reviews"
+				tabindex="0"
+				data-home-review-rail
+			>
+				{
+					homepageReviews.map((review) => (
+						<article>
+							<div class="home-review-stars" aria-label="5 out of 5 stars">
+								★★★★★
+							</div>
+							<blockquote>“{review.quote}”</blockquote>
+							<p>
+								<>
+									<strong>{review.name}</strong>
+									<span>{review.location}</span>
+								</>
+							</p>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section
+			class="home-service-area section-anchor"
+			id="service-area"
+			aria-labelledby="service-area-title"
+		>
+			<div class="reveal">
+				<p class="home-eyebrow">Service area</p>
+				<h2 id="service-area-title">Home renovations across Toronto and the GTA</h2>
+				<p>
+					Residential renovation projects in Toronto and established communities across the GTA.
+				</p>
+			</div>
+			<ul class="reveal">{serviceAreas.map((area) => <li>{area}</li>)}</ul>
+		</section>
+
+		<section class="home-contact section-anchor" aria-label="Project inquiry">
+			<ConsultationCTA
+				formId="consultation"
+				mode="inline"
+				reveal={false}
+				startEventName="homepage_inline_form_start"
+				submitEventName="homepage_inline_form_submit"
+			/>
+		</section>
+	</main>
+
+	<Footer />
+
+	<nav class="home-mobile-contact" aria-label="Quick contact" data-mobile-contact>
+		<a href="tel:+14164715999">Call</a>
+		<button type="button" data-home-contact-open data-home-quote>Request Quote</button>
+	</nav>
+
+	<script is:inline>
+		const homepage = document.querySelector('[data-homepage]');
+		const homeFooter = document.querySelector('.global-footer');
+		const mobileContact = document.querySelector('[data-mobile-contact]');
+		const inlineConsultation = document.getElementById('consultation');
+
+		const openContact = () => document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+		document.querySelectorAll('[data-home-contact-open]').forEach((button) => {
+			button.addEventListener('click', openContact);
+		});
+
+		/** @param {string} eventName */
+		const trackHomepageEvent = (eventName) => Reflect.get(window, 'trackProtoEvent')?.(eventName);
+
+		document.querySelectorAll('[data-home-quote]').forEach((button) => {
+			button.addEventListener('click', () => trackHomepageEvent('homepage_quote_click'));
+		});
+		document.querySelectorAll('[data-open-contact]').forEach((button) => {
+			if (!button.textContent?.toLowerCase().includes('request')) return;
+			button.addEventListener('click', () => trackHomepageEvent('homepage_quote_click'));
+		});
+		document.querySelectorAll('a[href="tel:+14164715999"]').forEach((link) => {
+			link.addEventListener('click', () => trackHomepageEvent('homepage_phone_click'));
+		});
+		homepage?.querySelectorAll('[data-home-service]').forEach((link) => {
+			link.addEventListener('click', () => trackHomepageEvent('homepage_service_click'));
+		});
+
+		const reviewRail = document.querySelector('[data-home-review-rail]');
+		if (reviewRail) {
+			let reviewSwipeTracked = false;
+			reviewRail.addEventListener(
+				'scroll',
+				() => {
+					if (reviewSwipeTracked) return;
+					reviewSwipeTracked = true;
+					trackHomepageEvent('homepage_review_swipe');
+				},
+				{ passive: true },
+			);
+		}
+
+		const revealElements = [...document.querySelectorAll('.reveal')];
+		if (
+			'IntersectionObserver' in window &&
+			!window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			const revealObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (!entry.isIntersecting) return;
+						entry.target.classList.add('is-visible');
+						revealObserver.unobserve(entry.target);
+					});
+				},
+				{ rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+			);
+			revealElements.forEach((element) => revealObserver.observe(element));
+		} else {
+			revealElements.forEach((element) => element.classList.add('is-visible'));
+		}
+
+		if (mobileContact && 'IntersectionObserver' in window) {
+			const visibility = { contact: false, footer: false };
+			const updateMobileContact = () => {
+				const hidden = visibility.contact || visibility.footer;
+				mobileContact.classList.toggle('is-hidden', hidden);
+				mobileContact.inert = hidden;
+			};
+			const contactObserver = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.target === inlineConsultation) visibility.contact = entry.isIntersecting;
+					if (entry.target === homeFooter) visibility.footer = entry.isIntersecting;
+				});
+				updateMobileContact();
+			});
+			if (inlineConsultation) contactObserver.observe(inlineConsultation);
+			if (homeFooter) contactObserver.observe(homeFooter);
+		}
+	</script>
+</PrototypeLayout>
