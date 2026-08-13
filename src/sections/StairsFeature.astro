@@ -1,0 +1,251 @@
+---
+import { Picture } from 'astro:assets';
+import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
+import { type SchemaContext } from 'astro:content';
+import { z } from 'astro:schema';
+import { image } from '@/schemas/image';
+
+export const schema = createSchema('StairsFeature', (c: SchemaContext) =>
+	z.object({
+		id: z.string().optional(),
+		eyebrow: z.string(),
+		title: z.string(),
+		desc: z.string(),
+		image: image(c),
+		links: z.array(
+			z.object({
+				label: z.string(),
+				href: z.string(),
+			}),
+		),
+	}),
+);
+
+export type Props = SchemaOf<typeof schema>;
+const meta = Astro.props as Props;
+---
+
+<section class="stairs-feature" id={meta.id}>
+	<figure class="stairs-feature__media">
+		<Picture
+			src={meta.image.src}
+			alt={meta.image.alt}
+			formats={['avif', 'webp']}
+			widths={[480, 768, 1024, 1366, 1600, 1920]}
+			sizes="100vw"
+			loading="lazy"
+			decoding="async"
+		/>
+	</figure>
+	<div class="stairs-feature__scrim" aria-hidden="true"></div>
+
+	<div class="stairs-feature__inner">
+		<div class="stairs-feature__glass">
+			<p class="stairs-feature__eyebrow">{meta.eyebrow}</p>
+			<h2>{meta.title}</h2>
+			<p class="stairs-feature__description">{meta.desc}</p>
+			<nav class="stairs-feature__links" aria-label="Staircase services">
+				{meta.links.map((link) => <a href={link.href}>{link.label}</a>)}
+			</nav>
+		</div>
+	</div>
+</section>
+
+<style>
+	.stairs-feature {
+		position: relative;
+		isolation: isolate;
+		display: grid;
+		min-height: 78vh;
+		min-height: 78svh;
+		margin-top: 2.5rem;
+		overflow: hidden;
+		background: #263028;
+		color: #fffdf8;
+	}
+
+	.stairs-feature__media,
+	.stairs-feature__scrim {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+	}
+
+	.stairs-feature__media {
+		z-index: -2;
+	}
+
+	.stairs-feature__media :global(picture),
+	.stairs-feature__media :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.stairs-feature__media :global(img) {
+		object-fit: cover;
+		object-position: 56% 52%;
+	}
+
+	.stairs-feature__scrim {
+		z-index: -1;
+		background: linear-gradient(
+			90deg,
+			rgba(10, 15, 12, 0.38) 0%,
+			rgba(10, 15, 12, 0.16) 48%,
+			rgba(10, 15, 12, 0.02) 78%
+		);
+	}
+
+	.stairs-feature__inner {
+		display: flex;
+		align-items: center;
+		width: min(86rem, calc(100% - 3rem));
+		margin-inline: auto;
+		padding-block: clamp(2.5rem, 6vh, 4.5rem);
+	}
+
+	.stairs-feature__glass {
+		width: min(35rem, 42vw);
+		padding: clamp(2.75rem, 3.5vw, 3rem);
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: 32px;
+		background: rgba(26, 33, 28, 0.78);
+		box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+	}
+
+	@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+		.stairs-feature__glass {
+			background: rgba(30, 35, 30, 0.46);
+			-webkit-backdrop-filter: blur(18px) saturate(110%);
+			backdrop-filter: blur(18px) saturate(110%);
+		}
+	}
+
+	.stairs-feature__eyebrow {
+		margin: 0 0 0.85rem;
+		color: #efd09a;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.76rem;
+		font-weight: 750;
+		letter-spacing: 0.13em;
+		line-height: 1.45;
+		text-transform: uppercase;
+	}
+
+	.stairs-feature h2 {
+		max-width: 11ch;
+		margin: 0;
+		font-family: var(--font-source-serif-4), Georgia, serif;
+		font-size: clamp(3rem, 4vw, 4.35rem);
+		font-weight: 550;
+		letter-spacing: -0.035em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.stairs-feature__description {
+		max-width: 31rem;
+		margin: 1.2rem 0 0;
+		color: rgba(255, 253, 248, 0.86);
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+		line-height: 1.55;
+	}
+
+	.stairs-feature__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.2rem 1.15rem;
+		margin-top: 1.35rem;
+	}
+
+	.stairs-feature__links a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 42px;
+		color: #fffdf8;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.86rem;
+		font-weight: 700;
+		line-height: 1.25;
+		text-decoration-color: rgba(239, 208, 154, 0.75);
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.3em;
+		transition: color 160ms ease, text-decoration-color 160ms ease;
+	}
+
+	.stairs-feature__links a:hover,
+	.stairs-feature__links a:focus-visible {
+		color: #efd09a;
+		text-decoration-color: currentColor;
+	}
+
+	.stairs-feature__links a:focus-visible {
+		border-radius: 4px;
+		outline: 2px solid #efd09a;
+		outline-offset: 3px;
+	}
+
+	@media (min-width: 768px) {
+		.stairs-feature {
+			margin-top: 4rem;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.stairs-feature {
+			min-height: 70vh;
+			min-height: 70svh;
+		}
+
+		.stairs-feature__media :global(img) {
+			object-position: 64% 52%;
+		}
+
+		.stairs-feature__scrim {
+			background: linear-gradient(
+				180deg,
+				rgba(10, 15, 12, 0.03) 0%,
+				rgba(10, 15, 12, 0.1) 28%,
+				rgba(10, 15, 12, 0.36) 100%
+			);
+		}
+
+		.stairs-feature__inner {
+			align-items: flex-end;
+			width: 100%;
+			padding: 3.5rem 1rem calc(6.25rem + env(safe-area-inset-bottom));
+		}
+
+		.stairs-feature__glass {
+			width: 100%;
+			max-width: 38rem;
+			padding: 1.5rem;
+			border-radius: 24px;
+		}
+
+		.stairs-feature h2 {
+			max-width: 100%;
+			font-size: clamp(2.35rem, 9.5vw, 3.5rem);
+			line-height: 0.98;
+		}
+
+		.stairs-feature__description {
+			margin-top: 0.9rem;
+			font-size: 0.94rem;
+			line-height: 1.45;
+		}
+
+		.stairs-feature__links {
+			gap: 0 1rem;
+			margin-top: 0.8rem;
+		}
+
+		.stairs-feature__links a {
+			min-height: 40px;
+			font-size: 0.82rem;
+		}
+	}
+</style>

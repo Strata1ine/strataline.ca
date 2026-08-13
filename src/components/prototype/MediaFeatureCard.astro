@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import type { FeaturedMediaItem } from '@/data/interiorRenovationsPrototype';
+
+interface Props {
+	item: FeaturedMediaItem;
+	reveal?: boolean;
+	compact?: boolean;
+}
+
+const { item, reveal = true, compact = false } = Astro.props;
+const classNames = [
+	'proto-media-card',
+	item.type === 'video' && 'proto-media-card--video',
+	reveal && 'reveal',
+	compact && 'proto-media-card--compact',
+];
+---
+
+{
+	item.type === 'video' ? (
+		<article class:list={classNames} data-proto-video-card>
+			<div class="proto-media-card__frame">
+				<video muted playsinline preload="metadata" poster={item.poster.src.src}>
+					<source src={item.videoSrc} type="video/mp4" />
+				</video>
+				<button
+					class="proto-video-button"
+					type="button"
+					data-video-toggle
+					aria-pressed="false"
+					aria-label={`Watch ${item.source} feature video`}
+				>
+					<span data-video-label>Watch feature</span>
+				</button>
+			</div>
+			<div class="proto-media-card__copy">
+				<p>{item.source}</p>
+				<h3>{item.title}</h3>
+			</div>
+		</article>
+	) : (
+		<a
+			class:list={classNames}
+			href={item.url}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<div class="proto-media-card__frame">
+				<Image
+					src={item.image.src}
+					alt={item.image.alt}
+					widths={[320, 480, 720, 960]}
+					sizes={compact ? '(max-width: 900px) 82vw, 14vw' : '(max-width: 900px) 100vw, 25vw'}
+					loading="lazy"
+				/>
+			</div>
+			<div class="proto-media-card__copy">
+				<p>{item.source}</p>
+				<h3>{item.title}</h3>
+				<span class="proto-media-card__link">
+					{item.cta} <span aria-hidden="true">&#8599;</span>
+				</span>
+			</div>
+		</a>
+	)
+}

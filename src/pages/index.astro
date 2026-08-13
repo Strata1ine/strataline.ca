@@ -1,5 +1,6 @@
 ---
 import Root from '@/layouts/Root.astro';
+import '@/styles/interior-renovations-prototype.css';
 import { getEntry, getCollection } from '@/content.config';
 
 const data = (await getEntry('index', 'index')).data;
@@ -16,6 +17,8 @@ import { seo } from '@/pages/services/[...slug].astro';
 	schemas={{
 		'@type': 'ItemList',
 		numberOfItems: services.length,
-		itemListElement: (await Promise.all(services.map(async (service) => await seo(Astro, service)))).filter(Boolean),
+		itemListElement: (
+			await Promise.all(services.map(async (service) => await seo(Astro, service)))
+		).filter(Boolean),
 	}}
 />

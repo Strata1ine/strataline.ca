@@ -1,4 +1,5 @@
 ---
+import { Picture } from 'astro:assets';
 import { type SchemaOf, createSchema } from 'astro-frontmatter-cms';
 import { type SchemaContext } from 'astro:content';
 import { z } from 'astro:schema';
@@ -7,6 +8,7 @@ import { image } from '@/schemas/image';
 export const schema = createSchema('Hero', (c: SchemaContext) =>
 	z.object({
 		id: z.string().optional(),
+		eyebrow: z.string(),
 		title: z.string(),
 		desc: z.string(),
 		content: z.object({
@@ -18,36 +20,311 @@ export const schema = createSchema('Hero', (c: SchemaContext) =>
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props;
-
-import * as Layout from '@/components/Layout';
-import Island from './Hero';
-import Talk from '@/components/Talk';
+const heroImage = meta.content.images[0];
+const titleLines = meta.title.split('\n').filter(Boolean);
+const eyebrowMatch = meta.eyebrow.match(/^(.*?)(the GTA)$/i);
+const eyebrowLead = eyebrowMatch?.[1] ?? meta.eyebrow;
+const eyebrowEnd = eyebrowMatch?.[2];
 ---
 
-<section class="relative box-content py-5 xl:py-20" id={meta.id}>
-	<span
-		class="bg-primary absolute -top-25 right-0 -bottom-15 z-[-1] rounded-br-lg sm:left-0 sm:block sm:w-1/4 xl:w-(--right-hero-offset)"
-	>
-	</span>
+<section class="home-hero" id={meta.id}>
+	<figure class="home-hero__media">
+		<Picture
+			src={heroImage.src}
+			alt={heroImage.alt}
+			formats={['avif', 'webp']}
+			widths={[480, 768, 1024, 1366, 1600, 1920, 2400]}
+			sizes="100vw"
+			loading="eager"
+			fetchpriority="high"
+			decoding="async"
+		/>
+	</figure>
+	<div class="home-hero__scrim" aria-hidden="true"></div>
 
-	<Layout.Container
-		variant="outer"
-		class="relative flex flex-col gap-5 sm:flex-row sm:gap-8 xl:gap-13"
-	>
-		<div class="order-2 flex sm:w-1/2 sm:shrink-0 sm:flex-col 2xl:flex-row-reverse">
-			<Island client:visible content={meta.content} />
-		</div>
-
-		<div class="contents flex-col gap-2 sm:order-2 sm:flex sm:justify-center sm:gap-4">
-			<h1
-				class="max-w-[12.5ch] whitespace-normal text-pretty font-serif text-[clamp(2.7rem,12vw,3.15rem)] leading-[1.02] font-semibold tracking-normal sm:max-w-[12ch] sm:text-[clamp(2.4rem,4.6vw,4.6rem)] sm:leading-[0.98]"
-			>
-				{meta.title}
+	<div class="home-hero__inner">
+		<div class="home-hero__glass">
+			<p class="home-hero__eyebrow">
+				{eyebrowLead}{eyebrowEnd && <span>{eyebrowEnd}</span>}
+			</p>
+			<h1>
+				{titleLines.map((line) => <span>{line}</span>)}
 			</h1>
-			<div class="order-3">
-				<p class="desc-base max-w-[32rem] text-pretty leading-relaxed">{meta.desc}</p>
-				<Talk client:load />
+			<p class="home-hero__description">{meta.desc}</p>
+			<div class="home-hero__actions">
+				<a class="home-hero__quote" href="#consultation">Request a Quote</a>
+				<a class="home-hero__phone" href="tel:+14164715999">
+					<span>Call or Text</span>
+					<strong>(416) 471-5999</strong>
+				</a>
 			</div>
 		</div>
-	</Layout.Container>
+	</div>
 </section>
+
+<style>
+	.home-hero {
+		position: relative;
+		isolation: isolate;
+		display: grid;
+		min-height: calc(100svh - var(--proto-header));
+		overflow: hidden;
+		background: #263028;
+		color: #fffdf8;
+	}
+
+	.home-hero__media,
+	.home-hero__scrim {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+	}
+
+	.home-hero__media {
+		z-index: -2;
+	}
+
+	.home-hero__media :global(picture),
+	.home-hero__media :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.home-hero__media :global(img) {
+		object-fit: cover;
+		object-position: 54% 56%;
+		animation: home-hero-image-in 700ms ease-out both;
+	}
+
+	.home-hero__scrim {
+		z-index: -1;
+		background: linear-gradient(
+			90deg,
+			rgba(10, 15, 12, 0.3) 0%,
+			rgba(10, 15, 12, 0.13) 48%,
+			rgba(10, 15, 12, 0.04) 78%
+		);
+	}
+
+	.home-hero__inner {
+		display: flex;
+		width: min(86rem, calc(100% - 3rem));
+		margin-inline: auto;
+		padding-block: clamp(2.5rem, 6vh, 5rem);
+		align-items: center;
+	}
+
+	.home-hero__glass {
+		width: min(42rem, 48vw);
+		padding: clamp(3rem, 4.5vw, 4rem);
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: 32px;
+		background: rgba(26, 33, 28, 0.78);
+		box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+		animation: home-hero-panel-in 500ms ease-out both;
+	}
+
+	@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+		.home-hero__glass {
+			background: rgba(30, 35, 30, 0.46);
+			-webkit-backdrop-filter: blur(18px) saturate(110%);
+			backdrop-filter: blur(18px) saturate(110%);
+		}
+	}
+
+	.home-hero__eyebrow {
+		margin: 0 0 1rem;
+		color: #efd09a;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.76rem;
+		font-weight: 750;
+		letter-spacing: 0.13em;
+		line-height: 1.45;
+		text-transform: uppercase;
+	}
+
+	.home-hero__eyebrow span {
+		white-space: nowrap;
+	}
+
+	.home-hero h1 {
+		max-width: 10ch;
+		margin: 0;
+		font-family: var(--font-source-serif-4), Georgia, serif;
+		font-size: clamp(3.35rem, 4.2vw, 4.65rem);
+		font-weight: 550;
+		letter-spacing: -0.035em;
+		line-height: 0.94;
+		text-wrap: balance;
+	}
+
+	.home-hero h1 span {
+		display: block;
+	}
+
+	.home-hero__description {
+		max-width: 36rem;
+		margin: 1.35rem 0 0;
+		color: rgba(255, 253, 248, 0.86);
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: clamp(1rem, 1.15vw, 1.12rem);
+		line-height: 1.55;
+	}
+
+	.home-hero__actions {
+		display: flex;
+		align-items: center;
+		gap: 1.35rem;
+		margin-top: 1.75rem;
+	}
+
+	.home-hero__quote {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.35rem;
+		padding: 0.9rem 1.4rem;
+		border: 1px solid #d4a85f;
+		border-radius: 999px;
+		background: #d4a85f;
+		color: #172019;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: background 160ms ease, transform 160ms ease;
+	}
+
+	.home-hero__quote:hover,
+	.home-hero__quote:focus-visible {
+		background: #e2bc77;
+		transform: translateY(-1px);
+	}
+
+	.home-hero__phone {
+		display: grid;
+		gap: 0.15rem;
+		color: inherit;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		line-height: 1.1;
+		text-decoration: none;
+	}
+
+	.home-hero__phone span {
+		color: rgba(255, 253, 248, 0.68);
+		font-size: 0.68rem;
+		font-weight: 750;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.home-hero__phone strong {
+		color: #fffdf8;
+		font-size: 1.15rem;
+		font-weight: 750;
+		letter-spacing: 0.01em;
+	}
+
+	.home-hero__phone:hover strong,
+	.home-hero__phone:focus-visible strong {
+		color: #efd09a;
+	}
+
+	@keyframes home-hero-panel-in {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes home-hero-image-in {
+		from {
+			transform: scale(1.02);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.home-hero {
+			min-height: calc(100svh - var(--proto-header));
+		}
+
+		.home-hero__media :global(img) {
+			object-position: 64% 54%;
+		}
+
+		.home-hero__scrim {
+			background: linear-gradient(
+				180deg,
+				rgba(10, 15, 12, 0.04) 0%,
+				rgba(10, 15, 12, 0.1) 30%,
+				rgba(10, 15, 12, 0.32) 100%
+			);
+		}
+
+		.home-hero__inner {
+			width: 100%;
+			padding: 4rem 1rem calc(6.75rem + env(safe-area-inset-bottom));
+			align-items: flex-end;
+		}
+
+		.home-hero__glass {
+			width: 100%;
+			max-width: 38rem;
+			padding: clamp(1.5rem, 6.5vw, 1.8rem);
+			border-radius: 24px;
+		}
+
+		.home-hero__eyebrow {
+			max-width: 25rem;
+			margin-bottom: 0.75rem;
+			font-size: 0.7rem;
+		}
+
+		.home-hero h1 {
+			max-width: 9.4ch;
+			font-size: clamp(2.55rem, 11.2vw, 3.15rem);
+			line-height: 0.95;
+		}
+
+		.home-hero__description {
+			margin-top: 1rem;
+			font-size: 0.95rem;
+			line-height: 1.45;
+		}
+
+		.home-hero__actions {
+			align-items: stretch;
+			flex-direction: column;
+			gap: 0.85rem;
+			margin-top: 1.2rem;
+		}
+
+		.home-hero__quote {
+			width: 100%;
+			min-height: 3.15rem;
+		}
+
+		.home-hero__phone {
+			justify-items: start;
+			min-height: 44px;
+			align-content: center;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-hero__media :global(img),
+		.home-hero__glass {
+			animation: none;
+		}
+	}
+</style>

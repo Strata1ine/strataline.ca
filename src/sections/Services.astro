@@ -4,6 +4,7 @@ import { type SchemaContext } from 'astro:content';
 import { z } from 'astro:schema';
 import { DefaultPos } from '@/schemas';
 import { schema as textCarousel } from './TextCarousel.astro';
+import interiorRenovationsImage from '../../content/project-gallery/interior-renovation-toronto-dining-room.jpg';
 
 export const schema = createSchema('Services', (c: SchemaContext) =>
 	z.object({
@@ -26,6 +27,7 @@ import { getEntry, getCollection } from '@/content.config';
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
+const isHomepage = Astro.url.pathname === '/';
 
 let exclude: string[];
 if (meta.exclude == undefined) {
@@ -51,11 +53,88 @@ function isExcluded(id: string, excludeList: string[]) {
 
 const allServices = await getCollection('services');
 
+const homepageServicePriority: Record<string, number> = {
+	painting: 1,
+	kitchens: 2,
+	bathrooms: 3,
+	doors_and_windows: 4,
+	flooring: 5,
+	wallpaper: 6,
+};
+
+const homepageServiceCopy: Record<string, { title: string; desc: string }> = {
+	painting: {
+		title: 'Interior painting',
+		desc: 'Interior painting and wall finishing with careful preparation, crisp trim, and clean work.',
+	},
+	kitchens: {
+		title: 'Kitchen renovations',
+		desc: 'Kitchen renovations with coordinated cabinetry, counters, lighting, and everyday finishes.',
+	},
+	bathrooms: {
+		title: 'Bathroom renovations',
+		desc: 'Bathroom renovations with planned waterproofing, tile, fixtures, and finishing for a durable result.',
+	},
+	doors_and_windows: {
+		title: 'Doors & windows',
+		desc: 'Door and window replacement for better comfort, tighter sealing, and a clean finish.',
+	},
+	flooring: {
+		title: 'Flooring installation',
+		desc: 'Flooring installation with proper preparation, clean transitions, and coordinated trim.',
+	},
+	wallpaper: {
+		title: 'Wallpaper installation',
+		desc: 'Wallpaper installation with careful wall preparation, balanced layouts, and precise seams.',
+	},
+};
+
 const services = allServices
 	.filter((service) => isRootService(service.id))
 	.filter((service) => !isExcluded(service.id, exclude))
 	.filter((service) => service.data.hidden !== true)
-	.sort((a, b) => (a.data.position ?? 999) - (b.data.position ?? 999));
+	.sort((a, b) => {
+		if (isHomepage) {
+			return (
+				(homepageServicePriority[normalizeServiceId(a.id)] ?? 999) -
+				(homepageServicePriority[normalizeServiceId(b.id)] ?? 999)
+			);
+		}
+		return (a.data.position ?? 999) - (b.data.position ?? 999);
+	});
+
+const serviceCards = services.map((service) => {
+	const slug = normalizeServiceId(service.id);
+	const homepageCopy = homepageServiceCopy[slug];
+
+	return {
+		slug,
+		href: `/services/${slug}`,
+		cardId: slug.replaceAll('/', '-'),
+		title: isHomepage && homepageCopy ? homepageCopy.title : service.data.title,
+		desc: isHomepage && homepageCopy ? homepageCopy.desc : service.data.desc,
+		image: service.data.image,
+		featured: false,
+	};
+});
+
+const displayedServices = isHomepage
+	? [
+			{
+				slug: 'interior-renovations',
+				href: '/interior-renovations',
+				cardId: 'interior-renovations-service',
+				title: 'Interior Renovations',
+				desc: 'Complete interior renovations coordinated as one project, including ceilings, walls, flooring, trim, doors, cabinetry, stairs, kitchens, bathrooms, and finish work.',
+				image: {
+					src: interiorRenovationsImage,
+					alt: 'Complete Toronto interior renovation connecting the kitchen, dining room, living space, hardwood flooring, trim, ceiling work, and staircase.',
+				},
+				featured: true,
+			},
+			...serviceCards,
+		]
+	: serviceCards;
 
 import { Icon } from 'astro-icon/components';
 import { Image } from '@/components/Image';
@@ -66,61 +145,140 @@ import Island from './TextCarousel';
 
 <Layout.Divider id={meta.id}>
 	<div class="bg-primary py-12 md:py-22">
-		<Layout.Split pos={meta.pos}>
-			<h2 slot="title" class="heading-5xl top-20 sm:sticky">
-				{meta.title}
-			</h2>
+		<Layout.Container
+			variant={isHomepage ? 'outer' : 'inner'}
+			class={[
+				'flex gap-6 md:gap-10',
+				isHomepage
+					? 'flex-col'
+					: `lg:flex-row xl:gap-18 ${meta.pos === 'right' ? 'flex-col-reverse' : 'flex-col'}`,
+			]}
+		>
+			{
+				(isHomepage || meta.pos === 'left') && (
+					<div class={isHomepage ? 'max-w-3xl space-y-3' : undefined}>
+						{isHomepage && (
+							<p class="text-sm font-semibold tracking-[0.18em] text-black/55 uppercase">
+								Services
+							</p>
+						)}
+						<h2 class:list={['heading-5xl', !isHomepage && 'top-20 sm:sticky']}>{meta.title}</h2>
+						{isHomepage && (
+							<p class="max-w-2xl text-base leading-relaxed text-black/65 md:text-lg">
+								Specialized renovation services coordinated individually or as part of a complete
+								interior project.
+							</p>
+						)}
+					</div>
+				)
+			}
 
-			<div class="flex-2 space-y-6 md:space-y-10 xl:gap-10">
+			<div
+				class:list={[
+					'flex-2',
+					isHomepage
+						? 'grid grid-cols-1 gap-3 sm:gap-6 lg:grid-cols-2 xl:gap-8'
+						: 'space-y-6 md:space-y-10 xl:gap-10',
+				]}
+			>
 				{
-					services.map((service) => {
-						const slug = normalizeServiceId(service.id);
-						const href = `/services/${slug}`;
-						const cardId = slug.replaceAll('/', '-');
-
+					displayedServices.map((service) => {
 						return (
 							<a
-								class="group block grid cursor-pointer items-stretch gap-4 overflow-hidden rounded-2xl border border-black/10 bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] md:grid-cols-[minmax(260px,42%)_1fr] md:gap-8 md:p-4"
-								href={href}
-								id={cardId}
+								class:list={[
+									'group block grid h-full cursor-pointer items-stretch overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black',
+									isHomepage
+										? service.featured
+											? 'grid-cols-[7rem_minmax(0,1fr)] gap-3 p-2 min-[390px]:grid-cols-[8rem_minmax(0,1fr)] sm:grid-cols-1 sm:gap-4 sm:p-3 md:grid-cols-[minmax(260px,44%)_1fr] md:gap-6 md:p-4 lg:col-span-2 lg:grid-cols-[minmax(0,52%)_1fr] lg:gap-8 lg:p-5 xl:grid-cols-[minmax(0,54%)_1fr] xl:gap-10 xl:p-6'
+											: 'grid-cols-[7rem_minmax(0,1fr)] gap-3 p-2 min-[390px]:grid-cols-[8rem_minmax(0,1fr)] sm:grid-cols-1 sm:gap-4 sm:p-3 md:grid-cols-[minmax(220px,44%)_1fr] md:gap-6 md:p-4 lg:grid-cols-[minmax(190px,44%)_1fr] lg:gap-5 xl:grid-cols-[minmax(240px,44%)_1fr] xl:gap-6'
+										: 'gap-4 p-3 md:grid-cols-[minmax(260px,42%)_1fr] md:gap-8 md:p-4',
+								]}
+								href={service.href}
+								id={service.cardId}
 								tabindex="0"
 								draggable={false}
 							>
-								<div class="relative overflow-hidden rounded-xl">
+								<div
+									class:list={[
+										'relative overflow-hidden rounded-xl',
+										isHomepage && 'h-28 min-[390px]:h-32 sm:h-auto md:self-center',
+										isHomepage &&
+											(service.featured ? 'md:aspect-[4/3] lg:aspect-[16/9]' : 'md:aspect-[4/3]'),
+									]}
+								>
 									<Image
-										class="aspect-[16/10] w-full transition-transform duration-500 group-hover:scale-105"
+										class:list={[
+											'w-full transition-transform duration-500 group-hover:scale-105',
+											isHomepage
+												? 'h-full object-cover sm:aspect-[16/10] sm:h-auto md:aspect-auto md:h-full'
+												: 'aspect-[16/10]',
+										]}
 										anim="hover"
-										image={service.data.image}
+										image={service.image}
 										widths={[400, 600, 800, 1200]}
 									/>
 
 									<div class="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent opacity-80" />
 								</div>
 
-								<div class="flex min-w-0 flex-col justify-center gap-4 px-1 py-1 md:px-2">
+								<div
+									class:list={[
+										'flex min-w-0 flex-col justify-center px-1 py-1 md:px-2',
+										isHomepage ? 'gap-2 sm:gap-4 md:gap-3' : 'gap-4',
+									]}
+								>
 									<div class="space-y-2">
-										<h3 class="text-2xl leading-tight text-balance underline-offset-4 group-hover:underline sm:text-2xl xl:text-3xl">
-											{service.data.title}
+										<h3
+											class:list={[
+												'leading-tight text-balance underline-offset-4 group-hover:underline',
+												isHomepage
+													? service.featured
+														? 'text-base min-[390px]:text-lg sm:text-2xl lg:text-4xl xl:text-5xl'
+														: 'text-base min-[390px]:text-lg sm:text-2xl xl:text-[1.75rem]'
+													: 'text-2xl sm:text-2xl xl:text-3xl',
+											]}
+										>
+											{service.title}
 										</h3>
 
-										{service.data.desc && (
-											<p class="line-clamp-4 text-base leading-relaxed text-black/65 md:text-lg">
-												{service.data.desc}
+										{service.desc && (
+											<p
+												class:list={[
+													'text-black/65 md:text-lg',
+													isHomepage
+														? service.featured
+															? 'line-clamp-2 text-xs leading-snug min-[390px]:text-sm sm:line-clamp-4 sm:text-base sm:leading-relaxed md:line-clamp-4 lg:text-xl'
+															: 'line-clamp-2 text-xs leading-snug min-[390px]:text-sm sm:line-clamp-3 sm:text-base sm:leading-relaxed md:line-clamp-3'
+														: 'line-clamp-4 text-base leading-relaxed',
+												]}
+											>
+												{service.desc}
 											</p>
 										)}
 									</div>
 
-									<div class="flex items-center gap-3 pt-2">
-										<span class="inline-flex items-center rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-black/80 transition-all duration-200 group-hover:bg-black group-hover:text-white">
+									<div
+										class:list={['flex items-center gap-3', isHomepage ? 'pt-0 sm:pt-2' : 'pt-2']}
+									>
+										<span
+											class:list={[
+												'inline-flex items-center gap-2 rounded-full border border-black/15 font-medium text-black/80 transition-all duration-200 group-hover:bg-black group-hover:text-white',
+												isHomepage
+													? 'px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm'
+													: 'px-4 py-2 text-sm',
+											]}
+										>
 											View service
+											<Icon
+												aria-hidden={true}
+												class:list={[
+													'h-auto flex-none transition-transform duration-200 group-hover:translate-x-1',
+													isHomepage ? 'w-4 sm:w-5' : 'w-5',
+												]}
+												name="arrow"
+												is:inline
+											/>
 										</span>
-
-										<Icon
-											aria-hidden={true}
-											class="h-auto w-7 flex-none transition-transform duration-200 group-hover:translate-x-1"
-											name="arrow"
-											is:inline
-										/>
 									</div>
 								</div>
 							</a>
@@ -128,7 +286,15 @@ import Island from './TextCarousel';
 					})
 				}
 			</div>
-		</Layout.Split>
+
+			{
+				!isHomepage && meta.pos === 'right' && (
+					<div>
+						<h2 class="heading-5xl top-20 sm:sticky">{meta.title}</h2>
+					</div>
+				)
+			}
+		</Layout.Container>
 	</div>
 
 	{meta.content && <Island client:visible meta={meta.content} />}

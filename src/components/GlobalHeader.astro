@@ -1,0 +1,617 @@
+---
+import {
+	globalExploreLinks,
+	globalMenuGroups,
+	globalMobileServices,
+	globalPrimaryNavigation,
+	globalPrimaryServices,
+} from '@/data/globalNavigation';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string, context?: string) => {
+	if (href.includes('#')) return false;
+	const route = href.split('#')[0] || '/';
+	if (context) return pathname === context || pathname.startsWith(`${context}/`);
+	return pathname === route;
+};
+const servicesActive =
+	pathname === '/interior-renovations' ||
+	pathname.startsWith('/services/') ||
+	pathname === '/services';
+---
+
+<header
+	class="proto-header global-site-header"
+	data-global-header
+	data-prototype-header
+	data-global-nav-layer
+>
+	<a class="proto-wordmark" href="/" aria-label="Strataline home">
+		<span class="proto-wordmark__mark" aria-hidden="true">S</span>
+		<span>Strataline</span>
+	</a>
+
+	<nav class="proto-nav" aria-label="Global navigation">
+		{
+			globalPrimaryNavigation.map((item) =>
+				item.hasMenu ? (
+					<div class="proto-nav__item proto-nav__item--menu" data-services-menu-item>
+						<button
+							class:list={['proto-nav__button', servicesActive && 'is-active']}
+							type="button"
+							aria-expanded="false"
+							aria-haspopup="true"
+							aria-controls="global-services-mega-panel"
+							data-services-menu-button
+						>
+							{item.label}
+						</button>
+					</div>
+				) : (
+					<a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+						{item.label}
+					</a>
+				),
+			)
+		}
+		<button class="proto-nav__contact" type="button" data-open-contact>Contact</button>
+	</nav>
+
+	<div class="proto-header__actions">
+		<a class="proto-header__phone" href="tel:+14164715999">
+			<span>Call or Text</span>
+			<strong>(416) 471-5999</strong>
+		</a>
+
+		<button class="proto-header__cta" type="button" data-open-contact>Request a Quote</button>
+	</div>
+
+	<button
+		class="proto-menu-button"
+		type="button"
+		aria-controls="global-mobile-menu"
+		aria-expanded="false"
+		data-menu-toggle
+	>
+		<span class="sr-only" data-menu-label>Open menu</span>
+		<span></span>
+		<span></span>
+	</button>
+</header>
+
+<div
+	class="proto-mega-backdrop"
+	data-services-backdrop
+	data-global-nav-layer
+	aria-hidden="true"
+></div>
+
+<section
+	id="global-services-mega-panel"
+	class="proto-mega-panel"
+	aria-label="Services menu"
+	aria-hidden="true"
+	data-services-menu-panel
+	data-global-nav-layer
+>
+	<div class="proto-mega-panel__inner">
+		<div class="proto-mega-panel__primary">
+			<p>Primary services</p>
+			<nav aria-label="Primary services">
+				{
+					globalPrimaryServices.map((link) => (
+						<a
+							href={link.href}
+							aria-current={isActive(link.href, 'context' in link ? link.context : undefined) ? 'page' : undefined}
+						>
+							{link.label}
+						</a>
+					))
+				}
+			</nav>
+		</div>
+
+		{
+			globalMenuGroups.map((group) => (
+				<div class="proto-mega-panel__group">
+					<p>{group.title}</p>
+					<nav aria-label={group.title}>
+						{group.links.map((link) => (
+							<a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+								{link.label}
+							</a>
+						))}
+					</nav>
+				</div>
+			))
+		}
+
+		<div class="proto-mega-panel__group">
+			<p>Explore</p>
+			<nav aria-label="Explore">
+				{
+					globalExploreLinks.map((link) => (
+						<a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+							{link.label}
+						</a>
+					))
+				}
+				<button type="button" data-open-contact>Contact</button>
+			</nav>
+		</div>
+
+		<div class="proto-mega-panel__footer">
+			<p>Not sure where your project fits?</p>
+			<div>
+				<button class="proto-button proto-button--primary" type="button" data-open-contact>
+					Request a Quote
+				</button>
+				<a class="proto-mega-panel__phone" href="tel:+14164715999">
+					Call or Text <strong>(416) 471-5999</strong>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div
+	class="proto-mobile-menu"
+	id="global-mobile-menu"
+	data-mobile-menu
+	data-global-nav-layer
+	role="dialog"
+	aria-modal="true"
+	aria-label="Site navigation"
+	hidden
+>
+	<nav aria-label="Mobile navigation">
+		<section class="proto-mobile-menu__section" aria-labelledby="mobile-services-title">
+			<h2 id="mobile-services-title">Services</h2>
+			<div class="proto-mobile-menu__group">
+				{
+					globalMobileServices.map((link) => (
+						<a
+							href={link.href}
+							aria-current={isActive(link.href, 'context' in link ? link.context : undefined) ? 'page' : undefined}
+						>
+							{link.label}
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="proto-mobile-menu__section" aria-labelledby="mobile-stairs-title">
+			<h2 id="mobile-stairs-title">Stairs</h2>
+			<div class="proto-mobile-menu__group">
+				{
+					globalMenuGroups[0].links.map((link) => (
+						<a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+							{link.label}
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="proto-mobile-menu__section" aria-labelledby="mobile-company-title">
+			<h2 id="mobile-company-title">Company</h2>
+			<div class="proto-mobile-menu__group">
+				{
+					globalExploreLinks.map((link) => (
+						<a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+							{link.label}
+						</a>
+					))
+				}
+				<button type="button" data-open-contact>Contact</button>
+			</div>
+		</section>
+
+		<section class="proto-mobile-menu__section proto-mobile-menu__contact" aria-labelledby="mobile-contact-title">
+			<h2 id="mobile-contact-title">Contact</h2>
+			<div class="proto-mobile-menu__actions">
+				<button type="button" data-open-contact>Request a Quote</button>
+				<a class="proto-mobile-menu__phone" href="tel:+14164715999">
+					<span>Call or Text</span>
+					<strong>(416) 471-5999</strong>
+				</a>
+			</div>
+		</section>
+	</nav>
+</div>
+
+<script is:inline>
+	const globalHeader = document.querySelector('[data-global-header]');
+	if (globalHeader instanceof HTMLElement && !globalHeader.dataset.initialized) {
+		globalHeader.dataset.initialized = 'true';
+		const servicesMenuItem = document.querySelector('[data-services-menu-item]');
+		const servicesMenuButton = document.querySelector('[data-services-menu-button]');
+		const servicesMenuPanel = document.querySelector('[data-services-menu-panel]');
+		const servicesBackdrop = document.querySelector('[data-services-backdrop]');
+		const mobileMenuButton = document.querySelector('[data-menu-toggle]');
+		const mobileMenu = document.querySelector('[data-mobile-menu]');
+		const mobileMenuLabel = document.querySelector('[data-menu-label]');
+		const desktopMedia = window.matchMedia('(min-width: 901px)');
+		const rememberedInert = new Map();
+		let servicesMenuCloseTimer = 0;
+		let suppressServicesFocusOpen = false;
+
+		const setElementInert = (element, inert) => {
+			if (!(element instanceof HTMLElement)) return;
+			if (inert) {
+				if (!rememberedInert.has(element)) rememberedInert.set(element, element.inert);
+				element.inert = true;
+			} else if (rememberedInert.has(element)) {
+				element.inert = rememberedInert.get(element);
+				rememberedInert.delete(element);
+			}
+		};
+
+		const setBackgroundInert = (inert) => {
+			if (!inert) {
+				[...rememberedInert.keys()].forEach((element) => setElementInert(element, false));
+				return;
+			}
+			const navLayers = [...document.querySelectorAll('[data-global-nav-layer]')];
+			[...document.body.children].forEach((child) => {
+				if (!(child instanceof HTMLElement)) return;
+				if (navLayers.includes(child)) return;
+				if (child.contains(globalHeader)) {
+					[...child.children].forEach((nested) => {
+						if (nested instanceof HTMLElement && !navLayers.includes(nested)) {
+							setElementInert(nested, true);
+						}
+					});
+					return;
+				}
+				setElementInert(child, true);
+			});
+		};
+
+		const desktopMenuIsOpen = () => servicesMenuButton?.getAttribute('aria-expanded') === 'true';
+		const mobileMenuIsOpen = () => mobileMenuButton?.getAttribute('aria-expanded') === 'true';
+		const cancelServicesMenuClose = () => window.clearTimeout(servicesMenuCloseTimer);
+
+		const setServicesMenu = (open, options = {}) => {
+			if (!(servicesMenuItem instanceof HTMLElement) || !(servicesMenuButton instanceof HTMLButtonElement) || !(servicesMenuPanel instanceof HTMLElement) || !(servicesBackdrop instanceof HTMLElement)) return;
+			cancelServicesMenuClose();
+			const shouldOpen = open && desktopMedia.matches;
+			servicesMenuItem.dataset.menuOpen = String(shouldOpen);
+			servicesMenuPanel.dataset.menuOpen = String(shouldOpen);
+			servicesBackdrop.dataset.menuOpen = String(shouldOpen);
+			servicesMenuButton.setAttribute('aria-expanded', String(shouldOpen));
+			servicesMenuPanel.setAttribute('aria-hidden', String(!shouldOpen));
+			servicesMenuPanel.inert = !shouldOpen;
+			document.documentElement.classList.toggle('proto-services-open', shouldOpen);
+			setBackgroundInert(shouldOpen);
+			if (!shouldOpen && options.returnFocus) {
+				suppressServicesFocusOpen = true;
+				servicesMenuButton.focus();
+				window.queueMicrotask(() => (suppressServicesFocusOpen = false));
+			}
+		};
+
+		const scheduleServicesMenuClose = () => {
+			cancelServicesMenuClose();
+			servicesMenuCloseTimer = window.setTimeout(() => setServicesMenu(false), 180);
+		};
+
+		const setMobileMenu = (open, options = {}) => {
+			if (!(mobileMenuButton instanceof HTMLButtonElement) || !(mobileMenu instanceof HTMLElement)) return;
+			const shouldOpen = open && !desktopMedia.matches;
+			mobileMenuButton.setAttribute('aria-expanded', String(shouldOpen));
+			mobileMenu.hidden = !shouldOpen;
+			document.documentElement.classList.toggle('proto-mobile-menu-open', shouldOpen);
+			if (mobileMenuLabel) mobileMenuLabel.textContent = shouldOpen ? 'Close menu' : 'Open menu';
+			setBackgroundInert(shouldOpen);
+			if (shouldOpen) {
+				const firstControl = mobileMenu.querySelector('a, button');
+				if (firstControl instanceof HTMLElement) firstControl.focus();
+			} else if (options.returnFocus) {
+				mobileMenuButton.focus();
+			}
+		};
+
+		servicesMenuPanel?.setAttribute('inert', '');
+		servicesMenuItem?.addEventListener('pointerenter', () => setServicesMenu(true));
+		servicesMenuItem?.addEventListener('pointerleave', scheduleServicesMenuClose);
+		servicesMenuPanel?.addEventListener('pointerenter', cancelServicesMenuClose);
+		servicesMenuPanel?.addEventListener('pointerleave', scheduleServicesMenuClose);
+		servicesBackdrop?.addEventListener('click', () => setServicesMenu(false, { returnFocus: true }));
+		servicesMenuItem?.addEventListener('focusin', () => {
+			if (!suppressServicesFocusOpen) setServicesMenu(true);
+		});
+		servicesMenuButton?.addEventListener('click', () => setServicesMenu(true));
+		servicesMenuButton?.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+				event.preventDefault();
+				setServicesMenu(true);
+				const firstLink = servicesMenuPanel?.querySelector('a');
+				if (firstLink instanceof HTMLAnchorElement) firstLink.focus();
+			}
+		});
+		servicesMenuPanel?.addEventListener('click', (event) => {
+			if (event.target instanceof HTMLAnchorElement) setServicesMenu(false);
+		});
+
+		mobileMenuButton?.addEventListener('click', () => setMobileMenu(!mobileMenuIsOpen()));
+		mobileMenu?.addEventListener('click', (event) => {
+			if (event.target instanceof HTMLAnchorElement) setMobileMenu(false);
+		});
+
+		document.querySelectorAll('[data-open-contact]').forEach((button) => {
+			button.addEventListener('click', () => {
+				setServicesMenu(false);
+				setMobileMenu(false);
+				document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+			});
+		});
+
+		document.addEventListener('focusin', () => {
+			if (!desktopMenuIsOpen()) return;
+			const active = document.activeElement;
+			if (active instanceof Node && !servicesMenuItem?.contains(active) && !servicesMenuPanel?.contains(active)) setServicesMenu(false);
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				if (mobileMenuIsOpen()) setMobileMenu(false, { returnFocus: true });
+				else if (desktopMenuIsOpen()) setServicesMenu(false, { returnFocus: true });
+				return;
+			}
+			if (event.key === 'Tab' && mobileMenuIsOpen() && mobileMenu instanceof HTMLElement) {
+				const focusable = [...mobileMenu.querySelectorAll('a[href], button:not([disabled])')].filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
+				const first = focusable[0];
+				const last = focusable[focusable.length - 1];
+				if (event.shiftKey && document.activeElement === first) {
+					event.preventDefault();
+					last?.focus();
+				} else if (!event.shiftKey && document.activeElement === last) {
+					event.preventDefault();
+					first?.focus();
+				}
+			}
+		});
+
+		const updateHeader = () => globalHeader.classList.toggle('is-scrolled', window.scrollY > 20);
+		window.addEventListener('scroll', updateHeader, { passive: true });
+		updateHeader();
+		desktopMedia.addEventListener('change', () => {
+			setServicesMenu(false);
+			setMobileMenu(false);
+		});
+	}
+</script>
+
+<style is:global>
+	.global-site-header,
+	.global-site-header *,
+	.proto-mega-panel *,
+	.proto-mobile-menu * {
+		box-sizing: border-box;
+	}
+
+	.global-site-header a,
+	.proto-mega-panel a,
+	.proto-mobile-menu a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.proto-nav a[aria-current='page'],
+	.proto-nav__button.is-active {
+		color: var(--proto-text);
+	}
+
+	.proto-nav__item--menu,
+	.proto-nav__button {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.proto-nav__button {
+		position: relative;
+		line-height: inherit;
+	}
+
+	.proto-nav__button::after {
+		position: absolute;
+		left: 0;
+		bottom: -0.25rem;
+		margin-top: 0;
+	}
+
+	.proto-header__actions {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.proto-nav__contact,
+	.proto-mega-panel nav button,
+	.proto-mobile-menu__group button {
+		width: fit-content;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.proto-header__phone {
+		display: grid;
+		gap: 0.05rem;
+		min-width: max-content;
+		color: var(--proto-text) !important;
+		line-height: 1.1;
+		text-align: right;
+	}
+
+	.proto-header__phone span {
+		color: var(--proto-muted);
+		font-size: 0.62rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.proto-header__phone strong {
+		font-size: 0.98rem;
+		font-weight: 750;
+	}
+
+	.proto-header__phone:hover strong,
+	.proto-header__phone:focus-visible strong {
+		color: var(--proto-accent);
+	}
+
+	.proto-mega-panel__group nav button {
+		color: var(--proto-muted);
+		font-size: 0.92rem;
+		line-height: 1.35;
+	}
+
+	.proto-mega-panel__group nav button:hover,
+	.proto-mega-panel__group nav button:focus-visible {
+		color: var(--proto-accent);
+	}
+
+	.proto-mobile-menu__section {
+		padding: 1.15rem 0;
+		border-bottom: 1px solid var(--proto-border);
+	}
+
+	.proto-mobile-menu__section h2 {
+		margin: 0 0 0.65rem 0.5rem;
+		color: var(--proto-accent);
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.72rem;
+		font-weight: 750;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.proto-mobile-menu__section .proto-mobile-menu__group {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		padding-bottom: 0;
+	}
+
+	.proto-mobile-menu__group a,
+	.proto-mobile-menu__group button {
+		display: flex;
+		align-items: center;
+		min-height: 44px;
+		padding: 0.65rem 0.5rem;
+		border-radius: var(--proto-radius-sm);
+		font-size: 0.92rem;
+		line-height: 1.3;
+		text-align: left;
+	}
+
+	.proto-mobile-menu a[aria-current='page'] {
+		color: var(--proto-accent);
+		font-weight: 750;
+	}
+
+	.proto-mobile-menu__actions button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3rem;
+		padding: 0.75rem;
+		border: 1px solid var(--proto-border);
+		border-radius: var(--proto-radius-sm);
+		background: var(--proto-dark);
+		color: #fff;
+		font: inherit;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.proto-mobile-menu__phone {
+		display: grid !important;
+		align-content: center;
+		gap: 0.15rem;
+		padding: 0.55rem 0.75rem !important;
+		line-height: 1.15;
+	}
+
+	.proto-mobile-menu__phone span {
+		color: var(--proto-muted);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.proto-mobile-menu__phone strong {
+		font-size: 1.05rem;
+		font-weight: 750;
+	}
+
+	.proto-menu-button[aria-expanded='true'] span:not(.sr-only):nth-child(2) {
+		transform: translateY(0.22rem) rotate(45deg);
+	}
+
+	.proto-menu-button[aria-expanded='true'] span:not(.sr-only):nth-child(3) {
+		transform: translateY(-0.22rem) rotate(-45deg);
+	}
+
+	.proto-menu-button span:not(.sr-only) {
+		transition: transform 180ms ease;
+	}
+
+	.proto-mobile-menu-open body,
+	html.proto-mobile-menu-open {
+		overflow: hidden;
+	}
+
+	html.proto-services-open {
+		overflow: hidden;
+		scrollbar-gutter: stable;
+	}
+
+	.proto-mobile-menu-open .floating-contact,
+	.proto-services-open .floating-contact {
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	@media (max-width: 900px) {
+		.proto-header__phone {
+			display: none;
+		}
+
+		.proto-mobile-menu {
+			left: 0;
+			right: 0;
+		}
+
+		.proto-mobile-menu__contact {
+			padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+		}
+	}
+
+	@media (min-width: 901px) and (max-width: 1120px) {
+		.proto-header__phone {
+			display: none;
+		}
+	}
+
+	@media (min-width: 901px) and (max-width: 1199px) {
+		.proto-header__actions {
+			gap: 1.5rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.proto-mega-panel,
+		.proto-mega-backdrop,
+		.proto-menu-button span:not(.sr-only) {
+			transition-duration: 0.01ms !important;
+		}
+	}
+</style>

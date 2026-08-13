@@ -1,5 +1,12 @@
 ---
 const phone = '(416) 471-5999';
+interface Props {
+	reveal?: boolean;
+	formId?: string;
+	mode?: 'inline' | 'popup';
+}
+const { reveal = true, formId = 'consultation', mode = 'inline' } = Astro.props;
+const titleId = `${formId}-title`;
 const budgetChoices = [
 	'Under $15,000',
 	'$15,000-$30,000',
@@ -12,23 +19,27 @@ const budgetChoices = [
 
 <section class="proto-consultation">
 	<form
-		class="proto-consultation__form section-anchor reveal"
-		id="consultation"
+		class:list={['proto-consultation__form section-anchor', reveal && 'reveal']}
+		id={formId}
 		action="https://submit-form.com/jReRE2JLR"
 		method="post"
 		data-progressive-form
-		aria-labelledby="consultation-title"
+		data-contact-mode={mode}
+		aria-labelledby={titleId}
 	>
 		<input type="hidden" name="_redirect" value="https://strataline.ca/submissions/talk" />
+		<input type="hidden" name="Contact Form Source" value={mode} />
 		<label class="proto-honeypot" aria-hidden="true">
 			<span>Leave this field empty</span>
 			<input name="Company Website" tabindex="-1" autocomplete="off" />
 		</label>
 
 		<div data-form-flow>
-			<div class="proto-consultation__intro">
+			<div class="proto-consultation__intro" data-form-intro>
 				<p class="proto-eyebrow">Project inquiry</p>
-				<h2 id="consultation-title">Tell us about your project</h2>
+				<h2 id={titleId}>
+					Tell us about your <span class="proto-no-break">project</span>
+				</h2>
 				<p>A few details will help us understand the scope before we contact you.</p>
 			</div>
 
@@ -84,9 +95,15 @@ const budgetChoices = [
 					</label>
 				</div>
 				<div class="proto-form-next">
-					<p class="proto-form-reassurance">
-						<span aria-hidden="true">✓</span> Get a reply within 12 hours.
-					</p>
+					<div class="proto-form-next__contact">
+						<p class="proto-form-reassurance">
+							<span aria-hidden="true">✓</span> Get a reply within 12 hours.
+						</p>
+						<p class="proto-form-contact-alternative">
+							<span>Prefer to talk?</span>
+							<a href="tel:+14164715999">Call or text {phone}</a>
+						</p>
+					</div>
 					<button class="proto-button proto-button--primary" type="button" data-form-next>
 						Continue
 					</button>
@@ -102,7 +119,6 @@ const budgetChoices = [
 				</div>
 				<div class="proto-form-step__intro">
 					<h4>Your contact details</h4>
-					<p>Add your contact information and anything else we should know about the project.</p>
 				</div>
 				<div class="proto-consultation__fields">
 					<label>
@@ -125,7 +141,7 @@ const budgetChoices = [
 						<span>Project description</span>
 						<textarea
 							name="Project Details"
-							rows="5"
+							rows="2"
 							required
 							placeholder="List the rooms, surfaces and connected work you are considering."
 						></textarea>
@@ -140,9 +156,6 @@ const budgetChoices = [
 					</button>
 					<button class="proto-form-back" type="button" data-form-back>← Back</button>
 				</div>
-				<p class="proto-form-phone">
-					Prefer to talk? <a href="tel:+14164715999">Call or text {phone}</a>
-				</p>
 			</div>
 			<p class="proto-form-status" role="status" aria-live="polite" data-form-status></p>
 		</div>
@@ -159,19 +172,28 @@ const budgetChoices = [
 </section>
 
 <script is:inline>
-	const progressiveForm = document.querySelector('[data-progressive-form]');
-
-	if (progressiveForm instanceof HTMLFormElement) {
+	{
+	const initializeProgressiveForm = (progressiveForm) => {
+		if (!(progressiveForm instanceof HTMLFormElement) || progressiveForm.dataset.initialized)
+			return;
+		progressiveForm.dataset.initialized = 'true';
 		progressiveForm.classList.add('is-enhanced');
+		const contactMode = progressiveForm.dataset.contactMode === 'popup' ? 'popup' : 'inline';
 		const steps = [...progressiveForm.querySelectorAll('[data-form-step]')];
 		const nextButton = progressiveForm.querySelector('[data-form-next]');
 		const backButton = progressiveForm.querySelector('[data-form-back]');
 		const status = progressiveForm.querySelector('[data-form-status]');
 		const submitButton = progressiveForm.querySelector('[data-form-submit]');
 		const formFlow = progressiveForm.querySelector('[data-form-flow]');
+		const formIntro = progressiveForm.querySelector('[data-form-intro]');
 		const successState = progressiveForm.querySelector('[data-form-success]');
 		let hasStarted = false;
 		let currentStep = 1;
+		const markStarted = () => {
+			if (hasStarted) return;
+			window.trackContactEvent?.(`contact_form_start_${contactMode}`);
+			hasStarted = true;
+		};
 
 		const setStatus = (message) => {
 			if (status) status.textContent = message;
@@ -179,6 +201,7 @@ const budgetChoices = [
 
 		const setStep = (step) => {
 			currentStep = step;
+			if (formIntro instanceof HTMLElement) formIntro.hidden = step !== 1;
 			steps.forEach((element) => {
 				const active = element.getAttribute('data-form-step') === String(step);
 				element.hidden = !active;
@@ -210,18 +233,17 @@ const budgetChoices = [
 		};
 
 		nextButton?.addEventListener('click', () => {
-			if (!hasStarted) {
-				window.trackProtoEvent?.('form_start');
-				hasStarted = true;
-			}
+			markStarted();
 			if (!validateStep(1)) {
 				setStatus('Please complete Step 1 before continuing.');
 				return;
 			}
-			window.trackProtoEvent?.('form_step_complete', { step: 1 });
+			window.trackContactEvent?.(`contact_form_step_complete_${contactMode}`, { step: 1 });
 			setStep(2);
 			focusStep(2);
 		});
+
+		progressiveForm.addEventListener('input', markStarted);
 
 		backButton?.addEventListener('click', () => {
 			setStep(1);
@@ -264,7 +286,7 @@ const budgetChoices = [
 					headers: { Accept: 'application/json' },
 				});
 				if (!response.ok) throw new Error('Submission failed');
-				window.trackProtoEvent?.('form_submit_success');
+				window.trackContactEvent?.(`contact_form_submit_${contactMode}`);
 				progressiveForm.reset();
 				setStatus('');
 				if (formFlow instanceof HTMLElement) formFlow.hidden = true;
@@ -273,7 +295,7 @@ const budgetChoices = [
 					successState.focus();
 				}
 			} catch {
-				window.trackProtoEvent?.('form_submit_error');
+				window.trackContactEvent?.(`contact_form_error_${contactMode}`);
 				setStatus('The form could not send. Please call or text us instead.');
 			} finally {
 				submitButton.disabled = false;
@@ -281,5 +303,11 @@ const budgetChoices = [
 		});
 
 		setStep(1);
+	};
+
+	document.querySelectorAll('[data-progressive-form]').forEach(initializeProgressiveForm);
+	document.addEventListener('strataline:initialize-contact-forms', () => {
+		document.querySelectorAll('[data-progressive-form]').forEach(initializeProgressiveForm);
+	});
 	}
 </script>

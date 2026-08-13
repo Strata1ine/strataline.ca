@@ -27,51 +27,60 @@ const meta = Astro.props as Props;
 
 import * as Layout from '@/components/Layout';
 import { LetsTalk } from '@/components/Talk';
+import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+
+const isHomepage = Astro.url.pathname === '/';
 ---
 
-<Layout.Divider id={meta.id}>
-	<Layout.Container variant="outer" class="max-w-5xl">
-		<div class="rounded-2xl bg-neutral-950 p-7 text-white shadow-xl md:p-10">
-			<p class="mb-4 font-sans text-sm font-semibold uppercase tracking-[0.16em] text-white/65">
-				Fast photo estimate
-			</p>
-
-			<h2 class="max-w-3xl font-serif text-4xl font-semibold leading-[1.02] text-balance md:text-6xl">
-				{meta.title}
-			</h2>
-
-			<p class="mt-5 max-w-2xl font-sans text-base leading-relaxed text-white/75 md:text-lg">
-				{meta.desc}
-			</p>
-
-			<div class="mt-7 flex flex-col gap-3 sm:flex-row">
-				<a
-					href={meta.phoneHref}
-					class="inline-flex flex-col items-center justify-center gap-1 rounded-full bg-white px-6 py-3 text-center font-sans text-xl font-semibold leading-none text-neutral-950 transition hover:scale-[1.02]"
-				>
-					<span>Text photos to</span>
-					<span class="whitespace-nowrap font-serif text-lg font-medium">{meta.phone}</span>
-				</a>
-
-				<LetsTalk
-					client:load
-					aria-label="Open contact form"
-					class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 font-sans text-xl font-semibold leading-none text-white transition hover:bg-white/10"
-				>
-					Request estimate
-				</LetsTalk>
-			</div>
-
-			<div class="mt-8 grid gap-4 sm:grid-cols-3">
-				{
-					meta.steps.map((step) => (
-						<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<h3 class="font-sans text-base font-semibold">{step.title}</h3>
-							<p class="mt-2 font-sans text-sm leading-relaxed text-white/70">{step.desc}</p>
-						</div>
-					))
-				}
-			</div>
+{
+	isHomepage ? (
+		<div id={meta.id} class="home-consultation mt-2 md:mt-20">
+			<ConsultationCTA reveal={false} />
 		</div>
-	</Layout.Container>
-</Layout.Divider>
+	) : (
+		<Layout.Divider id={meta.id}>
+			<Layout.Container variant="outer" class="max-w-5xl">
+				<div class="rounded-2xl bg-neutral-950 p-7 text-white shadow-xl md:p-10">
+					<p class="mb-4 font-sans text-sm font-semibold tracking-[0.16em] text-white/65 uppercase">
+						Fast photo estimate
+					</p>
+
+					<h2 class="max-w-3xl font-serif text-4xl leading-[1.02] font-semibold text-balance md:text-6xl">
+						{meta.title}
+					</h2>
+
+					<p class="mt-5 max-w-2xl font-sans text-base leading-relaxed text-white/75 md:text-lg">
+						{meta.desc}
+					</p>
+
+					<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+						<a
+							href={meta.phoneHref}
+							class="inline-flex flex-col items-center justify-center gap-1 rounded-full bg-white px-6 py-3 text-center font-sans text-xl leading-none font-semibold text-neutral-950 transition hover:scale-[1.02]"
+						>
+							<span>Text photos to</span>
+							<span class="font-serif text-lg font-medium whitespace-nowrap">{meta.phone}</span>
+						</a>
+
+						<LetsTalk
+							client:load
+							aria-label="Open contact form"
+							class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 font-sans text-xl leading-none font-semibold text-white transition hover:bg-white/10"
+						>
+							Request estimate
+						</LetsTalk>
+					</div>
+
+					<div class="mt-8 grid gap-4 sm:grid-cols-3">
+						{meta.steps.map((step) => (
+							<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+								<h3 class="font-sans text-base font-semibold">{step.title}</h3>
+								<p class="mt-2 font-sans text-sm leading-relaxed text-white/70">{step.desc}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</Layout.Container>
+		</Layout.Divider>
+	)
+}

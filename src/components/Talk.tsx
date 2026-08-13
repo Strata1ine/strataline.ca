@@ -152,7 +152,7 @@ export function LetsTalk(props: ComponentProps<'button'>) {
 	);
 }
 
-export default function Talk() {
+export default function Talk(props: { href?: string }) {
 	let sensor: HTMLElement;
 	const [above, setAbove] = createSignal(true);
 	const [style, setStyle] = createSignal<string | null>(null);
@@ -201,43 +201,56 @@ export default function Talk() {
 			ref={(el) => (sensor = el!)}
 		>
 			<div class="relative h-12 w-full max-w-[21rem] xl:h-[3.25rem]">
-				<LetsTalk
-					aria-label="Get a Free Estimate (Ctrl+/)"
-					class={cn(
-						'z-1',
-						hydrated() && 'duration-1000',
-						above()
-							? cn(
-									buttonVariants(),
-									'absolute h-12 w-full !border-[#C54A37] !bg-[#C54A37] px-5 !text-white shadow-lg shadow-[#C54A37]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C54A37] xl:h-[3.25rem]',
-								)
-							: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0 left-0'),
-					)}
-					style={{
-						translate: style(),
-						'transition-property': 'width, height, border-radius, translate, background-color',
-						'will-change': 'width, height, border-radius, translate, background-color',
-					}}
-				>
-					<span
-						aria-hidden="true"
+				{props.href ? (
+					<a
+						href={props.href}
+						aria-label="Get a Free Estimate"
 						class={cn(
-							'absolute top-1/2 left-1/2 -translate-1/2 font-semibold whitespace-nowrap text-white',
-							hydrated() && 'transition-opacity duration-750',
-							above() ? 'opacity-100' : 'opacity-0',
+							buttonVariants(),
+							'absolute h-12 w-full !border-[#C54A37] !bg-[#C54A37] px-5 !text-white shadow-lg shadow-[#C54A37]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C54A37] xl:h-[3.25rem]',
 						)}
 					>
-						Get a Free Estimate →
-					</span>
-
-					<ChatCircle
+						<span class="font-semibold whitespace-nowrap text-white">Get a Free Estimate →</span>
+					</a>
+				) : (
+					<LetsTalk
+						aria-label="Get a Free Estimate (Ctrl+/)"
 						class={cn(
-							'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
-							hydrated() && 'transition-opacity duration-750',
-							above() ? 'opacity-0' : 'opacity-100',
+							'z-1',
+							hydrated() && 'duration-1000',
+							above()
+								? cn(
+										buttonVariants(),
+										'absolute h-12 w-full !border-[#C54A37] !bg-[#C54A37] px-5 !text-white shadow-lg shadow-[#C54A37]/25 transition hover:!border-black hover:!bg-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C54A37] xl:h-[3.25rem]',
+									)
+								: cn(fabVariants({ variant: 'pill', background: 'accent' }), 'fixed top-0 left-0'),
 						)}
-					/>
-				</LetsTalk>
+						style={{
+							translate: style(),
+							'transition-property': 'width, height, border-radius, translate, background-color',
+							'will-change': 'width, height, border-radius, translate, background-color',
+						}}
+					>
+						<span
+							aria-hidden="true"
+							class={cn(
+								'absolute top-1/2 left-1/2 -translate-1/2 font-semibold whitespace-nowrap text-white',
+								hydrated() && 'transition-opacity duration-750',
+								above() ? 'opacity-100' : 'opacity-0',
+							)}
+						>
+							Get a Free Estimate →
+						</span>
+
+						<ChatCircle
+							class={cn(
+								'absolute top-1/2 left-1/2 size-10 -translate-1/2 sm:size-12',
+								hydrated() && 'transition-opacity duration-750',
+								above() ? 'opacity-0' : 'opacity-100',
+							)}
+						/>
+					</LetsTalk>
+				)}
 				<div
 					class={cn(buttonVariants(), 'invisible h-12 w-full px-5 xl:h-[3.25rem]')}
 					aria-hidden="true"
@@ -250,7 +263,7 @@ export default function Talk() {
 			>
 				Call: <span class="whitespace-nowrap">{displayTelephone}</span>
 			</a>
-			<p class="max-w-full text-balance font-sans text-sm leading-snug font-semibold text-black/55 xl:text-base">
+			<p class="max-w-full font-sans text-sm leading-snug font-semibold text-balance text-black/55 xl:text-base">
 				15+ Years Experience • Dust-Free Process <br />
 				Fully Insured • Photo Estimates Available
 			</p>

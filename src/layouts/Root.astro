@@ -7,6 +7,7 @@ import { type Pos, isPos, swapPos } from '@/schemas';
 
 import { Frontmatter } from 'astro-frontmatter-cms';
 import Footer from '@/sections/Footer.astro';
+import FloatingContact from '@/components/FloatingContact.astro';
 import Header, { schema as headerSchemas } from '@/sections/Header.astro';
 
 import { queryBlocks, type SchemaMeta } from 'astro-frontmatter-cms';
@@ -76,6 +77,29 @@ if (cardshow.length > 0) {
 	// WARNING: Keep this server-side only. Do not move this into client code.
 	schemas.push(...(await seoCardshows(import.meta.env.YOUTUBE_API_KEY, cardshow)));
 }
+
+const homeContactScript = `
+const homeContactBar = document.querySelector('[data-home-mobile-contact]');
+const homeConsultation = document.getElementById('consultation');
+const homeFooter = document.querySelector('footer');
+if (homeContactBar && 'IntersectionObserver' in window) {
+	const visibility = { consultation: false, footer: false };
+	const updateBar = () => {
+		const hidden = visibility.consultation || visibility.footer;
+		homeContactBar.classList.toggle('is-hidden', hidden);
+		homeContactBar.inert = hidden;
+	};
+	const observer = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (entry.target === homeConsultation) visibility.consultation = entry.isIntersecting;
+			if (entry.target === homeFooter) visibility.footer = entry.isIntersecting;
+		}
+		updateBar();
+	}, { threshold: 0.15 });
+	if (homeConsultation) observer.observe(homeConsultation);
+	if (homeFooter) observer.observe(homeFooter);
+}
+`;
 ---
 
 <html lang="en">
@@ -183,5 +207,17 @@ if (cardshow.length > 0) {
 		/>
 
 		<Footer />
+		<FloatingContact />
+
+		{
+			pathname === '' && (
+				<div class="proto-mobile-contact" data-home-mobile-contact>
+					<a href="tel:+14164715999">Call</a>
+					<a href="#consultation">Request Quote</a>
+				</div>
+			)
+		}
+
+		{pathname === '' && <script is:inline set:html={homeContactScript} />}
 	</body>
 </html>

@@ -261,46 +261,80 @@ export const trustStrip = [
 	{ label: 'Occupied-Home Care', detail: 'Protection and daily cleanup' },
 ];
 
-export const featuredMedia = [
+export type FeaturedMediaVideo = {
+	id: string;
+	type: 'video';
+	source: string;
+	title: string;
+	videoSrc: string;
+	poster: {
+		src: ImageMetadata;
+		alt: string;
+	};
+	duration?: string;
+};
+
+export type FeaturedMediaArticle = {
+	id: string;
+	type: 'article';
+	source: string;
+	title: string;
+	image: {
+		src: ImageMetadata;
+		alt: string;
+	};
+	url: string;
+	cta: string;
+};
+
+export type FeaturedMediaItem = FeaturedMediaVideo | FeaturedMediaArticle;
+
+export const featuredMedia: FeaturedMediaItem[] = [
 	{
+		id: 'citytv-cityline',
 		source: 'CityTV',
 		title: 'Dust-free ceiling renovation featured on Cityline',
 		type: 'video',
-		video: '/videos/cityline-featuring-strataline-popcorn-removal.mp4',
-		image: {
+		videoSrc: '/videos/cityline-featuring-strataline-popcorn-removal.mp4',
+		poster: {
 			src: cityTvImage,
 			alt: 'Strataline CityTV feature for dust-free popcorn ceiling removal.',
 		},
 	},
 	{
+		id: 'hgtv-love-it-or-list-it',
 		source: 'HGTV',
 		title: 'Dust-free renovation process seen on Love It or List It',
 		type: 'video',
-		video: '/videos/love-it-or-list-it-featuring-strataline-dust-free-renovation.mp4',
-		image: {
+		videoSrc: '/videos/love-it-or-list-it-featuring-strataline-dust-free-renovation.mp4',
+		poster: {
 			src: hgtvImage,
 			alt: 'Strataline HGTV feature showing dust-free renovation work.',
 		},
 	},
 	{
+		id: 'toronto-star-popcorn-ceilings',
 		source: 'Toronto Star',
 		title: 'Popcorn ceiling removal expertise in major Canadian media',
-		type: 'image',
+		type: 'article',
 		image: {
 			src: torontoStarImage,
 			alt: 'Toronto Star article featuring Strataline popcorn ceiling removal expertise.',
 		},
-		link: 'https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html',
+		url: 'https://www.thestar.com/life/home-and-garden/popcorn-ceilings-get-a-new-smooth-surface/article_462130c5-9edc-588b-98b2-1498f6388c8c.html',
+		cta: 'Read the article',
 	},
 	{
+		id: 'house-and-home-chevron-floors',
 		source: 'House & Home',
 		title: 'Premium floor and finish work in design media',
-		type: 'image',
+		type: 'article',
 		image: {
 			src: houseHomeImage,
 			alt: 'House and Home feature with Strataline flooring and finishing work.',
 		},
-		link: 'https://houseandhome.com/decorating-and-design/luxe-for-less-design/',
+		url: 'https://houseandhome.com/decorating-and-design/luxe-for-less-design/',
+		cta: 'Read the article',
 	},
 ];
 

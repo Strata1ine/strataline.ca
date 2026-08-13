@@ -1,0 +1,261 @@
+---
+import { Icon } from 'astro-icon/components';
+import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import '@/styles/interior-renovations-prototype.css';
+---
+
+<div class="floating-contact" data-floating-contact>
+	<button
+		class="floating-contact__trigger"
+		type="button"
+		aria-label="Contact Strataline"
+		aria-haspopup="dialog"
+		aria-controls="floating-contact-dialog"
+		data-floating-contact-open
+	>
+		<Icon name="ph:chat-circle-dots" class="size-7" aria-hidden="true" is:inline />
+	</button>
+
+	<dialog
+		class="floating-contact__dialog"
+		id="floating-contact-dialog"
+		aria-labelledby="consultation-popup-title"
+		data-floating-contact-dialog
+	>
+		<div class="floating-contact__panel">
+			<button
+				class="floating-contact__close"
+				type="button"
+				aria-label="Close contact form"
+				data-floating-contact-close
+			>
+				<Icon name="ph:x" class="size-6" aria-hidden="true" is:inline />
+			</button>
+			<ConsultationCTA formId="consultation-popup" mode="popup" reveal={false} />
+		</div>
+	</dialog>
+</div>
+
+<script is:inline>
+	if (!window.trackContactEvent) {
+		window.trackContactEvent = (name, params = {}) => {
+			window.trackProtoEvent?.(name, params);
+			if (!window.trackProtoEvent && typeof window.gtag === 'function') {
+				window.gtag('event', name, params);
+			}
+			window.dispatchEvent(new CustomEvent('strataline:contact-event', { detail: { name, params } }));
+		};
+	}
+
+	document.querySelectorAll('[data-floating-contact]').forEach((root) => {
+		if (!(root instanceof HTMLElement) || root.dataset.initialized) return;
+		root.dataset.initialized = 'true';
+
+		const trigger = root.querySelector('[data-floating-contact-open]');
+		const dialog = root.querySelector('[data-floating-contact-dialog]');
+		const closeButton = root.querySelector('[data-floating-contact-close]');
+		if (!(trigger instanceof HTMLButtonElement) || !(dialog instanceof HTMLDialogElement)) return;
+		let scrollPosition = 0;
+
+		const closeDialog = () => dialog.close();
+		const openDialog = () => {
+			scrollPosition = window.scrollY;
+			window.trackContactEvent?.('contact_form_open_popup');
+			document.documentElement.classList.add('floating-contact-open');
+			dialog.showModal();
+			document.dispatchEvent(new CustomEvent('strataline:initialize-contact-forms'));
+			requestAnimationFrame(() => {
+				const firstField = dialog.querySelector('[data-form-step="1"] select, [data-form-step="1"] input');
+				if (firstField instanceof HTMLElement) firstField.focus();
+			});
+		};
+
+		trigger.addEventListener('click', openDialog);
+		document.addEventListener('strataline:open-contact', openDialog);
+		closeButton?.addEventListener('click', closeDialog);
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) closeDialog();
+		});
+		dialog.addEventListener('keydown', (event) => {
+			if (event.key !== 'Escape') return;
+			event.preventDefault();
+			closeDialog();
+		});
+		dialog.addEventListener('close', () => {
+			document.documentElement.classList.remove('floating-contact-open');
+			window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+			trigger.focus();
+		});
+
+		const inlineActions = [
+			...document.querySelectorAll(
+				'[data-contact-mode="inline"] [data-form-next], [data-contact-mode="inline"] [data-form-submit]',
+			),
+		];
+		if (inlineActions.length) {
+			const updateInlineActionOverlap = () => {
+				const bubbleRect = trigger.getBoundingClientRect();
+				const overlapsInlineAction = inlineActions.some((action) => {
+					const actionRect = action.getBoundingClientRect();
+					return (
+						actionRect.width > 0 &&
+						actionRect.height > 0 &&
+						bubbleRect.left < actionRect.right &&
+						bubbleRect.right > actionRect.left &&
+						bubbleRect.top < actionRect.bottom &&
+						bubbleRect.bottom > actionRect.top
+					);
+				});
+				root.classList.toggle('is-inline-visible', overlapsInlineAction);
+				trigger.inert = overlapsInlineAction;
+				trigger.hidden = overlapsInlineAction;
+			};
+			window.addEventListener('scroll', updateInlineActionOverlap, { passive: true });
+			window.addEventListener('resize', updateInlineActionOverlap);
+			requestAnimationFrame(updateInlineActionOverlap);
+		}
+	});
+</script>
+
+<style is:global>
+	.floating-contact {
+		position: fixed;
+		right: max(28px, env(safe-area-inset-right));
+		bottom: max(28px, env(safe-area-inset-bottom));
+		z-index: 50;
+	}
+
+	.floating-contact:has(dialog[open]) {
+		z-index: 100;
+	}
+
+	.floating-contact__trigger {
+		display: grid;
+		width: 64px;
+		height: 64px;
+		place-items: center;
+		border: 1px solid rgba(23, 23, 23, 0.7);
+		border-radius: 999px;
+		background: #fbfaf7;
+		color: #171717;
+		box-shadow: 0 10px 30px rgba(20, 20, 20, 0.16);
+		cursor: pointer;
+		transition:
+			transform 160ms ease,
+			box-shadow 160ms ease;
+	}
+
+	.floating-contact__trigger:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 14px 34px rgba(20, 20, 20, 0.2);
+	}
+
+	.floating-contact.is-inline-visible .floating-contact__trigger {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.floating-contact__trigger:focus-visible,
+	.floating-contact__close:focus-visible {
+		outline: 2px solid #986536;
+		outline-offset: 4px;
+	}
+
+	.floating-contact__dialog {
+		width: min(720px, calc(100% - 2rem));
+		max-width: none;
+		max-height: min(90svh, 920px);
+		margin: auto;
+		padding: 0;
+		border: 0;
+		border-radius: 22px;
+		background: transparent;
+		box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+		overflow: hidden;
+	}
+
+	.floating-contact__dialog::backdrop {
+		background: rgba(17, 20, 18, 0.58);
+		backdrop-filter: blur(5px);
+	}
+
+	.floating-contact__panel {
+		position: relative;
+		max-height: min(90svh, 920px);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+
+	.floating-contact__panel .proto-consultation {
+		width: 100%;
+		margin: 0;
+		border-radius: 22px;
+	}
+
+	.floating-contact__panel .proto-consultation__form {
+		min-height: 0;
+		padding: 2.25rem 2.5rem;
+	}
+
+	.floating-contact__close {
+		position: sticky;
+		top: 0.8rem;
+		z-index: 3;
+		display: grid;
+		width: 44px;
+		height: 44px;
+		margin: 0 0.8rem -44px auto;
+		place-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.24);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.1);
+		color: #fff;
+		backdrop-filter: blur(10px);
+		cursor: pointer;
+	}
+
+	html.floating-contact-open {
+		overflow: hidden;
+	}
+
+	@media (max-width: 767px) {
+		.floating-contact {
+			right: max(18px, env(safe-area-inset-right));
+			bottom: max(20px, env(safe-area-inset-bottom));
+		}
+
+		body:has(.proto-mobile-contact) .floating-contact {
+			bottom: calc(5rem + env(safe-area-inset-bottom));
+		}
+
+		.floating-contact__trigger {
+			width: 58px;
+			height: 58px;
+		}
+
+		.floating-contact__dialog {
+			width: calc(100% - 0.75rem);
+			max-height: calc(100svh - 0.75rem);
+			border-radius: 18px;
+		}
+
+		.floating-contact__panel {
+			max-height: calc(100svh - 0.75rem);
+		}
+
+		.floating-contact__panel .proto-consultation {
+			border-radius: 18px;
+		}
+
+		.floating-contact__panel .proto-consultation__form {
+			min-height: 0;
+			padding: 1.25rem 1rem calc(2rem + env(safe-area-inset-bottom));
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.floating-contact__trigger {
+			transition: none;
+		}
+	}
+</style>

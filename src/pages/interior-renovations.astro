@@ -2,7 +2,7 @@
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import PrototypeSubnav from '@/components/prototype/PrototypeSubnav.astro';
-import PrototypeFooter from '@/components/prototype/PrototypeFooter.astro';
+import Footer from '@/sections/Footer.astro';
 import EditorialHero from '@/components/prototype/EditorialHero.astro';
 import FeaturedMediaProof from '@/components/prototype/FeaturedMediaProof.astro';
 import RecentWorkGallery from '@/components/prototype/RecentWorkGallery.astro';
@@ -150,7 +150,7 @@ const schemas = [
 			<ConsultationCTA />
 		</main>
 
-		<PrototypeFooter />
+		<Footer />
 
 		<div class="proto-mobile-contact" data-mobile-contact>
 			<a href="tel:+14164715999" data-track-event="mobile_phone_click">Call</a>
@@ -167,7 +167,7 @@ const schemas = [
 		const hero = document.getElementById('overview');
 		const contactBar = document.querySelector('[data-mobile-contact]');
 		const consultation = document.getElementById('consultation');
-		const footer = document.querySelector('.proto-footer');
+		const footer = document.querySelector('.global-footer');
 		const sectionIds = subnavLinks
 			.map((link) => link.getAttribute('href')?.slice(1))
 			.filter(Boolean);

@@ -1,84 +1,252 @@
 ---
 import { Icon } from 'astro-icon/components';
-import * as Layout from '@/components/Layout';
-import Inputs from '@/components/Inputs';
-
-import { createSchema } from 'astro-frontmatter-cms';
-import { z } from 'astro:schema';
-export const schema = createSchema('Footer', (c: SchemaContext) => z.object({}));
-
 import socials from '#/socials.json';
 import business from '#/business.json';
-import type { SchemaContext } from 'astro:content';
+
+const year = new Date().getFullYear();
+const googleReviewUrl = 'https://g.page/r/CVMFoUd4wK3bEBE/review';
+const serviceLinks = [
+	{ label: 'Interior Renovations', href: '/interior-renovations' },
+	{ label: 'Popcorn Removal', href: '/services/popcorn-removal' },
+	{ label: 'Stairs and Railings', href: '/services/stairs' },
+	{ label: 'Painting', href: '/services/painting' },
+	{ label: 'Doors and Windows', href: '/services/doors_and_windows' },
+	{ label: 'Kitchens', href: '/services/kitchens' },
+	{ label: 'Bathrooms', href: '/services/bathrooms' },
+];
+const companyLinks = [
+	{ label: 'Projects', href: '/interior-renovations#recent-work' },
+	{ label: 'Process', href: '/interior-renovations#process' },
+	{ label: 'Reviews', href: '/reviews' },
+	{ label: 'Media', href: '/interior-renovations#media' },
+	{ label: 'About', href: '/#owner-led' },
+	{ label: 'Contact', href: '/#consultation' },
+];
+const areas = ['Toronto', 'Vaughan', 'Woodbridge', 'Richmond Hill', 'Markham', 'Mississauga', 'Oakville'];
 ---
 
-<Layout.Divider as="footer">
-	<Layout.Container
-		variant="inner"
-		class="border-primary relative z-2 border-t bg-linear-to-b from-transparent via-white/90 to-white py-12 backdrop-blur-xs"
-	>
-		<div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-			<ul class="flex gap-3">
-				{
-					socials.map((social) => (
-						<li class="contents">
-							<a
-								target="_blank"
-								href={social.url}
-								rel="noopener noreferrer"
-								aria-label={social.name}
-							>
-								<Icon
-									is:inline
-									aria-hidden={true}
-									style={`color: #${social.color}`}
-									name={social.icon}
-									class="size-15 md:size-19"
-								/>
-							</a>
-						</li>
-					))
-				}
-			</ul>
+<footer class="global-footer">
+	<div class="global-footer__container">
+		<div class="global-footer__grid">
+			<div class="global-footer__identity">
+				<strong>Strataline Inc.</strong>
+				<p>Dust-Free Renovation Experts</p>
+				<a class="global-footer__phone" href="tel:+14164715999">{business.telephone}</a>
+				<a href={`mailto:${business.email}`}>{business.email}</a>
+				<p>Serving Toronto, Vaughan and the GTA.</p>
+			</div>
 
-			<Inputs.Search
-				variant="xl"
-				items={business.areaServed}
-				placeholder="Find your municipality"
-				client:visible
-			/>
+			<nav aria-label="Footer services">
+				<h2>Services</h2>
+				{serviceLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+			</nav>
+
+			<nav aria-label="Footer company links">
+				<h2>Company</h2>
+				{companyLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+			</nav>
+
+			<div class="global-footer__areas">
+				<h2>Areas</h2>
+				{areas.map((area) => <span>{area}</span>)}
+			</div>
 		</div>
 
-		<div class="mt-9 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between">
-			<span class="desc-base"><b>© Strataline. 2025.</b> All rights reserved.</span>
-
-			<ul class="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-				<li>
-					<a class="desc-base text-cyan-800 hover:underline" data-astro-prefetch href="/privacy"
-						>Privacy policy</a
-					>
-				</li>
-				<li>
-					<a class="desc-base text-cyan-800 hover:underline" data-astro-prefetch href="/tos"
-						>Terms & Conditions</a
-					>
-				</li>
-				<li>
-					<a
-						class="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-black px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition duration-200 hover:-translate-y-0.5 hover:bg-cyan-900 hover:shadow-[0_14px_34px_rgba(0,0,0,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
-						data-astro-prefetch
-						href="/reviews"
-					>
-						<Icon
-							is:inline
-							aria-hidden={true}
-							name="ph:star-fill"
-							class="size-4 text-primary transition-transform duration-200 group-hover:rotate-12"
-						/>
-						<span>Leave a review</span>
-					</a>
-				</li>
+		<div class="global-footer__actions">
+			<ul aria-label="Strataline social profiles">
+				{socials.map((social) => (
+					<li>
+						<a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
+							<Icon name={social.icon} class="size-6" aria-hidden="true" is:inline />
+						</a>
+					</li>
+				))}
 			</ul>
+
+			<a class="global-footer__review" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
+				<Icon name="ph:star-fill" class="size-4" aria-hidden="true" is:inline />
+				Leave a review
+			</a>
 		</div>
-	</Layout.Container>
-</Layout.Divider>
+
+		<div class="global-footer__legal">
+			<p>© {year} Strataline. All rights reserved.</p>
+			<nav aria-label="Legal">
+				<a href="/privacy">Privacy</a>
+				<a href="/tos">Terms</a>
+				<a href="/sitemap-index.xml">Sitemap</a>
+			</nav>
+		</div>
+	</div>
+</footer>
+
+<style is:global>
+	.global-footer {
+		position: relative;
+		z-index: 2;
+		margin-top: 2.5rem;
+		padding: 3rem 0 calc(7rem + env(safe-area-inset-bottom));
+		border-top: 1px solid rgba(23, 23, 23, 0.14);
+		background: #f5f1ea;
+		color: #292724;
+	}
+
+	.global-footer__container {
+		width: min(75rem, calc(100% - 2rem));
+		margin-inline: auto;
+	}
+
+	@media (max-width: 767px) {
+		.global-footer__identity,
+		.global-footer__grid nav,
+		.global-footer__areas,
+		.global-footer__actions,
+		.global-footer__legal {
+			padding-right: 4.5rem;
+		}
+	}
+
+	.global-footer__grid {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.global-footer__identity,
+	.global-footer nav,
+	.global-footer__areas {
+		display: grid;
+		align-content: start;
+		justify-items: start;
+		gap: 0.55rem;
+	}
+
+	.global-footer__identity strong {
+		font-family: var(--font-source-serif-4), Georgia, serif;
+		font-size: 2.25rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.global-footer__identity .global-footer__phone {
+		margin-top: 0.2rem;
+		font-size: 1.2rem;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+
+	.global-footer h2 {
+		margin: 0 0 0.35rem;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.78rem;
+		font-weight: 750;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.global-footer p,
+	.global-footer a,
+	.global-footer span {
+		margin: 0;
+		font-family: var(--font-inter), Inter, system-ui, sans-serif;
+		font-size: 0.94rem;
+		line-height: 1.5;
+	}
+
+	.global-footer a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.global-footer a:hover,
+	.global-footer a:focus-visible {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.global-footer__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-top: 2.25rem;
+	}
+
+	.global-footer__actions ul {
+		display: flex;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.global-footer__actions li {
+		display: contents;
+	}
+
+	.global-footer__actions ul a {
+		display: grid;
+		width: 44px;
+		height: 44px;
+		place-items: center;
+		border: 1px solid rgba(23, 23, 23, 0.18);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.62);
+	}
+
+	.global-footer__review {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		min-height: 44px;
+		padding: 0.65rem 1.1rem;
+		border-radius: 999px;
+		background: #171717;
+		color: #fff !important;
+		font-weight: 700;
+		box-shadow: 0 10px 26px rgba(23, 23, 23, 0.14);
+	}
+
+	.global-footer__legal {
+		display: grid;
+		gap: 0.85rem;
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.16);
+	}
+
+	.global-footer__legal nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.global-footer {
+			margin-top: 4rem;
+			padding: 4.5rem 0 2rem;
+		}
+
+		.global-footer__grid {
+			grid-template-columns: minmax(15rem, 1.3fr) repeat(3, minmax(10rem, 1fr));
+			gap: clamp(2rem, 4vw, 4.5rem);
+		}
+
+		.global-footer__legal {
+			grid-template-columns: 1fr auto;
+			align-items: center;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 1439px) {
+		.global-footer__container {
+			width: calc(100% - 7rem);
+			margin-left: 2rem;
+		}
+
+		.global-footer__actions,
+		.global-footer__legal {
+			padding-right: 5.25rem;
+		}
+	}
+</style>

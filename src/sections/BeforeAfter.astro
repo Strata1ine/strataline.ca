@@ -41,9 +41,12 @@ type Props = {
 };
 
 const { title, intro, content = [] } = Astro.props as Props;
+const isHomepage = Astro.url.pathname === '/';
 ---
 
-<section class="before-after-section">
+<section
+	class:list={{ 'before-after-section': true, 'before-after-section--homepage': isHomepage }}
+>
 	<div class="before-after-wrap">
 		{
 			title && (
@@ -211,6 +214,16 @@ const { title, intro, content = [] } = Astro.props as Props;
 <style is:global>
 	.before-after-section {
 		padding: 3.25rem 0;
+	}
+
+	.before-after-section--homepage {
+		padding: 2.5rem 0 0;
+	}
+
+	@media (min-width: 768px) {
+		.before-after-section--homepage {
+			padding-top: 4rem;
+		}
 	}
 
 	.before-after-wrap {

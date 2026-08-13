@@ -2,97 +2,156 @@
 import { Image } from 'astro:assets';
 import { featuredMedia } from '@/data/interiorRenovationsPrototype';
 import asSeenOnTvBadge from '../../../content/awards/as-seen-on-tv-badge.webp';
+import HomepageMediaWatch from './HomepageMediaWatch.astro';
+import MediaFeatureCard from './MediaFeatureCard.astro';
+
+interface Props {
+	id?: string;
+	variant?: 'default' | 'homepage';
+}
+
+const { id = 'media', variant = 'default' } = Astro.props;
+const isHomepage = variant === 'homepage';
 ---
 
-<section class="proto-media-proof section-anchor" id="media">
+<section
+	class:list={['proto-media-proof section-anchor', isHomepage && 'proto-media-proof--homepage']}
+	{id}
+>
 	<div class="proto-media-proof__heading-wrap">
-		<div class="proto-as-seen-badge reveal">
+		<div class:list={['proto-as-seen-badge', !isHomepage && 'reveal']} aria-hidden="true">
 			<Image
 				src={asSeenOnTvBadge}
-				alt="As Seen on TV"
+				alt=""
 				widths={[96, 128, 160, 192, 256, 320]}
 				sizes="(max-width: 640px) 24vw, 9vw"
 				loading="lazy"
 			/>
 		</div>
-		<div class="proto-section-head reveal">
+		<div class:list={['proto-section-head', !isHomepage && 'reveal']}>
+			{isHomepage && <p class="proto-media-proof__eyebrow">Media</p>}
 			<h2>Featured by leading Canadian media</h2>
 			<p>
-				CityTV, HGTV, The Toronto Star and House & Home have featured Strataline's renovation work,
+				CityTV, HGTV, The Toronto Star and House & Home have featured Strataline’s renovation work,
 				dust-controlled process and finishing expertise.
 			</p>
 		</div>
 	</div>
 
-	<div class="proto-media-proof__grid">
-		{
-			featuredMedia.map((item) =>
-				item.type === 'video' ? (
-					<article class="proto-media-card proto-media-card--video reveal" data-proto-video-card>
-						<div class="proto-media-card__frame">
-							<video muted playsinline preload="metadata" poster={item.image.src.src}>
-								<source src={item.video} type="video/mp4" />
-							</video>
-							<button
-								class="proto-video-button"
-								type="button"
-								data-video-toggle
-								aria-pressed="false"
-								aria-label={`Play ${item.source} feature video`}
-							>
-								<span data-video-label>Play</span>
-							</button>
-						</div>
-						<div class="proto-media-card__copy">
-							<p>{item.source}</p>
-							<h3>{item.title}</h3>
-						</div>
-					</article>
-				) : item.link ? (
-					<a
-						class="proto-media-card reveal"
-						href={item.link}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<div class="proto-media-card__frame">
-							<Image
-								src={item.image.src}
-								alt={item.image.alt}
-								widths={[480, 720, 960]}
-								sizes="(max-width: 900px) 100vw, 25vw"
-								loading="lazy"
-							/>
-						</div>
-						<div class="proto-media-card__copy">
-							<p>{item.source}</p>
-							<h3>{item.title}</h3>
-							<span class="proto-media-card__link">
-								Read the article <span aria-hidden="true">&#8599;</span>
-							</span>
-						</div>
-					</a>
-				) : (
-					<article class="proto-media-card reveal">
-						<div class="proto-media-card__frame">
-							<Image
-								src={item.image.src}
-								alt={item.image.alt}
-								widths={[480, 720, 960]}
-								sizes="(max-width: 900px) 100vw, 25vw"
-								loading="lazy"
-							/>
-						</div>
-						<div class="proto-media-card__copy">
-							<p>{item.source}</p>
-							<h3>{item.title}</h3>
-						</div>
-					</article>
-				),
-			)
-		}
-	</div>
+	{
+		isHomepage ? (
+			<HomepageMediaWatch />
+		) : (
+			<div class="proto-media-proof__grid">
+				{featuredMedia.map((item) => (
+					<MediaFeatureCard item={item} />
+				))}
+			</div>
+		)
+	}
 </section>
+
+<style>
+	.proto-media-proof--homepage {
+		margin-top: 3rem;
+		padding: clamp(3rem, 4vw, 4rem) clamp(1rem, 4vw, 4rem);
+		background:
+			linear-gradient(135deg, rgba(255, 252, 247, 0.96), rgba(244, 237, 227, 0.9)),
+			radial-gradient(circle at 10% 0%, rgba(177, 117, 54, 0.11), transparent 42%);
+		color: #241c17;
+	}
+
+	.proto-media-proof--homepage .proto-media-proof__heading-wrap {
+		width: min(84rem, 100%);
+	}
+
+	.proto-media-proof--homepage .proto-media-proof__heading-wrap {
+		display: grid;
+		grid-template-columns: clamp(7.5rem, 10vw, 9.5rem) minmax(0, 1fr);
+		align-items: center;
+		gap: clamp(1.5rem, 4vw, 3.5rem);
+		margin-bottom: clamp(2rem, 3vw, 3rem);
+	}
+
+	.proto-media-proof--homepage .proto-as-seen-badge {
+		position: static;
+		width: clamp(7.5rem, 10vw, 9.5rem);
+		transform: rotate(7deg);
+		filter: drop-shadow(0 12px 18px rgba(81, 48, 22, 0.22));
+	}
+
+	.proto-media-proof--homepage .proto-section-head {
+		width: min(58rem, 100%);
+		margin: 0;
+		padding: 0;
+	}
+
+	.proto-media-proof--homepage .proto-media-proof__eyebrow {
+		margin: 0 0 0.7rem;
+		color: #9a5a27;
+		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+	}
+
+	.proto-media-proof--homepage .proto-section-head h2 {
+		font-size: clamp(2.35rem, 4.2vw, 4.35rem);
+		line-height: 0.98;
+	}
+
+	.proto-media-proof--homepage .proto-section-head h2 + p {
+		max-width: 55rem;
+		margin-top: 1.1rem;
+		font-size: clamp(1rem, 1.4vw, 1.18rem);
+		line-height: 1.65;
+	}
+
+	@media (max-width: 900px) {
+		.proto-media-proof--homepage {
+			padding-inline: clamp(1rem, 4vw, 2rem);
+			overflow: hidden;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.proto-media-proof--homepage {
+			margin-top: 2.5rem;
+			padding-block: 2.5rem;
+		}
+
+		.proto-media-proof--homepage .proto-media-proof__heading-wrap {
+			display: block;
+			padding-top: 0;
+			margin-bottom: 1.75rem;
+		}
+
+		.proto-media-proof--homepage .proto-as-seen-badge {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 5.75rem;
+		}
+
+		.proto-media-proof--homepage .proto-section-head {
+			padding-right: 0;
+		}
+
+		.proto-media-proof--homepage .proto-section-head h2 {
+			max-width: none;
+			padding-right: 5.9rem;
+			font-size: clamp(1.95rem, 8vw, 2.25rem);
+		}
+
+		.proto-media-proof--homepage .proto-section-head h2 + p {
+			margin-top: 1rem;
+			padding-right: 0;
+			font-size: 0.96rem;
+			line-height: 1.55;
+		}
+	}
+</style>
 
 <script is:inline>
 	const mediaCards = [...document.querySelectorAll('[data-proto-video-card]')];
@@ -117,10 +176,10 @@ import asSeenOnTvBadge from '../../../content/awards/as-seen-on-tv-badge.webp';
 			card.classList.toggle('has-native-controls', hasNativeControls);
 			button.setAttribute(
 				'aria-label',
-				`${playing ? 'Playing' : 'Play'} ${card.querySelector('h3')?.textContent ?? 'feature video'}`,
+				`${playing ? 'Playing' : 'Watch'} ${card.querySelector('h3')?.textContent ?? 'feature video'}`,
 			);
 			button.setAttribute('aria-pressed', String(playing));
-			if (label) label.textContent = 'Play';
+			if (label) label.textContent = 'Watch feature';
 		};
 
 		button.addEventListener('click', async () => {

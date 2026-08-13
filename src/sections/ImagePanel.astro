@@ -20,6 +20,7 @@ export const schema = createSchema('ImagePanel', (c: SchemaContext) =>
 
 export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
+const isHomepageMedia = Astro.url.pathname === '/' && meta.id === 'media';
 
 import Image from '@/components/Image';
 import * as Layout from '@/components/Layout';
@@ -33,15 +34,33 @@ import * as Layout from '@/components/Layout';
 			meta.content.map((panel, _) => {
 				return (
 					<div class="flex flex-col items-center gap-4 sm:max-w-1/2 sm:flex-[40%] xl:max-w-1/3 xl:flex-[30%]">
-						<div class="h-70 rounded-sm contain-paint md:h-95">
+						<div
+							class:list={[
+								'rounded-sm contain-paint',
+								isHomepageMedia ? 'h-44 min-[390px]:h-48 sm:h-60 md:h-72' : 'h-70 md:h-95',
+							]}
+						>
 							<Image
-								class={panel.image.size === 'feature' ? '!object-contain bg-primary-light' : 'aspect-video'}
+								class={
+									panel.image.size === 'feature'
+										? 'bg-primary-light !object-contain'
+										: 'aspect-video'
+								}
 								image={panel.image}
 								widths={[300, 462, 924]}
 							/>
 						</div>
 
-						<h3 class="font-serif text-3xl xl:text-4xl">{panel.title}</h3>
+						<h3
+							class:list={[
+								'font-serif xl:text-4xl',
+								isHomepageMedia
+									? 'max-w-2xl text-center text-xl leading-tight sm:text-2xl md:text-3xl'
+									: 'text-3xl',
+							]}
+						>
+							{panel.title}
+						</h3>
 					</div>
 				);
 			})

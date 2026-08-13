@@ -2,6 +2,7 @@
 import { Font } from 'astro:assets';
 import business from '#/business.json';
 import '@/styles/interior-renovations-prototype.css';
+import FloatingContact from '@/components/FloatingContact.astro';
 
 interface Props {
 	title: string;
@@ -127,5 +128,6 @@ window.trackProtoEvent = (name, params = {}) => {
 	</head>
 	<body class="prototype-body">
 		<slot />
+		<FloatingContact />
 	</body>
 </html>

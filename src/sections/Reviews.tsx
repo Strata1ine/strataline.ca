@@ -11,8 +11,11 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 	const isMobile = createMediaQuery('(max-width: 650px)');
 	const power = createMemo(() => (isMobile() ? 0 : 1));
 	const reviewTrimLength = createMemo(() => {
-		const lengths = props.meta.map((review) => plainReviewText(review.desc).length).sort((a, b) => b - a);
-		return lengths[1] ?? lengths[0] ?? 0;
+		const lengths = props.meta
+			.map((review) => plainReviewText(review.desc).length)
+			.sort((a, b) => b - a);
+		const representativeLength = lengths[1] ?? lengths[0] ?? 0;
+		return isMobile() ? Math.min(representativeLength, 220) : representativeLength;
 	});
 
 	const [idx, _setIdx] = createSignal(0);
@@ -142,7 +145,7 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 						<div class="flex items-center gap-2">
 							<button
 								aria-label="Previous reviews"
-								class="border-primary-dark bg-primary hover:bg-primary-dark disabled:opacity-35 flex size-11 items-center justify-center rounded-full border transition disabled:cursor-default"
+								class="border-primary-dark bg-primary hover:bg-primary-dark flex size-11 items-center justify-center rounded-full border transition disabled:cursor-default disabled:opacity-35"
 								disabled={!canGoPrev()}
 								onPointerDown={(e) => e.stopPropagation()}
 								onClick={() => setIdx(idx() - 1)}
@@ -168,7 +171,9 @@ export default function Reviews(props: { meta: ReviewsProps['content'] }) {
 						translate: `${(-pos() * 100) / (power() + 1)}% 0 0`,
 					}}
 				>
-					<For each={props.meta}>{(review) => <Review {...review} trimLength={reviewTrimLength()} />}</For>
+					<For each={props.meta}>
+						{(review) => <Review {...review} trimLength={reviewTrimLength()} />}
+					</For>
 				</div>
 
 				<Show when={canGoNext()}>
@@ -240,7 +245,9 @@ type ReviewProps = ReviewsProps['content'][number] & {
 const Review = (review: ReviewProps) => {
 	const [expanded, setExpanded] = createSignal(false);
 	const plainDesc = createMemo(() => plainReviewText(review.desc));
-	const shouldTrim = createMemo(() => review.trimLength > 0 && plainDesc().length > review.trimLength);
+	const shouldTrim = createMemo(
+		() => review.trimLength > 0 && plainDesc().length > review.trimLength,
+	);
 	const collapsedDesc = createMemo(() => truncateReviewText(plainDesc(), review.trimLength));
 
 	return (
