@@ -4,9 +4,10 @@ import type { BeforeAfterComparison } from '@/data/interiorRenovationsPrototype'
 
 interface Props {
 	comparison: BeforeAfterComparison;
+	eventName?: string;
 }
 
-const { comparison } = Astro.props;
+const { comparison, eventName = 'before_after_interaction' } = Astro.props;
 ---
 
 <section
@@ -22,6 +23,7 @@ const { comparison } = Astro.props;
 	<div
 		class="proto-before-after__frame reveal"
 		data-before-after
+		data-event-name={eventName}
 		style={`--before-position: 50%; --before-object-position: ${comparison.objectPositionBefore}; --after-object-position: ${comparison.objectPositionAfter};`}
 	>
 		<figure class="proto-before-after__image proto-before-after__image--after">
@@ -71,6 +73,12 @@ const { comparison } = Astro.props;
 		if (!(range instanceof HTMLInputElement)) return;
 		frame.dataset.beforeAfterReady = 'true';
 		let activePointer: number | null = null;
+		const trackInteraction = () => {
+			const tracker = Reflect.get(window, 'trackProtoEvent');
+			if (typeof tracker === 'function') {
+				tracker(frame.dataset.eventName ?? 'before_after_interaction');
+			}
+		};
 
 		const update = () => {
 			const value = `${range.value}%`;
@@ -85,6 +93,7 @@ const { comparison } = Astro.props;
 		};
 
 		frame.addEventListener('pointerdown', (event) => {
+			trackInteraction();
 			activePointer = event.pointerId;
 			frame.setPointerCapture?.(event.pointerId);
 			updateFromPointer(event.clientX);
@@ -102,11 +111,12 @@ const { comparison } = Astro.props;
 
 		range.addEventListener('input', () => {
 			update();
-			window.trackProtoEvent?.('before_after_interaction');
+			trackInteraction();
 		});
 		range.addEventListener('keydown', (event) => {
 			if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
 			event.preventDefault();
+			trackInteraction();
 			if (event.key === 'Home') range.value = range.min;
 			if (event.key === 'End') range.value = range.max;
 			if (event.key === 'ArrowLeft') range.value = String(Math.max(0, Number(range.value) - 2));

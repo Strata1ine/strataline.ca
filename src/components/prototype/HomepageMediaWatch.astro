@@ -3,19 +3,34 @@ import { Image } from 'astro:assets';
 import {
 	featuredMedia,
 	type FeaturedMediaArticle,
+	type FeaturedMediaItem,
 	type FeaturedMediaVideo,
 } from '@/data/interiorRenovationsPrototype';
 
-const videos = featuredMedia.filter(
-	(item): item is FeaturedMediaVideo => item.type === 'video',
-);
-const articles = featuredMedia.filter(
-	(item): item is FeaturedMediaArticle => item.type === 'article',
-);
+interface Props {
+	items?: FeaturedMediaItem[];
+	selectEventName?: string;
+	playEventName?: string;
+}
+
+const {
+	items = featuredMedia,
+	selectEventName = 'media_video_select',
+	playEventName = 'media_video_play',
+} = Astro.props;
+const videos = items.filter((item): item is FeaturedMediaVideo => item.type === 'video');
+const articles = items.filter((item): item is FeaturedMediaArticle => item.type === 'article');
 const activeVideo = videos[0];
+if (!activeVideo) throw new Error('HomepageMediaWatch requires at least one video item.');
 ---
 
-<div class="media-watch" data-media-watch data-active-id={activeVideo.id}>
+<div
+	class="media-watch"
+	data-media-watch
+	data-active-id={activeVideo.id}
+	data-select-event-name={selectEventName}
+	data-play-event-name={playEventName}
+>
 	<article class="media-watch__active">
 		<div class="media-watch__player">
 			<video
@@ -35,11 +50,15 @@ const activeVideo = videos[0];
 	</article>
 
 	<aside class="media-watch__rail">
-		<section class="media-watch__videos" aria-labelledby="media-video-queue-heading">
+		<section
+			class="media-watch__videos"
+			aria-labelledby="media-video-queue-heading"
+			hidden={videos.length < 2}
+		>
 			<h3 id="media-video-queue-heading">More videos</h3>
 			<div class="media-watch__video-list" data-video-queue>
 				{
-					videos.map((video, index) => (
+					videos.slice(1).map((video) => (
 						<button
 							class="media-watch__video-option"
 							type="button"
@@ -49,7 +68,6 @@ const activeVideo = videos[0];
 							data-video-title={video.title}
 							data-video-src={video.videoSrc}
 							data-video-poster={video.poster.src.src}
-							hidden={index === 0}
 							aria-label={`Watch ${video.title}`}
 						>
 							<span class="media-watch__video-thumb">
@@ -224,10 +242,6 @@ const activeVideo = videos[0];
 		cursor: pointer;
 	}
 
-	.media-watch__video-option[hidden] {
-		display: none;
-	}
-
 	.media-watch__video-option:hover,
 	.media-watch__press-card:hover {
 		border-color: rgba(154, 90, 39, 0.38);
@@ -368,28 +382,54 @@ const activeVideo = videos[0];
 			const id = option.dataset.videoId;
 			const videoSrc = option.dataset.videoSrc;
 			if (!id || !videoSrc || id === watch.dataset.activeId) return;
-			const previousActiveId = watch.dataset.activeId;
+			const previous = {
+				id: watch.dataset.activeId ?? '',
+				source: sourceName?.textContent ?? '',
+				title: title?.textContent ?? '',
+				videoSrc: source.src,
+				poster: player.poster,
+			};
+			const next = {
+				id,
+				source: option.dataset.videoSource ?? '',
+				title: option.dataset.videoTitle ?? '',
+				videoSrc,
+				poster: option.dataset.videoPoster ?? '',
+			};
 
 			player.pause();
 			player.currentTime = 0;
-			source.src = videoSrc;
-			player.poster = option.dataset.videoPoster ?? '';
+			source.src = next.videoSrc;
+			player.poster = next.poster;
 			player.load();
 
-			if (sourceName) sourceName.textContent = option.dataset.videoSource ?? '';
-			if (title) title.textContent = option.dataset.videoTitle ?? '';
-			watch.dataset.activeId = id;
-			options.forEach((candidate) => {
-				candidate.hidden = candidate.dataset.videoId === id;
-			});
+			if (sourceName) sourceName.textContent = next.source;
+			if (title) title.textContent = next.title;
+			watch.dataset.activeId = next.id;
+
+			option.dataset.videoId = previous.id;
+			option.dataset.videoSource = previous.source;
+			option.dataset.videoTitle = previous.title;
+			option.dataset.videoSrc = previous.videoSrc;
+			option.dataset.videoPoster = previous.poster;
+			option.setAttribute('aria-label', `Watch ${previous.title}`);
+			const optionSource = option.querySelector('.media-watch__source');
+			const optionTitle = option.querySelector('.media-watch__video-copy strong');
+			const optionImage = option.querySelector('img');
+			if (optionSource) optionSource.textContent = previous.source;
+			if (optionTitle) optionTitle.textContent = previous.title;
+			if (optionImage instanceof HTMLImageElement) {
+				optionImage.src = previous.poster;
+				optionImage.removeAttribute('srcset');
+			}
 			if (restoreQueueFocus) {
-				const previousOption = options.find(
-					(candidate) => candidate.dataset.videoId === previousActiveId,
-				);
-				previousOption?.focus();
+				option.focus();
 			}
 
-			window.trackProtoEvent?.('media_video_select');
+			Reflect.get(
+				window,
+				'trackProtoEvent',
+			)?.(watch.dataset.selectEventName ?? 'media_video_select');
 			try {
 				await player.play();
 			} catch {
@@ -406,7 +446,9 @@ const activeVideo = videos[0];
 			});
 		});
 
-		player.addEventListener('play', () => window.trackProtoEvent?.('media_video_play'));
+		player.addEventListener('play', () =>
+			Reflect.get(window, 'trackProtoEvent')?.(watch.dataset.playEventName ?? 'media_video_play'),
+		);
 
 		if ('IntersectionObserver' in window) {
 			const observer = new IntersectionObserver(

@@ -1,27 +1,45 @@
 ---
 import { Image } from 'astro:assets';
 import { recentWork } from '@/data/interiorRenovationsPrototype';
+
+type WorkItem = (typeof recentWork)[number];
+
+interface Props {
+	items?: WorkItem[];
+	id?: string;
+	eyebrow?: string;
+	title?: string;
+	description?: string;
+	eventName?: string;
+	serviceClickEventName?: string;
+}
+
+const {
+	items = recentWork,
+	id = 'recent-work',
+	eyebrow = 'Recent work',
+	title = 'Finished interiors, built as one complete space',
+	description = 'Real Strataline projects across kitchens, bathrooms, living areas, ceilings, flooring and staircases.',
+	eventName = 'project_open',
+	serviceClickEventName,
+} = Astro.props;
 ---
 
-<section class="proto-recent-work section-anchor" id="recent-work">
+<section
+	class="proto-recent-work section-anchor"
+	id={id}
+	data-work-section
+	data-project-event-name={eventName}
+	data-service-click-event-name={serviceClickEventName}
+>
 	<div class="proto-section-head reveal">
-		<p class="proto-eyebrow">Recent work</p>
-		<h2>
-			<span class="proto-desktop-only">Finished interiors, built as one complete space</span>
-			<span class="proto-mobile-only">Real projects. Real finishes.</span>
-		</h2>
-		<p class="proto-desktop-only">
-			Real Strataline projects across kitchens, bathrooms, living areas, ceilings, flooring and
-			staircases.
-		</p>
-		<p class="proto-mobile-only">
-			Kitchens, bathrooms, ceilings, flooring, stairs and complete interior renovations across the
-			GTA.
-		</p>
+		<p class="proto-eyebrow">{eyebrow}</p>
+		<h2>{title}</h2>
+		<p>{description}</p>
 	</div>
 	<div class="proto-work-gallery" data-work-gallery>
 		{
-			recentWork.map((item, index) => (
+			items.map((item, index) => (
 				<article
 					class:list={[
 						'proto-work-gallery__item reveal',
@@ -78,7 +96,11 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 			<span class="sr-only">Previous image</span>
 		</button>
 		<figure class="proto-lightbox__figure">
-			<img src="" alt="" data-lightbox-image />
+			<img
+				src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+				alt=""
+				data-lightbox-image
+			/>
 			<figcaption>
 				<strong data-lightbox-caption></strong>
 				<span data-lightbox-meta></span>
@@ -93,8 +115,9 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 </section>
 
 <script is:inline>
-	const galleryButtons = [...document.querySelectorAll('[data-lightbox-open]')];
-	const lightbox = document.querySelector('[data-lightbox]');
+	const workSection = document.querySelector('[data-work-section]');
+	const galleryButtons = [...(workSection?.querySelectorAll('[data-lightbox-open]') ?? [])];
+	const lightbox = workSection?.querySelector('[data-lightbox]');
 	const lightboxImage = document.querySelector('[data-lightbox-image]');
 	const lightboxCaption = document.querySelector('[data-lightbox-caption]');
 	const lightboxMeta = document.querySelector('[data-lightbox-meta]');
@@ -132,7 +155,10 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 		showImage(index);
 		lightbox.hidden = false;
 		document.documentElement.classList.add('proto-no-scroll');
-		window.trackProtoEvent?.('project_open');
+		Reflect.get(
+			window,
+			'trackProtoEvent',
+		)?.(workSection?.dataset.projectEventName ?? 'project_open');
 		closeButton?.focus();
 	};
 
@@ -150,6 +176,12 @@ import { recentWork } from '@/data/interiorRenovationsPrototype';
 
 	galleryButtons.forEach((button, index) => {
 		button.addEventListener('click', () => openLightbox(index));
+	});
+	workSection?.querySelectorAll('.proto-work-gallery__service').forEach((link) => {
+		link.addEventListener('click', () => {
+			const eventName = workSection.dataset.serviceClickEventName;
+			if (eventName) Reflect.get(window, 'trackProtoEvent')?.(eventName);
+		});
 	});
 
 	closeButton?.addEventListener('click', closeLightbox);

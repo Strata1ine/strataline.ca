@@ -4,8 +4,22 @@ interface Props {
 	reveal?: boolean;
 	formId?: string;
 	mode?: 'inline' | 'popup';
+	defaultProjectType?: string;
+	projectHelperText?: string;
+	eventPrefix?: string;
+	startEventName?: string;
+	submitEventName?: string;
 }
-const { reveal = true, formId = 'consultation', mode = 'inline' } = Astro.props;
+const {
+	reveal = true,
+	formId = 'consultation',
+	mode = 'inline',
+	defaultProjectType,
+	projectHelperText,
+	eventPrefix,
+	startEventName,
+	submitEventName,
+} = Astro.props;
 const titleId = `${formId}-title`;
 const budgetChoices = [
 	'Under $15,000',
@@ -25,6 +39,9 @@ const budgetChoices = [
 		method="post"
 		data-progressive-form
 		data-contact-mode={mode}
+		data-event-prefix={eventPrefix}
+		data-start-event-name={startEventName}
+		data-submit-event-name={submitEventName}
 		aria-labelledby={titleId}
 	>
 		<input type="hidden" name="_redirect" value="https://strataline.ca/submissions/talk" />
@@ -55,6 +72,9 @@ const budgetChoices = [
 						<span>Project type</span>
 						<select name="Project Type" required>
 							<option value="">Select one</option>
+							<option selected={defaultProjectType === 'Popcorn ceiling removal'}
+								>Popcorn ceiling removal</option
+							>
 							<option>Complete interior renovation</option>
 							<option>Stairs and railings</option>
 							<option>Ceilings and walls</option>
@@ -62,6 +82,13 @@ const budgetChoices = [
 							<option>Doors, windows or finishing details</option>
 							<option>Not sure yet</option>
 						</select>
+						{
+							projectHelperText && (
+								<small class="proto-form-field-helper">
+									{projectHelperText} <a href="tel:+14164715999">(416) 471-5999</a>.
+								</small>
+							)
+						}
 					</label>
 					<label>
 						<span>Property city</span>
@@ -173,141 +200,153 @@ const budgetChoices = [
 
 <script is:inline>
 	{
-	const initializeProgressiveForm = (progressiveForm) => {
-		if (!(progressiveForm instanceof HTMLFormElement) || progressiveForm.dataset.initialized)
-			return;
-		progressiveForm.dataset.initialized = 'true';
-		progressiveForm.classList.add('is-enhanced');
-		const contactMode = progressiveForm.dataset.contactMode === 'popup' ? 'popup' : 'inline';
-		const steps = [...progressiveForm.querySelectorAll('[data-form-step]')];
-		const nextButton = progressiveForm.querySelector('[data-form-next]');
-		const backButton = progressiveForm.querySelector('[data-form-back]');
-		const status = progressiveForm.querySelector('[data-form-status]');
-		const submitButton = progressiveForm.querySelector('[data-form-submit]');
-		const formFlow = progressiveForm.querySelector('[data-form-flow]');
-		const formIntro = progressiveForm.querySelector('[data-form-intro]');
-		const successState = progressiveForm.querySelector('[data-form-success]');
-		let hasStarted = false;
-		let currentStep = 1;
-		const markStarted = () => {
-			if (hasStarted) return;
-			window.trackContactEvent?.(`contact_form_start_${contactMode}`);
-			hasStarted = true;
-		};
-
-		const setStatus = (message) => {
-			if (status) status.textContent = message;
-		};
-
-		const setStep = (step) => {
-			currentStep = step;
-			if (formIntro instanceof HTMLElement) formIntro.hidden = step !== 1;
-			steps.forEach((element) => {
-				const active = element.getAttribute('data-form-step') === String(step);
-				element.hidden = !active;
-			});
-			setStatus('');
-		};
-
-		const focusStep = (step) => {
-			const heading = progressiveForm.querySelector(
-				`[data-form-step="${step}"] [data-form-heading]`,
-			);
-			if (heading instanceof HTMLElement) heading.focus();
-		};
-
-		const validateStep = (step) => {
-			const fields = steps[step - 1]?.querySelectorAll('input, select, textarea') ?? [];
-			return [...fields].every((field) => {
-				if (
-					!(
-						field instanceof HTMLInputElement ||
-						field instanceof HTMLSelectElement ||
-						field instanceof HTMLTextAreaElement
-					)
-				) {
-					return true;
+		const initializeProgressiveForm = (progressiveForm) => {
+			if (!(progressiveForm instanceof HTMLFormElement) || progressiveForm.dataset.initialized)
+				return;
+			progressiveForm.dataset.initialized = 'true';
+			progressiveForm.classList.add('is-enhanced');
+			const contactMode = progressiveForm.dataset.contactMode === 'popup' ? 'popup' : 'inline';
+			const eventPrefix = progressiveForm.dataset.eventPrefix;
+			const eventName = (action) => {
+				if (action === 'start' && progressiveForm.dataset.startEventName) {
+					return progressiveForm.dataset.startEventName;
 				}
-				return field.reportValidity();
+				if (action === 'submit' && progressiveForm.dataset.submitEventName) {
+					return progressiveForm.dataset.submitEventName;
+				}
+				return eventPrefix
+					? `${eventPrefix}_form_${action}_${contactMode}`
+					: `contact_form_${action}_${contactMode}`;
+			};
+			const steps = [...progressiveForm.querySelectorAll('[data-form-step]')];
+			const nextButton = progressiveForm.querySelector('[data-form-next]');
+			const backButton = progressiveForm.querySelector('[data-form-back]');
+			const status = progressiveForm.querySelector('[data-form-status]');
+			const submitButton = progressiveForm.querySelector('[data-form-submit]');
+			const formFlow = progressiveForm.querySelector('[data-form-flow]');
+			const formIntro = progressiveForm.querySelector('[data-form-intro]');
+			const successState = progressiveForm.querySelector('[data-form-success]');
+			let hasStarted = false;
+			let currentStep = 1;
+			const markStarted = () => {
+				if (hasStarted) return;
+				window.trackContactEvent?.(eventName('start'));
+				hasStarted = true;
+			};
+
+			const setStatus = (message) => {
+				if (status) status.textContent = message;
+			};
+
+			const setStep = (step) => {
+				currentStep = step;
+				if (formIntro instanceof HTMLElement) formIntro.hidden = step !== 1;
+				steps.forEach((element) => {
+					const active = element.getAttribute('data-form-step') === String(step);
+					element.hidden = !active;
+				});
+				setStatus('');
+			};
+
+			const focusStep = (step) => {
+				const heading = progressiveForm.querySelector(
+					`[data-form-step="${step}"] [data-form-heading]`,
+				);
+				if (heading instanceof HTMLElement) heading.focus();
+			};
+
+			const validateStep = (step) => {
+				const fields = steps[step - 1]?.querySelectorAll('input, select, textarea') ?? [];
+				return [...fields].every((field) => {
+					if (
+						!(
+							field instanceof HTMLInputElement ||
+							field instanceof HTMLSelectElement ||
+							field instanceof HTMLTextAreaElement
+						)
+					) {
+						return true;
+					}
+					return field.reportValidity();
+				});
+			};
+
+			nextButton?.addEventListener('click', () => {
+				markStarted();
+				if (!validateStep(1)) {
+					setStatus('Please complete Step 1 before continuing.');
+					return;
+				}
+				window.trackContactEvent?.(eventName('step_complete'), { step: 1 });
+				setStep(2);
+				focusStep(2);
 			});
-		};
 
-		nextButton?.addEventListener('click', () => {
-			markStarted();
-			if (!validateStep(1)) {
-				setStatus('Please complete Step 1 before continuing.');
-				return;
-			}
-			window.trackContactEvent?.(`contact_form_step_complete_${contactMode}`, { step: 1 });
-			setStep(2);
-			focusStep(2);
-		});
+			progressiveForm.addEventListener('input', markStarted);
 
-		progressiveForm.addEventListener('input', markStarted);
+			backButton?.addEventListener('click', () => {
+				setStep(1);
+				focusStep(1);
+			});
 
-		backButton?.addEventListener('click', () => {
-			setStep(1);
-			focusStep(1);
-		});
-
-		progressiveForm.addEventListener('keydown', (event) => {
-			if (
-				event.key !== 'Enter' ||
-				currentStep !== 1 ||
-				event.target instanceof HTMLTextAreaElement ||
-				event.target instanceof HTMLButtonElement
-			) {
-				return;
-			}
-			event.preventDefault();
-			nextButton?.click();
-		});
-
-		progressiveForm.addEventListener('submit', async (event) => {
-			if (currentStep !== 2) {
+			progressiveForm.addEventListener('keydown', (event) => {
+				if (
+					event.key !== 'Enter' ||
+					currentStep !== 1 ||
+					event.target instanceof HTMLTextAreaElement ||
+					event.target instanceof HTMLButtonElement
+				) {
+					return;
+				}
 				event.preventDefault();
 				nextButton?.click();
-				return;
-			}
-			if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
-				setStatus('Please complete the required fields before submitting.');
-				return;
-			}
-			if (!(submitButton instanceof HTMLButtonElement) || !window.fetch) return;
+			});
 
-			event.preventDefault();
-			submitButton.disabled = true;
-			setStatus('Sending project details...');
-
-			try {
-				const response = await fetch(progressiveForm.action, {
-					method: 'POST',
-					body: new FormData(progressiveForm),
-					headers: { Accept: 'application/json' },
-				});
-				if (!response.ok) throw new Error('Submission failed');
-				window.trackContactEvent?.(`contact_form_submit_${contactMode}`);
-				progressiveForm.reset();
-				setStatus('');
-				if (formFlow instanceof HTMLElement) formFlow.hidden = true;
-				if (successState instanceof HTMLElement) {
-					successState.hidden = false;
-					successState.focus();
+			progressiveForm.addEventListener('submit', async (event) => {
+				if (currentStep !== 2) {
+					event.preventDefault();
+					nextButton?.click();
+					return;
 				}
-			} catch {
-				window.trackContactEvent?.(`contact_form_error_${contactMode}`);
-				setStatus('The form could not send. Please call or text us instead.');
-			} finally {
-				submitButton.disabled = false;
-			}
-		});
+				if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
+					setStatus('Please complete the required fields before submitting.');
+					return;
+				}
+				if (!(submitButton instanceof HTMLButtonElement) || !window.fetch) return;
 
-		setStep(1);
-	};
+				event.preventDefault();
+				submitButton.disabled = true;
+				setStatus('Sending project details...');
 
-	document.querySelectorAll('[data-progressive-form]').forEach(initializeProgressiveForm);
-	document.addEventListener('strataline:initialize-contact-forms', () => {
+				try {
+					const response = await fetch(progressiveForm.action, {
+						method: 'POST',
+						body: new FormData(progressiveForm),
+						headers: { Accept: 'application/json' },
+					});
+					if (!response.ok) throw new Error('Submission failed');
+					window.trackContactEvent?.(eventName('submit'));
+					progressiveForm.reset();
+					setStatus('');
+					if (formFlow instanceof HTMLElement) formFlow.hidden = true;
+					if (successState instanceof HTMLElement) {
+						successState.hidden = false;
+						successState.focus();
+					}
+				} catch {
+					window.trackContactEvent?.(eventName('error'));
+					setStatus('The form could not send. Please call or text us instead.');
+				} finally {
+					submitButton.disabled = false;
+				}
+			});
+
+			setStep(1);
+		};
+
 		document.querySelectorAll('[data-progressive-form]').forEach(initializeProgressiveForm);
-	});
+		document.addEventListener('strataline:initialize-contact-forms', () => {
+			document.querySelectorAll('[data-progressive-form]').forEach(initializeProgressiveForm);
+		});
 	}
 </script>
