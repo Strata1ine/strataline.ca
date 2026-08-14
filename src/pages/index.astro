@@ -6,6 +6,7 @@ import HomepageMediaWatch from '@/components/prototype/HomepageMediaWatch.astro'
 import RecentWorkGallery from '@/components/prototype/RecentWorkGallery.astro';
 import BeforeAfterComparison from '@/components/prototype/BeforeAfterComparison.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import OwnerLedOverlay from '@/components/prototype/OwnerLedOverlay.astro';
 import ReviewCollection from '@/components/ReviewCollection.astro';
 import Footer from '@/sections/Footer.astro';
 import seenOnTvBadge from '../../content/awards/as-seen-on-tv-badge.webp';
@@ -70,15 +71,32 @@ const webPageSchema = {
 				/>
 				<div class="home-hero__shade" aria-hidden="true"></div>
 				<div class="home-hero__content">
-					<p class="home-eyebrow">Owner-led renovation contractor · Toronto & the GTA</p>
+					<p class="home-eyebrow">
+						<span class="home-hero__desktop-copy"
+							>Owner-led renovation contractor · Toronto & the GTA</span
+						>
+						<span class="home-hero__mobile-copy">Owner-led renovations · Toronto & GTA</span>
+					</p>
 					<h1 id="home-title">
-						<span>Renovation work that looks</span>
-						<span><em>finished—not pieced together.</em></span>
+						<span class="home-hero__desktop-copy">
+							<span>Renovation work that looks</span>
+							<span><em>finished—not pieced together.</em></span>
+						</span>
+						<span class="home-hero__mobile-copy">
+							<span>Renovations that look</span>
+							<span><em>finished—not pieced together.</em></span>
+						</span>
 					</h1>
 					<p>
-						Strataline plans and executes interior renovations, smooth ceilings, staircases,
-						painting, kitchens, bathrooms, doors and windows with careful protection, clear scopes
-						and direct owner involvement.
+						<span class="home-hero__desktop-copy">
+							Strataline plans and executes interior renovations, smooth ceilings, staircases,
+							painting, kitchens, bathrooms, doors and windows with careful protection, clear scopes
+							and direct owner involvement.
+						</span>
+						<span class="home-hero__mobile-copy">
+							Owner-led renovations with careful protection, coordinated trades and finished
+							details.
+						</span>
 					</p>
 					<div class="home-hero__actions">
 						<button
@@ -239,32 +257,7 @@ const webPageSchema = {
 			</ol>
 		</section>
 
-		<section class="home-owner section-anchor" id="owner-led" aria-labelledby="owner-title">
-			<figure class="reveal">
-				<Image
-					src={ownerLedTrust.image.src}
-					alt={ownerLedTrust.image.alt}
-					widths={[560, 800, 1100, 1400]}
-					sizes="(max-width: 800px) 100vw, 50vw"
-					loading="lazy"
-				/>
-			</figure>
-			<div class="home-owner__copy reveal">
-				<p class="home-eyebrow">Owner-led renovations</p>
-				<h2 id="owner-title">The person who scopes the project stays involved.</h2>
-				<p>
-					Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the
-					scope and remains involved through scheduling, coordination and quality control.
-				</p>
-				<ul>
-					<li>Direct accountability</li>
-					<li>Clear written scopes</li>
-					<li>Organized trade sequencing</li>
-					<li>Finish review before completion</li>
-				</ul>
-				<strong>Maxim Sologub <span>Owner, Strataline Inc.</span></strong>
-			</div>
-		</section>
+		<OwnerLedOverlay image={ownerLedTrust.image.src} imageAlt={ownerLedTrust.image.alt} />
 
 		<section
 			class="home-section home-reviews section-anchor"

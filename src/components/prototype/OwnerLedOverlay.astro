@@ -1,0 +1,247 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	image: ImageMetadata;
+	imageAlt: string;
+}
+
+const { image, imageAlt } = Astro.props;
+---
+
+<section class="owner-led-overlay section-anchor" id="owner-led" aria-labelledby="owner-title">
+	<div class="owner-led-overlay__media">
+		<Image
+			src={image}
+			alt={imageAlt}
+			widths={[640, 960, 1440, 1920]}
+			sizes="100vw"
+			loading="lazy"
+		/>
+	</div>
+	<div class="owner-led-overlay__inner">
+		<div class="owner-led-overlay__copy" data-floating-contact-avoid>
+			<p class="owner-led-overlay__eyebrow">Owner-led renovations</p>
+			<h2 id="owner-title">The person who scopes the project stays involved.</h2>
+			<p class="owner-led-overlay__description">
+				Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the scope
+				and remains involved through scheduling, coordination and quality control.
+			</p>
+			<ul class="owner-led-overlay__benefits">
+				<li>Direct accountability</li>
+				<li>Clear written scopes</li>
+				<li>Organized trade sequencing</li>
+				<li>Finish review before completion</li>
+			</ul>
+			<strong class="owner-led-overlay__signature">
+				Maxim Sologub <span>Owner, Strataline Inc.</span>
+			</strong>
+		</div>
+	</div>
+</section>
+
+<style>
+	.owner-led-overlay {
+		position: relative;
+		display: grid;
+		min-height: clamp(52rem, 68vw, 60rem);
+		padding-block: 0;
+		isolation: isolate;
+		overflow: hidden;
+		background: #16221b;
+		color: #fff;
+		scroll-margin-top: calc(var(--proto-header) + 1.5rem);
+	}
+
+	.owner-led-overlay::after {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			linear-gradient(
+				90deg,
+				rgba(12, 17, 14, 0.06) 0%,
+				rgba(12, 17, 14, 0.1) 43%,
+				rgba(12, 17, 14, 0.42) 100%
+			),
+			linear-gradient(0deg, rgba(12, 17, 14, 0.28), transparent 45%);
+		content: '';
+		pointer-events: none;
+	}
+
+	.owner-led-overlay__media {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		overflow: hidden;
+	}
+
+	.owner-led-overlay__media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 28%;
+	}
+
+	.owner-led-overlay__inner {
+		display: flex;
+		width: min(1240px, calc(100% - 2rem));
+		min-height: inherit;
+		align-items: flex-end;
+		justify-content: flex-end;
+		margin-inline: auto;
+		padding-block: clamp(3rem, 5vw, 5rem);
+	}
+
+	.owner-led-overlay__copy {
+		width: min(46rem, 54vw);
+		max-width: none;
+		padding: clamp(2.25rem, 3.2vw, 3rem);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 1.35rem;
+		background: rgba(20, 28, 23, 0.62);
+		box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+		backdrop-filter: blur(15px) saturate(112%);
+	}
+
+	.owner-led-overlay h2 {
+		margin: 0;
+		font-family: var(--font-source-serif-4), Georgia, serif;
+		font-size: clamp(3.25rem, 4.35vw, 4.25rem);
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.owner-led-overlay__eyebrow {
+		margin: 0 0 0.8rem;
+		color: #f1c878;
+		font-size: 0.74rem;
+		font-weight: 750;
+		letter-spacing: 0.16em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.owner-led-overlay__description {
+		margin: 1.1rem 0 0;
+		color: rgba(255, 255, 255, 0.82);
+		font-size: clamp(1rem, 1.3vw, 1.16rem);
+		line-height: 1.7;
+	}
+
+	.owner-led-overlay__benefits {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0;
+		margin: 1.5rem 0;
+		padding: 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		list-style: none;
+	}
+
+	.owner-led-overlay__benefits li {
+		position: relative;
+		padding: 0.85rem 0.65rem 0.85rem 1.45rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		font-size: 0.82rem;
+		font-weight: 700;
+	}
+
+	.owner-led-overlay__benefits li::before {
+		position: absolute;
+		left: 0;
+		color: #f1c878;
+		content: '✓';
+	}
+
+	.owner-led-overlay__signature {
+		display: block;
+		font-family: var(--font-source-serif-4), Georgia, serif;
+		font-size: clamp(1.45rem, 2.3vw, 2rem);
+		font-weight: 500;
+	}
+
+	.owner-led-overlay__signature span {
+		display: block;
+		margin-top: 0.2rem;
+		color: rgba(255, 255, 255, 0.66);
+		font-family: inherit;
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 800px) {
+		.owner-led-overlay {
+			min-height: 56rem;
+			padding-block: 0;
+		}
+
+		.owner-led-overlay::after {
+			background: linear-gradient(
+				0deg,
+				rgba(12, 17, 14, 0.38) 0%,
+				rgba(12, 17, 14, 0.1) 62%,
+				transparent 100%
+			);
+		}
+
+		.owner-led-overlay__media img {
+			object-position: 68% center;
+		}
+
+		.owner-led-overlay__inner {
+			align-items: flex-end;
+			min-height: inherit;
+			padding-block: 13rem calc(5.8rem + env(safe-area-inset-bottom));
+		}
+
+		.owner-led-overlay__copy {
+			width: 100%;
+			padding: 1.35rem;
+			background: rgba(20, 28, 23, 0.56);
+			backdrop-filter: blur(13px) saturate(110%);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.owner-led-overlay {
+			padding-block: 0;
+		}
+
+		.owner-led-overlay__copy {
+			padding: 1.2rem;
+			border-radius: 1rem;
+		}
+
+		.owner-led-overlay h2 {
+			font-size: clamp(2.15rem, 9.4vw, 2.8rem);
+			line-height: 0.98;
+		}
+
+		.owner-led-overlay__description {
+			margin-top: 0.8rem;
+			font-size: 0.88rem;
+			line-height: 1.48;
+		}
+
+		.owner-led-overlay__benefits {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			margin-block: 1rem;
+		}
+
+		.owner-led-overlay__benefits li {
+			padding: 0.65rem 0.35rem 0.65rem 1.2rem;
+			font-size: 0.7rem;
+			line-height: 1.35;
+		}
+
+		.owner-led-overlay__signature {
+			font-size: 1.4rem;
+		}
+	}
+</style>

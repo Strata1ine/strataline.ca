@@ -102,7 +102,6 @@
 
 .home-hero h1,
 .home-heading h2,
-.home-owner h2,
 .home-service-area h2 {
 	margin: 0;
 	font-family: var(--font-source-serif-4), Georgia, serif;
@@ -118,6 +117,10 @@
 
 .home-hero h1 span {
 	display: block;
+}
+
+.home-hero .home-hero__mobile-copy {
+	display: none;
 }
 
 .home-hero h1 em {
@@ -254,14 +257,12 @@
 }
 
 .home-heading h2,
-.home-owner h2,
 .home-service-area h2 {
 	font-size: clamp(2.7rem, 5.2vw, 5rem);
 	line-height: 0.98;
 }
 
-.home-heading > p:last-child,
-.home-owner__copy > p {
+.home-heading > p:last-child {
 	max-width: 43rem;
 	margin: 1rem auto 0;
 	color: var(--home-muted);
@@ -481,87 +482,6 @@
 
 .home-process h3 {
 	font-size: clamp(1.35rem, 2vw, 1.75rem);
-}
-
-.home-owner {
-	display: grid;
-	grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-	min-height: 43rem;
-	background: var(--home-green-deep);
-	color: #fff;
-}
-
-.home-owner figure {
-	min-height: 100%;
-	margin: 0;
-	overflow: hidden;
-}
-
-.home-owner figure img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center center;
-}
-
-.home-owner__copy {
-	display: grid;
-	align-content: center;
-	justify-items: start;
-	padding: clamp(3rem, 6vw, 7rem);
-}
-
-.home-owner .home-eyebrow {
-	color: #e8bd69;
-}
-
-.home-owner__copy > p {
-	margin-left: 0;
-	color: rgba(255, 255, 255, 0.76);
-}
-
-.home-owner ul {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 0.75rem 1.4rem;
-	margin: 1.6rem 0;
-	padding: 1.3rem 0;
-	border-block: 1px solid rgba(255, 255, 255, 0.16);
-	list-style: none;
-}
-
-.home-owner li {
-	position: relative;
-	padding-left: 1rem;
-	font:
-		650 0.86rem/1.45 var(--font-inter),
-		Inter,
-		system-ui,
-		sans-serif;
-}
-
-.home-owner li::before {
-	position: absolute;
-	left: 0;
-	color: #e8bd69;
-	content: '•';
-}
-
-.home-owner__copy > strong {
-	display: grid;
-	gap: 0.15rem;
-	font:
-		700 0.92rem/1.4 var(--font-inter),
-		Inter,
-		system-ui,
-		sans-serif;
-}
-
-.home-owner__copy > strong span {
-	color: rgba(255, 255, 255, 0.62);
-	font-size: 0.78rem;
-	font-weight: 500;
 }
 
 .home-service-area {
@@ -928,14 +848,6 @@
 	.home-process li:nth-child(odd) {
 		border-left: 0;
 	}
-
-	.home-owner {
-		grid-template-columns: 1fr;
-	}
-
-	.home-owner figure {
-		min-height: 34rem;
-	}
 }
 
 @media (min-width: 768px) and (max-width: 900px) {
@@ -968,7 +880,7 @@
 	.home-hero {
 		min-height: calc(100svh - var(--proto-header));
 		align-items: end;
-		padding: 0.8rem 0 1.4rem;
+		padding: 0.8rem 0 calc(9rem + env(safe-area-inset-bottom));
 	}
 
 	.home-hero__image {
@@ -978,33 +890,54 @@
 	.home-hero__shade {
 		background: linear-gradient(
 			0deg,
-			rgba(12, 17, 14, 0.84) 0%,
-			rgba(12, 17, 14, 0.46) 66%,
-			rgba(12, 17, 14, 0.16) 100%
+			rgba(12, 17, 14, 0.42) 0%,
+			rgba(12, 17, 14, 0.2) 62%,
+			rgba(12, 17, 14, 0.07) 100%
 		);
 	}
 
 	.home-hero__content {
-		width: calc(100% - 1.25rem);
-		padding: 1.2rem;
+		width: calc(100% - 0.75rem);
+		padding: 0.9rem 0.625rem;
 		border-radius: 1rem;
+		background: rgba(20, 34, 28, 0.58);
 		backdrop-filter: blur(11px);
 	}
 
+	.home-hero .home-hero__desktop-copy {
+		display: none;
+	}
+
+	.home-hero .home-hero__mobile-copy {
+		display: block;
+	}
+
+	.home-hero .home-eyebrow {
+		margin-bottom: 0.5rem;
+		font-size: 0.66rem;
+		line-height: 1.35;
+	}
+
 	.home-hero h1 {
-		font-size: clamp(2.55rem, 12vw, 3.6rem);
-		line-height: 0.92;
+		font-size: clamp(2.75rem, 11vw, 3.25rem);
+		line-height: 0.94;
+		text-wrap: wrap;
 	}
 
 	.home-hero__content > p:not(.home-eyebrow) {
-		margin-top: 0.9rem;
-		font-size: 0.95rem;
-		line-height: 1.5;
+		margin-top: 0.7rem;
+		font-size: 0.9rem;
+		line-height: 1.4;
 	}
 
 	.home-hero__actions {
-		display: grid;
-		margin-top: 1rem;
+		display: none;
+	}
+
+	@media (max-width: 374px) {
+		.home-hero h1 {
+			font-size: 2.65625rem;
+		}
 	}
 
 	.home-button {
@@ -1046,7 +979,6 @@
 	}
 
 	.home-heading h2,
-	.home-owner h2,
 	.home-service-area h2,
 	.home-shared-section .proto-section-head h2 {
 		font-size: clamp(2.25rem, 10vw, 3.2rem);
@@ -1054,8 +986,7 @@
 	}
 
 	.home-heading > p:last-child,
-	.home-heading--media > div > p:last-child,
-	.home-owner__copy > p {
+	.home-heading--media > div > p:last-child {
 		margin-top: 0.75rem;
 		font-size: 0.94rem;
 		line-height: 1.58;
@@ -1133,24 +1064,6 @@
 		gap: 0.5rem;
 		padding: 1rem 0;
 		border-left: 0;
-	}
-
-	.home-owner {
-		min-height: 0;
-	}
-
-	.home-owner figure {
-		min-height: 24rem;
-		aspect-ratio: 4 / 4.3;
-	}
-
-	.home-owner__copy {
-		padding: 2.5rem 1rem 3rem;
-	}
-
-	.home-owner ul {
-		grid-template-columns: 1fr;
-		gap: 0.55rem;
 	}
 
 	.home-service-area {

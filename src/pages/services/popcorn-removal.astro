@@ -4,6 +4,7 @@ import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
 import BeforeAfterViewer from '@/components/prototype/BeforeAfterViewer.astro';
+import OwnerLedOverlay from '@/components/prototype/OwnerLedOverlay.astro';
 import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
 import ReviewCollection from '@/components/ReviewCollection.astro';
 import Footer from '@/sections/Footer.astro';
@@ -365,35 +366,10 @@ const schemas = [
 				</div>
 			</section>
 
-			<section class="pc-section pc-owner" id="owner-led" aria-labelledby="owner-title">
-				<div class="pc-owner__media">
-					<Image
-						src={ownerImage}
-						alt="Strataline owner Maxim Sologub completing detailed renovation work on site."
-						widths={[640, 960, 1440, 1920]}
-						sizes="100vw"
-					/>
-				</div>
-				<div class="pc-shell pc-owner__inner">
-					<div class="pc-heading pc-owner__copy" data-floating-contact-avoid>
-						<p class="pc-eyebrow">Owner-led renovations</p>
-						<h2 id="owner-title">The person who scopes the project stays involved.</h2>
-						<p>
-							Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the
-							scope and remains involved through scheduling, coordination and quality control.
-						</p>
-						<ul class="pc-owner__benefits">
-							<li>Direct accountability</li>
-							<li>Clear written scopes</li>
-							<li>Organized trade sequencing</li>
-							<li>Finish review before completion</li>
-						</ul>
-						<strong class="pc-owner__signature">
-							Maxim Sologub <span>Owner, Strataline Inc.</span>
-						</strong>
-					</div>
-				</div>
-			</section>
+			<OwnerLedOverlay
+				image={ownerImage}
+				imageAlt="Strataline owner Maxim Sologub completing detailed renovation work on site."
+			/>
 
 			<section class="pc-section pc-reviews" id="reviews" aria-labelledby="reviews-title">
 				<div class="pc-shell">
@@ -667,8 +643,97 @@ const schemas = [
 		const galleryBefore = gallery?.querySelector('[data-viewer-before]');
 		const galleryAfter = gallery?.querySelector('[data-viewer-after]');
 		const galleryRange = gallery?.querySelector('[data-before-range]');
-		document.querySelectorAll('[data-gallery-select]').forEach((button) => {
-			button.addEventListener('click', () => {
+		const gallerySelectorRail = document.querySelector('.pc-gallery__selectors');
+		const gallerySelectorButtons = [...document.querySelectorAll('[data-gallery-select]')];
+		const galleryMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		let galleryPointerActive = false;
+		let galleryPointerStartX = 0;
+		let galleryPointerStartScroll = 0;
+		let galleryPointerDragged = false;
+		let gallerySuppressPointerClickUntil = 0;
+
+		const alignGallerySelector = (activeButton) => {
+			if (
+				!(gallerySelectorRail instanceof HTMLElement) ||
+				!(activeButton instanceof HTMLButtonElement)
+			)
+				return;
+
+			const maxScroll = gallerySelectorRail.scrollWidth - gallerySelectorRail.clientWidth;
+			if (maxScroll <= 1) return;
+
+			const activeIndex = gallerySelectorButtons.indexOf(activeButton);
+			if (activeIndex < 0) return;
+
+			let targetScroll = 0;
+			if (activeIndex === gallerySelectorButtons.length - 1) {
+				targetScroll = maxScroll;
+			} else if (activeIndex > 0) {
+				const railRect = gallerySelectorRail.getBoundingClientRect();
+				const activeRect = activeButton.getBoundingClientRect();
+				const activeContentLeft = activeRect.left - railRect.left + gallerySelectorRail.scrollLeft;
+				targetScroll =
+					activeContentLeft + activeRect.width / 2 - gallerySelectorRail.clientWidth * 0.4;
+
+				const nextButton = gallerySelectorButtons[activeIndex + 1];
+				if (nextButton instanceof HTMLButtonElement) {
+					const nextRect = nextButton.getBoundingClientRect();
+					const nextContentLeft = nextRect.left - railRect.left + gallerySelectorRail.scrollLeft;
+					const nextCueWidth = Math.min(72, nextRect.width * 0.45);
+					targetScroll = Math.max(
+						targetScroll,
+						nextContentLeft + nextCueWidth - gallerySelectorRail.clientWidth,
+					);
+				}
+			}
+
+			gallerySelectorRail.scrollTo({
+				left: Math.max(0, Math.min(maxScroll, Math.round(targetScroll))),
+				behavior: galleryMotionPreference.matches ? 'auto' : 'smooth',
+			});
+		};
+
+		if (gallerySelectorRail instanceof HTMLElement) {
+			gallerySelectorRail.addEventListener('pointerdown', (event) => {
+				if (event.pointerType === 'mouse' && event.button !== 0) return;
+				gallerySelectorRail.scrollTo({
+					left: gallerySelectorRail.scrollLeft,
+					behavior: 'auto',
+				});
+				galleryPointerActive = true;
+				galleryPointerDragged = false;
+				galleryPointerStartX = event.clientX;
+				galleryPointerStartScroll = gallerySelectorRail.scrollLeft;
+			});
+			window.addEventListener(
+				'pointermove',
+				(event) => {
+					if (!galleryPointerActive) return;
+					galleryPointerDragged =
+						galleryPointerDragged ||
+						Math.abs(event.clientX - galleryPointerStartX) > 8 ||
+						Math.abs(gallerySelectorRail.scrollLeft - galleryPointerStartScroll) > 8;
+				},
+				{ passive: true },
+			);
+			const finishGalleryPointer = () => {
+				if (!galleryPointerActive) return;
+				if (galleryPointerDragged) {
+					gallerySuppressPointerClickUntil = performance.now() + 500;
+				}
+				galleryPointerActive = false;
+				galleryPointerDragged = false;
+			};
+			window.addEventListener('pointerup', finishGalleryPointer, { passive: true });
+			window.addEventListener('pointercancel', finishGalleryPointer, { passive: true });
+		}
+
+		gallerySelectorButtons.forEach((button) => {
+			button.addEventListener('click', (event) => {
+				if (event.detail > 0 && performance.now() < gallerySuppressPointerClickUntil) {
+					event.preventDefault();
+					return;
+				}
 				if (
 					!(button instanceof HTMLButtonElement) ||
 					!(galleryBefore instanceof HTMLImageElement) ||
@@ -711,6 +776,7 @@ const schemas = [
 					galleryRange.setAttribute('aria-valuetext', '50% before image visible');
 				}
 				track('popcorn_comparison_select', { comparison_id: button.dataset.comparisonId });
+				requestAnimationFrame(() => alignGallerySelector(button));
 			});
 		});
 
