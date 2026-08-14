@@ -1,0 +1,447 @@
+---
+import { Image } from 'astro:assets';
+
+import type { GoogleReview, ReviewFilter } from '../data/reviews';
+import { reviewFilterOptions } from '../data/reviews';
+
+interface Props {
+	reviews: readonly GoogleReview[];
+	variant?: 'cards' | 'compact' | 'featured';
+	showFilters?: boolean;
+	initialFilter?: ReviewFilter;
+	mobileScroll?: boolean;
+	ariaLabel?: string;
+}
+
+const {
+	reviews,
+	variant = 'cards',
+	showFilters = false,
+	initialFilter = 'all',
+	mobileScroll = true,
+	ariaLabel = 'Customer reviews',
+} = Astro.props;
+
+const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<section
+	class="review-collection"
+	class:list={[`review-collection--${variant}`]}
+	aria-label={ariaLabel}
+	data-review-collection
+	data-mobile-scroll={String(mobileScroll)}
+	data-initial-filter={initialFilter}
+>
+	{
+		showFilters && (
+			<div
+				class="review-collection__filters"
+				aria-label="Filter reviews by service"
+				data-review-filters
+				hidden
+			>
+				{reviewFilterOptions.map((filter) => (
+					<button
+						type="button"
+						class="review-collection__filter"
+						data-review-filter={filter.value}
+						aria-pressed={filter.value === initialFilter ? 'true' : 'false'}
+					>
+						{filter.label}
+					</button>
+				))}
+				<p class="review-collection__sr-only" aria-live="polite" data-review-filter-status />
+			</div>
+		)
+	}
+
+	<div class="review-collection__track" data-review-track>
+		{
+			reviews.map((review) => {
+				const copyId = `${safeInstanceId}-${review.id}-copy`;
+				return (
+					<article
+						class="review-card"
+						class:list={[review.featured && 'review-card--featured']}
+						data-review-card
+						data-review-services={review.services.join(' ')}
+					>
+						<header class="review-card__header">
+							<div
+								class="review-card__rating"
+								role="img"
+								aria-label={`${review.rating} out of 5 stars`}
+							>
+								<span aria-hidden="true">★★★★★</span>
+							</div>
+							<p class="review-card__source">
+								<span class="review-card__google-icon" aria-hidden="true">
+									G
+								</span>
+								<span>{review.source} review</span>
+							</p>
+						</header>
+
+						<blockquote class="review-card__quote">
+							<p id={copyId} data-review-copy data-excerpt={review.excerpt}>
+								{review.fullText}
+							</p>
+						</blockquote>
+
+						<button
+							type="button"
+							class="review-card__toggle"
+							aria-controls={copyId}
+							aria-expanded="false"
+							data-review-toggle
+							hidden
+						>
+							Read full review
+						</button>
+
+						{review.images && review.images.length > 0 && (
+							<div
+								class="review-card__gallery"
+								data-image-count={review.images.length}
+								role="group"
+								aria-label={`Project photos supplied with ${review.name}'s review`}
+							>
+								{review.images.map((image) =>
+									typeof image.src === 'string' ? (
+										<img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+									) : (
+										<Image src={image.src} alt={image.alt} loading="lazy" />
+									),
+								)}
+							</div>
+						)}
+
+						<footer class="review-card__footer">
+							<p class="review-card__reviewer">{review.name}</p>
+							<p class="review-card__meta">
+								{review.location && <span>{review.location}</span>}
+								{review.location && <span aria-hidden="true"> · </span>}
+								<span>{review.dateLabel}</span>
+							</p>
+						</footer>
+					</article>
+				);
+			})
+		}
+	</div>
+</section>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-review-collection]').forEach((root) => {
+		if (root.dataset.reviewReady === 'true') return;
+		root.dataset.reviewReady = 'true';
+		root.dataset.enhanced = 'true';
+
+		root.querySelectorAll<HTMLElement>('[data-review-card]').forEach((card) => {
+			const copy = card.querySelector<HTMLElement>('[data-review-copy]');
+			const toggle = card.querySelector<HTMLButtonElement>('[data-review-toggle]');
+			if (!copy || !toggle) return;
+
+			const fullText = copy.textContent?.trim() ?? '';
+			const excerpt = copy.dataset.excerpt?.trim() || fullText;
+			if (excerpt === fullText) return;
+
+			copy.textContent = excerpt;
+			toggle.hidden = false;
+			toggle.addEventListener('click', () => {
+				const expanded = toggle.getAttribute('aria-expanded') === 'true';
+				toggle.setAttribute('aria-expanded', String(!expanded));
+				toggle.textContent = expanded ? 'Read full review' : 'Show less';
+				copy.textContent = expanded ? excerpt : fullText;
+				card.dataset.expanded = String(!expanded);
+			});
+		});
+
+		const filters = root.querySelector<HTMLElement>('[data-review-filters]');
+		const filterButtons = Array.from(
+			root.querySelectorAll<HTMLButtonElement>('[data-review-filter]'),
+		);
+		const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-review-card]'));
+		const status = root.querySelector<HTMLElement>('[data-review-filter-status]');
+		const track = root.querySelector<HTMLElement>('[data-review-track]');
+
+		if (!filters || filterButtons.length === 0) return;
+		filters.hidden = false;
+
+		const applyFilter = (filter: string) => {
+			let visibleCount = 0;
+			cards.forEach((card) => {
+				const services = (card.dataset.reviewServices ?? '').split(' ');
+				const matches = filter === 'all' || services.includes(filter);
+				card.hidden = !matches;
+				if (matches) visibleCount += 1;
+			});
+			filterButtons.forEach((button) => {
+				button.setAttribute('aria-pressed', String(button.dataset.reviewFilter === filter));
+			});
+			if (status)
+				status.textContent = `${visibleCount} review${visibleCount === 1 ? '' : 's'} shown`;
+			track?.scrollTo({ left: 0, behavior: 'smooth' });
+		};
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => applyFilter(button.dataset.reviewFilter ?? 'all'));
+		});
+
+		applyFilter(root.dataset.initialFilter ?? 'all');
+	});
+</script>
+
+<style>
+	.review-collection {
+		--review-ink: var(--proto-ink, var(--pc-ink, #1d211e));
+		--review-muted: var(--proto-muted, var(--pc-muted, #656963));
+		--review-accent: var(--proto-accent, var(--pc-gold, #a97846));
+		--review-border: var(--proto-border, var(--pc-border, rgba(29, 33, 30, 0.14)));
+		--review-surface: rgba(255, 255, 255, 0.82);
+		width: 100%;
+		color: var(--review-ink);
+	}
+
+	.review-collection__filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+	}
+
+	.review-collection__filter {
+		min-height: 42px;
+		padding: 0.6rem 0.9rem;
+		border: 1px solid var(--review-border);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--review-ink);
+		font: 700 0.76rem/1.2 var(--font-inter, Inter, system-ui, sans-serif);
+		cursor: pointer;
+	}
+
+	.review-collection__filter[aria-pressed='true'] {
+		border-color: var(--review-ink);
+		background: var(--review-ink);
+		color: #fff;
+	}
+
+	.review-collection__filter:focus-visible,
+	.review-card__toggle:focus-visible {
+		outline: 3px solid color-mix(in srgb, var(--review-accent) 72%, white);
+		outline-offset: 3px;
+	}
+
+	.review-collection__track {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(0.85rem, 1.8vw, 1.35rem);
+		align-items: start;
+	}
+
+	.review-card {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		padding: clamp(1.1rem, 2vw, 1.5rem);
+		border: 1px solid var(--review-border);
+		border-radius: 1rem;
+		background: var(--review-surface);
+		box-shadow: 0 1rem 2.6rem rgba(18, 27, 22, 0.07);
+	}
+
+	.review-card[hidden] {
+		display: none;
+	}
+
+	.review-card__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.review-card__rating {
+		color: var(--review-accent);
+		font-size: 1rem;
+		line-height: 1;
+		letter-spacing: 0.09em;
+	}
+
+	.review-card__source,
+	.review-card__meta {
+		margin: 0;
+		color: var(--review-muted);
+		font: 650 0.72rem/1.4 var(--font-inter, Inter, system-ui, sans-serif);
+	}
+
+	.review-card__source {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.38rem;
+		text-transform: uppercase;
+		letter-spacing: 0.09em;
+	}
+
+	.review-card__google-icon {
+		font-family: Arial, sans-serif;
+		font-size: 1rem;
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: 0;
+		background: conic-gradient(
+			from -32deg,
+			#4285f4 0 30%,
+			#34a853 30% 48%,
+			#fbbc05 48% 68%,
+			#ea4335 68% 84%,
+			#4285f4 84% 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+	}
+
+	.review-card__quote {
+		margin: 0;
+	}
+
+	.review-card__quote p {
+		margin: 0;
+		font-family: var(--font-source-serif-4, Georgia, serif);
+		font-size: clamp(1.08rem, 1.45vw, 1.3rem);
+		line-height: 1.5;
+	}
+
+	.review-card__toggle {
+		align-self: flex-start;
+		min-height: 38px;
+		margin-top: 0.7rem;
+		padding: 0.35rem 0;
+		border: 0;
+		background: transparent;
+		color: var(--review-accent);
+		font: 750 0.78rem/1.25 var(--font-inter, Inter, system-ui, sans-serif);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		cursor: pointer;
+	}
+
+	.review-card__gallery {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.4rem;
+		margin-top: 1rem;
+	}
+
+	.review-card__gallery > * {
+		grid-column: span 2;
+	}
+
+	.review-card__gallery[data-image-count='1'] > * {
+		grid-column: 1 / -1;
+	}
+
+	.review-card__gallery[data-image-count='2'] > *,
+	.review-card__gallery[data-image-count='4'] > *,
+	.review-card__gallery[data-image-count='5'] > *:nth-child(n + 4) {
+		grid-column: span 3;
+	}
+
+	.review-card__gallery img {
+		display: block;
+		width: 100%;
+		height: clamp(4.75rem, 7vw, 6rem);
+		border-radius: 0.55rem;
+		object-fit: cover;
+	}
+
+	.review-card__gallery[data-image-count='1'] img {
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-position: center 42%;
+	}
+
+	.review-card__footer {
+		margin-top: 1.1rem;
+		padding-top: 0.9rem;
+		border-top: 1px solid var(--review-border);
+	}
+
+	.review-card__reviewer {
+		margin: 0 0 0.15rem;
+		font: 750 0.94rem/1.35 var(--font-inter, Inter, system-ui, sans-serif);
+	}
+
+	.review-collection--compact .review-card {
+		box-shadow: none;
+	}
+
+	.review-collection--featured .review-card--featured {
+		border-color: color-mix(in srgb, var(--review-accent) 52%, var(--review-border));
+	}
+
+	.review-collection__sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (max-width: 900px) {
+		.review-collection__track {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.review-collection__filters {
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			padding-bottom: 0.25rem;
+			scrollbar-width: thin;
+		}
+
+		.review-collection__filter {
+			flex: 0 0 auto;
+		}
+
+		.review-collection[data-mobile-scroll='true'] .review-collection__track {
+			display: flex;
+			gap: 0.8rem;
+			overflow-x: auto;
+			padding: 0.1rem 1.1rem 0.75rem 0.1rem;
+			scroll-padding-inline: 0.1rem;
+			scroll-snap-type: x mandatory;
+			overscroll-behavior-inline: contain;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.review-collection[data-mobile-scroll='true'] .review-card {
+			flex: 0 0 min(86vw, 22rem);
+			scroll-snap-align: start;
+		}
+
+		.review-collection[data-mobile-scroll='false'] .review-collection__track {
+			grid-template-columns: 1fr;
+		}
+
+		.review-card__quote p {
+			font-size: 1.04rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.review-collection {
+			scroll-behavior: auto;
+		}
+	}
+</style>

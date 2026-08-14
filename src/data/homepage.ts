@@ -227,33 +227,6 @@ export const processStages = [
 	},
 ];
 
-export const homepageReviews = [
-	{
-		quote:
-			'Max is punctual, neat and very professional. We will be hiring him for additional projects.',
-		name: 'D Kruger',
-		location: 'Thornhill',
-	},
-	{
-		quote:
-			'We’re really happy with how everything turned out. The ceilings look completely smooth now, and the whole process was much cleaner than we expected.',
-		name: 'Maggie and Scott',
-		location: 'Mississauga',
-	},
-	{
-		quote:
-			'The stair renovation experience was straightforward from start to finish. Communication was clear, the work was done on schedule, and there were no surprises.',
-		name: 'Jefferson Grove',
-		location: 'Burlington',
-	},
-	{
-		quote:
-			'Max was great to work with—very knowledgeable and easy to deal with. He walked us through the options and helped us make the right decisions for the staircase.',
-		name: 'Lyn Litvack',
-		location: 'Markham',
-	},
-];
-
 export const homepageServiceArea = {
 	backgroundImage: null as ImageMetadata | null,
 	backgroundImageAlt: '',

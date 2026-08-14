@@ -141,11 +141,6 @@ sections:
     title: What our clients are saying
     id: reviews
     content:
-      - title: D Kruger
-        location: Thornhill
-        stars: 5
-        desc: |-
-          Max of Strataline Inc. did an exceptional job creating 1) a custom inside railing for a winding grand staircase and 2) installing outdoor railings. He even used a 3D printer to create a custom handle for an outdoor railing that had to be installed on a slight diagonal. Max is punctual, neat and very professional. We will be hiring him for additional projects.
       - title: Maggie and Scott
         location: Mississauga
         stars: 5

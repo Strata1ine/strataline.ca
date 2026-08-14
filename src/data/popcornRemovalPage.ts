@@ -165,37 +165,6 @@ export const processSteps = [
 	},
 ];
 
-export const reviews = [
-	{
-		name: 'John Seigel',
-		location: 'Richmond Hill',
-		rating: 5,
-		quote:
-			'The popcorn removal was excellent and a very clean process. Very talented and reliable people. They are very professional, providing detailed quotations and billing.',
-	},
-	{
-		name: 'Virginia Coppola',
-		location: 'Newmarket',
-		rating: 5,
-		quote:
-			'Maxim at Strataline did a very professional job removing our hallway popcorn ceiling. The result was completely smooth, and they sealed off the area so dust did not penetrate other areas of the house.',
-	},
-	{
-		name: 'Mike',
-		location: 'Burlington',
-		rating: 5,
-		quote:
-			'We contacted Max to remove the popcorn finish on our vaulted great-room ceiling. He made the ceiling look brand new, with no detectable dust left anywhere.',
-	},
-	{
-		name: 'Maggie and Scott',
-		location: 'Mississauga',
-		rating: 5,
-		quote:
-			'The ceilings look completely smooth now, and the whole process was much cleaner than we expected. Max and his team were professional and paid attention to the details.',
-	},
-];
-
 export const faqs = [
 	{
 		id: 'cost',
@@ -253,7 +222,9 @@ export const faqs = [
 		question: 'Why does a ceiling sometimes need skim coating after popcorn removal?',
 		answer:
 			'Skim coating creates a continuous surface when removal reveals seams, waves, dents, patches or scraper damage. Texture often hides conditions that become visible only after it is removed. The amount of skim work depends on the substrate and the finish expected under real room lighting.',
-		links: [{ label: 'Drywall repair and skim coating', href: '/services/drywall-repair-skim-coating' }],
+		links: [
+			{ label: 'Drywall repair and skim coating', href: '/services/drywall-repair-skim-coating' },
+		],
 	},
 	{
 		id: 'concrete-condos',
@@ -323,7 +294,9 @@ export const faqs = [
 		question: 'What happens after the texture is removed?',
 		answer:
 			'After removal, the exposed substrate is reviewed and corrected before finishing. Seams, cracks, waves and scraper marks are repaired, skim coating is applied where required, and the ceiling is sanded with HEPA source extraction and inspected under light. Primer, ceiling paint, cleanup and final review complete the scope.',
-		links: [{ label: 'Learn about smooth ceiling finishing', href: '/services/smooth-ceiling-finishing' }],
+		links: [
+			{ label: 'Learn about smooth ceiling finishing', href: '/services/smooth-ceiling-finishing' },
+		],
 	},
 	{
 		id: 'service-area',

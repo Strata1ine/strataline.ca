@@ -6,6 +6,7 @@ import HomepageMediaWatch from '@/components/prototype/HomepageMediaWatch.astro'
 import RecentWorkGallery from '@/components/prototype/RecentWorkGallery.astro';
 import BeforeAfterComparison from '@/components/prototype/BeforeAfterComparison.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import ReviewCollection from '@/components/ReviewCollection.astro';
 import Footer from '@/sections/Footer.astro';
 import seenOnTvBadge from '../../content/awards/as-seen-on-tv-badge.webp';
 import { beforeAfterComparisons, ownerLedTrust } from '@/data/interiorRenovationsPrototype';
@@ -13,18 +14,19 @@ import {
 	homepageHero,
 	homepageMedia,
 	homepageRecentWork,
-	homepageReviews,
 	homepageServiceArea,
 	primaryServices,
 	processStages,
 	secondaryServices,
 } from '@/data/homepage';
+import { getReviewsForCollection } from '@/data/reviews';
 import '@/styles/homepage-recovery.css';
 
 const title = 'Home Renovation Contractor Toronto & GTA | Strataline';
 const description =
 	'Owner-led home and interior renovations in Toronto and the GTA, including smooth ceilings, stairs, painting, kitchens, bathrooms, doors and windows.';
 const canonicalUrl = 'https://strataline.ca/';
+const homepageClientReviews = getReviewsForCollection('homepage');
 const webPageSchema = {
 	'@type': 'WebPage',
 	'@id': `${canonicalUrl}#webpage`,
@@ -273,30 +275,11 @@ const webPageSchema = {
 				<p class="home-eyebrow">Five-star client reviews</p>
 				<h2 id="reviews-title">What homeowners say after the work is finished</h2>
 			</div>
-			<div
-				class="home-review-rail"
-				role="region"
-				aria-label="Client reviews"
-				tabindex="0"
-				data-home-review-rail
-			>
-				{
-					homepageReviews.map((review) => (
-						<article>
-							<div class="home-review-stars" aria-label="5 out of 5 stars">
-								★★★★★
-							</div>
-							<blockquote>“{review.quote}”</blockquote>
-							<p>
-								<>
-									<strong>{review.name}</strong>
-									<span>{review.location}</span>
-								</>
-							</p>
-						</article>
-					))
-				}
-			</div>
+			<ReviewCollection
+				reviews={homepageClientReviews}
+				variant="featured"
+				ariaLabel="Featured Google client reviews"
+			/>
 		</section>
 
 		<section
@@ -344,7 +327,9 @@ const webPageSchema = {
 								>
 									<h3 id={`service-area-group-${groupIndex}`}>{group.label}</h3>
 									<ul>
-										{group.areas.map((area) => <li>{area}</li>)}
+										{group.areas.map((area) => (
+											<li>{area}</li>
+										))}
 									</ul>
 								</section>
 							))
@@ -406,7 +391,7 @@ const webPageSchema = {
 			link.addEventListener('click', () => trackHomepageEvent('homepage_service_click'));
 		});
 
-		const reviewRail = document.querySelector('[data-home-review-rail]');
+		const reviewRail = document.querySelector('.home-reviews [data-review-track]');
 		if (reviewRail) {
 			let reviewSwipeTracked = false;
 			reviewRail.addEventListener(
@@ -483,9 +468,7 @@ const webPageSchema = {
 			};
 
 			const pageCanScheduleShimmer = () =>
-				document.visibilityState === 'visible' &&
-				shimmerViewport.matches &&
-				!shimmerMotion.matches;
+				document.visibilityState === 'visible' && shimmerViewport.matches && !shimmerMotion.matches;
 
 			const contactUiIsActive = () => {
 				if (

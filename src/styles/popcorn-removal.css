@@ -589,45 +589,6 @@
 	background: var(--pc-soft);
 }
 
-.pc-review-rail {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 0.9rem;
-}
-
-.pc-review-card {
-	display: grid;
-	align-content: space-between;
-	min-height: 24rem;
-	padding: clamp(1.25rem, 2.3vw, 2rem);
-	border: 1px solid var(--pc-border);
-	border-radius: 1rem;
-	background: rgba(255, 255, 255, 0.68);
-}
-
-.pc-review-card__stars {
-	color: var(--pc-gold);
-	font-size: 0.72rem;
-	letter-spacing: 0.16em;
-}
-
-.pc-review-card blockquote {
-	margin: 1.5rem 0;
-	font-family: var(--font-source-serif-4), Georgia, serif;
-	font-size: clamp(1.2rem, 1.75vw, 1.65rem);
-	line-height: 1.35;
-}
-
-.pc-review-card footer {
-	display: grid;
-	gap: 0.2rem;
-}
-
-.pc-review-card footer span {
-	color: var(--pc-muted);
-	font-size: 0.78rem;
-}
-
 .pc-text-link {
 	display: inline-flex;
 	gap: 0.35rem;
@@ -841,7 +802,6 @@
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
-	.pc-review-rail,
 	.pc-link-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -1046,7 +1006,6 @@
 	}
 
 	.pc-check-list,
-	.pc-review-rail,
 	.pc-link-grid,
 	.pc-area-links {
 		grid-template-columns: 1fr;
@@ -1089,24 +1048,6 @@
 
 	.pc-owner__signature {
 		font-size: 1.4rem;
-	}
-
-	.pc-review-rail {
-		display: flex;
-		gap: 0.75rem;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		scrollbar-width: none;
-	}
-
-	.pc-review-rail::-webkit-scrollbar {
-		display: none;
-	}
-
-	.pc-review-card {
-		flex: 0 0 87%;
-		min-height: 22rem;
-		scroll-snap-align: start;
 	}
 
 	.pc-media__heading {

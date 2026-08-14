@@ -5,6 +5,7 @@ import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
 import BeforeAfterViewer from '@/components/prototype/BeforeAfterViewer.astro';
 import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
+import ReviewCollection from '@/components/ReviewCollection.astro';
 import Footer from '@/sections/Footer.astro';
 import {
 	heroImage,
@@ -15,10 +16,10 @@ import {
 	primaryComparison,
 	comparisons,
 	processSteps,
-	reviews,
 	faqs,
 	serviceAreas,
 } from '@/data/popcornRemovalPage';
+import { getReviewsForCollection } from '@/data/reviews';
 import '@/styles/popcorn-removal.css';
 
 export const prerender = true;
@@ -29,6 +30,7 @@ const description =
 const canonicalPath = '/services/popcorn-removal';
 const canonicalUrl = `https://strataline.ca${canonicalPath}`;
 const projectHelperText = 'Have ceiling photos ready? You can text them to';
+const popcornClientReviews = getReviewsForCollection('popcorn');
 const comparisonSources = await Promise.all(
 	comparisons.map(async (comparison) => ({
 		...comparison,
@@ -130,11 +132,7 @@ const schemas = [
 		<PrototypeHeader />
 
 		<main>
-			<section
-				class="pc-hero"
-				aria-labelledby="pc-hero-title"
-				data-floating-contact-avoid
-			>
+			<section class="pc-hero" aria-labelledby="pc-hero-title" data-floating-contact-avoid>
 				<div class="pc-hero__media" aria-hidden="true">
 					<Image
 						src={heroImage}
@@ -152,8 +150,8 @@ const schemas = [
 						<p class="pc-eyebrow">Popcorn ceiling removal — Toronto &amp; the GTA</p>
 						<h1 id="pc-hero-title">Popcorn ceiling removal in Toronto &amp; the GTA</h1>
 						<p class="pc-hero__lead">
-							Dust-controlled removal, ceiling correction and a smooth painted finish, with the
-							room protected throughout.
+							Dust-controlled removal, ceiling correction and a smooth painted finish, with the room
+							protected throughout.
 						</p>
 						<div class="pc-hero__actions">
 							<button
@@ -191,7 +189,10 @@ const schemas = [
 						<p>{primaryComparison.description}</p>
 					</div>
 					<div class="pc-comparison">
-						<BeforeAfterViewer comparison={primaryComparison} eventName="popcorn_before_after_interaction" />
+						<BeforeAfterViewer
+							comparison={primaryComparison}
+							eventName="popcorn_before_after_interaction"
+						/>
 					</div>
 				</div>
 			</section>
@@ -400,22 +401,11 @@ const schemas = [
 						<p class="pc-eyebrow">Popcorn ceiling reviews</p>
 						<h2 id="reviews-title">Clean work. Smooth results. Real occupied homes.</h2>
 					</div>
-					<div class="pc-review-rail" aria-label="Customer reviews">
-						{
-							reviews.map((review) => (
-								<article class="pc-review-card">
-									<span class="pc-review-card__stars" aria-label={`${review.rating} stars`}>
-										{'★'.repeat(review.rating)}
-									</span>
-									<blockquote>“{review.quote}”</blockquote>
-									<footer>
-										<strong>{review.name}</strong>
-										<span>{review.location}</span>
-									</footer>
-								</article>
-							))
-						}
-					</div>
+					<ReviewCollection
+						reviews={popcornClientReviews}
+						variant="compact"
+						ariaLabel="Popcorn ceiling removal Google reviews"
+					/>
 					<a class="pc-text-link" href="/reviews"
 						>Read more Strataline reviews <span aria-hidden="true">→</span></a
 					>

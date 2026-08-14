@@ -76,19 +76,26 @@ export type Props = SchemaOf<typeof schema>;
 const meta = Astro.props as Props;
 
 import * as Layout from '@/components/Layout';
-import Island from './Reviews';
+import ReviewCollection from '@/components/ReviewCollection.astro';
 import markdown from '@/build/markdown';
+import { getReviewsForCollection, type ReviewCollectionKey } from '@/data/reviews';
 
-for (const [_, review] of meta.content.entries()) {
-	review.desc = await markdown.parseInline(review.desc);
-}
+const pathname = Astro.url.pathname.toLowerCase();
+const collection: ReviewCollectionKey = pathname.includes('/popcorn-removal')
+	? 'popcorn'
+	: pathname.includes('/stairs')
+		? 'stairs'
+		: pathname.includes('/painting')
+			? 'painting'
+			: 'interior';
+const selectedReviews = getReviewsForCollection(collection);
 ---
 
 <Layout.Divider id={meta.id}>
 	<Layout.Title title={meta.title} pos={meta.pos} />
 	<div class="contain-paint">
 		<Layout.Container variant="inner" class="select-none">
-			<Island client:visible meta={meta.content} />
+			<ReviewCollection reviews={selectedReviews} ariaLabel={meta.title} />
 		</Layout.Container>
 	</div>
 </Layout.Divider>
