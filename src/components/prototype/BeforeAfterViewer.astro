@@ -1,0 +1,137 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export type BeforeAfterViewerItem = {
+	id: string;
+	title: string;
+	beforeImage: ImageMetadata;
+	afterImage: ImageMetadata;
+	beforeAlt: string;
+	afterAlt: string;
+	beforeObjectPosition: string;
+	afterObjectPosition: string;
+};
+
+interface Props {
+	comparison: BeforeAfterViewerItem;
+	eventName?: string;
+	loading?: 'eager' | 'lazy';
+	viewerId?: string;
+}
+
+const {
+	comparison,
+	eventName = 'before_after_interaction',
+	loading = 'lazy',
+	viewerId,
+} = Astro.props;
+---
+
+<div
+	class="proto-before-after__frame"
+	id={viewerId}
+	data-before-after
+	data-event-name={eventName}
+	data-comparison-id={comparison.id}
+	style={`--before-position: 50%; --before-object-position: ${comparison.beforeObjectPosition}; --after-object-position: ${comparison.afterObjectPosition};`}
+>
+	<figure class="proto-before-after__image proto-before-after__image--after">
+		<Image
+			src={comparison.afterImage}
+			alt={comparison.afterAlt}
+			widths={[480, 720, 960, 1280, 1600]}
+			sizes="(max-width: 900px) 100vw, 72vw"
+			{loading}
+			data-viewer-after
+		/>
+		<figcaption>After</figcaption>
+	</figure>
+	<figure class="proto-before-after__image proto-before-after__image--before" data-before-layer>
+		<Image
+			src={comparison.beforeImage}
+			alt={comparison.beforeAlt}
+			widths={[480, 720, 960, 1280, 1600]}
+			sizes="(max-width: 900px) 100vw, 72vw"
+			{loading}
+			data-viewer-before
+		/>
+		<figcaption>Before</figcaption>
+	</figure>
+	<label class="proto-before-after__control">
+		<span class="sr-only">Compare before and after for {comparison.title}</span>
+		<input
+			type="range"
+			min="0"
+			max="100"
+			value="50"
+			aria-label={`Compare before and after: ${comparison.title}`}
+			aria-valuetext="50% before image visible"
+			data-before-range
+		/>
+	</label>
+	<span class="proto-before-after__handle" aria-hidden="true" data-before-handle></span>
+</div>
+
+<script>
+	const initializeBeforeAfter = (frame: HTMLElement) => {
+		if (frame.dataset.beforeAfterReady === 'true') return;
+		const range = frame.querySelector('[data-before-range]');
+		if (!(range instanceof HTMLInputElement)) return;
+		frame.dataset.beforeAfterReady = 'true';
+		let activePointer: number | null = null;
+		const trackInteraction = () => {
+			const tracker = Reflect.get(window, 'trackProtoEvent');
+			if (typeof tracker === 'function') {
+				tracker(frame.dataset.eventName ?? 'before_after_interaction');
+			}
+		};
+
+		const update = () => {
+			const value = `${range.value}%`;
+			frame.style.setProperty('--before-position', value);
+			range.setAttribute('aria-valuetext', `${range.value}% before image visible`);
+		};
+		const updateFromPointer = (clientX: number) => {
+			const bounds = frame.getBoundingClientRect();
+			const nextValue = ((clientX - bounds.left) / bounds.width) * 100;
+			range.value = String(Math.max(0, Math.min(100, Math.round(nextValue))));
+			update();
+		};
+
+		frame.addEventListener('pointerdown', (event) => {
+			trackInteraction();
+			activePointer = event.pointerId;
+			frame.setPointerCapture?.(event.pointerId);
+			updateFromPointer(event.clientX);
+		});
+		frame.addEventListener('pointermove', (event) => {
+			if (activePointer !== event.pointerId) return;
+			updateFromPointer(event.clientX);
+		});
+		const stopPointer = (event: PointerEvent) => {
+			if (activePointer !== event.pointerId) return;
+			activePointer = null;
+		};
+		frame.addEventListener('pointerup', stopPointer);
+		frame.addEventListener('pointercancel', stopPointer);
+
+		range.addEventListener('input', () => {
+			update();
+			trackInteraction();
+		});
+		range.addEventListener('keydown', (event) => {
+			if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+			event.preventDefault();
+			trackInteraction();
+			if (event.key === 'Home') range.value = range.min;
+			if (event.key === 'End') range.value = range.max;
+			if (event.key === 'ArrowLeft') range.value = String(Math.max(0, Number(range.value) - 2));
+			if (event.key === 'ArrowRight') range.value = String(Math.min(100, Number(range.value) + 2));
+			update();
+		});
+		update();
+	};
+
+	document.querySelectorAll<HTMLElement>('[data-before-after]').forEach(initializeBeforeAfter);
+</script>

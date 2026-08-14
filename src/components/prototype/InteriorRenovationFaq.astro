@@ -1,21 +1,13 @@
 ---
 import { renovationFaqs } from '@/data/interiorRenovationsPrototype';
+import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
 ---
 
-<section class="proto-faq section-anchor" id="faq">
-	<span class="proto-faq__watermark" aria-hidden="true">FAQ</span>
-	<div class="proto-section-head reveal">
-		<p class="proto-eyebrow">FAQ</p>
-		<h2>Interior renovation questions</h2>
-	</div>
-	<div class="proto-faq__list">
-		{
-			renovationFaqs.map((item) => (
-				<details class="reveal">
-					<summary>{item.question}</summary>
-					<p>{item.answer}</p>
-				</details>
-			))
-		}
-	</div>
+<section class="proto-faq section-anchor" id="faq" aria-labelledby="faq-title">
+	<ProgressiveFaq
+		items={renovationFaqs}
+		heading="Interior renovation questions"
+		sectionId="faq"
+		pageId="interior-renovations"
+	/>
 </section>

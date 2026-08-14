@@ -1,12 +1,13 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import ConsultationCTA from '@/components/prototype/ConsultationCTA.astro';
+import BeforeAfterViewer from '@/components/prototype/BeforeAfterViewer.astro';
+import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
 import Footer from '@/sections/Footer.astro';
 import {
 	heroImage,
-	finishedImage,
 	ownerImage,
 	citylineImage,
 	torontoStarImage,
@@ -28,10 +29,22 @@ const description =
 const canonicalPath = '/services/popcorn-removal';
 const canonicalUrl = `https://strataline.ca${canonicalPath}`;
 const projectHelperText = 'Have ceiling photos ready? You can text them to';
-const initialComparison = comparisons[0];
+const comparisonSources = await Promise.all(
+	comparisons.map(async (comparison) => ({
+		...comparison,
+		beforeSrc: (await getImage({ src: comparison.beforeImage, width: 1280, format: 'webp' })).src,
+		afterSrc: (await getImage({ src: comparison.afterImage, width: 1280, format: 'webp' })).src,
+	})),
+);
+const initialComparison = comparisonSources[0];
+const finishedComparison = comparisons.find(({ id }) => id === 'bay-window-ceiling');
 
 if (!initialComparison) {
 	throw new Error('The popcorn-removal gallery requires at least one comparison.');
+}
+
+if (!finishedComparison) {
+	throw new Error('The finished-ceiling section requires the verified bay-window comparison.');
 }
 
 const schemas = [
@@ -117,7 +130,11 @@ const schemas = [
 		<PrototypeHeader />
 
 		<main>
-			<section class="pc-hero" aria-labelledby="pc-hero-title">
+			<section
+				class="pc-hero"
+				aria-labelledby="pc-hero-title"
+				data-floating-contact-avoid
+			>
 				<div class="pc-hero__media" aria-hidden="true">
 					<Image
 						src={heroImage}
@@ -135,9 +152,8 @@ const schemas = [
 						<p class="pc-eyebrow">Popcorn ceiling removal — Toronto &amp; the GTA</p>
 						<h1 id="pc-hero-title">Popcorn ceiling removal in Toronto &amp; the GTA</h1>
 						<p class="pc-hero__lead">
-							We protect the room, remove or resurface the texture as conditions require, correct
-							the ceiling, sand with HEPA source extraction, then prime and paint for a smooth
-							finished result.
+							Dust-controlled removal, ceiling correction and a smooth painted finish, with the
+							room protected throughout.
 						</p>
 						<div class="pc-hero__actions">
 							<button
@@ -146,7 +162,7 @@ const schemas = [
 								data-contact-open
 								data-event="popcorn_hero_photo_estimate_click"
 							>
-								Send Ceiling Photos
+								Request a Quote
 							</button>
 							<a class="pc-phone" href="tel:+14164715999" data-phone-link>
 								<span>Call or text</span>
@@ -171,45 +187,11 @@ const schemas = [
 				<div class="pc-shell">
 					<div class="pc-heading pc-heading--narrow">
 						<p class="pc-eyebrow">Before &amp; after</p>
-						<h2 id="primary-proof-title">From textured to perfectly smooth</h2>
-						<p>
-							Removal is only the beginning. Repair, skim coating, controlled sanding, primer and
-							paint are what create a ceiling that looks properly finished under daylight and
-							artificial light.
-						</p>
+						<h2 id="primary-proof-title">{primaryComparison.title}</h2>
+						<p>{primaryComparison.description}</p>
 					</div>
-					<div class="pc-comparison" data-before-after>
-						<div class="pc-comparison__stage">
-							<Image
-								class="pc-comparison__image"
-								src={primaryComparison.before}
-								alt={primaryComparison.beforeAlt}
-								widths={[480, 768, 1080, 1440]}
-								sizes="(max-width: 760px) calc(100vw - 32px), 1200px"
-							/>
-							<div class="pc-comparison__after" data-after-layer>
-								<Image
-									class="pc-comparison__image"
-									src={primaryComparison.after}
-									alt={primaryComparison.afterAlt}
-									widths={[480, 768, 1080, 1440]}
-									sizes="(max-width: 760px) calc(100vw - 32px), 1200px"
-								/>
-							</div>
-							<span class="pc-comparison__label pc-comparison__label--before">Before</span>
-							<span class="pc-comparison__label pc-comparison__label--after">After</span>
-							<span class="pc-comparison__divider" data-divider aria-hidden="true"></span>
-							<input
-								class="pc-comparison__range"
-								type="range"
-								min="0"
-								max="100"
-								value="52"
-								aria-label={`Compare before and after: ${primaryComparison.title}`}
-								data-comparison-range
-							/>
-						</div>
-						<p class="pc-comparison__caption">{primaryComparison.title}</p>
+					<div class="pc-comparison">
+						<BeforeAfterViewer comparison={primaryComparison} eventName="popcorn_before_after_interaction" />
 					</div>
 				</div>
 			</section>
@@ -262,21 +244,18 @@ const schemas = [
 			>
 				<div class="pc-shell pc-split">
 					<div class="pc-finished__media">
-						<Image
-							src={finishedImage}
-							alt="Smooth finished ceiling above a bright bay-window room after popcorn removal."
-							widths={[480, 720, 960, 1200]}
-							sizes="(max-width: 800px) calc(100vw - 32px), 50vw"
+						<BeforeAfterViewer
+							comparison={finishedComparison}
+							eventName="popcorn_finished_ceiling_comparison"
+							viewerId="popcorn-finished-ceiling-viewer"
 						/>
 					</div>
 					<div class="pc-heading pc-finished__copy">
 						<p class="pc-eyebrow">The finished ceiling</p>
-						<h2 id="finished-title">You are paying for the ceiling after the texture is gone.</h2>
+						<h2 id="finished-title">Removing the texture is only half the job.</h2>
 						<p>
-							A low quote can cover scraping while leaving visible seams, waves, ridges and repairs.
-							A complete scope accounts for the ceiling underneath, the skim work it requires and
-							the finish it must achieve once it is primed, painted and viewed under real room
-							lighting.
+							Scraping removes the texture. The ceiling underneath may still need repairs, skim
+							coating, controlled sanding, primer and paint before it actually looks finished.
 						</p>
 						<ul class="pc-check-list">
 							<li>Texture removal or controlled resurfacing</li>
@@ -328,96 +307,89 @@ const schemas = [
 			>
 				<div class="pc-shell">
 					<div class="pc-heading pc-heading--narrow">
-						<p class="pc-eyebrow">Five real transformations</p>
+						<p class="pc-eyebrow">More ceiling transformations</p>
 						<h2 id="gallery-title">Compare the finish where ceilings reveal the most</h2>
 						<p>
 							Select a project, then drag or use the arrow keys to compare the before and after.
 						</p>
 					</div>
-					<div class="pc-gallery__selectors" role="tablist" aria-label="Ceiling comparisons">
+					<div class="pc-gallery__selectors" aria-label="Choose a ceiling comparison">
 						{
-							comparisons.map((item, index) => (
+							comparisonSources.map((item, index) => (
 								<button
 									type="button"
-									role="tab"
-									aria-selected={index === 0 ? 'true' : 'false'}
+									aria-pressed={index === 0 ? 'true' : 'false'}
+									aria-controls="popcorn-secondary-viewer"
 									class:list={['pc-gallery__selector', index === 0 && 'is-active']}
 									data-gallery-select
-									data-before={item.before.src}
-									data-after={item.after.src}
+									data-comparison-id={item.id}
+									data-before={item.beforeSrc}
+									data-after={item.afterSrc}
 									data-before-alt={item.beforeAlt}
 									data-after-alt={item.afterAlt}
-									data-label={item.label}
+									data-title={item.title}
+									data-before-position={item.beforeObjectPosition}
+									data-after-position={item.afterObjectPosition}
 								>
-									{item.label}
+									<Image
+										src={item.afterImage}
+										alt=""
+										widths={[96, 160]}
+										sizes="72px"
+										loading="lazy"
+									/>
+									<span>{item.label}</span>
 								</button>
 							))
 						}
 					</div>
-					<div class="pc-comparison pc-comparison--gallery" data-before-after data-gallery-viewer>
-						<div class="pc-comparison__stage">
-							<img
-								class="pc-comparison__image"
-								src={initialComparison.before.src}
-								alt={initialComparison.beforeAlt}
-								width={initialComparison.before.width}
-								height={initialComparison.before.height}
-								loading="lazy"
-								decoding="async"
-								data-gallery-before
-							/>
-							<div class="pc-comparison__after" data-after-layer>
-								<img
-									class="pc-comparison__image"
-									src={initialComparison.after.src}
-									alt={initialComparison.afterAlt}
-									width={initialComparison.after.width}
-									height={initialComparison.after.height}
-									loading="lazy"
-									decoding="async"
-									data-gallery-after
-								/>
-							</div>
-							<span class="pc-comparison__label pc-comparison__label--before">Before</span>
-							<span class="pc-comparison__label pc-comparison__label--after">After</span>
-							<span class="pc-comparison__divider" data-divider aria-hidden="true"></span>
-							<input
-								class="pc-comparison__range"
-								type="range"
-								min="0"
-								max="100"
-								value="52"
-								aria-label={`Compare before and after: ${initialComparison.label}`}
-								data-comparison-range
-							/>
+					<div class="pc-gallery__viewer" data-gallery-viewer>
+						<BeforeAfterViewer
+							comparison={initialComparison}
+							eventName="popcorn_before_after_interaction"
+							viewerId="popcorn-secondary-viewer"
+						/>
+						<div class="pc-gallery__copy" aria-live="polite">
+							{
+								comparisonSources.map((item, index) => (
+									<article data-gallery-copy data-comparison-id={item.id} hidden={index !== 0}>
+										<p class="pc-eyebrow">{item.eyebrow}</p>
+										<h3>{item.title}</h3>
+										<p>{item.description}</p>
+									</article>
+								))
+							}
 						</div>
-						<p class="pc-comparison__caption" data-gallery-caption>{initialComparison.label}</p>
 					</div>
 				</div>
 			</section>
 
 			<section class="pc-section pc-owner" id="owner-led" aria-labelledby="owner-title">
-				<div class="pc-shell pc-split pc-split--reverse">
-					<div class="pc-heading pc-owner__copy">
-						<p class="pc-eyebrow">Owner-led quality control</p>
-						<h2 id="owner-title">The person who reviews the scope stays involved.</h2>
+				<div class="pc-owner__media">
+					<Image
+						src={ownerImage}
+						alt="Strataline owner Maxim Sologub completing detailed renovation work on site."
+						widths={[640, 960, 1440, 1920]}
+						sizes="100vw"
+					/>
+				</div>
+				<div class="pc-shell pc-owner__inner">
+					<div class="pc-heading pc-owner__copy" data-floating-contact-avoid>
+						<p class="pc-eyebrow">Owner-led renovations</p>
+						<h2 id="owner-title">The person who scopes the project stays involved.</h2>
 						<p>
-							Strataline is owner-operated by Maxim Sologub. Maxim reviews the project information,
-							develops the scope and remains involved through scheduling, execution and quality
-							control.
+							Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the
+							scope and remains involved through scheduling, coordination and quality control.
 						</p>
-						<p class="pc-owner__note">
-							Containment, floor protection, HEPA extraction and daily cleanup are planned around
-							the way the home is being used.
-						</p>
-					</div>
-					<div class="pc-owner__media">
-						<Image
-							src={ownerImage}
-							alt="Strataline owner Maxim Sologub completing detailed renovation work on site."
-							widths={[480, 720, 960]}
-							sizes="(max-width: 800px) calc(100vw - 32px), 50vw"
-						/>
+						<ul class="pc-owner__benefits">
+							<li>Direct accountability</li>
+							<li>Clear written scopes</li>
+							<li>Organized trade sequencing</li>
+							<li>Finish review before completion</li>
+						</ul>
+						<strong class="pc-owner__signature">
+							Maxim Sologub <span>Owner, Strataline Inc.</span>
+						</strong>
 					</div>
 				</div>
 			</section>
@@ -604,25 +576,14 @@ const schemas = [
 			</section>
 
 			<section class="pc-section pc-faq" id="faq" aria-labelledby="faq-title">
-				<div class="pc-shell pc-faq__grid">
-					<div class="pc-heading">
-						<p class="pc-eyebrow">Frequently asked questions</p>
-						<h2 id="faq-title">What homeowners ask before ceiling work starts</h2>
-						<p>Clear answers about scope, protection, testing, timing and the finished result.</p>
-					</div>
-					<div class="pc-faq__items">
-						{
-							faqs.map((item) => (
-								<details data-faq-item>
-									<summary>
-										{item.question}
-										<span aria-hidden="true">+</span>
-									</summary>
-									<p>{item.answer}</p>
-								</details>
-							))
-						}
-					</div>
+				<div class="pc-shell">
+					<ProgressiveFaq
+						items={faqs}
+						heading="Popcorn ceiling removal questions"
+						supportingText="Straight answers to the questions homeowners ask before removing, smoothing and refinishing textured ceilings."
+						sectionId="faq"
+						pageId="popcorn-ceiling-removal"
+					/>
 				</div>
 			</section>
 
@@ -711,29 +672,11 @@ const schemas = [
 			link.addEventListener('click', () => track('popcorn_phone_click'));
 		});
 
-		document.querySelectorAll('[data-before-after]').forEach((comparison) => {
-			const range = comparison.querySelector('[data-comparison-range]');
-			const layer = comparison.querySelector('[data-after-layer]');
-			const divider = comparison.querySelector('[data-divider]');
-			if (!(range instanceof HTMLInputElement) || !(layer instanceof HTMLElement)) return;
-			let tracked = false;
-			const update = () => {
-				const position = `${range.value}%`;
-				layer.style.clipPath = `inset(0 0 0 ${position})`;
-				if (divider instanceof HTMLElement) divider.style.left = position;
-				if (!tracked) {
-					track('popcorn_before_after_interaction');
-					tracked = true;
-				}
-			};
-			range.addEventListener('input', update);
-		});
-
 		const gallery = document.querySelector('[data-gallery-viewer]');
-		const galleryBefore = gallery?.querySelector('[data-gallery-before]');
-		const galleryAfter = gallery?.querySelector('[data-gallery-after]');
-		const galleryRange = gallery?.querySelector('[data-comparison-range]');
-		const galleryCaption = gallery?.querySelector('[data-gallery-caption]');
+		const galleryFrame = gallery?.querySelector('[data-before-after]');
+		const galleryBefore = gallery?.querySelector('[data-viewer-before]');
+		const galleryAfter = gallery?.querySelector('[data-viewer-after]');
+		const galleryRange = gallery?.querySelector('[data-before-range]');
 		document.querySelectorAll('[data-gallery-select]').forEach((button) => {
 			button.addEventListener('click', () => {
 				if (
@@ -744,28 +687,40 @@ const schemas = [
 					return;
 				document.querySelectorAll('[data-gallery-select]').forEach((candidate) => {
 					candidate.classList.toggle('is-active', candidate === button);
-					candidate.setAttribute('aria-selected', candidate === button ? 'true' : 'false');
+					candidate.setAttribute('aria-pressed', candidate === button ? 'true' : 'false');
 				});
+				document.querySelectorAll('[data-gallery-copy]').forEach((copy) => {
+					if (copy instanceof HTMLElement) {
+						copy.hidden = copy.dataset.comparisonId !== button.dataset.comparisonId;
+					}
+				});
+				galleryBefore.removeAttribute('srcset');
+				galleryAfter.removeAttribute('srcset');
 				galleryBefore.src = button.dataset.before || '';
 				galleryBefore.alt = button.dataset.beforeAlt || '';
 				galleryAfter.src = button.dataset.after || '';
 				galleryAfter.alt = button.dataset.afterAlt || '';
-				if (galleryCaption) galleryCaption.textContent = button.dataset.label || '';
+				if (galleryFrame instanceof HTMLElement) {
+					galleryFrame.dataset.comparisonId = button.dataset.comparisonId || '';
+					galleryFrame.style.setProperty('--before-position', '50%');
+					galleryFrame.style.setProperty(
+						'--before-object-position',
+						button.dataset.beforePosition || 'center center',
+					);
+					galleryFrame.style.setProperty(
+						'--after-object-position',
+						button.dataset.afterPosition || 'center center',
+					);
+				}
 				if (galleryRange instanceof HTMLInputElement) {
-					galleryRange.value = '52';
+					galleryRange.value = '50';
 					galleryRange.setAttribute(
 						'aria-label',
-						`Compare before and after: ${button.dataset.label || ''}`,
+						`Compare before and after: ${button.dataset.title || ''}`,
 					);
-					galleryRange.dispatchEvent(new Event('input', { bubbles: true }));
+					galleryRange.setAttribute('aria-valuetext', '50% before image visible');
 				}
-				track('popcorn_before_after_interaction', { comparison: button.dataset.label });
-			});
-		});
-
-		document.querySelectorAll('[data-faq-item]').forEach((item) => {
-			item.addEventListener('toggle', () => {
-				if (item instanceof HTMLDetailsElement && item.open) track('popcorn_faq_open');
+				track('popcorn_comparison_select', { comparison_id: button.dataset.comparisonId });
 			});
 		});
 

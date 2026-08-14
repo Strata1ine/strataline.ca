@@ -49,13 +49,16 @@ for (const faq of meta.content) {
 }
 
 import * as Layout from '@/components/Layout';
-import Island from './Faq';
+import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
 ---
 
 <Layout.Divider id={meta.id}>
-	<Layout.Title title={meta.title} pos={meta.pos} />
-
 	<Layout.Container variant="inner">
-		<Island client:load content={meta.content} showMoreLabel={meta.showMoreLabel} />
+		<ProgressiveFaq
+			items={meta.content.map((item) => ({ question: item.title, answerHtml: item.desc }))}
+			heading={meta.title}
+			sectionId={meta.id ?? 'faq'}
+			pageId={Astro.url.pathname}
+		/>
 	</Layout.Container>
 </Layout.Divider>
