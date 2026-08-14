@@ -21,6 +21,9 @@ const FORMSPARK_ENDPOINT =
 	process.env.FORMSPARK_ENDPOINT?.trim() || 'https://submit-form.com/jReRE2JLR';
 const SUCCESS_REDIRECT = 'https://strataline.ca/submissions/talk';
 const MAX_STANDARD_FIELD_LENGTH = 500;
+const ATTACHMENT_FALLBACK_CAPTURE_FIELD = 'Attachment Fallback Capture';
+const ATTACHMENT_UPLOAD_ERROR =
+	"We couldn't upload the attachment. Remove it and try again, or text the photos to (416) 471-5999.";
 
 export interface ContactSubmissionDependencies {
 	getAttachmentStore: () => Store;
@@ -67,28 +70,130 @@ const getText = (formData: FormData, name: string) => {
 
 const wantsJson = (request: Request) => request.headers.get('accept')?.includes('application/json');
 
-const errorResponse = (request: Request, message: string, status = 400) =>
-	new Response(wantsJson(request) ? JSON.stringify({ ok: false, error: message }) : message, {
-		status,
-		headers: {
-			'Content-Type': wantsJson(request)
-				? 'application/json; charset=utf-8'
-				: 'text/plain; charset=utf-8',
-			'Cache-Control': 'no-store',
+const errorResponse = (
+	request: Request,
+	message: string,
+	status = 400,
+	details: Record<string, string | number | boolean> = {},
+) =>
+	new Response(
+		wantsJson(request) ? JSON.stringify({ ok: false, error: message, ...details }) : message,
+		{
+			status,
+			headers: {
+				'Content-Type': wantsJson(request)
+					? 'application/json; charset=utf-8'
+					: 'text/plain; charset=utf-8',
+				'Cache-Control': 'no-store',
+			},
 		},
-	});
+	);
 
-const successResponse = (request: Request, redirectUrl: string, attachmentCount: number) => {
+const successResponse = (
+	request: Request,
+	redirectUrl: string,
+	attachmentCount: number,
+	leadReference?: string,
+) => {
 	if (!wantsJson(request)) {
 		return Response.redirect(redirectUrl, 303);
 	}
-	return Response.json({ ok: true, attachmentCount }, { headers: { 'Cache-Control': 'no-store' } });
+	return Response.json(
+		{
+			ok: true,
+			attachmentCount,
+			...(leadReference ? { leadCaptured: true, leadReference } : {}),
+		},
+		{ headers: { 'Cache-Control': 'no-store' } },
+	);
 };
 
-const cleanupStoredAttachments = async (store: Store, tokens: string[]) => {
-	if (!tokens.length) return true;
-	const results = await Promise.allSettled(tokens.map((token) => store.delete(token)));
-	return results.every((result) => result.status === 'fulfilled');
+const buildRelayPayload = (
+	formData: FormData,
+	leadReference: string,
+	storedAttachments: StoredContactAttachment[] = [],
+	extraFields: Record<string, string | number> = {},
+) => {
+	const relayFields = Object.fromEntries(
+		RELAY_FIELDS.map((field) => [field, getText(formData, field)]),
+	) as Record<string, string | number>;
+	relayFields._redirect = SUCCESS_REDIRECT;
+	relayFields['Contact Form Source'] =
+		getText(formData, 'Contact Form Source').toLowerCase() === 'popup' ? 'popup' : 'inline';
+
+	const attachmentSummary = storedAttachments.map(
+		(attachment, index) =>
+			`${index + 1}. ${attachment.filename} (${Math.ceil(attachment.size / 1024)} KB) - ${attachment.url}`,
+	);
+	const payload: Record<string, string | number> = {
+		...relayFields,
+		'Lead Reference': leadReference,
+		'Attachment Count': storedAttachments.length,
+		...extraFields,
+	};
+	if (attachmentSummary.length) payload.Attachments = attachmentSummary.join('\n');
+	storedAttachments.forEach((attachment, index) => {
+		payload[`Attachment ${index + 1}`] = attachment.url;
+		payload[`Attachment ${index + 1} Filename`] = attachment.filename;
+	});
+	return payload;
+};
+
+const relayContactPayload = async (
+	dependencies: ContactSubmissionDependencies,
+	payload: Record<string, string | number>,
+) => {
+	try {
+		const response = await dependencies.relay(dependencies.formsparkEndpoint, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(payload),
+		});
+		return { ok: response.ok, status: response.status, errorName: null };
+	} catch (error) {
+		return {
+			ok: false,
+			status: 0,
+			errorName: error instanceof Error ? error.name : 'UnknownError',
+		};
+	}
+};
+
+const logContactFailure = ({
+	stage,
+	leadReference,
+	fileCount,
+	totalBytes,
+	status,
+	error,
+	errorName,
+	fallbackRelayStatus,
+}: {
+	stage: string;
+	leadReference: string;
+	fileCount: number;
+	totalBytes: number;
+	status: number;
+	error?: unknown;
+	errorName?: string | null;
+	fallbackRelayStatus?: number;
+}) => {
+	console.error(
+		'[contact-submission]',
+		JSON.stringify({
+			event: 'contact_submission_failure',
+			stage,
+			leadReference,
+			fileCount,
+			totalBytes,
+			status,
+			errorName: errorName ?? (error instanceof Error ? error.name : error ? 'UnknownError' : null),
+			fallbackRelayStatus: fallbackRelayStatus ?? null,
+		}),
+	);
 };
 
 export const handleContactSubmission = async (
@@ -100,21 +205,47 @@ export const handleContactSubmission = async (
 	if (origin && origin !== url.origin) {
 		return errorResponse(request, 'This form must be submitted from the Strataline website.', 403);
 	}
-
+	const contentType = request.headers.get('content-type')?.toLowerCase() ?? '';
 	const contentLength = Number(request.headers.get('content-length') ?? 0);
-	if (contentLength > CONTACT_ATTACHMENT_MAX_REQUEST_BYTES) {
-		return errorResponse(
-			request,
-			'The selected files are larger than the 4 MB total upload limit. Remove a file and try again.',
-			413,
-		);
+	if (
+		contentType.includes('multipart/form-data') &&
+		contentLength > CONTACT_ATTACHMENT_MAX_REQUEST_BYTES
+	) {
+		logContactFailure({
+			stage: 'request-limit',
+			leadReference: 'unavailable',
+			fileCount: 0,
+			totalBytes: contentLength,
+			status: 413,
+		});
+		return errorResponse(request, ATTACHMENT_UPLOAD_ERROR, 413, {
+			attachmentFailure: true,
+			leadCaptured: false,
+		});
 	}
 
 	let formData: FormData;
 	try {
 		formData = await request.formData();
-	} catch {
-		return errorResponse(request, 'The form data could not be read. Please try again.', 400);
+	} catch (error) {
+		logContactFailure({
+			stage: 'parse',
+			leadReference: 'unavailable',
+			fileCount: 0,
+			totalBytes: 0,
+			status: 400,
+			error,
+		});
+		return errorResponse(
+			request,
+			contentType.includes('multipart/form-data')
+				? ATTACHMENT_UPLOAD_ERROR
+				: 'The form data could not be read. Please try again.',
+			400,
+			contentType.includes('multipart/form-data')
+				? { attachmentFailure: true, leadCaptured: false }
+				: {},
+		);
 	}
 
 	if (getText(formData, 'Company Website')) {
@@ -146,135 +277,171 @@ export const handleContactSubmission = async (
 		);
 	}
 
+	const suppliedLeadReference = getText(formData, 'Lead Reference').toUpperCase();
+	const leadReference = /^[A-F0-9]{16}$/.test(suppliedLeadReference)
+		? suppliedLeadReference
+		: createLeadReference();
+
 	const files = formData
 		.getAll(CONTACT_ATTACHMENT_FIELD)
 		.filter(
-			(value): value is File => value instanceof File && (value.name !== '' || value.size > 0),
+			(value): value is File => typeof value !== 'string' && (value.name !== '' || value.size > 0),
 		);
-	if (files.length > CONTACT_ATTACHMENT_MAX_FILES) {
-		return errorResponse(request, 'Attach no more than 10 files at a time.');
-	}
 	const totalBytes = files.reduce((total, file) => total + file.size, 0);
+	const sendAttachmentFailure = async ({
+		stage,
+		status,
+		error,
+		storedAttachments = [],
+	}: {
+		stage: string;
+		status: number;
+		error?: unknown;
+		storedAttachments?: StoredContactAttachment[];
+	}) => {
+		const fallbackPayload = buildRelayPayload(formData, leadReference, storedAttachments, {
+			'Attachment Status': 'Upload failed — customer was asked to remove or text the files.',
+			'Attachment Failure Stage': stage,
+		});
+		const fallbackRelay = await relayContactPayload(dependencies, fallbackPayload);
+		logContactFailure({
+			stage,
+			leadReference,
+			fileCount: files.length,
+			totalBytes,
+			status,
+			error,
+			fallbackRelayStatus: fallbackRelay.status,
+		});
+		if (!fallbackRelay.ok) {
+			logContactFailure({
+				stage: 'fallback-relay',
+				leadReference,
+				fileCount: files.length,
+				totalBytes,
+				status: fallbackRelay.status || 502,
+				errorName: fallbackRelay.errorName,
+			});
+		}
+		return errorResponse(request, ATTACHMENT_UPLOAD_ERROR, status, {
+			attachmentFailure: true,
+			leadCaptured: fallbackRelay.ok,
+			leadReference,
+		});
+	};
+
+	if (getText(formData, ATTACHMENT_FALLBACK_CAPTURE_FIELD)) {
+		return sendAttachmentFailure({ stage: 'client-fallback', status: 502 });
+	}
+	if (files.length > CONTACT_ATTACHMENT_MAX_FILES) {
+		return sendAttachmentFailure({ stage: 'file-count', status: 400 });
+	}
 	if (totalBytes > CONTACT_ATTACHMENT_MAX_TOTAL_BYTES) {
-		return errorResponse(
-			request,
-			'The selected files are larger than the 4 MB total upload limit. Remove a file and try again.',
-			413,
-		);
+		return sendAttachmentFailure({ stage: 'file-size', status: 413 });
 	}
 
 	let validatedAttachments: ValidatedContactAttachment[];
 	try {
 		validatedAttachments = await Promise.all(files.map(validateContactAttachment));
 	} catch (error) {
-		if (error instanceof ContactAttachmentError) {
-			return errorResponse(request, error.message, error.status);
-		}
-		return errorResponse(request, 'One of the selected files could not be validated.', 400);
+		return sendAttachmentFailure({
+			stage: 'file-validation',
+			status: error instanceof ContactAttachmentError ? error.status : 400,
+			error,
+		});
 	}
 
-	const leadReference = createLeadReference();
 	let store: Store | null = null;
 	if (validatedAttachments.length) {
 		try {
 			store = dependencies.getAttachmentStore();
-		} catch {
-			return errorResponse(
-				request,
-				'File storage is temporarily unavailable. No files were retained. Please try again.',
-				503,
-			);
+		} catch (error) {
+			return sendAttachmentFailure({ stage: 'storage-init', status: 503, error });
 		}
 	}
-	const storedTokens: string[] = [];
 	const productionOrigin =
 		process.env.CONTEXT === 'production' ? 'https://strataline.ca' : url.origin;
 	const attachmentOrigin = new URL(
 		process.env.CONTACT_ATTACHMENT_BASE_URL?.trim() || productionOrigin,
 	);
 
-	try {
-		const storedAttachments: StoredContactAttachment[] = [];
-		for (const attachment of validatedAttachments) {
-			if (!store) {
-				throw new ContactAttachmentError(
-					'File storage is temporarily unavailable. No files were retained. Please try again.',
-					503,
-				);
-			}
+	const storedAttachments: StoredContactAttachment[] = [];
+	for (const attachment of validatedAttachments) {
+		if (!store) {
+			return sendAttachmentFailure({
+				stage: 'storage-init',
+				status: 503,
+				storedAttachments,
+			});
+		}
+		try {
 			const stored = await storeContactAttachment({
 				attachment,
 				store,
 				leadReference,
 				baseUrl: attachmentOrigin,
 			});
-			storedTokens.push(stored.token);
 			storedAttachments.push(stored);
-		}
-
-		const relayPayload = Object.fromEntries(
-			RELAY_FIELDS.map((field) => [field, getText(formData, field)]),
-		);
-		relayPayload._redirect = SUCCESS_REDIRECT;
-		relayPayload['Contact Form Source'] =
-			getText(formData, 'Contact Form Source').toLowerCase() === 'popup' ? 'popup' : 'inline';
-		const attachmentSummary = storedAttachments.map(
-			(attachment, index) =>
-				`${index + 1}. ${attachment.filename} (${Math.ceil(attachment.size / 1024)} KB) - ${attachment.url}`,
-		);
-		const payload: Record<string, string | number> = {
-			...relayPayload,
-			'Lead Reference': leadReference,
-			'Attachment Count': storedAttachments.length,
-		};
-		if (attachmentSummary.length) payload.Attachments = attachmentSummary.join('\n');
-		storedAttachments.forEach((attachment, index) => {
-			payload[`Attachment ${index + 1}`] = attachment.url;
-			payload[`Attachment ${index + 1} Filename`] = attachment.filename;
-		});
-
-		let relayResponse: Response;
-		try {
-			relayResponse = await dependencies.relay(dependencies.formsparkEndpoint, {
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(payload),
+		} catch (error) {
+			return sendAttachmentFailure({
+				stage: 'storage-write',
+				status: error instanceof ContactAttachmentError ? error.status : 503,
+				error,
+				storedAttachments,
 			});
-		} catch {
-			const retainedMessage = storedAttachments.length
-				? ` Your uploaded files were retained under reference ${leadReference}.`
-				: '';
-			return errorResponse(
-				request,
-				`The form delivery could not be confirmed.${retainedMessage} Please call or text us before trying again.`,
-				502,
-			);
 		}
-		if (!relayResponse.ok) {
-			throw new ContactAttachmentError(
-				'The form could not send. Please try again or call us.',
-				502,
-			);
-		}
-
-		return successResponse(request, SUCCESS_REDIRECT, storedAttachments.length);
-	} catch (error) {
-		const cleanupSucceeded = store ? await cleanupStoredAttachments(store, storedTokens) : true;
-		if (!cleanupSucceeded) {
-			return errorResponse(
-				request,
-				`The form could not send. Some uploaded files may have been retained under reference ${leadReference}. Please call or text us before trying again.`,
-				500,
-			);
-		}
-		if (error instanceof ContactAttachmentError) {
-			return errorResponse(request, error.message, error.status);
-		}
-		return errorResponse(request, 'The form could not send. Please try again or call us.', 500);
 	}
+
+	const payload = buildRelayPayload(formData, leadReference, storedAttachments);
+	const relayResult = await relayContactPayload(dependencies, payload);
+	if (!relayResult.ok) {
+		logContactFailure({
+			stage: 'relay',
+			leadReference,
+			fileCount: files.length,
+			totalBytes,
+			status: relayResult.status || 502,
+			errorName: relayResult.errorName,
+		});
+		let leadCaptured = false;
+		if (storedAttachments.length) {
+			const fallbackPayload = buildRelayPayload(formData, leadReference, storedAttachments, {
+				'Attachment Status':
+					'Initial notification delivery could not be confirmed; attachment links are included again.',
+			});
+			const fallbackRelay = await relayContactPayload(dependencies, fallbackPayload);
+			leadCaptured = fallbackRelay.ok;
+			if (fallbackRelay.ok) {
+				return successResponse(request, SUCCESS_REDIRECT, storedAttachments.length, leadReference);
+			}
+			if (!fallbackRelay.ok) {
+				logContactFailure({
+					stage: 'fallback-relay',
+					leadReference,
+					fileCount: files.length,
+					totalBytes,
+					status: fallbackRelay.status || 502,
+					errorName: fallbackRelay.errorName,
+				});
+			}
+		}
+		return errorResponse(
+			request,
+			storedAttachments.length
+				? ATTACHMENT_UPLOAD_ERROR
+				: 'The form could not send. Please try again or call or text us.',
+			502,
+			storedAttachments.length
+				? {
+						attachmentFailure: true,
+						leadCaptured,
+						leadReference,
+					}
+				: { leadCaptured: false, leadReference },
+		);
+	}
+
+	return successResponse(request, SUCCESS_REDIRECT, storedAttachments.length, leadReference);
 };
 
 export const POST: APIRoute = ({ request, url }) => handleContactSubmission(request, url);

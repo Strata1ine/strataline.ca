@@ -254,6 +254,8 @@ const budgetChoices = [
 <script is:inline>
 	{
 		const attachmentGenericMimes = new Set(['', 'application/octet-stream']);
+		const attachmentUploadError =
+			"We couldn't upload the attachment. Remove it and try again, or text the photos to (416) 471-5999.";
 		const attachmentMimeByKind = {
 			jpeg: ['image/jpeg', 'image/jpg'],
 			png: ['image/png'],
@@ -362,6 +364,8 @@ const budgetChoices = [
 			let selectedAttachments = [];
 			let attachmentPreviewUrls = [];
 			let pendingAttachmentValidation = Promise.resolve();
+			let attachmentSelectionError = '';
+			let leadReference = '';
 			let hasStarted = false;
 			let currentStep = 1;
 			let isSubmitting = false;
@@ -395,6 +399,40 @@ const budgetChoices = [
 			};
 
 			const attachmentSizeLabel = (bytes) => `${Math.max(1, Math.ceil(bytes / 1024))} KB`;
+			const ensureLeadReference = () => {
+				if (leadReference) return leadReference;
+				const bytes = new Uint8Array(8);
+				if (window.crypto?.getRandomValues) {
+					window.crypto.getRandomValues(bytes);
+				} else {
+					for (let index = 0; index < bytes.length; index += 1) {
+						bytes[index] = Math.floor(Math.random() * 256);
+					}
+				}
+				leadReference = [...bytes]
+					.map((byte) => byte.toString(16).padStart(2, '0'))
+					.join('')
+					.toUpperCase();
+				return leadReference;
+			};
+
+			const captureLeadAfterAttachmentFailure = async (sourceFormData, reference) => {
+				const fallbackData = new URLSearchParams();
+				sourceFormData.forEach((value, name) => {
+					if (typeof value === 'string' && name !== 'Attachments') {
+						fallbackData.append(name, value);
+					}
+				});
+				fallbackData.set('Lead Reference', reference);
+				fallbackData.set('Attachment Fallback Capture', 'true');
+				const fallbackResponse = await fetch(progressiveForm.action, {
+					method: 'POST',
+					body: fallbackData,
+					headers: { Accept: 'application/json' },
+				});
+				const fallbackResponseData = await fallbackResponse.json().catch(() => null);
+				return fallbackResponseData?.leadCaptured === true;
+			};
 
 			const renderAttachments = () => {
 				if (!(fileList instanceof HTMLUListElement)) return;
@@ -439,7 +477,6 @@ const budgetChoices = [
 					removeButton.addEventListener('click', () => {
 						if (isSubmitting) return;
 						selectedAttachments.splice(index, 1);
-						setFileError('');
 						renderAttachments();
 						markStarted();
 						if (filePicker instanceof HTMLElement) filePicker.focus();
@@ -451,6 +488,7 @@ const budgetChoices = [
 
 			const clearAttachments = () => {
 				selectedAttachments = [];
+				attachmentSelectionError = '';
 				if (fileInput instanceof HTMLInputElement) fileInput.value = '';
 				setFileError('');
 				renderAttachments();
@@ -500,7 +538,8 @@ const budgetChoices = [
 					totalBytes += file.size;
 				}
 
-				setFileError(errors.join(' '));
+				attachmentSelectionError = errors.join(' ');
+				setFileError(attachmentSelectionError);
 				renderAttachments();
 				if (selectedAttachments.length) markStarted();
 			};
@@ -591,11 +630,33 @@ const budgetChoices = [
 				isSubmitting = true;
 				submitButton.disabled = true;
 				setAttachmentControlsDisabled(true);
+				let submittedFormData = null;
+				let attemptedAttachments = false;
+				let leadCaptured = false;
 
 				try {
 					await pendingAttachmentValidation;
 					if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
 						setStatus('Please complete the required fields before submitting.');
+						return;
+					}
+					if (attachmentSelectionError) {
+						const selectionError = attachmentSelectionError;
+						const currentLeadReference = ensureLeadReference();
+						const fallbackSource = new FormData(progressiveForm);
+						fallbackSource.set('Lead Reference', currentLeadReference);
+						try {
+							leadCaptured = await captureLeadAfterAttachmentFailure(
+								fallbackSource,
+								currentLeadReference,
+							);
+						} catch {
+							leadCaptured = false;
+						}
+						attachmentSelectionError = '';
+						setFileError('');
+						setStatus(`${selectionError} ${attachmentUploadError}`);
+						if (filePicker instanceof HTMLElement) filePicker.focus();
 						return;
 					}
 					setStatus('Sending project details...');
@@ -604,22 +665,36 @@ const budgetChoices = [
 					selectedAttachments.forEach(({ file }) => {
 						formData.append('Attachments', file, file.name);
 					});
+					const currentLeadReference = ensureLeadReference();
+					formData.set('Lead Reference', currentLeadReference);
+					submittedFormData = formData;
+					attemptedAttachments = selectedAttachments.length > 0;
 					const response = await fetch(progressiveForm.action, {
 						method: 'POST',
 						body: formData,
 						headers: { Accept: 'application/json' },
 					});
 					const responseData = await response.json().catch(() => null);
-					if (!response.ok || responseData?.ok === false) {
+					leadCaptured = responseData?.leadCaptured === true;
+					const submissionConfirmed =
+						response.ok && responseData?.ok === true && (!attemptedAttachments || leadCaptured);
+					if (!submissionConfirmed) {
 						const submissionError = new Error(
-							responseData?.error || 'The form could not send. Please try again or call us.',
+							responseData?.error ||
+								(attachmentSelectionError
+									? attachmentUploadError
+									: 'The form could not send. Please try again or call us.'),
 						);
 						submissionError.userFacing = true;
+						submissionError.attachmentFailure =
+							attemptedAttachments &&
+							(responseData?.attachmentFailure === true || responseData === null);
 						throw submissionError;
 					}
 					window.trackContactEvent?.(eventName('submit'));
 					progressiveForm.reset();
 					clearAttachments();
+					leadReference = '';
 					setStatus('');
 					if (formFlow instanceof HTMLElement) formFlow.hidden = true;
 					if (successState instanceof HTMLElement) {
@@ -627,6 +702,22 @@ const budgetChoices = [
 						successState.focus();
 					}
 				} catch (error) {
+					if (
+						attemptedAttachments &&
+						!leadCaptured &&
+						submittedFormData instanceof FormData &&
+						(error?.attachmentFailure === true || !error?.userFacing)
+					) {
+						try {
+							leadCaptured = await captureLeadAfterAttachmentFailure(
+								submittedFormData,
+								ensureLeadReference(),
+							);
+						} catch {
+							leadCaptured = false;
+						}
+						error = Object.assign(new Error(attachmentUploadError), { userFacing: true });
+					}
 					window.trackContactEvent?.(eventName('error'));
 					setStatus(
 						error?.userFacing

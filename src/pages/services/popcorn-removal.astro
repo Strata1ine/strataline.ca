@@ -696,10 +696,6 @@ const schemas = [
 		if (gallerySelectorRail instanceof HTMLElement) {
 			gallerySelectorRail.addEventListener('pointerdown', (event) => {
 				if (event.pointerType === 'mouse' && event.button !== 0) return;
-				gallerySelectorRail.scrollTo({
-					left: gallerySelectorRail.scrollLeft,
-					behavior: 'auto',
-				});
 				galleryPointerActive = true;
 				galleryPointerDragged = false;
 				galleryPointerStartX = event.clientX;
