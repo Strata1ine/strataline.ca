@@ -23,6 +23,18 @@ const {
 } = Astro.props;
 
 const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 9)}`;
+const serviceLabels: Partial<Record<GoogleReview['services'][number], string>> = {
+	'popcorn-ceilings': 'Popcorn ceilings',
+	'stairs-railings': 'Stairs & railings',
+	painting: 'Painting',
+	'interior-renovations': 'Interior renovations',
+	flooring: 'Flooring',
+	wallpaper: 'Wallpaper',
+	doors: 'Doors & finishing',
+	'trim-carpentry': 'Trim & carpentry',
+	lighting: 'Lighting',
+	'dust-control': 'Dust control',
+};
 ---
 
 <section
@@ -60,6 +72,7 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 		{
 			reviews.map((review) => {
 				const copyId = `${safeInstanceId}-${review.id}-copy`;
+				const serviceLabel = serviceLabels[review.services[0]] ?? 'Renovation';
 				return (
 					<article
 						class="review-card"
@@ -82,6 +95,7 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 								<span>{review.source} review</span>
 							</p>
 						</header>
+						<p class="review-card__category">{serviceLabel}</p>
 
 						<blockquote class="review-card__quote">
 							<p id={copyId} data-review-copy data-excerpt={review.excerpt}>
@@ -149,13 +163,13 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 
 			copy.textContent = excerpt;
 			toggle.hidden = false;
-			toggle.addEventListener('click', () => {
+			toggle.onclick = () => {
 				const expanded = toggle.getAttribute('aria-expanded') === 'true';
 				toggle.setAttribute('aria-expanded', String(!expanded));
 				toggle.textContent = expanded ? 'Read full review' : 'Show less';
 				copy.textContent = expanded ? excerpt : fullText;
 				card.dataset.expanded = String(!expanded);
-			});
+			};
 		});
 
 		const filters = root.querySelector<HTMLElement>('[data-review-filters]');
@@ -309,6 +323,14 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 		margin: 0;
 	}
 
+	.review-card__category {
+		margin: -0.35rem 0 0.8rem;
+		color: var(--review-accent);
+		font: 750 0.72rem/1.25 var(--font-inter, Inter, system-ui, sans-serif);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
 	.review-card__quote p {
 		margin: 0;
 		font-family: var(--font-source-serif-4, Georgia, serif);
@@ -384,6 +406,19 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 		border-color: color-mix(in srgb, var(--review-accent) 52%, var(--review-border));
 	}
 
+	@media (min-width: 901px) {
+		.review-collection--cards .review-collection__track {
+			display: block;
+			columns: 3;
+			column-gap: clamp(0.85rem, 1.8vw, 1.35rem);
+		}
+
+		.review-collection--cards .review-card {
+			break-inside: avoid;
+			margin-bottom: clamp(0.85rem, 1.8vw, 1.35rem);
+		}
+	}
+
 	.review-collection__sr-only {
 		position: absolute;
 		width: 1px;
@@ -428,6 +463,10 @@ const safeInstanceId = `review-collection-${Math.random().toString(36).slice(2, 
 		.review-collection[data-mobile-scroll='true'] .review-card {
 			flex: 0 0 min(86vw, 22rem);
 			scroll-snap-align: start;
+		}
+
+		.review-collection--featured[data-mobile-scroll='true'] .review-card {
+			flex-basis: min(76vw, 20rem);
 		}
 
 		.review-collection[data-mobile-scroll='false'] .review-collection__track {

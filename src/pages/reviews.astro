@@ -1,235 +1,309 @@
 ---
 import Root from '@/layouts/Root.astro';
-import * as Layout from '@/components/Layout';
 import ReviewCollection from '@/components/ReviewCollection.astro';
-import { getReviewsForCollection } from '@/data/reviews';
+import { getReviewsByIds, getReviewsForCollection } from '@/data/reviews';
 
 const googleReviewUrl = 'https://g.page/r/CVMFoUd4wK3bEBE/review';
 const houzzUrl = 'https://www.houzz.com/writeProReview/cmd=r/n=maxim-sologub';
 const facebookUrl = 'https://www.facebook.com/stratalineinc';
 
+const featuredReviews = getReviewsByIds(['lani-selick', 'taras-burban', 'greg-baxter']);
 const googleReviews = getReviewsForCollection('all');
 ---
 
 <Root
-	title="Reviews & Client Feedback"
-	desc="Leave a review for Strataline or read client feedback from homeowners across the GTA."
+	title="Google Reviews | Strataline Client Feedback"
+	desc="Read genuine Google reviews from Strataline renovation clients across Toronto and the GTA."
 >
-	<main class="bg-white">
-		<Layout.Divider class="pt-12 pb-14 sm:pt-18 sm:pb-20">
-			<Layout.Container variant="inner" class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
+	<main class="reviews-page">
+		<header class="reviews-hero">
+			<div class="reviews-shell reviews-hero__inner">
+				<p class="reviews-eyebrow">Google reviews</p>
+				<h1>What clients say</h1>
+				<p class="reviews-hero__lead">
+					Real feedback from Strataline renovation projects across the GTA.
+				</p>
+			</div>
+		</header>
+
+		<section
+			class="reviews-featured"
+			aria-labelledby="featured-reviews-title"
+			data-floating-contact-avoid
+		>
+			<div class="reviews-shell">
+				<div class="reviews-section-heading">
+					<p class="reviews-eyebrow">Featured reviews</p>
+					<h2 id="featured-reviews-title">Homeowners on the finished result</h2>
+				</div>
+				<ReviewCollection
+					reviews={featuredReviews}
+					variant="featured"
+					mobileScroll
+					ariaLabel="Featured Strataline Google reviews"
+				/>
+				<p class="reviews-swipe-note">Swipe to see more featured reviews.</p>
+			</div>
+		</section>
+
+		<section
+			class="reviews-collection"
+			aria-labelledby="all-reviews-title"
+			data-floating-contact-avoid
+		>
+			<div class="reviews-shell">
+				<div class="reviews-section-heading reviews-section-heading--collection">
+					<p class="reviews-eyebrow">Google reviews</p>
+					<h2 id="all-reviews-title">The full review collection</h2>
+					<p>Filter by the kind of renovation you are planning.</p>
+				</div>
+				<ReviewCollection
+					reviews={googleReviews}
+					variant="cards"
+					showFilters
+					mobileScroll={false}
+					ariaLabel="All Strataline Google reviews"
+				/>
+			</div>
+		</section>
+
+		<section class="reviews-leave" aria-labelledby="leave-review-title" data-floating-contact-avoid>
+			<div class="reviews-shell reviews-leave__inner">
 				<div>
-					<p class="text-secondary font-sans text-sm font-semibold tracking-[0.18em] uppercase">
-						Client feedback
-					</p>
-					<h1
-						class="mt-4 max-w-4xl font-serif text-5xl leading-[0.95] font-semibold text-black sm:text-7xl lg:text-8xl"
-					>
-						Reviews & Client Feedback
-					</h1>
-					<p class="desc-base mt-6 max-w-2xl">
-						Thank you for trusting Strataline with your home. We truly appreciate your feedback and
-						support.
-					</p>
+					<p class="reviews-eyebrow">Leave a review</p>
+					<h2 id="leave-review-title">Had a good experience?</h2>
+					<p>Share your project with other homeowners.</p>
 				</div>
-
-				<section
-					class="border-primary-dark bg-primary/35 rounded-2xl border p-5 shadow-xl shadow-black/5 sm:p-7"
-				>
-					<h2 class="font-serif text-4xl leading-none font-semibold">Leave a Review</h2>
-					<p class="desc-base mt-3">Choose the platform that is easiest for you.</p>
-
-					<div class="mt-7 grid gap-4">
-						<a
-							href={googleReviewUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="review-platform-link review-platform-link--google"
-						>
-							<span class="review-platform-icon review-platform-icon--google" aria-hidden="true">
-								<svg viewBox="0 0 48 48" role="img" focusable="false">
-									<path
-										fill="#FFC107"
-										d="M43.6 20.5H42V20H24v8h11.3C33.6 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5Z"
-									></path>
-									<path
-										fill="#FF3D00"
-										d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.2 4 9.5 8.5 6.3 14.7Z"
-									></path>
-									<path
-										fill="#4CAF50"
-										d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.3 39.5 16.1 44 24 44Z"
-									></path>
-									<path
-										fill="#1976D2"
-										d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C36.9 39.3 44 34 44 24c0-1.3-.1-2.4-.4-3.5Z"
-									></path>
-								</svg>
-							</span>
-							<span>
-								<span class="review-platform-title">Review us on Google &rarr;</span>
-								<span class="review-platform-desc">It only takes a minute and helps the most.</span>
-							</span>
-						</a>
-						<a
-							href={houzzUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="review-platform-link"
-						>
-							<span class="review-platform-icon review-platform-icon--houzz" aria-hidden="true">
-								<svg viewBox="0 0 48 48" role="img" focusable="false">
-									<path fill="#4DBC15" d="M6 4v40h14V29h8v15h14V19L24 8v13h-4V4H6Z"></path>
-								</svg>
-							</span>
-							<span>
-								<span class="review-platform-title">Review us on Houzz &rarr;</span>
-								<span class="review-platform-desc">Share the details homeowners care about.</span>
-							</span>
-						</a>
-						<a
-							href={facebookUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="review-platform-link"
-						>
-							<span class="review-platform-icon review-platform-icon--facebook" aria-hidden="true">
-								<svg viewBox="0 0 48 48" role="img" focusable="false">
-									<circle cx="24" cy="24" r="22" fill="#1877F2"></circle>
-									<path
-										fill="#fff"
-										d="M30.8 30.4 31.8 24h-6.1v-4.1c0-1.8.9-3.5 3.6-3.5h2.8V11s-2.5-.4-4.9-.4c-5 0-8.3 3-8.3 8.6V24h-5.6v6.4h5.6V46c1.1.2 2.3.3 3.4.3 1.2 0 2.3-.1 3.4-.3V30.4h5.1Z"
-									></path>
-								</svg>
-							</span>
-							<span>
-								<span class="review-platform-title">Visit us on Facebook &rarr;</span>
-								<span class="review-platform-desc"
-									>Follow our work and share a kind word with friends.</span
-								>
-							</span>
-						</a>
-					</div>
-				</section>
-			</Layout.Container>
-		</Layout.Divider>
-
-		<Layout.Divider class="py-14 sm:py-20">
-			<Layout.Container variant="inner">
-				<div class="max-w-3xl">
-					<p class="text-secondary font-sans text-sm font-semibold tracking-[0.18em] uppercase">
-						Google reviews
-					</p>
-					<h2 class="mt-3 font-serif text-4xl leading-none font-semibold sm:text-6xl">
-						What Clients Say
-					</h2>
-					<p class="desc-base mt-4">
-						Browse the reviews below, or filter them by the service you are planning.
-					</p>
-				</div>
-
-				<div class="mt-8">
-					<ReviewCollection
-						reviews={googleReviews}
-						variant="cards"
-						showFilters
-						mobileScroll
-						ariaLabel="All Strataline Google reviews"
-					/>
-					<p class="mt-4 font-sans text-sm text-black/60 sm:hidden">Swipe to browse reviews.</p>
-				</div>
-			</Layout.Container>
-		</Layout.Divider>
+				<nav class="reviews-leave__links" aria-label="Leave a Strataline review">
+					<a href={googleReviewUrl} target="_blank" rel="noopener noreferrer">Google</a>
+					<a href={facebookUrl} target="_blank" rel="noopener noreferrer">Facebook</a>
+					<a href={houzzUrl} target="_blank" rel="noopener noreferrer">Houzz</a>
+				</nav>
+			</div>
+		</section>
 	</main>
 </Root>
 
 <style>
-	.review-platform-link {
+	.reviews-page {
+		--reviews-ink: #1d211e;
+		--reviews-muted: #646a65;
+		--reviews-green: #17372b;
+		--reviews-gold: #b08049;
+		--reviews-warm: #f3eadb;
+		background: #fbfaf7;
+		color: var(--reviews-ink);
+	}
+
+	.reviews-shell {
+		width: min(100% - 2rem, 84rem);
+		margin-inline: auto;
+	}
+
+	.reviews-eyebrow {
+		margin: 0;
+		color: var(--reviews-gold);
+		font-family: var(--font-sans);
+		font-size: 0.76rem;
+		font-weight: 750;
+		letter-spacing: 0.17em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.reviews-hero {
+		display: grid;
+		min-height: clamp(18rem, 38vh, 25rem);
+		place-items: center;
+		background:
+			linear-gradient(115deg, rgba(18, 51, 39, 0.96), rgba(24, 58, 45, 0.88)),
+			radial-gradient(circle at 84% 22%, rgba(176, 128, 73, 0.28), transparent 34%);
+		color: #fff;
+	}
+
+	.reviews-hero__inner {
+		padding-block: clamp(3rem, 7vw, 5.5rem);
+	}
+
+	.reviews-hero h1,
+	.reviews-section-heading h2,
+	.reviews-leave h2 {
+		margin: 0;
+		font-family: var(--font-serif);
+		font-weight: 600;
+		letter-spacing: -0.035em;
+	}
+
+	.reviews-hero h1 {
+		margin-top: 0.75rem;
+		font-size: clamp(3.2rem, 8vw, 6.6rem);
+		line-height: 0.92;
+	}
+
+	.reviews-hero__lead {
+		max-width: 39rem;
+		margin: 1.15rem 0 0;
+		color: rgba(255, 255, 255, 0.82);
+		font-family: var(--font-sans);
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
+		line-height: 1.55;
+	}
+
+	.reviews-featured,
+	.reviews-collection,
+	.reviews-leave {
+		padding-block: clamp(2.5rem, 5vw, 4.5rem);
+	}
+
+	.reviews-featured {
+		background: var(--reviews-warm);
+	}
+
+	.reviews-section-heading {
+		max-width: 48rem;
+		margin-bottom: clamp(1.35rem, 2.5vw, 2rem);
+	}
+
+	.reviews-section-heading h2,
+	.reviews-leave h2 {
+		margin-top: 0.55rem;
+		font-size: clamp(2.15rem, 3.8vw, 3.35rem);
+		line-height: 0.98;
+	}
+
+	.reviews-featured .reviews-section-heading {
+		max-width: none;
+	}
+
+	.reviews-section-heading > p:last-child,
+	.reviews-leave__inner > div > p:last-child {
+		margin: 0.8rem 0 0;
+		color: var(--reviews-muted);
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		line-height: 1.55;
+	}
+
+	.reviews-swipe-note {
+		display: none;
+	}
+
+	.reviews-collection {
+		background: #fbfaf7;
+	}
+
+	.reviews-section-heading--collection {
+		margin-bottom: 1.25rem;
+	}
+
+	.reviews-leave {
+		padding-top: 0;
+		background: #fbfaf7;
+	}
+
+	.reviews-leave__inner {
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
-		border: 1px solid rgb(255 82 124 / 0.22);
+		justify-content: space-between;
+		gap: 2rem;
+		border: 1px solid rgba(29, 33, 30, 0.14);
+		border-radius: 1.25rem;
+		padding: clamp(1.5rem, 4vw, 3rem);
+		background: #fff;
+		box-shadow: 0 1.25rem 3rem rgba(18, 27, 22, 0.07);
+	}
+
+	.reviews-leave__links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 0.7rem;
+	}
+
+	.reviews-leave__links a {
+		display: inline-flex;
+		min-height: 46px;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--reviews-green);
 		border-radius: 999px;
-		background: white;
-		padding: 1rem 1.25rem;
+		padding: 0.7rem 1.15rem;
+		background: var(--reviews-green);
+		color: #fff;
 		font-family: var(--font-sans);
-		color: black;
-		box-shadow: 0 1.25rem 2.75rem rgb(0 0 0 / 0.04);
+		font-size: 0.88rem;
+		font-weight: 750;
+		text-decoration: none;
 		transition:
-			transform 180ms ease,
-			border-color 180ms ease,
-			box-shadow 180ms ease;
+			transform 160ms ease,
+			background 160ms ease;
 	}
 
-	.review-platform-link:hover {
-		transform: translateY(-0.125rem);
-		border-color: rgb(255 82 124 / 0.55);
-		box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.08);
+	.reviews-leave__links a:not(:first-child) {
+		background: transparent;
+		color: var(--reviews-green);
 	}
 
-	.review-platform-link--google {
-		border-color: var(--color-secondary);
-		background: linear-gradient(135deg, var(--color-secondary), #ff3f7b);
-		color: white;
-		box-shadow: 0 1.5rem 3.5rem rgb(255 82 124 / 0.28);
+	.reviews-leave__links a:hover {
+		transform: translateY(-2px);
 	}
 
-	.review-platform-icon {
-		display: grid;
-		width: 3.75rem;
-		height: 3.75rem;
-		flex: none;
-		place-items: center;
-		border-radius: 999px;
+	.reviews-leave__links a:focus-visible {
+		outline: 3px solid color-mix(in srgb, var(--reviews-gold) 72%, white);
+		outline-offset: 3px;
 	}
 
-	.review-platform-icon--google {
-		background: white;
-	}
-
-	.review-platform-icon svg {
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
-
-	.review-platform-title,
-	.review-platform-desc {
-		display: block;
-	}
-
-	.review-platform-title {
-		font-size: 1.1rem;
-		font-weight: 600;
-		line-height: 1.2;
-	}
-
-	.review-platform-desc {
-		margin-top: 0.35rem;
-		font-size: 0.92rem;
-		font-weight: 600;
-		line-height: 1.35;
-		opacity: 0.78;
-	}
-
-	@media (max-width: 480px) {
-		.review-platform-link {
-			gap: 0.9rem;
-			padding: 0.9rem 1rem;
+	@media (max-width: 640px) {
+		.reviews-shell {
+			width: min(100% - 2rem, 84rem);
 		}
 
-		.review-platform-icon {
-			width: 3.1rem;
-			height: 3.1rem;
-			font-size: 2.25rem;
+		.reviews-hero {
+			min-height: min(42vh, 22rem);
 		}
 
-		.review-platform-title {
-			font-size: 1rem;
+		.reviews-hero__inner {
+			padding-block: 2.75rem;
 		}
 
-		.review-platform-desc {
-			font-size: 0.82rem;
+		.reviews-hero h1 {
+			font-size: clamp(3.2rem, 15vw, 4.25rem);
+		}
+
+		.reviews-featured,
+		.reviews-collection {
+			padding-block: 2.5rem;
+		}
+
+		.reviews-section-heading {
+			margin-bottom: 1.25rem;
+		}
+
+		.reviews-swipe-note {
+			display: block;
+			margin: 0.5rem 0 0;
+			color: var(--reviews-muted);
+			font: 650 0.76rem/1.4 var(--font-sans);
+		}
+
+		.reviews-leave {
+			padding-bottom: 2.5rem;
+		}
+
+		.reviews-leave__inner {
+			display: grid;
+			gap: 1.25rem;
+			padding: 1.35rem;
+		}
+
+		.reviews-leave__links {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.reviews-leave__links a {
+			transition: none;
 		}
 	}
 </style>

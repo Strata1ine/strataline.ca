@@ -21,13 +21,6 @@ const {
 	submitEventName,
 } = Astro.props;
 const titleId = `${formId}-title`;
-const attachmentId = `${formId}-attachments`;
-const attachmentHelpId = `${attachmentId}-help`;
-const attachmentErrorId = `${attachmentId}-error`;
-const attachmentLabel =
-	defaultProjectType === 'Popcorn ceiling removal'
-		? 'Attach ceiling photos (optional)'
-		: 'Attach photos or plans (optional)';
 const budgetChoices = [
 	'Under $15,000',
 	'$15,000-$30,000',
@@ -42,16 +35,13 @@ const budgetChoices = [
 	<form
 		class:list={['proto-consultation__form section-anchor', reveal && 'reveal']}
 		id={formId}
-		action="/api/contact"
+		action="https://submit-form.com/jReRE2JLR"
 		method="post"
-		enctype="multipart/form-data"
 		data-progressive-form
 		data-contact-mode={mode}
 		data-event-prefix={eventPrefix}
 		data-start-event-name={startEventName}
 		data-submit-event-name={submitEventName}
-		data-attachment-max-files="10"
-		data-attachment-max-bytes="4194304"
 		aria-labelledby={titleId}
 	>
 		<input type="hidden" name="_redirect" value="https://strataline.ca/submissions/talk" />
@@ -174,49 +164,6 @@ const budgetChoices = [
 						<span>Property address</span>
 						<input name="Property Address" autocomplete="street-address" />
 					</label>
-					<div class="proto-consultation__field-wide proto-upload-field" data-file-upload>
-						<label class="proto-upload-field__label" for={attachmentId}>{attachmentLabel}</label>
-						<p class="proto-upload-field__help" id={attachmentHelpId}>
-							Photos of the space help us understand the scope faster.
-							<span>JPG, PNG, WEBP, HEIC, HEIF or PDF · up to 10 files, 4 MB total.</span>
-						</p>
-						<input
-							class="proto-upload-field__input"
-							id={attachmentId}
-							type="file"
-							name="Attachments"
-							accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf,image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf"
-							multiple
-							tabindex="-1"
-							aria-describedby={`${attachmentHelpId} ${attachmentErrorId}`}
-							data-file-input
-						/>
-						<button
-							class="proto-upload-field__button"
-							type="button"
-							aria-controls={attachmentId}
-							aria-describedby={`${attachmentHelpId} ${attachmentErrorId}`}
-							data-file-picker
-						>
-							<span aria-hidden="true">+</span> Add photos or files
-						</button>
-						<p
-							class="proto-upload-field__error"
-							id={attachmentErrorId}
-							role="alert"
-							data-file-error
-							hidden
-						>
-						</p>
-						<ul
-							class="proto-upload-field__list"
-							aria-label="Selected attachments"
-							aria-live="polite"
-							data-file-list
-							hidden
-						>
-						</ul>
-					</div>
 					<label class="proto-consultation__field-wide">
 						<span>Project description</span>
 						<textarea
@@ -253,81 +200,6 @@ const budgetChoices = [
 
 <script is:inline>
 	{
-		const attachmentGenericMimes = new Set(['', 'application/octet-stream']);
-		const attachmentUploadError =
-			"We couldn't upload the attachment. Remove it and try again, or text the photos to (416) 471-5999.";
-		const attachmentMimeByKind = {
-			jpeg: ['image/jpeg', 'image/jpg'],
-			png: ['image/png'],
-			webp: ['image/webp'],
-			heic: ['image/heic', 'image/heif'],
-			heif: ['image/heif', 'image/heic'],
-			pdf: ['application/pdf'],
-		};
-		const attachmentExtensionsByKind = {
-			jpeg: ['jpg', 'jpeg'],
-			png: ['png'],
-			webp: ['webp'],
-			heic: ['heic'],
-			heif: ['heif'],
-			pdf: ['pdf'],
-		};
-		const heicBrands = new Set(['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis']);
-		const heifBrands = new Set(['heif', 'mif1', 'msf1']);
-		const hasAttachmentBytes = (bytes, offset, expected) =>
-			expected.every((byte, index) => bytes[offset + index] === byte);
-		const attachmentAscii = (bytes, start, length) =>
-			String.fromCharCode(...bytes.slice(start, start + length));
-		const attachmentExtension = (filename) => filename.split('.').pop()?.toLowerCase() ?? '';
-
-		const detectAttachmentKind = async (file) => {
-			let bytes;
-			try {
-				bytes = new Uint8Array(await file.slice(0, 32).arrayBuffer());
-			} catch {
-				return null;
-			}
-			let kind = null;
-			if (bytes.length >= 3 && hasAttachmentBytes(bytes, 0, [0xff, 0xd8, 0xff])) {
-				kind = 'jpeg';
-			} else if (
-				bytes.length >= 8 &&
-				hasAttachmentBytes(bytes, 0, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
-			) {
-				kind = 'png';
-			} else if (
-				bytes.length >= 12 &&
-				attachmentAscii(bytes, 0, 4) === 'RIFF' &&
-				attachmentAscii(bytes, 8, 4) === 'WEBP'
-			) {
-				kind = 'webp';
-			} else if (bytes.length >= 12 && attachmentAscii(bytes, 4, 4) === 'ftyp') {
-				const brands = [];
-				for (let offset = 8; offset + 4 <= bytes.length; offset += 4) {
-					if (offset !== 12) brands.push(attachmentAscii(bytes, offset, 4));
-				}
-				if (brands.some((brand) => heicBrands.has(brand))) kind = 'heic';
-				else if (brands.some((brand) => heifBrands.has(brand))) kind = 'heif';
-			} else if (bytes.length >= 5 && attachmentAscii(bytes, 0, 5) === '%PDF-') {
-				kind = 'pdf';
-			}
-
-			if (!kind) return null;
-			const extension = attachmentExtension(file.name);
-			if ((kind === 'heic' || kind === 'heif') && (extension === 'heic' || extension === 'heif')) {
-				kind = extension;
-			}
-			const declaredMime = file.type.toLowerCase();
-			if (!attachmentExtensionsByKind[kind]?.includes(extension)) return null;
-			if (
-				!attachmentGenericMimes.has(declaredMime) &&
-				!attachmentMimeByKind[kind]?.includes(declaredMime)
-			) {
-				return null;
-			}
-			return kind;
-		};
-
 		const initializeProgressiveForm = (progressiveForm) => {
 			if (!(progressiveForm instanceof HTMLFormElement) || progressiveForm.dataset.initialized)
 				return;
@@ -354,21 +226,8 @@ const budgetChoices = [
 			const formFlow = progressiveForm.querySelector('[data-form-flow]');
 			const formIntro = progressiveForm.querySelector('[data-form-intro]');
 			const successState = progressiveForm.querySelector('[data-form-success]');
-			const fileInput = progressiveForm.querySelector('[data-file-input]');
-			const filePicker = progressiveForm.querySelector('[data-file-picker]');
-			const fileList = progressiveForm.querySelector('[data-file-list]');
-			const fileError = progressiveForm.querySelector('[data-file-error]');
-			const maxAttachmentFiles = Number(progressiveForm.dataset.attachmentMaxFiles) || 10;
-			const maxAttachmentBytes =
-				Number(progressiveForm.dataset.attachmentMaxBytes) || 4 * 1024 * 1024;
-			let selectedAttachments = [];
-			let attachmentPreviewUrls = [];
-			let pendingAttachmentValidation = Promise.resolve();
-			let attachmentSelectionError = '';
-			let leadReference = '';
 			let hasStarted = false;
 			let currentStep = 1;
-			let isSubmitting = false;
 			const markStarted = () => {
 				if (hasStarted) return;
 				window.trackContactEvent?.(eventName('start'));
@@ -378,181 +237,6 @@ const budgetChoices = [
 			const setStatus = (message) => {
 				if (status) status.textContent = message;
 			};
-
-			const setFileError = (message) => {
-				if (!(fileError instanceof HTMLElement)) return;
-				fileError.textContent = message;
-				fileError.hidden = !message;
-			};
-
-			const setAttachmentControlsDisabled = (disabled) => {
-				if (filePicker instanceof HTMLButtonElement) filePicker.disabled = disabled;
-				if (fileInput instanceof HTMLInputElement) fileInput.disabled = disabled;
-				fileList?.querySelectorAll('[data-file-remove]').forEach((button) => {
-					if (button instanceof HTMLButtonElement) button.disabled = disabled;
-				});
-			};
-
-			const revokeAttachmentPreviews = () => {
-				attachmentPreviewUrls.forEach((url) => URL.revokeObjectURL(url));
-				attachmentPreviewUrls = [];
-			};
-
-			const attachmentSizeLabel = (bytes) => `${Math.max(1, Math.ceil(bytes / 1024))} KB`;
-			const ensureLeadReference = () => {
-				if (leadReference) return leadReference;
-				const bytes = new Uint8Array(8);
-				if (window.crypto?.getRandomValues) {
-					window.crypto.getRandomValues(bytes);
-				} else {
-					for (let index = 0; index < bytes.length; index += 1) {
-						bytes[index] = Math.floor(Math.random() * 256);
-					}
-				}
-				leadReference = [...bytes]
-					.map((byte) => byte.toString(16).padStart(2, '0'))
-					.join('')
-					.toUpperCase();
-				return leadReference;
-			};
-
-			const captureLeadAfterAttachmentFailure = async (sourceFormData, reference) => {
-				const fallbackData = new URLSearchParams();
-				sourceFormData.forEach((value, name) => {
-					if (typeof value === 'string' && name !== 'Attachments') {
-						fallbackData.append(name, value);
-					}
-				});
-				fallbackData.set('Lead Reference', reference);
-				fallbackData.set('Attachment Fallback Capture', 'true');
-				const fallbackResponse = await fetch(progressiveForm.action, {
-					method: 'POST',
-					body: fallbackData,
-					headers: { Accept: 'application/json' },
-				});
-				const fallbackResponseData = await fallbackResponse.json().catch(() => null);
-				return fallbackResponseData?.leadCaptured === true;
-			};
-
-			const renderAttachments = () => {
-				if (!(fileList instanceof HTMLUListElement)) return;
-				revokeAttachmentPreviews();
-				fileList.replaceChildren();
-				fileList.hidden = selectedAttachments.length === 0;
-				selectedAttachments.forEach((attachment, index) => {
-					const item = document.createElement('li');
-					item.className = 'proto-upload-file';
-
-					const preview = document.createElement('span');
-					preview.className = 'proto-upload-file__preview';
-					if (['jpeg', 'png', 'webp'].includes(attachment.kind)) {
-						const image = document.createElement('img');
-						const previewUrl = URL.createObjectURL(attachment.file);
-						attachmentPreviewUrls.push(previewUrl);
-						image.src = previewUrl;
-						image.alt = '';
-						preview.append(image);
-					} else {
-						preview.textContent = attachment.kind === 'pdf' ? 'PDF' : 'IMG';
-						preview.setAttribute('aria-hidden', 'true');
-					}
-
-					const details = document.createElement('span');
-					details.className = 'proto-upload-file__details';
-					const name = document.createElement('span');
-					name.className = 'proto-upload-file__name';
-					name.textContent = attachment.file.name;
-					const size = document.createElement('span');
-					size.className = 'proto-upload-file__size';
-					size.textContent = attachmentSizeLabel(attachment.file.size);
-					details.append(name, size);
-
-					const removeButton = document.createElement('button');
-					removeButton.className = 'proto-upload-file__remove';
-					removeButton.type = 'button';
-					removeButton.textContent = '×';
-					removeButton.dataset.fileRemove = '';
-					removeButton.disabled = isSubmitting;
-					removeButton.setAttribute('aria-label', `Remove ${attachment.file.name}`);
-					removeButton.addEventListener('click', () => {
-						if (isSubmitting) return;
-						selectedAttachments.splice(index, 1);
-						renderAttachments();
-						markStarted();
-						if (filePicker instanceof HTMLElement) filePicker.focus();
-					});
-					item.append(preview, details, removeButton);
-					fileList.append(item);
-				});
-			};
-
-			const clearAttachments = () => {
-				selectedAttachments = [];
-				attachmentSelectionError = '';
-				if (fileInput instanceof HTMLInputElement) fileInput.value = '';
-				setFileError('');
-				renderAttachments();
-			};
-
-			const addAttachments = async (files) => {
-				const errors = [];
-				const existing = new Set(
-					selectedAttachments.map(
-						(attachment) =>
-							`${attachment.file.name}|${attachment.file.size}|${attachment.file.lastModified}`,
-					),
-				);
-				let totalBytes = selectedAttachments.reduce(
-					(total, attachment) => total + attachment.file.size,
-					0,
-				);
-
-				for (const file of files) {
-					const identity = `${file.name}|${file.size}|${file.lastModified}`;
-					if (existing.has(identity)) {
-						errors.push(`${file.name} is already attached.`);
-						continue;
-					}
-					if (selectedAttachments.length >= maxAttachmentFiles) {
-						errors.push(`Only ${maxAttachmentFiles} files can be attached at a time.`);
-						break;
-					}
-					if (!file.size) {
-						errors.push(`${file.name || 'A selected file'} is empty and wasn't added.`);
-						continue;
-					}
-					if (file.size > maxAttachmentBytes || totalBytes + file.size > maxAttachmentBytes) {
-						errors.push(`${file.name} wasn't added because the total upload limit is 4 MB.`);
-						continue;
-					}
-					const kind = await detectAttachmentKind(file);
-					if (!kind) {
-						errors.push(
-							`${file.name} isn't supported. Please use JPG, PNG, WEBP, HEIC, HEIF or PDF.`,
-						);
-						continue;
-					}
-
-					selectedAttachments.push({ file, kind });
-					existing.add(identity);
-					totalBytes += file.size;
-				}
-
-				attachmentSelectionError = errors.join(' ');
-				setFileError(attachmentSelectionError);
-				renderAttachments();
-				if (selectedAttachments.length) markStarted();
-			};
-
-			filePicker?.addEventListener('click', () => {
-				if (fileInput instanceof HTMLInputElement) fileInput.click();
-			});
-			fileInput?.addEventListener('change', () => {
-				if (!(fileInput instanceof HTMLInputElement)) return;
-				const files = [...(fileInput.files ?? [])];
-				fileInput.value = '';
-				pendingAttachmentValidation = pendingAttachmentValidation.then(() => addAttachments(files));
-			});
 
 			const setStep = (step) => {
 				currentStep = step;
@@ -624,110 +308,36 @@ const budgetChoices = [
 					nextButton?.click();
 					return;
 				}
+				if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
+					setStatus('Please complete the required fields before submitting.');
+					return;
+				}
 				if (!(submitButton instanceof HTMLButtonElement) || !window.fetch) return;
+
 				event.preventDefault();
-				if (isSubmitting) return;
-				isSubmitting = true;
 				submitButton.disabled = true;
-				setAttachmentControlsDisabled(true);
-				let submittedFormData = null;
-				let attemptedAttachments = false;
-				let leadCaptured = false;
+				setStatus('Sending project details...');
 
 				try {
-					await pendingAttachmentValidation;
-					if (!validateStep(1) || !validateStep(2) || !progressiveForm.reportValidity()) {
-						setStatus('Please complete the required fields before submitting.');
-						return;
-					}
-					if (attachmentSelectionError) {
-						const selectionError = attachmentSelectionError;
-						const currentLeadReference = ensureLeadReference();
-						const fallbackSource = new FormData(progressiveForm);
-						fallbackSource.set('Lead Reference', currentLeadReference);
-						try {
-							leadCaptured = await captureLeadAfterAttachmentFailure(
-								fallbackSource,
-								currentLeadReference,
-							);
-						} catch {
-							leadCaptured = false;
-						}
-						attachmentSelectionError = '';
-						setFileError('');
-						setStatus(`${selectionError} ${attachmentUploadError}`);
-						if (filePicker instanceof HTMLElement) filePicker.focus();
-						return;
-					}
-					setStatus('Sending project details...');
-					const formData = new FormData(progressiveForm);
-					formData.delete('Attachments');
-					selectedAttachments.forEach(({ file }) => {
-						formData.append('Attachments', file, file.name);
-					});
-					const currentLeadReference = ensureLeadReference();
-					formData.set('Lead Reference', currentLeadReference);
-					submittedFormData = formData;
-					attemptedAttachments = selectedAttachments.length > 0;
 					const response = await fetch(progressiveForm.action, {
 						method: 'POST',
-						body: formData,
+						body: new FormData(progressiveForm),
 						headers: { Accept: 'application/json' },
 					});
-					const responseData = await response.json().catch(() => null);
-					leadCaptured = responseData?.leadCaptured === true;
-					const submissionConfirmed =
-						response.ok && responseData?.ok === true && (!attemptedAttachments || leadCaptured);
-					if (!submissionConfirmed) {
-						const submissionError = new Error(
-							responseData?.error ||
-								(attachmentSelectionError
-									? attachmentUploadError
-									: 'The form could not send. Please try again or call us.'),
-						);
-						submissionError.userFacing = true;
-						submissionError.attachmentFailure =
-							attemptedAttachments &&
-							(responseData?.attachmentFailure === true || responseData === null);
-						throw submissionError;
-					}
+					if (!response.ok) throw new Error('Submission failed');
 					window.trackContactEvent?.(eventName('submit'));
 					progressiveForm.reset();
-					clearAttachments();
-					leadReference = '';
 					setStatus('');
 					if (formFlow instanceof HTMLElement) formFlow.hidden = true;
 					if (successState instanceof HTMLElement) {
 						successState.hidden = false;
 						successState.focus();
 					}
-				} catch (error) {
-					if (
-						attemptedAttachments &&
-						!leadCaptured &&
-						submittedFormData instanceof FormData &&
-						(error?.attachmentFailure === true || !error?.userFacing)
-					) {
-						try {
-							leadCaptured = await captureLeadAfterAttachmentFailure(
-								submittedFormData,
-								ensureLeadReference(),
-							);
-						} catch {
-							leadCaptured = false;
-						}
-						error = Object.assign(new Error(attachmentUploadError), { userFacing: true });
-					}
+				} catch {
 					window.trackContactEvent?.(eventName('error'));
-					setStatus(
-						error?.userFacing
-							? error.message
-							: 'The form could not send. Please call or text us before trying again.',
-					);
+					setStatus('The form could not send. Please call or text us instead.');
 				} finally {
-					isSubmitting = false;
 					submitButton.disabled = false;
-					setAttachmentControlsDisabled(false);
 				}
 			});
 
