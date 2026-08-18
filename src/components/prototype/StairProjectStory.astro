@@ -1,0 +1,210 @@
+---
+import { Picture } from 'astro:assets';
+
+import type { StairCaseStudy } from '@/data/stairsHub';
+
+interface Props {
+	project: StairCaseStudy;
+	index: number;
+}
+
+const { project, index } = Astro.props;
+const titleId = `stairs-project-${index + 1}-title`;
+---
+
+<article class="stairs-case-study" data-stair-story data-floating-contact-avoid aria-labelledby={titleId}>
+	<div class="stairs-case-study__images story-media">
+		<div class="story-stage" aria-live="polite">
+			{project.images.map((image, imageIndex) => (
+				<div class:list={['story-stage__image', imageIndex === 0 && 'is-active']} data-story-image={imageIndex} aria-hidden={imageIndex === 0 ? 'false' : 'true'}>
+					<Picture
+						src={image.src}
+						formats={['avif', 'webp']}
+						alt={image.alt}
+						widths={[480, 720, 960, 1280]}
+						sizes="(max-width: 767px) 94vw, 52vw"
+						loading="lazy"
+					/>
+				</div>
+			))}
+		</div>
+
+		<div class="story-thumbnails" role="group" aria-label={`Choose an image for ${project.title}`} data-story-thumbnails>
+			{project.images.map((image, imageIndex) => (
+				<button
+					class:list={['story-thumbnail', imageIndex === 0 && 'is-active']}
+					type="button"
+					aria-pressed={imageIndex === 0 ? 'true' : 'false'}
+					aria-label={`Show image ${imageIndex + 1} of ${project.images.length}: ${image.alt}`}
+					data-story-thumbnail={imageIndex}
+				>
+					<Picture src={image.src} formats={['avif', 'webp']} alt="" widths={[96, 160, 240]} sizes="88px" loading="lazy" />
+				</button>
+			))}
+		</div>
+	</div>
+
+	<div class="stairs-case-study__copy">
+		{project.location && <p class="stairs-case-study__place">{project.location}</p>}
+		<h3 id={titleId}>{project.title}</h3>
+		<dl>{project.details.map((detail) => <div><dt>{detail.label}</dt><dd>{detail.text}</dd></div>)}</dl>
+		{project.review && <blockquote><p>“{project.review.quote}”</p><cite>{project.review.name} · Google review</cite></blockquote>}
+		<div class="stairs-case-study__links">{project.links.map((link) => <a href={link.href} data-track="stairs_case_study_interaction" data-case={String(index + 1)}>{link.label} <span aria-hidden="true">→</span></a>)}</div>
+	</div>
+</article>
+
+<style>
+	.story-media {
+		display: grid;
+		min-height: 0;
+		grid-template-columns: 1fr;
+		grid-template-rows: minmax(27rem, 1fr) 6.75rem;
+		gap: 0;
+		background: #e4ded4;
+	}
+
+	.story-stage {
+		position: relative;
+		min-width: 0;
+		min-height: 0;
+		overflow: hidden;
+		background: #d8d1c5;
+	}
+
+	.story-stage__image,
+	.story-stage__image :global(picture),
+	.story-stage__image :global(img) {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.story-stage__image {
+		opacity: 0;
+		transition: opacity 220ms ease-out;
+		pointer-events: none;
+	}
+
+	.story-stage__image.is-active {
+		opacity: 1;
+		z-index: 1;
+	}
+
+	.story-stage__image :global(img) {
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.story-thumbnails {
+		display: flex;
+		min-width: 0;
+		gap: .45rem;
+		align-items: stretch;
+		overflow-x: auto;
+		padding: .65rem;
+		overscroll-behavior-inline: contain;
+		scrollbar-width: none;
+	}
+
+	.story-thumbnails::-webkit-scrollbar {
+		display: none;
+	}
+
+	.story-thumbnail {
+		flex: 1 0 5rem;
+		min-width: 5rem;
+		min-height: 44px;
+		padding: 0;
+		overflow: hidden;
+		border: 2px solid rgba(20, 35, 27, .2);
+		border-radius: .5rem;
+		background: #fff;
+		cursor: pointer;
+		transition: border-color 180ms ease-out, background-color 180ms ease-out;
+	}
+
+	.story-thumbnail :global(picture),
+	.story-thumbnail :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.story-thumbnail :global(img) {
+		object-fit: cover;
+	}
+
+	.story-thumbnail:hover {
+		border-color: rgba(141, 89, 48, .7);
+	}
+
+	.story-thumbnail.is-active {
+		border-color: #b7654c;
+		background: #f7ede7;
+	}
+
+	.story-thumbnail:focus-visible {
+		outline: 3px solid #e8bd6b;
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 767px) {
+		.story-media {
+			grid-template-rows: clamp(18rem, 72vw, 22rem) 5.8rem;
+		}
+
+		.story-thumbnails {
+			padding: .5rem;
+		}
+
+		.story-thumbnail {
+			flex-basis: 5.25rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.story-stage__image,
+		.story-thumbnail {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+	document.querySelectorAll<HTMLElement>('[data-stair-story]').forEach((story) => {
+		const images = Array.from(story.querySelectorAll<HTMLElement>('[data-story-image]'));
+		const buttons = Array.from(story.querySelectorAll<HTMLButtonElement>('[data-story-thumbnail]'));
+		const rail = story.querySelector<HTMLElement>('[data-story-thumbnails]');
+
+		buttons.forEach((button) => button.addEventListener('click', () => {
+			const selectedIndex = Number(button.dataset.storyThumbnail);
+			if (!Number.isInteger(selectedIndex) || !images[selectedIndex]) return;
+
+			images.forEach((image, imageIndex) => {
+				const active = imageIndex === selectedIndex;
+				image.classList.toggle('is-active', active);
+				image.setAttribute('aria-hidden', active ? 'false' : 'true');
+			});
+
+			buttons.forEach((item, imageIndex) => {
+				const active = imageIndex === selectedIndex;
+				item.classList.toggle('is-active', active);
+				item.setAttribute('aria-pressed', active ? 'true' : 'false');
+			});
+
+			if (rail && rail.scrollWidth > rail.clientWidth) {
+				const railRect = rail.getBoundingClientRect();
+				const buttonRect = button.getBoundingClientRect();
+				const target = rail.scrollLeft + buttonRect.left - railRect.left - (rail.clientWidth - buttonRect.width) / 2;
+				rail.scrollTo({ left: Math.max(0, Math.min(rail.scrollWidth - rail.clientWidth, target)), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+			}
+
+			const tracker = Reflect.get(window, 'trackContactEvent');
+			if (typeof tracker === 'function') tracker('stairs_project_image_select', { project: story.getAttribute('aria-labelledby') || '', image: String(selectedIndex + 1) });
+		}));
+	});
+</script>

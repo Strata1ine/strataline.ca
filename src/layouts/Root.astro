@@ -24,13 +24,22 @@ interface Props {
 	startPos?: Pos;
 	schemas?: any[] | any;
 	noIndex?: boolean;
+	appendBusinessName?: boolean;
 }
 
 const pngIcons = await import('@/pages/manifest.json.ts').then((m) => m.pngIcons);
 
-const { title, desc, startPos, blocks, noIndex = false, schemas: rawSchemas = [] } = Astro.props;
+const {
+	title,
+	desc,
+	startPos,
+	blocks,
+	noIndex = false,
+	appendBusinessName = true,
+	schemas: rawSchemas = [],
+} = Astro.props;
 
-const pathname = Astro.url.pathname.replace(/\/$/, '');
+const pathname = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '');
 const canonicalUrl = `${Astro.url.origin}${pathname || '/'}`;
 const schemas = [rawSchemas].flat();
 let pos = startPos ?? 'right';
@@ -107,11 +116,15 @@ if (homeContactBar && 'IntersectionObserver' in window) {
 		<meta charset="UTF-8" />
 
 		<title>
-			{title ? `${title} | ${business.name}` : business.name}
+			{title ? (appendBusinessName ? `${title} | Strataline` : title) : business.name}
 		</title>
 
 		<link rel="canonical" href={canonicalUrl} />
 		<meta name="description" content={desc} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title ? (appendBusinessName ? `${title} | Strataline` : title) : business.name} />
+		<meta property="og:description" content={desc} />
+		<meta property="og:url" content={canonicalUrl} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="stylesheet" href={globalStyles} />

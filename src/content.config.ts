@@ -71,6 +71,41 @@ export const collections = {
 				featured: z.boolean().default(false),
 			}),
 	}),
+	blog: defineCollection({
+		loader: glob({ pattern: '**/*.{md,mdx}', base: './content/blog' }),
+		schema: ({ image: contentImage }: SchemaContext) =>
+			z.object({
+				title: z.string(),
+				description: z.string(),
+				slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+				publishedDate: z.coerce.date(),
+				updatedDate: z.coerce.date().optional(),
+				category: z.enum([
+					'Stairs',
+					'Ceilings',
+					'Interior Renovations',
+					'Painting',
+					'Kitchens & Bathrooms',
+					'Doors & Windows',
+					'Planning & Costs',
+				]),
+				featured: z.boolean(),
+				heroImage: contentImage(),
+				heroAlt: z.string(),
+				author: z.string(),
+				relatedServices: z
+					.array(
+						z.object({
+							label: z.string(),
+							href: z.string().startsWith('/'),
+						}),
+					)
+					.min(1),
+				draft: z.boolean(),
+				takeaways: z.array(z.string()).min(1),
+				tableOfContents: z.boolean().default(true),
+			}),
+	}),
 };
 
 export type Id = keyof typeof collections;

@@ -5,9 +5,25 @@ import type { ImageMetadata } from 'astro';
 interface Props {
 	image: ImageMetadata;
 	imageAlt: string;
+	eyebrow?: string;
+	heading?: string;
+	description?: string;
+	benefits?: string[];
 }
 
-const { image, imageAlt } = Astro.props;
+const {
+	image,
+	imageAlt,
+	eyebrow = 'Owner-led renovations',
+	heading = 'The person who scopes the project stays involved.',
+	description = 'Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the scope and remains involved through scheduling, coordination and quality control.',
+	benefits = [
+		'Direct accountability',
+		'Clear written scopes',
+		'Organized trade sequencing',
+		'Finish review before completion',
+	],
+} = Astro.props;
 ---
 
 <section class="owner-led-overlay section-anchor" id="owner-led" aria-labelledby="owner-title">
@@ -22,17 +38,11 @@ const { image, imageAlt } = Astro.props;
 	</div>
 	<div class="owner-led-overlay__inner">
 		<div class="owner-led-overlay__copy" data-floating-contact-avoid>
-			<p class="owner-led-overlay__eyebrow">Owner-led renovations</p>
-			<h2 id="owner-title">The person who scopes the project stays involved.</h2>
-			<p class="owner-led-overlay__description">
-				Strataline is owner-operated by Maxim Sologub. Maxim reviews the project, develops the scope
-				and remains involved through scheduling, coordination and quality control.
-			</p>
+			<p class="owner-led-overlay__eyebrow">{eyebrow}</p>
+			<h2 id="owner-title">{heading}</h2>
+			<p class="owner-led-overlay__description">{description}</p>
 			<ul class="owner-led-overlay__benefits">
-				<li>Direct accountability</li>
-				<li>Clear written scopes</li>
-				<li>Organized trade sequencing</li>
-				<li>Finish review before completion</li>
+				{benefits.map((benefit) => <li>{benefit}</li>)}
 			</ul>
 			<strong class="owner-led-overlay__signature">
 				Maxim Sologub <span>Owner, Strataline Inc.</span>

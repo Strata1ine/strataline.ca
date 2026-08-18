@@ -58,8 +58,14 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 
 export async function getStaticPaths() {
 	const services = (await getCollection('services')).filter(
-		(service) =>
-			service.data.hidden !== true && service.id.replace(/\/index$/, '') !== 'popcorn-removal',
+		(service) => {
+			const servicePath = service.id.replace(/\/index$/, '');
+			return (
+				service.data.hidden !== true &&
+				servicePath !== 'popcorn-removal' &&
+				!servicePath.startsWith('stairs')
+			);
+		},
 	);
 
 	return services.map((service) => ({
@@ -79,8 +85,7 @@ if (!service) {
 }
 
 const servicePath = service.id.replace(/\/index$/, '');
-const seoDescription =
-	typeof service.data.seo === 'string' ? service.data.seo : service.data.seo.description;
+const seoDescription = service.data.desc;
 const noIndex =
 	service.data.hidden === true ||
 	(typeof service.data.seo !== 'string' &&

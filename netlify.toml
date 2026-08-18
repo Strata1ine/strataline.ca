@@ -2,6 +2,26 @@
   command = "git submodule update --init --recursive && bun run build"
   publish = "dist"
 
+# Canonical host redirects. Each obsolete host reaches the final HTTPS,
+# non-www URL directly while preserving the requested path and query string.
+[[redirects]]
+  from = "http://strataline.ca/*"
+  to = "https://strataline.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.strataline.ca/*"
+  to = "https://strataline.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.strataline.ca/*"
+  to = "https://strataline.ca/:splat"
+  status = 301
+  force = true
+
 # Keep generated file-format pages on one public, extensionless canonical URL.
 [[redirects]]
   from = "/interior-renovations.html"

@@ -11,6 +11,12 @@ interface Props {
 	canonicalPath?: string;
 	schemas?: Array<Record<string, unknown>>;
 	robots?: string;
+	ogType?: 'website' | 'article';
+	articleMeta?: {
+		publishedTime: string;
+		modifiedTime?: string;
+		author?: string;
+	};
 	floatingContact?: {
 		defaultProjectType?: string;
 		projectHelperText?: string;
@@ -28,6 +34,8 @@ const {
 	canonicalPath = Astro.url.pathname,
 	schemas = [],
 	robots = 'index, follow',
+	ogType = 'website',
+	articleMeta,
 	floatingContact = {},
 } = Astro.props;
 const siteUrl = 'https://strataline.ca';
@@ -105,11 +113,14 @@ window.trackProtoEvent = (name, params = {}) => {
 		<meta name="robots" content={robots} />
 		<link rel="canonical" href={canonicalUrl} />
 
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:image" content={imageUrl} />
+		{articleMeta && <meta property="article:published_time" content={articleMeta.publishedTime} />}
+		{articleMeta?.modifiedTime && <meta property="article:modified_time" content={articleMeta.modifiedTime} />}
+		{articleMeta?.author && <meta property="article:author" content={articleMeta.author} />}
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />

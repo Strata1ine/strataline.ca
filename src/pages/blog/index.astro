@@ -1,0 +1,204 @@
+---
+import { Picture } from 'astro:assets';
+
+import BlogCard from '@/components/blog/BlogCard.astro';
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import Footer from '@/sections/Footer.astro';
+import { blogCategories, getPublishedBlogPosts, getReadingTime } from '@/data/blog';
+import '@/styles/blog.css';
+
+export const prerender = true;
+
+const posts = await getPublishedBlogPosts();
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const supporting = posts.filter((post) => post.id !== featured?.id).slice(0, 2);
+const title = 'Renovation Guides Toronto & GTA | Strataline';
+const description =
+	'Practical renovation guides from Strataline on stairs, ceilings, painting, planning and complete interior renovations in Toronto and the GTA.';
+const canonicalPath = '/blog';
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const image = featured?.data.heroImage.src ?? '/strataline-og.jpg';
+const schemas = [
+	{
+		'@type': 'CollectionPage',
+		'@id': `${canonicalUrl}#collection`,
+		url: canonicalUrl,
+		name: title,
+		description,
+		isPartOf: { '@id': 'https://strataline.ca/#website' },
+		breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+		mainEntity: {
+			'@type': 'ItemList',
+			itemListElement: posts.map((post, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				url: `${canonicalUrl}/${post.data.slug}`,
+				name: post.data.title,
+			})),
+		},
+	},
+	{
+		'@type': 'BreadcrumbList',
+		'@id': `${canonicalUrl}#breadcrumb`,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
+			{ '@type': 'ListItem', position: 2, name: 'Renovation Guides', item: canonicalUrl },
+		],
+	},
+];
+---
+
+<PrototypeLayout
+	{title}
+	{description}
+	{image}
+	{canonicalPath}
+	{schemas}
+	robots="index,follow,max-image-preview:large"
+>
+	<div class="blog-page">
+		<PrototypeHeader />
+
+		<main>
+			<header class="blog-index-hero blog-shell">
+				<p class="blog-eyebrow">RENOVATION GUIDES</p>
+				<h1>Practical guidance for a better-finished renovation.</h1>
+				<p>
+					Clear answers from real project experience—so Toronto and GTA homeowners can compare
+					methods, understand scope and make better renovation decisions.
+				</p>
+			</header>
+
+			{
+				featured && (
+					<section class="blog-featured blog-shell" aria-labelledby="featured-guide-title">
+						<div class="blog-featured__image">
+							<Picture
+								src={featured.data.heroImage}
+								formats={['avif', 'webp']}
+								alt={featured.data.heroAlt}
+								widths={[640, 960, 1280, 1600]}
+								sizes="(max-width: 767px) 94vw, 58vw"
+								loading="eager"
+								fetchpriority="high"
+							/>
+						</div>
+						<div class="blog-featured__copy">
+							<div class="blog-card__meta">
+								<span>{featured.data.category}</span>
+								<span>{getReadingTime(featured.body)} min read</span>
+							</div>
+							<p class="blog-featured__label">Featured guide</p>
+							<h2 id="featured-guide-title">{featured.data.title}</h2>
+							<p>{featured.data.description}</p>
+							<a class="blog-button" href={`/blog/${featured.data.slug}`}>
+								Read the guide <span aria-hidden="true">→</span>
+							</a>
+						</div>
+					</section>
+				)
+			}
+
+			{
+				supporting.length > 0 && (
+					<section class="blog-supporting blog-shell" aria-labelledby="latest-guides-title">
+						<div class="blog-section-heading">
+							<p class="blog-eyebrow">LATEST GUIDES</p>
+							<h2 id="latest-guides-title">
+								Start with the decisions that shape the finished result.
+							</h2>
+						</div>
+						<div class="blog-supporting__grid">
+							{supporting.map((post) => (
+								<BlogCard post={post} variant="supporting" />
+							))}
+						</div>
+					</section>
+				)
+			}
+
+			<section class="blog-library blog-shell" aria-labelledby="guide-library-title">
+				<div class="blog-section-heading">
+					<p class="blog-eyebrow">THE GUIDE LIBRARY</p>
+					<h2 id="guide-library-title">Explore by renovation topic.</h2>
+				</div>
+
+				<div class="blog-filters" role="group" aria-label="Filter guides by category">
+					{
+						blogCategories.map((category, index) => (
+							<button
+								type="button"
+								class:list={{ 'is-active': index === 0 }}
+								data-blog-filter={category}
+								aria-pressed={index === 0 ? 'true' : 'false'}
+							>
+								{category}
+							</button>
+						))
+					}
+				</div>
+				<p class="blog-results" aria-live="polite" data-blog-results>
+					Showing {posts.length}
+					{posts.length === 1 ? 'guide' : 'guides'}
+				</p>
+
+				<div class="blog-grid" data-blog-grid>
+					{posts.map((post) => <BlogCard post={post} />)}
+				</div>
+			</section>
+
+			<section
+				class="blog-contact blog-shell"
+				data-floating-contact-avoid
+				aria-labelledby="blog-contact-title"
+			>
+				<div>
+					<p class="blog-eyebrow">PLANNING A PROJECT?</p>
+					<h2 id="blog-contact-title">Bring the questions. We’ll help clarify the scope.</h2>
+					<p>Tell us what you are considering and where the project is located.</p>
+				</div>
+				<button class="blog-button blog-button--light" type="button" data-blog-contact>
+					Request a project review
+				</button>
+			</section>
+		</main>
+
+		<Footer />
+	</div>
+</PrototypeLayout>
+
+<script>
+	const filters = Array.from(document.querySelectorAll('[data-blog-filter]'));
+	const cards = Array.from(document.querySelectorAll('[data-blog-card]'));
+	const results = document.querySelector('[data-blog-results]');
+
+	filters.forEach((filter) => {
+		filter.addEventListener('click', () => {
+			if (!(filter instanceof HTMLButtonElement)) return;
+			const category = filter.dataset.blogFilter ?? 'All';
+			let visible = 0;
+
+			filters.forEach((item) => {
+				const active = item === filter;
+				item.classList.toggle('is-active', active);
+				item.setAttribute('aria-pressed', String(active));
+			});
+
+			cards.forEach((card) => {
+				if (!(card instanceof HTMLElement)) return;
+				const show = category === 'All' || card.dataset.category === category;
+				card.hidden = !show;
+				if (show) visible += 1;
+			});
+
+			if (results) results.textContent = `Showing ${visible} ${visible === 1 ? 'guide' : 'guides'}`;
+		});
+	});
+
+	document.querySelectorAll('[data-blog-contact]').forEach((button) => {
+		button.addEventListener('click', () => {
+			document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+		});
+	});
+</script>

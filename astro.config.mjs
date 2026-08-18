@@ -21,7 +21,12 @@ import compressor from 'astro-compressor';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const servicesRoot = path.join(root, 'content', 'services');
+const blogRoot = path.join(root, 'content', 'blog');
 
+/**
+ * @param {string} dir
+ * @returns {string[]}
+ */
 function walkFiles(dir) {
 	if (!fs.existsSync(dir)) return [];
 	return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -45,6 +50,36 @@ const indexableServicePaths = new Set(
 			return `/services/${relative}`.replace(/\/index$/, '');
 		}),
 );
+
+const indexableBlogPaths = new Set(
+	walkFiles(blogRoot)
+		.filter((file) => /\.mdx?$/.test(file))
+		.flatMap((file) => {
+			const text = fs.readFileSync(file, 'utf8');
+			const frontmatter = text.match(/^---\s*([\s\S]*?)\s*---/)?.[1] ?? '';
+			if (/^\s*draft:\s*true\s*$/m.test(frontmatter)) return [];
+			const slug = frontmatter.match(/^\s*slug:\s*([a-z0-9-]+)\s*$/m)?.[1];
+			return slug ? [`/blog/${slug}`] : [];
+		}),
+);
+
+const indexableStaticPaths = new Set([
+	'/',
+	'/interior-renovations',
+	'/blog',
+	'/privacy',
+	'/reviews',
+	'/services/popcorn-removal',
+	'/services/stairs',
+	'/tos',
+]);
+
+const htmlRedirects = Object.fromEntries([
+	['/index.html', '/'],
+	...[...indexableStaticPaths, ...indexableServicePaths, ...indexableBlogPaths]
+		.filter((pathname) => pathname !== '/')
+		.map((pathname) => [`${pathname}.html`, pathname]),
+]);
 
 // https://astro.build/config
 export default defineConfig({
@@ -113,6 +148,7 @@ export default defineConfig({
 			filter: (page) => {
 				const pathname = new URL(page).pathname.replace(/\/$/, '');
 				if (pathname.includes('/submissions/')) return false;
+				if (pathname.startsWith('/blog/')) return indexableBlogPaths.has(pathname);
 				if (pathname.startsWith('/services/')) return indexableServicePaths.has(pathname);
 				return true;
 			},
@@ -126,5 +162,5 @@ export default defineConfig({
 		solidJs(),
 		compressor(),
 	],
-	redirects: redirects,
+	redirects: { ...htmlRedirects, ...redirects },
 });

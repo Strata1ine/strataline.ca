@@ -1,0 +1,224 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+
+import BlogCard from '@/components/blog/BlogCard.astro';
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import Footer from '@/sections/Footer.astro';
+import { formatBlogDate, getPublishedBlogPosts, getReadingTime, type BlogPost } from '@/data/blog';
+import '@/styles/blog.css';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+	const posts = await getPublishedBlogPosts();
+	return posts.map((post) => ({ params: { slug: post.data.slug }, props: { post } }));
+}
+
+interface Props {
+	post: BlogPost;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const {
+	title,
+	description,
+	slug,
+	publishedDate,
+	updatedDate,
+	category,
+	heroImage,
+	heroAlt,
+	author,
+	relatedServices,
+	takeaways,
+	tableOfContents,
+} = post.data;
+const allPosts = await getPublishedBlogPosts();
+const relatedPosts = allPosts
+	.filter((entry) => entry.id !== post.id)
+	.sort((a, b) => Number(b.data.category === category) - Number(a.data.category === category))
+	.slice(0, 3);
+const tocHeadings = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const showToc = tableOfContents && tocHeadings.length >= 3;
+const canonicalPath = `/blog/${slug}`;
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const optimizedHero = await getImage({ src: heroImage, width: 1600, format: 'webp', quality: 86 });
+const imageUrl = `https://strataline.ca${optimizedHero.src}`;
+const publishedIso = publishedDate.toISOString();
+const modifiedIso = (updatedDate ?? publishedDate).toISOString();
+const schemas = [
+	{
+		'@type': 'BlogPosting',
+		'@id': `${canonicalUrl}#article`,
+		headline: title,
+		description,
+		url: canonicalUrl,
+		mainEntityOfPage: { '@id': canonicalUrl },
+		image: [imageUrl],
+		datePublished: publishedIso,
+		dateModified: modifiedIso,
+		articleSection: category,
+		author: {
+			'@type': 'Person',
+			'@id': 'https://strataline.ca/#maxim-sologub',
+			name: author,
+		},
+		publisher: { '@id': 'https://strataline.ca/#business' },
+		isPartOf: { '@id': 'https://strataline.ca/#website' },
+		breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+	},
+	{
+		'@type': 'BreadcrumbList',
+		'@id': `${canonicalUrl}#breadcrumb`,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Renovation Guides',
+				item: 'https://strataline.ca/blog',
+			},
+			{ '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+		],
+	},
+];
+---
+
+<PrototypeLayout
+	{title}
+	{description}
+	image={optimizedHero.src}
+	{canonicalPath}
+	{schemas}
+	ogType="article"
+	articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author }}
+	robots="index,follow,max-image-preview:large"
+>
+	<div class="blog-page">
+		<PrototypeHeader />
+
+		<main>
+			<article class="blog-article">
+				<header class="blog-article__header blog-shell">
+					<nav class="blog-breadcrumb" aria-label="Breadcrumb">
+						<a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog"
+							>Renovation Guides</a
+						>
+					</nav>
+					<p class="blog-eyebrow">{category}</p>
+					<h1>{title}</h1>
+					<p class="blog-article__dek">{description}</p>
+					<div class="blog-article__meta">
+						<span>By {author}</span>
+						<span>{formatBlogDate(publishedDate)}</span>
+						<span>{getReadingTime(post.body)} min read</span>
+						{updatedDate && <span>Updated {formatBlogDate(updatedDate)}</span>}
+					</div>
+				</header>
+
+				<figure class="blog-article__hero blog-shell">
+					<Picture
+						src={heroImage}
+						formats={['avif', 'webp']}
+						alt={heroAlt}
+						widths={[640, 960, 1280, 1600, 1920]}
+						sizes="(max-width: 767px) 100vw, 88vw"
+						loading="eager"
+						fetchpriority="high"
+					/>
+				</figure>
+
+				<div class:list={['blog-editorial blog-shell', { 'blog-editorial--with-toc': showToc }]}>
+					{
+						showToc && (
+							<aside class="blog-toc" aria-labelledby="blog-toc-title">
+								<p id="blog-toc-title">In this guide</p>
+								<ol>
+									{tocHeadings.map((heading) => (
+										<li class:list={{ 'is-nested': heading.depth === 3 }}>
+											<a href={`#${heading.slug}`}>{heading.text}</a>
+										</li>
+									))}
+								</ol>
+							</aside>
+						)
+					}
+
+					<div class="blog-prose">
+						<Content />
+
+						<section class="blog-takeaways" aria-labelledby="blog-takeaways-title">
+							<p class="blog-eyebrow">KEY TAKEAWAYS</p>
+							<h2 id="blog-takeaways-title">What to carry into your project.</h2>
+							<ul>{takeaways.map((takeaway) => <li>{takeaway}</li>)}</ul>
+						</section>
+
+						<section
+							class="blog-service-cta"
+							data-floating-contact-avoid
+							aria-labelledby="blog-service-title"
+						>
+							<div>
+								<p class="blog-eyebrow">RELATED STRATALINE SERVICES</p>
+								<h2 id="blog-service-title">See how this work is scoped.</h2>
+							</div>
+							<div class="blog-service-cta__links">
+								{
+									relatedServices.map((service) => (
+										<a href={service.href}>
+											{service.label} <span aria-hidden="true">→</span>
+										</a>
+									))
+								}
+							</div>
+						</section>
+					</div>
+				</div>
+			</article>
+
+			{
+				relatedPosts.length > 0 && (
+					<section class="blog-related blog-shell" aria-labelledby="related-guides-title">
+						<div class="blog-section-heading">
+							<p class="blog-eyebrow">RELATED GUIDES</p>
+							<h2 id="related-guides-title">Keep planning with the next practical decision.</h2>
+						</div>
+						<div class="blog-grid">
+							{relatedPosts.map((entry) => (
+								<BlogCard post={entry} />
+							))}
+						</div>
+					</section>
+				)
+			}
+
+			<section
+				class="blog-contact blog-shell"
+				data-floating-contact-avoid
+				aria-labelledby="article-contact-title"
+			>
+				<div>
+					<p class="blog-eyebrow">TALK THROUGH YOUR PROJECT</p>
+					<h2 id="article-contact-title">A clear scope starts with the conditions in your home.</h2>
+					<p>Share the project type, property city and the result you are trying to achieve.</p>
+				</div>
+				<button class="blog-button blog-button--light" type="button" data-blog-contact>
+					Request a project review
+				</button>
+			</section>
+		</main>
+
+		<Footer />
+	</div>
+</PrototypeLayout>
+
+<script>
+	document.querySelectorAll('[data-blog-contact]').forEach((button) => {
+		button.addEventListener('click', () => {
+			document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+		});
+	});
+</script>
