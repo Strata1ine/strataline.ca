@@ -232,6 +232,34 @@ const cta = d.cta ?? {
 											/>
 										</section>
 									);
+								if (block.type === 'related-story')
+									return (
+										<section
+											class:list={[
+												'case-section case-related-story',
+												`case-related-story--${block.imageFit}`,
+											]}
+										>
+											<a href={block.href}>
+												<div class="case-related-story__media">
+													<Picture
+														src={block.image}
+														alt={block.alt}
+														widths={[320, 560, 760]}
+														sizes="(max-width: 700px) 100vw, 320px"
+														formats={['avif', 'webp']}
+														loading="lazy"
+													/>
+												</div>
+												<div class="case-related-story__copy">
+													<p>{block.eyebrow}</p>
+													<h2>{block.title}</h2>
+													<span>{block.context}</span>
+													<strong>{block.linkLabel}</strong>
+												</div>
+											</a>
+										</section>
+									);
 								if (block.type === 'before-after')
 									return (
 										<section class="case-section case-inline-media">

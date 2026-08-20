@@ -131,6 +131,16 @@ contentBlocks:
       - >-
         The article also profiled Lynne Moore and her partner, Bill Fortnum, who were moving from their home into a 1980s-era Newmarket condo and wanted to renovate before moving in. Moore recognized the appeal of machine-assisted popcorn removal after seeing the method demonstrated. Their story was separate from the Mississauga project, but it showed why a controlled mechanical process was drawing attention from condo owners.
 
+  - type: related-story
+    image: ./newmarket-condo-renovation-2017-images/newmarket-condo-finished-living-room-hero.jpg
+    alt: Finished Newmarket condo living room renovated for Lynne Moore and Bill Fortnum in 2017.
+    imageFit: cover
+    eyebrow: RELATED PROJECT · NEWMARKET · 2017
+    title: Lynne Moore and Bill Fortnum's completed condo renovation
+    context: See the complete ceilings, flooring, doors, trim, paint and condo-logistics story behind the homeowners mentioned in the newspaper feature.
+    href: /blog/newmarket-condo-renovation-2017
+    linkLabel: See Lynne Moore and Bill Fortnum's finished Newmarket condo →
+
   - type: text
     eyebrow: Finished result
     heading: The ceiling mattered. So did the room underneath it.

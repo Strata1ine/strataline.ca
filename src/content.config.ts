@@ -122,6 +122,17 @@ export const collections = {
 					caption: z.string().optional(),
 				}),
 				z.object({
+					type: z.literal('related-story'),
+					image: contentImage(),
+					alt: z.string(),
+					imageFit: z.enum(['cover', 'contain']).default('cover'),
+					eyebrow: z.string(),
+					title: z.string(),
+					context: z.string(),
+					href: z.string().startsWith('/'),
+					linkLabel: z.string(),
+				}),
+				z.object({
 					type: z.literal('before-after'),
 					heading: z.string().optional(),
 					beforeImage: contentImage(),
