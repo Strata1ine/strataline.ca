@@ -1,0 +1,63 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	beforeImage: ImageMetadata;
+	beforeAlt: string;
+	afterImage: ImageMetadata;
+	afterAlt: string;
+	caption?: string;
+}
+
+const { beforeImage, beforeAlt, afterImage, afterAlt, caption } = Astro.props;
+const ratio = `${afterImage.width} / ${afterImage.height}`;
+---
+
+<figure class="case-before-after" data-before-after>
+	<div class="case-before-after__stage" style={`aspect-ratio: ${ratio}; --position: 50%;`}>
+		<div class="case-before-after__image case-before-after__image--after">
+			<Picture
+				src={afterImage}
+				formats={['avif', 'webp']}
+				alt={afterAlt}
+				widths={[640, 960, 1280, 1600]}
+				sizes="(max-width: 767px) 100vw, 82vw"
+				loading="lazy"
+			/>
+		</div>
+		<div class="case-before-after__image case-before-after__image--before">
+			<Picture
+				src={beforeImage}
+				formats={['avif', 'webp']}
+				alt={beforeAlt}
+				widths={[640, 960, 1280, 1600]}
+				sizes="(max-width: 767px) 100vw, 82vw"
+				loading="lazy"
+			/>
+		</div>
+		<span class="case-before-after__label case-before-after__label--before">Before</span>
+		<span class="case-before-after__label case-before-after__label--after">After</span>
+		<span class="case-before-after__divider" aria-hidden="true"></span>
+		<input
+			class="case-before-after__control"
+			type="range"
+			min="0"
+			max="100"
+			value="50"
+			aria-label="Reveal before and after project images"
+		/>
+	</div>
+	{caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<script>
+	document.querySelectorAll('[data-before-after]').forEach((comparison) => {
+		const stage = comparison.querySelector('.case-before-after__stage');
+		const control = comparison.querySelector('input[type="range"]');
+		if (!(stage instanceof HTMLElement) || !(control instanceof HTMLInputElement)) return;
+		const update = () => stage.style.setProperty('--position', `${control.value}%`);
+		control.addEventListener('input', update);
+		update();
+	});
+</script>

@@ -45,7 +45,7 @@ export const globalExploreLinks = [
 	{ label: 'Reviews', href: '/reviews' },
 	{ label: 'Media', href: '/interior-renovations#media' },
 	{ label: 'About', href: '/#owner-led' },
-	{ label: 'Blog', href: '/blog' },
+	{ label: 'Guides', href: '/blog' },
 ] as const;
 
 export const globalMobileServices = [

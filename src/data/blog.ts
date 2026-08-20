@@ -3,10 +3,12 @@ import { getCollection } from '@/content.config';
 
 export const blogCategories = [
 	'All',
+	'Project Stories',
+	'Renovation Guides',
 	'Stairs',
 	'Ceilings',
-	'Interior Renovations',
 	'Painting',
+	'Interior Renovations',
 	'Kitchens & Bathrooms',
 	'Doors & Windows',
 	'Planning & Costs',

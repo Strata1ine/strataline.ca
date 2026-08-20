@@ -3,6 +3,7 @@ import { Picture, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 
 import BlogCard from '@/components/blog/BlogCard.astro';
+import CaseStudyArticle from '@/components/blog/CaseStudyArticle.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import Footer from '@/sections/Footer.astro';
@@ -24,6 +25,8 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const {
 	title,
+	seoTitle,
+	heroHeading,
 	description,
 	slug,
 	publishedDate,
@@ -87,8 +90,11 @@ const schemas = [
 ];
 ---
 
+{post.data.type === 'case-study' ? (
+	<CaseStudyArticle post={post} />
+) : (
 <PrototypeLayout
-	{title}
+	title={seoTitle ?? title}
 	{description}
 	image={optimizedHero.src}
 	{canonicalPath}
@@ -109,7 +115,7 @@ const schemas = [
 						>
 					</nav>
 					<p class="blog-eyebrow">{category}</p>
-					<h1>{title}</h1>
+					<h1>{heroHeading ?? title}</h1>
 					<p class="blog-article__dek">{description}</p>
 					<div class="blog-article__meta">
 						<span>By {author}</span>
@@ -214,11 +220,21 @@ const schemas = [
 		<Footer />
 	</div>
 </PrototypeLayout>
+)}
 
 <script>
 	document.querySelectorAll('[data-blog-contact]').forEach((button) => {
 		button.addEventListener('click', () => {
 			document.dispatchEvent(new CustomEvent('strataline:open-contact'));
+			if (!(button instanceof HTMLElement) || !button.dataset.formProjectType) return;
+			const requestedType = button.dataset.formProjectType;
+			requestAnimationFrame(() => requestAnimationFrame(() => {
+				const form = document.querySelector<HTMLFormElement>('[data-contact-mode="popup"]');
+				const projectType = form?.querySelector<HTMLSelectElement>('select[name="Project Type"]');
+				if (!projectType || !Array.from(projectType.options).some((option) => option.value === requestedType)) return;
+				projectType.value = requestedType;
+				projectType.dispatchEvent(new Event('change', { bubbles: true }));
+			}));
 		});
 	});
 </script>

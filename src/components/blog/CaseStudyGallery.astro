@@ -1,0 +1,39 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Item { image: ImageMetadata; alt: string; caption?: string; }
+interface Props { items: Item[]; idPrefix: string; }
+const { items, idPrefix } = Astro.props;
+---
+<div class="case-gallery" data-case-gallery>
+  {items.map((item, index) => (
+    <figure class="case-gallery__item">
+      <button type="button" class="case-gallery__trigger" data-case-gallery-open={`${idPrefix}-${index}`} aria-label={`Open image ${index + 1}: ${item.alt}`}>
+        <Picture src={item.image} alt={item.alt} widths={[360, 560, 760, 960]} sizes="(max-width: 720px) 100vw, 50vw" formats={['avif','webp']} loading="lazy" />
+      </button>
+      {item.caption && <figcaption>{item.caption}</figcaption>}
+      <dialog id={`${idPrefix}-${index}`} class="case-lightbox">
+        <button type="button" class="case-lightbox__close" data-case-gallery-close aria-label="Close image">×</button>
+        <Picture src={item.image} alt={item.alt} widths={[640, 960, 1280, 1600, 1920]} sizes="100vw" formats={['avif','webp']} loading="lazy" />
+        {item.caption && <p>{item.caption}</p>}
+      </dialog>
+    </figure>
+  ))}
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
+    let opener: HTMLElement | null = null;
+    gallery.querySelectorAll<HTMLButtonElement>('[data-case-gallery-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        opener = button;
+        const dialog = document.getElementById(button.dataset.caseGalleryOpen || '');
+        if (dialog instanceof HTMLDialogElement) dialog.showModal();
+      });
+    });
+    gallery.querySelectorAll<HTMLDialogElement>('.case-lightbox').forEach((dialog) => {
+      dialog.querySelector('[data-case-gallery-close]')?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => opener?.focus());
+    });
+  });
+</script>

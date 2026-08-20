@@ -1,0 +1,93 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import Footer from '@/sections/Footer.astro';
+import type { BlogPost } from '@/data/blog';
+import CaseStudyBeforeAfter from './CaseStudyBeforeAfter.astro';
+import CaseStudyGallery from './CaseStudyGallery.astro';
+import CaseStudyVideo from './CaseStudyVideo.astro';
+interface Props { post: BlogPost; }
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const canonicalPath = `/blog/${d.slug}`;
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const optimizedHero = await getImage({ src: d.heroImage, width: 1600, format: 'webp', quality: 86 });
+const imageUrl = `https://strataline.ca${optimizedHero.src}`;
+const publishedIso = d.publishedDate.toISOString();
+const modifiedIso = (d.updatedDate ?? d.publishedDate).toISOString();
+const schemas = [
+  {
+    '@type': 'Article', '@id': `${canonicalUrl}#article`, headline: d.title, description: d.description,
+    url: canonicalUrl, mainEntityOfPage: { '@id': canonicalUrl },
+    image: { '@type': 'ImageObject', '@id': `${canonicalUrl}#primaryimage`, url: imageUrl, contentUrl: imageUrl, caption: d.heroAlt },
+    datePublished: publishedIso, dateModified: modifiedIso, articleSection: d.category,
+    author: { '@type': 'Person', '@id': 'https://strataline.ca/#maxim-sologub', name: d.author, jobTitle: 'Owner' },
+    publisher: { '@id': 'https://strataline.ca/#business' }, isPartOf: { '@id': 'https://strataline.ca/#website' },
+    about: [d.service, d.location].filter(Boolean), breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+  },
+  {
+    '@type': 'BreadcrumbList', '@id': `${canonicalUrl}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
+      { '@type': 'ListItem', position: 2, name: 'Renovation Guides & Project Stories', item: 'https://strataline.ca/blog' },
+      { '@type': 'ListItem', position: 3, name: d.title, item: canonicalUrl },
+    ],
+  },
+];
+const compare = d.beforeAfter;
+const hasStructuredStory = d.storySections.length > 0;
+const comparisons = new Map(d.comparisons.map((item) => [item.id, item]));
+const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us details and we’ll help determine the right approach.', primaryLabel: 'Request a Quote', formProjectType: undefined };
+---
+<PrototypeLayout title={d.seoTitle ?? d.title} description={d.description} image={optimizedHero.src} {canonicalPath} {schemas} ogType="article" articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author: d.author }} robots="index,follow,max-image-preview:large">
+  <div class="blog-page case-study-page">
+    <PrototypeHeader />
+    <main>
+      <article class="case-study">
+        <header class="case-hero">
+          <Picture src={d.heroImage} alt={d.heroAlt} widths={[720,1080,1440,1920]} sizes="100vw" formats={['avif','webp']} loading="eager" fetchpriority="high" />
+          <div class="case-hero__shade" aria-hidden="true"></div>
+          <div class="case-hero__content blog-shell">
+            <nav class="blog-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Guides</a></nav>
+            <p class="blog-eyebrow">PROJECT STORY · {d.category}</p>
+            <h1>{d.heroHeading ?? d.title}</h1>
+            <p>{d.description}</p>
+            <div class="case-hero__meta">{d.location && <span>{d.location}</span>}{d.service && <span>{d.service}</span>}</div>
+          </div>
+        </header>
+        <div class="blog-shell case-study__body">
+          {hasStructuredStory ? d.storySections.map((section, index) => {
+            const sectionComparison = section.comparisonId ? comparisons.get(section.comparisonId) : undefined;
+            return <section class:list={['case-section case-story-section', { 'case-story-section--opening': index === 0 }]}>
+              <p class="blog-eyebrow">{section.eyebrow ?? 'In this project'}</p>
+              <h2>{section.heading}</h2>
+              <div class="case-story-section__copy">
+                {section.paragraphs.map((paragraph) => typeof paragraph === 'string'
+                  ? <p>{paragraph}</p>
+                  : <p>{paragraph.before}<a href={paragraph.href}>{paragraph.label}</a>{paragraph.after}</p>)}
+              </div>
+              {section.image && <figure class="case-process-image"><Picture src={section.image} alt={section.imageAlt ?? ''} widths={[640,960,1280,1600]} sizes="(max-width: 767px) 94vw, 76vw" formats={['avif','webp']} loading="lazy" />{section.imageCaption && <figcaption>{section.imageCaption}</figcaption>}</figure>}
+              {sectionComparison && <CaseStudyBeforeAfter beforeImage={sectionComparison.beforeImage} beforeAlt={sectionComparison.beforeAlt} afterImage={sectionComparison.afterImage} afterAlt={sectionComparison.afterAlt} caption={sectionComparison.caption} />}
+            </section>;
+          }) : <>
+            <section class="case-section case-challenge"><p class="blog-eyebrow">The challenge</p><h2>What the project needed</h2>{d.challenge && <p class="case-lead">{d.challenge}</p>}{d.solution && <p>{d.solution}</p>}</section>
+            {(compare?.enabled !== false && compare?.beforeImage && compare.afterImage) && <section class="case-section case-transformation"><p class="blog-eyebrow">The transformation</p><h2>Before and after</h2><CaseStudyBeforeAfter beforeImage={compare.beforeImage} beforeAlt={compare.beforeAlt ?? 'Before renovation'} afterImage={compare.afterImage} afterAlt={compare.afterAlt ?? 'After renovation'} caption={compare.caption} /></section>}
+            {d.scope.length > 0 && <section class="case-section case-scope"><p class="blog-eyebrow">Work completed</p><h2>Scope of work</h2><ul>{d.scope.map((item) => <li>{item}</li>)}</ul></section>}
+            <section class="case-section"><p class="blog-eyebrow">The process</p><h2>Why the work required expertise</h2><div class="blog-prose"><Content /></div></section>
+            {(d.video?.enabled !== false && d.video) && <section class="case-section"><p class="blog-eyebrow">On site</p><h2>See the work in progress</h2><CaseStudyVideo source={d.video.source} poster={d.video.poster} caption={d.video.caption} /></section>}
+            <section class="case-section case-result"><p class="blog-eyebrow">Finished result</p><h2>The outcome</h2>{d.result && <p class="case-lead">{d.result}</p>}</section>
+          </>}
+          {d.gallery.length > 0 && <section class="case-section"><p class="blog-eyebrow">Finished result</p><h2>Complete project gallery</h2><CaseStudyGallery items={d.gallery} idPrefix={`gallery-${d.slug}`} /></section>}
+          {d.homeownerInsights.length > 0 && <section class="case-section case-scope"><p class="blog-eyebrow">Planning value</p><h2>What this project shows homeowners</h2><ul>{d.homeownerInsights.map((item) => <li>{item}</li>)}</ul></section>}
+          {(d.review?.enabled !== false && d.review?.quote && d.review.reviewer) && <section class="case-section case-review"><blockquote>“{d.review.quote}”</blockquote><p>— {d.review.reviewer}</p></section>}
+          <section class="case-section case-related"><p class="blog-eyebrow">Related services</p><h2>Related project services</h2><div>{d.relatedServices.map((service) => <a href={service.href}>{service.label}<span aria-hidden="true">→</span></a>)}</div></section>
+          <aside class="case-author"><p><strong>{d.author}</strong><br />Owner, Strataline Inc.</p><p>Based on real Strataline renovation projects completed across Toronto and the GTA.</p></aside>
+          <section class="case-cta"><h2>{cta.heading}</h2><p>{cta.text}</p><div><button type="button" data-blog-contact="case-study" data-form-project-type={cta.formProjectType}>{cta.primaryLabel}</button><a href="tel:+14164715999">Call or Text (416) 471-5999</a></div></section>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </div>
+</PrototypeLayout>

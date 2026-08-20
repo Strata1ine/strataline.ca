@@ -60,7 +60,7 @@ export const collections = {
 				summary: z.string(),
 				services: z.array(z.string()),
 				cover: image(c),
-				gallery: z.array(image(c)).default([]),
+gallery: z.array(image(c)).default([]),
 				before: z.array(image(c)).default([]),
 				after: z.array(image(c)).default([]),
 				challenges: z.array(z.string()).default([]),
@@ -75,7 +75,10 @@ export const collections = {
 		loader: glob({ pattern: '**/*.{md,mdx}', base: './content/blog' }),
 		schema: ({ image: contentImage }: SchemaContext) =>
 			z.object({
+				type: z.enum(['guide', 'case-study']).default('guide'),
 				title: z.string(),
+				seoTitle: z.string().optional(),
+				heroHeading: z.string().optional(),
 				description: z.string(),
 				slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 				publishedDate: z.coerce.date(),
@@ -93,6 +96,94 @@ export const collections = {
 				heroImage: contentImage(),
 				heroAlt: z.string(),
 				author: z.string(),
+				location: z.string().optional(),
+				service: z.string().optional(),
+				challenge: z.string().optional(),
+				scope: z.array(z.string()).default([]),
+				solution: z.string().optional(),
+				result: z.string().optional(),
+				beforeAfter: z
+					.object({
+						enabled: z.boolean().default(true),
+						beforeImage: contentImage().optional(),
+						beforeAlt: z.string().optional(),
+						afterImage: contentImage().optional(),
+						afterAlt: z.string().optional(),
+						caption: z.string().optional(),
+					})
+					.optional(),
+				comparisons: z
+					.array(
+						z.object({
+							id: z.string().regex(/^[a-z0-9-]+$/),
+							heading: z.string().optional(),
+							beforeImage: contentImage(),
+							beforeAlt: z.string(),
+							afterImage: contentImage(),
+							afterAlt: z.string(),
+							caption: z.string(),
+						}),
+					)
+					.default([]),
+				storySections: z
+					.array(
+						z.object({
+							eyebrow: z.string().optional(),
+							heading: z.string(),
+							paragraphs: z.array(
+								z.union([
+									z.string(),
+									z.object({
+										before: z.string(),
+										label: z.string(),
+										href: z.string().startsWith('/'),
+										after: z.string().default(''),
+									}),
+								]),
+							),
+							comparisonId: z.string().optional(),
+							image: contentImage().optional(),
+							imageAlt: z.string().optional(),
+							imageCaption: z.string().optional(),
+						}),
+					)
+					.default([]),
+				homeownerInsights: z.array(z.string()).default([]),
+				cta: z
+					.object({
+						heading: z.string(),
+						text: z.string(),
+						primaryLabel: z.string(),
+						formProjectType: z.string().optional(),
+					})
+					.optional(),
+				gallery: z
+					.array(
+						z.object({
+							image: contentImage(),
+							alt: z.string(),
+							caption: z.string().optional(),
+						}),
+					)
+					.default([]),
+				video: z
+					.object({
+						enabled: z.boolean().default(true),
+						source: z.string().startsWith('/'),
+						poster: z.string().startsWith('/'),
+						caption: z.string().optional(),
+					})
+					.optional(),
+				review: z
+					.object({
+						enabled: z.boolean().default(true),
+						reviewer: z.string().optional(),
+						quote: z.string().optional(),
+						service: z.string().optional(),
+						image: contentImage().optional(),
+						imageAlt: z.string().optional(),
+					})
+					.optional(),
 				relatedServices: z
 					.array(
 						z.object({

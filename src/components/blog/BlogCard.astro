@@ -1,42 +1,20 @@
 ---
 import { Picture } from 'astro:assets';
-
 import type { BlogPost } from '@/data/blog';
 import { getReadingTime } from '@/data/blog';
-
-interface Props {
-	post: BlogPost;
-	variant?: 'standard' | 'supporting';
-}
-
+interface Props { post: BlogPost; variant?: 'standard' | 'supporting'; }
 const { post, variant = 'standard' } = Astro.props;
-const { title, description, slug, category, heroImage, heroAlt } = post.data;
+const { title, description, slug, category, heroImage, heroAlt, type, location } = post.data;
+const isCaseStudy = type === 'case-study';
 const readingTime = getReadingTime(post.body);
 ---
-
-<article
-	class:list={['blog-card', `blog-card--${variant}`]}
-	data-blog-card
-	data-category={category}
->
-	<a class="blog-card__image" href={`/blog/${slug}`} aria-label={`Read ${title}`}>
-		<Picture
-			src={heroImage}
-			formats={['avif', 'webp']}
-			alt={heroAlt}
-			widths={[360, 560, 760, 960]}
-			sizes={variant === 'supporting'
-				? '(max-width: 767px) 94vw, 30vw'
-				: '(max-width: 767px) 94vw, 31vw'}
-			loading="lazy"
-		/>
-	</a>
-	<div class="blog-card__copy">
-		<div class="blog-card__meta"><span>{category}</span><span>{readingTime} min read</span></div>
-		<h2><a href={`/blog/${slug}`}>{title}</a></h2>
-		<p>{description}</p>
-		<a class="blog-card__link" href={`/blog/${slug}`}
-			>Read guide <span aria-hidden="true">→</span></a
-		>
-	</div>
+<article class:list={['blog-card', `blog-card--${variant}`, { 'blog-card--case': isCaseStudy }]} data-blog-card data-category={category} data-type={type}>
+  <a class="blog-card__image" href={`/blog/${slug}`} aria-label={`${isCaseStudy ? 'View project' : 'Read'} ${title}`}>
+    <Picture src={heroImage} formats={['avif','webp']} alt={heroAlt} widths={[360,560,760,960]} sizes="(max-width: 767px) 94vw, 31vw" loading="lazy" />
+  </a>
+  <div class="blog-card__copy">
+    <div class="blog-card__meta"><span>{isCaseStudy ? 'PROJECT STORY' : 'RENOVATION GUIDE'}</span><span>{isCaseStudy && location ? location : `${readingTime} min read`}</span></div>
+    <h2><a href={`/blog/${slug}`}>{title}</a></h2><p>{description}</p>
+    <a class="blog-card__link" href={`/blog/${slug}`}>{isCaseStudy ? 'View project' : 'Read guide'} <span aria-hidden="true">→</span></a>
+  </div>
 </article>
