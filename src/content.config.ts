@@ -103,6 +103,8 @@ export const collections = {
 					alt: z.string(),
 					caption: z.string().optional(),
 					layout: z.enum(['wide', 'detail']).default('wide'),
+					presentation: z.enum(['standard', 'document']).default('standard'),
+					actionLabel: z.string().optional(),
 				}),
 				z.object({
 					type: z.literal('image-pair'),
@@ -120,6 +122,7 @@ export const collections = {
 					source: z.string().startsWith('/'),
 					poster: z.string().startsWith('/'),
 					caption: z.string().optional(),
+					preload: z.enum(['none', 'metadata']).default('none'),
 				}),
 				z.object({
 					type: z.literal('related-story'),

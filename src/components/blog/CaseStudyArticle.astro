@@ -117,27 +117,35 @@ const cta = d.cta ?? {
 						)
 					}
 					<div class="case-hero__shade" aria-hidden="true"></div>
-					<div class="case-hero__content blog-shell">
-						<BlogBreadcrumb current="Project Stories" />
-						<p class="blog-eyebrow">{d.heroEyebrow ?? `PROJECT STORY · ${d.category}`}</p>
-						<h1>{d.heroHeading ?? d.title}</h1>
-						<p>{d.heroIntro ?? d.description}</p>
-						<div class="case-hero__meta">
-							{d.location && <span>{d.location}</span>}{d.service && <span>{d.service}</span>}
-						</div>
-					</div>
-					{
-						isDocumentHero && (
-							<div class="case-hero__document-media blog-shell">
-								<CaseStudyGallery
-									items={[{ image: d.heroImage, alt: d.heroAlt, caption: d.heroActionLabel }]}
-									idPrefix={`hero-${d.slug}`}
-									viewMode="document"
-									actionLabel={d.heroActionLabel ?? 'View full image →'}
-								/>
+					<div class:list={['case-hero__composition', { 'blog-shell': isDocumentHero }]}>
+						<div class:list={['case-hero__content', { 'blog-shell': !isDocumentHero }]}>
+							<BlogBreadcrumb current="Project Stories" />
+							<p class="blog-eyebrow">{d.heroEyebrow ?? `PROJECT STORY · ${d.category}`}</p>
+							<h1>{d.heroHeading ?? d.title}</h1>
+							<p>{d.heroIntro ?? d.description}</p>
+							<div class="case-hero__meta">
+								{d.location && <span>{d.location}</span>}{d.service && <span>{d.service}</span>}
 							</div>
-						)
-					}
+						</div>
+						{
+							isDocumentHero && (
+								<div class="case-hero__document-column">
+									<div class="case-hero__document-label">
+										<strong>THE TORONTO STAR · AUGUST 26, 2017</strong>
+										<span>FROM THE STRATALINE ARCHIVE</span>
+									</div>
+									<div class="case-hero__document-media">
+										<CaseStudyGallery
+											items={[{ image: d.heroImage, alt: d.heroAlt, caption: d.heroActionLabel }]}
+											idPrefix={`hero-${d.slug}`}
+											viewMode="document"
+											actionLabel={d.heroActionLabel ?? 'View full image →'}
+										/>
+									</div>
+								</div>
+							)
+						}
+					</div>
 				</header>
 				<div class="blog-shell case-study__body">
 					{
@@ -224,11 +232,14 @@ const cta = d.cta ?? {
 											class:list={[
 												'case-section case-inline-media',
 												{ 'case-inline-media--detail': block.layout === 'detail' },
+												{ 'case-inline-media--document': block.presentation === 'document' },
 											]}
 										>
 											<CaseStudyGallery
 												items={[{ image: block.image, alt: block.alt, caption: block.caption }]}
 												idPrefix={'content-' + d.slug + '-' + index}
+												viewMode={block.presentation === 'document' ? 'document' : 'standard'}
+												actionLabel={block.actionLabel}
 											/>
 										</section>
 									);
@@ -260,6 +271,7 @@ const cta = d.cta ?? {
 												source={block.source}
 												poster={block.poster}
 												caption={block.caption}
+												preload={block.preload}
 											/>
 										</section>
 									);

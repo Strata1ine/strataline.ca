@@ -1,11 +1,17 @@
 ---
-interface Props { source: string; poster: string; caption?: string; }
-const { source, poster, caption } = Astro.props;
+interface Props {
+	source: string;
+	poster: string;
+	caption?: string;
+	preload?: 'none' | 'metadata';
+}
+const { source, poster, caption, preload = 'none' } = Astro.props;
 ---
+
 <figure class="case-video">
-  <video controls playsinline preload="none" poster={poster}>
-    <source src={source} type="video/mp4" />
-    Your browser does not support embedded video.
-  </video>
-  {caption && <figcaption>{caption}</figcaption>}
+	<video controls playsinline {preload} poster={poster}>
+		<source src={source} type="video/mp4" />
+		Your browser does not support embedded video.
+	</video>
+	{caption && <figcaption>{caption}</figcaption>}
 </figure>

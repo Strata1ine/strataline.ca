@@ -44,12 +44,6 @@ projectFactsCta:
   label: Request a Quote →
   formProjectType: Popcorn ceiling removal
 contentBlocks:
-  - type: video
-    heading: The same vacuum-connected process shown in the newspaper
-    source: /videos/blog/toronto-star-painted-popcorn-ceiling-removal-2017-process.mp4
-    poster: /images/blog/toronto-star-painted-popcorn-ceiling-removal-2017-video-poster.jpg
-    caption: The newspaper's main photograph shows the same vacuum-connected ceiling-removal process demonstrated in this video. Playback is user-controlled and does not autoplay.
-
   - type: text
     eyebrow: Why the ceiling mattered
     heading: Why painted popcorn required a different approach
@@ -63,15 +57,12 @@ contentBlocks:
         href: /services/popcorn-removal
         after: ' for the removal, repair and finishing stages used today.'
 
-  - type: image-pair
-    heading: The painted texture and occupied room before removal
-    items:
-      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-original-condition-wide.jpg
-        alt: Wide view of the painted popcorn ceiling in the occupied Mississauga condo before removal.
-        caption: The original painted texture extended through the furnished living area.
-      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-contained-room-before.jpg
-        alt: Painted popcorn ceiling above plastic containment protecting the Mississauga condo interior.
-        caption: Containment protected the finished room before mechanical ceiling removal began.
+  - type: video
+    heading: The same vacuum-connected process shown in the newspaper
+    source: /videos/blog/toronto-star-painted-popcorn-ceiling-removal-2017-process.mp4
+    poster: /images/blog/toronto-star-popcorn-removal-video-first-frame.webp
+    preload: metadata
+    caption: The newspaper's main photograph shows the same vacuum-connected ceiling-removal process demonstrated in this video. Playback is user-controlled and does not autoplay.
 
   - type: text
     eyebrow: The technical process
@@ -94,10 +85,33 @@ contentBlocks:
     paragraphs:
       - >-
         The August 26, 2017 article appeared under the section label CEILING RENO. It was written by Ian Harvey, Special to the Star. The article described Strataline as one of only a handful of GTA companies specializing in textured-ceiling removal; it did not claim Strataline was the first company in Toronto to perform the work.
+
+  - type: image
+    image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-strataline-popcorn-ceiling-article-2017.jpg
+    alt: Full Toronto Star newspaper clipping titled Lumpy complexions get a new smooth face, showing the vacuum-connected ceiling-removal process and the complete August 26, 2017 article.
+    caption: The complete August 26, 2017 Toronto Star article, preserved in the Strataline archive.
+    layout: wide
+    presentation: document
+    actionLabel: View full Toronto Star article →
+
+  - type: text
+    eyebrow: Published evidence
+    heading: What the clipping records
+    paragraphs:
       - >-
         The newspaper independently documented the vacuum-fitted sander, specialized filtration, containment and the challenge of completing ceiling work while residents remained at home. Its main photograph identifies Nick Splavsky of Strataline using the vacuum-fitted sander and is credited to Maxim Sologub / Strataline Inc. The smaller before-and-after photographs are credited to Strataline Inc.
       - >-
         The clipping is historical evidence of a process that was unusual enough to warrant a detailed renovation feature. It records the practical question that mattered to the client: could a painted ceiling be fully refinished without turning an occupied condo into a dusty construction zone?
+
+  - type: image-pair
+    heading: The painted texture and occupied room before removal
+    items:
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-original-condition-wide.jpg
+        alt: Wide view of the painted popcorn ceiling in the occupied Mississauga condo before removal.
+        caption: The original painted texture extended through the furnished living area.
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-contained-room-before.jpg
+        alt: Painted popcorn ceiling above plastic containment protecting the Mississauga condo interior.
+        caption: Containment protected the finished room before mechanical ceiling removal began.
 
   - type: text
     eyebrow: Homeowner evidence
