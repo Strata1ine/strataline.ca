@@ -2,19 +2,59 @@
 import { Picture } from 'astro:assets';
 import type { BlogPost } from '@/data/blog';
 import { getReadingTime } from '@/data/blog';
-interface Props { post: BlogPost; variant?: 'standard' | 'supporting'; }
+interface Props {
+	post: BlogPost;
+	variant?: 'standard' | 'supporting' | 'featured';
+}
 const { post, variant = 'standard' } = Astro.props;
-const { title, description, slug, category, heroImage, heroAlt, type, location } = post.data;
+const { title, description, slug, category, heroImage, heroAlt, type, location, mediaBadge } = post.data;
 const isCaseStudy = type === 'case-study';
 const readingTime = getReadingTime(post.body);
+const isFeatured = variant === 'featured';
 ---
-<article class:list={['blog-card', `blog-card--${variant}`, { 'blog-card--case': isCaseStudy }]} data-blog-card data-category={category} data-type={type}>
-  <a class="blog-card__image" href={`/blog/${slug}`} aria-label={`${isCaseStudy ? 'View project' : 'Read'} ${title}`}>
-    <Picture src={heroImage} formats={['avif','webp']} alt={heroAlt} widths={[360,560,760,960]} sizes="(max-width: 767px) 94vw, 31vw" loading="lazy" />
-  </a>
-  <div class="blog-card__copy">
-    <div class="blog-card__meta"><span>{isCaseStudy ? 'PROJECT STORY' : 'RENOVATION GUIDE'}</span><span>{isCaseStudy && location ? location : `${readingTime} min read`}</span></div>
-    <h2><a href={`/blog/${slug}`}>{title}</a></h2><p>{description}</p>
-    <a class="blog-card__link" href={`/blog/${slug}`}>{isCaseStudy ? 'View project story' : 'Read guide'} <span aria-hidden="true">→</span></a>
-  </div>
+<article
+	class:list={[
+		'blog-card',
+		`blog-card--${variant}`,
+		{ 'blog-card--case': isCaseStudy, 'blog-card--media-feature': Boolean(mediaBadge) },
+	]}
+	data-blog-card
+	data-category={category}
+	data-type={type}
+>
+	<a class="blog-card__image" href={`/blog/${slug}`} aria-label={`${isCaseStudy ? 'View project' : 'Read'} ${title}`}>
+		<Picture
+			src={heroImage}
+			formats={['avif', 'webp']}
+			alt={heroAlt}
+			widths={[360, 560, 760, 960, 1280]}
+			sizes={isFeatured ? '(max-width: 767px) 94vw, 58vw' : '(max-width: 767px) 94vw, 31vw'}
+			loading={isFeatured ? 'eager' : 'lazy'}
+		/>
+	</a>
+	<div class="blog-card__copy">
+		{mediaBadge && (
+			<div class="blog-card__media-badge" aria-label={mediaBadge.label}>
+				{mediaBadge.archiveLabel && <span>{mediaBadge.archiveLabel}</span>}
+				<Picture
+					src={mediaBadge.image}
+					formats={['avif', 'webp']}
+					alt={mediaBadge.alt}
+					widths={[300, 600]}
+					sizes={isFeatured ? '(max-width: 767px) 70vw, 330px' : '220px'}
+					loading="lazy"
+				/>
+				<small>{mediaBadge.label}</small>
+			</div>
+		)}
+		<div class="blog-card__meta">
+			<span>{isCaseStudy ? 'PROJECT STORY' : 'RENOVATION GUIDE'}</span>
+			<span>{isCaseStudy && location ? location : `${readingTime} min read`}</span>
+		</div>
+		<h2><a href={`/blog/${slug}`}>{title}</a></h2>
+		<p>{description}</p>
+		<a class="blog-card__link" href={`/blog/${slug}`}>
+			{isCaseStudy ? 'View project story' : 'Read guide'} <span aria-hidden="true">→</span>
+		</a>
+	</div>
 </article>

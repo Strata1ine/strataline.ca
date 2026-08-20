@@ -157,6 +157,15 @@ export const collections = {
 				featured: z.boolean(),
 				heroImage: contentImage(),
 				heroAlt: z.string(),
+				mediaBadge: z
+					.object({
+						image: contentImage(),
+						alt: z.string(),
+						label: z.string(),
+						archiveLabel: z.string().optional(),
+						sectionHeading: z.string().optional(),
+					})
+					.optional(),
 				author: z.string(),
 				location: z.string().optional(),
 				service: z.string().optional(),

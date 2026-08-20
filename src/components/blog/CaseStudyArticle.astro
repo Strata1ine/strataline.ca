@@ -146,6 +146,20 @@ const cta = d.cta ?? {
 												{ 'case-story-section--opening': index === 0 },
 											]}
 										>
+											{d.mediaBadge && block.heading === d.mediaBadge.sectionHeading && (
+												<aside class="case-media-badge" aria-label={d.mediaBadge.label}>
+													<p>{d.mediaBadge.label}</p>
+													<Picture
+														src={d.mediaBadge.image}
+														alt={d.mediaBadge.alt}
+														widths={[300, 600]}
+														sizes="(max-width: 700px) 72vw, 380px"
+														formats={['avif', 'webp']}
+														loading="lazy"
+													/>
+													{d.mediaBadge.archiveLabel && <span>{d.mediaBadge.archiveLabel}</span>}
+												</aside>
+											)}
 											<p class="blog-eyebrow">{block.eyebrow ?? 'In this project'}</p>
 											<h2>{block.heading}</h2>
 											<div class="case-story-section__copy">

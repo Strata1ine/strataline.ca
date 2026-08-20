@@ -9,9 +9,15 @@ publishedDate: 2026-08-20
 category: Ceilings
 location: Mississauga, Ontario
 service: Painted popcorn ceiling removal and complete ceiling refinishing
-featured: false
+featured: true
 heroImage: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-popcorn-ceiling-removal-finished-hero.jpg
 heroAlt: Smooth finished ceiling with coordinated pot lights after painted popcorn ceiling removal in a Mississauga condo.
+mediaBadge:
+  image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-banner-2017.jpg
+  alt: Toronto Star masthead from the 2017 home-renovation feature.
+  label: AS FEATURED IN THE TORONTO STAR
+  archiveLabel: FROM THE ARCHIVE · 2017
+  sectionHeading: The Toronto Star documented the process in 2017.
 socialImage: /images/blog/toronto-star-painted-popcorn-ceiling-removal-2017-social.jpg
 schemaType: BlogPosting
 heroEyebrow: PROJECT STORY · FROM THE STRATALINE ARCHIVE · 2017
