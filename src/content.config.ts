@@ -60,7 +60,7 @@ export const collections = {
 				summary: z.string(),
 				services: z.array(z.string()),
 				cover: image(c),
-gallery: z.array(image(c)).default([]),
+				gallery: z.array(image(c)).default([]),
 				before: z.array(image(c)).default([]),
 				after: z.array(image(c)).default([]),
 				challenges: z.array(z.string()).default([]),
@@ -73,8 +73,66 @@ gallery: z.array(image(c)).default([]),
 	}),
 	blog: defineCollection({
 		loader: glob({ pattern: '**/*.{md,mdx}', base: './content/blog' }),
-		schema: ({ image: contentImage }: SchemaContext) =>
-			z.object({
+		schema: ({ image: contentImage }: SchemaContext) => {
+			const linkedParagraph = z.union([
+				z.string(),
+				z.object({
+					before: z.string(),
+					label: z.string(),
+					href: z.string().startsWith('/'),
+					after: z.string().default(''),
+				}),
+			]);
+			const inlineMedia = z.object({
+				image: contentImage(),
+				alt: z.string(),
+				caption: z.string().optional(),
+			});
+			const contentBlock = z.discriminatedUnion('type', [
+				z.object({
+					type: z.literal('text'),
+					eyebrow: z.string().optional(),
+					heading: z.string(),
+					paragraphs: z.array(linkedParagraph),
+					listHeading: z.string().optional(),
+					listItems: z.array(z.string()).default([]),
+				}),
+				z.object({
+					type: z.literal('image'),
+					image: contentImage(),
+					alt: z.string(),
+					caption: z.string().optional(),
+					layout: z.enum(['wide', 'detail']).default('wide'),
+				}),
+				z.object({
+					type: z.literal('image-pair'),
+					heading: z.string().optional(),
+					items: z.array(inlineMedia).length(2),
+				}),
+				z.object({
+					type: z.literal('gallery'),
+					heading: z.string().optional(),
+					items: z.array(inlineMedia).min(1),
+				}),
+				z.object({
+					type: z.literal('video'),
+					heading: z.string().optional(),
+					source: z.string().startsWith('/'),
+					poster: z.string().startsWith('/'),
+					caption: z.string().optional(),
+				}),
+				z.object({
+					type: z.literal('before-after'),
+					heading: z.string().optional(),
+					beforeImage: contentImage(),
+					afterImage: contentImage(),
+					beforeAlt: z.string(),
+					afterAlt: z.string(),
+					caption: z.string(),
+				}),
+			]);
+
+			return z.object({
 				type: z.enum(['guide', 'case-study']).default('guide'),
 				title: z.string(),
 				seoTitle: z.string().optional(),
@@ -106,6 +164,7 @@ gallery: z.array(image(c)).default([]),
 				scope: z.array(z.string()).default([]),
 				solution: z.string().optional(),
 				result: z.string().optional(),
+				contentBlocks: z.array(contentBlock).default([]),
 				beforeAfter: z
 					.object({
 						beforeImage: contentImage(),
@@ -177,7 +236,8 @@ gallery: z.array(image(c)).default([]),
 							answer: z.string(),
 						}),
 					)
-					.default([]),				homeownerInsights: z.array(z.string()).default([]),
+					.default([]),
+				homeownerInsights: z.array(z.string()).default([]),
 				cta: z
 					.object({
 						heading: z.string(),
@@ -224,7 +284,8 @@ gallery: z.array(image(c)).default([]),
 				draft: z.boolean(),
 				takeaways: z.array(z.string()).min(1),
 				tableOfContents: z.boolean().default(true),
-			}),
+			});
+		},
 	}),
 };
 
