@@ -52,15 +52,13 @@ contentBlocks:
         href: /services/stairs
         after: ' when a stair project includes guards, railings, treads or surrounding finish work.'
 
-  - type: image-pair
+  - type: before-after
     heading: Half wall to open railing
-    items:
-      - image: ./oakville-interior-renovation-images/oakville-half-wall-before.jpg
-        alt: Oakville staircase before renovation with the solid half wall enclosing the stair opening.
-        caption: BEFORE — the existing half wall closed the view across the staircase.
-      - image: ./oakville-interior-renovation-images/oakville-half-wall-open-railing-after.jpg
-        alt: Oakville staircase after the half wall was replaced with a coordinated open railing.
-        caption: AFTER — the new open railing creates a balanced connection between levels.
+    beforeImage: ./oakville-interior-renovation-images/oakville-half-wall-removal-before-portrait.jpg
+    beforeAlt: Portrait view of the Oakville staircase before the solid half wall was removed.
+    afterImage: ./oakville-interior-renovation-images/oakville-open-railing-after-portrait.jpg
+    afterAlt: Portrait view of the Oakville staircase after the half wall was replaced by an open railing.
+    caption: The solid half wall was removed and replaced with a coordinated open railing that connects the two levels visually.
 
   - type: text
     eyebrow: Railing design
@@ -74,6 +72,14 @@ contentBlocks:
         label: stair railing installation
         href: /services/stairs/railing-installation
         after: ' for suitable existing staircases.'
+
+  - type: before-after
+    heading: Staircase and railing transformation
+    beforeImage: ./oakville-interior-renovation-images/oakville-staircase-before-renovation.jpg
+    beforeAlt: Oakville staircase and landing before the railing and connected interior renovation.
+    afterImage: ./oakville-interior-renovation-images/oakville-staircase-after-renovation.jpg
+    afterAlt: Oakville staircase and landing after the railing, hardwood and finish work were completed.
+    caption: The completed staircase, open railing and surrounding finishes now read as one coordinated interior.
 
   - type: image
     image: ./oakville-interior-renovation-images/oakville-open-railing-overhead-hero.jpg
