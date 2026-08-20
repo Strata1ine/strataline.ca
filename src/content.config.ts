@@ -166,6 +166,7 @@ export const collections = {
 					'Planning & Costs',
 				]),
 				featured: z.boolean(),
+				hubProminence: z.enum(['lead']).optional(),
 				heroImage: contentImage(),
 				heroAlt: z.string(),
 				heroPresentation: z.enum(['cover', 'document']).default('cover'),

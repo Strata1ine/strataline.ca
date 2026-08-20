@@ -18,7 +18,11 @@ export type BlogPost = CollectionEntry<'blog'>;
 
 export const getPublishedBlogPosts = async () => {
 	const posts = await getCollection('blog', (entry) => !entry.data.draft);
-	return posts.sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime());
+	return posts.sort(
+		(a, b) =>
+			b.data.publishedDate.getTime() - a.data.publishedDate.getTime() ||
+			a.data.slug.localeCompare(b.data.slug),
+	);
 };
 
 export const getReadingTime = (body = '') => {

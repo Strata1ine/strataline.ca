@@ -5,7 +5,7 @@ seoTitle: '800 Sq. Ft. Basement Finishing: Layout, Kitchen & Bedroom | Stratalin
 description: See how Strataline transformed an 800 sq. ft. basement with a bedroom, custom kitchen, bathroom, laundry, oak stairs, built-in workspace and carefully planned living area.
 heroIntro: Careful planning transformed approximately 800 square feet of unfinished basement into a complete living environment with a generous central room, custom kitchen, bedroom, bathroom with walk-in shower, separate laundry and useful storage—without making the layout feel divided into a collection of cramped spaces.
 slug: 800-sq-ft-basement-finishing-space-planning
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T07:47:18Z
 category: Interior Renovations
 service: Complete basement finishing and space planning
 featured: false

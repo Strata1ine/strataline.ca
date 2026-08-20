@@ -5,7 +5,7 @@ seoTitle: '560 Sq. Ft. Basement Finishing in Vaughan: Design & Cost | Strataline
 description: See how Strataline planned and finished a 560 sq. ft. Vaughan basement with a compact bathroom and laundry, large living area, oak stairs, better lighting and efficient storage.
 heroIntro: Careful planning turned approximately 560 square feet into a finished basement with a bathroom, shower, laundry, storage and oak staircase while preserving the largest possible open living area.
 slug: small-basement-finishing-vaughan
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T07:02:20Z
 category: Interior Renovations
 location: Vaughan, Ontario
 service: Complete basement finishing and space planning

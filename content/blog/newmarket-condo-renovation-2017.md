@@ -5,7 +5,7 @@ seoTitle: 'Newmarket Condo Renovation: Floors, Ceilings & Complete Finishing | S
 description: See how Strataline modernized a dated Newmarket condo with smooth ceilings, engineered hardwood, luxury vinyl, new trim, doors, paint and careful condo logistics.
 heroIntro: Lynne Moore and Bill Fortnum wanted their downsized home completely renewed before moving day, so retirement could begin with enjoying the condo instead of living through its renovation.
 slug: newmarket-condo-renovation-2017
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T16:15:30Z
 category: Interior Renovations
 location: Newmarket, Ontario
 service: Complete condo interior renovation before move-in

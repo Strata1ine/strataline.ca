@@ -4,14 +4,22 @@ import type { BlogPost } from '@/data/blog';
 import { getReadingTime } from '@/data/blog';
 interface Props {
 	post: BlogPost;
-	variant?: 'standard' | 'supporting' | 'featured';
+	variant?: 'standard' | 'supporting' | 'featured' | 'lead';
 }
 const { post, variant = 'standard' } = Astro.props;
-const { title, description, slug, category, heroImage, heroAlt, type, location, mediaBadge } = post.data;
+const { title, description, slug, category, heroImage, heroAlt, type, location, mediaBadge } =
+	post.data;
 const isCaseStudy = type === 'case-study';
 const readingTime = getReadingTime(post.body);
 const isFeatured = variant === 'featured';
+const isLead = variant === 'lead';
+const cardSizes = isFeatured
+	? '(max-width: 767px) 94vw, 58vw'
+	: isLead
+		? '(max-width: 767px) 94vw, (max-width: 980px) 94vw, 62vw'
+		: '(max-width: 767px) 94vw, 31vw';
 ---
+
 <article
 	class:list={[
 		'blog-card',
@@ -22,31 +30,37 @@ const isFeatured = variant === 'featured';
 	data-category={category}
 	data-type={type}
 >
-	<a class="blog-card__image" href={`/blog/${slug}`} aria-label={`${isCaseStudy ? 'View project' : 'Read'} ${title}`}>
+	<a
+		class="blog-card__image"
+		href={`/blog/${slug}`}
+		aria-label={`${isCaseStudy ? 'View project' : 'Read'} ${title}`}
+	>
 		<Picture
 			src={heroImage}
 			formats={['avif', 'webp']}
 			alt={heroAlt}
 			widths={[360, 560, 760, 960, 1280]}
-			sizes={isFeatured ? '(max-width: 767px) 94vw, 58vw' : '(max-width: 767px) 94vw, 31vw'}
+			sizes={cardSizes}
 			loading={isFeatured ? 'eager' : 'lazy'}
 		/>
 	</a>
 	<div class="blog-card__copy">
-		{mediaBadge && (
-			<div class="blog-card__media-badge" aria-label={mediaBadge.label}>
-				{mediaBadge.archiveLabel && <span>{mediaBadge.archiveLabel}</span>}
-				<Picture
-					src={mediaBadge.image}
-					formats={['avif', 'webp']}
-					alt={mediaBadge.alt}
-					widths={[300, 600]}
-					sizes={isFeatured ? '(max-width: 767px) 70vw, 330px' : '220px'}
-					loading="lazy"
-				/>
-				<small>{mediaBadge.label}</small>
-			</div>
-		)}
+		{
+			mediaBadge && (
+				<div class="blog-card__media-badge" aria-label={mediaBadge.label}>
+					{mediaBadge.archiveLabel && <span>{mediaBadge.archiveLabel}</span>}
+					<Picture
+						src={mediaBadge.image}
+						formats={['avif', 'webp']}
+						alt={mediaBadge.alt}
+						widths={[300, 600]}
+						sizes={isFeatured ? '(max-width: 767px) 70vw, 330px' : '220px'}
+						loading="lazy"
+					/>
+					<small>{mediaBadge.label}</small>
+				</div>
+			)
+		}
 		<div class="blog-card__meta">
 			<span>{isCaseStudy ? 'PROJECT STORY' : 'RENOVATION GUIDE'}</span>
 			<span>{isCaseStudy && location ? location : `${readingTime} min read`}</span>
@@ -54,7 +68,8 @@ const isFeatured = variant === 'featured';
 		<h2><a href={`/blog/${slug}`}>{title}</a></h2>
 		<p>{description}</p>
 		<a class="blog-card__link" href={`/blog/${slug}`}>
-			{isCaseStudy ? 'View project story' : 'Read guide'} <span aria-hidden="true">→</span>
+			{isCaseStudy ? 'View project story' : 'Read guide'}
+			<span aria-hidden="true">→</span>
 		</a>
 	</div>
 </article>

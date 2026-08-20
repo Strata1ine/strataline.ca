@@ -5,7 +5,7 @@ seoTitle: Staircase Stain Matching in Toronto | Bayview & Lawrence Project
 description: See how Strataline corrected a badly mismatched red-oak staircase near Bayview and Lawrence using dust-controlled sanding and on-site stain matching.
 heroIntro: The staircase in this newly built Toronto home had already been sanded and refinished three times, but the colour still did not match the surrounding floor. Correcting it required more than another coat of stain—it meant taking the wood back to a controlled starting point, developing the colour in the home's actual lighting and rebuilding the finish properly.
 slug: staircase-stain-matching-bayview-lawrence-toronto
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T06:45:18Z
 category: Stairs
 location: Bayview & Lawrence, Toronto
 service: Staircase colour correction and complete refinishing

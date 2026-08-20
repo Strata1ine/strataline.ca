@@ -14,10 +14,11 @@ const posts = await getPublishedBlogPosts();
 const projects = posts.filter((post) => post.data.type === 'case-study');
 const guides = posts.filter((post) => post.data.type !== 'case-study');
 const featuredProject = projects.find((post) => post.data.featured) ?? projects[0];
-const latestProjects = projects.filter((post) => post.id !== featuredProject?.id).slice(0, 5);
+const latestProjects = projects.filter((post) => post.id !== featuredProject?.id);
 const renderedCount = (featuredProject ? 1 : 0) + latestProjects.length + guides.length;
 const title = 'Renovation Projects & Guides Toronto & GTA | Strataline';
-const description = 'Explore real Strataline renovation case studies, before-and-after projects, practical homeowner guides and planning advice from Toronto and the GTA.';
+const description =
+	'Explore real Strataline renovation case studies, before-and-after projects, practical homeowner guides and planning advice from Toronto and the GTA.';
 const canonicalPath = '/blog';
 const canonicalUrl = `https://strataline.ca${canonicalPath}`;
 const image = blogHubHero.src;
@@ -56,7 +57,14 @@ const schemas = [
 ];
 ---
 
-<PrototypeLayout {title} {description} {image} {canonicalPath} {schemas} robots="index,follow,max-image-preview:large">
+<PrototypeLayout
+	{title}
+	{description}
+	{image}
+	{canonicalPath}
+	{schemas}
+	robots="index,follow,max-image-preview:large"
+>
 	<div class="blog-page">
 		<PrototypeHeader />
 		<main>
@@ -76,39 +84,67 @@ const schemas = [
 				<div class="blog-index-hero__copy">
 					<p class="blog-eyebrow">RENOVATION GUIDES &amp; PROJECT STORIES</p>
 					<h1>Real projects. Practical answers.</h1>
-					<p>See how Strataline solves real renovation problems—and use the lessons to plan your own project with confidence.</p>
+					<p>
+						See how Strataline solves real renovation problems—and use the lessons to plan your own
+						project with confidence.
+					</p>
 				</div>
 			</header>
 
 			<section class="blog-library blog-shell" aria-label="Renovation projects and guides">
-				{featuredProject && (
-					<section class="blog-content-group blog-content-group--featured" data-blog-group aria-labelledby="featured-project-title">
-						<div class="blog-section-heading blog-section-heading--compact">
-							<p class="blog-eyebrow">FEATURED PROJECT STORY</p>
-							<h2 id="featured-project-title">The latest work, documented.</h2>
-						</div>
-						<div class="blog-grid blog-grid--featured"><BlogCard post={featuredProject} variant="featured" /></div>
-					</section>
-				)}
+				{
+					featuredProject && (
+						<section
+							class="blog-content-group blog-content-group--featured"
+							data-blog-group
+							aria-labelledby="featured-project-title"
+						>
+							<div class="blog-section-heading blog-section-heading--compact">
+								<p class="blog-eyebrow">FEATURED PROJECT STORY</p>
+								<h2 id="featured-project-title">The latest work, documented.</h2>
+							</div>
+							<div class="blog-grid blog-grid--featured">
+								<BlogCard post={featuredProject} variant="featured" />
+							</div>
+						</section>
+					)
+				}
 
-				{latestProjects.length > 0 && (
-					<section class="blog-content-group" data-blog-group aria-labelledby="latest-projects-title">
-						<div class="blog-section-heading">
-							<p class="blog-eyebrow">LATEST PROJECT STORIES</p>
-							<h2 id="latest-projects-title">More transformations from Strataline projects.</h2>
-						</div>
-						<div class="blog-grid blog-grid--projects">
-							{latestProjects.map((post) => <BlogCard post={post} />)}
-						</div>
-					</section>
-				)}
+				{
+					latestProjects.length > 0 && (
+						<section
+							class="blog-content-group"
+							data-blog-group
+							aria-labelledby="latest-projects-title"
+						>
+							<div class="blog-section-heading">
+								<p class="blog-eyebrow">LATEST PROJECT STORIES</p>
+								<h2 id="latest-projects-title">More transformations from Strataline projects.</h2>
+							</div>
+							<div class="blog-grid blog-grid--projects">
+								{latestProjects.map((post) => (
+									<BlogCard
+										post={post}
+										variant={post.data.hubProminence === 'lead' ? 'lead' : 'standard'}
+									/>
+								))}
+							</div>
+						</section>
+					)
+				}
 
-				<section class="blog-content-group blog-content-group--guides" data-blog-group aria-labelledby="guides-title">
+				<section
+					class="blog-content-group blog-content-group--guides"
+					data-blog-group
+					aria-labelledby="guides-title"
+				>
 					<div class="blog-section-heading">
 						<p class="blog-eyebrow">RENOVATION GUIDES</p>
 						<h2 id="guides-title">Practical guidance for planning the work.</h2>
 					</div>
-					<div class="blog-grid blog-grid--guides">{guides.map((post) => <BlogCard post={post} />)}</div>
+					<div class="blog-grid blog-grid--guides">
+						{guides.map((post) => <BlogCard post={post} />)}
+					</div>
 				</section>
 
 				<section class="blog-content-group blog-browse" aria-labelledby="browse-title">
@@ -117,30 +153,39 @@ const schemas = [
 						<h2 id="browse-title">Find the project type or guidance you need.</h2>
 					</div>
 					<div class="blog-filters" role="group" aria-label="Filter renovation projects and guides">
-						{blogCategories.map((filter, index) => (
-							<button
-								type="button"
-								class:list={{ 'is-active': index === 0 }}
-								data-blog-filter={filter}
-								aria-pressed={index === 0 ? 'true' : 'false'}
-							>
-								{filter}
-							</button>
-						))}
+						{
+							blogCategories.map((filter, index) => (
+								<button
+									type="button"
+									class:list={{ 'is-active': index === 0 }}
+									data-blog-filter={filter}
+									aria-pressed={index === 0 ? 'true' : 'false'}
+								>
+									{filter}
+								</button>
+							))
+						}
 					</div>
 					<p class="blog-results" aria-live="polite" data-blog-results>
-						Showing {renderedCount} {renderedCount === 1 ? 'result' : 'results'}
+						Showing {renderedCount}
+						{renderedCount === 1 ? 'result' : 'results'}
 					</p>
 				</section>
 			</section>
 
-			<section class="blog-contact blog-shell" data-floating-contact-avoid aria-labelledby="blog-contact-title">
+			<section
+				class="blog-contact blog-shell"
+				data-floating-contact-avoid
+				aria-labelledby="blog-contact-title"
+			>
 				<div>
 					<p class="blog-eyebrow">PLANNING A PROJECT?</p>
 					<h2 id="blog-contact-title">Bring the questions. We’ll help clarify the scope.</h2>
 					<p>Tell us what you are considering and where the project is located.</p>
 				</div>
-				<button class="blog-button blog-button--light" type="button" data-blog-contact>Request a project review</button>
+				<button class="blog-button blog-button--light" type="button" data-blog-contact
+					>Request a project review</button
+				>
 			</section>
 		</main>
 		<Footer />
@@ -174,12 +219,15 @@ const schemas = [
 			document.querySelectorAll<HTMLElement>('[data-blog-group]').forEach((group) => {
 				group.hidden = !group.querySelector('[data-blog-card]:not([hidden])');
 			});
-			if (results) results.textContent = `Showing ${visible} ${visible === 1 ? 'result' : 'results'}`;
+			if (results)
+				results.textContent = `Showing ${visible} ${visible === 1 ? 'result' : 'results'}`;
 		}),
 	);
-	document.querySelectorAll('[data-blog-contact]').forEach((button) =>
-		button.addEventListener('click', () =>
-			document.dispatchEvent(new CustomEvent('strataline:open-contact')),
-		),
-	);
+	document
+		.querySelectorAll('[data-blog-contact]')
+		.forEach((button) =>
+			button.addEventListener('click', () =>
+				document.dispatchEvent(new CustomEvent('strataline:open-contact')),
+			),
+		);
 </script>

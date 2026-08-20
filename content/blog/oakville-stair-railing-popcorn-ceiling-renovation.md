@@ -5,7 +5,7 @@ seoTitle: Oakville Stair Railing & Popcorn Ceiling Renovation | Strataline
 description: See how Strataline opened up an Oakville interior with a custom stair railing, hardwood and tile flooring, smooth ceilings and 20-foot popcorn ceiling removal.
 heroIntro: A coordinated renovation connected a new open stair railing, smooth ceilings, hardwood and tile flooring, and careful finish carpentry so the home read as one complete interior.
 slug: oakville-stair-railing-popcorn-ceiling-renovation
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T12:03:53Z
 category: Interior Renovations
 location: Oakville, Ontario
 service: Connected staircase, railing, ceiling and flooring renovation

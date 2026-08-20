@@ -6,12 +6,13 @@ heroHeading: "How we removed a popcorn ceiling while protecting a collector's ro
 heroEyebrow: "PROJECT STORY · POPCORN CEILING REMOVAL · TORONTO"
 description: "See how Strataline protected a furnished collector's room, removed the popcorn ceiling, skim coated, painted and added pot lights near Yonge and Sheppard."
 slug: popcorn-ceiling-removal-collector-room-toronto
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T06:13:08Z
 updatedDate: 2026-08-20
 category: Ceilings
 location: Yonge and Sheppard, Toronto
 service: Popcorn ceiling removal and finishing
 featured: false
+hubProminence: lead
 heroImage: ./collector-room-images/popcorn-ceiling-collector-room-after-hero.jpg
 socialImage: /images/blog/popcorn-ceiling-collector-room-social.jpg
 schemaType: BlogPosting

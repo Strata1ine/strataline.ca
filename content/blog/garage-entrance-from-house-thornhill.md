@@ -5,7 +5,7 @@ seoTitle: Adding a Garage Entrance From the House in Thornhill | Strataline
 description: See how Strataline added direct interior access to an attached garage in a Thornhill home, making everyday arrivals, departures and bad-weather trips much easier.
 heroIntro: This Thornhill home already had an attached garage, but there was no interior doorway connecting it to the house. A carefully located new opening created a direct route to the car, garage storage and everyday loading area without requiring a trip outside first.
 slug: garage-entrance-from-house-thornhill
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T07:28:14Z
 category: Doors & Windows
 location: Thornhill, Ontario
 service: New direct entrance between the home and attached garage

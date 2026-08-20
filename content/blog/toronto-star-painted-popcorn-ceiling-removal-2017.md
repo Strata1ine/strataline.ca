@@ -5,7 +5,7 @@ seoTitle: Toronto Star Popcorn Ceiling Removal Project | Strataline 2017
 description: See the 2017 Strataline popcorn-ceiling project featured by The Toronto Star, documenting vacuum-connected sanding, containment and remarkably clean occupied-home renovation.
 heroIntro: This is the Mississauga ceiling project The Toronto Star documented in 2017. The clipping records the same vacuum-connected painted-popcorn removal process shown in the project video below.
 slug: toronto-star-painted-popcorn-ceiling-removal-2017
-publishedDate: 2026-08-20
+publishedDate: 2026-08-20T14:47:51Z
 category: Ceilings
 location: Mississauga, Ontario
 service: Painted popcorn ceiling removal and complete ceiling refinishing
