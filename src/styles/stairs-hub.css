@@ -66,3 +66,4 @@
 	.stairs-scope__groups section,.stairs-scope__groups section:nth-child(even){padding:.8rem 0;border-left:0}
 	.stairs-scope__image{aspect-ratio:1/1.1}
 }
+.stairs-projects__more{margin:1.25rem 0 0;text-align:right}.stairs-projects__more .stairs-text-link{display:inline-flex;align-items:center;gap:.45rem;margin:0;padding:.35rem 0}

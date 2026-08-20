@@ -79,6 +79,10 @@ gallery: z.array(image(c)).default([]),
 				title: z.string(),
 				seoTitle: z.string().optional(),
 				heroHeading: z.string().optional(),
+				heroIntro: z.string().optional(),
+				heroEyebrow: z.string().optional(),
+				socialImage: z.string().startsWith('/').optional(),
+				schemaType: z.enum(['Article', 'BlogPosting']).default('Article'),
 				description: z.string(),
 				slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 				publishedDate: z.coerce.date(),
@@ -104,12 +108,11 @@ gallery: z.array(image(c)).default([]),
 				result: z.string().optional(),
 				beforeAfter: z
 					.object({
-						enabled: z.boolean().default(true),
-						beforeImage: contentImage().optional(),
-						beforeAlt: z.string().optional(),
-						afterImage: contentImage().optional(),
-						afterAlt: z.string().optional(),
-						caption: z.string().optional(),
+						beforeImage: contentImage(),
+						afterImage: contentImage(),
+						beforeAlt: z.string(),
+						afterAlt: z.string(),
+						caption: z.string(),
 					})
 					.optional(),
 				comparisons: z
@@ -145,10 +148,34 @@ gallery: z.array(image(c)).default([]),
 							image: contentImage().optional(),
 							imageAlt: z.string().optional(),
 							imageCaption: z.string().optional(),
+							gallery: z
+								.array(
+									z.object({
+										image: contentImage(),
+										alt: z.string(),
+										caption: z.string().optional(),
+									}),
+								)
+								.default([]),
 						}),
 					)
 					.default([]),
-				homeownerInsights: z.array(z.string()).default([]),
+				projectFacts: z
+					.array(
+						z.object({
+							label: z.string(),
+							value: z.string(),
+						}),
+					)
+					.default([]),
+				homeownerQuestions: z
+					.array(
+						z.object({
+							question: z.string(),
+							answer: z.string(),
+						}),
+					)
+					.default([]),				homeownerInsights: z.array(z.string()).default([]),
 				cta: z
 					.object({
 						heading: z.string(),

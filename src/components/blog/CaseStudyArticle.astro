@@ -15,14 +15,17 @@ const d = post.data;
 const canonicalPath = `/blog/${d.slug}`;
 const canonicalUrl = `https://strataline.ca${canonicalPath}`;
 const optimizedHero = await getImage({ src: d.heroImage, width: 1600, format: 'webp', quality: 86 });
-const imageUrl = `https://strataline.ca${optimizedHero.src}`;
+const socialImagePath = d.socialImage ?? optimizedHero.src;
+const imageUrl = `https://strataline.ca${socialImagePath}`;
+const headline = d.heroHeading ?? d.title;
 const publishedIso = d.publishedDate.toISOString();
 const modifiedIso = (d.updatedDate ?? d.publishedDate).toISOString();
+const primaryImageId = `${canonicalUrl}#primaryimage`;
 const schemas = [
   {
-    '@type': 'Article', '@id': `${canonicalUrl}#article`, headline: d.title, description: d.description,
-    url: canonicalUrl, mainEntityOfPage: { '@id': canonicalUrl },
-    image: { '@type': 'ImageObject', '@id': `${canonicalUrl}#primaryimage`, url: imageUrl, contentUrl: imageUrl, caption: d.heroAlt },
+    '@type': d.schemaType, '@id': `${canonicalUrl}#article`, headline, description: d.description,
+    url: canonicalUrl, mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    image: { '@id': primaryImageId }, primaryImageOfPage: { '@id': primaryImageId },
     datePublished: publishedIso, dateModified: modifiedIso, articleSection: d.category,
     author: { '@type': 'Person', '@id': 'https://strataline.ca/#maxim-sologub', name: d.author, jobTitle: 'Owner' },
     publisher: { '@id': 'https://strataline.ca/#business' }, isPartOf: { '@id': 'https://strataline.ca/#website' },
@@ -32,8 +35,11 @@ const schemas = [
     '@type': 'BreadcrumbList', '@id': `${canonicalUrl}#breadcrumb`, itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
       { '@type': 'ListItem', position: 2, name: 'Renovation Guides & Project Stories', item: 'https://strataline.ca/blog' },
-      { '@type': 'ListItem', position: 3, name: d.title, item: canonicalUrl },
+      { '@type': 'ListItem', position: 3, name: headline, item: canonicalUrl },
     ],
+  },
+  {
+    '@type': 'ImageObject', '@id': primaryImageId, url: imageUrl, contentUrl: imageUrl, caption: d.heroAlt,
   },
 ];
 const compare = d.beforeAfter;
@@ -41,7 +47,7 @@ const hasStructuredStory = d.storySections.length > 0;
 const comparisons = new Map(d.comparisons.map((item) => [item.id, item]));
 const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us details and we’ll help determine the right approach.', primaryLabel: 'Request a Quote', formProjectType: undefined };
 ---
-<PrototypeLayout title={d.seoTitle ?? d.title} description={d.description} image={optimizedHero.src} {canonicalPath} {schemas} ogType="article" articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author: d.author }} robots="index,follow,max-image-preview:large">
+<PrototypeLayout title={d.seoTitle ?? d.title} description={d.description} image={socialImagePath} {canonicalPath} {schemas} ogType="article" articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author: d.author }} robots="index,follow,max-image-preview:large">
   <div class="blog-page case-study-page">
     <PrototypeHeader />
     <main>
@@ -51,13 +57,14 @@ const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us detail
           <div class="case-hero__shade" aria-hidden="true"></div>
           <div class="case-hero__content blog-shell">
             <nav class="blog-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Guides</a></nav>
-            <p class="blog-eyebrow">PROJECT STORY · {d.category}</p>
+            <p class="blog-eyebrow">{d.heroEyebrow ?? `PROJECT STORY · ${d.category}`}</p>
             <h1>{d.heroHeading ?? d.title}</h1>
-            <p>{d.description}</p>
+            <p>{d.heroIntro ?? d.description}</p>
             <div class="case-hero__meta">{d.location && <span>{d.location}</span>}{d.service && <span>{d.service}</span>}</div>
           </div>
         </header>
         <div class="blog-shell case-study__body">
+          {d.projectFacts.length > 0 && <dl class="case-project-facts" aria-label="Project facts">{d.projectFacts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>}
           {hasStructuredStory ? d.storySections.map((section, index) => {
             const sectionComparison = section.comparisonId ? comparisons.get(section.comparisonId) : undefined;
             return <section class:list={['case-section case-story-section', { 'case-story-section--opening': index === 0 }]}>
@@ -69,11 +76,12 @@ const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us detail
                   : <p>{paragraph.before}<a href={paragraph.href}>{paragraph.label}</a>{paragraph.after}</p>)}
               </div>
               {section.image && <figure class="case-process-image"><Picture src={section.image} alt={section.imageAlt ?? ''} widths={[640,960,1280,1600]} sizes="(max-width: 767px) 94vw, 76vw" formats={['avif','webp']} loading="lazy" />{section.imageCaption && <figcaption>{section.imageCaption}</figcaption>}</figure>}
+              {section.gallery.length > 0 && <CaseStudyGallery items={section.gallery} idPrefix={'gallery-' + d.slug + '-' + index} />}
               {sectionComparison && <CaseStudyBeforeAfter beforeImage={sectionComparison.beforeImage} beforeAlt={sectionComparison.beforeAlt} afterImage={sectionComparison.afterImage} afterAlt={sectionComparison.afterAlt} caption={sectionComparison.caption} />}
             </section>;
           }) : <>
             <section class="case-section case-challenge"><p class="blog-eyebrow">The challenge</p><h2>What the project needed</h2>{d.challenge && <p class="case-lead">{d.challenge}</p>}{d.solution && <p>{d.solution}</p>}</section>
-            {(compare?.enabled !== false && compare?.beforeImage && compare.afterImage) && <section class="case-section case-transformation"><p class="blog-eyebrow">The transformation</p><h2>Before and after</h2><CaseStudyBeforeAfter beforeImage={compare.beforeImage} beforeAlt={compare.beforeAlt ?? 'Before renovation'} afterImage={compare.afterImage} afterAlt={compare.afterAlt ?? 'After renovation'} caption={compare.caption} /></section>}
+            {(compare?.beforeImage && compare.afterImage) && <section class="case-section case-transformation"><p class="blog-eyebrow">The transformation</p><h2>Before and after</h2><CaseStudyBeforeAfter beforeImage={compare.beforeImage} beforeAlt={compare.beforeAlt ?? 'Before renovation'} afterImage={compare.afterImage} afterAlt={compare.afterAlt ?? 'After renovation'} caption={compare.caption} /></section>}
             {d.scope.length > 0 && <section class="case-section case-scope"><p class="blog-eyebrow">Work completed</p><h2>Scope of work</h2><ul>{d.scope.map((item) => <li>{item}</li>)}</ul></section>}
             <section class="case-section"><p class="blog-eyebrow">The process</p><h2>Why the work required expertise</h2><div class="blog-prose"><Content /></div></section>
             {(d.video?.enabled !== false && d.video) && <section class="case-section"><p class="blog-eyebrow">On site</p><h2>See the work in progress</h2><CaseStudyVideo source={d.video.source} poster={d.video.poster} caption={d.video.caption} /></section>}
@@ -81,6 +89,7 @@ const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us detail
           </>}
           {d.gallery.length > 0 && <section class="case-section"><p class="blog-eyebrow">Finished result</p><h2>Complete project gallery</h2><CaseStudyGallery items={d.gallery} idPrefix={`gallery-${d.slug}`} /></section>}
           {d.homeownerInsights.length > 0 && <section class="case-section case-scope"><p class="blog-eyebrow">Planning value</p><h2>What this project shows homeowners</h2><ul>{d.homeownerInsights.map((item) => <li>{item}</li>)}</ul></section>}
+          {d.homeownerQuestions.length > 0 && <section class="case-section case-homeowner-questions"><p class="blog-eyebrow">Planning answers</p><h2>What homeowners can learn from this project</h2><div>{d.homeownerQuestions.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></section>}
           {(d.review?.enabled !== false && d.review?.quote && d.review.reviewer) && <section class="case-section case-review"><blockquote>“{d.review.quote}”</blockquote><p>— {d.review.reviewer}</p></section>}
           <section class="case-section case-related"><p class="blog-eyebrow">Related services</p><h2>Related project services</h2><div>{d.relatedServices.map((service) => <a href={service.href}>{service.label}<span aria-hidden="true">→</span></a>)}</div></section>
           <aside class="case-author"><p><strong>{d.author}</strong><br />Owner, Strataline Inc.</p><p>Based on real Strataline renovation projects completed across Toronto and the GTA.</p></aside>

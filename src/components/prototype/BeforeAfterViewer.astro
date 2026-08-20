@@ -133,5 +133,10 @@ const {
 		update();
 	};
 
-	document.querySelectorAll<HTMLElement>('[data-before-after]').forEach(initializeBeforeAfter);
+	const initializeAllBeforeAfter = () => {
+		document.querySelectorAll<HTMLElement>('[data-before-after]').forEach(initializeBeforeAfter);
+	};
+
+	initializeAllBeforeAfter();
+	document.addEventListener('astro:page-load', initializeAllBeforeAfter);
 </script>

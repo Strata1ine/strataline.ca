@@ -15,6 +15,6 @@ const readingTime = getReadingTime(post.body);
   <div class="blog-card__copy">
     <div class="blog-card__meta"><span>{isCaseStudy ? 'PROJECT STORY' : 'RENOVATION GUIDE'}</span><span>{isCaseStudy && location ? location : `${readingTime} min read`}</span></div>
     <h2><a href={`/blog/${slug}`}>{title}</a></h2><p>{description}</p>
-    <a class="blog-card__link" href={`/blog/${slug}`}>{isCaseStudy ? 'View project' : 'Read guide'} <span aria-hidden="true">→</span></a>
+    <a class="blog-card__link" href={`/blog/${slug}`}>{isCaseStudy ? 'View project story' : 'Read guide'} <span aria-hidden="true">→</span></a>
   </div>
 </article>
