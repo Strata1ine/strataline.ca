@@ -3,6 +3,7 @@ import { Picture, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 
 import BlogCard from '@/components/blog/BlogCard.astro';
+import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb.astro';
 import CaseStudyArticle from '@/components/blog/CaseStudyArticle.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
@@ -81,10 +82,10 @@ const schemas = [
 			{
 				'@type': 'ListItem',
 				position: 2,
-				name: 'Renovation Guides',
+				name: 'Guides',
 				item: 'https://strataline.ca/blog',
 			},
-			{ '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+			{ '@type': 'ListItem', position: 3, name: 'Renovation Guides', item: canonicalUrl },
 		],
 	},
 ];
@@ -109,11 +110,7 @@ const schemas = [
 		<main>
 			<article class="blog-article">
 				<header class="blog-article__header blog-shell">
-					<nav class="blog-breadcrumb" aria-label="Breadcrumb">
-						<a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog"
-							>Renovation Guides</a
-						>
-					</nav>
+					<BlogBreadcrumb current="Renovation Guides" />
 					<p class="blog-eyebrow">{category}</p>
 					<h1>{heroHeading ?? title}</h1>
 					<p class="blog-article__dek">{description}</p>

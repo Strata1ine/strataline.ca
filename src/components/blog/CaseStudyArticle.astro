@@ -5,6 +5,7 @@ import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import Footer from '@/sections/Footer.astro';
 import type { BlogPost } from '@/data/blog';
+import BlogBreadcrumb from './BlogBreadcrumb.astro';
 import CaseStudyBeforeAfter from './CaseStudyBeforeAfter.astro';
 import CaseStudyGallery from './CaseStudyGallery.astro';
 import CaseStudyVideo from './CaseStudyVideo.astro';
@@ -60,10 +61,10 @@ const schemas = [
 			{
 				'@type': 'ListItem',
 				position: 2,
-				name: 'Renovation Guides & Project Stories',
+				name: 'Guides',
 				item: 'https://strataline.ca/blog',
 			},
-			{ '@type': 'ListItem', position: 3, name: headline, item: canonicalUrl },
+			{ '@type': 'ListItem', position: 3, name: 'Project Stories', item: canonicalUrl },
 		],
 	},
 	{
@@ -112,9 +113,7 @@ const cta = d.cta ?? {
 					/>
 					<div class="case-hero__shade" aria-hidden="true"></div>
 					<div class="case-hero__content blog-shell">
-						<nav class="blog-breadcrumb" aria-label="Breadcrumb">
-							<a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Guides</a>
-						</nav>
+						<BlogBreadcrumb current="Project Stories" />
 						<p class="blog-eyebrow">{d.heroEyebrow ?? `PROJECT STORY · ${d.category}`}</p>
 						<h1>{d.heroHeading ?? d.title}</h1>
 						<p>{d.heroIntro ?? d.description}</p>
