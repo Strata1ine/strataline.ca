@@ -887,3 +887,4 @@
 .case-homeowner-questions article p{margin:.55rem 0 0;color:#4e5e57;line-height:1.65}
 @media(max-width:900px){.case-project-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.case-project-facts{grid-template-columns:1fr}}
+.case-story-list{max-width:850px;margin:2rem 0 0;padding:clamp(1.2rem,3vw,2rem);border:1px solid rgba(27,55,45,.15);border-radius:18px;background:#f3f0e8}.case-story-list h3{margin:0 0 1rem;font-size:clamp(1.25rem,2vw,1.6rem)}.case-story-list ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 1.5rem;margin:0;padding:0;list-style:none}.case-story-list li{position:relative;padding-left:1.2rem;line-height:1.5}.case-story-list li:before{content:'•';position:absolute;left:0;color:#876a2d;font-weight:800}@media(max-width:700px){.case-story-list ul{grid-template-columns:1fr}}

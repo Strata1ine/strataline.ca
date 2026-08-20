@@ -75,6 +75,7 @@ const cta = d.cta ?? { heading: 'Have a similar project?', text: 'Send us detail
                   ? <p>{paragraph}</p>
                   : <p>{paragraph.before}<a href={paragraph.href}>{paragraph.label}</a>{paragraph.after}</p>)}
               </div>
+              {section.listItems.length > 0 && <div class="case-story-list">{section.listHeading && <h3>{section.listHeading}</h3>}<ul>{section.listItems.map((item) => <li>{item}</li>)}</ul></div>}
               {section.image && <figure class="case-process-image"><Picture src={section.image} alt={section.imageAlt ?? ''} widths={[640,960,1280,1600]} sizes="(max-width: 767px) 94vw, 76vw" formats={['avif','webp']} loading="lazy" />{section.imageCaption && <figcaption>{section.imageCaption}</figcaption>}</figure>}
               {section.gallery.length > 0 && <CaseStudyGallery items={section.gallery} idPrefix={'gallery-' + d.slug + '-' + index} />}
               {sectionComparison && <CaseStudyBeforeAfter beforeImage={sectionComparison.beforeImage} beforeAlt={sectionComparison.beforeAlt} afterImage={sectionComparison.afterImage} afterAlt={sectionComparison.afterAlt} caption={sectionComparison.caption} />}

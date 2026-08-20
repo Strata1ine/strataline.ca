@@ -148,6 +148,8 @@ gallery: z.array(image(c)).default([]),
 							image: contentImage().optional(),
 							imageAlt: z.string().optional(),
 							imageCaption: z.string().optional(),
+							listHeading: z.string().optional(),
+							listItems: z.array(z.string()).default([]),
 							gallery: z
 								.array(
 									z.object({
