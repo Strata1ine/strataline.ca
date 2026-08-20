@@ -12,9 +12,18 @@ interface Props {
 
 const { beforeImage, afterImage, beforeAlt, afterAlt, caption } = Astro.props;
 const isWideComparison = afterImage.width / afterImage.height >= 1.75;
+const isPortraitComparison =
+	beforeImage.height > beforeImage.width && afterImage.height > afterImage.width;
 ---
 
-<figure class:list={['case-comparison', isWideComparison && 'case-comparison--wide']}>
+<figure
+	class:list={[
+		'case-comparison',
+		isWideComparison && 'case-comparison--wide',
+		isPortraitComparison && 'case-comparison--portrait',
+	]}
+	style={isPortraitComparison ? `--case-comparison-aspect-ratio: ${afterImage.width} / ${afterImage.height}` : undefined}
+>
 	<BeforeAfterViewer
 		comparison={{
 			id: 'case-study-comparison',

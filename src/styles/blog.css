@@ -974,6 +974,16 @@
 .case-comparison--wide .proto-before-after__frame {
 	aspect-ratio: 2/1;
 }
+.case-comparison--portrait {
+	width: min(100%, 34rem);
+	margin-inline: auto;
+}
+.case-comparison--portrait .proto-before-after__frame {
+	aspect-ratio: var(--case-comparison-aspect-ratio);
+}
+.case-comparison--portrait .proto-before-after__image img {
+	object-fit: contain;
+}
 .case-comparison > figcaption {
 	margin-top: 0.65rem;
 	color: #56665f;
