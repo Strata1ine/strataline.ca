@@ -1,39 +1,194 @@
 ---
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-interface Item { image: ImageMetadata; alt: string; caption?: string; }
-interface Props { items: Item[]; idPrefix: string; }
-const { items, idPrefix } = Astro.props;
+
+interface Item {
+	image: ImageMetadata;
+	alt: string;
+	caption?: string;
+}
+interface Props {
+	items: Item[];
+	idPrefix: string;
+	viewMode?: 'standard' | 'document';
+	actionLabel?: string;
+}
+
+const { items, idPrefix, viewMode = 'standard', actionLabel } = Astro.props;
+const dialogId = `${idPrefix}-lightbox`;
+const captionId = `${idPrefix}-lightbox-caption`;
 ---
-<div class="case-gallery" data-case-gallery>
-  {items.map((item, index) => (
-    <figure class="case-gallery__item">
-      <button type="button" class="case-gallery__trigger" data-case-gallery-open={`${idPrefix}-${index}`} aria-label={`Open image ${index + 1}: ${item.alt}`}>
-        <Picture src={item.image} alt={item.alt} widths={[360, 560, 760, 960]} sizes="(max-width: 720px) 100vw, 50vw" formats={['avif','webp']} loading="lazy" />
-      </button>
-      {item.caption && <figcaption>{item.caption}</figcaption>}
-      <dialog id={`${idPrefix}-${index}`} class="case-lightbox">
-        <button type="button" class="case-lightbox__close" data-case-gallery-close aria-label="Close image">×</button>
-        <Picture src={item.image} alt={item.alt} widths={[640, 960, 1280, 1600, 1920]} sizes="100vw" formats={['avif','webp']} loading="lazy" />
-        {item.caption && <p>{item.caption}</p>}
-      </dialog>
-    </figure>
-  ))}
+
+<div
+	class:list={['case-gallery', { 'case-gallery--document': viewMode === 'document' }]}
+	data-case-gallery
+>
+	{
+		items.map((item, index) => (
+			<figure class="case-gallery__item">
+				<button
+					type="button"
+					class="case-gallery__trigger"
+					data-case-gallery-open
+					data-index={index}
+					data-full={item.image.src}
+					data-alt={item.alt}
+					data-caption={item.caption ?? ''}
+					data-view-mode={viewMode}
+					aria-haspopup="dialog"
+					aria-controls={dialogId}
+					aria-label={`Open image ${index + 1}: ${item.alt}`}
+				>
+					<Picture
+						src={item.image}
+						alt={item.alt}
+						widths={[360, 560, 760, 960, 1280]}
+						sizes={
+							viewMode === 'document'
+								? '(max-width: 720px) 100vw, min(75rem, 100vw)'
+								: '(max-width: 720px) 100vw, 50vw'
+						}
+						formats={['avif', 'webp']}
+						loading={viewMode === 'document' ? 'eager' : 'lazy'}
+					/>
+					{actionLabel && <span class="case-gallery__action">{actionLabel}</span>}
+				</button>
+				{item.caption && <figcaption>{item.caption}</figcaption>}
+			</figure>
+		))
+	}
+
+	<dialog id={dialogId} class="case-lightbox" aria-labelledby={captionId} data-case-gallery-dialog>
+		<div class="case-lightbox__shell">
+			<button
+				type="button"
+				class="case-lightbox__close"
+				data-case-gallery-close
+				aria-label="Close image">×</button
+			>
+			<button
+				type="button"
+				class="case-lightbox__nav case-lightbox__nav--previous"
+				data-case-gallery-previous
+				aria-label="Previous image"
+				hidden={items.length < 2}>‹</button
+			>
+			<figure>
+				<div class="case-lightbox__media" data-case-gallery-media>
+					<img
+						src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+						alt=""
+						data-case-gallery-image
+					/>
+				</div>
+				<figcaption id={captionId} data-case-gallery-caption aria-live="polite"></figcaption>
+			</figure>
+			<button
+				type="button"
+				class="case-lightbox__nav case-lightbox__nav--next"
+				data-case-gallery-next
+				aria-label="Next image"
+				hidden={items.length < 2}>›</button
+			>
+		</div>
+	</dialog>
 </div>
+
 <script>
-  document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
-    let opener: HTMLElement | null = null;
-    gallery.querySelectorAll<HTMLButtonElement>('[data-case-gallery-open]').forEach((button) => {
-      button.addEventListener('click', () => {
-        opener = button;
-        const dialog = document.getElementById(button.dataset.caseGalleryOpen || '');
-        if (dialog instanceof HTMLDialogElement) dialog.showModal();
-      });
-    });
-    gallery.querySelectorAll<HTMLDialogElement>('.case-lightbox').forEach((dialog) => {
-      dialog.querySelector('[data-case-gallery-close]')?.addEventListener('click', () => dialog.close());
-      dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-      dialog.addEventListener('close', () => opener?.focus());
-    });
-  });
+	document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
+		if (gallery.dataset.ready === 'true') return;
+		gallery.dataset.ready = 'true';
+
+		const buttons = Array.from(
+			gallery.querySelectorAll<HTMLButtonElement>('[data-case-gallery-open]'),
+		);
+		const dialog = gallery.querySelector<HTMLDialogElement>('[data-case-gallery-dialog]');
+		const media = dialog?.querySelector<HTMLElement>('[data-case-gallery-media]');
+		const image = dialog?.querySelector<HTMLImageElement>('[data-case-gallery-image]');
+		const caption = dialog?.querySelector<HTMLElement>('[data-case-gallery-caption]');
+		const close = dialog?.querySelector<HTMLButtonElement>('[data-case-gallery-close]');
+		const previous = dialog?.querySelector<HTMLButtonElement>('[data-case-gallery-previous]');
+		const next = dialog?.querySelector<HTMLButtonElement>('[data-case-gallery-next]');
+		const placeholder = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+		let activeIndex = 0;
+		let returnFocus: HTMLButtonElement | null = null;
+		let touchStartX = 0;
+		let touchStartY = 0;
+
+		const syncImagePresentation = () => {
+			if (!media || !image) return;
+			const activeButton = buttons[activeIndex];
+			media.classList.toggle('is-portrait', image.naturalHeight > image.naturalWidth);
+			media.classList.toggle('is-document', activeButton?.dataset.viewMode === 'document');
+			media.scrollTop = 0;
+			media.scrollLeft = 0;
+		};
+
+		const renderDialog = (index: number) => {
+			if (buttons.length === 0) return;
+			activeIndex = (index + buttons.length) % buttons.length;
+			const button = buttons[activeIndex];
+			media?.classList.remove('is-portrait', 'is-document');
+			if (image) {
+				image.src = button.dataset.full ?? placeholder;
+				image.alt = button.dataset.alt ?? '';
+			}
+			if (caption) {
+				caption.textContent = button.dataset.caption ?? '';
+				caption.hidden = !caption.textContent;
+			}
+		};
+
+		const step = (direction: number) => renderDialog(activeIndex + direction);
+		const closeDialog = () => dialog?.close();
+
+		image?.addEventListener('load', syncImagePresentation);
+		buttons.forEach((button, index) =>
+			button.addEventListener('click', () => {
+				if (!dialog) return;
+				returnFocus = button;
+				renderDialog(index);
+				dialog.showModal();
+				document.documentElement.classList.add('case-lightbox-open');
+				close?.focus();
+			}),
+		);
+		close?.addEventListener('click', closeDialog);
+		previous?.addEventListener('click', () => step(-1));
+		next?.addEventListener('click', () => step(1));
+		dialog?.addEventListener('click', (event) => {
+			if (event.target === dialog) closeDialog();
+		});
+		dialog?.addEventListener('close', () => {
+			document.documentElement.classList.remove('case-lightbox-open');
+			media?.classList.remove('is-portrait', 'is-document');
+			if (image) image.src = placeholder;
+			returnFocus?.focus();
+		});
+		dialog?.addEventListener(
+			'touchstart',
+			(event) => {
+				touchStartX = event.changedTouches[0]?.clientX ?? 0;
+				touchStartY = event.changedTouches[0]?.clientY ?? 0;
+			},
+			{ passive: true },
+		);
+		dialog?.addEventListener(
+			'touchend',
+			(event) => {
+				if (buttons.length < 2) return;
+				const deltaX = (event.changedTouches[0]?.clientX ?? 0) - touchStartX;
+				const deltaY = (event.changedTouches[0]?.clientY ?? 0) - touchStartY;
+				if (Math.abs(deltaX) >= 48 && Math.abs(deltaX) > Math.abs(deltaY))
+					step(deltaX < 0 ? 1 : -1);
+			},
+			{ passive: true },
+		);
+		document.addEventListener('keydown', (event) => {
+			if (!dialog?.open) return;
+			if (event.key === 'Escape') closeDialog();
+			if (buttons.length > 1 && event.key === 'ArrowLeft') step(-1);
+			if (buttons.length > 1 && event.key === 'ArrowRight') step(1);
+		});
+	});
 </script>

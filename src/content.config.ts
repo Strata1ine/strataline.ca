@@ -168,6 +168,8 @@ export const collections = {
 				featured: z.boolean(),
 				heroImage: contentImage(),
 				heroAlt: z.string(),
+				heroPresentation: z.enum(['cover', 'document']).default('cover'),
+				heroActionLabel: z.string().optional(),
 				mediaBadge: z
 					.object({
 						image: contentImage(),
@@ -249,6 +251,13 @@ export const collections = {
 						}),
 					)
 					.default([]),
+				projectFactsCta: z
+					.object({
+						eyebrow: z.string(),
+						label: z.string(),
+						formProjectType: z.string(),
+					})
+					.optional(),
 				homeownerQuestions: z
 					.array(
 						z.object({

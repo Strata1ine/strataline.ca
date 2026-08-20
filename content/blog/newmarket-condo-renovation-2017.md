@@ -184,14 +184,14 @@ contentBlocks:
         Ian Harvey's 2017 Toronto Star article mentioned Lynne Moore and Bill Fortnum as homeowners preparing their Newmarket condo before moving in. Their project illustrated why machine-assisted painted-popcorn removal appealed to owners who wanted the disruptive work completed before furniture and daily life entered the unit. The related archive story documents the newspaper feature and Strataline's ceiling-removal process in that period.
 
   - type: related-story
-    image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-banner-2017.jpg
-    alt: Toronto Star masthead from the 2017 home-renovation feature.
+    image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-strataline-popcorn-ceiling-article-2017.jpg
+    alt: Full Toronto Star newspaper clipping documenting Strataline's popcorn ceiling removal process in 2017.
     imageFit: contain
     eyebrow: FROM THE ARCHIVE · THE TORONTO STAR · 2017
-    title: The project story behind the Toronto Star feature
+    title: The Toronto Star project story
     context: Read how the newspaper documented Strataline's dust-controlled painted-popcorn removal process and mentioned this Newmarket condo project.
     href: /blog/toronto-star-painted-popcorn-ceiling-removal-2017
-    linkLabel: Read the project story behind the Toronto Star feature →
+    linkLabel: Read the Toronto Star project story →
 
   - type: text
     eyebrow: Finished result

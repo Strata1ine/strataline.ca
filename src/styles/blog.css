@@ -1445,7 +1445,12 @@
 .blog-index-hero__shade {
 	z-index: -1;
 	background:
-		linear-gradient(90deg, rgba(10, 20, 16, 0.05) 28%, rgba(10, 20, 16, 0.58) 72%, rgba(10, 20, 16, 0.68)),
+		linear-gradient(
+			90deg,
+			rgba(10, 20, 16, 0.05) 28%,
+			rgba(10, 20, 16, 0.58) 72%,
+			rgba(10, 20, 16, 0.68)
+		),
 		linear-gradient(0deg, rgba(9, 18, 14, 0.18), transparent 50%);
 }
 
@@ -1870,7 +1875,9 @@
 	box-shadow: 0 16px 42px rgba(20, 38, 30, 0.14);
 	color: #fff;
 	text-decoration: none;
-	transition: transform 180ms ease, box-shadow 180ms ease;
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease;
 }
 
 .case-related-story > a:hover {
@@ -1971,5 +1978,300 @@
 
 	.case-related-story__copy {
 		padding: 1.2rem;
+	}
+}
+/* Shared document hero and fixed-stage article lightbox */
+.case-hero--document {
+	display: block;
+	min-height: 0;
+	padding-bottom: clamp(2rem, 5vw, 4rem);
+	background: #eee9df;
+	color: #1c2d26;
+}
+
+.case-hero--document .case-hero__shade {
+	display: none;
+}
+
+.case-hero--document .case-hero__content {
+	padding-block: clamp(1.5rem, 2.2vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
+	color: #1c2d26;
+	text-shadow: none;
+}
+
+.case-hero--document .case-hero__content h1 {
+	color: #172720;
+}
+
+.case-hero--document .case-hero__content > p:not(.blog-eyebrow) {
+	color: #43554d;
+}
+
+.case-hero--document .blog-breadcrumb {
+	border-color: rgba(23, 54, 43, 0.16);
+	background: rgba(255, 255, 255, 0.68);
+	color: #17362b;
+	text-shadow: none;
+	backdrop-filter: blur(7px);
+}
+
+.case-hero--document .case-hero__meta span {
+	border-color: rgba(23, 54, 43, 0.2);
+	background: rgba(255, 255, 255, 0.58);
+	color: #263a32;
+	backdrop-filter: none;
+}
+
+.case-hero__document-media {
+	position: relative;
+	z-index: 1;
+}
+
+.case-gallery--document {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.case-gallery--document .case-gallery__trigger {
+	overflow: hidden;
+	border: 1px solid rgba(23, 54, 43, 0.18);
+	background: #f9f7f2;
+	box-shadow: 0 20px 60px rgba(24, 43, 35, 0.16);
+}
+
+.case-gallery--document .case-gallery__trigger picture,
+.case-gallery--document .case-gallery__trigger img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: auto;
+	object-fit: contain;
+}
+
+.case-gallery--document .case-gallery__action {
+	display: flex;
+	min-height: 3.35rem;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.85rem 1rem;
+	background: #17362b;
+	color: #fff;
+	font-size: 0.92rem;
+	font-weight: 750;
+	letter-spacing: 0.01em;
+	text-align: left;
+}
+
+.case-gallery--document .case-gallery__trigger:hover .case-gallery__action,
+.case-gallery--document .case-gallery__trigger:focus-visible .case-gallery__action {
+	background: #214a3c;
+}
+
+.case-gallery--document > .case-gallery__item > figcaption {
+	display: none;
+}
+
+.case-project-facts__cta {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: #eef0e8 !important;
+}
+
+.case-project-facts__cta button {
+	min-height: 44px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #74491f;
+	font: inherit;
+	font-weight: 800;
+	text-align: left;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.22em;
+	cursor: pointer;
+}
+
+.case-project-facts__cta button:hover {
+	color: #4f2e12;
+}
+
+.case-project-facts__cta button:focus-visible {
+	outline: 3px solid #ae8c42;
+	outline-offset: 4px;
+}
+
+html.case-lightbox-open {
+	overflow: hidden;
+}
+
+.case-lightbox,
+.case-lightbox__shell,
+.case-lightbox__shell > figure {
+	overflow: clip;
+	overscroll-behavior: none;
+}
+
+.case-lightbox {
+	width: min(96vw, 1500px);
+	max-width: none;
+	height: min(94dvh, 900px);
+	max-height: none;
+	padding: 0;
+	border-radius: 16px;
+}
+
+.case-lightbox__shell {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.case-lightbox__shell > figure {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-rows: minmax(0, 1fr) auto;
+	margin: 0;
+}
+
+.case-lightbox__media {
+	--case-lightbox-block: 0.8rem;
+	--case-lightbox-inline: 4rem;
+	position: relative;
+	display: grid;
+	min-height: 0;
+	height: 100%;
+	place-items: center;
+	overflow: clip;
+	padding: var(--case-lightbox-block) var(--case-lightbox-inline);
+	overscroll-behavior: contain;
+}
+
+.case-lightbox__media img {
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.case-lightbox__media.is-portrait,
+.case-lightbox__media.is-document {
+	align-items: start;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+}
+
+.case-lightbox__media.is-portrait {
+	overflow-x: clip;
+}
+
+.case-lightbox__media.is-portrait img {
+	max-height: none;
+	margin-inline: auto;
+}
+
+.case-lightbox__media.is-document {
+	overflow-x: auto;
+}
+
+.case-lightbox__media.is-document img {
+	width: min(72rem, 100%);
+	max-width: none;
+	max-height: none;
+	margin-inline: auto;
+}
+
+.case-lightbox figcaption {
+	min-height: 3.25rem;
+	margin: 0;
+	padding: 0.9rem 4rem 0.9rem 1.1rem;
+	background: #111b17;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 0.86rem;
+	line-height: 1.45;
+}
+
+.case-lightbox figcaption[hidden] {
+	display: none;
+}
+
+.case-lightbox__close,
+.case-lightbox__nav {
+	position: absolute;
+	z-index: 5;
+	display: grid;
+	width: 44px;
+	height: 44px;
+	place-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.42);
+	border-radius: 999px;
+	background: rgba(7, 17, 13, 0.88);
+	color: #fff;
+	font-size: 1.8rem;
+	cursor: pointer;
+	box-shadow: 0 0.45rem 1.5rem rgba(0, 0, 0, 0.24);
+}
+
+.case-lightbox__close {
+	top: 0.7rem;
+	right: 0.7rem;
+}
+
+.case-lightbox__nav {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.case-lightbox__nav--previous {
+	left: 0.7rem;
+}
+
+.case-lightbox__nav--next {
+	right: 0.7rem;
+}
+
+.case-lightbox__nav[hidden] {
+	display: none;
+}
+
+.case-lightbox button:focus-visible {
+	outline: 3px solid #d2a85e;
+	outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+	.case-hero--document {
+		padding-bottom: 1.75rem;
+	}
+
+	.case-hero--document .case-hero__content {
+		padding-bottom: 1.75rem;
+	}
+
+	.case-gallery--document .case-gallery__action {
+		min-height: 3rem;
+		font-size: 0.84rem;
+	}
+
+	.case-lightbox {
+		width: calc(100% - 1rem);
+		height: calc(100dvh - 1rem);
+	}
+
+	.case-lightbox__media {
+		--case-lightbox-block: 0.6rem;
+		--case-lightbox-inline: 3.2rem;
+	}
+
+	.case-lightbox__media.is-document img {
+		width: 70rem;
+	}
+
+	.case-lightbox figcaption {
+		padding: 0.75rem 3.5rem 0.8rem 0.9rem;
+		font-size: 0.78rem;
 	}
 }

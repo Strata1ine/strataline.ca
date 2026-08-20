@@ -78,6 +78,7 @@ const schemas = [
 const compare = d.beforeAfter;
 const hasContentBlocks = d.contentBlocks.length > 0;
 const hasStructuredStory = d.storySections.length > 0;
+const isDocumentHero = d.heroPresentation === 'document';
 const comparisons = new Map(d.comparisons.map((item) => [item.id, item]));
 const cta = d.cta ?? {
 	heading: 'Have a similar project?',
@@ -101,16 +102,20 @@ const cta = d.cta ?? {
 		<PrototypeHeader />
 		<main>
 			<article class="case-study">
-				<header class="case-hero">
-					<Picture
-						src={d.heroImage}
-						alt={d.heroAlt}
-						widths={[720, 1080, 1440, 1920]}
-						sizes="100vw"
-						formats={['avif', 'webp']}
-						loading="eager"
-						fetchpriority="high"
-					/>
+				<header class:list={['case-hero', { 'case-hero--document': isDocumentHero }]}>
+					{
+						!isDocumentHero && (
+							<Picture
+								src={d.heroImage}
+								alt={d.heroAlt}
+								widths={[720, 1080, 1440, 1920]}
+								sizes="100vw"
+								formats={['avif', 'webp']}
+								loading="eager"
+								fetchpriority="high"
+							/>
+						)
+					}
 					<div class="case-hero__shade" aria-hidden="true"></div>
 					<div class="case-hero__content blog-shell">
 						<BlogBreadcrumb current="Project Stories" />
@@ -121,6 +126,18 @@ const cta = d.cta ?? {
 							{d.location && <span>{d.location}</span>}{d.service && <span>{d.service}</span>}
 						</div>
 					</div>
+					{
+						isDocumentHero && (
+							<div class="case-hero__document-media blog-shell">
+								<CaseStudyGallery
+									items={[{ image: d.heroImage, alt: d.heroAlt, caption: d.heroActionLabel }]}
+									idPrefix={`hero-${d.slug}`}
+									viewMode="document"
+									actionLabel={d.heroActionLabel ?? 'View full image →'}
+								/>
+							</div>
+						)
+					}
 				</header>
 				<div class="blog-shell case-study__body">
 					{
@@ -132,6 +149,20 @@ const cta = d.cta ?? {
 										<dd>{fact.value}</dd>
 									</div>
 								))}
+								{d.projectFactsCta && (
+									<div class="case-project-facts__cta">
+										<dt>{d.projectFactsCta.eyebrow}</dt>
+										<dd>
+											<button
+												type="button"
+												data-blog-contact="project-facts"
+												data-form-project-type={d.projectFactsCta.formProjectType}
+											>
+												{d.projectFactsCta.label}
+											</button>
+										</dd>
+									</div>
+								)}
 							</dl>
 						)
 					}

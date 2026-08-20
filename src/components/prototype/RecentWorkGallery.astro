@@ -87,30 +87,42 @@ const {
 		data-lightbox
 		hidden
 	>
-		<button class="proto-lightbox__close" type="button" data-lightbox-close>
-			<span aria-hidden="true">×</span>
-			<span class="sr-only">Close image viewer</span>
-		</button>
-		<button class="proto-lightbox__nav proto-lightbox__nav--prev" type="button" data-lightbox-prev>
-			<span aria-hidden="true">‹</span>
-			<span class="sr-only">Previous image</span>
-		</button>
-		<figure class="proto-lightbox__figure">
-			<img
-				src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-				alt=""
-				data-lightbox-image
-			/>
-			<figcaption>
-				<strong data-lightbox-caption></strong>
-				<span data-lightbox-meta></span>
-				<span data-lightbox-summary></span>
-			</figcaption>
-		</figure>
-		<button class="proto-lightbox__nav proto-lightbox__nav--next" type="button" data-lightbox-next>
-			<span aria-hidden="true">›</span>
-			<span class="sr-only">Next image</span>
-		</button>
+		<div class="proto-lightbox__shell">
+			<button class="proto-lightbox__close" type="button" data-lightbox-close>
+				<span aria-hidden="true">×</span>
+				<span class="sr-only">Close image viewer</span>
+			</button>
+			<button
+				class="proto-lightbox__nav proto-lightbox__nav--prev"
+				type="button"
+				data-lightbox-prev
+			>
+				<span aria-hidden="true">‹</span>
+				<span class="sr-only">Previous image</span>
+			</button>
+			<figure class="proto-lightbox__figure">
+				<div class="proto-lightbox__media" data-lightbox-media>
+					<img
+						src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+						alt=""
+						data-lightbox-image
+					/>
+				</div>
+				<figcaption>
+					<strong data-lightbox-caption></strong>
+					<span data-lightbox-meta></span>
+					<span data-lightbox-summary></span>
+				</figcaption>
+			</figure>
+			<button
+				class="proto-lightbox__nav proto-lightbox__nav--next"
+				type="button"
+				data-lightbox-next
+			>
+				<span aria-hidden="true">›</span>
+				<span class="sr-only">Next image</span>
+			</button>
+		</div>
 	</div>
 </section>
 
@@ -118,13 +130,14 @@ const {
 	const workSection = document.querySelector('[data-work-section]');
 	const galleryButtons = [...(workSection?.querySelectorAll('[data-lightbox-open]') ?? [])];
 	const lightbox = workSection?.querySelector('[data-lightbox]');
-	const lightboxImage = document.querySelector('[data-lightbox-image]');
-	const lightboxCaption = document.querySelector('[data-lightbox-caption]');
-	const lightboxMeta = document.querySelector('[data-lightbox-meta]');
-	const lightboxSummary = document.querySelector('[data-lightbox-summary]');
-	const closeButton = document.querySelector('[data-lightbox-close]');
-	const previousButton = document.querySelector('[data-lightbox-prev]');
-	const nextButton = document.querySelector('[data-lightbox-next]');
+	const lightboxMedia = workSection?.querySelector('[data-lightbox-media]');
+	const lightboxImage = workSection?.querySelector('[data-lightbox-image]');
+	const lightboxCaption = workSection?.querySelector('[data-lightbox-caption]');
+	const lightboxMeta = workSection?.querySelector('[data-lightbox-meta]');
+	const lightboxSummary = workSection?.querySelector('[data-lightbox-summary]');
+	const closeButton = workSection?.querySelector('[data-lightbox-close]');
+	const previousButton = workSection?.querySelector('[data-lightbox-prev]');
+	const nextButton = workSection?.querySelector('[data-lightbox-next]');
 	let activeIndex = 0;
 	let lastFocused = null;
 	let startX = 0;
@@ -132,10 +145,23 @@ const {
 	const focusableSelector =
 		'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
+	const syncImageOrientation = () => {
+		if (!(lightboxMedia instanceof HTMLElement) || !(lightboxImage instanceof HTMLImageElement))
+			return;
+		lightboxMedia.classList.toggle(
+			'is-portrait',
+			lightboxImage.naturalHeight > lightboxImage.naturalWidth,
+		);
+		lightboxMedia.scrollTop = 0;
+	};
+
+	lightboxImage?.addEventListener('load', syncImageOrientation);
+
 	const showImage = (index) => {
 		const button = galleryButtons[index];
 		if (!(button instanceof HTMLElement)) return;
 		activeIndex = index;
+		lightboxMedia?.classList.remove('is-portrait');
 		if (lightboxImage instanceof HTMLImageElement) {
 			lightboxImage.src = button.dataset.full ?? '';
 			lightboxImage.alt = button.dataset.alt ?? '';
@@ -166,6 +192,7 @@ const {
 		if (!(lightbox instanceof HTMLElement)) return;
 		lightbox.hidden = true;
 		document.documentElement.classList.remove('proto-no-scroll');
+		lightboxMedia?.classList.remove('is-portrait');
 		if (lastFocused instanceof HTMLElement) lastFocused.focus();
 	};
 
