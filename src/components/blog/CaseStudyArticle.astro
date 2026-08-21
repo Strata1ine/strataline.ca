@@ -9,6 +9,7 @@ import BlogBreadcrumb from './BlogBreadcrumb.astro';
 import CaseStudyBeforeAfter from './CaseStudyBeforeAfter.astro';
 import CaseStudyGallery from './CaseStudyGallery.astro';
 import CaseStudyVideo from './CaseStudyVideo.astro';
+import ProjectFactsGrid from './ProjectFactsGrid.astro';
 interface Props {
 	post: BlogPost;
 }
@@ -148,32 +149,7 @@ const cta = d.cta ?? {
 					</div>
 				</header>
 				<div class="blog-shell case-study__body">
-					{
-						d.projectFacts.length > 0 && (
-							<dl class="case-project-facts" aria-label="Project facts">
-								{d.projectFacts.map((fact) => (
-									<div>
-										<dt>{fact.label}</dt>
-										<dd>{fact.value}</dd>
-									</div>
-								))}
-								{d.projectFactsCta && (
-									<div class="case-project-facts__cta">
-										<dt>{d.projectFactsCta.eyebrow}</dt>
-										<dd>
-											<button
-												type="button"
-												data-blog-contact="project-facts"
-												data-form-project-type={d.projectFactsCta.formProjectType}
-											>
-												{d.projectFactsCta.label}
-											</button>
-										</dd>
-									</div>
-								)}
-							</dl>
-						)
-					}
+					{d.projectFacts.length > 0 && <ProjectFactsGrid post={post} />}
 					{
 						hasContentBlocks ? (
 							d.contentBlocks.map((block, index) => {

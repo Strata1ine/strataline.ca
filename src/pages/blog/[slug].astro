@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import BlogCard from '@/components/blog/BlogCard.astro';
 import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb.astro';
 import CaseStudyArticle from '@/components/blog/CaseStudyArticle.astro';
+import ProjectFactsGrid from '@/components/blog/ProjectFactsGrid.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
 import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import Footer from '@/sections/Footer.astro';
@@ -91,133 +92,142 @@ const schemas = [
 ];
 ---
 
-{post.data.type === 'case-study' ? (
-	<CaseStudyArticle post={post} />
-) : (
-<PrototypeLayout
-	title={seoTitle ?? title}
-	{description}
-	image={optimizedHero.src}
-	{canonicalPath}
-	{schemas}
-	ogType="article"
-	articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author }}
-	robots="index,follow,max-image-preview:large"
->
-	<div class="blog-page">
-		<PrototypeHeader />
+{
+	post.data.type === 'case-study' ? (
+		<CaseStudyArticle post={post} />
+	) : (
+		<PrototypeLayout
+			title={seoTitle ?? title}
+			{description}
+			image={optimizedHero.src}
+			{canonicalPath}
+			{schemas}
+			ogType="article"
+			articleMeta={{ publishedTime: publishedIso, modifiedTime: modifiedIso, author }}
+			robots="index,follow,max-image-preview:large"
+		>
+			<div class="blog-page">
+				<PrototypeHeader />
 
-		<main>
-			<article class="blog-article">
-				<header class="blog-article__header blog-shell">
-					<BlogBreadcrumb current="Renovation Guides" />
-					<p class="blog-eyebrow">{category}</p>
-					<h1>{heroHeading ?? title}</h1>
-					<p class="blog-article__dek">{description}</p>
-					<div class="blog-article__meta">
-						<span>By {author}</span>
-						<span>{formatBlogDate(publishedDate)}</span>
-						<span>{getReadingTime(post.body)} min read</span>
-						{updatedDate && <span>Updated {formatBlogDate(updatedDate)}</span>}
-					</div>
-				</header>
+				<main>
+					<article class="blog-article">
+						<header class="blog-article__header blog-shell">
+							<BlogBreadcrumb current="Renovation Guides" />
+							<p class="blog-eyebrow">{category}</p>
+							<h1>{heroHeading ?? title}</h1>
+							<p class="blog-article__dek">{description}</p>
+							<div class="blog-article__meta">
+								<span>By {author}</span>
+								<span>{formatBlogDate(publishedDate)}</span>
+								<span>{getReadingTime(post.body)} min read</span>
+								{updatedDate && <span>Updated {formatBlogDate(updatedDate)}</span>}
+							</div>
+						</header>
 
-				<figure class="blog-article__hero blog-shell">
-					<Picture
-						src={heroImage}
-						formats={['avif', 'webp']}
-						alt={heroAlt}
-						widths={[640, 960, 1280, 1600, 1920]}
-						sizes="(max-width: 767px) 100vw, 88vw"
-						loading="eager"
-						fetchpriority="high"
-					/>
-				</figure>
+						<figure class="blog-article__hero blog-shell">
+							<Picture
+								src={heroImage}
+								formats={['avif', 'webp']}
+								alt={heroAlt}
+								widths={[640, 960, 1280, 1600, 1920]}
+								sizes="(max-width: 767px) 100vw, 88vw"
+								loading="eager"
+								fetchpriority="high"
+							/>
+						</figure>
 
-				<div class:list={['blog-editorial blog-shell', { 'blog-editorial--with-toc': showToc }]}>
-					{
-						showToc && (
-							<aside class="blog-toc" aria-labelledby="blog-toc-title">
-								<p id="blog-toc-title">In this guide</p>
-								<ol>
-									{tocHeadings.map((heading) => (
-										<li class:list={{ 'is-nested': heading.depth === 3 }}>
-											<a href={`#${heading.slug}`}>{heading.text}</a>
-										</li>
-									))}
-								</ol>
-							</aside>
-						)
-					}
-
-					<div class="blog-prose">
-						<Content />
-
-						<section class="blog-takeaways" aria-labelledby="blog-takeaways-title">
-							<p class="blog-eyebrow">KEY TAKEAWAYS</p>
-							<h2 id="blog-takeaways-title">What to carry into your project.</h2>
-							<ul>{takeaways.map((takeaway) => <li>{takeaway}</li>)}</ul>
-						</section>
-
-						<section
-							class="blog-service-cta"
-							data-floating-contact-avoid
-							aria-labelledby="blog-service-title"
+						{post.data.projectFacts.length > 0 && (
+							<div class="blog-shell">
+								<ProjectFactsGrid post={post} />
+							</div>
+						)}
+						<div
+							class:list={['blog-editorial blog-shell', { 'blog-editorial--with-toc': showToc }]}
 						>
-							<div>
-								<p class="blog-eyebrow">RELATED STRATALINE SERVICES</p>
-								<h2 id="blog-service-title">See how this work is scoped.</h2>
+							{showToc && (
+								<aside class="blog-toc" aria-labelledby="blog-toc-title">
+									<p id="blog-toc-title">In this guide</p>
+									<ol>
+										{tocHeadings.map((heading) => (
+											<li class:list={{ 'is-nested': heading.depth === 3 }}>
+												<a href={`#${heading.slug}`}>{heading.text}</a>
+											</li>
+										))}
+									</ol>
+								</aside>
+							)}
+
+							<div class="blog-prose">
+								<Content />
+
+								<section class="blog-takeaways" aria-labelledby="blog-takeaways-title">
+									<p class="blog-eyebrow">KEY TAKEAWAYS</p>
+									<h2 id="blog-takeaways-title">What to carry into your project.</h2>
+									<ul>
+										{takeaways.map((takeaway) => (
+											<li>{takeaway}</li>
+										))}
+									</ul>
+								</section>
+
+								<section
+									class="blog-service-cta"
+									data-floating-contact-avoid
+									aria-labelledby="blog-service-title"
+								>
+									<div>
+										<p class="blog-eyebrow">RELATED STRATALINE SERVICES</p>
+										<h2 id="blog-service-title">See how this work is scoped.</h2>
+									</div>
+									<div class="blog-service-cta__links">
+										{relatedServices.map((service) => (
+											<a href={service.href}>
+												{service.label} <span aria-hidden="true">→</span>
+											</a>
+										))}
+									</div>
+								</section>
 							</div>
-							<div class="blog-service-cta__links">
-								{
-									relatedServices.map((service) => (
-										<a href={service.href}>
-											{service.label} <span aria-hidden="true">→</span>
-										</a>
-									))
-								}
+						</div>
+					</article>
+
+					{relatedPosts.length > 0 && (
+						<section class="blog-related blog-shell" aria-labelledby="related-guides-title">
+							<div class="blog-section-heading">
+								<p class="blog-eyebrow">RELATED GUIDES</p>
+								<h2 id="related-guides-title">Keep planning with the next practical decision.</h2>
+							</div>
+							<div class="blog-grid">
+								{relatedPosts.map((entry) => (
+									<BlogCard post={entry} />
+								))}
 							</div>
 						</section>
-					</div>
-				</div>
-			</article>
+					)}
 
-			{
-				relatedPosts.length > 0 && (
-					<section class="blog-related blog-shell" aria-labelledby="related-guides-title">
-						<div class="blog-section-heading">
-							<p class="blog-eyebrow">RELATED GUIDES</p>
-							<h2 id="related-guides-title">Keep planning with the next practical decision.</h2>
+					<section
+						class="blog-contact blog-shell"
+						data-floating-contact-avoid
+						aria-labelledby="article-contact-title"
+					>
+						<div>
+							<p class="blog-eyebrow">TALK THROUGH YOUR PROJECT</p>
+							<h2 id="article-contact-title">
+								A clear scope starts with the conditions in your home.
+							</h2>
+							<p>Share the project type, property city and the result you are trying to achieve.</p>
 						</div>
-						<div class="blog-grid">
-							{relatedPosts.map((entry) => (
-								<BlogCard post={entry} />
-							))}
-						</div>
+						<button class="blog-button blog-button--light" type="button" data-blog-contact>
+							Request a project review
+						</button>
 					</section>
-				)
-			}
+				</main>
 
-			<section
-				class="blog-contact blog-shell"
-				data-floating-contact-avoid
-				aria-labelledby="article-contact-title"
-			>
-				<div>
-					<p class="blog-eyebrow">TALK THROUGH YOUR PROJECT</p>
-					<h2 id="article-contact-title">A clear scope starts with the conditions in your home.</h2>
-					<p>Share the project type, property city and the result you are trying to achieve.</p>
-				</div>
-				<button class="blog-button blog-button--light" type="button" data-blog-contact>
-					Request a project review
-				</button>
-			</section>
-		</main>
-
-		<Footer />
-	</div>
-</PrototypeLayout>
-)}
+				<Footer />
+			</div>
+		</PrototypeLayout>
+	)
+}
 
 <script>
 	document.querySelectorAll('[data-blog-contact]').forEach((button) => {
@@ -225,13 +235,19 @@ const schemas = [
 			document.dispatchEvent(new CustomEvent('strataline:open-contact'));
 			if (!(button instanceof HTMLElement) || !button.dataset.formProjectType) return;
 			const requestedType = button.dataset.formProjectType;
-			requestAnimationFrame(() => requestAnimationFrame(() => {
-				const form = document.querySelector<HTMLFormElement>('[data-contact-mode="popup"]');
-				const projectType = form?.querySelector<HTMLSelectElement>('select[name="Project Type"]');
-				if (!projectType || !Array.from(projectType.options).some((option) => option.value === requestedType)) return;
-				projectType.value = requestedType;
-				projectType.dispatchEvent(new Event('change', { bubbles: true }));
-			}));
+			requestAnimationFrame(() =>
+				requestAnimationFrame(() => {
+					const form = document.querySelector<HTMLFormElement>('[data-contact-mode="popup"]');
+					const projectType = form?.querySelector<HTMLSelectElement>('select[name="Project Type"]');
+					if (
+						!projectType ||
+						!Array.from(projectType.options).some((option) => option.value === requestedType)
+					)
+						return;
+					projectType.value = requestedType;
+					projectType.dispatchEvent(new Event('change', { bubbles: true }));
+				}),
+			);
 		});
 	});
 </script>

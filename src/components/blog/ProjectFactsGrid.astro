@@ -1,0 +1,144 @@
+---
+import { Picture } from 'astro:assets';
+import type { BlogPost } from '@/data/blog';
+
+interface Props {
+	post: BlogPost;
+}
+
+interface FactsCta {
+	eyebrow: string;
+	label: string;
+	formProjectType: string;
+}
+
+const { post } = Astro.props;
+const d = post.data;
+
+const automaticCtas: Record<BlogPost['data']['category'], FactsCta> = {
+	Stairs: {
+		eyebrow: 'PLANNING A STAIR RENOVATION?',
+		label: 'Request a Quote →',
+		formProjectType: 'Stairs and railings',
+	},
+	Ceilings: {
+		eyebrow: 'NEED A SMOOTH CEILING?',
+		label: 'Request a Quote →',
+		formProjectType: 'Popcorn ceiling removal',
+	},
+	'Doors & Windows': {
+		eyebrow: 'PLANNING A NEW EXTERIOR OPENING?',
+		label: 'Request a Quote →',
+		formProjectType: 'Doors, windows or finishing details',
+	},
+	'Interior Renovations': {
+		eyebrow: 'PLANNING AN INTERIOR RENOVATION?',
+		label: 'Request a Quote →',
+		formProjectType: 'Complete interior renovation',
+	},
+	Painting: {
+		eyebrow: 'PLANNING AN INTERIOR PAINTING PROJECT?',
+		label: 'Request a Quote →',
+		formProjectType: 'Ceilings and walls',
+	},
+	'Kitchens & Bathrooms': {
+		eyebrow: 'PLANNING A KITCHEN OR BATHROOM RENOVATION?',
+		label: 'Request a Quote →',
+		formProjectType: 'Kitchen or bathroom',
+	},
+	'Planning & Costs': {
+		eyebrow: 'PLANNING A RENOVATION?',
+		label: 'Request a Quote →',
+		formProjectType: 'Not sure yet',
+	},
+};
+
+const cta = d.projectFactsCta ?? automaticCtas[d.category];
+const serviceFallback = !cta ? d.relatedServices[0] : undefined;
+const relatedStoryFallback =
+	!cta && !serviceFallback
+		? d.contentBlocks.find((block) => block.type === 'related-story')
+		: undefined;
+const takeawayFallback =
+	!cta && !serviceFallback && !relatedStoryFallback ? d.takeaways[0] : undefined;
+const fallbackCount = Number(
+	Boolean(cta || serviceFallback || relatedStoryFallback || takeawayFallback),
+);
+const cellCount = d.projectFacts.length + fallbackCount;
+const lastRowCount = cellCount % 4 || Math.min(cellCount, 4);
+const isOddAtTablet = cellCount % 2 === 1;
+---
+
+{
+	cellCount > 0 && (
+		<dl
+			class:list={[
+				'case-project-facts',
+				`case-project-facts--last-${lastRowCount}`,
+				{ 'case-project-facts--odd': isOddAtTablet },
+			]}
+			aria-label="Project facts"
+			data-facts-count={cellCount}
+		>
+			{d.projectFacts.map((fact) => (
+				<div class="case-project-facts__fact">
+					<dt>{fact.label}</dt>
+					<dd>{fact.value}</dd>
+				</div>
+			))}
+			{cta && (
+				<div
+					class="case-project-facts__cta"
+					data-facts-source={d.projectFactsCta ? 'explicit' : 'automatic'}
+				>
+					<dt>{cta.eyebrow}</dt>
+					<dd>
+						<button
+							type="button"
+							data-blog-contact="project-facts"
+							data-form-project-type={cta.formProjectType}
+						>
+							{cta.label}
+						</button>
+					</dd>
+				</div>
+			)}
+			{serviceFallback && (
+				<div class="case-project-facts__service">
+					<dt>EXPLORE THE SERVICE</dt>
+					<dd>
+						<a href={serviceFallback.href}>
+							{serviceFallback.label} <span aria-hidden="true">→</span>
+						</a>
+						{d.service && <p>See how {d.service.toLowerCase()} work is scoped.</p>}
+					</dd>
+				</div>
+			)}
+			{relatedStoryFallback && relatedStoryFallback.type === 'related-story' && (
+				<div class="case-project-facts__story">
+					<dt>RELATED PROJECT</dt>
+					<dd>
+						<a href={relatedStoryFallback.href}>
+							<Picture
+								src={relatedStoryFallback.image}
+								alt=""
+								widths={[160, 240]}
+								sizes="96px"
+								formats={['avif', 'webp']}
+								loading="lazy"
+							/>
+							<span>{relatedStoryFallback.title}</span>
+							<strong aria-hidden="true">→</strong>
+						</a>
+					</dd>
+				</div>
+			)}
+			{takeawayFallback && (
+				<div class="case-project-facts__takeaway">
+					<dt>WHY THIS APPROACH</dt>
+					<dd>{takeawayFallback}</dd>
+				</div>
+			)}
+		</dl>
+	)
+}
