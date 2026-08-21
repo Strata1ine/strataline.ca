@@ -16,6 +16,28 @@ Keep original media outside the repository until the article is approved. A prac
 - `process-01.jpg`
 - optional `process.mp4` and a poster image
 
+## Manual A/B pair naming
+
+Incoming projects may use a deliberate, case-insensitive `A<number>` / `B<number>` convention instead of descriptive before/after filenames:
+
+- `A<number>` means **after**.
+- `B<number>` means **before**.
+- The same number identifies one manually matched camera/viewpoint pair: `A1` ↔ `B1`, `A2` ↔ `B2`, `A10` ↔ `B10`.
+- Match only within the same logical folder context (for example `stairs`, `ceilings`, `rooms` or `exterior`) unless the project explicitly places the matching files in corresponding `before` and `after` folders.
+- Manual number pairing is ground truth and overrides image-similarity or visual rematching.
+- An unmatched file such as `A3` without `B3` remains an ordinary after image. Do not assign it to a different numbered file.
+
+During ingestion, detect filenames with `^[Aa](\d+)$` and `^[Bb](\d+)$` after removing the file extension. Preserve the folder context, pair number and role when copying assets. Repository filenames should retain that identity, for example:
+
+```text
+stairs-pair-01-before-wide.jpg
+stairs-pair-01-after-wide.jpg
+ceiling-pair-04-before-texture.jpg
+ceiling-pair-04-after-smooth.jpg
+```
+
+Before/after component input order is always `B = before`, then `A = after`. Keep the two files as separate assets; do not bake them into a composite image.
+
 ## Notes template
 
 ```text
