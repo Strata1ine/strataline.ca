@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from 'astro';
+import CaseStudyGallery from './CaseStudyGallery.astro';
+
+interface Item {
+	image: ImageMetadata;
+	alt: string;
+	caption?: string;
+}
+interface Props {
+	items: Item[];
+	idPrefix: string;
+	eyebrow?: string;
+	heading?: string;
+}
+
+const {
+	items,
+	idPrefix,
+	eyebrow = 'FINISHED PROJECT',
+	heading = 'The completed renovation',
+} = Astro.props;
+---
+
+<div class="case-project-gallery">
+	<div class="case-project-gallery__heading">
+		<p class="blog-eyebrow">{eyebrow}</p>
+		<h2>{heading}</h2>
+	</div>
+	<CaseStudyGallery items={items} {idPrefix} layout="project" />
+</div>

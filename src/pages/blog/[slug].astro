@@ -93,7 +93,7 @@ const schemas = [
 ---
 
 {
-	post.data.type === 'case-study' ? (
+	post.data.type === 'case-study' || post.data.mediaRich ? (
 		<CaseStudyArticle post={post} />
 	) : (
 		<PrototypeLayout

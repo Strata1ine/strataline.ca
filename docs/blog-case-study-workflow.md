@@ -1,5 +1,7 @@
 # Publishing a project case study
 
+For the required visual architecture, media audit, semantic media sizes and build validation used by new media-rich stories, follow [Project Story authoring system](./project-story-authoring.md). This file remains the source-folder and publishing checklist.
+
 Strataline project stories use the same blog collection as guides. Set `type: case-study` in frontmatter and provide the structured project fields; the shared template supplies the comparison, gallery, video, review, author, related-service and CTA presentation.
 
 ## Recommended source folder

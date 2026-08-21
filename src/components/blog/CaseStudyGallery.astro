@@ -11,21 +11,35 @@ interface Props {
 	items: Item[];
 	idPrefix: string;
 	viewMode?: 'standard' | 'document';
+	layout?: 'standard' | 'editorial' | 'project';
 	actionLabel?: string;
 }
 
-const { items, idPrefix, viewMode = 'standard', actionLabel } = Astro.props;
+const { items, idPrefix, viewMode = 'standard', layout = 'standard', actionLabel } = Astro.props;
 const dialogId = `${idPrefix}-lightbox`;
 const captionId = `${idPrefix}-lightbox-caption`;
 ---
 
 <div
-	class:list={['case-gallery', { 'case-gallery--document': viewMode === 'document' }]}
+	class:list={[
+		'case-gallery',
+		`case-gallery--${layout}`,
+		{ 'case-gallery--document': viewMode === 'document' },
+	]}
 	data-case-gallery
 >
 	{
 		items.map((item, index) => (
-			<figure class="case-gallery__item">
+			<figure
+				class:list={[
+					'case-gallery__item',
+					item.image.height > item.image.width
+						? 'case-gallery__item--portrait'
+						: item.image.width / item.image.height >= 1.65
+							? 'case-gallery__item--wide'
+							: 'case-gallery__item--landscape',
+				]}
+			>
 				<button
 					type="button"
 					class="case-gallery__trigger"
@@ -46,7 +60,11 @@ const captionId = `${idPrefix}-lightbox-caption`;
 						sizes={
 							viewMode === 'document'
 								? '(max-width: 720px) 100vw, min(75rem, 100vw)'
-								: '(max-width: 720px) 100vw, 50vw'
+								: layout === 'project'
+									? '(max-width: 700px) 94vw, (max-width: 1100px) 46vw, 390px'
+									: layout === 'editorial'
+										? '(max-width: 700px) 94vw, 580px'
+										: '(max-width: 720px) 100vw, 50vw'
 						}
 						formats={['avif', 'webp']}
 						loading={viewMode === 'document' ? 'eager' : 'lazy'}

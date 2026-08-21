@@ -74,6 +74,7 @@ export const collections = {
 	blog: defineCollection({
 		loader: glob({ pattern: '**/*.{md,mdx}', base: './content/blog' }),
 		schema: ({ image: contentImage }: SchemaContext) => {
+			const mediaSize = z.enum(['hero', 'wide', 'pair', 'portrait', 'detail', 'gallery', 'slider']);
 			const linkedParagraph = z.union([
 				z.string(),
 				z.object({
@@ -88,6 +89,40 @@ export const collections = {
 				alt: z.string(),
 				caption: z.string().optional(),
 			});
+			const sectionMedia = z.discriminatedUnion('type', [
+				z.object({
+					type: z.literal('image'),
+					size: mediaSize.default('wide'),
+					image: contentImage(),
+					alt: z.string(),
+					caption: z.string(),
+					presentation: z.enum(['standard', 'document']).default('standard'),
+				}),
+				z.object({
+					type: z.literal('image-pair'),
+					size: mediaSize.default('pair'),
+					pairContext: z.string().optional(),
+					pairNumber: z.coerce.number().int().positive().optional(),
+					items: z.array(inlineMedia).length(2),
+				}),
+				z.object({
+					type: z.literal('before-after'),
+					size: mediaSize.default('slider'),
+					beforeImage: contentImage(),
+					afterImage: contentImage(),
+					beforeAlt: z.string(),
+					afterAlt: z.string(),
+					caption: z.string(),
+					pairContext: z.string().optional(),
+					pairNumber: z.coerce.number().int().positive().optional(),
+				}),
+				z.object({
+					type: z.literal('gallery'),
+					size: mediaSize.default('gallery'),
+					items: z.array(inlineMedia).min(2),
+					layout: z.enum(['editorial', 'project']).default('editorial'),
+				}),
+			]);
 			const contentBlock = z.discriminatedUnion('type', [
 				z.object({
 					type: z.literal('text'),
@@ -98,7 +133,17 @@ export const collections = {
 					listItems: z.array(z.string()).default([]),
 				}),
 				z.object({
+					type: z.literal('text-media'),
+					eyebrow: z.string().optional(),
+					heading: z.string(),
+					paragraphs: z.array(linkedParagraph).min(1).max(2),
+					listHeading: z.string().optional(),
+					listItems: z.array(z.string()).default([]),
+					media: sectionMedia,
+				}),
+				z.object({
 					type: z.literal('image'),
+					size: mediaSize.optional(),
 					image: contentImage(),
 					alt: z.string(),
 					caption: z.string().optional(),
@@ -108,12 +153,16 @@ export const collections = {
 				}),
 				z.object({
 					type: z.literal('image-pair'),
+					size: mediaSize.optional(),
 					heading: z.string().optional(),
 					caption: z.string().optional(),
 					items: z.array(inlineMedia).length(2),
 				}),
 				z.object({
 					type: z.literal('gallery'),
+					eyebrow: z.string().optional(),
+					size: mediaSize.optional(),
+					purpose: z.enum(['editorial', 'finished-project']).default('editorial'),
 					heading: z.string().optional(),
 					items: z.array(inlineMedia).min(1),
 				}),
@@ -137,7 +186,27 @@ export const collections = {
 					linkLabel: z.string(),
 				}),
 				z.object({
+					type: z.literal('related-stories'),
+					eyebrow: z.string().default('RELATED PROJECTS'),
+					heading: z.string().default('Related project stories'),
+					items: z
+						.array(
+							z.object({
+								image: contentImage(),
+								alt: z.string(),
+								location: z.string(),
+								title: z.string(),
+								context: z.string(),
+								href: z.string().startsWith('/'),
+								linkLabel: z.string().default('View project →'),
+							}),
+						)
+						.min(2)
+						.max(3),
+				}),
+				z.object({
 					type: z.literal('before-after'),
+					size: mediaSize.optional(),
 					heading: z.string().optional(),
 					beforeImage: contentImage(),
 					afterImage: contentImage(),
@@ -191,6 +260,36 @@ export const collections = {
 				scope: z.array(z.string()).default([]),
 				solution: z.string().optional(),
 				result: z.string().optional(),
+				mediaRich: z.boolean().default(false),
+				visualValidationOverride: z.string().min(20).optional(),
+				mediaAudit: z
+					.object({
+						discovered: z.coerce.number().int().nonnegative(),
+						used: z.array(
+							z.object({
+								source: z.string(),
+								asset: z.string(),
+							}),
+						),
+						excluded: z.array(
+							z.object({
+								source: z.string(),
+								reason: z.string().min(8),
+							}),
+						),
+					})
+					.optional(),
+				manualPairs: z
+					.array(
+						z.object({
+							context: z.string(),
+							number: z.coerce.number().int().positive(),
+							before: z.string(),
+							after: z.string(),
+							presentation: z.enum(['pair', 'slider']),
+						}),
+					)
+					.default([]),
 				contentBlocks: z.array(contentBlock).default([]),
 				beforeAfter: z
 					.object({

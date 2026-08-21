@@ -10,12 +10,15 @@ import CaseStudyBeforeAfter from './CaseStudyBeforeAfter.astro';
 import CaseStudyGallery from './CaseStudyGallery.astro';
 import CaseStudyVideo from './CaseStudyVideo.astro';
 import ProjectFactsGrid from './ProjectFactsGrid.astro';
+import ProjectGallery from './ProjectGallery.astro';
 interface Props {
 	post: BlogPost;
 }
 const { post } = Astro.props;
 const { Content } = await render(post);
 const d = post.data;
+const isGuide = d.type === 'guide';
+const breadcrumbLabel = isGuide ? 'Renovation Guides' : 'Project Stories';
 const canonicalPath = `/blog/${d.slug}`;
 const canonicalUrl = `https://strataline.ca${canonicalPath}`;
 const optimizedHero = await getImage({
@@ -65,7 +68,7 @@ const schemas = [
 				name: 'Guides',
 				item: 'https://strataline.ca/blog',
 			},
-			{ '@type': 'ListItem', position: 3, name: 'Project Stories', item: canonicalUrl },
+			{ '@type': 'ListItem', position: 3, name: breadcrumbLabel, item: canonicalUrl },
 		],
 	},
 	{
@@ -79,6 +82,7 @@ const schemas = [
 const compare = d.beforeAfter;
 const hasContentBlocks = d.contentBlocks.length > 0;
 const hasStructuredStory = d.storySections.length > 0;
+const relatedStoryBlocks = d.contentBlocks.filter((block) => block.type === 'related-stories');
 const isDocumentHero = d.heroPresentation === 'document';
 const comparisons = new Map(d.comparisons.map((item) => [item.id, item]));
 const cta = d.cta ?? {
@@ -103,7 +107,7 @@ const cta = d.cta ?? {
 		<PrototypeHeader />
 		<main>
 			<article class="case-study">
-				<header class:list={['case-hero', { 'case-hero--document': isDocumentHero }]}>
+				<header class:list={['case-hero', 'case-media--hero', { 'case-hero--document': isDocumentHero }]}>
 					{
 						!isDocumentHero && (
 							<Picture
@@ -120,8 +124,10 @@ const cta = d.cta ?? {
 					<div class="case-hero__shade" aria-hidden="true"></div>
 					<div class:list={['case-hero__composition', { 'blog-shell': isDocumentHero }]}>
 						<div class:list={['case-hero__content', { 'blog-shell': !isDocumentHero }]}>
-							<BlogBreadcrumb current="Project Stories" />
-							<p class="blog-eyebrow">{d.heroEyebrow ?? `PROJECT STORY · ${d.category}`}</p>
+							<BlogBreadcrumb current={breadcrumbLabel} />
+							<p class="blog-eyebrow">
+								{d.heroEyebrow ?? `${isGuide ? 'RENOVATION GUIDE' : 'PROJECT STORY'} · ${d.category}`}
+							</p>
 							<h1>{d.heroHeading ?? d.title}</h1>
 							<p>{d.heroIntro ?? d.description}</p>
 							<div class="case-hero__meta">
@@ -153,6 +159,73 @@ const cta = d.cta ?? {
 					{
 						hasContentBlocks ? (
 							d.contentBlocks.map((block, index) => {
+								if (block.type === 'text-media')
+									return (
+										<section
+											class:list={[
+												'case-section case-text-media',
+												`case-text-media--${block.media.size}`,
+												{ 'case-story-section--opening': index === 0 },
+											]}
+										>
+											<div class="case-text-media__header">
+												<p class="blog-eyebrow">{block.eyebrow ?? 'In this project'}</p>
+												<h2>{block.heading}</h2>
+												<div class="case-story-section__copy">
+													{block.paragraphs.map((paragraph) =>
+														typeof paragraph === 'string' ? (
+															<p>{paragraph}</p>
+														) : (
+															<p>
+																{paragraph.before}
+																<a href={paragraph.href}>{paragraph.label}</a>
+																{paragraph.after}
+															</p>
+														),
+													)}
+												</div>
+												{block.listItems.length > 0 && (
+													<div class="case-story-list">
+														{block.listHeading && <h3>{block.listHeading}</h3>}
+														<ul>
+															{block.listItems.map((item) => (
+																<li>{item}</li>
+															))}
+														</ul>
+													</div>
+												)}
+											</div>
+											<div class:list={['case-text-media__media case-media', `case-media--${block.media.size}`]}>
+												{block.media.type === 'image' && (
+													<CaseStudyGallery
+														items={[{ image: block.media.image, alt: block.media.alt, caption: block.media.caption }]}
+														idPrefix={`content-${d.slug}-${index}`}
+														viewMode={block.media.presentation === 'document' ? 'document' : 'standard'}
+														layout="editorial"
+													/>
+												)}
+												{block.media.type === 'image-pair' && (
+													<CaseStudyGallery items={block.media.items} idPrefix={`content-${d.slug}-${index}`} layout="editorial" />
+												)}
+												{block.media.type === 'before-after' && (
+													<CaseStudyBeforeAfter
+														beforeImage={block.media.beforeImage}
+														beforeAlt={block.media.beforeAlt}
+														afterImage={block.media.afterImage}
+														afterAlt={block.media.afterAlt}
+														caption={block.media.caption}
+													/>
+												)}
+												{block.media.type === 'gallery' && (
+													<CaseStudyGallery
+														items={block.media.items}
+														idPrefix={`content-${d.slug}-${index}`}
+														layout={block.media.layout === 'project' ? 'project' : 'editorial'}
+													/>
+												)}
+											</div>
+										</section>
+									);
 								if (block.type === 'text')
 									return (
 										<section
@@ -206,7 +279,8 @@ const cta = d.cta ?? {
 									return (
 										<section
 											class:list={[
-												'case-section case-inline-media',
+												'case-section case-inline-media case-media',
+												`case-media--${block.size ?? block.layout}`,
 												{ 'case-inline-media--detail': block.layout === 'detail' },
 												{ 'case-inline-media--document': block.presentation === 'document' },
 											]}
@@ -223,7 +297,8 @@ const cta = d.cta ?? {
 									return (
 										<section
 											class:list={[
-												'case-section case-inline-media case-inline-media--pair',
+												'case-section case-inline-media case-inline-media--pair case-media',
+												`case-media--${block.size ?? 'pair'}`,
 												{
 													'case-inline-media--portrait-pair': block.items.every(
 														(item) => item.image.height > item.image.width,
@@ -243,12 +318,30 @@ const cta = d.cta ?? {
 									);
 								if (block.type === 'gallery')
 									return (
-										<section class="case-section case-inline-media">
-											{block.heading && <h2>{block.heading}</h2>}
-											<CaseStudyGallery
-												items={block.items}
-												idPrefix={'content-' + d.slug + '-' + index}
-											/>
+										<section
+											class:list={[
+												'case-section case-inline-media case-media',
+												`case-media--${block.size ?? (block.purpose === 'finished-project' ? 'gallery' : 'wide')}`,
+											]}
+										>
+											{block.purpose === 'finished-project' ? (
+												<ProjectGallery
+													items={block.items}
+													idPrefix={'content-' + d.slug + '-' + index}
+													eyebrow={block.eyebrow}
+													heading={block.heading}
+												/>
+											) : (
+												<>
+													{block.eyebrow && <p class="blog-eyebrow">{block.eyebrow}</p>}
+													{block.heading && <h2>{block.heading}</h2>}
+													<CaseStudyGallery
+														items={block.items}
+														idPrefix={'content-' + d.slug + '-' + index}
+														layout="editorial"
+													/>
+												</>
+											)}
 										</section>
 									);
 								if (block.type === 'video')
@@ -263,6 +356,8 @@ const cta = d.cta ?? {
 											/>
 										</section>
 									);
+								if (block.type === 'related-stories')
+									return null;
 								if (block.type === 'related-story')
 									return (
 										<section
@@ -293,7 +388,7 @@ const cta = d.cta ?? {
 									);
 								if (block.type === 'before-after')
 									return (
-										<section class="case-section case-inline-media">
+										<section class:list={['case-section case-inline-media case-media', `case-media--${block.size ?? 'slider'}`]}>
 											{block.heading && <h2>{block.heading}</h2>}
 											<CaseStudyBeforeAfter
 												beforeImage={block.beforeImage}
@@ -433,12 +528,13 @@ const cta = d.cta ?? {
 					}
 					{
 						d.gallery.length > 0 && (
-							<section class="case-section">
-								<>
-									<p class="blog-eyebrow">Finished result</p>
-									<h2>Complete project gallery</h2>
-									<CaseStudyGallery items={d.gallery} idPrefix={`gallery-${d.slug}`} />
-								</>
+							<section class="case-section case-media case-media--gallery">
+								<ProjectGallery
+									items={d.gallery}
+									idPrefix={`gallery-${d.slug}`}
+									eyebrow="FINISHED PROJECT"
+									heading="Complete project gallery"
+								/>
 							</section>
 						)
 					}
@@ -497,6 +593,34 @@ const cta = d.cta ?? {
 							}
 						</div>
 					</section>
+					{
+						relatedStoryBlocks.map((block) => (
+							<section class="case-section case-related-projects">
+								<p class="blog-eyebrow">{block.eyebrow}</p>
+								<h2>{block.heading}</h2>
+								<div class="case-related-projects__grid">
+									{block.items.map((item) => (
+										<a href={item.href} class="case-related-project-card">
+											<Picture
+												src={item.image}
+												alt={item.alt}
+												widths={[320, 520, 720]}
+												sizes="(max-width: 700px) 94vw, 360px"
+												formats={['avif', 'webp']}
+												loading="lazy"
+											/>
+											<div>
+												<p>{item.location}</p>
+												<h3>{item.title}</h3>
+												<span>{item.context}</span>
+												<strong>{item.linkLabel}</strong>
+											</div>
+										</a>
+									))}
+								</div>
+							</section>
+						))
+					}
 					<aside class="case-author">
 						<p><strong>{d.author}</strong><br />Owner, Strataline Inc.</p><p>
 							Based on real Strataline renovation projects completed across Toronto and the GTA.
