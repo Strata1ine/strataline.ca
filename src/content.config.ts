@@ -286,7 +286,7 @@ export const collections = {
 							number: z.coerce.number().int().positive(),
 							before: z.string(),
 							after: z.string(),
-							presentation: z.enum(['pair', 'slider']),
+							presentation: z.enum(['pair', 'slider', 'before-after']),
 						}),
 					)
 					.default([]),

@@ -205,7 +205,12 @@ const cta = d.cta ?? {
 													/>
 												)}
 												{block.media.type === 'image-pair' && (
-													<CaseStudyGallery items={block.media.items} idPrefix={`content-${d.slug}-${index}`} layout="editorial" />
+													<CaseStudyGallery
+														items={block.media.items}
+														idPrefix={`content-${d.slug}-${index}`}
+														layout="editorial"
+														matched={Boolean(block.media.pairContext && block.media.pairNumber)}
+													/>
 												)}
 												{block.media.type === 'before-after' && (
 													<CaseStudyBeforeAfter

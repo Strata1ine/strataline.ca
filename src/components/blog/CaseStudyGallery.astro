@@ -13,36 +13,46 @@ interface Props {
 	viewMode?: 'standard' | 'document';
 	layout?: 'standard' | 'editorial' | 'project';
 	actionLabel?: string;
+	matched?: boolean;
+	display?: 'grid' | 'original-links';
 }
 
-const { items, idPrefix, viewMode = 'standard', layout = 'standard', actionLabel } = Astro.props;
+const {
+	items,
+	idPrefix,
+	viewMode = 'standard',
+	layout = 'standard',
+	actionLabel,
+	matched = false,
+	display = 'grid',
+} = Astro.props;
 const dialogId = `${idPrefix}-lightbox`;
 const captionId = `${idPrefix}-lightbox-caption`;
+const matchedStageRatio =
+	matched && items.length === 2
+		? `${items[1].image.width} / ${items[1].image.height}`
+		: undefined;
 ---
 
 <div
 	class:list={[
 		'case-gallery',
 		`case-gallery--${layout}`,
-		{ 'case-gallery--document': viewMode === 'document' },
+		{
+			'case-gallery--document': viewMode === 'document',
+			'case-gallery--matched-pair': matched,
+			'case-gallery--original-links': display === 'original-links',
+		},
 	]}
+	style={matchedStageRatio ? `--case-pair-aspect-ratio: ${matchedStageRatio}` : undefined}
 	data-case-gallery
 >
 	{
-		items.map((item, index) => (
-			<figure
-				class:list={[
-					'case-gallery__item',
-					item.image.height > item.image.width
-						? 'case-gallery__item--portrait'
-						: item.image.width / item.image.height >= 1.65
-							? 'case-gallery__item--wide'
-							: 'case-gallery__item--landscape',
-				]}
-			>
+		items.map((item, index) =>
+			display === 'original-links' ? (
 				<button
 					type="button"
-					class="case-gallery__trigger"
+					class="case-gallery__original-link"
 					data-case-gallery-open
 					data-index={index}
 					data-full={item.image.src}
@@ -51,29 +61,55 @@ const captionId = `${idPrefix}-lightbox-caption`;
 					data-view-mode={viewMode}
 					aria-haspopup="dialog"
 					aria-controls={dialogId}
-					aria-label={`Open image ${index + 1}: ${item.alt}`}
 				>
-					<Picture
-						src={item.image}
-						alt={item.alt}
-						widths={[360, 560, 760, 960, 1280]}
-						sizes={
-							viewMode === 'document'
-								? '(max-width: 720px) 100vw, min(75rem, 100vw)'
-								: layout === 'project'
-									? '(max-width: 700px) 94vw, (max-width: 1100px) 46vw, 390px'
-									: layout === 'editorial'
-										? '(max-width: 700px) 94vw, 580px'
-										: '(max-width: 720px) 100vw, 50vw'
-						}
-						formats={['avif', 'webp']}
-						loading={viewMode === 'document' ? 'eager' : 'lazy'}
-					/>
-					{actionLabel && <span class="case-gallery__action">{actionLabel}</span>}
+					View full {index === 0 ? 'before' : 'after'} image
 				</button>
-				{item.caption && <figcaption>{item.caption}</figcaption>}
-			</figure>
-		))
+			) : (
+				<figure
+					class:list={[
+						'case-gallery__item',
+						item.image.height > item.image.width
+							? 'case-gallery__item--portrait'
+							: item.image.width / item.image.height >= 1.65
+								? 'case-gallery__item--wide'
+								: 'case-gallery__item--landscape',
+					]}
+				>
+					<button
+						type="button"
+						class="case-gallery__trigger"
+						data-case-gallery-open
+						data-index={index}
+						data-full={item.image.src}
+						data-alt={item.alt}
+						data-caption={item.caption ?? ''}
+						data-view-mode={viewMode}
+						aria-haspopup="dialog"
+						aria-controls={dialogId}
+						aria-label={`Open image ${index + 1}: ${item.alt}`}
+					>
+						<Picture
+							src={item.image}
+							alt={item.alt}
+							widths={[360, 560, 760, 960, 1280]}
+							sizes={
+								viewMode === 'document'
+									? '(max-width: 720px) 100vw, min(75rem, 100vw)'
+									: layout === 'project'
+										? '(max-width: 700px) 94vw, (max-width: 1100px) 46vw, 390px'
+										: layout === 'editorial'
+											? '(max-width: 700px) 94vw, 580px'
+											: '(max-width: 720px) 100vw, 50vw'
+							}
+							formats={['avif', 'webp']}
+							loading={viewMode === 'document' ? 'eager' : 'lazy'}
+						/>
+						{actionLabel && <span class="case-gallery__action">{actionLabel}</span>}
+					</button>
+					{item.caption && <figcaption>{item.caption}</figcaption>}
+				</figure>
+			),
+		)
 	}
 
 	<dialog id={dialogId} class="case-lightbox" aria-labelledby={captionId} data-case-gallery-dialog>
@@ -111,7 +147,6 @@ const captionId = `${idPrefix}-lightbox-caption`;
 		</div>
 	</dialog>
 </div>
-
 <script>
 	document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
 		if (gallery.dataset.ready === 'true') return;

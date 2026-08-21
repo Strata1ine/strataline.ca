@@ -74,7 +74,7 @@ manualPairs:
     number: 3
     before: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-before-angled-staircase-portrait.jpg
     after: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-after-angled-staircase-portrait.jpg
-    presentation: pair
+    presentation: before-after
   - context: staircase
     number: 4
     before: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-04-before-staircase-railing-wide.jpg
@@ -178,17 +178,15 @@ contentBlocks:
         href: /services/stairs/railing-installation
         after: ' for projects where posts, handrails and balusters need a new visual relationship. Planning both scopes together also keeps the railing finish aligned with every tread and landing it borders.'
     media:
-      type: image-pair
-      size: pair
+      type: before-after
+      size: slider
       pairContext: staircase
       pairNumber: 3
-      items:
-        - image: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-before-angled-staircase-portrait.jpg
-          alt: Matched pair 03 before angled view of the original Etobicoke staircase with wood posts, handrail and balusters.
-          caption: BEFORE — Pair 03 shows how the original wood railing and dark stair surfaces merged into one heavy visual band.
-        - image: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-after-angled-staircase-portrait.jpg
-          alt: Matched pair 03 after angled view with dark replacement posts and handrail, white balusters and refinished stairs.
-          caption: AFTER — The replacement railing separates dark horizontal lines from white vertical balusters while preserving the staircase profile.
+      beforeImage: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-before-angled-staircase-portrait.jpg
+      beforeAlt: Matched pair 03 before angled view of the original Etobicoke staircase with wood posts, handrail and balusters.
+      afterImage: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-after-angled-staircase-portrait.jpg
+      afterAlt: Matched pair 03 after angled view with dark replacement posts, dark handrail, white balusters and refinished stairs.
+      caption: 'Before and after: stair refinishing and railing replacement introduced white balusters, dark wood accents and a cleaner staircase profile in this Etobicoke home.'
   - type: text-media
     eyebrow: Upper transition
     heading: Why posts, balusters and handrails need to be planned together
@@ -283,9 +281,6 @@ contentBlocks:
       - image: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-02-after-lower-flight-portrait.jpg
         alt: Finished lower flight viewed upward with dark treads, white risers and a dark-and-white railing composition.
         caption: From below, the refinished treads and white risers remain clearly separated beneath the replacement handrail.
-      - image: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-03-after-angled-staircase-portrait.jpg
-        alt: Angled finished Etobicoke staircase showing dark posts, dark handrail, white balusters and refinished steps.
-        caption: The angled view shows the square lower post anchoring the railing beside the first refinished treads.
       - image: ./etobicoke-stair-refinishing-railing-images/etobicoke-pair-04-after-staircase-railing-wide.jpg
         alt: Wide side view of the finished Etobicoke staircase and coordinated replacement railing.
         caption: The side elevation makes the dark horizontal and white vertical finish relationship easy to read across the whole staircase.

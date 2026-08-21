@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import BeforeAfterViewer from '@/components/prototype/BeforeAfterViewer.astro';
+import CaseStudyGallery from '@/components/blog/CaseStudyGallery.astro';
 
 interface Props {
 	beforeImage: ImageMetadata;
@@ -16,8 +17,14 @@ const afterAspectRatio = afterImage.width / afterImage.height;
 const isWideComparison = afterAspectRatio >= 1.75;
 const isPortraitComparison =
 	beforeImage.height > beforeImage.width && afterImage.height > afterImage.width;
-const isMatchedAspectComparison = Math.abs(beforeAspectRatio - afterAspectRatio) < 0.03;
-const usesNaturalAspectRatio = isPortraitComparison || isMatchedAspectComparison;
+const isMatchedAspectComparison =
+	!isPortraitComparison && Math.abs(beforeAspectRatio - afterAspectRatio) < 0.03;
+const usesNaturalAspectRatio = isMatchedAspectComparison;
+const comparisonId = `case-study-comparison-${beforeImage.src
+	.split('/')
+	.at(-1)
+	?.replace(/[^a-z0-9]+/gi, '-')
+	.replace(/^-|-$/g, '')}`;
 ---
 
 <figure
@@ -33,7 +40,7 @@ const usesNaturalAspectRatio = isPortraitComparison || isMatchedAspectComparison
 >
 	<BeforeAfterViewer
 		comparison={{
-			id: 'case-study-comparison',
+			id: comparisonId,
 			title: caption ?? 'Project before and after comparison',
 			beforeImage,
 			afterImage,
@@ -43,6 +50,15 @@ const usesNaturalAspectRatio = isPortraitComparison || isMatchedAspectComparison
 			afterObjectPosition: 'center center',
 		}}
 		eventName="case_study_before_after_interaction"
+		viewerId={comparisonId}
 	/>
 	{caption && <figcaption>{caption}</figcaption>}
+	<CaseStudyGallery
+		items={[
+			{ image: beforeImage, alt: beforeAlt },
+			{ image: afterImage, alt: afterAlt },
+		]}
+		idPrefix={`${comparisonId}-originals`}
+		display="original-links"
+	/>
 </figure>

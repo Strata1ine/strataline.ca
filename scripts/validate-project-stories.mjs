@@ -14,6 +14,74 @@ const warnings = [];
 const fillerCaption =
 	/^(?:image|photo|supporting image|another angle|finished result(?: photo)?|project photo|before|after|before and after)\.?$/i;
 const bakedComposite = /(?:before[-_ ]?after|composite|collage|montage)/i;
+const assertSharedComparisonContract = () => {
+	const viewerPath = path.join(root, 'src', 'components', 'prototype', 'BeforeAfterViewer.astro');
+	const galleryPath = path.join(root, 'src', 'components', 'blog', 'CaseStudyGallery.astro');
+	const blogCssPath = path.join(root, 'src', 'styles', 'blog.css');
+	const prototypeCssPath = path.join(root, 'src', 'styles', 'interior-renovations-prototype.css');
+	const contractPaths = [viewerPath, galleryPath, blogCssPath, prototypeCssPath];
+	if (contractPaths.some((contractPath) => !fs.existsSync(contractPath))) {
+		failures.push('shared comparison contract files are missing');
+		return;
+	}
+
+	const viewer = fs.readFileSync(viewerPath, 'utf8');
+	const gallery = fs.readFileSync(galleryPath, 'utf8');
+	const blogCss = fs.readFileSync(blogCssPath, 'utf8');
+	const prototypeCss = fs.readFileSync(prototypeCssPath, 'utf8');
+	if (
+		!viewer.includes('proto-before-after__image proto-before-after__image--after') ||
+		!viewer.includes('proto-before-after__image proto-before-after__image--before')
+	)
+		failures.push('shared slider must render before and after as layers in one frame');
+	if (
+		!/\.proto-before-after__image\s*\{[^}]*position:\s*absolute;[^}]*inset:\s*0;/s.test(
+			prototypeCss,
+		)
+	)
+		failures.push('shared slider layers must occupy identical absolute stage dimensions');
+	if (
+		!/\.case-comparison--portrait \.proto-before-after__frame\s*\{[^}]*max-height:\s*min\(68svh,\s*720px\);[^}]*aspect-ratio:\s*13\s*\/\s*10;/s.test(
+			blogCss,
+		)
+	)
+		failures.push('portrait slider must retain the 68svh/720px height cap and common 13:10 stage');
+	if (
+		!/\.case-comparison--portrait \.proto-before-after__image img\s*\{[^}]*object-fit:\s*cover;/s.test(
+			blogCss,
+		)
+	)
+		failures.push('portrait before/after layers must use the same controlled cover crop');
+	if (
+		!gallery.includes("'case-gallery--matched-pair': matched") ||
+		!blogCss.includes('aspect-ratio: var(--case-pair-aspect-ratio);')
+	)
+		failures.push('matched editorial pairs must share one visual-stage aspect ratio');
+
+	const portraitStage = (viewportWidth, viewportHeight) => {
+		const heightLimit = Math.min(viewportHeight * 0.68, 720);
+		const width = Math.min(viewportWidth, 920, heightLimit * 1.3);
+		return { width, height: width / 1.3, heightLimit };
+	};
+	const desktopStages = [
+		{ viewport: '1366x768', ...portraitStage(1366, 768), widthRange: [650, 820], heightRange: [480, 540] },
+		{ viewport: '1920x1080', ...portraitStage(1920, 1080), widthRange: [850, 920], heightRange: [650, 720] },
+	];
+	for (const stage of desktopStages) {
+		const inRange =
+			stage.width >= stage.widthRange[0] &&
+			stage.width <= stage.widthRange[1] &&
+			stage.height >= stage.heightRange[0] &&
+			stage.height <= stage.heightRange[1] &&
+			stage.height <= stage.heightLimit;
+		if (!inRange)
+			failures.push(
+				`portrait slider contract exceeds ${stage.viewport}: ${stage.width.toFixed(1)}x${stage.height.toFixed(1)}`,
+			);
+	}
+};
+
+assertSharedComparisonContract();
 
 const words = (value) =>
 	String(value ?? '')
@@ -193,7 +261,20 @@ for (const file of contentFiles) {
 		visualFailures.push('a compact related-stories block with two or three cards is required');
 
 	for (const pair of data.manualPairs ?? []) {
-		const expectedType = pair.presentation === 'slider' ? 'before-after' : 'image-pair';
+		const isBeforeAfterPresentation = ['slider', 'before-after'].includes(pair.presentation);
+		const expectedType = isBeforeAfterPresentation ? 'before-after' : 'image-pair';
+		if (
+			isBeforeAfterPresentation &&
+			textMediaBlocks.some(
+				(block) =>
+					block.media?.type === 'image-pair' &&
+					block.media.pairContext === pair.context &&
+					Number(block.media.pairNumber) === Number(pair.number),
+			)
+		)
+			localFailures.push(
+				`manual pair ${pair.context}:${pair.number} is marked before-after but rendered as image-pair`,
+			);
 		const pairBlock = textMediaBlocks.find(
 			(block) =>
 				block.media?.type === expectedType &&
@@ -203,7 +284,7 @@ for (const file of contentFiles) {
 		if (!pairBlock)
 			localFailures.push('manual pair ' + pair.context + ':' + pair.number + ' is not rendered as ' + pair.presentation);
 		else if (
-			pair.presentation === 'slider' &&
+			isBeforeAfterPresentation &&
 			(pairBlock.media.beforeImage !== pair.before || pairBlock.media.afterImage !== pair.after)
 		)
 			localFailures.push('rendered manual pair ' + pair.context + ':' + pair.number + ' does not match its declaration');
