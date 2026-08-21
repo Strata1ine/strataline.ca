@@ -109,6 +109,7 @@ export const collections = {
 				z.object({
 					type: z.literal('image-pair'),
 					heading: z.string().optional(),
+					caption: z.string().optional(),
 					items: z.array(inlineMedia).length(2),
 				}),
 				z.object({

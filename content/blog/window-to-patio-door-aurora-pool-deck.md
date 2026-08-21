@@ -105,11 +105,13 @@ contentBlocks:
         label: interior renovation
         href: /interior-renovations
         after: ' when surrounding walls, floors or layouts also need work.'
-  - type: image
-    image: ./aurora-patio-door-images/aurora-bedroom-window-patio-door-interior-before-after.jpg
-    alt: Uncropped side-by-side portrait comparison of the Aurora bedroom window before and the full-height patio door after installation.
+  - type: image-pair
+    items:
+      - image: ./aurora-patio-door-images/aurora-bedroom-window-interior-before-portrait.jpg
+        alt: Portrait interior view of the original Aurora bedroom window before the patio-door conversion.
+      - image: ./aurora-patio-door-images/aurora-bedroom-patio-door-interior-after-portrait.jpg
+        alt: Portrait interior view of the finished glazed patio door from inside the Aurora bedroom.
     caption: Left, the original bedroom window; right, the finished glazed patio door creating a direct route to the deck.
-    layout: detail
   - type: text
     eyebrow: Exterior integration and result
     heading: Once installed, the new door changed the relationship between the room and the backyard.

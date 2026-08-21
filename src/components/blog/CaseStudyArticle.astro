@@ -221,12 +221,24 @@ const cta = d.cta ?? {
 									);
 								if (block.type === 'image-pair')
 									return (
-										<section class="case-section case-inline-media case-inline-media--pair">
+										<section
+											class:list={[
+												'case-section case-inline-media case-inline-media--pair',
+												{
+													'case-inline-media--portrait-pair': block.items.every(
+														(item) => item.image.height > item.image.width,
+													),
+												},
+											]}
+										>
 											{block.heading && <h2>{block.heading}</h2>}
-											<CaseStudyGallery
-												items={block.items}
-												idPrefix={'content-' + d.slug + '-' + index}
-											/>
+											<div class="case-image-pair">
+												<CaseStudyGallery
+													items={block.items}
+													idPrefix={'content-' + d.slug + '-' + index}
+												/>
+												{block.caption && <p class="case-image-pair__caption">{block.caption}</p>}
+											</div>
 										</section>
 									);
 								if (block.type === 'gallery')
