@@ -11,9 +11,13 @@ interface Props {
 }
 
 const { beforeImage, afterImage, beforeAlt, afterAlt, caption } = Astro.props;
-const isWideComparison = afterImage.width / afterImage.height >= 1.75;
+const beforeAspectRatio = beforeImage.width / beforeImage.height;
+const afterAspectRatio = afterImage.width / afterImage.height;
+const isWideComparison = afterAspectRatio >= 1.75;
 const isPortraitComparison =
 	beforeImage.height > beforeImage.width && afterImage.height > afterImage.width;
+const isMatchedAspectComparison = Math.abs(beforeAspectRatio - afterAspectRatio) < 0.03;
+const usesNaturalAspectRatio = isPortraitComparison || isMatchedAspectComparison;
 ---
 
 <figure
@@ -21,8 +25,11 @@ const isPortraitComparison =
 		'case-comparison',
 		isWideComparison && 'case-comparison--wide',
 		isPortraitComparison && 'case-comparison--portrait',
+		isMatchedAspectComparison && 'case-comparison--matched-aspect',
 	]}
-	style={isPortraitComparison ? `--case-comparison-aspect-ratio: ${afterImage.width} / ${afterImage.height}` : undefined}
+	style={usesNaturalAspectRatio
+		? `--case-comparison-aspect-ratio: ${afterImage.width} / ${afterImage.height}`
+		: undefined}
 >
 	<BeforeAfterViewer
 		comparison={{

@@ -40,6 +40,12 @@ contentBlocks:
         The homeowners did not need convincing that the old carpet had reached the end of its life. The house was approximately 20 years old, and years of foot traffic had left the stair covering worn and holding accumulated household dust. One homeowner reported that dust from the worn carpet was aggravating her allergies, so the carpet was removed before the renovation began. That is the client's account of the existing condition, not a medical claim about the renovation.
       - >-
         Once the carpet was gone, the original staircase structure remained along with a practical decision: install another soft covering, or convert the visible stair surfaces permanently to finished hardwood. The owners wanted something durable and cleanable, without recreating the same fibrous surface they had just removed. They chose oak stair capping and a coordinated railing renovation.
+  - type: before-after
+    beforeImage: ./richmond-hill-stair-capping-images/richmond-hill-stair-capping-before-lower-flight.jpg
+    afterImage: ./richmond-hill-stair-capping-images/richmond-hill-stair-capping-after-wide.jpg
+    beforeAlt: Exposed Richmond Hill staircase from the lower landing before oak stair capping and railing upgrades.
+    afterAlt: Finished Richmond Hill staircase from the lower landing with oak caps, white risers and black metal balusters.
+    caption: 'Before and after: the carpeted staircase replaced with oak stair capping and a cleaner railing layout.'
   - type: image-pair
     heading: The exposed staircase before capping
     items:
@@ -98,6 +104,12 @@ contentBlocks:
         label: stair railing installation
         href: /services/stairs/railing-installation
         after: ' should identify which components will be retained, refinished or replaced before the finish colours and metalwork are finalized.'
+  - type: before-after
+    beforeImage: ./richmond-hill-stair-capping-images/richmond-hill-stair-capping-before-upper-rail.jpg
+    afterImage: ./richmond-hill-stair-capping-images/richmond-hill-stair-railing-after-upper-view.jpg
+    beforeAlt: Upper Richmond Hill stair run before renovation with exposed steps and the original light-oak railing.
+    afterAlt: Upper Richmond Hill stair run after renovation with white risers, oak treads and black metal balusters.
+    caption: 'Before and after: a dated stair run updated with white risers, oak treads and new metal balusters.'
   - type: image
     image: ./richmond-hill-stair-capping-images/richmond-hill-new-oak-posts-black-metal-balusters.jpg
     alt: Finished Richmond Hill stair railing with darker oak posts and handrail, black metal balusters, oak treads and white stringers.
@@ -150,6 +162,12 @@ contentBlocks:
         Warm oak caps now define every step, including the winders, while white risers and stringers sharpen the stair profile. The darker railing and oak posts anchor the open side, and black metal balusters replace the visual density of the earlier wood spindle arrangement. From both levels, the materials read as one planned renovation rather than a series of unrelated upgrades.
       - >-
         The new hard surfaces also support the owners' original cleaning priority. Unlike carpet, the finished stair can be vacuumed or damp-cleaned without fibres trapping the same amount of household dust. Hardwood is not allergen-free, but it gives the homeowners an accessible, non-fibrous surface to maintain.
+  - type: before-after
+    beforeImage: ./richmond-hill-stair-capping-images/richmond-hill-stair-capping-before-winder-detail.jpg
+    afterImage: ./richmond-hill-stair-capping-images/richmond-hill-oak-winder-fit-detail.jpg
+    beforeAlt: Richmond Hill staircase winder area before the fitted oak tread caps and white finish work.
+    afterAlt: Finished Richmond Hill winder area with precisely fitted oak tread caps, white risers and clean intersections.
+    caption: 'Before and after: detailed finish quality, tighter fit and a more refined final appearance.'
   - type: image-pair
     heading: The completed staircase from both levels
     items:

@@ -1026,6 +1026,12 @@
 .case-comparison--portrait .proto-before-after__image img {
 	object-fit: contain;
 }
+.case-comparison--matched-aspect .proto-before-after__frame {
+	aspect-ratio: var(--case-comparison-aspect-ratio);
+}
+.case-comparison--matched-aspect .proto-before-after__image img {
+	object-fit: contain;
+}
 .case-comparison > figcaption {
 	margin-top: 0.65rem;
 	color: #56665f;
