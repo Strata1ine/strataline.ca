@@ -1,0 +1,28 @@
+---
+import BlogCategoryPage from '@/components/blog/BlogCategoryPage.astro';
+import { getPublishedBlogPosts } from '@/data/blog';
+import {
+	getCategoryPosts,
+	getEligibleCategories,
+	PROJECTS_GUIDES_PAGE_SIZE,
+} from '@/data/projectsGuides';
+export const prerender = true;
+export async function getStaticPaths() {
+	const posts = await getPublishedBlogPosts();
+	return getEligibleCategories(posts).flatMap((category) => {
+		const count = getCategoryPosts(posts, category.slug).length - 1;
+		const pageCount = Math.ceil(Math.max(0, count) / PROJECTS_GUIDES_PAGE_SIZE);
+		return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => ({
+			params: { category: category.slug, page: String(index + 2) },
+			props: { categorySlug: category.slug, page: index + 2 },
+		}));
+	});
+}
+interface Props {
+	categorySlug: string;
+	page: number;
+}
+const { categorySlug, page } = Astro.props;
+---
+
+<BlogCategoryPage {categorySlug} {page} />

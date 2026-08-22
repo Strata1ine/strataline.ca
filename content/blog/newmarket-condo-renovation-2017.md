@@ -10,6 +10,62 @@ category: Interior Renovations
 location: Newmarket, Ontario
 service: Complete condo interior renovation before move-in
 featured: false
+qualityTier: A
+primaryService: /interior-renovations
+propertyType: Condo
+problems:
+  - Dated carpet, painted popcorn ceilings and disconnected finishes
+solutions:
+  - Coordinated ceilings, floors, trim, doors and paint before move-in
+specialConditions:
+  - Condo logistics and pre-move-in sequencing
+social:
+  enabled: true
+  ready: false
+  version: 1
+  campaign: project-library
+  platforms:
+    googleBusiness: true
+    facebook: true
+    instagram: true
+    linkedin: true
+    pinterest: true
+  hook: This Newmarket condo was renewed as one complete interior before moving day.
+  callToAction: See the complete condo renovation and connected finish details.
+  hashtags: [CondoRenovation, Newmarket, InteriorRenovation, BeforeAndAfter]
+  media:
+    hero:
+      image: ./newmarket-condo-renovation-2017-images/newmarket-condo-finished-living-room-hero.jpg
+      alt: Finished Newmarket condo living room with smooth ceilings and engineered flooring.
+      rights: owned
+      socialApproved: true
+      socialFit: contain
+    carousel:
+      - image: ./newmarket-condo-renovation-2017-images/newmarket-condo-finished-living-room-hero.jpg
+        alt: Finished Newmarket condo living room with smooth ceilings and engineered flooring.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./newmarket-condo-renovation-2017-images/newmarket-condo-carpet-popcorn-before.jpg
+        alt: Newmarket condo before renovation with carpet and painted popcorn ceiling.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./newmarket-condo-renovation-2017-images/newmarket-condo-finished-room-flooring-trim.jpg
+        alt: Finished room with new flooring, trim and smooth ceiling.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./newmarket-condo-renovation-2017-images/newmarket-condo-new-interior-doors-trim.jpg
+        alt: New interior doors and trim in the renovated condo.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./newmarket-condo-renovation-2017-images/newmarket-engineered-floor-lvt-transition.jpg
+        alt: Coordinated transition between engineered flooring and luxury vinyl.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
 heroImage: ./newmarket-condo-renovation-2017-images/newmarket-condo-finished-living-room-hero.jpg
 heroAlt: Finished Newmarket condo living room with engineered flooring, blue walls, white trim and a smooth ceiling.
 socialImage: /images/blog/newmarket-condo-renovation-2017-social.jpg

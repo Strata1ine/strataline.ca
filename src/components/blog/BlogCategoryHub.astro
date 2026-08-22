@@ -1,0 +1,130 @@
+---
+import BlogCard from './BlogCard.astro';
+import BlogPagination from './BlogPagination.astro';
+import type { BlogPost } from '@/data/blog';
+import type { LibraryCategory } from '@/data/projectsGuides';
+import { getContentType, paginate, PROJECTS_GUIDES_PAGE_SIZE } from '@/data/projectsGuides';
+
+interface Props {
+	category: LibraryCategory;
+	posts: BlogPost[];
+	page?: number;
+	basePath?: string;
+	locationLabel?: string;
+}
+const {
+	category,
+	posts,
+	page = 1,
+	basePath = `/blog/${category.slug}`,
+	locationLabel,
+} = Astro.props;
+const projects = posts.filter((post) => getContentType(post) === 'project-story');
+const guides = posts.filter((post) => getContentType(post) === 'renovation-guide');
+const featured = projects.find((post) => post.data.featured) ?? projects[0] ?? guides[0];
+const feed = posts.filter((post) => post.id !== featured?.id);
+const pagination = paginate(feed, page, PROJECTS_GUIDES_PAGE_SIZE);
+const pageProjects = pagination.items.filter((post) => getContentType(post) === 'project-story');
+const pageGuides = pagination.items.filter((post) => getContentType(post) === 'renovation-guide');
+---
+
+<header class="blog-category-hero blog-shell">
+	<nav aria-label="Breadcrumb">
+		<ol>
+			<li><a href="/">Home</a></li>
+			<li><a href="/blog">Projects &amp; Guides</a></li>
+			<li aria-current="page">{locationLabel ?? category.label}</li>
+		</ol>
+	</nav>
+	<p class="blog-eyebrow">
+		{locationLabel ? 'BROWSE BY LOCATION' : 'PROJECTS & GUIDES BY SERVICE'}
+	</p>
+	<h1>{category.title}</h1>
+	<p>{category.introduction}</p>
+	<div class="blog-category-hero__actions">
+		<a class="blog-button" href={category.serviceHref}>Explore {category.serviceLabel}</a>
+		<a href="/blog">Browse the complete library</a>
+	</div>
+</header>
+
+<div class="blog-library blog-shell">
+	{
+		page === 1 && featured && (
+			<section
+				class="blog-content-group blog-content-group--featured"
+				aria-labelledby="category-featured-title"
+			>
+				<div class="blog-section-heading">
+					<p class="blog-eyebrow">FEATURED PROJECT STORY</p>
+					<h2 id="category-featured-title">A useful place to start.</h2>
+				</div>
+				<div class="blog-grid blog-grid--featured">
+					<BlogCard post={featured} variant="featured" />
+				</div>
+			</section>
+		)
+	}
+
+	{
+		pageProjects.length > 0 && (
+			<section class="blog-content-group" aria-labelledby="category-projects-title">
+				<div class="blog-section-heading">
+					<>
+						<p class="blog-eyebrow">PROJECT STORIES</p>
+						<h2 id="category-projects-title">Real work and documented decisions.</h2>
+					</>
+				</div>
+				<div class="blog-grid">
+					{pageProjects.map((post) => (
+						<BlogCard post={post} />
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	{
+		pageGuides.length > 0 && (
+			<section class="blog-content-group" aria-labelledby="category-guides-title">
+				<div class="blog-section-heading">
+					<>
+						<p class="blog-eyebrow">RENOVATION GUIDES</p>
+						<h2 id="category-guides-title">Planning guidance connected to this work.</h2>
+					</>
+				</div>
+				<div class="blog-grid">
+					{pageGuides.map((post) => (
+						<BlogCard post={post} />
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	<BlogPagination page={pagination.page} pageCount={pagination.pageCount} basePath={basePath} />
+</div>
+
+<section
+	class="blog-contact blog-shell"
+	data-floating-contact-avoid
+	aria-labelledby="category-contact-title"
+>
+	<div>
+		<p class="blog-eyebrow">DISCUSS YOUR PROJECT</p><h2 id="category-contact-title">
+			{category.ctaHeading}
+		</h2><p>{category.ctaText}</p>
+	</div>
+	<button class="blog-button blog-button--light" type="button" data-blog-contact
+		>Request a project review</button
+	>
+</section>
+
+<script>
+	document
+		.querySelectorAll('[data-blog-contact]')
+		.forEach((button) =>
+			button.addEventListener('click', () =>
+				document.dispatchEvent(new CustomEvent('strataline:open-contact')),
+			),
+		);
+</script>

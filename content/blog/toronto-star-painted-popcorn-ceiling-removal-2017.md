@@ -10,6 +10,59 @@ category: Ceilings
 location: Mississauga, Ontario
 service: Painted popcorn ceiling removal and complete ceiling refinishing
 featured: true
+qualityTier: A
+primaryService: /services/popcorn-removal
+problems:
+  - Painted popcorn ceiling in an occupied condo
+  - Dust control and protection during overhead work
+solutions:
+  - Vacuum-connected mechanical sanding and containment
+  - Complete smooth-ceiling refinishing
+specialConditions:
+  - Occupied-home protection
+  - Third-party editorial artwork excluded from social use
+social:
+  enabled: true
+  ready: false
+  version: 1
+  campaign: project-library
+  platforms:
+    googleBusiness: true
+    facebook: true
+    instagram: true
+    linkedin: true
+    pinterest: true
+  hook: A painted popcorn ceiling project documented by The Toronto Star
+  callToAction: See the complete project story and Strataline process photographs.
+  hashtags: [PopcornCeilingRemoval, SmoothCeilings, MississaugaRenovation, Strataline]
+  media:
+    hero:
+      image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-popcorn-ceiling-removal-finished-hero.jpg
+      alt: Finished smooth ceiling in the documented Mississauga popcorn-ceiling project.
+      rights: owned
+      socialApproved: true
+      socialFit: contain
+    carousel:
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-popcorn-ceiling-removal-finished-hero.jpg
+        alt: Finished smooth ceiling in the documented Mississauga popcorn-ceiling project.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-contained-room-before.jpg
+        alt: Protected room before painted popcorn ceiling removal.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/painted-popcorn-ceiling-original-condition-wide.jpg
+        alt: Original painted popcorn ceiling condition before refinishing.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/smooth-ceiling-pot-lights-finished-room.jpg
+        alt: Finished smooth ceiling with recessed pot lights.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
 heroImage: ./toronto-star-painted-popcorn-ceiling-removal-2017-images/toronto-star-strataline-popcorn-ceiling-article-2017.jpg
 heroAlt: Full Toronto Star newspaper clipping titled Lumpy complexions get a new smooth face, documenting Strataline's vacuum-connected popcorn ceiling removal process on August 26, 2017.
 heroPresentation: document

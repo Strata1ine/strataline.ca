@@ -219,7 +219,9 @@ if (homeContactBar && 'IntersectionObserver' in window) {
 			blocks={frontmatterBlocks}
 		/>
 
-		<Footer />
+		<slot name="after-blocks" />
+
+	<Footer />
 		<FloatingContact />
 
 		{

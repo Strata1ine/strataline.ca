@@ -1,0 +1,112 @@
+---
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import Footer from '@/sections/Footer.astro';
+import { getPublishedBlogPosts } from '@/data/blog';
+import {
+	getCategory,
+	getCategoryPosts,
+	getCity,
+	getContentType,
+	type LibraryCategory,
+} from '@/data/projectsGuides';
+import BlogCategoryHub from './BlogCategoryHub.astro';
+import '@/styles/blog.css';
+
+interface Props {
+	categorySlug?: string;
+	city?: string;
+	page?: number;
+}
+const { categorySlug, city, page = 1 } = Astro.props;
+const allPosts = await getPublishedBlogPosts();
+let category: LibraryCategory | undefined;
+let posts = allPosts;
+let basePath = '';
+let label = '';
+
+if (city) {
+	const citySlug = city.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+	posts = allPosts.filter(
+		(post) => getContentType(post) === 'project-story' && getCity(post) === city,
+	);
+	basePath = `/blog/locations/${citySlug}`;
+	label = city;
+	category = {
+		slug: citySlug,
+		label: city,
+		title: `Renovation Project Stories in ${city}`,
+		description: `Explore documented Strataline renovation projects in ${city}, with real conditions, decisions and finished results.`,
+		introduction: `This local collection brings together real Strataline project stories completed in ${city}. It reflects the homes and constraints documented in the current published library.`,
+		serviceHref: '/interior-renovations',
+		serviceLabel: 'Interior Renovations',
+		ctaHeading: `Planning a renovation in ${city}?`,
+		ctaText:
+			'Share the property location, photos and proposed scope for an owner-led project review.',
+	};
+} else if (categorySlug) {
+	category = getCategory(categorySlug);
+	if (category) {
+		posts = getCategoryPosts(allPosts, categorySlug);
+		basePath = `/blog/${categorySlug}`;
+		label = category.label;
+	}
+}
+if (!category || posts.length < 2)
+	throw new Error(
+		`Projects & Guides hub "${categorySlug ?? city}" does not have enough real content.`,
+	);
+
+const canonicalPath = page === 1 ? basePath : `${basePath}/page/${page}`;
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const title = page === 1 ? category.title : `${category.title} — Page ${page}`;
+const description = page === 1 ? category.description : `Page ${page} of ${category.description}`;
+const schemas = [
+	{
+		'@type': 'CollectionPage',
+		'@id': `${canonicalUrl}#collection`,
+		url: canonicalUrl,
+		name: title,
+		description,
+		isPartOf: { '@id': 'https://strataline.ca/#website' },
+		mainEntity: {
+			'@type': 'ItemList',
+			itemListElement: posts.map((post, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				url: `https://strataline.ca/blog/${post.data.slug}`,
+				name: post.data.title,
+			})),
+		},
+		breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+	},
+	{
+		'@type': 'BreadcrumbList',
+		'@id': `${canonicalUrl}#breadcrumb`,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Projects & Guides',
+				item: 'https://strataline.ca/blog',
+			},
+			{ '@type': 'ListItem', position: 3, name: label, item: canonicalUrl },
+		],
+	},
+];
+---
+
+<PrototypeLayout
+	{title}
+	{description}
+	{canonicalPath}
+	{schemas}
+	robots="index,follow,max-image-preview:large"
+>
+	<div class="blog-page">
+		<PrototypeHeader />
+		<main><BlogCategoryHub {category} {posts} {page} {basePath} locationLabel={city} /></main>
+		<Footer />
+	</div>
+</PrototypeLayout>

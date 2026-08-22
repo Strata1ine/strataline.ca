@@ -1,0 +1,102 @@
+---
+import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
+import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
+import Footer from '@/sections/Footer.astro';
+import { getPublishedBlogPosts } from '@/data/blog';
+import ProjectsGuidesHub from './ProjectsGuidesHub.astro';
+import blogHubHero from '../../../content/blog/blog-hub/blog-hero.jpg';
+import '@/styles/blog.css';
+
+interface Props {
+	page?: number;
+}
+const { page = 1 } = Astro.props;
+const posts = await getPublishedBlogPosts();
+const title =
+	page === 1
+		? 'Renovation Projects & Guides Toronto & GTA | Strataline'
+		: `Renovation Projects & Guides — Page ${page} | Strataline`;
+const description =
+	page === 1
+		? 'Explore real Strataline renovation project stories, practical homeowner guides and planning advice from Toronto and the GTA.'
+		: `Continue browsing Strataline renovation project stories and homeowner guides on page ${page} of the Projects & Guides library.`;
+const canonicalPath = page === 1 ? '/blog' : `/blog/page/${page}`;
+const canonicalUrl = `https://strataline.ca${canonicalPath}`;
+const schemas = [
+	{
+		'@type': 'CollectionPage',
+		'@id': `${canonicalUrl}#collection`,
+		url: canonicalUrl,
+		name: title,
+		description,
+		isPartOf: { '@id': 'https://strataline.ca/#website' },
+		breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+		mainEntity: {
+			'@type': 'ItemList',
+			itemListElement: posts.map((post, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				url: `https://strataline.ca/blog/${post.data.slug}`,
+				name: post.data.title,
+			})),
+		},
+	},
+	{
+		'@type': 'BreadcrumbList',
+		'@id': `${canonicalUrl}#breadcrumb`,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://strataline.ca/' },
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Projects & Guides',
+				item: 'https://strataline.ca/blog',
+			},
+			...(page > 1
+				? [{ '@type': 'ListItem', position: 3, name: `Page ${page}`, item: canonicalUrl }]
+				: []),
+		],
+	},
+];
+---
+
+<PrototypeLayout
+	{title}
+	{description}
+	image={blogHubHero.src}
+	{canonicalPath}
+	{schemas}
+	robots="index,follow,max-image-preview:large"
+>
+	<div class="blog-page">
+		<PrototypeHeader />
+		<main>
+			<ProjectsGuidesHub {posts} {page} />
+			<section
+				class="blog-contact blog-shell"
+				data-floating-contact-avoid
+				aria-labelledby="blog-contact-title"
+			>
+				<div>
+					<p class="blog-eyebrow">PLANNING A PROJECT?</p>
+					<h2 id="blog-contact-title">Bring the questions. We’ll help clarify the scope.</h2>
+					<p>Tell us what you are considering and where the project is located.</p>
+				</div>
+				<button class="blog-button blog-button--light" type="button" data-blog-contact
+					>Request a project review</button
+				>
+			</section>
+		</main>
+		<Footer />
+	</div>
+</PrototypeLayout>
+
+<script>
+	document
+		.querySelectorAll('[data-blog-contact]')
+		.forEach((button) =>
+			button.addEventListener('click', () =>
+				document.dispatchEvent(new CustomEvent('strataline:open-contact')),
+			),
+		);
+</script>

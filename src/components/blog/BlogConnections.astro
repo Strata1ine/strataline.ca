@@ -1,0 +1,62 @@
+---
+import BlogCard from './BlogCard.astro';
+import type { BlogPost } from '@/data/blog';
+import { getPublishedBlogPosts } from '@/data/blog';
+import {
+	getCategory,
+	getCategorySlugs,
+	getCity,
+	getEligibleCities,
+	getPrimaryService,
+	getRelatedContent,
+} from '@/data/projectsGuides';
+
+interface Props {
+	post: BlogPost;
+}
+const { post } = Astro.props;
+const posts = await getPublishedBlogPosts();
+const related = getRelatedContent(post, posts);
+const categories = getCategorySlugs(post).map(getCategory).filter(Boolean);
+const city = getCity(post);
+const cityHub = getEligibleCities(posts).find((item) => item.city === city);
+const serviceLinks = [
+	{
+		href: getPrimaryService(post),
+		label: post.data.service ?? post.data.relatedServices[0]?.label ?? 'Related service',
+	},
+	...post.data.relatedServices,
+	...post.data.secondaryServices.map((href) => ({ href, label: 'Related service' })),
+]
+	.filter((link, index, items) => items.findIndex((item) => item.href === link.href) === index)
+	.slice(0, 3);
+const cards = [...related.projects, ...related.guides];
+---
+
+<section class="case-section case-library-connections" aria-labelledby="library-connections-title">
+	<p class="blog-eyebrow">CONTINUE EXPLORING</p>
+	<h2 id="library-connections-title">Related projects, guidance and services.</h2>
+	<nav class="case-library-connections__paths" aria-label="Related library paths">
+		{serviceLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+		{
+			categories
+				.slice(0, 3)
+				.map(
+					(category) =>
+						category && (
+							<a href={`/blog/${category.slug}`}>{category.label} projects &amp; guides</a>
+						),
+				)
+		}
+		{cityHub && <a href={`/blog/locations/${cityHub.slug}`}>{cityHub.city} project stories</a>}
+	</nav>
+	{
+		cards.length > 0 && (
+			<div class="blog-grid">
+				{cards.map((entry) => (
+					<BlogCard post={entry} variant="supporting" />
+				))}
+			</div>
+		)
+	}
+</section>

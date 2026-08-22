@@ -12,6 +12,58 @@ category: Ceilings
 location: Yonge and Sheppard, Toronto
 service: Popcorn ceiling removal and finishing
 featured: false
+qualityTier: A
+primaryService: /services/popcorn-removal
+propertyType: Condo
+problems:
+  - Popcorn ceiling above a furnished collector room
+  - Protection of memorabilia and equipment
+solutions:
+  - Containment, HEPA extraction and complete smooth-ceiling finishing
+specialConditions:
+  - Occupied furnished room protection
+social:
+  enabled: true
+  ready: false
+  version: 1
+  campaign: project-library
+  platforms:
+    googleBusiness: true
+    facebook: true
+    instagram: true
+    linkedin: true
+    pinterest: true
+  hook: The ceiling had to change without turning a collector's room upside down.
+  callToAction: See how the room and its contents were protected.
+  hashtags: [PopcornCeilingRemoval, SmoothCeiling, TorontoRenovation, DustControl]
+  media:
+    hero:
+      image: ./collector-room-images/popcorn-ceiling-collector-room-after-hero.jpg
+      alt: Finished collector room with a smooth ceiling and recessed pot lights.
+      rights: owned
+      socialApproved: true
+      socialFit: contain
+    carousel:
+      - image: ./collector-room-images/popcorn-ceiling-collector-room-after-hero.jpg
+        alt: Finished collector room with a smooth ceiling and recessed pot lights.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./collector-room-images/popcorn-ceiling-collector-room-before-wide.jpg
+        alt: Collector room before renovation with a popcorn ceiling and track lights.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./collector-room-images/popcorn-ceiling-collector-room-before-second-angle.jpg
+        alt: Second before view of the protected furnished room.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./collector-room-images/popcorn-ceiling-collector-room-after-lighting.jpg
+        alt: Finished smooth ceiling and recessed lighting above the preserved collection.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
 hubProminence: lead
 heroImage: ./collector-room-images/popcorn-ceiling-collector-room-after-hero.jpg
 socialImage: /images/blog/popcorn-ceiling-collector-room-social.jpg

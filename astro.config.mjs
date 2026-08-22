@@ -58,15 +58,39 @@ const indexableBlogPaths = new Set(
 			const text = fs.readFileSync(file, 'utf8');
 			const frontmatter = text.match(/^---\s*([\s\S]*?)\s*---/)?.[1] ?? '';
 			if (/^\s*draft:\s*true\s*$/m.test(frontmatter)) return [];
+			if (/^\s*indexable:\s*false\s*$/m.test(frontmatter)) return [];
+			if (/^\s*qualityTier:\s*C\s*$/m.test(frontmatter)) return [];
+			if (/^\s*contentType:\s*archive-project\s*$/m.test(frontmatter)) return [];
 			const slug = frontmatter.match(/^\s*slug:\s*([a-z0-9-]+)\s*$/m)?.[1];
 			return slug ? [`/blog/${slug}`] : [];
 		}),
 );
 
+const indexableBlogHubPaths = new Set([
+	'/blog',
+	'/blog/stairs',
+	'/blog/ceilings',
+	'/blog/bathrooms',
+	'/blog/condos',
+	'/blog/interior-renovations',
+	'/blog/doors-windows',
+	'/blog/flooring',
+	'/blog/painting',
+	'/blog/basements',
+	'/blog/planning-costs',
+	'/blog/locations/toronto',
+]);
+
+const isIndexableBlogHubPath = (pathname) =>
+	indexableBlogHubPaths.has(pathname) ||
+	/^\/blog\/page\/\d+$/.test(pathname) ||
+	/^\/blog\/[a-z0-9-]+\/page\/\d+$/.test(pathname) ||
+	/^\/blog\/locations\/[a-z0-9-]+\/page\/\d+$/.test(pathname);
+
 const indexableStaticPaths = new Set([
 	'/',
 	'/interior-renovations',
-	'/blog',
+	...indexableBlogHubPaths,
 	'/privacy',
 	'/reviews',
 	'/services/popcorn-removal',
@@ -148,7 +172,8 @@ export default defineConfig({
 			filter: (page) => {
 				const pathname = new URL(page).pathname.replace(/\/$/, '');
 				if (pathname.includes('/submissions/')) return false;
-				if (pathname.startsWith('/blog/')) return indexableBlogPaths.has(pathname);
+				if (pathname.startsWith('/blog/'))
+					return indexableBlogPaths.has(pathname) || isIndexableBlogHubPath(pathname);
 				if (pathname.startsWith('/services/')) return indexableServicePaths.has(pathname);
 				return true;
 			},

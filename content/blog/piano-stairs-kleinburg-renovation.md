@@ -12,6 +12,56 @@ category: Stairs
 location: Kleinburg, Ontario
 service: High-contrast staircase and railing renovation
 featured: false
+qualityTier: A
+primaryService: /services/stairs
+problems:
+  - Honey-toned stair finishes obscured the curved geometry
+solutions:
+  - High-contrast dark treads, white risers and coordinated railing finishes
+specialConditions:
+  - Curved multi-flight staircase finish coordination
+social:
+  enabled: true
+  ready: false
+  version: 1
+  campaign: project-library
+  platforms:
+    googleBusiness: true
+    facebook: true
+    instagram: true
+    linkedin: true
+    pinterest: true
+  hook: The curved Kleinburg staircase already had strong geometry—the finish needed to reveal it.
+  callToAction: See the complete Piano Stairs transformation.
+  hashtags: [StairRenovation, Kleinburg, PianoStairs, StaircaseDesign]
+  media:
+    hero:
+      image: ./piano-stairs-kleinburg-renovation-images/kleinburg-piano-stairs-finished-wide.jpg
+      alt: Finished Kleinburg Piano Stairs with dark treads and white risers.
+      rights: owned
+      socialApproved: true
+      socialFit: contain
+    carousel:
+      - image: ./piano-stairs-kleinburg-renovation-images/kleinburg-piano-stairs-finished-wide.jpg
+        alt: Finished Kleinburg Piano Stairs with dark treads and white risers.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./piano-stairs-kleinburg-renovation-images/kleinburg-curved-staircase-before-wide.jpg
+        alt: Curved Kleinburg staircase before the finish transformation.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./piano-stairs-kleinburg-renovation-images/kleinburg-upper-landing-after.jpg
+        alt: Finished upper landing and railing after the staircase renovation.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./piano-stairs-kleinburg-renovation-images/kleinburg-lower-flight-finished.jpg
+        alt: Finished lower flight showing the piano-key contrast.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
 heroImage: ./piano-stairs-kleinburg-renovation-images/kleinburg-piano-stairs-finished-wide.jpg
 heroAlt: Completed curved Kleinburg staircase with dark wood treads, white risers, dark handrails and contrasting vertical railing details.
 schemaType: BlogPosting

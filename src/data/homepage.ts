@@ -155,6 +155,7 @@ export const homepageRecentWork = [
 		location: 'Toronto',
 		summary: 'Dining, living and kitchen finishes coordinated as one connected project.',
 		href: '/interior-renovations',
+		projectHref: '/blog/newmarket-condo-renovation-2017',
 		objectPosition: 'center center',
 	},
 	{
@@ -173,6 +174,7 @@ export const homepageRecentWork = [
 		location: 'Toronto',
 		summary: 'A complete bathroom with coordinated vanity, tile and finish details.',
 		href: '/services/bathrooms',
+		projectHref: '/blog/king-west-condo-bathroom-renovation',
 		objectPosition: 'center center',
 	},
 	{
@@ -182,6 +184,7 @@ export const homepageRecentWork = [
 		location: 'Toronto',
 		summary: 'Dust-controlled removal followed by ceiling correction and finishing.',
 		href: '/services/popcorn-removal',
+		projectHref: '/blog/popcorn-ceiling-removal-collector-room-toronto',
 		objectPosition: 'center center',
 	},
 	{
@@ -191,6 +194,7 @@ export const homepageRecentWork = [
 		location: 'Toronto',
 		summary: 'Hardwood treads, railing details and connected finish work.',
 		href: '/services/stairs',
+		projectHref: '/blog/stair-refinishing-railing-replacement-etobicoke',
 		objectPosition: 'center center',
 	},
 	{
@@ -200,6 +204,7 @@ export const homepageRecentWork = [
 		location: 'GTA',
 		summary: 'Installed openings completed with clean interior trim details.',
 		href: '/services/doors_and_windows',
+		projectHref: '/blog/window-to-patio-door-aurora-pool-deck',
 		objectPosition: 'center center',
 	},
 ];

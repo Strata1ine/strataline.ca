@@ -2,6 +2,11 @@
   command = "git submodule update --init --recursive && bun run build"
   publish = "dist"
 
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Canonical host redirects. Each obsolete host reaches the final HTTPS,
 # non-www URL directly while preserving the requested path and query string.
 [[redirects]]

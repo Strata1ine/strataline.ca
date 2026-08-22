@@ -12,6 +12,62 @@ category: Kitchens & Bathrooms
 location: King West, Toronto
 service: Complete condo bathroom renovation
 featured: false
+qualityTier: A
+primaryService: /services/bathrooms
+propertyType: Condo
+problems:
+  - Cramped bathroom layout and inward-swinging door
+solutions:
+  - Pocket door, walk-in shower and relocated controls
+specialConditions:
+  - Condo logistics and compact-space sequencing
+social:
+  enabled: true
+  ready: false
+  version: 1
+  campaign: project-library
+  platforms:
+    googleBusiness: true
+    facebook: true
+    instagram: true
+    linkedin: true
+    pinterest: true
+  hook: A pocket door changed how this compact King West bathroom works.
+  callToAction: See the full layout transformation and finished details.
+  hashtags: [BathroomRenovation, KingWest, TorontoCondo, SmallBathroom]
+  media:
+    hero:
+      image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-finished-hero-wide.jpg
+      alt: Finished King West condo bathroom with a walk-in shower and floating vanity.
+      rights: owned
+      socialApproved: true
+      socialFit: contain
+    carousel:
+      - image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-finished-hero-wide.jpg
+        alt: Finished King West condo bathroom with a walk-in shower and floating vanity.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-before-inward-swing-door-portrait.jpg
+        alt: Original inward-swinging bathroom door before the layout change.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-finished-pocket-door-open-portrait.jpg
+        alt: Finished pocket door open to the renovated bathroom.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-relocated-shower-controls-wide.jpg
+        alt: Walk-in shower with controls positioned near the entrance.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
+      - image: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-finished-floating-vanity-lighting-wide.jpg
+        alt: Floating vanity and lighting in the finished King West bathroom.
+        rights: owned
+        socialApproved: true
+        socialFit: contain
 heroImage: ./king-west-condo-bathroom-renovation-images/king-west-bathroom-finished-hero-wide.jpg
 heroAlt: Completed King West condo bathroom with a glass walk-in shower, modern toilet, floating vanity, bright wall tile and pot lights.
 schemaType: BlogPosting

@@ -1,0 +1,270 @@
+---
+import { Picture } from 'astro:assets';
+import BlogCard from './BlogCard.astro';
+import BlogPagination from './BlogPagination.astro';
+import type { BlogPost } from '@/data/blog';
+import {
+	COMPLETED_PROJECT_ARCHIVE_COUNT,
+	getArchiveStories,
+	getContentType,
+	getEligibleCategories,
+	getEligibleCities,
+	getProblemTags,
+	paginate,
+	PROJECTS_GUIDES_PAGE_SIZE,
+} from '@/data/projectsGuides';
+import blogHubHero from '../../../content/blog/blog-hub/blog-hero.jpg';
+
+interface Props {
+	posts: BlogPost[];
+	page?: number;
+}
+const { posts, page = 1 } = Astro.props;
+const projects = posts.filter((post) => getContentType(post) === 'project-story');
+const guides = posts.filter((post) => getContentType(post) === 'renovation-guide');
+const featuredProject = projects.find((post) => post.data.featured) ?? projects[0];
+const feed = posts.filter((post) => post.id !== featuredProject?.id);
+const pagination = paginate(feed, page, PROJECTS_GUIDES_PAGE_SIZE);
+const pageProjects = pagination.items.filter((post) => getContentType(post) === 'project-story');
+const pageGuides = pagination.items.filter((post) => getContentType(post) === 'renovation-guide');
+const categories = getEligibleCategories(posts);
+const cities = getEligibleCities(posts);
+const archiveStories = getArchiveStories(posts);
+const problemLinks = [
+	{ label: 'Dated stairs and railings', href: '/blog/stairs' },
+	{ label: 'Textured or damaged ceilings', href: '/blog/ceilings' },
+	{ label: 'Space planning', href: '/blog/interior-renovations' },
+	{ label: 'Occupied-home renovation', href: '/blog/planning-costs' },
+	{ label: 'Access and openings', href: '/blog/doors-windows' },
+	{ label: 'Finish coordination', href: '/blog/painting' },
+];
+---
+
+<header class="blog-index-hero blog-shell">
+	<div class="blog-index-hero__media" aria-hidden="true">
+		<Picture
+			src={blogHubHero}
+			formats={['avif', 'webp']}
+			alt=""
+			widths={[640, 960, 1440, 1920, 2400]}
+			sizes="(max-width: 767px) 100vw, min(75rem, 100vw)"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="blog-index-hero__shade" aria-hidden="true"></div>
+	<div class="blog-index-hero__copy">
+		<p class="blog-eyebrow">PROJECTS &amp; GUIDES</p>
+		<h1>Real projects. Practical answers.</h1>
+		<p>
+			A growing visual library drawn from 160 completed Strataline renovations across Toronto and
+			the GTA.
+		</p>
+		<div class="blog-index-hero__counts" aria-label="Library size">
+			<strong
+				>{projects.length} detailed project {projects.length === 1 ? 'story' : 'stories'}</strong
+			>
+			<span>From an archive of {COMPLETED_PROJECT_ARCHIVE_COUNT} completed renovations</span>
+		</div>
+	</div>
+</header>
+
+<section class="blog-library blog-shell" aria-label="Projects and guides library">
+	{
+		page === 1 && featuredProject && (
+			<section
+				class="blog-content-group blog-content-group--featured"
+				data-blog-group
+				aria-labelledby="featured-project-title"
+			>
+				<div class="blog-section-heading blog-section-heading--compact">
+					<p class="blog-eyebrow">FEATURED PROJECT STORY</p>
+					<h2 id="featured-project-title">
+						One renovation, documented from challenge to finished result.
+					</h2>
+				</div>
+				<div class="blog-grid blog-grid--featured">
+					<BlogCard post={featuredProject} variant="featured" />
+				</div>
+			</section>
+		)
+	}
+
+	{
+		page === 1 && (
+			<section class="blog-content-group blog-discovery" aria-labelledby="services-title">
+				<div class="blog-section-heading blog-section-heading--compact">
+					<p class="blog-eyebrow">BROWSE BY SERVICE</p>
+					<h2 id="services-title">Start with the work you are planning.</h2>
+				</div>
+				<nav class="blog-topic-links" aria-label="Project service categories">
+					{categories.map((category) => (
+						<a href={`/blog/${category.slug}`}>
+							<span>{category.label}</span>
+							<small>{category.description.split('.')[0]}.</small>
+						</a>
+					))}
+				</nav>
+			</section>
+		)
+	}
+
+	{
+		page === 1 && (
+			<section class="blog-content-group blog-discovery" aria-labelledby="problems-title">
+				<div class="blog-section-heading blog-section-heading--compact">
+					<p class="blog-eyebrow">BROWSE BY PROBLEM</p>
+					<h2 id="problems-title">Find projects that began with a similar condition.</h2>
+				</div>
+				<nav class="blog-problem-links" aria-label="Renovation problems">
+					{problemLinks.map((problem) => (
+						<a href={problem.href}>
+							{problem.label}
+							<span aria-hidden="true">→</span>
+						</a>
+					))}
+				</nav>
+			</section>
+		)
+	}
+
+	<section class="blog-library-search" aria-labelledby="library-search-title">
+		<div>
+			<p class="blog-eyebrow">SEARCH THIS PAGE</p>
+			<h2 id="library-search-title">
+				{page === 1 ? 'Latest project stories and guides.' : `Projects and guides — page ${page}.`}
+			</h2>
+		</div>
+		<label>
+			<span class="sr-only">Search visible projects and guides</span>
+			<input type="search" placeholder="Search projects, cities or services" data-library-search />
+		</label>
+		<p aria-live="polite" data-library-results>{pagination.items.length} items on this page</p>
+	</section>
+
+	{
+		pageProjects.length > 0 && (
+			<section class="blog-content-group" data-blog-group aria-labelledby="latest-projects-title">
+				<div class="blog-section-heading">
+					<p class="blog-eyebrow">LATEST PROJECT STORIES</p>
+					<h2 id="latest-projects-title">Recent transformations from real Strataline projects.</h2>
+				</div>
+				<div class="blog-grid blog-grid--projects">
+					{pageProjects.map((post) => (
+						<div
+							data-library-item
+							data-library-search-text={[
+								post.data.title,
+								post.data.description,
+								post.data.location,
+								post.data.category,
+								...getProblemTags(post),
+							]
+								.join(' ')
+								.toLowerCase()}
+						>
+							<BlogCard
+								post={post}
+								variant={post.data.hubProminence === 'lead' ? 'lead' : 'standard'}
+							/>
+						</div>
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	{
+		pageGuides.length > 0 && (
+			<section
+				class="blog-content-group blog-content-group--guides"
+				data-blog-group
+				aria-labelledby="guides-title"
+			>
+				<div class="blog-section-heading">
+					<p class="blog-eyebrow">RENOVATION GUIDES</p>
+					<h2 id="guides-title">Practical guidance for planning the work.</h2>
+				</div>
+				<div class="blog-grid blog-grid--guides">
+					{pageGuides.map((post) => (
+						<div
+							data-library-item
+							data-library-search-text={[
+								post.data.title,
+								post.data.description,
+								post.data.category,
+								...getProblemTags(post),
+							]
+								.join(' ')
+								.toLowerCase()}
+						>
+							<BlogCard post={post} />
+						</div>
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	{
+		page === 1 && cities.length > 0 && (
+			<section class="blog-content-group blog-discovery" aria-labelledby="locations-title">
+				<div class="blog-section-heading blog-section-heading--compact">
+					<p class="blog-eyebrow">BROWSE BY LOCATION</p>
+					<h2 id="locations-title">Project stories grounded in local homes.</h2>
+				</div>
+				<nav class="blog-location-links" aria-label="Project locations">
+					{cities.map((item) => (
+						<a href={`/blog/locations/${item.slug}`}>
+							<strong>{item.city}</strong>
+							<span>{item.count} detailed project stories</span>
+						</a>
+					))}
+				</nav>
+			</section>
+		)
+	}
+
+	{
+		page === 1 && archiveStories.length > 0 && (
+			<section
+				class="blog-content-group blog-content-group--archive"
+				aria-labelledby="archive-title"
+			>
+				<div class="blog-section-heading">
+					<p class="blog-eyebrow">FROM THE ARCHIVE</p>
+					<h2 id="archive-title">Earlier Strataline work with lasting planning value.</h2>
+					<p>
+						Selected published stories from an archive of {COMPLETED_PROJECT_ARCHIVE_COUNT}{' '}
+						completed renovations. The full archive is not presented as 160 standalone articles.
+					</p>
+				</div>
+				<div class="blog-grid">
+					{archiveStories.map((post) => (
+						<BlogCard post={post} variant="supporting" />
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	<BlogPagination page={pagination.page} pageCount={pagination.pageCount} basePath="/blog" />
+</section>
+
+<script>
+	const input = document.querySelector('[data-library-search]');
+	const items = [...document.querySelectorAll('[data-library-item]')];
+	const output = document.querySelector('[data-library-results]');
+	input?.addEventListener('input', () => {
+		if (!(input instanceof HTMLInputElement)) return;
+		const query = input.value.trim().toLowerCase();
+		let count = 0;
+		for (const item of items) {
+			if (!(item instanceof HTMLElement)) continue;
+			const show = !query || (item.dataset.librarySearchText ?? '').includes(query);
+			item.hidden = !show;
+			if (show) count += 1;
+		}
+		if (output) output.textContent = `${count} ${count === 1 ? 'item' : 'items'} on this page`;
+	});
+</script>

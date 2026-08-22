@@ -5,6 +5,7 @@ import * as Layout from '@/components/Layout';
 import Home from '@/components/Home';
 import Talk from '@/components/Talk';
 import Image from '@/components/Image';
+import RealProjects from '@/components/blog/RealProjects.astro';
 
 import { type CollectionEntry } from 'astro:content';
 import { getCollection } from '@/content.config';
@@ -57,16 +58,14 @@ export const seo = async (Astro: AstroGlobal, service: CollectionEntry<'services
 };
 
 export async function getStaticPaths() {
-	const services = (await getCollection('services')).filter(
-		(service) => {
-			const servicePath = service.id.replace(/\/index$/, '');
-			return (
-				service.data.hidden !== true &&
-				servicePath !== 'popcorn-removal' &&
-				!servicePath.startsWith('stairs')
-			);
-		},
-	);
+	const services = (await getCollection('services')).filter((service) => {
+		const servicePath = service.id.replace(/\/index$/, '');
+		return (
+			service.data.hidden !== true &&
+			servicePath !== 'popcorn-removal' &&
+			!servicePath.startsWith('stairs')
+		);
+	});
 
 	return services.map((service) => ({
 		params: { slug: service.id.replace(/\/index$/, '') },
@@ -137,4 +136,9 @@ const serviceSections = service.data.sections.filter((section) => section.type !
 			/>
 		</Layout.Container>
 	</section>
+	<RealProjects
+		slot="after-blocks"
+		serviceHref={'/services/' + servicePath}
+		heading={'Real ' + service.data.title.toLowerCase() + ' projects.'}
+	/>
 </Root>

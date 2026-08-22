@@ -6,6 +6,7 @@ import PrototypeLayout from '@/layouts/PrototypeLayout.astro';
 import Footer from '@/sections/Footer.astro';
 import type { BlogPost } from '@/data/blog';
 import BlogBreadcrumb from './BlogBreadcrumb.astro';
+import BlogConnections from './BlogConnections.astro';
 import CaseStudyBeforeAfter from './CaseStudyBeforeAfter.astro';
 import CaseStudyGallery from './CaseStudyGallery.astro';
 import CaseStudyVideo from './CaseStudyVideo.astro';
@@ -107,7 +108,9 @@ const cta = d.cta ?? {
 		<PrototypeHeader />
 		<main>
 			<article class="case-study">
-				<header class:list={['case-hero', 'case-media--hero', { 'case-hero--document': isDocumentHero }]}>
+				<header
+					class:list={['case-hero', 'case-media--hero', { 'case-hero--document': isDocumentHero }]}
+				>
 					{
 						!isDocumentHero && (
 							<Picture
@@ -126,7 +129,10 @@ const cta = d.cta ?? {
 						<div class:list={['case-hero__content', { 'blog-shell': !isDocumentHero }]}>
 							<BlogBreadcrumb current={breadcrumbLabel} />
 							<p class="blog-eyebrow">
-								{d.heroEyebrow ?? `${isGuide ? 'RENOVATION GUIDE' : 'PROJECT STORY'} · ${d.category}`}
+								{
+									d.heroEyebrow ??
+										`${isGuide ? 'RENOVATION GUIDE' : 'PROJECT STORY'} · ${d.category}`
+								}
 							</p>
 							<h1>{d.heroHeading ?? d.title}</h1>
 							<p>{d.heroIntro ?? d.description}</p>
@@ -195,12 +201,25 @@ const cta = d.cta ?? {
 													</div>
 												)}
 											</div>
-											<div class:list={['case-text-media__media case-media', `case-media--${block.media.size}`]}>
+											<div
+												class:list={[
+													'case-text-media__media case-media',
+													`case-media--${block.media.size}`,
+												]}
+											>
 												{block.media.type === 'image' && (
 													<CaseStudyGallery
-														items={[{ image: block.media.image, alt: block.media.alt, caption: block.media.caption }]}
+														items={[
+															{
+																image: block.media.image,
+																alt: block.media.alt,
+																caption: block.media.caption,
+															},
+														]}
 														idPrefix={`content-${d.slug}-${index}`}
-														viewMode={block.media.presentation === 'document' ? 'document' : 'standard'}
+														viewMode={
+															block.media.presentation === 'document' ? 'document' : 'standard'
+														}
 														layout="editorial"
 													/>
 												)}
@@ -361,8 +380,7 @@ const cta = d.cta ?? {
 											/>
 										</section>
 									);
-								if (block.type === 'related-stories')
-									return null;
+								if (block.type === 'related-stories') return null;
 								if (block.type === 'related-story')
 									return (
 										<section
@@ -393,7 +411,12 @@ const cta = d.cta ?? {
 									);
 								if (block.type === 'before-after')
 									return (
-										<section class:list={['case-section case-inline-media case-media', `case-media--${block.size ?? 'slider'}`]}>
+										<section
+											class:list={[
+												'case-section case-inline-media case-media',
+												`case-media--${block.size ?? 'slider'}`,
+											]}
+										>
 											{block.heading && <h2>{block.heading}</h2>}
 											<CaseStudyBeforeAfter
 												beforeImage={block.beforeImage}
@@ -626,6 +649,7 @@ const cta = d.cta ?? {
 							</section>
 						))
 					}
+					<BlogConnections post={post} />
 					<aside class="case-author">
 						<p><strong>{d.author}</strong><br />Owner, Strataline Inc.</p><p>
 							Based on real Strataline renovation projects completed across Toronto and the GTA.

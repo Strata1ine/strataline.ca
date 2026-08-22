@@ -17,7 +17,14 @@ export const blogCategories = [
 export type BlogPost = CollectionEntry<'blog'>;
 
 export const getPublishedBlogPosts = async () => {
-	const posts = await getCollection('blog', (entry) => !entry.data.draft);
+	const posts = await getCollection(
+		'blog',
+		(entry) =>
+			!entry.data.draft &&
+			entry.data.indexable !== false &&
+			entry.data.contentType !== 'archive-project' &&
+			entry.data.qualityTier !== 'C',
+	);
 	return posts.sort(
 		(a, b) =>
 			b.data.publishedDate.getTime() - a.data.publishedDate.getTime() ||

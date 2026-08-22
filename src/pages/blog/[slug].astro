@@ -4,6 +4,7 @@ import { render } from 'astro:content';
 
 import BlogCard from '@/components/blog/BlogCard.astro';
 import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb.astro';
+import BlogConnections from '@/components/blog/BlogConnections.astro';
 import CaseStudyArticle from '@/components/blog/CaseStudyArticle.astro';
 import ProjectFactsGrid from '@/components/blog/ProjectFactsGrid.astro';
 import PrototypeHeader from '@/components/prototype/PrototypeHeader.astro';
@@ -169,6 +170,8 @@ const schemas = [
 										))}
 									</ul>
 								</section>
+
+								<BlogConnections post={post} />
 
 								<section
 									class="blog-service-cta"

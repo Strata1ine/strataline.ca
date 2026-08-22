@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { recentWork } from '@/data/interiorRenovationsPrototype';
 
-type WorkItem = (typeof recentWork)[number];
+type WorkItem = (typeof recentWork)[number] & { projectHref?: string };
 
 interface Props {
 	items?: WorkItem[];
@@ -44,6 +44,7 @@ const {
 					class:list={[
 						'proto-work-gallery__item reveal',
 						index === 0 && 'proto-work-gallery__item--featured',
+						item.projectHref && 'has-project-story',
 					]}
 				>
 					<button
@@ -71,12 +72,21 @@ const {
 						</figure>
 						<span>{item.caption}</span>
 					</button>
+					{item.projectHref && (
+						<a class="proto-work-gallery__story" href={item.projectHref}>
+							View project story
+						</a>
+					)}
 					<a class="proto-work-gallery__service" href={item.href}>
 						Explore service
 					</a>
 				</article>
 			))
 		}
+	</div>
+	<div class="proto-work-gallery__library">
+		<p>These are genuine Strataline renovations documented across the growing project library.</p>
+		<a href="/blog">Explore Projects &amp; Guides <span aria-hidden="true">→</span></a>
 	</div>
 
 	<div
@@ -248,3 +258,47 @@ const {
 		}
 	});
 </script>
+<style>
+	.proto-work-gallery .proto-work-gallery__story {
+		position: absolute;
+		bottom: 2.45rem;
+		left: 0;
+		z-index: 3;
+		padding: 0.65rem 1rem;
+		color: #fff;
+		font-size: 0.78rem;
+		font-weight: 750;
+		text-underline-offset: 0.25em;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+	}
+	.proto-work-gallery__item.has-project-story button > span {
+		bottom: 5rem;
+	}
+	.proto-work-gallery__library {
+		display: flex;
+		width: min(var(--proto-wide), 100%);
+		justify-content: space-between;
+		gap: 1.5rem;
+		align-items: center;
+		margin: 1.5rem auto 0;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--proto-border);
+	}
+	.proto-work-gallery__library p {
+		max-width: 46rem;
+		margin: 0;
+		color: var(--proto-muted);
+	}
+	.proto-work-gallery__library a {
+		color: inherit;
+		font-weight: 750;
+		white-space: nowrap;
+	}
+	@media (max-width: 700px) {
+		.proto-work-gallery__library {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+	}
+</style>

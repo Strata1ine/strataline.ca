@@ -89,6 +89,36 @@ export const collections = {
 				alt: z.string(),
 				caption: z.string().optional(),
 			});
+			const socialMedia = z.object({
+				image: contentImage(),
+				alt: z.string().optional(),
+				rights: z.enum(['owned', 'licensed', 'third-party']),
+				socialApproved: z.boolean().default(false),
+				peopleVisible: z.boolean().default(false),
+				peopleApproved: z.boolean().default(false),
+				thirdPartySocialUseApproved: z.boolean().default(false),
+				focalPoint: z
+					.object({
+						x: z.coerce.number().min(0).max(100),
+						y: z.coerce.number().min(0).max(100),
+					})
+					.optional(),
+				socialFit: z.enum(['contain', 'cover']).default('contain'),
+				background: z
+					.string()
+					.regex(/^#[0-9a-fA-F]{6}$/)
+					.optional(),
+			});
+			const platformSelection = z.object({
+				summary: z.string().optional(),
+				copy: z.string().optional(),
+				caption: z.string().optional(),
+				commentary: z.string().optional(),
+				title: z.string().optional(),
+				description: z.string().optional(),
+				media: z.union([socialMedia, z.array(socialMedia)]).optional(),
+				board: z.string().optional(),
+			});
 			const sectionMedia = z.discriminatedUnion('type', [
 				z.object({
 					type: z.literal('image'),
@@ -218,6 +248,70 @@ export const collections = {
 
 			return z.object({
 				type: z.enum(['guide', 'case-study']).default('guide'),
+				contentType: z.enum(['project-story', 'renovation-guide', 'archive-project']).optional(),
+				qualityTier: z.enum(['A', 'B', 'C']).optional(),
+				primaryService: z.string().startsWith('/').optional(),
+				secondaryServices: z.array(z.string().startsWith('/')).default([]),
+				city: z.string().optional(),
+				neighbourhood: z.string().optional(),
+				propertyType: z.string().optional(),
+				problems: z.array(z.string()).default([]),
+				solutions: z.array(z.string()).default([]),
+				materials: z.array(z.string()).default([]),
+				specialConditions: z.array(z.string()).default([]),
+				archiveId: z.string().optional(),
+				relatedProjects: z.array(z.string()).default([]),
+				relatedGuides: z.array(z.string()).default([]),
+				reviewId: z.string().optional(),
+				mediaFeature: z.string().optional(),
+				indexable: z.boolean().default(true),
+				social: z
+					.object({
+						enabled: z.boolean().default(false),
+						ready: z.boolean().default(false),
+						version: z.coerce.number().int().positive(),
+						publishAt: z.coerce.date().optional().nullable(),
+						campaign: z.string().default('project-library'),
+						platforms: z
+							.object({
+								googleBusiness: z.boolean().default(true),
+								facebook: z.boolean().default(true),
+								instagram: z.boolean().default(true),
+								linkedin: z.boolean().default(true),
+								pinterest: z.boolean().default(true),
+							})
+							.default({}),
+						hook: z.string().optional(),
+						summary: z.string().optional(),
+						callToAction: z.string().optional(),
+						hashtags: z.array(z.string()).default([]),
+						media: z
+							.object({
+								hero: socialMedia.optional(),
+								carousel: z.array(socialMedia).max(7).default([]),
+								pinterest: socialMedia.optional(),
+								focalPoint: z
+									.object({
+										x: z.coerce.number().min(0).max(100),
+										y: z.coerce.number().min(0).max(100),
+									})
+									.optional(),
+							})
+							.default({}),
+						overrides: z
+							.object({
+								googleBusiness: platformSelection.optional(),
+								facebook: platformSelection.optional(),
+								instagram: platformSelection.optional(),
+								linkedin: platformSelection.optional(),
+								pinterest: platformSelection.optional(),
+							})
+							.default({}),
+						linkedinEligible: z.boolean().default(false),
+						addressApproved: z.boolean().default(false),
+						clientNameApproved: z.boolean().default(false),
+					})
+					.optional(),
 				title: z.string(),
 				seoTitle: z.string().optional(),
 				heroHeading: z.string().optional(),
@@ -239,7 +333,7 @@ export const collections = {
 					'Planning & Costs',
 				]),
 				featured: z.boolean(),
-				hubProminence: z.enum(['lead']).optional(),
+				hubProminence: z.enum(['lead', 'standard', 'supporting', 'archive']).optional(),
 				heroImage: contentImage(),
 				heroAlt: z.string(),
 				heroPresentation: z.enum(['cover', 'document']).default('cover'),

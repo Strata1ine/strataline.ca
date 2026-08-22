@@ -5,7 +5,14 @@
 	"scripts": {
 		"dev": "astro dev --host",
 		"validate:project-stories": "node scripts/validate-project-stories.mjs",
-		"build": "npm run validate:project-stories && astro build",
+		"validate:projects-guides": "node scripts/validate-projects-guides.mjs",
+		"validate:social": "node scripts/validate-social-publishing.mjs",
+		"test:social": "node --experimental-strip-types --test tests/social-publishing.test.mjs",
+		"social:preview": "node --experimental-strip-types scripts/social-preview.mjs",
+		"social:status": "node scripts/social-operator.mjs status",
+		"social:retry": "node scripts/social-operator.mjs retry",
+		"social:backfill": "node scripts/social-backfill.mjs",
+		"build": "npm run validate:project-stories && npm run validate:projects-guides && npm run validate:social && npm run test:social && astro build",
 		"preview": "astro preview --host",
 		"astro": "astro",
 		"generate:wallpaper": "node generate-wallpaper-pages.mjs"

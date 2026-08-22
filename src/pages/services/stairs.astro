@@ -8,6 +8,7 @@ import ProgressiveFaq from '@/components/ProgressiveFaq.astro';
 import ReviewCollection from '@/components/ReviewCollection.astro';
 import StairProjectStory from '@/components/prototype/StairProjectStory.astro';
 import StairsProjectGallery from '@/components/prototype/StairsProjectGallery.astro';
+import RealProjects from '@/components/blog/RealProjects.astro';
 import Footer from '@/sections/Footer.astro';
 import { getReviewsByIds } from '@/data/reviews';
 import {
@@ -127,34 +128,116 @@ const schemas = [
 						<h1 id="stairs-hero-title">A stair renovation changes the whole room.</h1>
 						<p class="stairs-hero__lead">{serviceDescription}</p>
 						<div class="stairs-hero__actions">
-							<button class="stairs-button stairs-button--gold" type="button" data-stairs-contact-open data-track="stairs_hero_quote_click">Request a Stair Quote</button>
-							<a class="stairs-phone" href="tel:+14164715999" data-track="stairs_phone_click"><span>Call or text</span><strong>(416) 471-5999</strong></a>
+							<button
+								class="stairs-button stairs-button--gold"
+								type="button"
+								data-stairs-contact-open
+								data-track="stairs_hero_quote_click">Request a Stair Quote</button
+							>
+							<a class="stairs-phone" href="tel:+14164715999" data-track="stairs_phone_click"
+								><span>Call or text</span><strong>(416) 471-5999</strong></a
+							>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="stairs-section stairs-decision" id="renovation-paths" aria-labelledby="decision-title">
+			<section
+				class="stairs-section stairs-decision"
+				id="renovation-paths"
+				aria-labelledby="decision-title"
+			>
 				<div class="stairs-shell">
-					<header class="stairs-heading"><p class="stairs-eyebrow">Choose the right approach</p><h2 id="decision-title">What does your staircase need?</h2></header>
+					<header class="stairs-heading">
+						<p class="stairs-eyebrow">Choose the right approach</p><h2 id="decision-title">
+							What does your staircase need?
+						</h2>
+					</header>
 					<div class="stairs-decision__matrix">
-						{decisionItems.map((item, index) => <article><Picture src={item.image.src} formats={['avif', 'webp']} alt={item.image.alt} widths={[320, 480, 720]} sizes="(max-width: 767px) 94vw, 38vw" loading="lazy" /><div><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.text}</p><a href={item.href} data-track="stairs_renovation_path_click" data-path={item.title}>{item.linkLabel} <span aria-hidden="true">→</span></a></div></article>)}
+						{
+							decisionItems.map((item, index) => (
+								<article>
+									<>
+										<Picture
+											src={item.image.src}
+											formats={['avif', 'webp']}
+											alt={item.image.alt}
+											widths={[320, 480, 720]}
+											sizes="(max-width: 767px) 94vw, 38vw"
+											loading="lazy"
+										/>
+										<div>
+											<>
+												<span>{String(index + 1).padStart(2, '0')}</span>
+												<h3>{item.title}</h3>
+												<p>{item.text}</p>
+												<a
+													href={item.href}
+													data-track="stairs_renovation_path_click"
+													data-path={item.title}
+												>
+													{item.linkLabel} <span aria-hidden="true">→</span>
+												</a>
+											</>
+										</div>
+									</>
+								</article>
+							))
+						}
 					</div>
 				</div>
 			</section>
 
-			<section class="stairs-section stairs-comparison" id="before-after" aria-labelledby="comparison-title">
+			<section
+				class="stairs-section stairs-comparison"
+				id="before-after"
+				aria-labelledby="comparison-title"
+			>
 				<div class="stairs-shell stairs-comparison__inner">
-					<header class="stairs-heading stairs-heading--split"><div><p class="stairs-eyebrow">Before &amp; after</p><h2 id="comparison-title">A curved stair can feel completely new without losing its shape.</h2></div><p>The original curved geometry remained while dark treads, white risers and black metal balusters changed the visual weight of the staircase.</p></header>
-					<BeforeAfterViewer comparison={primaryComparison} eventName="stairs_before_after_interaction" loading="eager" />
-					<p class="stairs-comparison__caption"><strong>Project:</strong> Curved staircase · Stair refinishing and railing update</p>
+					<header class="stairs-heading stairs-heading--split">
+						<div>
+							<p class="stairs-eyebrow">Before &amp; after</p><h2 id="comparison-title">
+								A curved stair can feel completely new without losing its shape.
+							</h2>
+						</div><p>
+							The original curved geometry remained while dark treads, white risers and black metal
+							balusters changed the visual weight of the staircase.
+						</p>
+					</header>
+					<BeforeAfterViewer
+						comparison={primaryComparison}
+						eventName="stairs_before_after_interaction"
+						loading="eager"
+					/>
+					<p class="stairs-comparison__caption">
+						<strong>Project:</strong> Curved staircase · Stair refinishing and railing update
+					</p>
 				</div>
 			</section>
 
-			<section class="stairs-section stairs-comparison stairs-comparison--capping" id="stair-capping-before-after" aria-labelledby="capping-comparison-title">
+			<section
+				class="stairs-section stairs-comparison stairs-comparison--capping"
+				id="stair-capping-before-after"
+				aria-labelledby="capping-comparison-title"
+			>
 				<div class="stairs-shell stairs-comparison__inner">
-					<header class="stairs-heading stairs-heading--split"><div><p class="stairs-eyebrow">Stair capping before &amp; after</p><h2 id="capping-comparison-title">Carpeted stairs → modern hardwood upgrade</h2></div><p>Outdated carpet was removed and replaced with solid oak tread caps, paired with white risers and an updated railing system.</p></header>
-					<BeforeAfterViewer comparison={cappingComparison} eventName="stairs_capping_before_after_interaction" loading="lazy" />
+					<header class="stairs-heading stairs-heading--split">
+						<div>
+							<p class="stairs-eyebrow">Stair capping before &amp; after</p><h2
+								id="capping-comparison-title"
+							>
+								Carpeted stairs → modern hardwood upgrade
+							</h2>
+						</div><p>
+							Outdated carpet was removed and replaced with solid oak tread caps, paired with white
+							risers and an updated railing system.
+						</p>
+					</header>
+					<BeforeAfterViewer
+						comparison={cappingComparison}
+						eventName="stairs_capping_before_after_interaction"
+						loading="lazy"
+					/>
 				</div>
 			</section>
 
@@ -162,60 +245,314 @@ const schemas = [
 
 			<section class="stairs-gallery-cta" aria-labelledby="gallery-cta-title">
 				<div class="stairs-shell stairs-gallery-cta__inner">
-					<div><p class="stairs-eyebrow">Your staircase</p><h2 id="gallery-cta-title">See a staircase direction you like?</h2><p>Show us your existing stairs and we’ll explain which renovation approach fits.</p></div>
-					<div class="stairs-gallery-cta__actions"><button class="stairs-button stairs-button--gold" type="button" data-stairs-contact-open data-track="stairs_gallery_quote_click">Request a Stair Quote</button><a href="tel:+14164715999" data-track="stairs_phone_click">Call or Text (416) 471-5999</a></div>
-				</div>
-			</section>
-
-			<section class="stairs-section stairs-comparison stairs-comparison--secondary" id="woodbridge-before-after" aria-labelledby="secondary-comparison-title">
-				<div class="stairs-shell stairs-comparison__inner">
-					<header class="stairs-heading stairs-heading--split"><div><p class="stairs-eyebrow">Second transformation</p><h2 id="secondary-comparison-title">Warm oak to dark stringers and metal balusters.</h2></div><p>This Woodbridge project shows how tread finish, stringers, posts and railing details can be coordinated without changing the familiar stair layout.</p></header>
-					<BeforeAfterViewer comparison={secondaryComparison} eventName="stairs_secondary_before_after_interaction" loading="lazy" />
-					<p class="stairs-comparison__caption"><strong>Project:</strong> Stair refinishing and railing update · Woodbridge</p>
-				</div>
-			</section>
-
-			<section class="stairs-section stairs-projects" id="projects" aria-labelledby="projects-title">
-				<div class="stairs-shell">
-					<header class="stairs-heading"><p class="stairs-eyebrow">Project stories</p><h2 id="projects-title">Three real transformations, each with a different starting point.</h2></header>
-					<div class="stairs-case-studies">
-						{caseStudies.map((project, index) => <StairProjectStory project={project} index={index} />)}
+					<div>
+						<p class="stairs-eyebrow">Your staircase</p><h2 id="gallery-cta-title">
+							See a staircase direction you like?
+						</h2><p>
+							Show us your existing stairs and we’ll explain which renovation approach fits.
+						</p>
 					</div>
-					<p class="stairs-projects__more"><a class="stairs-text-link" href="/blog/staircase-stain-matching-bayview-lawrence-toronto">See the Bayview &amp; Lawrence staircase stain-matching project <span aria-hidden="true">→</span></a></p>
+					<div class="stairs-gallery-cta__actions">
+						<button
+							class="stairs-button stairs-button--gold"
+							type="button"
+							data-stairs-contact-open
+							data-track="stairs_gallery_quote_click">Request a Stair Quote</button
+						><a href="tel:+14164715999" data-track="stairs_phone_click"
+							>Call or Text (416) 471-5999</a>
+					</div>
 				</div>
 			</section>
+
+			<section
+				class="stairs-section stairs-comparison stairs-comparison--secondary"
+				id="woodbridge-before-after"
+				aria-labelledby="secondary-comparison-title"
+			>
+				<div class="stairs-shell stairs-comparison__inner">
+					<header class="stairs-heading stairs-heading--split">
+						<div>
+							<p class="stairs-eyebrow">Second transformation</p><h2
+								id="secondary-comparison-title"
+							>
+								Warm oak to dark stringers and metal balusters.
+							</h2>
+						</div><p>
+							This Woodbridge project shows how tread finish, stringers, posts and railing details
+							can be coordinated without changing the familiar stair layout.
+						</p>
+					</header>
+					<BeforeAfterViewer
+						comparison={secondaryComparison}
+						eventName="stairs_secondary_before_after_interaction"
+						loading="lazy"
+					/>
+					<p class="stairs-comparison__caption">
+						<strong>Project:</strong> Stair refinishing and railing update · Woodbridge
+					</p>
+				</div>
+			</section>
+
+			<section
+				class="stairs-section stairs-projects"
+				id="projects"
+				aria-labelledby="projects-title"
+			>
+				<div class="stairs-shell">
+					<header class="stairs-heading">
+						<p class="stairs-eyebrow">Project stories</p><h2 id="projects-title">
+							Three real transformations, each with a different starting point.
+						</h2>
+					</header>
+					<div class="stairs-case-studies">
+						{
+							caseStudies.map((project, index) => (
+								<StairProjectStory project={project} index={index} />
+							))
+						}
+					</div>
+					<p class="stairs-projects__more">
+						<a
+							class="stairs-text-link"
+							href="/blog/staircase-stain-matching-bayview-lawrence-toronto"
+							>See the Bayview &amp; Lawrence staircase stain-matching project <span
+								aria-hidden="true">→</span
+							></a>
+					</p>
+				</div>
+			</section>
+
+			<RealProjects
+				serviceHref="/services/stairs"
+				heading="More real staircase transformations."
+				description="Detailed stair refinishing, tread-capping and railing stories with the starting conditions and finished results."
+			/>
 
 			<section class="stairs-railing" id="railings" aria-labelledby="railing-title">
-				<Picture src={railingFeatureImage} formats={['avif', 'webp']} alt="Curved staircase with dark wood treads, new posts and black metal railings." widths={[480, 768, 1024, 1440, 1920]} sizes="100vw" loading="lazy" />
-				<div class="stairs-railing__shade" aria-hidden="true"></div><div class="stairs-shell stairs-railing__inner"><div class="stairs-glass stairs-railing__panel"><p class="stairs-eyebrow">Railing feature</p><h2 id="railing-title">The railing changes the entire staircase.</h2><p>Posts, handrails, balusters and upper guards are planned together so the proportions, connections and finish read as one system.</p><p class="stairs-railing__policy">Railing renovations use new posts. Existing wood spindles are not refinished. An existing handrail may remain only when suitable for the new system.</p><a class="stairs-text-link" href="/services/stairs/railing-installation" data-track="stairs_renovation_path_click">See stair railing installation <span aria-hidden="true">→</span></a></div></div>
-			</section>
-
-			<section class="stairs-section stairs-scope" id="scope-and-cost" aria-labelledby="scope-title">
-				<div class="stairs-shell stairs-scope__layout">
-					<div class="stairs-scope__content">
-						<header class="stairs-heading"><p class="stairs-eyebrow">Scope &amp; cost</p><h2 id="scope-title">A stair quote should account for the whole staircase.</h2><p>The final price depends on the staircase itself, what can remain, what needs replacement and how the finish work is coordinated.</p><strong>Compare quotes by what is included—not only by the price per step.</strong></header>
-						<div class="stairs-scope__groups">{scopeGroups.map((group) => <section><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></section>)}</div>
+				<Picture
+					src={railingFeatureImage}
+					formats={['avif', 'webp']}
+					alt="Curved staircase with dark wood treads, new posts and black metal railings."
+					widths={[480, 768, 1024, 1440, 1920]}
+					sizes="100vw"
+					loading="lazy"
+				/>
+				<div class="stairs-railing__shade" aria-hidden="true"></div><div
+					class="stairs-shell stairs-railing__inner"
+				>
+					<div class="stairs-glass stairs-railing__panel">
+						<p class="stairs-eyebrow">Railing feature</p><h2 id="railing-title">
+							The railing changes the entire staircase.
+						</h2><p>
+							Posts, handrails, balusters and upper guards are planned together so the proportions,
+							connections and finish read as one system.
+						</p><p class="stairs-railing__policy">
+							Railing renovations use new posts. Existing wood spindles are not refinished. An
+							existing handrail may remain only when suitable for the new system.
+						</p><a
+							class="stairs-text-link"
+							href="/services/stairs/railing-installation"
+							data-track="stairs_renovation_path_click"
+							>See stair railing installation <span aria-hidden="true">→</span></a>
 					</div>
-					<Picture class="stairs-scope__image" src={scopeDetailImage} formats={['avif', 'webp']} alt="Architectural view beneath a multi-flight hardwood staircase with white stringers and dark metal railings." widths={[480, 720, 960, 1200]} sizes="(max-width: 767px) 94vw, 42vw" loading="lazy" data-floating-contact-avoid />
 				</div>
 			</section>
 
-			<section class="stairs-section stairs-accountability" id="process" aria-labelledby="process-title">
-				<div class="stairs-shell"><header class="stairs-heading"><p class="stairs-eyebrow">Owner-led process</p><h2 id="process-title">One staircase. One accountable point of contact.</h2></header><div class="stairs-accountability__layout"><ol>{processSteps.map((step) => <li><span>{step.number}</span><strong>{step.title}</strong></li>)}</ol><article class="stairs-owner-card" data-floating-contact-avoid><Picture src={ownerImage} formats={['avif', 'webp']} alt="Maxim Sologub working beside a curved staircase renovation." widths={[480, 720, 960]} sizes="(max-width: 767px) 94vw, 46vw" loading="lazy" /><div class="stairs-glass"><h3>Maxim Sologub</h3><p>Maxim Sologub reviews the staircase, develops the written scope and remains involved through measurements, stain samples, scheduling and final quality control.</p></div></article></div></div>
+			<section
+				class="stairs-section stairs-scope"
+				id="scope-and-cost"
+				aria-labelledby="scope-title"
+			>
+				<div class="stairs-shell stairs-scope__layout">
+					<div class="stairs-scope__content">
+						<header class="stairs-heading">
+							<p class="stairs-eyebrow">Scope &amp; cost</p><h2 id="scope-title">
+								A stair quote should account for the whole staircase.
+							</h2><p>
+								The final price depends on the staircase itself, what can remain, what needs
+								replacement and how the finish work is coordinated.
+							</p><strong
+								>Compare quotes by what is included—not only by the price per step.</strong>
+						</header>
+						<div class="stairs-scope__groups">
+							{
+								scopeGroups.map((group) => (
+									<section>
+										<>
+											<h3>{group.title}</h3>
+											<ul>
+												{group.items.map((item) => (
+													<li>{item}</li>
+												))}
+											</ul>
+										</>
+									</section>
+								))
+							}
+						</div>
+					</div>
+					<Picture
+						class="stairs-scope__image"
+						src={scopeDetailImage}
+						formats={['avif', 'webp']}
+						alt="Architectural view beneath a multi-flight hardwood staircase with white stringers and dark metal railings."
+						widths={[480, 720, 960, 1200]}
+						sizes="(max-width: 767px) 94vw, 42vw"
+						loading="lazy"
+						data-floating-contact-avoid
+					/>
+				</div>
 			</section>
 
-			<section class="stairs-section stairs-reviews" id="reviews" aria-labelledby="reviews-title"><div class="stairs-shell"><header class="stairs-heading stairs-heading--split"><div><p class="stairs-eyebrow">Stair-focused reviews</p><h2 id="reviews-title">What stair clients noticed.</h2></div><p>Full customer reviews remain available in each card, with genuine customer photos where supplied.</p></header><ReviewCollection reviews={stairReviews} categoryLabel="Stairs & railings" variant="cards" ariaLabel="Stair and railing reviews" photoDisclosure /></div></section>
+			<section
+				class="stairs-section stairs-accountability"
+				id="process"
+				aria-labelledby="process-title"
+			>
+				<div class="stairs-shell">
+					<header class="stairs-heading">
+						<p class="stairs-eyebrow">Owner-led process</p><h2 id="process-title">
+							One staircase. One accountable point of contact.
+						</h2>
+					</header><div class="stairs-accountability__layout">
+						<ol>
+							{
+								processSteps.map((step) => (
+									<li>
+										<>
+											<span>{step.number}</span>
+											<strong>{step.title}</strong>
+										</>
+									</li>
+								))
+							}
+						</ol><article class="stairs-owner-card" data-floating-contact-avoid>
+							<Picture
+								src={ownerImage}
+								formats={['avif', 'webp']}
+								alt="Maxim Sologub working beside a curved staircase renovation."
+								widths={[480, 720, 960]}
+								sizes="(max-width: 767px) 94vw, 46vw"
+								loading="lazy"
+							/><div class="stairs-glass">
+								<h3>Maxim Sologub</h3><p>
+									Maxim Sologub reviews the staircase, develops the written scope and remains
+									involved through measurements, stain samples, scheduling and final quality
+									control.
+								</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
 
-			<section class="stairs-section stairs-quote" id="photo-quote" aria-labelledby="quote-title"><div class="stairs-shell stairs-quote__layout"><div><p class="stairs-eyebrow">Photo quote</p><h2 id="quote-title">Start with staircase photos.</h2><p>Send top, bottom and side views, plus landings, tread count, railings, damage and the floor or finish you want to coordinate.</p></div><div class="stairs-quote__details"><p><strong>Text staircase photos to <a href="sms:+14164715999" data-track="stairs_phone_click">(416) 471-5999</a>.</strong></p><button class="stairs-button stairs-button--dark" type="button" data-stairs-contact-open data-track="stairs_photo_quote_click">Request a Stair Quote</button></div></div></section>
+			<section class="stairs-section stairs-reviews" id="reviews" aria-labelledby="reviews-title">
+				<div class="stairs-shell">
+					<header class="stairs-heading stairs-heading--split">
+						<div>
+							<p class="stairs-eyebrow">Stair-focused reviews</p><h2 id="reviews-title">
+								What stair clients noticed.
+							</h2>
+						</div><p>
+							Full customer reviews remain available in each card, with genuine customer photos
+							where supplied.
+						</p>
+					</header><ReviewCollection
+						reviews={stairReviews}
+						categoryLabel="Stairs & railings"
+						variant="cards"
+						ariaLabel="Stair and railing reviews"
+						photoDisclosure
+					/>
+				</div>
+			</section>
 
-			<section class="stairs-section stairs-faq" id="faq" aria-labelledby="stairs-faq-title"><div class="stairs-shell"><ProgressiveFaq items={faqItems} heading="Stair renovation questions" eyebrow="FAQ" supportingText="Practical answers about methods, access, finish choices and quoting." sectionId="stairs-faq" pageId="stairs" initialCount={6} /></div></section>
+			<section class="stairs-section stairs-quote" id="photo-quote" aria-labelledby="quote-title">
+				<div class="stairs-shell stairs-quote__layout">
+					<div>
+						<p class="stairs-eyebrow">Photo quote</p><h2 id="quote-title">
+							Start with staircase photos.
+						</h2><p>
+							Send top, bottom and side views, plus landings, tread count, railings, damage and the
+							floor or finish you want to coordinate.
+						</p>
+					</div><div class="stairs-quote__details">
+						<p>
+							<strong
+								>Text staircase photos to <a href="sms:+14164715999" data-track="stairs_phone_click"
+									>(416) 471-5999</a
+								>.</strong>
+						</p><button
+							class="stairs-button stairs-button--dark"
+							type="button"
+							data-stairs-contact-open
+							data-track="stairs_photo_quote_click">Request a Stair Quote</button>
+					</div>
+				</div>
+			</section>
 
-			<section class="stairs-section stairs-areas" id="service-area" aria-labelledby="areas-title"><div class="stairs-shell"><header class="stairs-heading stairs-heading--split"><div><p class="stairs-eyebrow">Service area</p><h2 id="areas-title">Stair renovation throughout Toronto and the GTA.</h2></div><p>Service coverage is confirmed with the project address before an assessment is scheduled.</p></header><div class="stairs-areas__grid">{serviceAreas.map((area) => <div><h3>{area.group}</h3><p>{area.places.join(' · ')}</p></div>)}</div></div></section>
+			<section class="stairs-section stairs-faq" id="faq" aria-labelledby="stairs-faq-title">
+				<div class="stairs-shell">
+					<ProgressiveFaq
+						items={faqItems}
+						heading="Stair renovation questions"
+						eyebrow="FAQ"
+						supportingText="Practical answers about methods, access, finish choices and quoting."
+						sectionId="stairs-faq"
+						pageId="stairs"
+						initialCount={6}
+					/>
+				</div>
+			</section>
 
-			<section class="stairs-section stairs-contact" id="consultation" aria-label="Stair project inquiry"><div class="stairs-shell"><ConsultationCTA formId="stairs-consultation" mode="inline" reveal={false} defaultProjectType="Stairs and railings" eventPrefix="stairs" submitEventName="stairs_inline_submit" /></div></section>
+			<section class="stairs-section stairs-areas" id="service-area" aria-labelledby="areas-title">
+				<div class="stairs-shell">
+					<header class="stairs-heading stairs-heading--split">
+						<div>
+							<p class="stairs-eyebrow">Service area</p><h2 id="areas-title">
+								Stair renovation throughout Toronto and the GTA.
+							</h2>
+						</div><p>
+							Service coverage is confirmed with the project address before an assessment is
+							scheduled.
+						</p>
+					</header><div class="stairs-areas__grid">
+						{
+							serviceAreas.map((area) => (
+								<div>
+									<>
+										<h3>{area.group}</h3>
+										<p>{area.places.join(' · ')}</p>
+									</>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section
+				class="stairs-section stairs-contact"
+				id="consultation"
+				aria-label="Stair project inquiry"
+			>
+				<div class="stairs-shell">
+					<ConsultationCTA
+						formId="stairs-consultation"
+						mode="inline"
+						reveal={false}
+						defaultProjectType="Stairs and railings"
+						eventPrefix="stairs"
+						submitEventName="stairs_inline_submit"
+					/>
+				</div>
+			</section>
 		</main>
 		<Footer />
-		<div class="proto-mobile-contact stairs-mobile-contact" data-mobile-contact><a href="tel:+14164715999" data-track="stairs_phone_click">Call</a><a href="#consultation">Request Quote</a></div>
+		<div class="proto-mobile-contact stairs-mobile-contact" data-mobile-contact>
+			<a href="tel:+14164715999" data-track="stairs_phone_click">Call</a><a href="#consultation"
+				>Request Quote</a>
+		</div>
 	</div>
 </PrototypeLayout>
 
@@ -224,11 +561,30 @@ const schemas = [
 		const tracker = Reflect.get(window, 'trackContactEvent');
 		if (typeof tracker === 'function') tracker(name, params);
 	};
-	document.querySelectorAll('[data-stairs-contact-open]').forEach((button) => button.addEventListener('click', () => document.dispatchEvent(new CustomEvent('strataline:open-contact'))));
-	document.querySelectorAll<HTMLElement>('[data-track]').forEach((element) => element.addEventListener('click', () => track(element.dataset.track || 'stairs_interaction', { path: element.dataset.path || '', case_study: element.dataset.case || '' })));
+	document
+		.querySelectorAll('[data-stairs-contact-open]')
+		.forEach((button) =>
+			button.addEventListener('click', () =>
+				document.dispatchEvent(new CustomEvent('strataline:open-contact')),
+			),
+		);
+	document
+		.querySelectorAll<HTMLElement>('[data-track]')
+		.forEach((element) =>
+			element.addEventListener('click', () =>
+				track(element.dataset.track || 'stairs_interaction', {
+					path: element.dataset.path || '',
+					case_study: element.dataset.case || '',
+				}),
+			),
+		);
 	document.querySelectorAll<HTMLFormElement>('[data-event-prefix="stairs"]').forEach((form) => {
 		if (!form.querySelector('input[name="Page Source"]')) {
-			const source = document.createElement('input'); source.type = 'hidden'; source.name = 'Page Source'; source.value = '/services/stairs'; form.append(source);
+			const source = document.createElement('input');
+			source.type = 'hidden';
+			source.name = 'Page Source';
+			source.value = '/services/stairs';
+			form.append(source);
 		}
 	});
 </script>

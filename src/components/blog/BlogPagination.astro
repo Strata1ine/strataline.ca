@@ -1,0 +1,40 @@
+---
+interface Props {
+	page: number;
+	pageCount: number;
+	basePath: string;
+}
+const { page, pageCount, basePath } = Astro.props;
+const hrefFor = (value: number) => (value === 1 ? basePath : `${basePath}/page/${value}`);
+---
+
+{
+	pageCount > 1 && (
+		<nav class="blog-pagination" aria-label="Projects and guides pages">
+			{page > 1 ? (
+				<a rel="prev" href={hrefFor(page - 1)}>
+					← Previous
+				</a>
+			) : (
+				<span />
+			)}
+			<ol>
+				{Array.from({ length: pageCount }, (_, index) => index + 1).map((value) => (
+					<li>
+						<a href={hrefFor(value)} aria-current={value === page ? 'page' : undefined}>
+							<span class="sr-only">Page </span>
+							{value}
+						</a>
+					</li>
+				))}
+			</ol>
+			{page < pageCount ? (
+				<a rel="next" href={hrefFor(page + 1)}>
+					Next →
+				</a>
+			) : (
+				<span />
+			)}
+		</nav>
+	)
+}

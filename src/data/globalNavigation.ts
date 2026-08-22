@@ -1,6 +1,6 @@
 export const globalPrimaryNavigation = [
 	{ label: 'Services', hasMenu: true },
-	{ label: 'Projects', href: '/interior-renovations#recent-work' },
+	{ label: 'Projects & Guides', href: '/blog' },
 	{ label: 'Process', href: '/interior-renovations#process' },
 	{ label: 'Reviews', href: '/reviews' },
 	{ label: 'Media', href: '/interior-renovations#media' },
@@ -40,12 +40,11 @@ export const globalMenuGroups = [
 ] as const;
 
 export const globalExploreLinks = [
-	{ label: 'Projects', href: '/interior-renovations#recent-work' },
+	{ label: 'Projects & Guides', href: '/blog' },
 	{ label: 'Process', href: '/interior-renovations#process' },
 	{ label: 'Reviews', href: '/reviews' },
 	{ label: 'Media', href: '/interior-renovations#media' },
 	{ label: 'About', href: '/#owner-led' },
-	{ label: 'Guides', href: '/blog' },
 ] as const;
 
 export const globalMobileServices = [
